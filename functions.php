@@ -29,14 +29,57 @@ add_filter('admin_footer_text', 'wpfme_footer_admin');
  * Intialize all the theme options
  */
 function theme_init() {
-	// Top menu
-	register_nav_menus( array( 'header-menu' => 'Header Menu' ) );
+    // Create Header Menu theme location
+    register_nav_menus(
+        array( 'header-menu' => 'Header Menu' )
+    );
+
+    register_sidebar();
+
+    if ( !is_nav_menu( 'Header' )) {
+        // Create Header menu, if it doesn't already exist
+        $menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );
+
+        // Add Home to the Header menu
+        $menu_item = array(
+            'menu-item-type' => 'custom',
+            'menu-item-url' => get_home_url('/'),
+            'menu-item-title' => 'Home',
+            'menu-item-status' => 'publish',
+        );
+        wp_update_nav_menu_item( $menu_id, 0, $menu_item );
+
+        // Add Sample Page to the Header menu
+        $page = get_page_by_title('Sample Page');
+        $menu_item = array(
+            'menu-item-object-id' => $page->ID,
+            'menu-item-object'    => 'page',
+            'menu-item-type'      => 'post_type',
+            'menu-item-status'    => 'publish'
+        );
+        wp_update_nav_menu_item( $menu_id, 0, $menu_item );
+
+        // Assign Header menu to the Header Menu theme location
+        $locations = get_theme_mod('nav_menu_locations');
+        $locations['header-menu'] = $menu_id;
+        set_theme_mod('nav_menu_locations', $locations);
+    }
+
 	// Thumbnails
 	add_theme_support( 'post-thumbnails' );
+
 	// Manual excerpts for pages as well as posts
 	add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'init', 'theme_init' );
+
+
+// Set default timezone
+function set_timezone() {
+    update_option( 'timezone_string', 'America/Chicago' );
+}
+add_action( 'init', 'set_timezone' );
+
 
 function enable_editor_styles() {
     add_editor_style();

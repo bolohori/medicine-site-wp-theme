@@ -71,13 +71,12 @@
 
         <h1><a href="/">Page Title</a></h1>
 
-        <nav>
-
-            <?php wp_nav_menu( array(
-                'theme_location' => 'header-menu',
-                'items_wrap'	  => '<ul>%3$s</ul>',
-            ) ); ?>
-
-        </nav>
+        <?php wp_nav_menu( array(
+            'theme_location' => 'header-menu',
+            'menu'           => 'header',
+            'container'      => 'nav',
+            'container_id'   => 'header-nav',
+            'items_wrap'     => '<ul id="main-nav">%3$s</ul>',
+        ) ); ?>
 
     </header>
