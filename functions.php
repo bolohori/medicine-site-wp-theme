@@ -244,7 +244,7 @@ function new_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 
-function github_plugin_updater_test_init() {
+function github_updater_init() {
 
         include_once '_/php/updater.php';
 
@@ -270,4 +270,4 @@ function github_plugin_updater_test_init() {
         }
 
 }
-add_action( 'init', 'github_plugin_updater_test_init' );
+add_action( 'init', 'github_updater_init' );
