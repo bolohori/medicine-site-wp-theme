@@ -253,12 +253,12 @@ function github_plugin_updater_test_init() {
         if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
 
                 $config = array(
-                        'slug' => plugin_basename( __FILE__ ),
-                        'proper_folder_name' => 'wusm-accordion',
-                        'api_url' => 'https://api.github.com/repos/coderaaron/wusm-accordion',
-                        'raw_url' => 'https://raw.github.com/coderaaron/wusm-accordion/master',
-                        'github_url' => 'https://github.com/coderaaron/wusm-accordion',
-                        'zip_url' => 'https://github.com/coderaaron/wusm-accordion/archive/master.zip',
+                        'slug' => get_stylesheet_directory().'functions.php',
+                        'proper_folder_name' => 'wusm',
+                        'api_url' => 'https://api.github.com/repos/coderaaron/wusm',
+                        'raw_url' => 'https://raw.github.com/coderaaron/wusm/master',
+                        'github_url' => 'https://github.com/coderaaron/wusm',
+                        'zip_url' => 'https://github.com/coderaaron/wusm/archive/master.zip',
                         'sslverify' => true,
                         'requires' => '3.0',
                         'tested' => '3.8',
