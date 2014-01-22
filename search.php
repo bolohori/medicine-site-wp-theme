@@ -10,8 +10,10 @@ foreach($query_args as $key => $string) {
 } // foreach
 
 $search = new WP_Query($search_query);
-?>
-<?php get_header(); ?>
+$search_terms = get_search_query();
+$special_results = 0;
+
+get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
 
 	<div id="page-background-r"></div>
@@ -22,42 +24,48 @@ $search = new WP_Query($search_query);
 		</nav>
 
 		<article>
-				<?php  $start = (get_query_var('start')) ? get_query_var('start') : 1;  ?>
-				
+				<?php $start = (get_query_var('start')) ? get_query_var('start') : 1;?>
 				<h1>Search Results</h1>
-				<?php 
-				$args = array( 'post_type' => 'promoted_results', 'posts_per_page' => -1 );
-				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();
-					// check if the repeater field has rows of data
-					if( have_rows('results_to_promote') ):
-						echo "<h2>Top Result(s) for the School of Medicine</h2>";
-						// loop through the rows of data
-						while ( have_rows('results_to_promote') ) : the_row();
-							$result = get_sub_field('result');
+				<?php
+				if($start == 1){
+					$args = array( 'post_type' => 'promoted_results', 'posts_per_page' => -1 );
+					$loop = new WP_Query( $args );
+					while ( $loop->have_posts() ) : $loop->the_post();
+						// check if the repeater field has rows of data
+						if( have_rows('results_to_promote') ):
+							echo "<h2>Top Result(s) for the School of Medicine</h2>";
+							// loop through the rows of data
+							while ( have_rows('results_to_promote') ) : the_row();
+								$special_results++;
+								$result = get_sub_field('result');
+								echo "<p style='width: 515px;'>
+								<span style='font-size: 16px;'><a href='".$result['url']."'><b>".$result['title']."</b></a></span><br>
+								".get_sub_field('result_description')."<br>
+								<a href='".$result['url']."' class='search-url'>".$result['url']."</a>
+								</p>";
+							endwhile;
+							echo "<hr>";
+						endif;
+					endwhile;
+					wp_reset_postdata();
+					?>
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
+							$special_results++;
 							echo "<p style='width: 515px;'>
-							<span style='font-size: 16px;'><a href='".$result['url']."'><b>".$result['title']."</b></a></span><br>
-							".get_sub_field('result_description')."<br>
-							<a href='".$result['url']."' class='search-url'>".$result['url']."</a>
+							<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
+							".get_the_excerpt()."<br>
+							<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
 							</p>";
 						endwhile;
-						echo "<hr>";
-					endif;
-				endwhile;
-				wp_reset_postdata();
-				?>
-				<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-						echo "<p style='width: 515px;'>
-						<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
-						".the_excerpt()."<br>
-						<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
-						</p>";
-					endwhile;
-				endif; ?>
-				<hr>
-				<?php
-				$search_url = 'http://googlesearch.wulib.wustl.edu/search?q=' . get_search_query() . '&output=xml_no_dtd&filter=1&start=' . $start;
+					endif; ?>
+					<hr>
+					<?php
+				}
 
+				$num_of_google_results = ($special_results == 0) ? 10 : 10-$special_results;
+
+				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results";
+				
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
 
 				$pager_max = 15;
@@ -88,7 +96,7 @@ $search = new WP_Query($search_query);
 				
 				// If there are no matching results, display appropriate message
 				if( ! $xml->RES ) {
-					echo "<p>No pages were found containing: <strong>" . get_search_query() . "</strong>.</p>\n";
+					echo "<p>No pages were found containing: <strong>" . $search_terms . "</strong>.</p>\n";
 				} 
 
 				// Display page of search results
@@ -145,7 +153,6 @@ $search = new WP_Query($search_query);
 							$p_end = pow($cnt_per_page, 2) - 1;
 						}
 						
-						$search_terms = get_search_query();
 						echo "<p style=\"width: 750px;\">Page: ";
 						if( $p_start != 1 ) {
 							$back = $start - $cnt_per_page;
@@ -172,8 +179,6 @@ $search = new WP_Query($search_query);
 
 				<p style="font-size: 12px;">Powered by Google Search Appliance</p>
 			</article>
-
-		<?php get_sidebar( 'right' ); ?>
 
 	</div>
 

@@ -244,30 +244,11 @@ function new_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 
-function github_updater_init() {
-
-        include_once '_/php/updater.php';
-
-        define( 'WP_GITHUB_FORCE_UPDATE', true );
-
-        if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
-
-                $config = array(
-                        'slug' => get_stylesheet_directory().'functions.php',
-                        'proper_folder_name' => 'wusm',
-                        'api_url' => 'https://api.github.com/repos/coderaaron/wusm',
-                        'raw_url' => 'https://raw.github.com/coderaaron/wusm/master',
-                        'github_url' => 'https://github.com/coderaaron/wusm',
-                        'zip_url' => 'https://github.com/coderaaron/wusm/archive/master.zip',
-                        'sslverify' => true,
-                        'requires' => '3.0',
-                        'tested' => '3.8',
-                        'readme' => 'README.md',
-                        'access_token' => '',
-                );
-
-                new WP_GitHub_Updater( $config );
-        }
-
+/*
+ * Add 'start' var for paginated search results
+ */
+function add_query_vars_filter( $vars ){
+	$vars[] = "start";
+	return $vars;
 }
-add_action( 'init', 'github_updater_init' );
+add_filter( 'query_vars', 'add_query_vars_filter' );
