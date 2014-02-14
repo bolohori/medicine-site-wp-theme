@@ -5,6 +5,7 @@
  */
 
 function get_awards_by_year() {
+	echo "HELLO";
 	if ( !wp_verify_nonce( $_REQUEST['nonce'], "wusm_nonce")) {
 	      exit("Processing error");
 	 }

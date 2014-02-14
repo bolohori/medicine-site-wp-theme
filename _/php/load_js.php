@@ -14,10 +14,9 @@ function scripts() {
 	}
 	wp_enqueue_script('custom_functions', get_stylesheet_directory_uri() . '/_/js/functions.js', array( 'jquery' ) );
 
-	if(is_post_type_archive( 'faculty_profile' )) {
-		wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/js/faculty-recognition.js', array( 'jquery-effects-bounce' ) );
-	}
-
+	
+	wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/js/faculty-recognition.js', array( 'jquery-effects-bounce' ) );
+	
 	// embed the javascript file that makes the AJAX request
 	wp_enqueue_script( 'my-ajax-request', get_stylesheet_directory_uri() . '/_/js/ajax-functions.js', array( 'jquery' ) );
 

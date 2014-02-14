@@ -77,7 +77,7 @@
                             array(
                                 'type' => 'DATETIME',
                                 'key' => 'expiration_date',
-                                'value' => TIMESTAMP,
+                                'value' => 'TIMESTAMP',
                                 'compare' => '>',
                             ),
                             array(
@@ -90,12 +90,13 @@
                     $loop = new WP_Query( $args );
                     while ( $loop->have_posts() ) : $loop->the_post();
                         $internal_only = get_field('internal_only');
-                        if ($internal_only[0] && !WASHU_IP)
+                        if ( $internal_only && !WASHU_IP)
                             continue;
                         $link = get_field('url');
-                        $target = $link['external'] ? "" : " target='_blank'";
+                        $target = $link['new_window'] ? "" : " target='_blank'";
                         $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
-                        echo "\t\t\t\t\t<li data-test='$test' data-curr='$curr' data-expir='$expir' class='announcement'><a$target href='$url'>" . get_the_title() . "</a></li>\n";
+                        /*echo "\t\t\t\t\t<li data-test='$test' data-curr='$curr' data-expir='$expir' class='announcement'><a$target href='$url'>" . get_the_title() . "</a></li>\n";*/
+                        echo "\t\t\t\t\t<li class='announcement'><a$target href='$url'>" . get_the_title() . "</a></li>\n";
                         
                     endwhile;
 ?>

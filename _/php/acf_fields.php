@@ -167,6 +167,39 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 	register_field_group(array (
+		'id' => 'acf_giving-page-extras',
+		'title' => 'Giving page extras',
+		'fields' => array (
+			array (
+				'key' => 'field_52e7d38a0f064',
+				'label' => 'Header text',
+				'name' => 'header_text',
+				'type' => 'wysiwyg',
+				'default_value' => '',
+				'toolbar' => 'full',
+				'media_upload' => 'no',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'giving-page.php',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
 		'id' => 'acf_in-the-news',
 		'title' => 'In the News',
 		'fields' => array (
@@ -232,8 +265,8 @@ if(function_exists("register_field_group"))
 				'label' => 'Location image',
 				'name' => 'location_image',
 				'type' => 'image',
-				'save_format' => 'url',
-				'preview_size' => 'thumbnail',
+				'save_format' => 'id',
+				'preview_size' => 'map-img',
 				'library' => 'all',
 			),
 			array (
@@ -397,6 +430,32 @@ if(function_exists("register_field_group"))
 				'default_value' => '',
 				'layout' => 'vertical',
 			),
+			array (
+				'key' => 'field_52fd5dd7c7d78',
+				'label' => 'Promoted result terms',
+				'name' => 'promoted_result_terms',
+				'type' => 'repeater',
+				'sub_fields' => array (
+					array (
+						'key' => 'field_52fd5e1ac7d79',
+						'label' => 'Promoted result term',
+						'name' => 'promoted_result_term',
+						'type' => 'text',
+						'required' => 1,
+						'column_width' => '',
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'formatting' => 'html',
+						'maxlength' => '',
+					),
+				),
+				'row_min' => '',
+				'row_limit' => '',
+				'layout' => 'table',
+				'button_label' => 'Add Row',
+			),
 		),
 		'location' => array (
 			array (
@@ -418,43 +477,111 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 	register_field_group(array (
-		'id' => 'acf_promoted-results',
-		'title' => 'Promoted Results',
+		'id' => 'acf_promoted-result',
+		'title' => 'Promoted Result',
 		'fields' => array (
 			array (
-				'key' => 'field_52def71f28e69',
-				'label' => 'Results to promote',
-				'name' => 'results_to_promote',
+				'key' => 'field_52fe3b7e06d4d',
+				'label' => 'Result source',
+				'name' => 'result_source',
+				'type' => 'text',
+				'required' => 0,
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_52fe3291799e2',
+				'label' => 'Promoted Result Terms',
+				'name' => 'promoted_result_terms',
 				'type' => 'repeater',
 				'sub_fields' => array (
 					array (
-						'key' => 'field_52defa9928e6a',
-						'label' => 'Result',
-						'name' => 'result',
-						'type' => 'website',
+						'key' => 'field_52fe32ac799e3',
+						'label' => 'Promoted result term',
+						'name' => 'promoted_result_term',
+						'type' => 'text',
 						'required' => 1,
-						'column_width' => '',
-						'website_title' => 1,
-						'internal_link' => 0,
-						'output_format' => 1,
-						'default_value' => '',
-					),
-					array (
-						'key' => 'field_52defc5cf8675',
-						'label' => 'Result Description',
-						'name' => 'result_description',
-						'type' => 'textarea',
 						'column_width' => '',
 						'default_value' => '',
 						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'formatting' => 'html',
 						'maxlength' => '',
-						'formatting' => 'br',
 					),
 				),
 				'row_min' => '',
 				'row_limit' => '',
-				'layout' => 'row',
+				'layout' => 'table',
 				'button_label' => 'Add Row',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'user_type',
+					'operator' => '==',
+					'value' => 'administrator',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+			array (
+				array (
+					'param' => 'user_type',
+					'operator' => '==',
+					'value' => 'editor',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+			array (
+				array (
+					'param' => 'user_type',
+					'operator' => '==',
+					'value' => 'author',
+					'order_no' => 0,
+					'group_no' => 2,
+				),
+			),
+			array (
+				array (
+					'param' => 'user_type',
+					'operator' => '==',
+					'value' => 'super_admin',
+					'order_no' => 0,
+					'group_no' => 3,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_promoted-results',
+		'title' => 'Promoted Results',
+		'fields' => array (
+			array (
+				'key' => 'field_52fe37a94f99c',
+				'label' => 'Result URL',
+				'name' => 'result_url',
+				'type' => 'text',
+				'required' => 1,
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
 			),
 		),
 		'location' => array (
@@ -469,7 +596,7 @@ if(function_exists("register_field_group"))
 			),
 		),
 		'options' => array (
-			'position' => 'normal',
+			'position' => 'acf_after_title',
 			'layout' => 'no_box',
 			'hide_on_screen' => array (
 			),
@@ -549,6 +676,8 @@ if(function_exists("register_field_group"))
 						'label' => 'Default Sidebar',
 						'name' => 'default',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_526ad66326cd9',
@@ -582,7 +711,7 @@ if(function_exists("register_field_group"))
 										'default_value' => '',
 									),
 								),
-								'row_min' => 0,
+								'row_min' => '',
 								'row_limit' => '',
 								'layout' => 'table',
 								'button_label' => 'Add Row',
@@ -593,6 +722,8 @@ if(function_exists("register_field_group"))
 						'label' => 'Single Link',
 						'name' => 'single',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_526ad6c326cdd',
@@ -611,6 +742,8 @@ if(function_exists("register_field_group"))
 						'label' => 'NYT Cancer Series',
 						'name' => 'cancer',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_526ad6fd494d7',
@@ -657,7 +790,7 @@ if(function_exists("register_field_group"))
 										'default_value' => '',
 									),
 								),
-								'row_min' => 0,
+								'row_min' => '',
 								'row_limit' => '',
 								'layout' => 'table',
 								'button_label' => 'Add Row',
@@ -668,6 +801,8 @@ if(function_exists("register_field_group"))
 						'label' => 'Outlook Option',
 						'name' => 'outlook',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_526ad764494dc',
@@ -724,6 +859,8 @@ if(function_exists("register_field_group"))
 						'label' => 'Connect with us',
 						'name' => 'connect',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_526ad7c4494e1',
@@ -760,6 +897,8 @@ if(function_exists("register_field_group"))
 						'label' => 'Heart/Vascular',
 						'name' => 'heart',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_526ad85ccbe7c',
@@ -819,7 +958,7 @@ if(function_exists("register_field_group"))
 										'maxlength' => '',
 									),
 								),
-								'row_min' => 0,
+								'row_min' => '',
 								'row_limit' => '',
 								'layout' => 'table',
 								'button_label' => 'Add Row',
@@ -830,6 +969,8 @@ if(function_exists("register_field_group"))
 						'label' => 'One-off',
 						'name' => 'one_off',
 						'display' => 'row',
+						'min' => '',
+						'max' => '',
 						'sub_fields' => array (
 							array (
 								'key' => 'field_5279311ab7bd6',
@@ -853,7 +994,7 @@ if(function_exists("register_field_group"))
 				'label' => 'Sidebar Examples',
 				'name' => '',
 				'type' => 'message',
-				'message' => '<img src=\'/wp-content/themes/som/inc/img/sidebars.jpg\'>',
+				'message' => '<img src=\'/wp-content/themes/wusm/_/img/sidebars.jpg\'>',
 			),
 		),
 		'location' => array (

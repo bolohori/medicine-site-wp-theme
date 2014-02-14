@@ -4,20 +4,23 @@
  * Description: A page template without left nav and background.
  */
 
-	get_header();
+get_header();
 
-	if (have_posts()) :
-		while (have_posts()) :
-			the_post();
-			$class = '';
-			$margin = ' non-landing-page';
-			if (get_the_post_thumbnail() != '') {
-				$class = ' class="giving-notch"';
-				$margin = ' landing-page';
-				echo '<div id="featured-image">';
-				the_post_thumbnail('landing-page');
-				echo '</div>';
-			}
+if (have_posts()) :
+	while (have_posts()) :
+		the_post();
+		$class = '';
+		$margin = ' non-landing-page';
+		if (get_the_post_thumbnail() != '') {
+			$class = ' class="giving-notch"';
+			$margin = ' landing-page';
+			echo "<div id='featured-image'>";
+			echo "<div id='featured-text'>";
+			the_field('header_text');
+			echo "</div>";
+			the_post_thumbnail('landing-page');
+			echo "</div>";
+		}
 ?>
 
 <div id="main" class="clearfix<?php echo $margin; ?>">

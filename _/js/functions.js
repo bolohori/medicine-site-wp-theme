@@ -31,16 +31,16 @@ jQuery(document).ready(function($) {
 		$('#spotlight-slider').nivoSlider({manualAdvance: true, effect:'slideInLeft'});
 	}
 
-	var last = document.referrer,
+	/*var last = document.referrer,
 		curr = window.location.href,
 		last_a = last.split("/"),
 		curr_a = curr.split("/");
 
 	if(last_a[2] != curr_a[2]) {
 		$('.sticky-footer').animate({'bottom': 0}, 800);
-	} else {
+	} else { */
 		$('.sticky-footer').css({'bottom': 0});
-	}
+	/*}*/
 
 
 	if ( $('.landing-page')[0] && $(".page-nav")[0] ) {

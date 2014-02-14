@@ -249,8 +249,9 @@ function create_custom_post_types() {
 		'show_ui' => true, 
 		'show_in_menu' => true, 
 		'query_var' => true,
+		'rewrite' => array( 'slug' => 'about/faculty-recognition' ),
 		'capability_type' => 'post',
-		'has_archive' => false, 
+		'has_archive' => true, 
 		'hierarchical' => true,
 		'menu_position' => null,
 		'taxonomies' => array( 'category', 'post_tag' ),
@@ -306,45 +307,6 @@ function create_custom_post_types() {
 	register_post_type( 'spotlight', $args );
 
 	$labels = array(
-		'name' => 'Map Location',
-		'singular_name' => 'Map Locations',
-		'add_new' => 'Add New',
-		'add_new_item' => 'Add New Map Location',
-		'edit_item' => 'Edit Map Location',
-		'new_item' => 'New Map Location',
-		'all_items' => 'All Map Locations',
-		'view_item' => 'View Map Location',
-		'search_items' => 'Search Map Locations',
-		'not_found' =>	'No Map Locations found',
-		'not_found_in_trash' => 'No Map Locations found in Trash', 
-		'parent_item_colon' => '',
-		'menu_name' => 'Map Locations'
-	);
-
-	$args = array(
-		'labels' => $labels,
-		'menu_icon' => 'dashicons-location-alt',
-		'public' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true, 
-		'show_in_menu' => true, 
-		'query_var' => true,
-		'capability_type' => 'post',
-		'has_archive' => false, 
-		'hierarchical' => true,
-		'menu_position' => null,
-		'supports' => array(
-			'title',
-			'editor',
-			'thumbnail',
-			'revisions',
-			'page-attributes',
-		)
-	); 
-
-	register_post_type( 'location', $args );
-
-	$labels = array(
 		'name' => 'Promoted Results',
 		'singular_name' => 'Promoted Results',
 		'add_new' => 'Add New',
@@ -372,9 +334,9 @@ function create_custom_post_types() {
 		'has_archive' => false, 
 		'hierarchical' => false,
 		'menu_position' => null,
-		'supports' => array(
+		/*'supports' => array(
 			'title',			
-		)
+		)*/
 	); 
 
 	register_post_type( 'promoted_results', $args );	

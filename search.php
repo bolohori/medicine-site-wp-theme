@@ -1,17 +1,64 @@
 <?php
+// Grab the global variable since we're going to be messing with it
 global $query_string;
 
+// Grab all the arguments from the URL
 $query_args = explode("&", $query_string);
+
+// This is where we're going to stuff the arguments
 $search_query = array();
 
+// and this is how we stuff those arguments into the array
 foreach($query_args as $key => $string) {
 	$query_split = explode("=", $string);
 	$search_query[$query_split[0]] = urldecode($query_split[1]);
 } // foreach
 
-$search = new WP_Query($search_query);
+// We've got our "hacked" query ready to run, so run it
+// uh...don't need this
+//$search = new WP_Query($search_query);
+
+// Now that our hacked query has been run, we can treat it like it wasn't hacked
 $search_terms = get_search_query();
-$special_results = 0;
+
+// To use data from the query results, we need the global variable
+global $wp_query;
+
+// This is where we're going to keep "promoted results" and WP's results
+// The number of WP search results
+$num_of_wordpress_results = $wp_query->found_posts;
+
+// and how many results are on the last page?
+$last_wp_page_results_cnt = $num_of_wordpress_results % 10;
+
+$num_of_google_results = ($last_wp_page_results_cnt == 0) ? 10 : 10-$last_wp_page_results_cnt;
+
+// so hackey, if we go past the last page it flips out so we've gotta back
+// up a bit to get some important numbers
+if(($num_of_wordpress_results == 0) && ($paged != 1)) {
+	// We've got our twice-hacked "hacked" query ready to run, so run it
+	$search_query['paged'] = 1;
+	$hacked_query = new WP_Query($search_query);
+
+	$num_of_wordpress_results = $hacked_query->found_posts;
+}
+
+// How many pages of WP results do we have (with 10 results per page)
+$num_of_wp_result_pages = ceil($num_of_wordpress_results/10);
+
+// Total hack, just get the 1st result of the Google search, but it brings along with it...
+$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=1&num=1";
+$xml = new SimpleXMLElement(file_get_contents($search_url));
+// ...the total number of results
+$total_google_results = $xml->RES->M;
+
+// Google result to start with
+$start = ($num_of_wp_result_pages == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10) +  $num_of_google_results;
+
+// Total pages of results, displaying 10 items per page
+$pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
+
+if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
@@ -24,81 +71,78 @@ get_header(); ?>
 		</nav>
 
 		<article>
-				<?php $start = (get_query_var('start')) ? get_query_var('start') : 1;?>
-				<h1>Search Results</h1>
-				<?php
-				if($start == 1){
-					$args = array( 'post_type' => 'promoted_results', 'posts_per_page' => -1 );
-					$loop = new WP_Query( $args );
-					while ( $loop->have_posts() ) : $loop->the_post();
-						// check if the repeater field has rows of data
-						if( have_rows('results_to_promote') ):
-							echo "<h2>Top Result(s) for the School of Medicine</h2>";
-							// loop through the rows of data
-							while ( have_rows('results_to_promote') ) : the_row();
-								$special_results++;
-								$result = get_sub_field('result');
-								echo "<p style='width: 515px;'>
-								<span style='font-size: 16px;'><a href='".$result['url']."'><b>".$result['title']."</b></a></span><br>
-								".get_sub_field('result_description')."<br>
-								<a href='".$result['url']."' class='search-url'>".$result['url']."</a>
-								</p>";
-							endwhile;
-							echo "<hr>";
-						endif;
-					endwhile;
-					wp_reset_postdata();
-					?>
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-							$special_results++;
-							echo "<p style='width: 515px;'>
-							<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
-							".get_the_excerpt()."<br>
-							<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
-							</p>";
-						endwhile;
-					endif; ?>
-					<hr>
-					<?php
-				}
+			<h1>Search Results</h1>
+			<?php
+			
+			// If there are no matching results, display appropriate message
+			if( ! ($num_of_wordpress_results + $total_google_results) ) {
+				echo "<p>No pages were found containing: <strong>" . $search_terms . "</strong>.</p>\n";
+			}
+			
+			// Only display "promoted results" on the first page
+			if( $paged == 1 ) {
+				$querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE ID IN (SELECT post_id FROM $wpdb->postmeta WHERE $wpdb->postmeta.meta_value = '".$search_terms."') AND $wpdb->posts.post_status = 'publish';";
+				
+				$pageposts = $wpdb->get_results($querystr, OBJECT);
 
-				$num_of_google_results = ($special_results == 0) ? 10 : 10-$special_results;
+				if ($pageposts):
+					echo "<h2>Top Result(s) for the School of Medicine</h2>";
+					global $post;
+					foreach ($pageposts as $post):
+						setup_postdata($post);
+						if($post->post_type == 'promoted_results') {
+							$link = get_field('result_url', $post->ID);
+						} else {
+							$link = get_permalink();
+						}
+						echo "<p style='width: 515px;'>
+						<span style='font-size: 16px;'><a href='".$link."'><b>".get_the_title()."</b></a></span><br>";
+						if(get_the_excerpt() != '')
+							echo get_the_excerpt()."<br>";
+						echo "<a href='".$link."' class='search-url'>".$link."</a>
+						</p>";
+					endforeach;
+					echo "<hr>";
+				endif;
 
+				// Restore original Post Data
+				wp_reset_postdata();
+			}
+			
+			// These are WordPress' search results
+			if ( have_posts() ) : while ( have_posts() ) : the_post();
+					$num_of_wordpress_results++;
+					echo "<p style='width: 515px;'>
+					<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
+					".get_the_excerpt()."<br>
+					<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
+					</p>";
+				endwhile;
+			endif;
+
+			// Visual separtor to mark end of WP search and start of Google search
+			if ( $num_of_wp_result_pages == $paged)
+				echo "<hr>";
+
+			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {
+				// and finally the results from Google...
 				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results";
 				
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
 
-				$pager_max = 15;
-				$p_start = 1;
-				$cnt_per_page = 10;
-
-				$num_results = $xml->RES->M;
-				$page_cnt = ceil($num_results / $cnt_per_page);
 				$start_num = $xml->RES['SN'];
 
 				if( $start > $start_num ) {
 					$start = $start_num - 1;
 				}
 
-				// Google seems to choke around the 1000th result, so limit results to 1000 matches
-				//$num_results_to_display = 1000;
-				$max = $xml->RES->M;
-				//if( $xml->RES->M >= $num_results_to_display ) {
-				//  $max = $num_results_to_display;
-				//}
-
 				// Adjust the end count if it is less than the total count per page. For example, if there are only
 				// 7 results but the default is to display 10 per page, don't show: Results 1 - 7 of 10
-				$end_cnt = $cnt_per_page;
-				if( ($num_results - $start) < $cnt_per_page ) {
-					$end_cnt = $num_results - $start;
+				$end_cnt = 10;
+				if( ($total_google_results - $start) < 10 ) {
+					$end_cnt = $total_google_results - $start;
 				}
 				
-				// If there are no matching results, display appropriate message
-				if( ! $xml->RES ) {
-					echo "<p>No pages were found containing: <strong>" . $search_terms . "</strong>.</p>\n";
-				} 
-
 				// Display page of search results
 				foreach( $xml->RES->R as $result ) { ?>
 					<p style="width: 515px;">
@@ -108,77 +152,56 @@ get_header(); ?>
 					<?php } ?>
 					<br/><a href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
 					</p>
-				<?php } ?>
-				
-				<?php 
-					// If there are more than one page of results, show pager navigation
-					if( $page_cnt > 1 ) {
+			<?php }
+				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
+			} ?>
 			
-						// Determine number of pages in pager navigation
-						
-						// Default to total page count
-						$pages = $page_cnt;
-												
-						// If there are fewer pages than pager allows, show that amount
-//                      if( $page_cnt <= $pager_max ) {
-//                          $page_cnt = $pager_max;
-//                      }
-												
-						// For first 10 pages, keep pager navigation static
-						if( ($start / $cnt_per_page) < $cnt_per_page ) {
-							if( $page_cnt < $pager_max ) {
-								$p_end = $page_cnt;
-							} else {
-								$p_end = $pager_max;
-							}
 
-						// Otherwise, starting on page 11, pull one page from beginning of pager navigation
-						// and add it to the end, thus maintaining $pager_max items in navigation
+			<?php 
+				// If there are more than one page of results, show pager navigation
+				if( $pages_of_results > 1 ) {
+					// For first 10 pages, keep pager navigation static
+					if( $paged < 10 ) {
+						$p_start = 1;
+						if( $pages_of_results < 15 ) {
+							$p_end = $pages_of_results;
 						} else {
-							// Google Appliance seems to choke around 1000th result, so stop pager navigation one page before
-							if( $start >= (1000 - $cnt_per_page) ) {
-								$p_start = pow($cnt_per_page, 2) - $pager_max - 1;
-								$p_end = $p_start + $pager_max;
-							} else {
-								$p_start = (abs(pow($cnt_per_page, 2) - $start) / $cnt_per_page) + 1;
-								$p_end = $p_start + ($pager_max-1);
-								if( $p_end > $page_cnt ) {
-									$p_end = $page_cnt;
-								}
-							}
+							$p_end = 15;
 						}
-						
-						if( $p_end >= pow($cnt_per_page, 2) ) {
-							$p_start = pow($cnt_per_page, 2) - $pager_max - 1;
-							$p_end = pow($cnt_per_page, 2) - 1;
-						}
-						
-						echo "<p style=\"width: 750px;\">Page: ";
-						if( $p_start != 1 ) {
-							$back = $start - $cnt_per_page;
-							echo "<a href=\"/?s=$search_terms&start=$back\">&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
-						}
-						for( $i=$p_start; $i<=$p_end; $i++ ) {          
-							if( (($start+10) / $cnt_per_page) != $i ) {
-								$next_page = ($i * $cnt_per_page) - 10;
-								echo "<a href=\"/?s=$search_terms&start=$next_page\">$i</a>";
-							} else {
-								echo "$i";
-							}
-							echo "&nbsp;&nbsp;&nbsp;";
-						}
-						$adv = $start + $cnt_per_page;
-						
-						if( $p_end != $page_cnt ) {
-							echo "<a href=\"/?s=$search_terms&start=$adv\">&gt;&gt;</a>";
-						}
-						echo "</p>";
+
+					// Otherwise, starting on page 11, pull one page from beginning of pager navigation
+					// and add it to the end, thus maintaining 15 items in navigation
+					} else {
+						$p_start = $paged - 10;
+						$p_end = $paged + 4;
 					}
-				?>
+					
+					if( $p_end > $pages_of_results )
+						$p_end = $pages_of_results;
+					
+					echo "<p style='width: 750px;'>Page: ";
+					if( $p_start != 1 ) {
+						$back = $paged - 1;
+						echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
+					}
+					for( $i = $p_start ; $i <= $p_end ; $i++ ) {          
+						if( $paged != $i ) {
+							echo "<a href='/?s=$search_terms&paged=$i'>$i</a>";
+						} else {
+							echo "$i";
+						}
+						echo "&nbsp;&nbsp;&nbsp;";
+					}
+					$adv = $paged + 1;
+					
+					if( $p_end != $pages_of_results ) {
+						echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
+					}
+					echo "</p>";
+				}
+			?>
 
-
-				<p style="font-size: 12px;">Powered by Google Search Appliance</p>
-			</article>
+		</article>
 
 	</div>
 

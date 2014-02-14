@@ -8,12 +8,12 @@
 			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) : $loop->the_post();
 				$internal_only = get_field('internal_only');
-				if ($internal_only[0] && !WASHU_IP)
+				if ($internal_only && !WASHU_IP)
 					continue;
 
 				$link = get_field('link');
 				
-				$target = $link['external'] ? "" : "target='_blank'";
+				$target = $link['new_window'] ? "" : "target='_blank'";
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
@@ -54,6 +54,7 @@
 <?php
 				$i = 0;
 				$j = 0;
+				$audio_out = '';
 				$args = array( 'post_type' => 'news_releases', 'posts_per_page' => 6, 'orderby' => 'menu_order', 'order' => 'ASC'  );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
@@ -66,7 +67,7 @@
 						$j++;
 					}
 					$link = get_field('url');
-					$target = $link['external'] ? "" : "target='_blank'";
+					$target = $link['new_window'] ? "" : "target='_blank'";
 					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  					echo "<a $target href='$url'>Read Article</a></p></li>";
 					$i++;

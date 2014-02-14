@@ -6,7 +6,50 @@ if(!defined('WP_LOCAL_INSTALL')) {
 
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
-require_once( get_template_directory() . '/_/php/left_nav.php' );
+require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
+
+add_action( 'init', 'wusm_head_cleanup' );
+add_filter( 'the_generator', 'strip_rss_version');
+/*********************
+WP_HEAD GOODNESS
+The default wordpress head is a mess. Let's clean it up by
+removing all the junk we don't need.
+*********************/
+function wusm_head_cleanup() {
+	// category feeds
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+	// post and comment feeds
+	remove_action( 'wp_head', 'feed_links', 2 );
+	// EditURI link
+	remove_action( 'wp_head', 'rsd_link' );
+	// windows live writer
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	// index link
+	remove_action( 'wp_head', 'index_rel_link' );
+	// previous link
+	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+	// start link
+	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+	// links for adjacent posts
+	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+	// WP version
+	remove_action( 'wp_head', 'wp_generator' );
+	// remove WP version from css
+	add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999);
+	// remove Wp version from scripts
+	add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999);
+
+	// Set default timezone
+	update_option( 'timezone_string', 'America/Chicago' );
+} /* end bones head cleanup */
+// Remove WP version from scripts
+function remove_wp_ver_css_js( $src ) {
+	if ( strpos( $src, 'ver=' ) )
+		$src = remove_query_arg( 'ver', $src );
+	return $src;
+}
+// remove WP version from RSS
+function strip_rss_version() { return ''; }
 
 /**
  * Customize the footer in admin area
@@ -69,62 +112,10 @@ function theme_init() {
 }
 add_action( 'init', 'theme_init' );
 
-
-// Set default timezone
-function set_timezone() {
-	update_option( 'timezone_string', 'America/Chicago' );
-}
-add_action( 'init', 'set_timezone' );
-
-
 function enable_editor_styles() {
 	add_editor_style( '_/css/editor-style.css' );
 }
 add_action( 'init', 'enable_editor_styles' );
-
-/*********************
-WP_HEAD GOODNESS
-The default wordpress head is a mess. Let's clean it up by
-removing all the junk we don't need.
-*********************/
-function head_cleanup() {
-	// category feeds
-	remove_action( 'wp_head', 'feed_links_extra', 3 );
-	// post and comment feeds
-	remove_action( 'wp_head', 'feed_links', 2 );
-	// EditURI link
-	remove_action( 'wp_head', 'rsd_link' );
-	// windows live writer
-	remove_action( 'wp_head', 'wlwmanifest_link' );
-	// index link
-	remove_action( 'wp_head', 'index_rel_link' );
-	// previous link
-	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-	// start link
-	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-	// links for adjacent posts
-	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-	// WP version
-	remove_action( 'wp_head', 'wp_generator' );
-	// remove WP version from css
-	add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999 );
-	// remove Wp version from scripts
-	add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999 );
-} /* end bones head cleanup */
-add_action('init', 'head_cleanup');
-
-// Remove WP version from scripts
-function remove_wp_ver_css_js( $src ) {
-	if ( strpos( $src, 'ver=' ) )
-		$src = remove_query_arg( 'ver', $src );
-	return $src;
-}
-
-// Remove WP version from RSS
-add_filter('the_generator', 'strip_rss_version');
-
-// remove WP version from RSS
-function strip_rss_version() { return ''; }
 
 // Hide admin bar for subscribers. Probably won't be needed, but just in case.
 function cc_hide_admin_bar() {
@@ -133,17 +124,6 @@ function cc_hide_admin_bar() {
 	}
 }
 add_action('set_current_user', 'cc_hide_admin_bar');
-
-/**
- * Remove height and width attributes from images uploaded through WordPress so that we can make them responsive
- * http://css-tricks.com/snippets/wordpress/remove-width-and-height-attributes-from-inserted-images/
- */
-function remove_width_attribute( $html ) {
-	$html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-	return $html;
-}
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
 
 function custom_excerpt_length( $length ) {
 	return 20;
@@ -211,9 +191,9 @@ function customize_mce( $init ) {
 	/* Register accordion styles */
 	$style_formats = array(
 		array(
-			'title'   => 'Light Grey Background',
+			'title'   => 'Main content callout',
 			'block'   => 'div',
-			'classes' => 'light-grey-bg',
+			'classes' => 'callout',
 			'wrapper' => true
 		),
 	);
@@ -226,17 +206,6 @@ function customize_mce( $init ) {
 add_filter( 'tiny_mce_before_init', 'customize_mce' );
 
 /*
- * Limit search results to only posts and pages
- */
-function searchfilter($query) {
-	if ($query->is_search && !is_admin() ) {
-		$query->set('post_type',array('post','page'));
-	}
-return $query;
-}
-add_filter('pre_get_posts','searchfilter');
-
-/*
  * Change [...] to MORE>> (w/ link)
  */
 function new_excerpt_more( $more ) {
@@ -245,10 +214,54 @@ function new_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 
 /*
- * Add 'start' var for paginated search results
+ * Limit search results to only posts and pages
  */
-function add_query_vars_filter( $vars ){
-	$vars[] = "start";
-	return $vars;
+function searchfilter($query) {
+	if ($query->is_search && !is_admin() ) {
+		$query->set('post_type',array('page'));
+	}
+return $query;
 }
-add_filter( 'query_vars', 'add_query_vars_filter' );
+add_filter('pre_get_posts','searchfilter');
+
+function wp_query_posts_where( $where, &$wp_query ) {
+	global $wpdb;
+	if ( $post_title = $wp_query->get( 'post_title' ) ) {
+		$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( like_escape( $post_title ) ) . '%\'';
+	}
+	return $where;
+}
+add_filter( 'posts_where', 'wp_query_posts_where', 10, 2 );
+
+function remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
+	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+	return $html;
+}
+add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10, 3 );
+
+// This comes from Otto
+// https://core.trac.wordpress.org/ticket/11312#comment:6
+function my_404_override() {
+	global $wp_query;
+
+	if ($wp_query->query_vars_changed) {
+		status_header( 200 );
+		$wp_query->is_404=false;
+		$wp_query->is_search=true;
+	}
+}
+add_filter('template_redirect', 'my_404_override' );
+
+// add tag support to pages
+function tags_support_all() {
+	register_taxonomy_for_object_type('post_tag', 'page');
+}
+
+// ensure all tags are included in queries
+function tags_support_query($wp_query) {
+	if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
+}
+
+// tag hooks
+//add_action('init', 'tags_support_all');
+//add_action('pre_get_posts', 'tags_support_query');
