@@ -1,6 +1,7 @@
 <nav id="left-col">
 
 	<?php 
+	$force = 0;
 	if (isset($post->ID)) : $id = $post->ID;
 	// This isn't working...yet
 	if($wp_query->query_vars['post_type'] == 'faculty_profile') {
@@ -15,9 +16,10 @@
 			<?php
 				$walker = new Razorback_Walker_Page_Selective_Children();
 				
-				if ((in_menu($id) || (sizeof($post->ancestors) > 0)) && !(is_search())) {
+				/*if ((in_menu($id) || (sizeof($post->ancestors) > 0)) && !(is_search())) {*/
+				if (( is_page() || $force  || (sizeof($post->ancestors) > 0)) && !(is_search())) {
 
-					if ( is_page() || $force ) {
+					/*if ( is_page() || $force ) {*/
 						// This is a page
 						if ( ( is_page() && $post->post_parent ) || ( $force ) ) {
 							// This is a subpage
@@ -51,7 +53,7 @@
 
 						echo $children;
 
-					}
+					/*}*/
 				}
 			?>
 		</ul>

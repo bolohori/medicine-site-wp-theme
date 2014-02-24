@@ -136,3 +136,14 @@ h6 {
 	color: red;
 	font-weight: bold;
 }
+
+.callout {
+	border: 1px solid #ddd;
+	background: #fff;
+	margin: 20px 0;
+	width: 100%;
+	clear: both;
+	padding: 20px;
+	float: left;
+	border-radius: 10px;
+}

@@ -408,6 +408,20 @@ if(function_exists("register_field_group"))
 		'title' => 'Page extras',
 		'fields' => array (
 			array (
+				'key' => 'field_5307f657576df',
+				'label' => 'Special header',
+				'name' => 'special_header',
+				'type' => 'post_object',
+				'post_type' => array (
+					0 => 'page',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'allow_null' => 1,
+				'multiple' => 0,
+			),
+			array (
 				'key' => 'field_526ed9af938eb',
 				'label' => 'Nav menu title',
 				'name' => 'nav_menu_title',
@@ -429,32 +443,6 @@ if(function_exists("register_field_group"))
 				),
 				'default_value' => '',
 				'layout' => 'vertical',
-			),
-			array (
-				'key' => 'field_52fd5dd7c7d78',
-				'label' => 'Promoted result terms',
-				'name' => 'promoted_result_terms',
-				'type' => 'repeater',
-				'sub_fields' => array (
-					array (
-						'key' => 'field_52fd5e1ac7d79',
-						'label' => 'Promoted result term',
-						'name' => 'promoted_result_term',
-						'type' => 'text',
-						'required' => 1,
-						'column_width' => '',
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'formatting' => 'html',
-						'maxlength' => '',
-					),
-				),
-				'row_min' => '',
-				'row_limit' => '',
-				'layout' => 'table',
-				'button_label' => 'Add Row',
 			),
 		),
 		'location' => array (
@@ -485,7 +473,6 @@ if(function_exists("register_field_group"))
 				'label' => 'Result source',
 				'name' => 'result_source',
 				'type' => 'text',
-				'required' => 0,
 				'default_value' => '',
 				'placeholder' => '',
 				'prepend' => '',

@@ -29,7 +29,7 @@
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
 <?php
-				$args = array( 'post_type' => 'in_the_news', 'posts_per_page' => 4 );
+				$args = array( 'post_type' => 'media_mentions', 'posts_per_page' => 4 );
 				$loop = new WP_Query( $args );
 				$i = 1;
 				$images = "";
@@ -44,7 +44,7 @@
 				wp_reset_postdata();
 				echo "<div id='news-slider' class='nivoSlider'>" . $images . "</div>" . $captions . "\n";
 ?>
-			<a class="in-the-news-archive" href="/in_the_news">MORE</a>
+			<a class="in-the-news-archive" href="/news/press">MORE</a>
 		</div>
 			
 		<div class="news-right">

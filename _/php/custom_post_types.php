@@ -113,30 +113,30 @@ function create_custom_post_types() {
 	register_post_type( 'news_releases', $args );
 
 	$labels = array(
-		'name' => 'In the News',
-		'singular_name' => 'In the News',
+		'name' => 'Media Mentions',
+		'singular_name' => 'Media Mentions',
 		'add_new' => 'Add New',
-		'add_new_item' => 'Add New In the News',
-		'edit_item' => 'Edit In the News',
-		'new_item' => 'New In the News',
-		'all_items' => 'All In the News',
-		'view_item' => 'View In the News',
-		'search_items' => 'Search In the News',
-		'not_found' =>	'No in the news found',
-		'not_found_in_trash' => 'No in the news found in Trash', 
+		'add_new_item' => 'Add New Media Mentions',
+		'edit_item' => 'Edit Media Mentions',
+		'new_item' => 'New Media Mentions',
+		'all_items' => 'All Media Mentions',
+		'view_item' => 'View Media Mentions',
+		'search_items' => 'Search Media Mentions',
+		'not_found' =>	'No Media Mentions found',
+		'not_found_in_trash' => 'No Media Mentions found in Trash', 
 		'parent_item_colon' => '',
-		'menu_name' => 'In the News'
+		'menu_name' => 'Media Mentions'
 	);
 
 	$args = array(
 		'labels' => $labels,
-		'menu_icon' => 'dashicons-feedback',
+		'menu_icon' => 'dashicons-testimonial',
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true, 
 		'show_in_menu' => true, 
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'news/media' ),
+		'rewrite' => array( 'slug' => 'news/press' ),
 		'capability_type' => 'post',
 		'has_archive' => true, 
 		'hierarchical' => false,
@@ -144,7 +144,7 @@ function create_custom_post_types() {
 		'supports' => array('title', 'page-attributes')
 	);
 
-	register_post_type( 'in_the_news', $args );
+	register_post_type( 'media_mentions', $args );
 
 	$labels = array(
 		'name' => 'Research News',
@@ -339,7 +339,43 @@ function create_custom_post_types() {
 		)*/
 	); 
 
-	register_post_type( 'promoted_results', $args );	
+	register_post_type( 'promoted_results', $args );
+
+		$labels = array(
+		'name' => 'In The News',
+		'singular_name' => 'In The News',
+		'add_new' => 'Add New',
+		'add_new_item' => 'Add New In The News',
+		'edit_item' => 'Edit In The News',
+		'new_item' => 'New In The News',
+		'all_items' => 'All In The News',
+		'view_item' => 'View In The News',
+		'search_items' => 'Search In The News',
+		'not_found' =>	'No In The News found',
+		'not_found_in_trash' => 'No In The News found in Trash', 
+		'parent_item_colon' => '',
+		'menu_name' => 'In The News'
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'menu_icon' => 'dashicons-feedback',
+		'public' => true,
+		'publicly_queryable' => false,
+		'show_ui' => true, 
+		'show_in_menu' => true, 
+		'query_var' => true,
+		'capability_type' => 'post',
+		'has_archive' => false, 
+		'hierarchical' => false,
+		'menu_position' => null,
+		'rewrite' => array( 'slug' => 'news/in_the_news' ),
+		/*'supports' => array(
+			'title',			
+		)*/
+	); 
+
+	register_post_type( 'in_the_news', $args );	
 
 }	
 add_action( 'init', 'create_custom_post_types' );

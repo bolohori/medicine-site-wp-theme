@@ -11,7 +11,7 @@ while(has_sub_field("sidebars")):
                 <ul>
                 <?php while(has_sub_field('sidebar_links')):
                     $link = get_sub_field('sidebar_link');
-                    $target = $link['external'] ? "" : "target='_blank'";
+                    $target = $link['new_window'] ? "" : "target='_blank'";
                     $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
                     echo "<li><a $target href='$url'>" . $link['title'] . "</a></li>";
                 endwhile; ?>
@@ -22,7 +22,7 @@ while(has_sub_field("sidebars")):
         <div class="sidebar">
             <?php 
                 $link = get_sub_field('single_link');
-                $target = $link['external'] ? "" : "target='_blank'";
+                $target = $link['new_window'] ? "" : "target='_blank'";
                 $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
                 echo "<a $target href='$url'>" . $link['title'] . "</a>";
             ?>
@@ -36,7 +36,7 @@ while(has_sub_field("sidebars")):
                 <ul>
                 <?php while(has_sub_field('cancer_links')):
                     $link = get_sub_field('cancer_link');
-                    $target = $link['external'] ? "" : "target='_blank'";
+                    $target = $link['new_window'] ? "" : "target='_blank'";
                     $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
                     echo "<li><a $target href='$url'>" . $link['title'] . "</a></li>";
                 endwhile; ?>
@@ -80,7 +80,7 @@ while(has_sub_field("sidebars")):
                 <ul class="sidebar-heart-list">
                 <?php while(has_sub_field('heart_links')):
                     $link = get_sub_field('heart_link');
-                    $target = $link['external'] ? "" : "target='_blank'";
+                    $target = $link['new_window'] ? "" : "target='_blank'";
                     $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
                     echo "<li><a $target href='$url'>" . $link['title'] . "</a><br>" . the_sub_field('heart_link_phone') . "</li>";
                 endwhile; ?>

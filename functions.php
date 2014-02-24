@@ -252,6 +252,9 @@ function my_404_override() {
 }
 add_filter('template_redirect', 'my_404_override' );
 
+/*
+ * Just leaving this here for later, I have a feeling we're going to need it
+ */
 // add tag support to pages
 function tags_support_all() {
 	register_taxonomy_for_object_type('post_tag', 'page');
@@ -265,3 +268,26 @@ function tags_support_query($wp_query) {
 // tag hooks
 //add_action('init', 'tags_support_all');
 //add_action('pre_get_posts', 'tags_support_query');
+
+function change_bg($atts) {
+	extract( shortcode_atts( array(
+		'color' => 'f4f4f4'
+	), $atts ) );
+
+return "</article>
+</div>
+</div>
+<div style='background: #$color;width: 100%;float: left;'>
+<div class='wrapper'>
+<article style='padding-left: 225px;padding-top: 24px;'>";
+}
+add_shortcode( 'change_background_to', 'change_bg' );
+
+function tcb_add_tinymce_buttons( $tinyrowthree ) {
+  $tinyrowthree[] = 'fontsizeselect';
+  $tinyrowthree[] = 'hr';
+  $tinyrowthree[] = 'sub';
+  $tinyrowthree[] = 'sup';
+  return $tinyrowthree;
+}
+add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
