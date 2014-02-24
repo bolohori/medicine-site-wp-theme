@@ -1,23 +1,41 @@
-<?php get_header(); ?>
+<?php
 
-<article>
+    get_header();
 
-    <?php
     if (have_posts()) :
         while (have_posts()) :
-            the_title('<h1>', '</h1>');
             the_post();
-            the_content();
-        endwhile;
-    endif;
-    ?>
+            $class = '';
+            if (get_the_post_thumbnail() != '') {
+                $class = ' class="notch"';
+                echo '<div id="featured-image">';
+                the_post_thumbnail();
+                echo '</div>';
+            }
+?>
 
-</article>
+<div id="main" class="clearfix">
 
-<aside>
+    <div id="page-background"></div>
 
-    <h2>Sidebar Content</h2>
+    <div class="wrapper">
 
-</aside>
+        <?php get_sidebar( 'left' ); ?>
+
+        <article<?php echo $class; ?>>
+            <?php
+                    the_title('<h1>', '</h1>');
+                    the_content();
+                endwhile;
+            endif;
+            ?>
+        </article>
+
+        <?php get_sidebar( 'right' ); ?>
+
+    </div>
+
+</div>
+
 
 <?php get_footer(); ?>

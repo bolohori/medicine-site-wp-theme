@@ -7,51 +7,34 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. -->
 
-<head id="www-sitename-com" data-template-set="html5-reset">
-
+<head id="sitename-wustl-edu" data-template-set="html5-reset">
     <meta charset="utf-8">
 
     <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
+    <title><?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php echo is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?></title>
 
-    <meta name="title" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!-- Google will often use this as its description of your page/site. Make it good. -->
+    <meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
+    <meta name="author" content="Washington University School of Medicine in St. Louis">
 
-    <meta name="google-site-verification" content="" />
-    <!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <meta name="author" content="" />
-    <meta name="Copyright" content="" />
-
-    <!--  Mobile Viewport Fix
-    http://j.mp/mobileviewport & http://davidbcalhoun.com/2010/viewport-metatag
-    device-width : Occupy full width of the screen in its current orientation
-    initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
-    maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width
-    -->
-    <!-- Uncomment to use; use thoughtfully!
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    -->
-
-    <!-- Iconifier might be helpful for generating favicons and touch icons: http://iconifier.net -->
-    <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/_/img/favicon.ico" />
-    <!-- This is the traditional favicon.
-         - size: 16x16 or 32x32
-         - transparency is OK -->
-
-    <link rel="apple-touch-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/_/img/apple-touch-icon.png" />
-    <!-- The is the icon for iOS's Web Clip and other things.
-         - size: 57x57 for older iPhones, 72x72 for iPads, 114x114 for retina display (IMHO, just go ahead and use the biggest one)
-         - To prevent iOS from applying its styles to the icon name it thusly: apple-touch-icon-precomposed.png
-         - Transparency is not recommended (iOS will put a black BG behind the icon) -->
+    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_/img/favicon.ico">
+    <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/_/img/apple-touch-icon.png">
 
     <!-- concatenate and minify for production -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" />
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" />
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/_/css/reset.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/_/css/style.css">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css">
+
+    <!--[if gte IE 9]>
+    <style type="text/css">
+        .gradient {
+            filter: none;
+        }
+    </style>
+    <![endif]-->
 
     <?php
     /* Always have wp_head() just before the closing </head>
@@ -65,18 +48,43 @@
 
 <body <?php body_class(); ?>>
 
-<div class="wrapper"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
+<header>
 
-    <header>
+    <div id="header-logo-row" class="clearfix">
 
-        <h1><a href="/">Page Title</a></h1>
+        <div class="wrapper clearfix">
 
-        <?php wp_nav_menu( array(
-            'theme_location' => 'header-menu',
-            'menu'           => 'header',
-            'container'      => 'nav',
-            'container_id'   => 'header-nav',
-            'items_wrap'     => '<ul id="main-nav">%3$s</ul>',
-        ) ); ?>
+            <div id="header-logo"><a onclick="javascript:_gaq.push(['_trackEvent','header-logo','http://medicine.wustl.edu/']);" href="http://medicine.wustl.edu/"><img src="<?php echo get_template_directory_uri(); ?>/_/img/wusm-logo.png" alt="Washington University School of Medicine in St. Louis"></a></div>
 
-    </header>
+            <nav id="utility-bar">
+                <ul id="utility-nav">
+                    <li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://wustl.edu/']);" href="http://wustl.edu/">WUSTL</a></li>
+                    <li class="last-child"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://medicine.wustl.edu/directory']);" href="http://medicine.wustl.edu/directory">Directories</a></li>
+                </ul>
+            </nav>
+
+            <div id="header-text">
+                <a onclick="javascript:_gaq.push(['_trackEvent','header-text','http://medicine.wustl.edu/']);" href="http://medicine.wustl.edu/">Washington University School of Medicine</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="header-site-row" class="clearfix">
+        <div class="wrapper">
+            <div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>
+            <?php get_search_form(); ?>
+            <div id="site-title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></div>
+        </div>
+    </div>
+
+    <?php wp_nav_menu( array(
+        'theme_location' => 'header-menu',
+        'menu'           => 'header',
+        'container'      => 'nav',
+        'container_id'   => 'main-nav',
+        'items_wrap'     => '<div class="wrapper"><ul>%3$s</ul></div>',
+    ) ); ?>
+
+</header>
