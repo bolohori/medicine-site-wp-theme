@@ -147,3 +147,17 @@ h6 {
 	float: left;
 	border-radius: 10px;
 }
+
+.callout div {
+	line-height: 28px;
+}
+
+.callout ul {
+	list-style: none;
+	margin-left: 18px;
+}
+
+.facts-numbers {
+	float: right;
+	font-weight: bold;
+}

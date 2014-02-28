@@ -320,6 +320,20 @@ if(function_exists("register_field_group"))
 		'title' => 'National Leaders',
 		'fields' => array (
 			array (
+				'key' => 'field_530b6a6f312df',
+				'label' => 'Faculty Member',
+				'name' => 'faculty_member',
+				'type' => 'post_object',
+				'post_type' => array (
+					0 => 'faculty',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'allow_null' => 1,
+				'multiple' => 0,
+			),
+			array (
 				'key' => 'field_52a0fb4d5f46c',
 				'label' => 'Link',
 				'name' => 'nl-link',

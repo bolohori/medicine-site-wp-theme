@@ -29,7 +29,36 @@ a {color: #336699;}
 	<div style="color: #fff; background: #4a824c; padding: 10px 12px; margin: 23px 0 0 0;">
 		<span style="font-size: 23px; font-weight: bold;">IN THE NEWS</span>
 		<span style="font-size: 23px; font-weight: bold; float: right;"><?php
-	if (have_posts()) :
+	// WP_Query arguments
+	$args = array (
+		'post_type' => 'in_the_news',
+	);
+
+	// The Query
+	$query = new WP_Query( $args );
+
+	// The Loop
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			// do something
+			the_title();?></span>
+			</div>
+			<div style="color: #505050;margin: 28px; font-size: 14px; line-height: 150%;">
+				As leaders in medicine, we are frequently featured in the media both locally and nationally. Here are highlights from the past two weeks:<br>
+
+			<?php
+					the_content();
+			
+		}
+	} else {
+		// no posts found
+	}
+
+	// Restore original Post Data
+	wp_reset_postdata();
+
+/*	if (have_posts()) :
 		while (have_posts()) :
 			the_post();
 			the_title();
@@ -41,7 +70,7 @@ a {color: #336699;}
 	<?php
 			the_content();
 		endwhile;
-	endif;
+	endif;*/
 	?>
 
 	</div>

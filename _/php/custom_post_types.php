@@ -341,7 +341,7 @@ function create_custom_post_types() {
 
 	register_post_type( 'promoted_results', $args );
 
-		$labels = array(
+	$labels = array(
 		'name' => 'In The News',
 		'singular_name' => 'In The News',
 		'add_new' => 'Add New',
@@ -361,21 +361,19 @@ function create_custom_post_types() {
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-feedback',
 		'public' => true,
-		'publicly_queryable' => false,
+		'publicly_queryable' => true,
 		'show_ui' => true, 
 		'show_in_menu' => true, 
 		'query_var' => true,
+		'rewrite' => array( 'slug' => 'news/in_the_news' ),
 		'capability_type' => 'post',
-		'has_archive' => false, 
+		'has_archive' => true, 
 		'hierarchical' => false,
 		'menu_position' => null,
-		'rewrite' => array( 'slug' => 'news/in_the_news' ),
-		/*'supports' => array(
-			'title',			
-		)*/
-	); 
+		/*'supports' => array('title', 'page-attributes')*/
+	);
 
-	register_post_type( 'in_the_news', $args );	
+	register_post_type( 'in_the_news', $args );
 
 }	
 add_action( 'init', 'create_custom_post_types' );

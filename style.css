@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.02.24.0
+Version:	14.02.24.4
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -564,6 +564,20 @@ article blockquote {
 	margin-top: 0;
 }
 
+.callout div {
+	line-height: 28px;
+}
+
+.callout ul {
+	list-style: none;
+	margin-left: 18px;
+}
+
+.facts-numbers {
+	float: right;
+	font-weight: bold;
+}
+
 .accordion-header {
 	width: 690px !important;
 }
@@ -576,6 +590,51 @@ article blockquote {
 	font-size: 12px;
 	margin-bottom: 4px;
 	display: inline-block;
+}
+
+/* Tables
+-------------------------------------------------------------------------------*/
+
+
+tr:nth-child(odd) {
+	background-color: #e4e3e3;
+}
+
+tr:nth-child(even) {
+	background-color: #fff;
+}
+
+th {
+	text-align: left;
+	vertical-align: top;
+}
+
+th, td {
+	padding: 10px;
+	border-left: 1px solid #f4f4f4;
+}
+
+thead td {
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #fff;
+}
+
+th:first-child, td:first-child {
+	border: none;
+}
+
+td {
+	font-size: 12px;
+}
+
+td p {
+	line-height: normal;
+	margin-bottom: 10px;
+}
+
+td p:last-child {
+	margin-bottom: 0;
 }
 
 /* Right column
@@ -779,7 +838,7 @@ footer a {
 
 .sticky-footer {
 	position: fixed;
-	z-index: 102;
+	z-index: 150;
 	float: left;
 	width: 100%;
 	/*width: 960px;*/
@@ -987,8 +1046,6 @@ article.search-results {
 	color: #980006;
 }
 
-
-
 /* Mobile navigation
 -------------------------------------------------------------------------------*/
 #mobile-search-form {
@@ -1072,6 +1129,10 @@ article.search-results {
 /* Media queries
 -------------------------------------------------------------------------------*/
 @media screen and (max-width:960px) {
+	.sticky-bottom a.last-child {
+		display: inline;
+	}
+
 	.wrapper {
 		max-width: 640px;
 	}
@@ -1129,7 +1190,6 @@ article.search-results {
 	}
 
 	#featured-image {
-		padding-top: 73px;
 		margin-bottom: -2px;
 	}
 
@@ -1444,14 +1504,26 @@ article.search-results {
 
 .spotlight-div {
 	float: right;
+	position: relative;
+}
+
+.spotlight-archive {
+	letter-spacing: 1px;
+	font-weight: bold;
+	font-size: 11px;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	background: #fff;
 }
 
 .spotlight-slider-wrapper {
 	overflow: hidden;
 	margin-top: -65px;
 	width: 458px;
-	height: 200px;
-	border: 1px solid #d5d5d5;
+	height: 234px;
 }
 
 .ie7 .spotlight-slider-wrapper {
@@ -1464,6 +1536,7 @@ article.search-results {
 	overflow: visible;
 	max-width: 157px;
 	max-height: 200px;
+	border: 1px solid #d5d5d5;
 }
 
 #spotlight-slider .nivo-caption {
@@ -1551,15 +1624,6 @@ article.search-results {
 	font-weight: bold;
 	font-size: 11px;
 }
-
-.spotlight-archive {
-	float: right;
-	margin-top: -20px;
-	letter-spacing: 1px;
-	font-weight: bold;
-	font-size: 11px;
-}
-
 
 @media screen and (max-width:518px) {
 

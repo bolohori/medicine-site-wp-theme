@@ -1,4 +1,4 @@
-<?php 
+<?php
 get_header();
 if (have_posts()) :
 	while (have_posts()) :
@@ -89,6 +89,6 @@ if (have_posts()) :
 				</ul>
 			</div>
 		</div>
-<?php endwhile; 
+<?php endwhile;
 endif;
 get_footer(); ?>

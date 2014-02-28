@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php get_sidebar(); ?>
 <div class="slide-wrapper">
 	<div class="slider-wrapper theme-default">
 		<div id="slider" class="nivoSlider">
@@ -101,19 +102,24 @@
 
 <div class="spotlight">
 	<div class="wrapper">
-		<a href="/news/leaders" class="spotlight-archive">MORE</a>
 		<h1>National Leadership</h1>
 		<p>Engaged in their fields as well as communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of medicine and health.</p>
 <?php
 				$i = 0;
 				$slider = "";
 				$captions = "";
-				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => 4, 'orderby' => 'menu_order', 'order' => 'ASC' );
+				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => 4, 'orderby' => 'menu_order', 'order' => 'DESC' );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$slidetitle = "#spotlightcaption$i";
 					$slider .= ( get_the_post_thumbnail( $post->ID ) ) ? get_the_post_thumbnail( $post->ID, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
-					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . get_the_title() . "</strong><p>" . get_the_content() ."</p><a href=''>Read More</a></div>";
+					if ( get_field( 'faculty_member' ) ) {
+						$faculty_member = get_field( 'faculty_member' );
+						$title = get_the_title( $faculty_member->ID );
+					} else {
+						$title = get_the_title();
+					}
+					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong><p>" . get_the_content() ."</p><a href=''>Read More</a></div>";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
@@ -122,6 +128,9 @@
 		<div class="spotlight-div spotlight-slider-wrapper slider-wrapper theme-default">
 			<div class="spotlight-div" id="spotlight-slider" class="nivoSlider">
 				<?php echo $slider; ?>
+			</div>
+			<div class="spotlight-archive">
+				<a href="/news/leaders">MORE</a>
 			</div>
 		</div>
 		<?php echo $captions; ?>

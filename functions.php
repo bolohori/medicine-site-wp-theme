@@ -1,8 +1,8 @@
 <?php
 
-if(!defined('WP_LOCAL_INSTALL')) {
+/*if(!defined('WP_LOCAL_INSTALL')) {*/
 	require_once( get_template_directory() . '/_/php/acf_fields.php' );
-}
+/*}*/
 
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
@@ -101,7 +101,7 @@ function theme_init() {
 
 	// Thumbnails
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'landing-page', 1200, 9999 );
+	add_image_size( 'landing-page', 1440, 9999 );
 	add_image_size( 'faculty-list', 80, 112 );
 	add_image_size( 'in-the-news', 340, 250 );
 	add_image_size( 'spotlight-image', 157, 200 );
