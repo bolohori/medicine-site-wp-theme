@@ -1,8 +1,7 @@
 <?php
-
-/*if(!defined('WP_LOCAL_INSTALL')) {*/
+if(!defined('WP_LOCAL_INSTALL')) {
 	require_once( get_template_directory() . '/_/php/acf_fields.php' );
-/*}*/
+}
 
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
@@ -87,9 +86,9 @@ function theme_init() {
 		$page = get_page_by_title('Sample Page');
 		$menu_item = array(
 			'menu-item-object-id' => $page->ID,
-			'menu-item-object'    => 'page',
-			'menu-item-type'      => 'post_type',
-			'menu-item-status'    => 'publish'
+			'menu-item-object'	=> 'page',
+			'menu-item-type'	=> 'post_type',
+			'menu-item-status'	=> 'publish'
 		);
 		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
 
@@ -106,11 +105,26 @@ function theme_init() {
 	add_image_size( 'in-the-news', 340, 250 );
 	add_image_size( 'spotlight-image', 157, 200 );
 	add_image_size( 'outlook-thumb', 240, 220 );
+
+	// Image sizes (Settings / Media)
+	update_option('medium_size_w', 225);
+	update_option('medium_size_h', NULL);
+	update_option('large_size_w', 450);
+	update_option('large_size_h', NULL);
+	update_option('embed_size_w', 450);
 	
 	// Manual excerpts for pages as well as posts
 	add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'init', 'theme_init' );
+
+// Set default values for Attachment Display Settings
+function attachment_display_settings() {
+    update_option('image_default_align', 'center' );
+    update_option('image_default_link_type', 'none' );
+    update_option('image_default_size', 'large' );
+}
+add_action('after_setup_theme', 'attachment_display_settings');
 
 function enable_editor_styles() {
 	add_editor_style( '_/css/editor-style.css' );
@@ -191,8 +205,8 @@ function customize_mce( $init ) {
 	/* Register accordion styles */
 	$style_formats = array(
 		array(
-			'title'   => 'Main content callout',
-			'block'   => 'div',
+			'title'	 => 'Main content callout',
+			'block'	 => 'div',
 			'classes' => 'callout',
 			'wrapper' => true
 		),
@@ -284,10 +298,10 @@ return "</article>
 add_shortcode( 'change_background_to', 'change_bg' );
 
 function tcb_add_tinymce_buttons( $tinyrowthree ) {
-  $tinyrowthree[] = 'fontsizeselect';
-  $tinyrowthree[] = 'hr';
-  $tinyrowthree[] = 'sub';
-  $tinyrowthree[] = 'sup';
-  return $tinyrowthree;
+	$tinyrowthree[] = 'fontsizeselect';
+	$tinyrowthree[] = 'hr';
+	$tinyrowthree[] = 'sub';
+	$tinyrowthree[] = 'sup';
+	return $tinyrowthree;
 }
 add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );

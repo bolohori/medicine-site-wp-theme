@@ -50,7 +50,7 @@
 			<nav id="utility-bar" class="clearfix">
 				<ul id="utility-nav">
 					<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://wustl.edu/']);" href="http://wustl.edu/">WUSTL</a></li>
-					<li class="last-child"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://medicine.wustl.edu/directory']);" href="http://medicine.wustl.edu/directory">Directories</a></li>
+					<li class="last-child"><a href="/directory">Directories</a></li>
 				</ul>
 			</nav>
 

@@ -161,3 +161,36 @@ h6 {
 	float: right;
 	font-weight: bold;
 }
+
+/*
+ * Forms
+ */
+label {
+	float: left;
+	display: inline;
+	text-align: right;
+	width: 170px;
+	font-weight: bold;
+	padding: 0 20px 0 0;
+	margin: 10px 0;
+}
+
+input {
+	width: 250px;
+	margin: 10px 0;
+	padding: 0;
+	clear: right;
+	float: left;
+}
+
+.button {
+	width: 250px;
+	position: relative;
+	left: 190px;
+	margin-right: -190px;
+}
+
+.button input {
+	width: 100px;
+	display: inline;
+}

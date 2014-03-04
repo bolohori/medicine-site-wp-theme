@@ -48,15 +48,15 @@
 
     <div class="wrapper">
         <ul class="sticky-bottom">
-            <a href="<?php echo page_by_name('Prospective Students');?>"><li class="first-child">Prospective Students</li></a>
-            <a href="<?php echo page_by_name('Current Students');?>"><li>Current Students</li></a>
-            <a href="<?php echo page_by_name('Faculty');?>"><li>Faculty</li></a>
-            <a href="<?php echo page_by_name('Staff');?>"><li>Staff</li></a>
-            <a href="<?php echo page_by_name('Alumni & Friends');?>"><li>Alumni &amp; Friends</li></a>
-            <a href="<?php echo page_by_name('Administrators');?>"><li>Administrators</li></a>
-            <a href="<?php echo page_by_name('Researchers');?>"><li>Researchers</li></a>
-            <a href="<?php echo page_by_name('Job Seekers');?>"><li class="last-child">Job Seekers</li></a>
-            <a class="last-child announcements" href="javascript:;"><li>Announcements</li></a>
+            <li class="first-child"><a href="<?php echo page_by_name('Prospective Students');?>">Prospective Students</a></li>
+            <li><a href="<?php echo page_by_name('Current Students');?>">Current Students</a></li>
+            <li><a href="<?php echo page_by_name('Faculty');?>">Faculty</a></li>
+            <li><a href="<?php echo page_by_name('Staff');?>">Staff</a></li>
+            <li><a href="<?php echo page_by_name('Alumni & Friends');?>">Alumni &amp; Friends</a></li>
+            <li><a href="<?php echo page_by_name('Administrators');?>">Administrators</a></li>
+            <li><a href="<?php echo page_by_name('Researchers');?>">Researchers</a></li>
+            <li class="last-child"><a href="<?php echo page_by_name('Job Seekers');?>">Job Seekers</a></li>
+            <li class="last-child announcements"><a href="javascript:;">Announcements</a></li>
         </ul>
         <div class="hidden-footer">
             <div class="announcements-left">

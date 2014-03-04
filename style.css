@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.02.24.4
+Version:	14.03.03.0
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -309,6 +309,38 @@ header {
 	color: #717171;
 }
 
+/*
+ * Forms
+ */
+label {
+	float: left;
+	display: inline;
+	text-align: right;
+	width: 170px;
+	font-weight: bold;
+	padding: 0 20px 0 0;
+	margin: 10px 0;
+}
+
+input {
+	width: 250px;
+	margin: 10px 0;
+	padding: 0;
+	clear: right;
+	float: left;
+}
+
+.button {
+	width: 250px;
+	position: relative;
+	left: 190px;
+	margin-right: -190px;
+}
+
+.button input {
+	width: 100px;
+	display: inline;
+}
 
 /* Featured image
 -------------------------------------------------------------------------------*/
@@ -395,6 +427,7 @@ header {
 	padding: 45px 10px 0 0;
 }
 
+.archive #left-col,
 .non-landing-page #left-col {
 	padding: 123px 10px 0 0;
 }
@@ -497,8 +530,9 @@ article h1 {
 
 article h2 {
 	font-size: 21px;
-	margin-top: 45px;
-	margin-bottom: 15px;
+/*	margin-top: 45px;
+	margin-bottom: 15px;*/
+	margin: 15px 0;
 }
 
 article h3 {
@@ -930,8 +964,11 @@ li.sticky-top-last {
 	border: none;
 }
 
-.sticky-bottom a.last-child {
+.sticky-bottom li.announcements {
 	display: inline-block;
+	margin: 0;
+	padding: 10px 12px;
+	border-left: 0;
 	background: #ffffff;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMGYwZjAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f0f0f0 100%);
@@ -1232,6 +1269,14 @@ article.search-results {
 		text-align: center;
 		margin: 0;
 		padding-top: 16px;
+	}
+
+	footer {
+		padding-bottom: 0;
+	}
+
+	.sticky-footer {
+		position: relative;
 	}
 }
 
@@ -1653,7 +1698,7 @@ article.search-results {
 
 .page-template-admissions-php .intro {
 	position: relative;
-	padding-top: 150px;
+	padding-top: 10px;
 	text-align: center;
 	background: #fafafa;
 	-webkit-box-shadow: 0 0 6px 6px #e0dfdf;
@@ -1682,6 +1727,10 @@ article.search-results {
 	margin-bottom: 30px;
 }
 
+ul.program-list li.last-child {
+	border-bottom: 1px solid #fff;
+}
+
 .page-template-admissions-php .program-list {
 	padding: 20px;
 	margin: 42px auto;
@@ -1708,7 +1757,7 @@ article.search-results {
 	width: 44%;
 	margin: 0 3%;
 	text-align: left;
-	float: left;
+	float: right;
 	line-height: 38px;
 	border-bottom: 1px solid #e0e0e0;
 }
@@ -2235,4 +2284,17 @@ background: url(_/img/f_top.png);
 
 .single-faculty_profile ul{
 	list-style: none;
+}
+
+/*
+ * Print styles
+ */
+@media print {
+	header, 
+	footer, 
+	.sticky-footer,
+	nav,
+	.sidebar {
+		display: none !important;
+	}
 }
