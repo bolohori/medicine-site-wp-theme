@@ -141,7 +141,7 @@ if(function_exists("register_field_group"))
 						'maxlength' => '',
 					),
 				),
-				'row_min' => 0,
+				'row_min' => '',
 				'row_limit' => '',
 				'layout' => 'row',
 				'button_label' => 'Add Row',
@@ -242,7 +242,7 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'in_the_news',
+					'value' => 'media_mentions',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
