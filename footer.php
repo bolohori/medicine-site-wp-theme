@@ -48,15 +48,15 @@
 
     <div class="wrapper">
         <ul class="sticky-bottom">
-            <li class="first-child"><a href="<?php echo page_by_name('Prospective Students');?>">Prospective Students</a></li>
-            <li><a href="<?php echo page_by_name('Current Students');?>">Current Students</a></li>
-            <li><a href="<?php echo page_by_name('Faculty');?>">Faculty</a></li>
-            <li><a href="<?php echo page_by_name('Staff');?>">Staff</a></li>
-            <li class='responsive-break'><a href="<?php echo page_by_name('Alumni & Friends');?>">Alumni &amp; Friends</a></li>
-            <li class='responsive-clear'><a href="<?php echo page_by_name('Administrators');?>">Administrators</a></li>
-            <li><a href="<?php echo page_by_name('Researchers');?>">Researchers</a></li>
-            <li class="last-child"><a href="<?php echo page_by_name('Job Seekers');?>">Job Seekers</a></li>
-            <li class="last-child announcements"><a href="javascript:;">Announcements</a></li>
+            <li class="first-child"><a href="<?php echo page_by_name('Prospective Students');?>">Prospective Students</a></li><li>
+            <a href="<?php echo page_by_name('Current Students');?>">Current Students</a></li><li>
+            <a href="<?php echo page_by_name('Faculty');?>">Faculty</a></li><li>
+            <a href="<?php echo page_by_name('Staff');?>">Staff</a></li><li class='responsive-break'>
+            <a href="<?php echo page_by_name('Alumni & Friends');?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
+            <a href="<?php echo page_by_name('Administrators');?>">Administrators</a></li><li>
+            <a href="<?php echo page_by_name('Researchers');?>">Researchers</a></li><li class="last-child">
+            <a href="<?php echo page_by_name('Job Seekers');?>">Job Seekers</a></li><li class="last-child announcements">
+            <a href="javascript:;">Announcements</a></li>
         </ul>
         <div class="hidden-footer">
             <div class="announcements-left">

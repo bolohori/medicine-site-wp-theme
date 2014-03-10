@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.03.06.0
+Version:	14.03.10.0
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -35,10 +35,12 @@ SOMEDAY WE'LL GET TO USE THIS
 .widget img {
 	max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
 }
+
 img[class*="align"],
 img[class*="wp-image-"] {
 	height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
 }
+
 img.size-full {
 	max-width: 97.5%;
 	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
@@ -927,14 +929,22 @@ footer a {
 	margin-left: -960px;
 }
 
+.sticky-footer li {
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
 .sticky-footer a {
 	font-weight: bold;
 }
 
 .sticky-top {
-	height: 38px;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #b6b6b6;
+}
+
+.sticky-top,
+.sticky-top li {
+	height: 38px;
 	background: #eeeeee;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyJSIgc3RvcC1jb2xvcj0iI2VlZWVlZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iI2M5YzljOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
 	background: -moz-linear-gradient(top,  #eeeeee 2%, #c9c9c9 98%);
@@ -958,7 +968,7 @@ footer a {
 }
 
 li.sticky-top-last {
-	/*width: 319px;*/
+	width: 34%;
 }
 
 .sticky-top li:hover {
@@ -2277,8 +2287,8 @@ background: url(_/img/f_top.png);
 		padding-top: 0;
 	}
 
-	.campaign-banner img {
-		margin: 0 !important;
+	.campaign-banner {
+		width: 100%;
 	}
 	
 	.double-footer,
@@ -2287,17 +2297,14 @@ background: url(_/img/f_top.png);
 	}
 
 	.double-footer {
-		border-right: none;
-		border-bottom: 1px solid #b9ae98;
-		width: 100%;
+		width: 50%;
 		padding: 0 10px;
 		margin-bottom: 0;
 		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 	}
 	
 	.single-footer {
-		border-left: none;
-		width: 50%;
+		width: 25%;
 		padding: 0 10px;
 		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 	}
@@ -2330,8 +2337,9 @@ background: url(_/img/f_top.png);
 	}
 
 	.sidebar {
-		float: left;
-		margin-right: 35px;
+		margin: 10px auto;
+		clear: both;
+		float: none;
 	}
 
 	#wusm-footer-left {
@@ -2359,16 +2367,23 @@ background: url(_/img/f_top.png);
 		display: inline-block;
 	}
 
-	.sticky-bottom li.responsive-break {
+/*	.sticky-bottom li.responsive-break {
 		clear: both;
 		border-right: none;
 	}
 
 	.sticky-bottom li.responsive-clear {
 		border-left: none;
-	}
+	}*/
 }
 
+@media screen and (max-width: 650px) {
+	.sticky-top li {
+		width: 100%;
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #b6b6b6;
+	}
+}
 
 @media screen and (max-width:518px) {
 
@@ -2391,4 +2406,6 @@ background: url(_/img/f_top.png);
 		width: 90%;
 		padding: 5%;
 	}
+
+
 }
