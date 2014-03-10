@@ -102,6 +102,7 @@
 
 <div class="spotlight">
 	<div class="wrapper">
+		<div class="spotlight-left">
 		<h1>National Leadership</h1>
 		<p>Engaged in their fields as well as communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of medicine and health.</p>
 <?php
@@ -138,7 +139,8 @@
 				endwhile;
 				wp_reset_postdata();
 ?>
-
+		</div>
+		
 		<div class="spotlight-div spotlight-slider-wrapper slider-wrapper theme-default">
 			<div class="spotlight-div" id="spotlight-slider" class="nivoSlider">
 				<?php echo $slider; ?>
@@ -148,6 +150,7 @@
 			</div>
 		</div>
 		<?php echo $captions; ?>
+	
 	</div>
 </div>
 <?php get_footer(); ?>

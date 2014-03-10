@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.03.10.0
+Version:	14.03.10.1
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1246,7 +1246,7 @@ article.search-results {
 }
 
 .news .wrapper {
-	width: 858px;
+	max-width: 858px;
 }
 
 .news-left {
@@ -1471,13 +1471,7 @@ article.search-results {
 	width: 820px;
 }
 
-.spotlight h1 {
-	width: 330px;
-}
-
 .spotlight p {
-	float: left;
-	width: 330px;
 	line-height: 26px;
 }
 
@@ -1500,7 +1494,6 @@ article.search-results {
 
 .spotlight-slider-wrapper {
 	overflow: hidden;
-	margin-top: -65px;
 	width: 458px;
 	height: 234px;
 }
@@ -2200,6 +2193,15 @@ background: url(_/img/f_top.png);
 	list-style: none;
 }
 
+.spotlight-left,
+.spotlight-right {
+	display: inline-block;
+}
+
+.spotlight-left {
+	width: 330px;
+}
+
 /*
  * Print styles
  * -------------------------------------------------------------------------------
@@ -2219,12 +2221,40 @@ background: url(_/img/f_top.png);
  * -------------------------------------------------------------------------------
  */
 @media screen and (max-width:960px) {
+	.news-left,
+	.news-right {
+		float: none;
+	}
+
+	.spotlight-div {
+		float: none;
+	}
+
+	.news-right {
+		width: 100%;
+	}
+
+	#site-title a {
+		max-width: 80%;
+	}
+
 	.sticky-bottom a.last-child {
 		display: inline;
 	}
 
-	.wrapper {
-		max-width: 640px;
+	.spotlight-left {
+		width: 100%;
+		text-align: center;
+		clear: both;
+		padding-bottom: 20px;
+	}
+
+	.wrapper,
+	.news .wrapper,
+	.spotlight .wrapper {
+		width: 80%;
+		padding-left: 10%;
+		padding-right: 10%;
 	}
 
 	#header-logo-row .wrapper {
@@ -2366,15 +2396,6 @@ background: url(_/img/f_top.png);
 		float: none;
 		display: inline-block;
 	}
-
-/*	.sticky-bottom li.responsive-break {
-		clear: both;
-		border-right: none;
-	}
-
-	.sticky-bottom li.responsive-clear {
-		border-left: none;
-	}*/
 }
 
 @media screen and (max-width: 650px) {

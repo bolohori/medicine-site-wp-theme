@@ -17,7 +17,8 @@ jQuery(document).ready(function($) {
 		menu: '#mobile-nav',
 		trigger: '#mobile-menu-icon',
 		direction: 'right',
-		keyboardShortcuts: false
+		keyboardShortcuts: false,
+		excludedPanelContent: '#wpadminbar'
 	});
 	jPM.on();
 
