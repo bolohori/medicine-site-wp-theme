@@ -68,7 +68,7 @@ function create_custom_post_types() {
 		'has_archive' => true, 
 		'hierarchical' => false,
 		'menu_position' => null,
-		'supports' => array('title', 'page-attributes')
+		'supports' => array('title', 'page-attributes', 'editor' )
 	);
 
 	register_post_type( 'announcement', $args );
@@ -307,6 +307,46 @@ function create_custom_post_types() {
 	register_post_type( 'spotlight', $args );
 
 	$labels = array(
+		'name' => 'In Focus',
+		'singular_name' => 'In Focus',
+		'add_new' => 'Add New',
+		'add_new_item' => 'Add New In Focus',
+		'edit_item' => 'Edit In Focus',
+		'new_item' => 'New In Focus',
+		'all_items' => 'All In Focuss',
+		'view_item' => 'View In Focus',
+		'search_items' => 'Search In Focuses',
+		'not_found' =>	'No In Focuses found',
+		'not_found_in_trash' => 'No In Focuses found in Trash', 
+		'parent_item_colon' => '',
+		'menu_name' => 'In Focus'
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'menu_icon' => 'dashicons-slides',
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true, 
+		'show_in_menu' => true, 
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'news/in_focus' ),
+		'capability_type' => 'post',
+		'has_archive' => true, 
+		'hierarchical' => true,
+		'menu_position' => null,
+		'supports' => array(
+			'title',
+			'editor',
+			'thumbnail',
+			'revisions',
+			'page-attributes',
+		)
+	); 
+
+	register_post_type( 'in_focus', $args );
+
+	$labels = array(
 		'name' => 'Promoted Results',
 		'singular_name' => 'Promoted Results',
 		'add_new' => 'Add New',
@@ -360,7 +400,7 @@ function create_custom_post_types() {
 	$args = array(
 		'labels' => $labels,
 		'menu_icon' => 'dashicons-feedback',
-		'public' => true,
+		'public' => false,
 		'publicly_queryable' => true,
 		'show_ui' => true, 
 		'show_in_menu' => true, 
@@ -385,3 +425,161 @@ function rewrite_flush() {
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'rewrite_flush' );
+
+
+function add_billboard_settings () { add_submenu_page( 'edit.php?post_type=billboard', 'Billboard settings', 'Settings', 'manage_options', 'billboard-settings', 'billboard_settings_callback' ); }
+add_action( 'admin_menu', 'add_billboard_settings' );
+
+function add_announcement_settings () { add_submenu_page( 'edit.php?post_type=announcement', 'announcement settings', 'Settings', 'manage_options', 'announcement-settings', 'announcement_settings_callback' ); }
+add_action( 'admin_menu', 'add_announcement_settings' );
+
+function add_spotlight_settings () { add_submenu_page( 'edit.php?post_type=spotlight', 'spotlight settings', 'Settings', 'manage_options', 'spotlight-settings', 'spotlight_settings_callback' ); }
+add_action( 'admin_menu', 'add_spotlight_settings' );
+
+
+function billboard_settings_callback() { ?>
+	<div class="wrap">
+	<h2>Billboard Settings</h2>
+		<table class="form-table">
+		<tbody>
+		<tr valign="top">
+		<th scope="row"><label for="billboards">Number of Billboards to display</label></th>
+		<td><input id="billboards" type="number" name="billboards" min="1" max="10" value="<?php echo get_option( 'billboards_to_show', 5 ); ?>">
+		</tr>
+		</tbody></table>
+		<?php submit_button( 'Save Setting', 'primary', 'billboards-save', true, array( 'id' => 'billboards-save' ) );?>
+	</div>
+<?php }
+
+function announcement_settings_callback() { ?>
+	<div class="wrap">
+	<h2>Announcement Settings</h2>
+		<table class="form-table">
+		<tbody>
+		<tr valign="top">
+		<th scope="row"><label for="billboards">Number of announcements to display</label></th>
+		<td><input id="announcements" type="number" name="announcements" min="1" max="100" value="<?php echo get_option( 'announcements_to_show', 6 ); ?>">
+		</tr>
+		</tbody></table>
+		<?php submit_button( 'Save Setting', 'primary', 'announcements-save', true, array( 'id' => 'announcements-save' ) );?>
+	</div>
+<?php }
+
+function spotlight_settings_callback() { ?>
+	<div class="wrap">
+	<h2>National Leaders</h2>
+		<table class="form-table">
+		<tbody>
+		<tr valign="top">
+		<th scope="row"><label for="billboards">Number of National Leaders to display</label></th>
+		<td><input id="spotlights" type="number" name="spotlights" min="1" max="100" value="<?php echo get_option( 'spotlights_to_show', 4 ); ?>">
+		</tr>
+		</tbody></table>
+		<?php submit_button( 'Save Setting', 'primary', 'spotlights-save', true, array( 'id' => 'spotlights-save' ) );?>
+		
+	</div>
+<?php }
+
+function update_billboards_javascript() { ?>
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+	$("#billboards-save").click(function(e) {
+		e.preventDefault();
+		billboards = $("#billboards").val();
+
+		var data = {
+			action: 'update_billboards',
+			num_to_show: billboards
+		};
+
+		// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+		$.post(ajaxurl, data, function(response) {
+			if(response == false)
+				alert('There was an error updating the setting.');
+			else
+				alert('Setting saved.');
+		});
+	});
+});
+</script>
+<?php
+}
+add_action( 'admin_footer', 'update_billboards_javascript' );
+
+function update_billboards_callback() {
+	global $wpdb; // this is how you get access to the database
+	$num_to_show = $_POST['num_to_show'];
+	echo $num_to_show . " : " . update_option( 'billboards_to_show', $num_to_show );
+	die(); // this is required to return a proper result
+}
+add_action('wp_ajax_update_billboards', 'update_billboards_callback');
+
+function update_announcements_javascript() {
+?>
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+	$("#announcements-save").click(function(e) {
+		e.preventDefault();
+		announcements = $("#announcements").val();
+
+		var data = {
+			action: 'update_announcements',
+			num_to_show: announcements
+		};
+
+		// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+		$.post(ajaxurl, data, function(response) {
+			if(response == false)
+				alert('There was an error updating the setting.');
+			else
+				alert('Setting saved.');
+		});
+	});
+});
+</script>
+<?php
+}
+add_action( 'admin_footer', 'update_announcements_javascript' );
+
+function update_announcements_callback() {
+	global $wpdb; // this is how you get access to the database
+	$num_to_show = $_POST['num_to_show'];
+	echo $num_to_show . " : " . update_option( 'announcements_to_show', $num_to_show );
+	die(); // this is required to return a proper result
+}
+add_action('wp_ajax_update_announcements', 'update_announcements_callback');
+
+function update_spotlights_javascript() {
+?>
+<script type="text/javascript" >
+jQuery(document).ready(function($) {
+	$("#spotlights-save").click(function(e) {
+		e.preventDefault();
+		spotlights = $("#spotlights").val();
+
+		var data = {
+			action: 'update_spotlights',
+			num_to_show: spotlights
+		};
+
+		// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+		$.post(ajaxurl, data, function(response) {
+			if(response == false)
+				alert('There was an error updating the setting.');
+			else
+				alert('Setting saved.');
+		});
+	});
+});
+</script>
+<?php
+}
+add_action( 'admin_footer', 'update_spotlights_javascript' );
+
+function update_spotlights_callback() {
+	global $wpdb; // this is how you get access to the database
+	$num_to_show = $_POST['num_to_show'];
+	echo $num_to_show . " : " . update_option( 'spotlights_to_show', $num_to_show );
+	die(); // this is required to return a proper result
+}
+add_action('wp_ajax_update_spotlights', 'update_spotlights_callback');

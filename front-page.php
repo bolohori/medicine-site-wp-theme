@@ -108,18 +108,32 @@
 				$i = 0;
 				$slider = "";
 				$captions = "";
-				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => 4, 'orderby' => 'menu_order', 'order' => 'DESC' );
+				$num_of_spotlights = get_option( 'spotlights_to_show', 4 );
+				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'menu_order', 'order' => 'ASC' );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
+					$read_more_link = "";
+					$link = get_field('nl-link');
 					$slidetitle = "#spotlightcaption$i";
-					$slider .= ( get_the_post_thumbnail( $post->ID ) ) ? get_the_post_thumbnail( $post->ID, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
+					
 					if ( get_field( 'faculty_member' ) ) {
 						$faculty_member = get_field( 'faculty_member' );
-						$title = get_the_title( $faculty_member->ID );
+						$img_to_get = $faculty_member->ID;
 					} else {
-						$title = get_the_title();
+						$img_to_get = $post->ID;
 					}
-					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong><p>" . get_the_content() ."</p><a href=''>Read More</a></div>";
+
+					$title = get_the_title();
+					$content = get_the_content();
+
+					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
+
+					if ( $link['url'] !== null ) {
+						$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
+						$read_more_link = "<a$target href='" . $link['url'] . "'>Read More</a>";
+					}
+
+					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong><p>$content</p>$read_more_link</div>";
 					$i++;
 				endwhile;
 				wp_reset_postdata();

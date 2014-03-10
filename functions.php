@@ -115,6 +115,34 @@ function theme_init() {
 	
 	// Manual excerpts for pages as well as posts
 	add_post_type_support( 'page', 'excerpt' );
+
+	if(!defined('WP_LOCAL_INSTALL')) {
+		//check for Wash U IP
+		$verifiedWashU = false;
+		$IP = $_SERVER['REMOTE_ADDR'];
+		list($ip1, $ip2) = explode('.', $IP);
+
+		if ($ip1 == "128" && $ip2 == "252") {
+			$verifiedWashU = true;
+		} else if ($ip1 == "172" && $ip2 == "20") {
+			$verifiedWashU = true;
+		} else if ($ip1 == "172" && $ip2 == "18") {
+			$verifiedWashU = true;
+		} else if ($ip1 == "10" && $ip2 == "39") {
+			$verifiedWashU = true;
+		} else if ($ip1 == "10" && $ip2 == "30") {
+		    $verifiedWashU = true;
+		} else if ($ip1 == "10" && $ip2 == "40") {
+		    $verifiedWashU = true;
+		} else if ($ip1 == "10" && $ip2 == "27") {
+		    $verifiedWashU = true;
+		} else if ($ip1 == "10" && $ip2 == "21") {
+		    $verifiedWashU = true;
+		}
+	} else {
+		$verifiedWashU = true;
+	}
+	define('WASHU_IP', $verifiedWashU);
 }
 add_action( 'init', 'theme_init' );
 
@@ -234,7 +262,7 @@ function searchfilter($query) {
 	if ($query->is_search && !is_admin() ) {
 		$query->set('post_type',array('page'));
 	}
-return $query;
+	return $query;
 }
 add_filter('pre_get_posts','searchfilter');
 
@@ -246,12 +274,6 @@ function wp_query_posts_where( $where, &$wp_query ) {
 	return $where;
 }
 add_filter( 'posts_where', 'wp_query_posts_where', 10, 2 );
-
-function remove_thumbnail_dimensions( $html, $post_id, $post_image_id ) {
-	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-	return $html;
-}
-add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10, 3 );
 
 // This comes from Otto
 // https://core.trac.wordpress.org/ticket/11312#comment:6
@@ -305,3 +327,74 @@ function tcb_add_tinymce_buttons( $tinyrowthree ) {
 	return $tinyrowthree;
 }
 add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
+
+// Remove height and width attributes from images so that we can make them responsive
+function remove_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}
+add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
+add_filter( 'the_content', 'remove_dimensions', 10 );
+
+
+// Remove extra 10px from width of wp-caption div
+// http://troychaplin.ca/2012/fix-automatically-generated-inline-style-on-wordpress-image-captions/
+function fixed_img_caption_shortcode($attr, $content = null) {
+    if ( ! isset( $attr['caption'] ) ) {
+        if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
+            $content = $matches[1];
+            $attr['caption'] = trim( $matches[2] );
+        }
+    }
+    $output = apply_filters('img_caption_shortcode', '', $attr, $content);
+    if ( $output != '' )
+        return $output;
+    extract(shortcode_atts(array(
+        'id'    => '',
+        'align' => 'alignnone',
+        'width' => '',
+        'caption' => ''
+    ), $attr));
+    if ( 1 > (int) $width || empty($caption) )
+        return $content;
+    if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+    return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
+    . do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
+}
+add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
+add_shortcode('caption', 'fixed_img_caption_shortcode');
+
+if(isset($_GET['reorder_announcements'])) {
+	$i = 0;
+	// WP_Query arguments
+	$args = array (
+		'post_type'      => 'announcement',
+		'posts_per_page' => '-1',
+	);
+
+	// The Query
+	$query = new WP_Query( $args );
+
+	// The Loop
+	if ( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
+			$query->the_post();
+			echo $post->ID;
+			echo " $i<br>";
+			$i++;
+			// Update post 37
+			$my_post = array(
+				'ID'           => $post->ID,
+				'menu_order' => $i
+			);
+
+			// Update the post into the database
+			wp_update_post( $my_post );
+		}
+	}
+}
+
+function admin_favicon() {
+	echo "<link rel='shortcut icon' href='" . get_stylesheet_directory_uri() . "/inc/img/favicon.ico' />";
+}
+add_action('admin_head', 'admin_favicon');

@@ -52,8 +52,8 @@
             <li><a href="<?php echo page_by_name('Current Students');?>">Current Students</a></li>
             <li><a href="<?php echo page_by_name('Faculty');?>">Faculty</a></li>
             <li><a href="<?php echo page_by_name('Staff');?>">Staff</a></li>
-            <li><a href="<?php echo page_by_name('Alumni & Friends');?>">Alumni &amp; Friends</a></li>
-            <li><a href="<?php echo page_by_name('Administrators');?>">Administrators</a></li>
+            <li class='responsive-break'><a href="<?php echo page_by_name('Alumni & Friends');?>">Alumni &amp; Friends</a></li>
+            <li class='responsive-clear'><a href="<?php echo page_by_name('Administrators');?>">Administrators</a></li>
             <li><a href="<?php echo page_by_name('Researchers');?>">Researchers</a></li>
             <li class="last-child"><a href="<?php echo page_by_name('Job Seekers');?>">Job Seekers</a></li>
             <li class="last-child announcements"><a href="javascript:;">Announcements</a></li>
@@ -77,7 +77,7 @@
                             array(
                                 'type' => 'DATETIME',
                                 'key' => 'expiration_date',
-                                'value' => 'TIMESTAMP',
+                                'value' => date_i18n("Y-m-d H:i:s"),
                                 'compare' => '>',
                             ),
                             array(
@@ -90,12 +90,17 @@
                     $loop = new WP_Query( $args );
                     while ( $loop->have_posts() ) : $loop->the_post();
                         $internal_only = get_field('internal_only');
-                        if ( $internal_only && !WASHU_IP)
+                        if ( $internal_only && !WASHU_IP )
                             continue;
                         $link = get_field('url');
-                        $target = $link['new_window'] ? "" : " target='_blank'";
-                        $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
-                        /*echo "\t\t\t\t\t<li data-test='$test' data-curr='$curr' data-expir='$expir' class='announcement'><a$target href='$url'>" . get_the_title() . "</a></li>\n";*/
+                        
+                        if( $link['url'] != '' ) {
+                            $url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+                            $target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
+                        } else {
+                            $url = get_permalink();
+                            $target = "";
+                        }
                         echo "\t\t\t\t\t<li class='announcement'><a$target href='$url'>" . get_the_title() . "</a></li>\n";
                         
                     endwhile;

@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.03.03.0
+Version:	14.03.06.0
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -33,15 +33,15 @@ SOMEDAY WE'LL GET TO USE THIS
 .entry-content img,
 .comment-content img,
 .widget img {
-    max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
+	max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
 }
 img[class*="align"],
 img[class*="wp-image-"] {
-    height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
+	height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
 }
 img.size-full {
-    max-width: 97.5%;
-    width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
+	max-width: 97.5%;
+	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 
  .wp-caption { max-width: 100%; }
@@ -115,6 +115,47 @@ h6 {
 	clear: both;
 }
 
+article .wp-caption {
+	max-width: 100%;
+	border-top: 1px solid #d7d7d7;
+}
+
+article .alignleft {
+	float: left;
+}
+
+article .aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+
+article .alignright {
+	float: right;
+}
+
+article .wp-caption.alignright, article img.alignright {
+	margin-left: 27px;
+}
+
+article .wp-caption.alignright p.wp-caption-text, article img.alignright {
+	margin-bottom: 30px;
+}
+
+article .wp-caption.alignleft, article img.alignleft {
+	margin-right: 27px;
+}
+
+article .wp-caption.alignleft p.wp-caption-text, article img.alignleft {
+	margin-bottom: 30px;
+}
+
+article p.wp-caption-text {
+	font-size: 13px;
+	line-height: 20px;
+	color: #6a6a6a;
+	padding: 15px 0 25px 0;
+	border-bottom: 1px solid #e0e0e0;
+}
 
 /* Clearfix
 -------------------------------------------------------------------------------*/
@@ -1163,123 +1204,6 @@ article.search-results {
 	box-shadow: 4px 0 10px 0 #252525;
 }
 
-/* Media queries
--------------------------------------------------------------------------------*/
-@media screen and (max-width:960px) {
-	.sticky-bottom a.last-child {
-		display: inline;
-	}
-
-	.wrapper {
-		max-width: 640px;
-	}
-
-	#header-logo-row .wrapper {
-		position: relative;
-		overflow: hidden;
-	}
-
-	#header-logo,
-	#utility-bar,
-	#search-form,
-	#main-nav,
-	#page-background-l,
-	#page-background-r,
-	#left-col,
-	#wusm-footer nav {
-		display: none;
-	}
-
-	#header-text {
-		display: inline-block;
-		padding: 10px;
-	}
-
-	#header-text a {
-		color: #980006;
-	}
-
-	#utility-bar {
-		position: absolute;
-		right: -252px;
-		background-color: #fff;
-	}
-
-	#utility-nav {
-		margin-top: 10px;
-	}
-
-	#mobile-menu-icon {
-		display: block;
-		float: right;
-		position: relative;
-		top: 21px;
-		cursor: pointer;
-		margin-right: 22px;
-	}
-
-	#site-title {
-		width: 530px;
-	}
-
-	#site-title a {
-		margin-top: 26px;
-	}
-
-	#featured-image {
-		margin-bottom: -2px;
-	}
-
-	#featured-image img {
-		padding-top: 0;
-	}
-
-	.landing-page {
-		top: 362px;
-	}
-
-	.non-landing-page {
-		top: 74px;
-	}
-
-	#main {
-		background-color: #f4f4f4;
-	}
-
-	article {
-		float: none;
-	}
-
-	article.notch {
-		margin-top: 0;
-		border-top: none;
-	}
-
-	#right-col {
-		padding: 0 35px 70px 35px;
-		width: 396px;
-	}
-
-	#right-col aside {
-		width: 100%;
-	}
-
-	#wusm-footer-left {
-		float: none;
-		text-align: center;
-		margin: 0;
-		padding-top: 16px;
-	}
-
-	footer {
-		padding-bottom: 0;
-	}
-
-	.sticky-footer {
-		position: relative;
-	}
-}
-
 /* Front Page styles
 -------------------------------------------------------------------------------*/
 .slide-wrapper {
@@ -1668,26 +1592,6 @@ article.search-results {
 	letter-spacing: 1px;
 	font-weight: bold;
 	font-size: 11px;
-}
-
-@media screen and (max-width:518px) {
-
-	article {
-		width: 80%;
-		padding-left: 10%;
-		padding-right: 10%;
-	}
-
-	#right-col {
-		width: 80%;
-		padding-left: 10%;
-		padding-right: 10%;
-	}
-
-	#right-col aside {
-		width: 90%;
-		padding: 5%;
-	}
 }
 
 /*
@@ -2288,6 +2192,7 @@ background: url(_/img/f_top.png);
 
 /*
  * Print styles
+ * -------------------------------------------------------------------------------
  */
 @media print {
 	header, 
@@ -2296,5 +2201,194 @@ background: url(_/img/f_top.png);
 	nav,
 	.sidebar {
 		display: none !important;
+	}
+}
+
+/* 
+ * Mobile Media queries
+ * -------------------------------------------------------------------------------
+ */
+@media screen and (max-width:960px) {
+	.sticky-bottom a.last-child {
+		display: inline;
+	}
+
+	.wrapper {
+		max-width: 640px;
+	}
+
+	#header-logo-row .wrapper {
+		position: relative;
+		overflow: hidden;
+	}
+
+	#header-logo,
+	#utility-bar,
+	#search-form,
+	#main-nav,
+	#page-background-l,
+	#page-background-r,
+	#left-col,
+	#wusm-footer nav {
+		display: none;
+	}
+
+	#header-text {
+		display: inline-block;
+		padding: 10px;
+	}
+
+	#header-text a {
+		color: #980006;
+	}
+
+	#utility-bar {
+		position: absolute;
+		right: -252px;
+		background-color: #fff;
+	}
+
+	#utility-nav {
+		margin-top: 10px;
+	}
+
+	#mobile-menu-icon {
+		display: block;
+		float: right;
+		position: relative;
+		top: 21px;
+		cursor: pointer;
+		margin-right: 22px;
+	}
+
+	#site-title {
+		width: 530px;
+	}
+
+	#site-title a {
+		margin-top: 26px;
+	}
+
+	#featured-image {
+		margin-bottom: -2px;
+	}
+
+	#featured-image img {
+		padding-top: 0;
+	}
+
+	.campaign-banner img {
+		margin: 0 !important;
+	}
+	
+	.double-footer,
+	.single-footer {
+		height: auto;
+	}
+
+	.double-footer {
+		border-right: none;
+		border-bottom: 1px solid #b9ae98;
+		width: 100%;
+		padding: 0 10px;
+		margin-bottom: 0;
+		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	}
+	
+	.single-footer {
+		border-left: none;
+		width: 50%;
+		padding: 0 10px;
+		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	}
+
+	footer .last-child {
+		border-left: 1px solid #b9ae98;
+	}
+
+	#main {
+		background-color: #f4f4f4;
+	}
+
+	article {
+		float: none;
+	}
+
+	article.notch {
+		margin-top: 0;
+		padding-bottom: 0;
+		border-top: none;
+	}
+
+	#right-col {
+		padding: 0 35px 70px 35px;
+		width: 396px;
+	}
+
+	#right-col aside {
+		width: 100%;
+	}
+
+	.sidebar {
+		float: left;
+		margin-right: 35px;
+	}
+
+	#wusm-footer-left {
+		float: none;
+		text-align: center;
+		margin: 0;
+		padding-top: 16px;
+	}
+
+	footer {
+		padding-bottom: 0;
+	}
+
+	.sticky-footer {
+		position: relative;
+	}
+
+	.sticky-bottom {
+		height: auto;
+		text-align: center;
+	}
+
+	.sticky-bottom li {
+		float: none;
+		display: inline-block;
+	}
+
+	.sticky-bottom li.responsive-break {
+		clear: both;
+		border-right: none;
+	}
+
+	.sticky-bottom li.responsive-clear {
+		border-left: none;
+	}
+}
+
+
+@media screen and (max-width:518px) {
+
+   article {
+		width: 80%;
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+
+	article th, article td {
+		padding: 5px;
+	}
+
+	#right-col {
+		width: 80%;
+		padding: 0 10%;
+	}
+
+	#right-col aside {
+		width: 90%;
+		padding: 5%;
 	}
 }

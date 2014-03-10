@@ -11,7 +11,7 @@ if(function_exists("register_field_group"))
 				'name' => 'url',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 1,
+				'internal_link' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -52,7 +52,7 @@ if(function_exists("register_field_group"))
 			),
 		),
 		'options' => array (
-			'position' => 'normal',
+			'position' => 'acf_after_title',
 			'layout' => 'no_box',
 			'hide_on_screen' => array (
 			),
@@ -339,8 +339,8 @@ if(function_exists("register_field_group"))
 				'name' => 'nl-link',
 				'type' => 'website',
 				'website_title' => 1,
-				'internal_link' => 1,
-				'output_format' => 0,
+				'internal_link' => 0,
+				'output_format' => 1,
 				'default_value' => '',
 			),
 		),
@@ -356,7 +356,7 @@ if(function_exists("register_field_group"))
 			),
 		),
 		'options' => array (
-			'position' => 'normal',
+			'position' => 'acf_after_title',
 			'layout' => 'no_box',
 			'hide_on_screen' => array (
 			),

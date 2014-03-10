@@ -12,9 +12,9 @@
 				<li><a href="<?php echo get_post_type_archive_link( 'billboard' ); ?>">Billboards</a></li>
 				<li><a href="<?php echo get_post_type_archive_link( 'announcement' ); ?>">Announcements</a></li>
 				<li><a href="<?php echo get_post_type_archive_link( 'news_releases' ); ?>">News Releases</a></li>
-				<li><a href="<?php echo get_post_type_archive_link( 'media_mentions' ); ?>">Media Mentions</a></li>
+				<li><a href="<?php echo get_post_type_archive_link( 'media_mentions' ); ?>">In the News</a></li>
 				<li><a href="<?php echo get_post_type_archive_link( 'spotlight' ); ?>">National Leaders</a></li>
-				<li><a href="<?php echo get_post_type_archive_link( 'in_the_news' ); ?>">In the News</a></li>
+				<li><a href="<?php echo get_post_type_archive_link( 'in_focus' ); ?>">In Focus</a></li>
 			</ul>
 		</nav>
 
