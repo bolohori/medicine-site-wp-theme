@@ -103,7 +103,7 @@ function theme_init() {
 	add_image_size( 'landing-page', 1440, 9999 );
 	add_image_size( 'faculty-list', 80, 112 );
 	add_image_size( 'in-the-news', 340, 250 );
-	add_image_size( 'spotlight-image', 157, 200 );
+	add_image_size( 'spotlight-image', 157, 200, true );
 	add_image_size( 'outlook-thumb', 240, 220 );
 
 	// Image sizes (Settings / Media)
@@ -131,13 +131,13 @@ function theme_init() {
 		} else if ($ip1 == "10" && $ip2 == "39") {
 			$verifiedWashU = true;
 		} else if ($ip1 == "10" && $ip2 == "30") {
-		    $verifiedWashU = true;
+			$verifiedWashU = true;
 		} else if ($ip1 == "10" && $ip2 == "40") {
-		    $verifiedWashU = true;
+			$verifiedWashU = true;
 		} else if ($ip1 == "10" && $ip2 == "27") {
-		    $verifiedWashU = true;
+			$verifiedWashU = true;
 		} else if ($ip1 == "10" && $ip2 == "21") {
-		    $verifiedWashU = true;
+			$verifiedWashU = true;
 		}
 	} else {
 		$verifiedWashU = true;
@@ -148,9 +148,9 @@ add_action( 'init', 'theme_init' );
 
 // Set default values for Attachment Display Settings
 function attachment_display_settings() {
-    update_option('image_default_align', 'center' );
-    update_option('image_default_link_type', 'none' );
-    update_option('image_default_size', 'large' );
+	update_option('image_default_align', 'center' );
+	update_option('image_default_link_type', 'none' );
+	update_option('image_default_size', 'large' );
 }
 add_action('after_setup_theme', 'attachment_display_settings');
 
@@ -330,8 +330,8 @@ add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
 
 // Remove height and width attributes from images so that we can make them responsive
 function remove_dimensions( $html ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
+	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+	return $html;
 }
 add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
 add_filter( 'the_content', 'remove_dimensions', 10 );
@@ -340,26 +340,26 @@ add_filter( 'the_content', 'remove_dimensions', 10 );
 // Remove extra 10px from width of wp-caption div
 // http://troychaplin.ca/2012/fix-automatically-generated-inline-style-on-wordpress-image-captions/
 function fixed_img_caption_shortcode($attr, $content = null) {
-    if ( ! isset( $attr['caption'] ) ) {
-        if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
-            $content = $matches[1];
-            $attr['caption'] = trim( $matches[2] );
-        }
-    }
-    $output = apply_filters('img_caption_shortcode', '', $attr, $content);
-    if ( $output != '' )
-        return $output;
-    extract(shortcode_atts(array(
-        'id'    => '',
-        'align' => 'alignnone',
-        'width' => '',
-        'caption' => ''
-    ), $attr));
-    if ( 1 > (int) $width || empty($caption) )
-        return $content;
-    if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-    return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
-    . do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
+	if ( ! isset( $attr['caption'] ) ) {
+		if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
+			$content = $matches[1];
+			$attr['caption'] = trim( $matches[2] );
+		}
+	}
+	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
+	if ( $output != '' )
+		return $output;
+	extract(shortcode_atts(array(
+		'id'    => '',
+		'align' => 'alignnone',
+		'width' => '',
+		'caption' => ''
+	), $attr));
+	if ( 1 > (int) $width || empty($caption) )
+		return $content;
+	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+	return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
+	. do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
 }
 add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
 add_shortcode('caption', 'fixed_img_caption_shortcode');
@@ -398,3 +398,14 @@ function admin_favicon() {
 	echo "<link rel='shortcut icon' href='" . get_stylesheet_directory_uri() . "/inc/img/favicon.ico' />";
 }
 add_action('admin_head', 'admin_favicon');
+
+// [bartag foo="foo-value"]
+function bartag_func( $atts ) {
+	extract( shortcode_atts( array(
+		'foo' => 'something',
+		'bar' => 'something else',
+	), $atts ) );
+
+	return "foo = {$foo}";
+}
+add_shortcode( 'bartag', 'bartag_func' );

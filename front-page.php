@@ -45,7 +45,7 @@
 				wp_reset_postdata();
 				echo "<div id='news-slider' class='nivoSlider'>" . $images . "</div>" . $captions . "\n";
 ?>
-			<a class="in-the-news-archive" href="/news/press">MORE</a>
+			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
 		</div>
 			
 		<div class="news-right">
@@ -91,7 +91,7 @@
 
 <div class="hero-text">
 	<div class="wrapper">
-		<h1>Advancing Health, Enriching Lives</h1>
+		<h1>Advancing&nbsp;Health, Enriching&nbsp;Lives</h1>
 		<p>Connecting some of the brightest minds in human health, Washington University School of Medicine is a national leader in medical research, teaching and patient care. An outstanding faculty and rigorous curriculum prepare some of the world's most promising students to become the health care leaders of tomorrow.</p>
 		<a class="hero-button" href="<?php echo page_by_name('Education'); ?>">education</a>
 		<a class="hero-button" href="<?php echo page_by_name('Patient Care'); ?>">patient care</a>
@@ -104,7 +104,7 @@
 	<div class="wrapper">
 		<div class="spotlight-left">
 		<h1>National Leadership</h1>
-		<p>Engaged in their fields as well as communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of medicine and health.</p>
+		<p class="spotlight-desc">Engaged in their fields as well as communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of medicine and health.</p>
 <?php
 				$i = 0;
 				$slider = "";
@@ -137,6 +137,7 @@
 					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong><p>$content</p>$read_more_link</div>";
 					$i++;
 				endwhile;
+				$captions .= "<div class='mobile-archive spotlight-archive'><a href='/news/leaders'>MORE NATIONAL LEADERS&raquo;</a></div>";
 				wp_reset_postdata();
 ?>
 		</div>

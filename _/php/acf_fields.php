@@ -643,6 +643,18 @@ if(function_exists("register_field_group"))
 				'allow_null' => 0,
 				'multiple' => 1,
 			),
+			array (
+				'key' => 'field_5321d99f086fc',
+				'label' => 'Author',
+				'name' => 'author',
+				'type' => 'text',
+				'default_value' => 'Washington University School of Medicine',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
 		),
 		'location' => array (
 			array (
