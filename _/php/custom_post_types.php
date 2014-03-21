@@ -28,7 +28,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/announcements' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array('title', 'page-attributes', 'editor' )
@@ -62,7 +62,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/releases' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array(
@@ -101,7 +101,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/press' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array('title', 'page-attributes')
@@ -135,7 +135,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/headlines' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array(
@@ -214,7 +214,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'about/faculty-recognition' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => true,
 		'menu_position' => null,
 		'taxonomies' => array( 'category', 'post_tag' ),
@@ -255,7 +255,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/leaders' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => true,
 		'menu_position' => null,
 		'supports' => array(
@@ -270,7 +270,7 @@ function create_custom_post_types() {
 	register_post_type( 'spotlight', $args );
 
 	$labels = array(
-		'name' => 'In Focus',
+		'name' => 'News Reas',
 		'singular_name' => 'In Focus',
 		'add_new' => 'Add New',
 		'add_new_item' => 'Add New In Focus',
@@ -295,7 +295,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/in_focus' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => true,
 		'menu_position' => null,
 		'supports' => array(
@@ -370,7 +370,7 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/in_the_news' ),
 		'capability_type' => 'post',
-		'has_archive' => true, 
+		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		/*'supports' => array('title', 'page-attributes')*/
@@ -402,7 +402,7 @@ function announcement_settings_callback() { ?>
 		<table class="form-table">
 		<tbody>
 		<tr valign="top">
-		<th scope="row"><label for="billboards">Number of announcements to display</label></th>
+		<th scope="row"><label for="announcements">Number of announcements to display</label></th>
 		<td><input id="announcements" type="number" name="announcements" min="1" max="100" value="<?php echo get_option( 'announcements_to_show', 6 ); ?>">
 		</tr>
 		</tbody></table>
@@ -416,7 +416,7 @@ function spotlight_settings_callback() { ?>
 		<table class="form-table">
 		<tbody>
 		<tr valign="top">
-		<th scope="row"><label for="billboards">Number of National Leaders to display</label></th>
+		<th scope="row"><label for="spotlights">Number of National Leaders to display</label></th>
 		<td><input id="spotlights" type="number" name="spotlights" min="1" max="100" value="<?php echo get_option( 'spotlights_to_show', 4 ); ?>">
 		</tr>
 		</tbody></table>

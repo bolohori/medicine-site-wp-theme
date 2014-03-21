@@ -63,9 +63,9 @@ add_filter('admin_footer_text', 'wpfme_footer_admin');
  */
 function theme_init() {
 	// Create Header Menu theme location
-	register_nav_menus(
-		array( 'header-menu' => 'Header Menu' )
-	);
+	register_nav_menus( array( 
+		'header-menu' => 'Header Menu'
+	) );
 
 	register_sidebar();
 
@@ -364,48 +364,7 @@ function fixed_img_caption_shortcode($attr, $content = null) {
 add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
 add_shortcode('caption', 'fixed_img_caption_shortcode');
 
-if(isset($_GET['reorder_announcements'])) {
-	$i = 0;
-	// WP_Query arguments
-	$args = array (
-		'post_type'      => 'announcement',
-		'posts_per_page' => '-1',
-	);
-
-	// The Query
-	$query = new WP_Query( $args );
-
-	// The Loop
-	if ( $query->have_posts() ) {
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			echo $post->ID;
-			echo " $i<br>";
-			$i++;
-			// Update post 37
-			$my_post = array(
-				'ID'           => $post->ID,
-				'menu_order' => $i
-			);
-
-			// Update the post into the database
-			wp_update_post( $my_post );
-		}
-	}
-}
-
 function admin_favicon() {
 	echo "<link rel='shortcut icon' href='" . get_stylesheet_directory_uri() . "/inc/img/favicon.ico' />";
 }
 add_action('admin_head', 'admin_favicon');
-
-// [bartag foo="foo-value"]
-function bartag_func( $atts ) {
-	extract( shortcode_atts( array(
-		'foo' => 'something',
-		'bar' => 'something else',
-	), $atts ) );
-
-	return "foo = {$foo}";
-}
-add_shortcode( 'bartag', 'bartag_func' );

@@ -19,8 +19,16 @@ function scripts() {
 	
 	// embed the javascript file that makes the AJAX request
 	wp_enqueue_script( 'my-ajax-request', get_stylesheet_directory_uri() . '/_/js/ajax-functions.js', array( 'jquery' ) );
-
-	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
-	wp_localize_script( 'my-ajax-request', 'SOMAJAX', array( 'ajaxurl' => admin_url( 'admin-ajax.php', 'http' ) ) );
 }
 add_action('wp_enqueue_scripts', 'scripts');
+
+// Thanks Otto!
+// http://wordpress.org/support/topic/ajaxurl-is-not-defined
+function ajax_init() { ?>
+	<script type="text/javascript">
+	var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+	</script>
+	<?php
+}
+
+add_action( 'head', array( $this, 'ajax_init' ) );

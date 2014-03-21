@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
 		// This does the ajax request
 		$.ajax({
 			type : "post",
-			url: SOMAJAX.ajaxurl,
+			url: ajaxurl,
 			data: {
 				'action':'get_awards',
 				'year' : y,

@@ -25,6 +25,9 @@ jQuery(document).ready(function($) {
 	/* trigger when page is ready */
 	var $window = $(window);
 
+	if( $('#left-col').height() > $('#main article').height() )
+		$('#main article').height($('#left-col').height() + 123);
+
 	// your functions go here
 	if ( $('#slider')[0] ) {
 		$('#slider').nivoSlider({pauseTime: 5000, effect:'fade'});
