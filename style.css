@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.03.20.3
+Version:	14.03.26.2
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -33,7 +33,7 @@ SOMEDAY WE'LL GET TO USE THIS
 .entry-content img,
 .comment-content img,
 .widget img {
-	max-width: 97.5%; /* Fluid images for posts, comments, and widgets */
+	width: 97.5%; /* Fluid images for posts, comments, and widgets */
 }
 
 img[class*="align"],
@@ -42,11 +42,13 @@ img[class*="wp-image-"] {
 }
 
 img.size-full {
-	max-width: 97.5%;
+	width: 97.5%;
 	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 
- .wp-caption { max-width: 100%; }
+ .wp-caption { 
+ 	width: 100%; 
+ }
 
 
 /* General HTML elements
@@ -117,8 +119,23 @@ h6 {
 	clear: both;
 }
 
+article blockquote {
+    margin: 30px 0 45px 95px;
+    padding-left: 20px;
+    border-left: 3px solid #900;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+article blockquote p {
+    line-height: 32px;
+    margin-bottom: 45px;
+}
+
 article .wp-caption {
-	max-width: 100%;
+	width: 100%;
 	border-top: 1px solid #d7d7d7;
 }
 
@@ -209,7 +226,7 @@ header {
 
 .wrapper {
 	margin: 0 auto;
-	max-width: 960px;
+	width: 960px;
 	height: 100%;
 }
 
@@ -535,12 +552,16 @@ input {
 article {
 	background-color: #f4f4f4;
 	float: left;
-	max-width: 450px;
+	width: 450px;
 	padding: 45px 35px 70px 35px;
 }
 
+.page-template-full-width-page-php .normal-width {
+	width: 450px;
+}
+
 .page-template-full-width-page-php article {
-	max-width: 700px;
+	width: 700px;
 }
 
 .page-template-full-width-page-php article.notch {
@@ -548,7 +569,7 @@ article {
 }
 
 .page-template-full-width-page-php article h1 {
-	max-width: 450px;
+	width: 450px;
 	padding: 24px 35px 0 35px;
 	margin-top: -82px;
 	margin-left: -35px;
@@ -576,6 +597,11 @@ article.giving-notch h1{
 article.notch {
 	margin-top: -58px;
 	padding-top: 24px;
+}
+
+article .disclaimer {
+	font-size: 12px;
+	color: #333;
 }
 
 article h1 {
@@ -666,10 +692,6 @@ article blockquote {
 .facts-numbers {
 	float: right;
 	font-weight: bold;
-}
-
-.accordion-header {
-	width: 690px !important;
 }
 
 .special-head {
@@ -916,7 +938,7 @@ footer a {
 .double-footer {
 	float: left;
 	margin: 25px 0;
-	height: 138px;
+	height: 161px;
 	border-right: 1px solid #dccfb4;
 	text-align: left;
 	font-size: 12px
@@ -1139,7 +1161,7 @@ article.search-results {
 #paginate-results {
 	clear: left;
 	float: left;
-	max-width: 450px;
+	width: 450px;
 	padding: 0 35px 70px 35px;
 }
 
@@ -1236,7 +1258,7 @@ article.search-results {
 
 .slider-wrapper,
 #slider {
-	max-width: 1200px;
+	width: 1200px;
 	margin: 0 auto;
 }
 
@@ -1259,7 +1281,7 @@ article.search-results {
 }
 
 .news .wrapper {
-	max-width: 858px;
+	width: 858px;
 }
 
 .news-left {
@@ -1431,7 +1453,7 @@ article.search-results {
 
 .hero-text p {
 	margin: 0 auto;
-	max-width: 580px;
+	width: 580px;
 	line-height: 26px;
 }
 
@@ -1481,7 +1503,7 @@ article.search-results {
 }
 
 .spotlight .wrapper {
-	max-width: 820px;
+	width: 820px;
 }
 
 .spotlight p {
@@ -1519,7 +1541,7 @@ article.search-results {
 #spotlight-slider {
 	float: left;
 	overflow: visible;
-	max-width: 157px;
+	width: 157px;
 	max-height: 200px;
 	border: 1px solid #d5d5d5;
 }
@@ -1630,7 +1652,7 @@ article.search-results {
 }
 
 .page-template-admissions-php p {
-	max-width: 720px;
+	width: 720px;
 	margin: 0 auto;
 }
 
@@ -1739,7 +1761,7 @@ ul.program-list li.last-child {
  * Faculty Profile specific stuff
  */
 .faculty-profile-width {
-	max-width: 700px;
+	width: 700px;
 }
 
 .award-set {
@@ -1841,7 +1863,7 @@ ul.program-list li.last-child {
 	margin-bottom: 15px;
 	padding-right: 1px;
 	min-width: 80px;
-	max-width: 80px;
+	width: 80px;
 }
 
 .faculty-photo:hover {
@@ -1856,7 +1878,7 @@ ul.program-list li.last-child {
 	float: left;
 	padding-right: 1px;
 	min-width: 90px;
-	max-width: 90px;
+	width: 90px;
 }
 
 .spacer {
@@ -2215,6 +2237,35 @@ background: url(_/img/f_top.png);
 	width: 330px;
 }
 
+.custom-archive-entry {
+	margin-bottom: 20px;
+}
+
+.in_focus-custom-archive-entry h3 {
+	margin-top: 0;
+}
+
+.in_focus-custom-archive-entry {
+	background: #fff;
+	border: 1px #efefef solid;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.in_focus-custom-archive-thumb {
+	float: left;
+}
+
+.research-news-intro {
+	color: #787878;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.research-news-byline {
+	font-size: 11px;
+}
+
 /*
  * Print styles
  * -------------------------------------------------------------------------------
@@ -2229,339 +2280,3 @@ background: url(_/img/f_top.png);
 	}
 }
 
-/* 
- * Mobile Media queries
- * -------------------------------------------------------------------------------
- */
-@media screen and (max-width:960px) {
-	#site-title a {
-		margin-top: 22px;
-	}
-
-	.news-left,
-	.news-right {
-		float: none;
-		position: relative;
-	}
-
-	.spotlight-div {
-		float: none;
-	}
-
-	.news-right {
-		width: 100%;
-	}
-
-	#site-title a {
-		max-width: 80%;
-	}
-
-	.sticky-bottom a.last-child {
-		display: inline;
-	}
-
-	.spotlight-left {
-		width: 100%;
-		text-align: center;
-		clear: both;
-		padding-bottom: 20px;
-	}
-
-	.wrapper,
-	.news .wrapper,
-	.spotlight .wrapper {
-		max-width: 640px;
-	}
-
-	.hero-text {
-		margin-top: 0;
-	}
-
-	#header-logo-row .wrapper {
-		position: relative;
-		overflow: hidden;
-	}
-
-	.hero-text p {
-		padding: 0 10%;
-	}
-
-	#header-logo,
-	#utility-bar,
-	#search-form,
-	#main-nav,
-	#page-background-l,
-	#page-background-r,
-	#left-col,
-	#wusm-footer nav {
-		display: none;
-	}
-
-	#header-text {
-		display: inline-block;
-		padding: 10px;
-	}
-
-	#header-text a {
-		color: #980006;
-	}
-
-	#utility-bar {
-		position: absolute;
-		right: -252px;
-		background-color: #fff;
-	}
-
-	#utility-nav {
-		margin-top: 10px;
-	}
-
-	#mobile-menu-icon {
-		display: block;
-		float: right;
-		position: relative;
-		top: 21px;
-		cursor: pointer;
-		margin-right: 22px;
-	}
-
-	#site-title {
-		max-width: 100%;
-	}
-
-	/*#site-title a {
-		margin-top: 26px;
-	}*/
-
-	#featured-image {
-		margin-bottom: -2px;
-	}
-
-	#featured-image img {
-		padding-top: 0;
-	}
-
-	.campaign-banner {
-		width: 100%;
-	}
-	
-	.double-footer,
-	.single-footer {
-		height: auto;
-	}
-
-	.double-footer {
-		width: 50%;
-		padding: 0 10px;
-		margin-bottom: 0;
-		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	}
-	
-	.single-footer {
-		width: 25%;
-		padding: 0 10px;
-		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	}
-
-	footer .last-child {
-		border-left: 1px solid #b9ae98;
-	}
-
-	#main {
-		background-color: #f4f4f4;
-	}
-
-	article {
-		float: none;
-	}
-
-	article.notch {
-		margin-top: 0;
-		padding-bottom: 0;
-		border-top: none;
-	}
-
-	#right-col {
-		padding: 0 35px 70px 35px;
-		width: 396px;
-	}
-
-	#right-col aside {
-		width: 100%;
-	}
-
-	.sidebar {
-		margin: 10px auto;
-		clear: both;
-		float: none;
-	}
-
-	#wusm-footer-left {
-		float: none;
-		text-align: center;
-		margin: 0;
-		padding-top: 16px;
-	}
-
-	footer {
-		padding-bottom: 0;
-	}
-
-	.sticky-footer {
-		position: relative;
-	}
-
-	.sticky-bottom {
-		height: auto;
-		text-align: center;
-	}
-
-	.sticky-bottom li {
-		float: none;
-		display: inline-block;
-	}
-
-	.announcements-left,
-	.announcements-right,
-	.announcement {
-		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-	}
-
-	.announcements-left,
-	.announcements-right {
-		width: 100%;
-		padding: 0 5%;
-		margin-bottom: 0;
-	}
-
-	.announcement-list {
-		padding: 0; 
-	}
-
-	.announcement {
-		width: 50%;
-		padding-right: 5%;
-		border-bottom: 1px solid #aeadad;
-	}
-
-	p.announcements {
-		margin:10px 16px 10px 0;
-	}
-}
-
-@media screen and (max-width: 650px) {
-	.sticky-top li {
-		width: 100%;
-		border-top: 1px solid #fff;
-		border-bottom: 1px solid #b6b6b6;
-	}
-
-	.news-right {
-		width: 80%;
-		margin: 0 auto;
-	}
-
-	.hero-text .wrapper {
-		/*padding: 8px 0;*/
-	}
-}
-
-@media screen and (max-width:518px) {
-	.mobile-archive {
-		display: inline-block;
-	}
-
-	.recent-news {
-		border-bottom: none;
-		text-align: center;
-	}
-
-	h1 {
-		margin-bottom: 10px;
-	}
-
-	#mobile-menu-icon {
-		margin-right: 8px;
-	}
-	.news-list, 
-	.double-footer {
-		width: 100%;
-	}
-
-	.single-footer {
-		width: 50%;
-	}
-
-	.news-list,
-	.news-left, {
-		width: 100%;
-	}
-
-	article {
-		width: 80%;
-		padding-left: 10%;
-		padding-right: 10%;
-	}
-
-	article th, article td {
-		padding: 5px;
-	}
-
-	#right-col {
-		width: 80%;
-		padding: 0 10%;
-	}
-
-	#right-col aside {
-		width: 90%;
-		padding: 5%;
-	}
-	
-	.hero-button {
-		margin: 10px 5px;
-	}
-
-	.hero-text .wrapper,
-	.spotlight {
-		padding: 20px 0;
-	}
-
-	.spotlight-desc {
-		width: 80%;
-		padding: 0 10%;		
-	}
-
-	.spotlight-div {
-		display: none;
-	}
-
-	.spotlight .nivo-html-caption {
-		display: block !important;
-		width: 80%;
-		padding: 0 10%;
-		margin-bottom: 20px;
-	}
-
-	.spotlight-archive {
-		width: 100%;
-		position: relative;
-	}
-
-	.in-the-news-archive {
-		margin-bottom: 20px;
-	}
-
-	.news {
-		padding-bottom: 20px;
-	}
-
-	.news-list li,
-	.news-list {
-		float: none;
-	}
-
-	.all-news {
-		position: absolute;
-		bottom: 0;
-	}
-}

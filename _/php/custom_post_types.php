@@ -20,6 +20,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-video-alt2',
 		'public' => true,
 		'publicly_queryable' => true,
@@ -31,7 +32,7 @@ function create_custom_post_types() {
 		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
-		'supports' => array('title', 'page-attributes', 'editor' )
+		'supports' => array('title', 'page-attributes', 'editor', 'excerpt')
 	);
 
 	register_post_type( 'announcement', $args );
@@ -54,6 +55,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-list-view',
 		'public' => true,
 		'publicly_queryable' => true,
@@ -70,6 +72,7 @@ function create_custom_post_types() {
 			'editor',
 			'revisions',
 			'page-attributes',
+			'excerpt'
 		)
 	);
 
@@ -93,6 +96,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-testimonial',
 		'public' => true,
 		'publicly_queryable' => true,
@@ -127,6 +131,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-chart-bar',
 		'public' => true,
 		'publicly_queryable' => true,
@@ -167,6 +172,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-groups',
 		'public' => false,
 		'publicly_queryable' => false,
@@ -206,6 +212,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-awards',
 		'public' => true,
 		'publicly_queryable' => true,
@@ -247,6 +254,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-businessman',
 		'public' => true,
 		'publicly_queryable' => true,
@@ -270,7 +278,7 @@ function create_custom_post_types() {
 	register_post_type( 'spotlight', $args );
 
 	$labels = array(
-		'name' => 'News Reas',
+		'name' => 'In Focus',
 		'singular_name' => 'In Focus',
 		'add_new' => 'Add New',
 		'add_new_item' => 'Add New In Focus',
@@ -287,13 +295,14 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-slides',
 		'public' => true,
 		'publicly_queryable' => true,
 		'show_ui' => true, 
 		'show_in_menu' => true, 
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'news/in_focus' ),
+		'rewrite' => array( 'slug' => 'news/in-focus' ),
 		'capability_type' => 'post',
 		/*'has_archive' => true, */
 		'hierarchical' => true,
@@ -327,6 +336,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-search',
 		'public' => false,
 		'publicly_queryable' => false,
@@ -362,13 +372,14 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-feedback',
 		'public' => false,
 		'publicly_queryable' => true,
 		'show_ui' => true, 
 		'show_in_menu' => true, 
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'news/in_the_news' ),
+		'rewrite' => array( 'slug' => 'news/in-the-news' ),
 		'capability_type' => 'post',
 		/*'has_archive' => true, */
 		'hierarchical' => false,

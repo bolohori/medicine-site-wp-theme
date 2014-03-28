@@ -27,8 +27,18 @@
 	<div id="page-background-l"></div>
 
 	<div class="wrapper">
-
-		<?php get_sidebar(); ?>
+		<nav id="left-col">
+			<ul id="left-nav">
+				<li class="top_level_page"><a href="/news">News</a></li><li class="page_item page-item-4741"><a href="http://medicine-test.wustl.edu/news/headlines/">Research News</a></li>
+				<li class="page_item page-item-4713"><a href="http://medicine-test.wustl.edu/news/releases/">News Releases</a></li>
+				<li class="page_item page-item-4715"><a href="http://medicine-test.wustl.edu/news/features/">Billboards</a></li>
+				<li class="page_item page-item-4719"><a href="http://medicine-test.wustl.edu/news/announcements/">Announcements</a></li>
+				<li class="page_item page-item-4721"><a href="http://medicine-test.wustl.edu/news/press/">In the News</a></li>
+				<li class="page_item page-item-329"><a href="http://medicine-test.wustl.edu/news/in-focus/">In Focus</a></li>
+				<li class="page_item page-item-4723"><a href="http://medicine-test.wustl.edu/news/leaders/">National Leaders</a></li>
+				<li class="page_item page-item-436"><a href="http://medicine-test.wustl.edu/news/biomed-radio/">BioMed Radio Podcast</a></li>
+			</ul>
+		</nav>
 
 		<article<?php echo $classes; ?>>
 			<?php

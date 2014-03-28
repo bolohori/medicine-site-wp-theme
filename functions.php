@@ -64,7 +64,9 @@ add_filter('admin_footer_text', 'wpfme_footer_admin');
 function theme_init() {
 	// Create Header Menu theme location
 	register_nav_menus( array( 
-		'header-menu' => 'Header Menu'
+		'header-menu' => 'Header Menu',
+		'footer-menu' => 'Footer Menu',
+		'sticky-footer-menu' => 'Sticky Footer Menu'
 	) );
 
 	register_sidebar();
@@ -238,6 +240,17 @@ function customize_mce( $init ) {
 			'classes' => 'callout',
 			'wrapper' => true
 		),
+		array(
+			'title'	 => 'Normal width (for full width pages)',
+			'selector' => 'p',
+			'classes' => 'normal-width',
+		),
+		array(
+			'title'    => 'Disclaimer',
+			'block' => 'div',
+			'classes'  => 'disclaimer',
+			'wrapper' => 'true'
+		),
 	);
 
 	/* Only include your custom styles -- defined above -- in your style dropdown */
@@ -328,13 +341,14 @@ function tcb_add_tinymce_buttons( $tinyrowthree ) {
 }
 add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
 
+// NOPE!
 // Remove height and width attributes from images so that we can make them responsive
 function remove_dimensions( $html ) {
 	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 	return $html;
 }
-add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
-add_filter( 'the_content', 'remove_dimensions', 10 );
+//add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
+//add_filter( 'the_content', 'remove_dimensions', 10 );
 
 
 // Remove extra 10px from width of wp-caption div
@@ -368,3 +382,8 @@ function admin_favicon() {
 	echo "<link rel='shortcut icon' href='" . get_stylesheet_directory_uri() . "/inc/img/favicon.ico' />";
 }
 add_action('admin_head', 'admin_favicon');
+
+add_filter( 'in_focus_title_text', function( $title ) { return '<h3>' . $title . '</h3>'; } );
+add_filter( 'in_focus_link_text', function() { return '<b>See photo gallery</b>/'; } );
+add_filter( 'in_focus_thumbnail_size', function() { return 'full'; } );
+add_filter( 'in_focus_date_text', function() { return ''; } );

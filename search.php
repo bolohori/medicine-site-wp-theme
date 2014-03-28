@@ -86,7 +86,7 @@ get_header(); ?>
 				$pageposts = $wpdb->get_results($querystr, OBJECT);
 
 				if ($pageposts):
-					echo "<h2>Top Result(s) for the School of Medicine</h2>";
+					echo "<h2>Top search results</h2>";
 					global $post;
 					foreach ($pageposts as $post):
 						setup_postdata($post);

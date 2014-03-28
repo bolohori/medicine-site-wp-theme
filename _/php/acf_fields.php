@@ -1007,7 +1007,7 @@ if(function_exists("register_field_group"))
 				'label' => 'Sidebar Examples',
 				'name' => '',
 				'type' => 'message',
-				'message' => '<img src=\'/wp-content/themes/wusm/_/img/sidebars.jpg\'>',
+				'message' => '<img src=\'/wp-content/themes/medicine/_/img/sidebars.jpg\'>',
 			),
 		),
 		'location' => array (

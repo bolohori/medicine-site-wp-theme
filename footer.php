@@ -25,7 +25,7 @@
         <div class="single-footer last-child">
             <p class="social">
                 <a target="_blank" href="http://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" alt="Facebook"></a>
-                <a target="_blank" href="http://twitter.com/WUSTLmedschool"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt="Twitter"></a>
+                <a target="_blank" href="http://twitter.com/WUSTLmed"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt="Twitter"></a>
                 <a target="_blank" href="http://www.linkedin.com/company/washington-university-school-of-medicine"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/linkedin.png" alt="LinkedIn"></a>
                 <a target="_blank" href="http://www.youtube.com/wustlpa"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/youtube.png" alt="YouTube"></a>
                 <a target="_blank" href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/rss.png" alt="RSS"></a>
@@ -40,7 +40,7 @@
         <div class="wrapper">
             <ul>
                 <a target="_blank" href="http://wuphysicians.wustl.edu/directory.aspx"><li>Find a Doctor</li></a>
-                <a href="<?php echo page_by_name('Departments & Programs');?>"><li>Departments &amp; Programs</li></a>
+                <a href="<?php echo page_by_name('Academic Departments &amp; Programs');?>"><li>Departments &amp; Programs</li></a>
                 <a href="<?php echo page_by_name('Admissions');?>"><li class="sticky-top-last">Admissions</li></a>
             </ul>
         </div>
@@ -48,14 +48,14 @@
 
     <div class="wrapper">
         <ul class="sticky-bottom">
-            <li class="first-child"><a href="<?php echo page_by_name('Prospective Students');?>">Prospective Students</a></li><li>
-            <a href="<?php echo page_by_name('Current Students');?>">Current Students</a></li><li>
-            <a href="<?php echo page_by_name('Faculty');?>">Faculty</a></li><li>
-            <a href="<?php echo page_by_name('Staff');?>">Staff</a></li><li class='responsive-break'>
-            <a href="<?php echo page_by_name('Alumni & Friends');?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
-            <a href="<?php echo page_by_name('Administrators');?>">Administrators</a></li><li>
-            <a href="<?php echo page_by_name('Researchers');?>">Researchers</a></li><li class="last-child">
-            <a href="<?php echo page_by_name('Job Seekers');?>">Job Seekers</a></li><li class="last-child announcements">
+            <li class="first-child"><a href="<?php echo page_by_name('Information for Prospective Students');?>">Prospective Students</a></li><li>
+            <a href="<?php echo page_by_name('Information for Current Students');?>">Current Students</a></li><li>
+            <a href="<?php echo page_by_name('Information for Faculty');?>">Faculty</a></li><li>
+            <a href="<?php echo page_by_name('Information for Staff');?>">Staff</a></li><li class='responsive-break'>
+            <a href="<?php echo page_by_name('Information for Alumni & Friends');?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
+            <a href="<?php echo page_by_name('Information for Administrators');?>">Administrators</a></li><li>
+            <a href="<?php echo page_by_name('Information for Researchers');?>">Researchers</a></li><li class="last-child">
+            <a href="<?php echo page_by_name('Information for Job Seekers');?>">Job Seekers</a></li><li class="last-child announcements">
             <a href="javascript:;">Announcements</a></li>
         </ul>
         <div class="hidden-footer">

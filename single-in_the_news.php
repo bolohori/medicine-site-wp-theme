@@ -29,18 +29,11 @@ a {color: #336699;}
 	<div style="color: #fff; background: #4a824c; padding: 10px 12px; margin: 23px 0 0 0;">
 		<span style="font-size: 23px; font-weight: bold;">IN THE NEWS</span>
 		<span style="font-size: 23px; font-weight: bold; float: right;"><?php
-	// WP_Query arguments
-	$args = array (
-		'post_type' => 'in_the_news',
-	);
-
-	// The Query
-	$query = new WP_Query( $args );
-
+	
 	// The Loop
-	if ( $query->have_posts() ) {
-		while ( $query->have_posts() ) {
-			$query->the_post();
+	if ( have_posts() ) {
+		while ( have_posts() ) {
+			the_post();
 			// do something
 			the_title();?></span>
 			</div>
