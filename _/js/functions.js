@@ -13,14 +13,14 @@ jQuery(document).ready(function($) {
 	console.log(ಠ_ಠ);*/
 
 	// jPanelMenu
-	var jPM = $.jPanelMenu({
+/*	var jPM = $.jPanelMenu({
 		menu: '#mobile-nav',
 		trigger: '#mobile-menu-icon',
 		direction: 'right',
 		keyboardShortcuts: false,
 		excludedPanelContent: '#wpadminbar'
 	});
-	jPM.on();
+	jPM.on();*/
 
 	/* trigger when page is ready */
 	var $window = $(window);

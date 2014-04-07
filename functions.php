@@ -105,7 +105,7 @@ function theme_init() {
 	add_image_size( 'landing-page', 1440, 9999 );
 	add_image_size( 'faculty-list', 80, 112 );
 	add_image_size( 'in-the-news', 340, 250 );
-	add_image_size( 'spotlight-image', 157, 200, true );
+	add_image_size( 'spotlight-image', 147, 200, true );
 	add_image_size( 'outlook-thumb', 240, 220 );
 
 	// Image sizes (Settings / Media)
@@ -341,13 +341,14 @@ function tcb_add_tinymce_buttons( $tinyrowthree ) {
 }
 add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
 
-// NOPE!
+
 // Remove height and width attributes from images so that we can make them responsive
-function remove_dimensions( $html ) {
-	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+function remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+	if( $size == 'landing-page' )
+		return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 	return $html;
 }
-//add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
+add_filter( 'post_thumbnail_html', 'remove_dimensions', 10, 5 );
 //add_filter( 'the_content', 'remove_dimensions', 10 );
 
 
@@ -383,7 +384,13 @@ function admin_favicon() {
 }
 add_action('admin_head', 'admin_favicon');
 
-add_filter( 'in_focus_title_text', function( $title ) { return '<h3>' . $title . '</h3>'; } );
-add_filter( 'in_focus_link_text', function() { return '<b>See photo gallery</b>/'; } );
-add_filter( 'in_focus_thumbnail_size', function() { return 'full'; } );
+add_filter( 'in_focus_link_text', function() { return '<b>See photos</b>'; } );
+add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } );
 add_filter( 'in_focus_date_text', function() { return ''; } );
+add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
+add_filter( 'billboard_link_field', function() { return 'link'; } );
+add_filter( 'announcement_excerpt_text', function() { return ''; } );
+add_filter( 'announcement_link_field', function() { return 'url'; } );
+add_filter( 'news_releases_link_field', function() { return 'url'; } );
+add_filter( 'media_mentions_link_field', function() { return 'link'; } );
+add_filter( 'spotlight_excerpt_text', function() { return ''; } );

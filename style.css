@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.03.26.2
+Version:	14.04.04.4
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -300,11 +300,11 @@ header {
 
 #search-box {
 	position: absolute;
-	top: 10px;
+	top: 6px;
 	left: 30px;
 	margin: 3px 0 0 10px;
-	padding: 5px 10px;
-	width: 220px;
+	padding: 8px 25px 8px 10px;
+	width: 205px;
 	height: 12px;
 	border: none;
 	border-radius: 5px;
@@ -342,7 +342,7 @@ header {
 
 #main-nav {
 	height: 40px;
-	border-bottom: 2px solid #670001;
+	border-bottom: 1px solid #cccccc;
 	white-space: nowrap;
 	background-color: #fff;
 }
@@ -354,7 +354,7 @@ header {
 
 #main-nav li {
 	float: left;
-	padding: 13px 30px 0 0;
+	padding: 12px 30px 0 0;
 }
 
 #main-nav li a {
@@ -440,9 +440,9 @@ input {
 }
 
 .landing-page {
-	-webkit-box-shadow: 0 -5px 10px 0 #DEDEDE;
+/*	-webkit-box-shadow: 0 -5px 10px 0 #DEDEDE;
 	-moz-box-shadow: 0 -5px 10px 0 #DEDEDE;
-	box-shadow: 0 -5px 10px 0 #DEDEDE;
+	box-shadow: 0 -5px 10px 0 #DEDEDE;*/
 }
 
 #page-background-r,
@@ -495,6 +495,10 @@ input {
 
 .home #left-col {
 	display: none;
+}
+
+.home {
+	background: #f5f5f5;
 }
 
 #left-nav li {
@@ -560,7 +564,8 @@ article {
 	width: 450px;
 }
 
-.page-template-full-width-page-php article {
+.page-template-full-width-page-php article,
+.single-in_focus article {
 	width: 700px;
 }
 
@@ -568,7 +573,7 @@ article {
 	margin-top: 0;
 }
 
-.page-template-full-width-page-php article h1 {
+.page-template-full-width-page-php article.notch h1 {
 	width: 450px;
 	padding: 24px 35px 0 35px;
 	margin-top: -82px;
@@ -887,7 +892,7 @@ footer li {
 footer p {
 	padding-bottom: 15px;
 	padding-left: 0 !important;
-	line-height: 19px;
+	line-height: 22px;
 }
 
 footer a {
@@ -921,27 +926,28 @@ footer a {
 
 .small-text {
 	font-size: 11px;
+	line-height: 16px;
 }
 
 .double-footer {
-	padding: 0 15px 0 95px;
-	width: 350px;
+	padding: 0 15px 0 72px;
+	width: 410px;
 }
 
 .single-footer {
 	width: 175px;
-	padding: 0 15px;
+	padding: 0 3px 0 26px;
 	border-left: 1px solid #b9ae98;
 }
 
 .single-footer,
 .double-footer {
 	float: left;
-	margin: 25px 0;
+	margin: 52px 0;
 	height: 161px;
 	border-right: 1px solid #dccfb4;
 	text-align: left;
-	font-size: 12px
+	font-size: 13px
 }
 
 .last-child {
@@ -953,10 +959,8 @@ footer a {
 	z-index: 150;
 	float: left;
 	width: 100%;
-	/*width: 960px;*/
-	background: #eae7e7;
+	background: #fafafa;
 	box-shadow: 0px -5px 10px -4px #9c9a97;
-	/*bottom: 0;*/
 	bottom: -75px;
 }
 
@@ -974,7 +978,7 @@ footer a {
 
 .sticky-top {
 	border-top: 1px solid #fff;
-	border-bottom: 1px solid #b6b6b6;
+	border-bottom: 1px solid #dcdcdc;
 }
 
 .sticky-top,
@@ -995,8 +999,7 @@ footer a {
 	padding: 11px 0;
 	width: 33%;
 	border-right: 1px solid #fff;
-	border-left: 1px solid #a6a6a6;
-	
+	border-left: 1px solid #e1e0e0;
 	text-align: center;
 	text-transform: uppercase;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#c9c9c9',GradientType=0 );
@@ -1039,7 +1042,6 @@ li.sticky-top-last {
 	margin: 10px 0;
 	padding: 0 12px;
 	border-right: 1px solid #aeadad;
-	border-left: 1px solid #737373;
 }
 
 .sticky-bottom li.first-child {
@@ -1071,12 +1073,11 @@ li.sticky-top-last {
 
 .hidden-footer {
 	display: none;
-	float: left;
 	background: #f1f1f1;
+	width: 100%;
 }
 
 .hidden-footer div {
-	float: left;
 	line-height: 19px;
 }
 
@@ -1084,7 +1085,12 @@ li.sticky-top-last {
 	font-weight: normal;
 }
 
+.hidden-wrapper {
+	background: #f1f1f1;
+}
+
 .announcements-left {
+	float: left;
 	margin: 22px 0;
 	padding: 0 55px;
 	width: 220px;
@@ -1096,6 +1102,7 @@ li.sticky-top-last {
 }
 
 .announcements-right {
+	float: left;
 	margin: 22px 0;
 	padding-left: 20px;
 	border-left: 1px solid #d7d6d6;
@@ -1125,6 +1132,7 @@ p.announcements {
 }
 
 .arrow-up {
+	vertical-align: middle;
 	display: inline-block;
 	margin: 0 0 2px 5px;
 	width: 0; 
@@ -1252,7 +1260,7 @@ article.search-results {
 /* Front Page styles
 -------------------------------------------------------------------------------*/
 .slide-wrapper {
-	background: #f5f5f5;
+	background: #ccc;
 	overflow: hidden;
 }
 
@@ -1272,7 +1280,6 @@ article.search-results {
 
 .news {
 	float: left;
-	margin-top: -22px;
 	padding: 50px 0;
 	min-height: 245px;
 	width: 100%;
@@ -1367,8 +1374,9 @@ article.search-results {
 	opacity: 1 !important;
 }
 
-.nivo-directionNav a:hover {
-	background-image: url('_/css/default/arrows-hover.png') !important;
+#news-slider .nivo-directionNav a:hover,
+.slide-wrapper .nivo-directionNav a:hover {
+	background-image: url(_/css/default/arrows-hover.png) !important;
 }
 
 #news-slider .nivo-caption {
@@ -1440,11 +1448,12 @@ article.search-results {
 	position: relative;
 	z-index: 2;
 	float: left;
-	margin-top: -226px;
-	min-height: 217px;
+	margin-top: -58px;
+	min-height: 225px;
 	width: 100%;
 	background: url('_/img/hero/hero-bg.png') center no-repeat;
 	text-align: center;
+	padding: 0px 0px 32px 0px;
 }
 
 .hero-text .wrapper {
@@ -1455,11 +1464,11 @@ article.search-results {
 	margin: 0 auto;
 	width: 580px;
 	line-height: 26px;
+	color: #525252;
+	font-size: 16px;
 }
 
 .hero-button {
-	text-shadow: 1px 1px 1px #770101;
-	box-shadow: 1px 1px 1px #201d1e;
 	display: inline-block;
 	font-weight: bold;
 	font-size: 12px;
@@ -1468,6 +1477,7 @@ article.search-results {
 	padding: 12px 0;
 	width: 145px;
 	margin: 30px 5px;
+	letter-spacing: 0.1em;
 	background: #da2a2a;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RhMmEyYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5MzAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top,  #da2a2a 0%, #930000 100%);
@@ -1508,6 +1518,8 @@ article.search-results {
 
 .spotlight p {
 	line-height: 26px;
+	font-size: 16px;
+	color: #525252;
 }
 
 .spotlight-div {
@@ -2234,7 +2246,13 @@ background: url(_/img/f_top.png);
 }
 
 .spotlight-left {
+	float: left;
 	width: 330px;
+}
+
+#spotlight-slider .nivo-directionNav a,
+#spotlight-slider .nivo-directionNav a:hover {
+	background-image: url(_/css/default/spotlight-arrows.png);
 }
 
 .custom-archive-entry {
@@ -2245,25 +2263,37 @@ background: url(_/img/f_top.png);
 	margin-top: 0;
 }
 
+.in_focus-custom-archive-link {
+	padding-top: 8px;
+}
+
 .in_focus-custom-archive-entry {
 	background: #fff;
 	border: 1px #efefef solid;
-	border-radius: 10px;
-	padding: 20px;
+	border-radius: 3px;
 }
 
 .in_focus-custom-archive-thumb {
 	float: left;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius: 3px;
 }
 
-.research-news-intro {
+.custom-intro {
 	color: #787878;
 	font-size: 18px;
 	line-height: 30px;
 }
 
-.research-news-byline {
+.custom-byline {
 	font-size: 11px;
+	border-top: 1px solid #707070;
+	border-bottom: 1px solid #707070;
+}
+
+.custom-archive-link h3 {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 /*
@@ -2280,3 +2310,30 @@ background: url(_/img/f_top.png);
 	}
 }
 
+/*
+...:::::,.....................,:::::,...
+...:IIII?+~::::::::::::::::::=?IIII:,...
+...:IIIII:IIIIIIIIIIIIIIIIIIIIIIIII:,...
+...:III::::~IIIIIII:IIIIIIII::::=II:,...
+...:IIII:::IIIIIII:::IIIIIIII::?III:,...
+...:~I7IIIIIIIIIII:I??IIIIIIIII77?~:,...
+...:::::::,:~=?IIIIIII?+=~::::::::::,...
+...:::::::::::::::::::::::::::::::::,...
+...::::::::7,IIIIIIIIIIII7,7::::::::,...
+...:IIII7=:7,IIIIIIIIIIII7,7=:77III:,...
+...:IIIII=~7,IIIIIIIIIIII7,7=:IIIII:,...
+...:IIIII=~7,IIIIIIIIIIII7,7=:IIIII:,...
+...::::~+=~7,IIIIIIIIIIII7,7=:=:,:::,...
+...::::::::7::::::,7:::::::7=:::::::,...
+...:::::::~7777777I+77777777=:::::::,...
+..,::,::::::::::::,I,::::::::::::,::,...
+..,:IIIII=I777I?+++=+++?I777IIIIIII:,...
+..,:IIIII:IIIIIIIII~=IIIIIIII=:IIII:,...
+...:III?:~::IIIIIII::IIIIII?I+I?~II:....
+...::III:~,IIIII::=+7:::IIII++I:II:.....
+.....::+I:IIIIIIII:II?IIIIIIIII?::......
+........:::+IIIII~:II:IIIII?:::.........
+...........,:::?III:=II?:::.............
+................,:::::,.................
+........................................
+ */

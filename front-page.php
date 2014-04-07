@@ -7,6 +7,7 @@
 			$num_to_show = get_option( 'billboards_to_show', 5 );
 			$args = array( 'post_type' => 'billboard', 'posts_per_page' => $num_to_show );
 			$loop = new WP_Query( $args );
+
 			while ( $loop->have_posts() ) : $loop->the_post();
 				$internal_only = get_field('internal_only');
 				if ($internal_only && !WASHU_IP)

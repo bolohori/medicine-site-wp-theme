@@ -313,6 +313,7 @@ function create_custom_post_types() {
 			'thumbnail',
 			'revisions',
 			'page-attributes',
+			'excerpt'
 		)
 	); 
 
