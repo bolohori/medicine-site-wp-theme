@@ -68,8 +68,8 @@ class WP_GitHub_Updater {
 	public function __construct( $config = array() ) {
 
 		$defaults = array(
-			'slug' => plugin_basename( __FILE__ ),
-			'proper_folder_name' => dirname( plugin_basename( __FILE__ ) ),
+			'slug' => theme_basename( __FILE__ ),
+			'proper_folder_name' => dirname( theme_basename( __FILE__ ) ),
 			'sslverify' => true,
 			'access_token' => '',
 		);
@@ -78,7 +78,7 @@ class WP_GitHub_Updater {
 
 		// if the minimum config isn't set, issue a warning and bail
 		if ( ! $this->has_minimum_config() ) {
-			$message = 'The GitHub Updater was initialized without the minimum required configuration, please check the config in your plugin. The following params are missing: ';
+			$message = 'The GitHub Updater was initialized without the minimum required configuration, please check the config in your theme. The following params are missing: ';
 			$message .= implode( ',', $this->missing_config );
 			_doing_it_wrong( __CLASS__, $message , self::VERSION );
 			return;
@@ -86,10 +86,10 @@ class WP_GitHub_Updater {
 
 		$this->set_defaults();
 
-		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'api_check' ) );
+		add_filter( 'pre_set_site_transient_update_themes', array( $this, 'api_check' ) );
 
-		// Hook into the plugin details screen
-		add_filter( 'plugins_api', array( $this, 'get_plugin_info' ), 10, 3 );
+		// Hook into the theme details screen
+		add_filter( 'themes_api', array( $this, 'get_theme_info' ), 10, 3 );
 		add_filter( 'upgrader_post_install', array( $this, 'upgrader_post_install' ), 10, 3 );
 
 		// set timeout
@@ -160,18 +160,18 @@ class WP_GitHub_Updater {
 		if ( ! isset( $this->config['description'] ) )
 			$this->config['description'] = $this->get_description();
 
-		$plugin_data = $this->get_plugin_data();
-		if ( ! isset( $this->config['plugin_name'] ) )
-			$this->config['plugin_name'] = $plugin_data['Name'];
+		$theme_data = $this->get_theme_data();
+		if ( ! isset( $this->config['theme_name'] ) )
+			$this->config['theme_name'] = $theme_data['Name'];
 
 		if ( ! isset( $this->config['version'] ) )
-			$this->config['version'] = $plugin_data['Version'];
+			$this->config['version'] = $theme_data['Version'];
 
 		if ( ! isset( $this->config['author'] ) )
-			$this->config['author'] = $plugin_data['Author'];
+			$this->config['author'] = $theme_data['Author'];
 
 		if ( ! isset( $this->config['homepage'] ) )
-			$this->config['homepage'] = $plugin_data['PluginURI'];
+			$this->config['homepage'] = $theme_data['themeURI'];
 
 		if ( ! isset( $this->config['readme'] ) )
 			$this->config['readme'] = 'README.md';
@@ -319,7 +319,7 @@ class WP_GitHub_Updater {
 
 
 	/**
-	 * Get plugin description
+	 * Get theme description
 	 *
 	 * @since 1.0
 	 * @return string $description the description
@@ -331,24 +331,24 @@ class WP_GitHub_Updater {
 
 
 	/**
-	 * Get Plugin data
+	 * Get theme data
 	 *
 	 * @since 1.0
 	 * @return object $data the data
 	 */
-	public function get_plugin_data() {
-		include_once ABSPATH.'/wp-admin/includes/plugin.php';
-		$data = get_plugin_data( WP_PLUGIN_DIR.'/'.$this->config['slug'] );
+	public function get_theme_data() {
+		include_once ABSPATH.'/wp-admin/includes/theme.php';
+		$data = get_theme_data( WP_theme_DIR.'/'.$this->config['slug'] );
 		return $data;
 	}
 
 
 	/**
-	 * Hook into the plugin update check and connect to github
+	 * Hook into the theme update check and connect to github
 	 *
 	 * @since 1.0
-	 * @param object  $transient the plugin data transient
-	 * @return object $transient updated plugin data transient
+	 * @param object  $transient the theme data transient
+	 * @return object $transient updated theme data transient
 	 */
 	public function api_check( $transient ) {
 
@@ -364,14 +364,14 @@ class WP_GitHub_Updater {
 			$response = new stdClass;
 			//[id] => 11143
 			//[slug] => mce-table-buttons
-			//[plugin] => mce-table-buttons/mce_table_buttons.php
+			//[theme] => mce-table-buttons/mce_table_buttons.php
 			//[new_version] => 3.0
-			//[url] => https://wordpress.org/plugins/mce-table-buttons/
-			//[package] => https://downloads.wordpress.org/plugin/mce-table-buttons.3.0.zip
+			//[url] => https://wordpress.org/themes/mce-table-buttons/
+			//[package] => https://downloads.wordpress.org/theme/mce-table-buttons.3.0.zip
 			$url = ($this->config['access_token'] !== '' ) ? add_query_arg( array( 'access_token' => $this->config['access_token'] ), $this->config['github_url'] ) : $this->config['github_url'] . "/";
 			$response->id = $this->config['id'];
 			$response->slug = $this->config['proper_folder_name'];
-			$response->plugin = $this->config['slug'];
+			$response->theme = $this->config['slug'];
 			$response->new_version = $this->config['new_version'];
 			$response->url = $url;
 			$response->package = $this->config['zip_url'];
@@ -386,22 +386,22 @@ class WP_GitHub_Updater {
 
 
 	/**
-	 * Get Plugin info
+	 * Get theme info
 	 *
 	 * @since 1.0
 	 * @param bool    $false  always false
 	 * @param string  $action the API function being performed
-	 * @param object  $args   plugin arguments
-	 * @return object $response the plugin info
+	 * @param object  $args   theme arguments
+	 * @return object $response the theme info
 	 */
-	public function get_plugin_info( $false, $action, $response ) {
+	public function get_theme_info( $false, $action, $response ) {
 
-		// Check if this call API is for the right plugin
+		// Check if this call API is for the right theme
 		if ( !isset( $response->slug ) || $response->slug != $this->config['slug'] )
 			return false;
 
 		$response->slug = $this->config['slug'];
-		$response->plugin_name  = $this->config['plugin_name'];
+		$response->theme_name  = $this->config['theme_name'];
 		$response->version = $this->config['new_version'];
 		$response->author = $this->config['author'];
 		$response->homepage = $this->config['homepage'];
@@ -418,7 +418,7 @@ class WP_GitHub_Updater {
 
 	/**
 	 * Upgrader/Updater
-	 * Move & activate the plugin, echo the update message
+	 * Move & activate the theme, echo the update message
 	 *
 	 * @since 1.0
 	 * @param boolean $true       always true
@@ -431,14 +431,14 @@ class WP_GitHub_Updater {
 		global $wp_filesystem;
 
 		// Move & Activate
-		$proper_destination = WP_PLUGIN_DIR.'/'.$this->config['proper_folder_name'];
+		$proper_destination = WP_theme_DIR.'/'.$this->config['proper_folder_name'];
 		$wp_filesystem->move( $result['destination'], $proper_destination );
 		$result['destination'] = $proper_destination;
-		$activate = activate_plugin( WP_PLUGIN_DIR.'/'.$this->config['slug'] );
+		$activate = activate_theme( WP_theme_DIR.'/'.$this->config['slug'] );
 
 		// Output the update message
-		$fail  = __( 'The plugin has been updated, but could not be reactivated. Please reactivate it manually.', 'github_plugin_updater' );
-		$success = __( 'Plugin reactivated successfully.', 'github_plugin_updater' );
+		$fail  = __( 'The theme has been updated, but could not be reactivated. Please reactivate it manually.', 'github_theme_updater' );
+		$success = __( 'theme reactivated successfully.', 'github_theme_updater' );
 		echo is_wp_error( $activate ) ? $fail : $success;
 		return $result;
 

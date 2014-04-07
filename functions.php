@@ -1,4 +1,35 @@
 <?php
+//add_action( 'init', 'github_updater_wusm_theme_init' );
+function github_updater_wusm_theme_init() {
+
+	if( ! class_exists( 'WP_GitHub_Updater' ) )
+		include_once 'updater.php';
+
+	if( ! defined( 'WP_GITHUB_FORCE_UPDATE' ) )
+		define( 'WP_GITHUB_FORCE_UPDATE', true );
+
+	if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
+		
+		$config = array(
+				'id' => 0,
+				'slug' => plugin_basename( __FILE__ ),
+				'plugin' => plugin_basename(__FILE__),
+				'proper_folder_name' => 'medicine',
+				'api_url' => 'https://api.github.com/repos/coderaaron/medicine',
+				'raw_url' => 'https://raw.github.com/coderaaron/medicine/master',
+				'github_url' => 'https://github.com/coderaaron/medicine',
+				'zip_url' => 'https://github.com/coderaaron/medicine/archive/master.zip',
+				'sslverify' => true,
+				'requires' => '3.0',
+				'tested' => '3.9',
+				'readme' => 'README.md',
+				'access_token' => '',
+		);
+
+		new WP_GitHub_Updater( $config );
+	}
+}
+
 if(!defined('WP_LOCAL_INSTALL')) {
 	require_once( get_template_directory() . '/_/php/acf_fields.php' );
 }

@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php get_header();
+function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+} ?>
 <?php get_sidebar(); ?>
 <div class="slide-wrapper">
 	<div class="slider-wrapper theme-default">
@@ -7,6 +10,8 @@
 			$num_to_show = get_option( 'billboards_to_show', 5 );
 			$args = array( 'post_type' => 'billboard', 'posts_per_page' => $num_to_show );
 			$loop = new WP_Query( $args );
+			
+			add_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10, 5 );
 
 			while ( $loop->have_posts() ) : $loop->the_post();
 				$internal_only = get_field('internal_only');
@@ -23,6 +28,7 @@
 
 			endwhile;
 			wp_reset_postdata();
+			remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>
 		</div>
 	</div>
