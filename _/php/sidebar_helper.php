@@ -85,7 +85,7 @@ class Razorback_Walker_Page_Selective_Children extends Walker_Page {
         if( isset( $args['pages_with_children'][ $page->ID ] ) )
             $css_class[] = 'page_item_has_children';
 
-        if ( !empty($current_page) ) {
+        if ( !empty( $current_page ) ) {
             $_current_page = get_post( $current_page );
             if ( in_array( $page->ID, $_current_page->ancestors ) )
                 $css_class[] = 'current_page_ancestor';

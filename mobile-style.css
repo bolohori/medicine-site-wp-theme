@@ -3,6 +3,16 @@
  * -------------------------------------------------------------------------------
  */
 @media screen and (max-width:960px) {
+    #right-col {
+        padding: 0 35px 70px 35px;
+        width: 396px;
+    }
+
+    #right-col aside {
+        margin-left: auto;
+        margin-right: auto;
+    }
+	
 	#site-title a {
 		margin-top: 22px;
 	}

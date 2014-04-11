@@ -34,6 +34,7 @@ if(!defined('WP_LOCAL_INSTALL')) {
 	require_once( get_template_directory() . '/_/php/acf_fields.php' );
 }
 
+require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
 require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
@@ -375,7 +376,7 @@ add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
 
 // Remove height and width attributes from images so that we can make them responsive
 function remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	if( $size == 'landing-page' )
+	if( $size == 'landing-page' || $size == 'faculty-list' )
 		return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 	return $html;
 }
@@ -423,5 +424,5 @@ add_filter( 'billboard_link_field', function() { return 'link'; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', function() { return 'url'; } );
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
-add_filter( 'media_mentions_link_field', function() { return 'link'; } );
+add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'spotlight_excerpt_text', function() { return ''; } );

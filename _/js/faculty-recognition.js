@@ -53,7 +53,7 @@ jQuery(document).ready(function() {
 		
 	jQuery('.faculty-photo').mousemove(function(e){
 		var x = e.pageX + 1;
-		var y = e.pageY - 195;
+		var y = e.pageY - 23;
 		jQuery("#hover").css('left', x);
 		jQuery("#hover").css('top', y);
 	}).hover(function() {

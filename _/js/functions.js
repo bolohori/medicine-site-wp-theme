@@ -72,4 +72,5 @@ jQuery(document).ready(function($) {
 
 	if($('.main-content').height() < ($(window).height()-526))
 		$('.main-content').height($(window).height()-526);
+
 });

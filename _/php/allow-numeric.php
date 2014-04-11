@@ -31,6 +31,7 @@ class Allow_Numeric_Stubs {
 	// WordPress will add "-2" to numeric stubs as they aren't normally allowed.
 	// Undo that for numeric page slugs when the post is saved.
 	function maybe_fix_stub( $post_ID, $post ) {
+		error_log("debug");
 
 		// Pages only
 		if ( 'faculty_profile' != $post->post_type )

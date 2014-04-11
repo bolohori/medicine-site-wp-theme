@@ -14,13 +14,9 @@ function scripts() {
 	}
 	wp_enqueue_script('custom_functions', get_stylesheet_directory_uri() . '/_/js/functions.js', array( 'jquery' ) );
 
-	
 	wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/js/faculty-recognition.js', array( 'jquery-effects-bounce' ) );
 	
-	// embed the javascript file that makes the AJAX request
-	wp_enqueue_script( 'my-ajax-request', get_stylesheet_directory_uri() . '/_/js/ajax-functions.js', array( 'jquery' ) );
-
 	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
-	wp_localize_script( 'my-ajax-request', 'SOMAJAX', array( 'ajaxurl' => admin_url( 'admin-ajax.php', 'http' ) ) );
+	wp_localize_script( 'custom_functions', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 }
 add_action('wp_enqueue_scripts', 'scripts');

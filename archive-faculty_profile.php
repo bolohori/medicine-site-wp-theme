@@ -48,15 +48,14 @@
 				}
 				$args = array(
 					'post_type' => 'faculty_profile',
-					'orderby' => 'date',
-					'order' => 'desc',
-					'post__in' => $grandchild_ids
+					'orderby'   => 'date',
+					'order'     => 'menu_order',
+					'post__in'  => $grandchild_ids
 				);
 				$my_query = null;
 				$my_query = new WP_Query($args);
 				if( $my_query->have_posts() ) { 
 					while ($my_query->have_posts()) : $my_query->the_post(); ?>
-
 					<a class="faculty-photo" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'faculty-list' ) ?></a>
 				<?php endwhile;
 				} ?>

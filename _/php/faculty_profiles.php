@@ -5,10 +5,7 @@
  */
 
 function get_awards_by_year() {
-	echo "HELLO";
-	if ( !wp_verify_nonce( $_REQUEST['nonce'], "wusm_nonce")) {
-	      exit("Processing error");
-	 }
+	check_ajax_referer( 'wusm-faculty-profiles' );
 
 	$year = $_POST['year']; // getting variables from ajax post
 	// doing ajax stuff

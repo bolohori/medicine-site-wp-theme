@@ -88,7 +88,7 @@ a {color: #336699;}
 					Media Relations</p>
 				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:martinju@wustl.edu">martinju@wustl.edu</a></p>
 				<p style="margin: 0 0 10px 0;">314.286.0105</p>
-					<a target="_blank" href="https://twitter.com/WUSTLmedschool"><img src="http://medicine.wustl.edu/assets/images/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
+					<a target="_blank" href="https://twitter.com/WUSTLmed"><img src="http://medicine.wustl.edu/assets/images/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
 					<a target="_blank" href="https://www.facebook.com/WUSTLmedicine.health"><img src="http://medicine.wustl.edu/assets/images/facebook_icon.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
 				<p><a target="_blank" style="color: #fff; text-decoration: none;" href="http://medicine.wustl.edu">medicine.wustl.edu</a></p>
 			</div>
