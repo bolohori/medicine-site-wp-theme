@@ -18,6 +18,7 @@ function create_billboard_post_type() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-welcome-view-site',
 		'public' => true,

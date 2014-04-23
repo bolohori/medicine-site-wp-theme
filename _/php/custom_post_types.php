@@ -20,6 +20,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-video-alt2',
 		'public' => true,
@@ -55,6 +56,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-list-view',
 		'public' => true,
@@ -96,6 +98,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-testimonial',
 		'public' => true,
@@ -172,6 +175,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-groups',
 		'public' => false,
@@ -212,6 +216,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-awards',
 		'public' => true,
@@ -254,6 +259,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-businessman',
 		'public' => true,
@@ -295,6 +301,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-slides',
 		'public' => true,
@@ -373,6 +380,7 @@ function create_custom_post_types() {
 
 	$args = array(
 		'labels' => $labels,
+		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-feedback',
 		'public' => false,

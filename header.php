@@ -18,7 +18,7 @@
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
 	<meta name="author" content="Washington University School of Medicine in St. Louis">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> -->
 
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_/img/favicon.ico">
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/_/img/apple-touch-icon.png">
@@ -32,6 +32,12 @@
 	<![endif]-->
 
 	<?php
+	if ( get_field('page_specific_css') ) { ?>
+	<style>
+	<?php the_field('page_specific_css'); ?>
+	
+</style>
+	<?php }
 	/* Always have wp_head() just before the closing </head>
 	 * tag of your theme, or you will break many plugins, which
 	 * generally use this hook to add elements to <head> such
@@ -49,12 +55,12 @@
 		<div class="wrapper">
 			<nav id="utility-bar" class="clearfix">
 				<ul id="utility-nav">
-					<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://wustl.edu/']);" href="http://wustl.edu/">WUSTL</a></li>
+					<li><a onclick="javascript:_gaq.push(['_trackEvent','outbound-header','http://www.wustl.edu']);" href="http://wustl.edu/">WUSTL</a></li>
 					<li class="last-child"><a href="/directory">Directories</a></li>
 				</ul>
 			</nav>
 
-			<div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>
+			<?php /*<div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>*/ ?>
 
 			<div id="site-title"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" alt="Washington University School of Medicine in St. Louis"/></a></div>
 			<?php get_search_form(); ?>

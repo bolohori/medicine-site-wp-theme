@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.04.11.6
+Version:	14.04.22.1
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,7 +47,7 @@ img.size-full {
 }
 
  .wp-caption { 
- 	width: 100%; 
+	width: 100%; 
  }
 
 
@@ -120,18 +120,18 @@ h6 {
 }
 
 article blockquote {
-    margin: 30px 0 45px 95px;
-    padding-left: 20px;
-    border-left: 3px solid #900;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 32px;
+	margin: 30px 0 45px 95px;
+	padding-left: 20px;
+	border-left: 3px solid #900;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 32px;
 }
 
 article blockquote p {
-    line-height: 32px;
-    margin-bottom: 45px;
+	line-height: 32px;
+	margin-bottom: 45px;
 }
 
 article .wp-caption {
@@ -153,19 +153,16 @@ article .alignright {
 }
 
 article .wp-caption.alignright, article img.alignright {
-	margin-left: 27px;
-}
-
-article .wp-caption.alignright p.wp-caption-text, article img.alignright {
-	margin-bottom: 30px;
+	margin-left: 20px;
 }
 
 article .wp-caption.alignleft, article img.alignleft {
-	margin-right: 27px;
+	margin-right: 20px;
 }
 
+article .wp-caption.alignright p.wp-caption-text, article img.alignright,
 article .wp-caption.alignleft p.wp-caption-text, article img.alignleft {
-	margin-bottom: 30px;
+	margin-bottom: 4px;
 }
 
 article p.wp-caption-text {
@@ -370,6 +367,10 @@ header {
 	color: #717171;
 }
 
+.line-height-16 {
+	line-height: 16px;
+}
+
 /*
  * Forms
  */
@@ -388,7 +389,6 @@ input {
 	margin: 10px 0;
 	padding: 0;
 	clear: right;
-	float: left;
 }
 
 .button {
@@ -671,6 +671,7 @@ article blockquote {
 }
 
 .callout {
+	box-sizing: border-box;
 	border: 1px solid #ddd;
 	background: #fff;
 	margin: 20px 0;
@@ -752,116 +753,6 @@ td p {
 
 td p:last-child {
 	margin-bottom: 0;
-}
-
-/* Right column
--------------------------------------------------------------------------------*/
-
-#right-col {
-	float: left;
-	padding: 45px 10px 0 0;
-	background-color: #f4f4f4;
-}
-
-#right-col aside {
-	width: 188px;
-	padding: 25px;
-	margin-bottom: 20px;
-	background-color: #fff;
-	border: 1px solid #e5e5e5;
-	border-radius: 5px;
-}
-
-#right-col aside h2 {
-	font-size: 17px;
-	border-bottom: 1px solid #d5d2d2;
-	padding-bottom: 14px;
-}
-
-#right-col aside li {
-	margin-top: 24px;
-}
-
-#right-col aside a {
-	color: #900;
-}
-
-/* Sidebars, YO!
--------------------------------------------------------------------------------*/
-.raw-sidebar,
-.sidebar {
-	float: right;
-	font-size: 12px;
-	line-height: 17px;
-	margin-top: 30px;
-	padding: 20px;
-	width: 200px;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	background: #fff;
-	margin-bottom: 30px;
-}
-
-.sidebar p {
-	font-weight: bold;
-	padding-bottom: 0;
-	width: auto;
-	font-size: 17px;
-}
-
-.sidebar a {
-	font-size: 14px;
-}
-
-.sidebar li {
-	padding: 8px 0;
-	line-height: 22px;
-}
-
-.sidebar-img {
-	padding-right: 6px;
-}
-
-.sidebar-heart-list li {
-	line-height: 17px;
-	margin-top: 10px;
-}
-
-.sidebar-outlook {
-	padding: 0;
-	width: 240px;
-}
-
-.sidebar-outlook p {
-	margin: 20px;
-}
-
-p.sidebar-small {
-	font-size: 14px;
-	font-weight: normal;
-}
-
-.sidebar-outlook-header {
-	margin-bottom: 160px;
-}
-
-a.sidebar-outlook-link {
-	border-radius: 0 0 8px 8px;
-	padding: 10px 0;
-	background: #f1f0f0;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YxZjBmMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlNWU1ZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top,  #f1f0f0 0%, #e5e5e5 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f0f0), color-stop(100%,#e5e5e5));
-	background: -webkit-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
-	background: -o-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
-	background: -ms-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
-	background: linear-gradient(to bottom,  #f1f0f0 0%,#e5e5e5 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f0f0', endColorstr='#e5e5e5',GradientType=0 );
-	font-size: 12px;
-	font-weight: bold;
-	width: 100%;
-	display: inline-block;
-	text-align: center;
 }
 
 /* Footer styles
@@ -1652,7 +1543,7 @@ article.search-results {
 
 .page-template-admissions-php .intro {
 	position: relative;
-	padding-top: 10px;
+	padding-top: 45px;
 	text-align: center;
 	background: #fafafa;
 	-webkit-box-shadow: 0 0 6px 6px #e0dfdf;
@@ -2319,101 +2210,197 @@ background: url(_/img/f_top.png);
 	margin-bottom: 0;
 }
 
-/* Right column
+/* Sidebars, YO!
 -------------------------------------------------------------------------------*/
+.raw-sidebar,
+.sidebar {
+	font-size: 12px;
+	line-height: 17px;
+	margin-top: 30px;
+	width: 200px;
+	margin-bottom: 30px;
+}
+
+.sidebar {
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	background: #fff;
+	padding: 20px;
+	width: 198px;
+}
+
+.raw-sidebar {
+	width: 238px;
+}
+
+/*.raw-sidebar img {
+	width: 100%;
+}*/
+
+.sidebar p {
+	font-weight: bold;
+	padding-bottom: 0;
+	width: auto;
+	font-size: 17px;
+}
+
+.sidebar a {
+	font-size: 14px;
+}
+
+.sidebar li {
+	padding: 8px 0;
+	line-height: 22px;
+}
+
+.sidebar-img {
+	padding-right: 6px;
+}
+
+.sidebar-heart-list li {
+	line-height: 17px;
+	margin-top: 10px;
+}
+
+.sidebar-outlook {
+	padding: 0;
+	width: 240px;
+}
+
+.sidebar-outlook p {
+	margin: 20px;
+}
+
+p.sidebar-small {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.sidebar-outlook-header {
+	margin-bottom: 160px;
+}
+
+a.sidebar-outlook-link {
+	border-radius: 0 0 8px 8px;
+	padding: 10px 0;
+	background: #f1f0f0;
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YxZjBmMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlNWU1ZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  #f1f0f0 0%, #e5e5e5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f0f0), color-stop(100%,#e5e5e5));
+	background: -webkit-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
+	background: -o-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
+	background: -ms-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
+	background: linear-gradient(to bottom,  #f1f0f0 0%,#e5e5e5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f0f0', endColorstr='#e5e5e5',GradientType=0 );
+	font-size: 12px;
+	font-weight: bold;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
 
 #right-col {
-    float: left;
-    padding: 45px 10px 0 0;
-    background-color: #f4f4f4;
+	float: left;
+	padding: 45px 10px 0 0;
+	background-color: #f4f4f4;
+}
+
+.non-landing-page #right-col {
+	padding: 130px 10px 0 0;
 }
 
 #right-col aside {
-    width: 238px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
+	width: 238px;
+	margin-bottom: 20px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
 }
 
 #right-col aside h2 {
-    font-size: 17px;
-    border-bottom: 1px solid #d5d2d2;
-    padding-bottom: 12px;
+	width: 100%;
+	font-size: 17px;
+	border-bottom: 1px solid #d5d2d2;
+	padding-bottom: 12px;
 }
 
 #right-col aside.links li {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 #right-col aside a {
-    color: #900;
+	color: #900;
 }
 
 #right-col aside a:hover {
-    color: #717171;
+	color: #717171;
 }
 
 #right-col aside .secondary {
-    font-size: 12px;
-    color: #a0a0a0;
-    line-height: 17px;
+	font-size: 12px;
+	color: #a0a0a0;
+	line-height: 17px;
 }
 
 #right-col aside p.secondary {
-    margin: 20px 0 25px 0;
+	margin: 20px 0 25px 0;
+}
+
+#right-col aside.single-link {
+	padding: 20px;
+	width: 198px;
 }
 
 #right-col aside.links {
-    padding: 5px 20px 25px 20px;
-    width: 198px;
+	padding: 5px 20px 25px 20px;
+	width: 198px;
 }
 
 #right-col aside.links h2 {
-    padding-top: 20px;
+	padding-top: 20px;
 }
 
 #right-col aside img {
-    border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
 }
 
 #right-col aside .sidebar-body {
-    padding: 20px 20px 0 20px;
+	padding: 20px 20px 0 20px;
 }
 
 #right-col aside.image-and-text h2 {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 #right-col aside.image-and-text p {
-    margin-bottom: 20px;
-    line-height: 23px;
+	margin-bottom: 20px;
+	line-height: 23px;
 }
 
 #right-col aside.image-and-text ul {
-    list-style: disc;
-    margin-left: 40px;
-    margin-bottom: 20px;
+	list-style: disc;
+	margin-left: 40px;
+	margin-bottom: 20px;
 }
 
 #right-col aside.image-and-text ol {
-    margin-left: 40px;
-    margin-bottom: 20px;
+	margin-left: 40px;
+	margin-bottom: 20px;
 }
 
 #right-col aside a.opt-link {
-    display: block;
-    text-align: center;
-    padding: 12px 0;
-    text-transform: uppercase;
-    font-weight: bold;
-    background-color: #f1f0f0;
-    border-radius: 0 0 5px 5px;
+	display: block;
+	text-align: center;
+	padding: 12px 0;
+	text-transform: uppercase;
+	font-weight: bold;
+	background-color: #f1f0f0;
+	border-radius: 0 0 5px 5px;
 }
 
 #right-col aside a.opt-link:hover {
-    color: #900;
-    background-color: #dadada;
+	color: #900;
+	background-color: #dadada;
 }
 
 
@@ -2430,31 +2417,3 @@ background: url(_/img/f_top.png);
 		display: none !important;
 	}
 }
-
-/*
-...:::::,.....................,:::::,...
-...:IIII?+~::::::::::::::::::=?IIII:,...
-...:IIIII:IIIIIIIIIIIIIIIIIIIIIIIII:,...
-...:III::::~IIIIIII:IIIIIIII::::=II:,...
-...:IIII:::IIIIIII:::IIIIIIII::?III:,...
-...:~I7IIIIIIIIIII:I??IIIIIIIII77?~:,...
-...:::::::,:~=?IIIIIII?+=~::::::::::,...
-...:::::::::::::::::::::::::::::::::,...
-...::::::::7,IIIIIIIIIIII7,7::::::::,...
-...:IIII7=:7,IIIIIIIIIIII7,7=:77III:,...
-...:IIIII=~7,IIIIIIIIIIII7,7=:IIIII:,...
-...:IIIII=~7,IIIIIIIIIIII7,7=:IIIII:,...
-...::::~+=~7,IIIIIIIIIIII7,7=:=:,:::,...
-...::::::::7::::::,7:::::::7=:::::::,...
-...:::::::~7777777I+77777777=:::::::,...
-..,::,::::::::::::,I,::::::::::::,::,...
-..,:IIIII=I777I?+++=+++?I777IIIIIII:,...
-..,:IIIII:IIIIIIIII~=IIIIIIII=:IIII:,...
-...:III?:~::IIIIIII::IIIIII?I+I?~II:....
-...::III:~,IIIII::=+7:::IIII++I:II:.....
-.....::+I:IIIIIIII:II?IIIIIIIII?::......
-........:::+IIIII~:II:IIIII?:::.........
-...........,:::?III:=II?:::.............
-................,:::::,.................
-........................................
- */

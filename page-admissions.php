@@ -89,7 +89,7 @@ if (have_posts()) :
 		<div id="admissions-resources" class="admission-footer clearfix">
 			<div class="wrapper">
 				<ul class="clearfix">
-					<li class="list-title">Admission Resources</li>
+					<li class="list-title">Admissions Resources</li>
 					<li><a target="_blank" href="http://medicine.wustl.edu/directory/academic-departments">Academic Departments &amp; Programs</a></li>
 					<li><a target="_blank" href="http://bulletinoftheschoolofmedicine.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
 					<li><a target="_blank" href="https://cme.wustl.edu/">Continuing Medical Education</a></li>

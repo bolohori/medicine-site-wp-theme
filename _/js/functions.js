@@ -25,8 +25,13 @@ jQuery(document).ready(function($) {
 	/* trigger when page is ready */
 	var $window = $(window);
 
-	if( $('#left-col').height() > $('#main article').height() )
+	if( $('#left-col').height() > $('#main article').height() ) {
 		$('#main article').height($('#left-col').height() + 123);
+	} else if( $('#right-col').height() > $('#main article').height() ) {
+		$('#main article').height($('#right-col').height() + 123);
+	} else if( $(window).height() > $('#main article').height() + 640 ) {
+		$('#main article').height($(window).height() - 640 );
+	}
 
 	// your functions go here
 	if ( $('#slider')[0] ) {

@@ -1,4 +1,22 @@
 <?php
+// ***************************************
+// "OH SHIT" URL to reactivate twentyfourteen
+// https://medicine-test.wustl.edu/wp-admin/themes.php?action=activate&stylesheet=twentyfourteen&_wpnonce=60fe37640f
+// ***************************************
+
+// ***************************************
+// Google Analytics template
+// onclick="javascript:_gaq.push(['_trackEvent','outbound-<LABEL>','http://<URL OR LABEL>']);"
+// ***************************************
+
+//add_action( 'admin_init', 'hide_admin_extras' );
+function hide_admin_extras() {
+	if( ! in_array( 'acf_5443' , $current = get_user_meta( get_current_user_id(), 'metaboxhidden_page' ) ) ) {
+		$current[] = 'acf_5443';
+		get_user_meta( get_current_user_id(), 'metaboxhidden_page',  $current);
+	}
+}
+
 //add_action( 'init', 'github_updater_wusm_theme_init' );
 function github_updater_wusm_theme_init() {
 
@@ -30,7 +48,7 @@ function github_updater_wusm_theme_init() {
 	}
 }
 
-if(!defined('WP_LOCAL_INSTALL')) {
+if( ! defined('WP_LOCAL_INSTALL') ) {
 	require_once( get_template_directory() . '/_/php/acf_fields.php' );
 }
 
@@ -117,14 +135,14 @@ function theme_init() {
 		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
 
 		// Add Sample Page to the Header menu
-		$page = get_page_by_title('Sample Page');
-		$menu_item = array(
+		//$page = get_page_by_title('Sample Page');
+		/*$menu_item = array(
 			'menu-item-object-id' => $page->ID,
 			'menu-item-object'	=> 'page',
 			'menu-item-type'	=> 'post_type',
 			'menu-item-status'	=> 'publish'
-		);
-		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
+		);*/
+		//wp_update_nav_menu_item( $menu_id, 0, $menu_item );
 
 		// Assign Header menu to the Header Menu theme location
 		$locations = get_theme_mod('nav_menu_locations');
@@ -138,7 +156,7 @@ function theme_init() {
 	add_image_size( 'faculty-list', 80, 112 );
 	add_image_size( 'in-the-news', 340, 250 );
 	add_image_size( 'spotlight-image', 147, 200, true );
-	add_image_size( 'outlook-thumb', 240, 220 );
+	add_image_size( 'outlook-thumb', 240, 9999 );
 
 	// Image sizes (Settings / Media)
 	update_option('medium_size_w', 225);
@@ -267,21 +285,26 @@ function customize_mce( $init ) {
 	/* Register accordion styles */
 	$style_formats = array(
 		array(
-			'title'	 => 'Main content callout',
-			'block'	 => 'div',
+			'title'	  => 'Main content callout',
+			'block'	  => 'div',
 			'classes' => 'callout',
-			'wrapper' => true
+			'wrapper' => 'true'
 		),
 		array(
-			'title'	 => 'Normal width (for full width pages)',
+			'title'	   => 'Normal width (for full width pages)',
 			'selector' => 'p',
-			'classes' => 'normal-width',
+			'classes'  => 'normal-width',
 		),
 		array(
 			'title'    => 'Disclaimer',
-			'block' => 'div',
+			'block'    => 'div',
 			'classes'  => 'disclaimer',
-			'wrapper' => 'true'
+			'wrapper'  => 'true'
+		),
+		array(
+			'title'    => 'Line height 16',
+			'block'    => 'p',
+			'classes'  => 'line-height-16',
 		),
 	);
 
@@ -309,7 +332,7 @@ function searchfilter($query) {
 	}
 	return $query;
 }
-add_filter('pre_get_posts','searchfilter');
+//add_filter('pre_get_posts','searchfilter');
 
 function wp_query_posts_where( $where, &$wp_query ) {
 	global $wpdb;
@@ -373,7 +396,6 @@ function tcb_add_tinymce_buttons( $tinyrowthree ) {
 }
 add_filter( 'mce_buttons_3', 'tcb_add_tinymce_buttons' );
 
-
 // Remove height and width attributes from images so that we can make them responsive
 function remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	if( $size == 'landing-page' || $size == 'faculty-list' )
@@ -416,13 +438,31 @@ function admin_favicon() {
 }
 add_action('admin_head', 'admin_favicon');
 
-add_filter( 'in_focus_link_text', function() { return '<b>See photos</b>'; } );
+add_filter( 'in_focus_link_text', 'in_focus_link_text_function', 10, 1 );
+add_filter( 'in_focus_link_field', 'in_focus_link_url_function', 10, 1 );
 add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } );
 add_filter( 'in_focus_date_text', function() { return ''; } );
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
-add_filter( 'announcement_link_field', function() { return 'url'; } );
+add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'spotlight_excerpt_text', function() { return ''; } );
+
+function in_focus_link_text_function( $id ) {
+	return ( $external_link = get_field( 'external_link' ) ) ? "<b>" . $external_link['title'] . "</b>" : '<b>See photos</b>';
+}
+
+function in_focus_link_url_function( $id ) {
+	return ( $external_link = get_field( 'external_link' ) ) ? 'external_link' : '';
+}
+
+function announcement_link_url_function( $id ) {
+	return ( $external_link = get_field( 'url' ) ) ? 'url' : '';
+}
+
+// Remove <p> tag from imgs
+// http://wordpress.stackexchange.com/questions/7090/stop-wordpress-wrapping-images-in-a-p-tag
+add_filter('the_content', function( $content ) { return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content); });
+add_filter('acf/format_value_for_api/type=wysiwyg', function( $value ) { return preg_replace('/<p(.)*>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\2\3', $value); }, 10, 3);

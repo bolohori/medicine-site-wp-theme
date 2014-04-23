@@ -24,7 +24,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a $target href='$url' alt='$title'>" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
+				echo "<a $target href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 
 			endwhile;
 			wp_reset_postdata();
@@ -43,10 +43,11 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 				$images = "";
 				$captions = "";
 				while ( $loop->have_posts() ) : $loop->the_post();
+					$url = get_field( 'url' );
 					$images .= "<img src='";
 					$images .= get_field( 'thumbnail' ) ? get_field( 'thumbnail' ) : get_stylesheet_directory_uri() . "/_/img/itn-default.png'";
 					$images .= "' alt='' title='#htmlcaption" . $i . "' />\n";
-					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a target='_blank' href='" . get_field( 'url' ) . "'><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
+					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a target='_blank' href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$url']);\"><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
@@ -71,13 +72,13 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 						echo "<a rel='prettyPhoto' href='" . get_field('video') . "'>Watch</a> | ";
 					if( get_field('audio') != '') {
 						$audio_out .= wp_audio_shortcode(array('src'=>get_field('audio')));
-						echo "<a data-id='mep_$j' href='#' class='audio-file'>Listen</a> | ";
+						echo "<a data-id='mep_$j' href='javascript:return false;' class='audio-file'>Listen</a> | ";
 						$j++;
 					}
 					$link = get_field('url');
 					$target = $link['new_window'] ? "" : "target='_blank'";
 					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 					echo "<a $target href='$url'>Read Article</a></p></li>";
+ 					echo "<a $target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url]);\">Read Article</a></p></li>";
 					$i++;
 					if($i==3)
 						echo "</ul>\n<ul class='news-list'>";
@@ -111,7 +112,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 	<div class="wrapper">
 		<div class="spotlight-left">
 		<h1>National Leadership</h1>
-		<p class="spotlight-desc">Engaged in their fields as well as communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of medicine and health.</p>
+		<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of health and medicine.</p>
 <?php
 				$i = 0;
 				$slider = "";
@@ -137,8 +138,9 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
 					if ( $link['url'] !== null ) {
+						$url = $link['url'];
 						$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
-						$read_more_link = "<a$target href='" . $link['url'] . "'>Read More</a>";
+						$read_more_link = "<a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url]);\">Read More</a>";
 					}
 
 					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong><p>$content</p>$read_more_link</div>";
