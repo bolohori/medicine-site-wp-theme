@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Base theme for School of Medicine sites
 Author: 	 Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	14.04.22.1
+Version:	14.04.24.0
 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -120,7 +120,9 @@ h6 {
 }
 
 article blockquote {
-	margin: 30px 0 45px 95px;
+	/*margin: 0 40px 20px 40px;*/
+	/*margin: 30px 0 45px 95px;*/
+	margin: 30px 0 45px 60px;
 	padding-left: 20px;
 	border-left: 3px solid #900;
 	font-family: 'Open Sans', sans-serif;
@@ -162,7 +164,7 @@ article .wp-caption.alignleft, article img.alignleft {
 
 article .wp-caption.alignright p.wp-caption-text, article img.alignright,
 article .wp-caption.alignleft p.wp-caption-text, article img.alignleft {
-	margin-bottom: 4px;
+	/*margin-bottom: 4px;*/
 }
 
 article p.wp-caption-text {
@@ -584,6 +586,7 @@ article {
 article.giving-notch {
 	margin-top: -58px;
 	padding-top: 24px;
+	padding-bottom: 0;
 	background: none;
 }
 
@@ -594,9 +597,6 @@ article.giving-notch h1{
 	padding-left: 35px;
 	width: 485px;
 	background: #eaeaea;
-	-webkit-box-shadow: 0 -5px 10px 0 #DEDEDE;
-	-moz-box-shadow: 0 -5px 10px 0 #DEDEDE;
-	box-shadow: 0 -5px 10px 0 #DEDEDE;
 }
 
 article.notch {
@@ -652,6 +652,10 @@ article a:hover {
 	color: #555;
 }
 
+p + ul {
+	margin-top: -20px;
+}
+
 article ul {
 	list-style-type: disc;
 	margin-left: 40px;
@@ -664,10 +668,6 @@ article ol {
 article ul li, article ol li {
 	line-height: 25px;
 	margin-bottom: 10px;
-}
-
-article blockquote {
-	margin: 0 40px 20px 40px;
 }
 
 .callout {
@@ -729,7 +729,7 @@ th {
 
 th, td {
 	padding: 10px;
-	border-left: 1px solid #f4f4f4;
+	border-left: 1px solid #c9c9c9;
 }
 
 thead td {
