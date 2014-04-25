@@ -234,10 +234,6 @@ header {
 	margin: 10px;
 }
 
-.ie7 #header-logo {
-	padding-bottom: 15px;
-}
-
 #utility-bar {
 	float: right;
 }
@@ -619,13 +615,14 @@ article h2 {
 	font-size: 21px;
 /*	margin-top: 45px;
 	margin-bottom: 15px;*/
-	margin: 15px 0;
+	margin: 15px 0 5px 0;
 }
 
 article h3 {
 	font-size: 17px;
-	margin-top: 50px;
-	margin-bottom: 15px;
+	/*margin-top: 50px;*/
+	/*margin-bottom: 15px;*/
+	margin: 15px 0 5px 0;
 }
 
 article h4 {
@@ -671,6 +668,7 @@ article ul li, article ol li {
 }
 
 .callout {
+	*behavior: url(boxsizing.htc);
 	box-sizing: border-box;
 	border: 1px solid #ddd;
 	background: #fff;
@@ -856,11 +854,11 @@ footer a {
 }
 
 .ie7 .sticky-footer {
-	margin-left: -960px;
+	margin-left: -100%;
 }
 
 .sticky-footer li {
-	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; *behavior: url(boxsizing.htc);
 }
 
 .sticky-footer a {
@@ -874,8 +872,10 @@ footer a {
 
 .sticky-top,
 .sticky-top li {
-	height: 38px;
-	background: #eeeeee;
+	/*height: 38px;*/
+	zoom: 1;
+	height: auto;
+	background: #c9c9c9;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyJSIgc3RvcC1jb2xvcj0iI2VlZWVlZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iI2M5YzljOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
 	background: -moz-linear-gradient(top,  #eeeeee 2%, #c9c9c9 98%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,#eeeeee), color-stop(98%,#c9c9c9));
@@ -883,6 +883,7 @@ footer a {
 	background: -o-linear-gradient(top,  #eeeeee 2%,#c9c9c9 98%);
 	background: -ms-linear-gradient(top,  #eeeeee 2%,#c9c9c9 98%);
 	background: linear-gradient(to bottom,  #eeeeee 2%,#c9c9c9 98%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#c9c9c9',GradientType=0 );
 }
 
 .sticky-top li {
@@ -898,6 +899,10 @@ footer a {
 
 li.sticky-top-last {
 	width: 34%;
+}
+
+.ie7 .sticky-top li {
+	width: 33%;
 }
 
 .sticky-top li:hover {
@@ -1250,10 +1255,6 @@ article.search-results {
 	font-weight: bold;
 	font-style: italic;
 	font-size: 11px;
-}
-
-.ie7 .news-citation {
-	margin-left: -140px !important;
 }
 
 #news-slider .nivo-caption a:hover {
