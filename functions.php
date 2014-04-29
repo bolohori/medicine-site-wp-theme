@@ -230,7 +230,7 @@ if ( ! function_exists( 'enqueue_wusm_styles' ) ) {
 		}
 	}
 }
-add_action( 'wp_head', 'enqueue_styles' );
+add_action( 'wp_head', 'enqueue_wusm_styles' );
 
 /*
  * Add "Clear" button to ACF Location fields
@@ -392,9 +392,6 @@ add_shortcode( 'change_background_to', 'wusm_change_bg' );
 if ( !function_exists( 'add_tinymce_buttons' ) ) {
 	function add_tinymce_buttons( $tinyrowthree ) {
 		$tinyrowthree[] = 'fontsizeselect';
-		$tinyrowthree[] = 'hr';
-		$tinyrowthree[] = 'subscript';
-		$tinyrowthree[] = 'supsuperscript';
 		return $tinyrowthree;
 	}
 }
