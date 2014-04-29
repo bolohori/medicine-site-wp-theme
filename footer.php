@@ -41,22 +41,22 @@
 		<div class="wrapper">
 			<ul>
 				<a target="_blank" href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://wuphysicians.wustl.edu/directory.aspx']);"><li>Find a Doctor</li></a>
-				<a href="<?php echo page_by_name('Academic Departments &amp; Programs');?>"><li>Departments &amp; Programs</li></a>
-				<a href="<?php echo page_by_name('Admissions');?>"><li class="sticky-top-last">Admissions</li></a>
+				<a href="<?php echo get_permalink( get_page_by_title( 'Academic Departments &amp; Programs' ) );?>"><li>Departments &amp; Programs</li></a>
+				<a href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>"><li class="sticky-top-last">Admissions</li></a>
 			</ul>
 		</div>
 	</div>
 
 	<div class="wrapper">
 		<ul class="sticky-bottom">
-			<li class="first-child"><a href="<?php echo page_by_name('Information for Prospective Students');?>">Prospective Students</a></li><li>
-			<a href="<?php echo page_by_name('Information for Current Students');?>">Current Students</a></li><li>
-			<a href="<?php echo page_by_name('Information for Faculty');?>">Faculty</a></li><li>
-			<a href="<?php echo page_by_name('Information for Staff');?>">Staff</a></li><li class='responsive-break'>
-			<a href="<?php echo page_by_name('Information for Alumni & Friends');?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
-			<a href="<?php echo page_by_name('Information for Administrators');?>">Administrators</a></li><li>
-			<a href="<?php echo page_by_name('Information for Researchers');?>">Researchers</a></li><li class="last-child">
-			<a href="<?php echo page_by_name('Information for Job Seekers');?>">Job Seekers</a></li><li class="last-child announcements">
+			<li class="first-child"><a href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li><li>
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li><li>
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li><li>
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li><li class='responsive-break'>
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li><li>
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li><li class="last-child">
+			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li><li class="last-child announcements">
 			<a href="javascript:;">Announcements</a></li>
 		</ul>
 	</div>  

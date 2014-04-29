@@ -101,9 +101,9 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 	<div class="wrapper">
 		<h1>Advancing&nbsp;Health, Enriching&nbsp;Lives</h1>
 		<p>Connecting some of the brightest minds in human health, Washington University School of Medicine is a national leader in medical research, teaching and patient care. An outstanding faculty and rigorous curriculum prepare some of the world's most promising students to become the health care leaders of tomorrow.</p>
-		<a class="hero-button" href="<?php echo page_by_name('Education'); ?>">education</a>
-		<a class="hero-button" href="<?php echo page_by_name('Patient Care'); ?>">patient care</a>
-		<a class="hero-button" href="<?php echo page_by_name('Research'); ?>">research</a>
+		<a class="hero-button" href="<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>">education</a>
+		<a class="hero-button" href="<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>">patient care</a>
+		<a class="hero-button" href="<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>">research</a>
 	</div>
 </div>
 
