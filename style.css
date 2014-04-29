@@ -668,7 +668,7 @@ article ul li, article ol li {
 }
 
 .callout {
-	*behavior: url(boxsizing.htc);
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	box-sizing: border-box;
 	border: 1px solid #ddd;
 	background: #fff;
@@ -774,6 +774,10 @@ footer {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3c5aa', endColorstr='#c4b8a2',GradientType=0 );
 }
 
+.ie7 footer {
+	padding-bottom: 123px;
+}
+
 footer li {
 	padding-bottom: 4px;
 }
@@ -858,7 +862,7 @@ footer a {
 }
 
 .sticky-footer li {
-	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; *behavior: url(boxsizing.htc);
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; *behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 }
 
 .sticky-footer a {
@@ -902,7 +906,7 @@ li.sticky-top-last {
 }
 
 .ie7 .sticky-top li {
-	width: 33%;
+	width: 317px;
 }
 
 .sticky-top li:hover {
@@ -946,6 +950,12 @@ li.sticky-top-last {
 
 .sticky-bottom a.last-child li {
 	border: none;
+}
+
+.ie7 .sticky-bottom li.announcments {
+	border-left: 1px solid #666 !important;
+	border-right: 1px solid #666 !important;
+	background: #666;
 }
 
 .sticky-bottom li.announcements {
@@ -1164,6 +1174,7 @@ article.search-results {
 #slider {
 	width: 1200px;
 	margin: 0 auto;
+	/*z-index: 1;*/
 }
 
 .nivo-controlNav {
@@ -1420,6 +1431,7 @@ article.search-results {
 }
 
 .spotlight-archive {
+	clear: both;
 	letter-spacing: 1px;
 	font-weight: bold;
 	font-size: 11px;
@@ -1438,8 +1450,7 @@ article.search-results {
 }
 
 .ie7 .spotlight-slider-wrapper {
-	width: 456px;
-	height: 198px;
+	height: 236px;
 }
 
 #spotlight-slider {
@@ -1451,6 +1462,7 @@ article.search-results {
 }
 
 #spotlight-slider .nivo-caption {
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	top: 0;
 	left: 157px;
 	padding: 32px 45px;
@@ -1476,6 +1488,11 @@ article.search-results {
 	/*width: 210px;*/
 	width: 100%;
 	line-height: 20px;
+}
+
+.ie7 .nivo-control {
+	text-indent: -30px !important;
+	overflow: hidden;
 }
 
 .spotlight-slider-wrapper .nivo-controlNav a {

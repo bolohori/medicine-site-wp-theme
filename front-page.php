@@ -133,7 +133,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 					}
 
 					$title = get_the_title();
-					$content = get_the_content();
+					$content = "<p>".get_the_content()."</p>";
 
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
@@ -143,7 +143,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 						$read_more_link = "<a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url]);\">Read More</a>";
 					}
 
-					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong><p>$content</p>$read_more_link</div>";
+					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";
 					$i++;
 				endwhile;
 				$captions .= "<div class='mobile-archive spotlight-archive'><a href='/news/leaders'>MORE NATIONAL LEADERS&raquo;</a></div>";

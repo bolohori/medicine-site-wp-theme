@@ -58,39 +58,19 @@ require_once( get_template_directory() . '/_/php/load_js.php' );
 require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
 
 add_action( 'init', 'wusm_head_cleanup' );
-add_filter( 'the_generator', 'strip_rss_version');
-/*********************
-WP_HEAD GOODNESS
-The default wordpress head is a mess. Let's clean it up by
-removing all the junk we don't need.
-*********************/
 function wusm_head_cleanup() {
-	// category feeds
-	remove_action( 'wp_head', 'feed_links_extra', 3 );
-	// post and comment feeds
-	remove_action( 'wp_head', 'feed_links', 2 );
-	// EditURI link
 	remove_action( 'wp_head', 'rsd_link' );
-	// windows live writer
 	remove_action( 'wp_head', 'wlwmanifest_link' );
-	// index link
-	remove_action( 'wp_head', 'index_rel_link' );
-	// previous link
-	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-	// start link
-	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-	// links for adjacent posts
-	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-	// WP version
 	remove_action( 'wp_head', 'wp_generator' );
-	// remove WP version from css
-	add_filter( 'style_loader_src', 'remove_wp_ver_css_js', 9999);
-	// remove Wp version from scripts
-	add_filter( 'script_loader_src', 'remove_wp_ver_css_js', 9999);
+	remove_action( 'wp_head', 'start_post_rel_link' );
+	remove_action( 'wp_head', 'index_rel_link' );
+	remove_action( 'wp_head', 'adjacent_posts_rel_link' );
+	remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
 	// Set default timezone
 	update_option( 'timezone_string', 'America/Chicago' );
-} /* end bones head cleanup */
+}
+
 // Remove WP version from scripts
 function remove_wp_ver_css_js( $src ) {
 	if ( strpos( $src, 'ver=' ) )
@@ -98,7 +78,7 @@ function remove_wp_ver_css_js( $src ) {
 	return $src;
 }
 // remove WP version from RSS
-function strip_rss_version() { return ''; }
+add_filter( 'the_generator', function() { return ''; });
 
 /**
  * Customize the footer in admin area
@@ -133,16 +113,6 @@ function theme_init() {
 			'menu-item-status' => 'publish',
 		);
 		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
-
-		// Add Sample Page to the Header menu
-		//$page = get_page_by_title('Sample Page');
-		/*$menu_item = array(
-			'menu-item-object-id' => $page->ID,
-			'menu-item-object'	=> 'page',
-			'menu-item-type'	=> 'post_type',
-			'menu-item-status'	=> 'publish'
-		);*/
-		//wp_update_nav_menu_item( $menu_id, 0, $menu_item );
 
 		// Assign Header menu to the Header Menu theme location
 		$locations = get_theme_mod('nav_menu_locations');
@@ -219,10 +189,7 @@ function cc_hide_admin_bar() {
 }
 add_action('set_current_user', 'cc_hide_admin_bar');
 
-function custom_excerpt_length( $length ) {
-	return 20;
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+add_filter( 'excerpt_length', function() { return 20; }, 999 );
 
 function page_by_name($page) {
 	if (get_page_by_title( $page ) != NULL)
@@ -322,17 +289,6 @@ function new_excerpt_more( $more ) {
 	return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>';
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
-
-/*
- * Limit search results to only posts and pages
- */
-function searchfilter($query) {
-	if ($query->is_search && !is_admin() ) {
-		$query->set('post_type',array('page'));
-	}
-	return $query;
-}
-//add_filter('pre_get_posts','searchfilter');
 
 function wp_query_posts_where( $where, &$wp_query ) {
 	global $wpdb;
