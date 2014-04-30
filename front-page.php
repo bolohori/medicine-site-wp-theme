@@ -101,9 +101,9 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 	<div class="wrapper">
 		<h1>Advancing&nbsp;Health, Enriching&nbsp;Lives</h1>
 		<p>Connecting some of the brightest minds in human health, Washington University School of Medicine is a national leader in medical research, teaching and patient care. An outstanding faculty and rigorous curriculum prepare some of the world's most promising students to become the health care leaders of tomorrow.</p>
-		<a class="hero-button" href="<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>">education</a>
-		<a class="hero-button" href="<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>">patient care</a>
-		<a class="hero-button" href="<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>">research</a>
+		<a class="hero-button" onclick="javascript:_gaq.push(['_trackEvent','hero-education','<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>']);" href="<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>">education</a>
+		<a class="hero-button" onclick="javascript:_gaq.push(['_trackEvent','hero-patient-care','<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>']);" href="<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>">patient care</a>
+		<a class="hero-button" onclick="javascript:_gaq.push(['_trackEvent','hero-research','<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>']);" href="<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>">research</a>
 	</div>
 </div>
 

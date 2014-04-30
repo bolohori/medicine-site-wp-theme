@@ -386,6 +386,7 @@ input {
 .button input {
 	width: 100px;
 	display: inline;
+	margin-right: 10px;
 }
 
 /* Featured image
@@ -453,7 +454,7 @@ input {
 	left: -750px;
 	padding-right: 750px;
 	top: 0;
-	background: #eaeaea url(_/img/giving-bg.png) no-repeat center 12px;
+	background: #eaeaea url(../img/giving-bg.png) no-repeat center 12px;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -785,14 +786,14 @@ footer a {
 	-ms-transition: background-image 0.2s ease-in-out;
 	-o-transition: background-image 0.2s ease-in-out;
 	transition: background-image 0.2s ease-in-out;
-	background: url(_/img/campaign-bg.png);
+	background: url(../img/campaign-bg.png);
 	width: 100%;
 	height: 39px;
 	border-bottom: 1px solid #efe2c9;
 }
 
 .campaign-wrapper:hover {
-	background: url(_/img/campaign-bg-hover.png);
+	background: url(../img/campaign-bg-hover.png);
 }
 
 
@@ -893,10 +894,11 @@ li.sticky-top-last {
 }
 
 .ie7 .sticky-top li {
-	width: 317px;
+	width: 319px;
 }
 
 .sticky-top li:hover {
+	cursor: pointer;
 	background: #f4f4f4;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIyJSIgc3RvcC1jb2xvcj0iI2Y0ZjRmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iI2RmZGZkZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
 	background: -moz-linear-gradient(top,  #f4f4f4 2%, #dfdfdf 98%);
@@ -939,10 +941,9 @@ li.sticky-top-last {
 	border: none;
 }
 
-.ie7 .sticky-bottom li.announcments {
-	border-left: 1px solid #666 !important;
-	border-right: 1px solid #666 !important;
-	background: #666;
+.ie7 .sticky-bottom li.announcements {
+	border-left: 1px solid #e3e0e0 !important;
+	border-right: 1px solid #e3e0e0 !important;
 }
 
 .sticky-bottom li.announcements {
@@ -958,8 +959,6 @@ li.sticky-top-last {
 	background: -o-linear-gradient(top,  #ffffff 0%,#f0f0f0 100%);
 	background: -ms-linear-gradient(top,  #ffffff 0%,#f0f0f0 100%);
 	background: linear-gradient(to bottom,  #ffffff 0%,#f0f0f0 100%);
-	-webkit-box-shadow: 8px 0 10px -10px #666, -8px 0 10px -10px #666;
-	-moz-box-shadow: 8px 0 10px -10px #666, -8px 0 10px -10px #666;
 	box-shadow: 8px 0 10px -10px #666, -8px 0 10px -10px #666;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f0f0f0',GradientType=0 );
 }
@@ -1164,6 +1163,14 @@ article.search-results {
 	/*z-index: 1;*/
 }
 
+.ie7 #slider img.nivo-main-image {
+	height: auto !important;
+}
+
+.ie7 .slide-wrapper .slider-wrapper {
+	margin-bottom: -22px !important;
+}
+
 .nivo-controlNav {
 	position: relative;
 	bottom: 30px;
@@ -1266,7 +1273,7 @@ article.search-results {
 
 #news-slider .nivo-directionNav a:hover,
 .slide-wrapper .nivo-directionNav a:hover {
-	background-image: url(_/css/default/arrows-hover.png) !important;
+	background-image: url(../css/default/arrows-hover.png) !important;
 }
 
 #news-slider .nivo-caption {
@@ -1341,7 +1348,7 @@ article.search-results {
 	margin-top: -58px;
 	min-height: 225px;
 	width: 100%;
-	background: url('_/img/hero/hero-bg.png') center no-repeat;
+	background: url('../img/hero/hero-bg.png') center no-repeat;
 	text-align: center;
 	padding: 0px 0px 32px 0px;
 }
@@ -1399,7 +1406,7 @@ article.search-results {
 	min-height: 234px;
 	width: 100%;
 	border-top: 1px solid #d8d8d8;
-	background: #eaeaea url('_/img/spotlight.png') no-repeat top center;
+	background: #eaeaea url('../img/spotlight.png') no-repeat top center;
 }
 
 .spotlight .wrapper {
@@ -1449,7 +1456,7 @@ article.search-results {
 }
 
 #spotlight-slider .nivo-caption {
-	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+	*behavior: url(/wp-content/themes/medicine/../js/boxsizing.htc);
 	top: 0;
 	left: 157px;
 	padding: 32px 45px;
@@ -1483,7 +1490,7 @@ article.search-results {
 }
 
 .spotlight-slider-wrapper .nivo-controlNav a {
-	background-image: url('_/css/default/spotlight-bullets.png') !important;
+	background-image: url('../css/default/spotlight-bullets.png') !important;
 }
 
 #spotlight-slider .nivo-caption a {
@@ -1800,7 +1807,7 @@ ul.program-list li.last-child {
 	font-size: 12.63px;
 	line-height: 14px;
 /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-background: url(_/img/f_top.png);
+background: url(../img/f_top.png);
 }
 
 .spacer-container {
@@ -1824,7 +1831,7 @@ background: url(_/img/f_top.png);
 	float: left;
 	width: 85px;
 	height: 34px;
-	background: url(_/img/brown_bg.png) no-repeat;
+	background: url(../img/brown_bg.png) no-repeat;
 	text-align: center;
 	font-size: 19px;
 	line-height: 33px;
@@ -1835,7 +1842,7 @@ background: url(_/img/f_top.png);
 	padding-top: 12px;
 	width: 100%;
 	height: 34px;
-	background: url(_/img/brown_bg_hover.png) no-repeat;
+	background: url(../img/brown_bg_hover.png) no-repeat;
 	font-size: 10.61px;
 	line-height: 11.85px;
 }
@@ -1862,7 +1869,7 @@ background: url(_/img/f_top.png);
 	float: right;
 	margin: 0 10px 9px 0;
 	width: 230px;
-	background: url(_/img/cta_bg.png) 0 26px no-repeat #e4e1da;
+	background: url(../img/cta_bg.png) 0 26px no-repeat #e4e1da;
 	color: #555;
 }
 
@@ -1933,7 +1940,7 @@ background: url(_/img/f_top.png);
 }
 
 #year-list li.selected-year {
-	background: url(_/img/year_select.png) no-repeat;
+	background: url(../img/year_select.png) no-repeat;
 	color: #fff;
 }
 
@@ -2171,7 +2178,7 @@ background: url(_/img/f_top.png);
 
 #spotlight-slider .nivo-directionNav a,
 #spotlight-slider .nivo-directionNav a:hover {
-	background-image: url(_/css/default/spotlight-arrows.png);
+	background-image: url(../css/default/spotlight-arrows.png);
 }
 
 .custom-archive-entry {
@@ -2408,6 +2415,11 @@ a.sidebar-outlook-link {
 	background-color: #dadada;
 }
 
+.ie7 div.cols-2,
+.ie7 div.cols-3,
+.ie7 div.cols-4 {
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);	
+}
 
 /*
  * Print styles

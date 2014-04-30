@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 
 	// your functions go here
 	if ( $('#slider')[0] ) {
-		$('#slider').nivoSlider({manualAdvance: true,pauseTime: 5000, effect:'fade'});
+		$('#slider').nivoSlider({pauseTime: 5000, effect:'fade'});
 		$('#news-slider').nivoSlider({manualAdvance: true, effect:'fade'});
 		$('#spotlight-slider').nivoSlider({manualAdvance: true, effect:'slideInLeft'});
 	}

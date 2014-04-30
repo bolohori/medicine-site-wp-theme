@@ -1,11 +1,6 @@
 <?php 
 
 function scripts() {
-	if(is_page( 'maps' )) {
-		wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false' );
-		wp_enqueue_script( 'maps-js', get_stylesheet_directory_uri() . '/_/js/maps.js');
-	}
-	
 	wp_deregister_script('modernizr'); // deregister
 	wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/_/js/modernizr.js', false, '2.6.2');
 

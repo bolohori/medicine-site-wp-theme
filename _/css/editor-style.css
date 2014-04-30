@@ -180,7 +180,6 @@ input {
 	margin: 10px 0;
 	padding: 0;
 	clear: right;
-	float: left;
 }
 
 .button {
@@ -193,4 +192,5 @@ input {
 .button input {
 	width: 100px;
 	display: inline;
+	margin-right: 10px;
 }
