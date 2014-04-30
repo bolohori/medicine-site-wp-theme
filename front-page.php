@@ -78,7 +78,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 					$link = get_field('url');
 					$target = $link['new_window'] ? "" : "target='_blank'";
 					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 					echo "<a $target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url]);\">Read Article</a></p></li>";
+ 					echo "<a $target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
 					$i++;
 					if($i==3)
 						echo "</ul>\n<ul class='news-list'>";
@@ -140,7 +140,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 					if ( $link['url'] !== null ) {
 						$url = $link['url'];
 						$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
-						$read_more_link = "<a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url]);\">Read More</a>";
+						$read_more_link = "<a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read More</a>";
 					}
 
 					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";

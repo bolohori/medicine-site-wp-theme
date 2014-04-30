@@ -1,6 +1,5 @@
 <?php 
-
-function scripts() {
+function queue_wusm_scripts() {
 	wp_deregister_script('modernizr'); // deregister
 	wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/_/js/modernizr.js', false, '2.6.2');
 
@@ -14,4 +13,4 @@ function scripts() {
 	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
 	wp_localize_script( 'custom_functions', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 }
-add_action('wp_enqueue_scripts', 'scripts');
+add_action('wp_enqueue_scripts', 'queue_wusm_scripts');
