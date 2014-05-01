@@ -615,9 +615,11 @@ article h3 {
 
 article h4 {
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	margin-top: 50px;
 	margin-bottom: 15px;
+	font-family: arial;
+	color: #4f4f4f;
 }
 
 article p {
@@ -2355,7 +2357,7 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside p.secondary {
-	margin: 20px 0 25px 0;
+	margin: 18px 0 35px 0;
 }
 
 #right-col aside.single-link {
@@ -2418,7 +2420,15 @@ a.sidebar-outlook-link {
 .ie7 div.cols-2,
 .ie7 div.cols-3,
 .ie7 div.cols-4 {
-	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);	
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+	overflow: auto;
+	position: relative;
+}
+
+.ie7 .facts-numbers{
+	position: absolute;
+	right: 0;
+	line-height: 16px;
 }
 
 /*
