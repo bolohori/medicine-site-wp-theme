@@ -21,7 +21,7 @@
 				'post_type' => 'faculty_profile',
 				'posts_per_page' => -1,
 				'post_parent' => 0,
-				'orderby' => 'menu_order',
+				'orderby' => 'menu_order date',
 				'order' => 'asc' 
 			);
 			$loop = new WP_Query( $args );

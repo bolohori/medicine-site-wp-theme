@@ -38,7 +38,7 @@
 		'post_type' => 'faculty_profile',
 		'posts_per_page' => -1,
 		'post_parent' => 0,
-		'orderby' => 'menu_order',
+		'orderby' => 'menu_order date',
 		'order' => 'ASC' 
 	);
 	$loop = new WP_Query( $args );
@@ -57,7 +57,7 @@
 				$id = get_the_ID();
 				$children = get_pages( 
 					array('sort_order'  => 'asc',
-						  'sort_column' => 'menu_order', 
+						  'sort_column' => 'menu_order date', 
 						  'post_type'   => 'faculty_profile', 
 						  'child_of'    => $id,
 						  'parent'      => $id
@@ -84,7 +84,7 @@
 				
 				$args = array(
 					'post_type' => 'faculty_profile',
-					'orderby'   => 'menu_order',
+					'orderby'   => 'menu_order date',
 					'order'     => 'ASC',
 					'post__in'  => $grandchild_ids
 				);

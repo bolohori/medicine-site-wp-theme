@@ -13,7 +13,7 @@ function get_awards_by_year() {
 	$args = array (
 		'post_parent' => $year, 
 		'post_type' => 'faculty_profile',
-		'orderby' => 'menu_order',
+		'orderby' => 'menu_order date',
 		'order' => 'asc'
 	);
 	$my_query = new WP_Query( $args );

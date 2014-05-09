@@ -74,7 +74,7 @@
 					$args = array(
 						'post_type' => 'announcement', 
 						'posts_per_page' => $num_to_show, 
-						'orderby' => 'menu_order', 
+						'orderby' => 'menu_order date', 
 						'order' => 'ASC',
 						'meta_query' => array(
 							'relation' => 'OR',
