@@ -57,7 +57,11 @@
 
 	<?php endif; ?>
 
-	<?php if(0) { ?>
+	<?php 
+	/*
+	 * Keeping this in here for the future, right now we're not using it, but hopefully someday we will
+	 */
+	if(0) { ?>
 	<ul id="mobile-nav">
         <li>
             <form method="get" id="mobile-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
