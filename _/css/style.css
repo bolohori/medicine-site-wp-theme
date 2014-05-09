@@ -1350,7 +1350,7 @@ article.search-results {
 	margin-top: -58px;
 	min-height: 225px;
 	width: 100%;
-	background: url('../img/hero/hero-bg.png') center no-repeat;
+	background: url(../img/hero/hero-bg.png) center no-repeat;
 	text-align: center;
 	padding: 0px 0px 32px 0px;
 }
@@ -1408,7 +1408,7 @@ article.search-results {
 	min-height: 234px;
 	width: 100%;
 	border-top: 1px solid #d8d8d8;
-	background: #eaeaea url('../img/spotlight.png') no-repeat top center;
+	background: #eaeaea url(../img/spotlight.png) no-repeat top center;
 }
 
 .spotlight .wrapper {
@@ -1458,7 +1458,7 @@ article.search-results {
 }
 
 #spotlight-slider .nivo-caption {
-	*behavior: url(/wp-content/themes/medicine/../js/boxsizing.htc);
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	top: 0;
 	left: 157px;
 	padding: 32px 45px;
@@ -1492,7 +1492,7 @@ article.search-results {
 }
 
 .spotlight-slider-wrapper .nivo-controlNav a {
-	background-image: url('../css/default/spotlight-bullets.png') !important;
+	background-image: url(../css/default/spotlight-bullets.png) !important;
 }
 
 #spotlight-slider .nivo-caption a {
