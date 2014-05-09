@@ -1,4 +1,4 @@
-medicine
+tier-one
 ========
 
-Main School of Medicine site theme
+WordPress theme for School of Medicine "Tier One" sites
