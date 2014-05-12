@@ -81,16 +81,16 @@ get_header(); ?>
 			
 			// Only display "promoted results" on the first page
 			if( $paged == 1 ) {
-				$querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE ID IN (SELECT post_id FROM $wpdb->postmeta WHERE $wpdb->postmeta.meta_value = '".$search_terms."') AND $wpdb->posts.post_status = 'publish';";
+				$querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE ID IN (SELECT post_id FROM $wpdb->postmeta WHERE $wpdb->postmeta.meta_key LIKE '%promoted_result%' AND $wpdb->postmeta.meta_value = '".$search_terms."') AND $wpdb->posts.post_status = 'publish';";
 				
 				$pageposts = $wpdb->get_results($querystr, OBJECT);
 
-				if ($pageposts):
+				if ( $pageposts ):
 					echo "<h2>Top search results</h2>";
 					global $post;
-					foreach ($pageposts as $post):
+					foreach ( $pageposts as $post ):
 						setup_postdata($post);
-						if($post->post_type == 'promoted_results') {
+						if( $post->post_type == 'promoted_results' ) {
 							$link = get_field('result_url', $post->ID);
 						} else {
 							$link = get_permalink();
@@ -121,7 +121,7 @@ get_header(); ?>
 			endif;
 
 			// Visual separtor to mark end of WP search and start of Google search
-			if ( $num_of_wp_result_pages == $paged)
+			if ( $num_of_wp_result_pages == $paged )
 				echo "<hr>";
 
 			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {

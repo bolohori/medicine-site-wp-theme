@@ -637,43 +637,6 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 	register_field_group(array (
-		'id' => 'acf_promoted-results',
-		'title' => 'Promoted Results',
-		'fields' => array (
-			array (
-				'key' => 'field_52fe37a94f99c',
-				'label' => 'Result URL',
-				'name' => 'result_url',
-				'type' => 'text',
-				'required' => 1,
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'promoted_results',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'acf_after_title',
-			'layout' => 'no_box',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
-	register_field_group(array (
 		'id' => 'acf_research-news',
 		'title' => 'Research News',
 		'fields' => array (
