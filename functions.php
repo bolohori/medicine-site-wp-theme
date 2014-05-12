@@ -269,76 +269,51 @@ jQuery(document).ready(function() {
 add_action('admin_head', 'acf_location_clear_button');
 
 // Add new styles to the TinyMCE "formats" menu dropdown
-if ( ! function_exists( 'wpex_styles_dropdown2' ) ) {
-	function wpex_styles_dropdown2( $settings ) {
+if ( ! function_exists( 'wusm_styles_dropdown' ) ) {
+	function wusm_styles_dropdown( $settings ) {
 
 		// Create array of new styles
 		$new_styles = array(
 			array(
-				'title'	=> __( 'Custom Styles 2', 'wpex' ),
+				'title'	=> 'Custom Styles',
 				'items'	=> array(
 					array(
-						'title'		=> __('Theme Button 2','wpex'),
-						'selector'	=> 'a',
-						'classes'	=> 'theme-button'
+						'title'	  => 'Main content callout',
+						'block'	  => 'div',
+						'classes' => 'callout',
+						'wrapper' => 'true'
 					),
 					array(
-						'title'		=> __('Highlight 2','wpex'),
-						'inline'	=> 'span',
-						'classes'	=> 'text-highlight',
+						'title'	   => 'Normal width (for full width pages)',
+						'selector' => 'p',
+						'classes'  => 'normal-width',
 					),
+					array(
+						'title'    => 'Disclaimer',
+						'block'    => 'div',
+						'classes'  => 'disclaimer',
+						'wrapper'  => 'true'
+					)
 				),
 			),
 		);
 
 		// Merge old & new styles
-		$settings['style_formats_merge'] = true;
+		$settings['style_formats_merge'] = false;
 
 		// Add new styles
-		$settings['style_formats'] = json_encode( $new_styles );
+		if( ! isset( $settings['style_formats'] ) ) {
+			$settings['style_formats'] = json_encode( $new_styles );
+		} else {
+			$settings['style_formats'] = json_encode( array_merge( json_decode( $settings['style_formats'] ), $new_styles ) );
+		}
 
 		// Return New Settings
 		return $settings;
 
 	}
 }
-add_filter( 'tiny_mce_before_init', 'wpex_styles_dropdown2' );
-
-// Add new styles to the TinyMCE "formats" menu dropdown
-if ( ! function_exists( 'wpex_styles_dropdown' ) ) {
-	function wpex_styles_dropdown( $settings ) {
-
-		// Create array of new styles
-		$new_styles = array(
-			array(
-				'title'	=> __( 'Custom Styles', 'wpex' ),
-				'items'	=> array(
-					array(
-						'title'		=> __('Theme Button','wpex'),
-						'selector'	=> 'a',
-						'classes'	=> 'theme-button'
-					),
-					array(
-						'title'		=> __('Highlight','wpex'),
-						'inline'	=> 'span',
-						'classes'	=> 'text-highlight',
-					),
-				),
-			),
-		);
-
-		// Merge old & new styles
-		$settings['style_formats_merge'] = true;
-
-		// Add new styles
-		$settings['style_formats'] = json_encode( $new_styles );
-
-		// Return New Settings
-		return $settings;
-
-	}
-}
-add_filter( 'tiny_mce_before_init', 'wpex_styles_dropdown' );
+add_filter( 'tiny_mce_before_init', 'wusm_styles_dropdown' );
 
 /*
  * Change [...] to MORE>> (w/ link)
