@@ -387,6 +387,7 @@ input {
 	width: 100px;
 	display: inline;
 	margin-right: 10px;
+	cursor: pointer;
 }
 
 /* Featured image
