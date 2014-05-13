@@ -26,11 +26,11 @@ jQuery(document).ready(function($) {
 	var $window = $(window);
 
 	if( $('#left-col').height() > $('#main article').height() ) {
-		$('#main article').height($('#left-col').height() + 123);
+		$('#main article').css("min-height", $('#left-col').height() + 123);
 	} else if( $('#right-col').height() > $('#main article').height() ) {
-		$('#main article').height($('#right-col').height() + 123);
+		$('#main article').css("min-height", $('#right-col').height() + 123);
 	} else if( $(window).height() > $('#main article').height() + 640 ) {
-		$('#main article').height($(window).height() - 640 );
+		$('#main article').css("min-height", $(window).height() - 640 );
 	}
 
 	// your functions go here
@@ -76,6 +76,6 @@ jQuery(document).ready(function($) {
 	}
 
 	if($('.main-content').height() < ($(window).height()-526))
-		$('.main-content').height($(window).height()-526);
+		$('.main-content').css("min-height", $(window).height()-526);
 
 });
