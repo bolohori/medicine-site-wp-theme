@@ -17,7 +17,7 @@
 			<?php
 				$walker = new Razorback_Walker_Page_Selective_Children();
 				
-				if (( is_page() || $force  || (sizeof($post->ancestors) > 0)) && !(is_search())) {
+				if ( ( is_page() || $force  || ( sizeof( $post->ancestors ) > 0 ) ) &&  ! ( is_search() ) && ! ( get_field('hide_in_nav', $post->ID) ) ) {
 
 					// This is a page
 					if ( ( is_page() && $post->post_parent ) || ( $force ) ) {
@@ -28,7 +28,7 @@
 						$get_children_of = ( isset( $post->ID ) ) ? (int) $post->ID : 0;
 					}
 
-					$ptg = sizeof($post->ancestors) > 0 ? $post->ancestors[sizeof($post->ancestors) - 1 ] : $post;
+					$ptg = sizeof( $post->ancestors ) > 0 ? $post->ancestors[sizeof( $post->ancestors ) - 1 ] : $post;
 
 					$children = wp_list_pages( array (
 						'sort_column'  => 'menu_order',
@@ -36,7 +36,7 @@
 						'child_of'     => $get_children_of,
 						'walker'       => $walker,
 						'echo'         => 0
-					));
+					) );
 
 					$post_to_get = get_post($ptg);
 					$nav_title = get_field('nav_menu_title', $post_to_get->ID);
