@@ -42,6 +42,16 @@ if ( ! function_exists( 'github_updater_wusm_theme_init' ) ) {
 	}
 }
 
+if ( ! function_exists( 'feedburner_rss_redirect' ) ) {
+	function feedburner_rss_redirect( $output, $feed ) {
+		if ( strpos( $output, 'comments' ) )
+			return $output;
+
+		return esc_url( 'http://feeds.feedburner.com/WUSTL-Medicine-News/' );
+	}
+}
+add_action( 'feed_link', 'feedburner_rss_redirect', 10, 2 );
+
 if( ! defined('WP_LOCAL_INSTALL') ) { require_once( get_template_directory() . '/_/php/acf_fields.php' ); }
 
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
