@@ -72,7 +72,7 @@
     </div>
 
     <div id="header-site-row" class="clearfix">
-        <div class="wrapper">
+        <div class="wrapper clearfix">
             <div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>
             <?php get_search_form(); ?>
             <div id="site-title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></div>
@@ -88,3 +88,16 @@
     ) ); ?>
 
 </header>
+
+<?php
+// Required for mobile nav on Event Organiser search results page.
+// I'd prefer to have this in the WUSM Event Organiser Skin plugin.
+if (isset($_GET['post_type']) && $_GET['post_type'] == 'event' && is_search()) {
+?>
+<div id="main" class="clearfix">
+    <div id="page-background"></div>
+    <div class="wrapper">
+        <?php get_sidebar( 'left' ); ?>
+<?php
+}
+?>

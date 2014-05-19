@@ -425,6 +425,15 @@ article p.wp-caption-text {
     border-bottom: 1px solid #e0e0e0;
 }
 
+article .disclaimer {
+    font-size: 12px;
+    color: #333;
+}
+
+article .disclaimer p {
+    line-height: 17px;
+}
+
 article tr:nth-child(odd) {
     background-color: #e4e3e3;
 }
@@ -492,15 +501,21 @@ article td p:last-child {
 }
 
 #right-col aside.links li {
-    margin-top: 24px;
+    margin-top: 20px;
 }
 
 #right-col aside a {
     color: #900;
 }
 
+#right-col aside a:hover {
+    color: #717171;
+}
+
 #right-col aside .secondary {
     font-size: 12px;
+    color: #a0a0a0;
+    line-height: 17px;
 }
 
 #right-col aside p.secondary {
@@ -508,8 +523,12 @@ article td p:last-child {
 }
 
 #right-col aside.links {
-    padding: 25px 20px;
+    padding: 5px 20px 25px 20px;
     width: 198px;
+}
+
+#right-col aside.links h2 {
+    padding-top: 20px;
 }
 
 #right-col aside img {
@@ -517,7 +536,7 @@ article td p:last-child {
 }
 
 #right-col aside .sidebar-body {
-    padding: 25px 20px 0 20px;
+    padding: 20px 20px 0 20px;
 }
 
 #right-col aside.image-and-text h2 {
@@ -526,6 +545,7 @@ article td p:last-child {
 
 #right-col aside.image-and-text p {
     margin-bottom: 20px;
+    line-height: 23px;
 }
 
 #right-col aside.image-and-text ul {
@@ -550,7 +570,7 @@ article td p:last-child {
 }
 
 #right-col aside a.opt-link:hover {
-    color: #da2b28;
+    color: #900;
     background-color: #dadada;
 }
 
@@ -931,6 +951,11 @@ article.search-results {
         display: none;
     }
 
+    #site-title a {
+        margin-left: 18px;
+        font-size: 23px;
+    }
+
     #main-nav {
         display: none;
     }
@@ -970,8 +995,19 @@ article.search-results {
         margin-right: auto;
     }
 
+    footer {
+        background-color: #dedede;
+    }
+
+    #site-footer, #wusm-footer-left, #wusm-footer-right {
+        width: 450px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
     #site-footer {
-        padding: 25px 0;
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     #site-footer-top {
@@ -1041,7 +1077,7 @@ article.search-results {
 
     #wusm-footer-right {
         margin-right: 0;
-        padding-top: 35px;
+        padding-top: 20px;
         text-align: center;
     }
 
@@ -1064,14 +1100,16 @@ article.search-results {
     }
 }
 
-
-
 @media screen and (max-width:518px) {
 
-    article {
+    article, #site-footer, #wusm-footer-left, #wusm-footer-right {
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
+    }
+
+    article blockquote {
+        margin-left: 30px;
     }
 
     article th, article td {
@@ -1083,5 +1121,4 @@ article.search-results {
         padding-left: 10%;
         padding-right: 10%;
     }
-
 }

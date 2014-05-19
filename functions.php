@@ -174,12 +174,40 @@ function custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
-// Include only these tags in the Visual editor
-function set_blockformats($settings) {
-    $settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
-   return $settings;
+// Add style selector drop down on the second row of the Visual editor
+function wusm_mce_buttons_2( $buttons ) {
+    // First, check to see if the style selector is already there
+    if ( ( $key = array_search('styleselect',$buttons) ) === false ) {
+        array_unshift( $buttons, 'styleselect' );
+    }
+    return $buttons;
 }
-add_filter('tiny_mce_before_init', 'set_blockformats');
+add_filter( 'mce_buttons_2', 'wusm_mce_buttons_2' );
+
+
+// Customize the MCE editor
+function customize_mce( $settings ) {
+    // Include only these tags in the Visual editor
+    $settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+
+    /* Register disclaimer style */
+    $style_formats = array(
+        array(
+            'title'    => 'Disclaimer',
+            'block' => 'div',
+            'classes'  => 'disclaimer',
+            'wrapper' => 'true'
+        ),
+    );
+
+    /* Include the custom styles -- defined above -- in the style dropdown */
+    /* Assumes the WUSM Accordion plugin is activated */
+    $new_styles = array_merge(json_decode($settings['style_formats'], true), $style_formats);
+    $settings['style_formats'] = json_encode($new_styles);
+
+    return $settings;
+}
+add_filter('tiny_mce_before_init', 'customize_mce' );
 
 
 // Image sizes (Settings / Media)

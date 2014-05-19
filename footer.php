@@ -1,3 +1,14 @@
+<?php
+// Required for mobile nav on Event Organiser search results page.
+// I'd prefer to have this in the WUSM Event Organiser Skin plugin.
+if (isset($_GET['post_type']) && $_GET['post_type'] == 'event' && is_search()) {
+    ?>
+        </div>
+    </div>
+<?php
+}
+?>
+
 <footer>
 
     <?php include_once(get_stylesheet_directory() . '/site-footer.php') ?>
