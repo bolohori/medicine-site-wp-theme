@@ -202,7 +202,7 @@ function customize_mce( $settings ) {
 	);
 
 	// Merge old & new styles
-	$settings['style_formats_merge'] = true;
+	$settings['style_formats_merge'] = false;
 
 	// Add new styles
 	if( ! isset( $settings['style_formats'] ) ) {
