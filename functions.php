@@ -1,7 +1,7 @@
 <?php
 
 if(!defined('WP_LOCAL_INSTALL')) {
-    require_once( get_template_directory() . '/_/php/acf_fields.php' );
+	require_once( get_template_directory() . '/_/php/acf_fields.php' );
 }
 
 
@@ -19,41 +19,41 @@ add_filter('admin_footer_text', 'wpfme_footer_admin');
 
 // Intialize all the theme options
 function theme_init() {
-    // Create Header Menu theme location
-    register_nav_menus(
-        array( 'header-menu' => 'Header Menu' )
-    );
+	// Create Header Menu theme location
+	register_nav_menus(
+		array( 'header-menu' => 'Header Menu' )
+	);
 
-    register_sidebar();
+	register_sidebar();
 
-    if ( !is_nav_menu( 'Header' )) {
-        // Create Header menu, if it doesn't already exist
-        $menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );
+	if ( !is_nav_menu( 'Header' )) {
+		// Create Header menu, if it doesn't already exist
+		$menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );
 
-        // Add Home to the Header menu
-        $menu_item = array(
-            'menu-item-type' => 'custom',
-            'menu-item-url' => get_home_url('/'),
-            'menu-item-title' => 'Home',
-            'menu-item-status' => 'publish',
-        );
-        wp_update_nav_menu_item( $menu_id, 0, $menu_item );
+		// Add Home to the Header menu
+		$menu_item = array(
+			'menu-item-type' => 'custom',
+			'menu-item-url' => get_home_url('/'),
+			'menu-item-title' => 'Home',
+			'menu-item-status' => 'publish',
+		);
+		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
 
-        // Add Sample Page to the Header menu
-        $page = get_page_by_title('Sample Page');
-        $menu_item = array(
-            'menu-item-object-id' => $page->ID,
-            'menu-item-object'    => 'page',
-            'menu-item-type'      => 'post_type',
-            'menu-item-status'    => 'publish'
-        );
-        wp_update_nav_menu_item( $menu_id, 0, $menu_item );
+		// Add Sample Page to the Header menu
+		$page = get_page_by_title('Sample Page');
+		$menu_item = array(
+			'menu-item-object-id' => $page->ID,
+			'menu-item-object'    => 'page',
+			'menu-item-type'      => 'post_type',
+			'menu-item-status'    => 'publish'
+		);
+		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
 
-        // Assign Header menu to the Header Menu theme location
-        $locations = get_theme_mod('nav_menu_locations');
-        $locations['header-menu'] = $menu_id;
-        set_theme_mod('nav_menu_locations', $locations);
-    }
+		// Assign Header menu to the Header Menu theme location
+		$locations = get_theme_mod('nav_menu_locations');
+		$locations['header-menu'] = $menu_id;
+		set_theme_mod('nav_menu_locations', $locations);
+	}
 
 	// Thumbnails
 	add_theme_support( 'post-thumbnails' );
@@ -66,13 +66,13 @@ add_action( 'init', 'theme_init' );
 
 // Set default timezone
 function set_timezone() {
-    update_option( 'timezone_string', 'America/Chicago' );
+	update_option( 'timezone_string', 'America/Chicago' );
 }
 add_action( 'init', 'set_timezone' );
 
 
 function enable_editor_styles() {
-    add_editor_style( '_/css/editor-style.css' );
+	add_editor_style( '_/css/editor-style.css' );
 }
 add_action( 'init', 'enable_editor_styles' );
 
@@ -133,8 +133,8 @@ add_action('set_current_user', 'cc_hide_admin_bar');
 
 // Remove height and width attributes from images so that we can make them responsive
 function remove_dimensions( $html ) {
-    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-    return $html;
+	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+	return $html;
 }
 add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
 add_filter( 'the_content', 'remove_dimensions', 10 );
@@ -143,69 +143,77 @@ add_filter( 'the_content', 'remove_dimensions', 10 );
 // Remove extra 10px from width of wp-caption div
 // http://troychaplin.ca/2012/fix-automatically-generated-inline-style-on-wordpress-image-captions/
 function fixed_img_caption_shortcode($attr, $content = null) {
-    if ( ! isset( $attr['caption'] ) ) {
-        if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
-            $content = $matches[1];
-            $attr['caption'] = trim( $matches[2] );
-        }
-    }
-    $output = apply_filters('img_caption_shortcode', '', $attr, $content);
-    if ( $output != '' )
-        return $output;
-    extract(shortcode_atts(array(
-        'id'    => '',
-        'align' => 'alignnone',
-        'width' => '',
-        'caption' => ''
-    ), $attr));
-    if ( 1 > (int) $width || empty($caption) )
-        return $content;
-    if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-    return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
-    . do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
+	if ( ! isset( $attr['caption'] ) ) {
+		if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
+			$content = $matches[1];
+			$attr['caption'] = trim( $matches[2] );
+		}
+	}
+	$output = apply_filters('img_caption_shortcode', '', $attr, $content);
+	if ( $output != '' )
+		return $output;
+	extract(shortcode_atts(array(
+		'id'    => '',
+		'align' => 'alignnone',
+		'width' => '',
+		'caption' => ''
+	), $attr));
+	if ( 1 > (int) $width || empty($caption) )
+		return $content;
+	if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+	return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
+	. do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
 }
 add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
 add_shortcode('caption', 'fixed_img_caption_shortcode');
 
 
 function custom_excerpt_length( $length ) {
-    return 20;
+	return 20;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 
 // Add style selector drop down on the second row of the Visual editor
 function wusm_mce_buttons_2( $buttons ) {
-    // First, check to see if the style selector is already there
-    if ( ( $key = array_search('styleselect',$buttons) ) === false ) {
-        array_unshift( $buttons, 'styleselect' );
-    }
-    return $buttons;
+	// First, check to see if the style selector is already there
+	if ( ( $key = array_search('styleselect',$buttons) ) === false ) {
+		array_unshift( $buttons, 'styleselect' );
+	}
+	return $buttons;
 }
 add_filter( 'mce_buttons_2', 'wusm_mce_buttons_2' );
 
-
 // Customize the MCE editor
 function customize_mce( $settings ) {
-    // Include only these tags in the Visual editor
-    $settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
 
-    /* Register disclaimer style */
-    $style_formats = array(
-        array(
-            'title'    => 'Disclaimer',
-            'block' => 'div',
-            'classes'  => 'disclaimer',
-            'wrapper' => 'true'
-        ),
-    );
+	$new_styles = array(
+		array(
+			'title' => 'Custom Styles',
+			'items' => array(
+				array(
+					'title'		=> 'Disclaimer',
+					'block'		=> 'div',
+					'classes'	=> 'disclaimer',
+					'wrapper'	=> 'true'
+				)
+			)
+		)
+	);
 
-    /* Include the custom styles -- defined above -- in the style dropdown */
-    /* Assumes the WUSM Accordion plugin is activated */
-    $new_styles = array_merge(json_decode($settings['style_formats'], true), $style_formats);
-    $settings['style_formats'] = json_encode($new_styles);
+	// Merge old & new styles
+	$settings['style_formats_merge'] = true;
 
-    return $settings;
+	// Add new styles
+	if( ! isset( $settings['style_formats'] ) ) {
+		$settings['style_formats'] = json_encode( $new_styles );
+	} else {
+		$settings['style_formats'] = json_encode( array_merge( json_decode( $settings['style_formats'] ), $new_styles ) );
+	}
+
+	// Return New Settings
+	return $settings;
+
 }
 add_filter('tiny_mce_before_init', 'customize_mce' );
 
@@ -223,8 +231,8 @@ add_image_size( 'right-sidebar', 238, NULL );
 
 // Set default values for Attachment Display Settings
 function attachment_display_settings() {
-    update_option('image_default_align', 'center' );
-    update_option('image_default_link_type', 'none' );
-    update_option('image_default_size', 'large' );
+	update_option('image_default_align', 'center' );
+	update_option('image_default_link_type', 'none' );
+	update_option('image_default_size', 'large' );
 }
 add_action('after_setup_theme', 'attachment_display_settings');
