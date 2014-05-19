@@ -1,162 +1,162 @@
 body#tinymce.wp-editor {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
-    background-color: #f4f4f4;
-    max-width: 450px;
-    padding: 45px 35px 70px 35px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: #333;
+	background-color: #f4f4f4;
+	max-width: 450px;
+	padding: 45px 35px 70px 35px;
 }
 
 body#tinymce.wp-editor a {
-    text-decoration: none;
-    color: #980006;
+	text-decoration: none;
+	color: #980006;
 }
 
 body#tinymce.wp-editor a:hover {
-    color: #555;
+	color: #555;
 }
 
 body#tinymce.wp-editor h1 {
-    font-family: Georgia, serif;
-    font-weight: normal;
-    font-size: 30px;
+	font-family: Georgia, serif;
+	font-weight: normal;
+	font-size: 30px;
 }
 
 body#tinymce.wp-editor h2 {
-    font-size: 21px;
-    margin-top: 45px;
-    margin-bottom: 15px;
+	font-size: 21px;
+	margin-top: 45px;
+	margin-bottom: 15px;
 }
 
 body#tinymce.wp-editor h3 {
-    font-size: 17px;
-    margin-top: 50px;
-    margin-bottom: 15px;
+	font-size: 17px;
+	margin-top: 50px;
+	margin-bottom: 15px;
 }
 
 body#tinymce.wp-editor h4 {
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 50px;
-    margin-bottom: 15px;
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 50px;
+	margin-bottom: 15px;
 }
 
 body#tinymce.wp-editor p {
-    line-height: 25px;
-    margin-bottom: 20px;
+	line-height: 25px;
+	margin-bottom: 20px;
 }
 
 body#tinymce.wp-editor h1 + p {
-    margin-top: 50px;
+	margin-top: 50px;
 }
 
 body#tinymce.wp-editor ul {
-    list-style-type: disc;
-    margin-left: 40px;
+	list-style-type: disc;
+	margin-left: 40px;
 }
 
 body#tinymce.wp-editor ol {
-    margin-left: 40px;
+	margin-left: 40px;
 }
 
 body#tinymce.wp-editor ul li, body#tinymce.wp-editor ol li {
-    line-height: 25px;
-    margin-bottom: 10px;
+	line-height: 25px;
+	margin-bottom: 10px;
 }
 
 body#tinymce.wp-editor blockquote {
-    margin: 0 40px 20px 40px;
+	margin: 0 40px 20px 40px;
 }
 
 body#tinymce.wp-editor .wp-caption {
-    max-width: 100%;
-    border: none;
-    border-top: 1px solid #d7d7d7;
-    text-align: left;
-    background-color: #f4f4f4;
-    padding-top: 0;
+	max-width: 100%;
+	border: none;
+	border-top: 1px solid #d7d7d7;
+	text-align: left;
+	background-color: #f4f4f4;
+	padding-top: 0;
 }
 
 body#tinymce.wp-editor .alignleft {
-    float: left;
+	float: left;
 }
 
 body#tinymce.wp-editor .aligncenter {
-    display: block;
-    margin: 0 auto;
+	display: block;
+	margin: 0 auto;
 }
 
 body#tinymce.wp-editor .alignright {
-    float: right;
+	float: right;
 }
 
 body#tinymce.wp-editor .wp-caption.alignright, body#tinymce.wp-editor img.alignright {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 body#tinymce.wp-editor .wp-caption.alignright p.wp-caption-text, body#tinymce.wp-editor img.alignright {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 body#tinymce.wp-editor .wp-caption.alignleft, body#tinymce.wp-editor img.alignleft {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
 body#tinymce.wp-editor .wp-caption.alignleft p.wp-caption-text, body#tinymce.wp-editor img.alignleft {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 body#tinymce.wp-editor .wp-caption-dd {
-    font-size: 13px;
-    line-height: 20px;
-    color: #6a6a6a;
-    padding: 15px 0 25px 0;
-    border-bottom: 1px solid #e0e0e0;
+	font-size: 13px;
+	line-height: 20px;
+	color: #6a6a6a;
+	padding: 15px 0 25px 0;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 .mceItemTable {
-    border: none;
+	border: none;
 }
 
 .mceItemTable tr:nth-child(odd) {
-    background-color: #e4e3e3;
+	background-color: #e4e3e3;
 }
 
 .mceItemTable tr:nth-child(even) {
-    background-color: #fff;
+	background-color: #fff;
 }
 
 .mceItemTable th {
-    text-align: left;
-    vertical-align: top;
+	text-align: left;
+	vertical-align: top;
 }
 
 .mceItemTable th, .mceItemTable td {
-    padding: 10px;
-    border: none;
-    border-left: 1px solid #f4f4f4;
+	padding: 10px;
+	border: none;
+	border-left: 1px solid #f4f4f4;
 }
 
 .mceItemTable thead td {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    background-color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #fff;
 }
 
 .mceItemTable th:first-child, .mceItemTable td:first-child {
-    border: none;
+	border: none;
 }
 
 .mceItemTable td {
-    font-size: 12px;
+	font-size: 12px;
 }
 
 .mceItemTable td p {
-    line-height: normal;
-    margin-bottom: 10px;
+	line-height: normal;
+	margin-bottom: 10px;
 }
 
 .mceItemTable td p:last-child {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
