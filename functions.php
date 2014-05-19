@@ -1,33 +1,23 @@
 <?php
-/*
- * Include ACF custom fields
- * 
- */
+
 if(!defined('WP_LOCAL_INSTALL')) {
-	require_once( get_stylesheet_directory() . '/_/php/acf_fields.php' );
+    require_once( get_template_directory() . '/_/php/acf_fields.php' );
 }
 
-/*
- * Create post type for "Front Page settings"
- */
-require_once( get_stylesheet_directory() . '/_/php/custom_post_types.php' );
 
-/*
- * Load JavaScripts
- */
-require_once( get_stylesheet_directory() . '/_/php/load_js.php' ); 
+require_once( get_template_directory() . '/_/php/custom_post_types.php' );
+require_once( get_template_directory() . '/_/php/load_js.php' );
+require_once( get_template_directory() . '/_/php/left-nav.php' );
 
-/**
- * Customise the footer in admin area
- */
+
+// Customize the footer in admin area
 function wpfme_footer_admin () {
 	echo 'Theme designed and developed by WUSTL Medical Public Affairs and powered by <a href="http://wordpress.org" target="_blank">WordPress</a>.';
 }
 add_filter('admin_footer_text', 'wpfme_footer_admin');
 
-/**
- * Intialize all the theme options
- */
+
+// Intialize all the theme options
 function theme_init() {
     // Create Header Menu theme location
     register_nav_menus(
@@ -82,13 +72,14 @@ add_action( 'init', 'set_timezone' );
 
 
 function enable_editor_styles() {
-    add_editor_style();
+    add_editor_style( '_/css/editor-style.css' );
 }
 add_action( 'init', 'enable_editor_styles' );
 
+
 /*********************
 WP_HEAD GOODNESS
-The default wordpress head is a mess. Let's clean it up by
+The default WordPress head is a mess. Let's clean it up by
 removing all the junk we don't need.
 *********************/
 function head_cleanup() {
@@ -117,23 +108,123 @@ function head_cleanup() {
 } /* end bones head cleanup */
 add_action('init', 'head_cleanup');
 
-// remove WP version from scripts
+
+// Remove WP version from scripts
 function remove_wp_ver_css_js( $src ) {
 	if ( strpos( $src, 'ver=' ) )
 		$src = remove_query_arg( 'ver', $src );
 	return $src;
 }
 
-// remove WP version from RSS
+
+// Remove WP version from RSS
+function strip_rss_version() { return ''; }
 add_filter('the_generator', 'strip_rss_version');
 
-// remove WP version from RSS
-function strip_rss_version() { return ''; }
 
-// Hide admin bar for subscribers.	Probably won't be needed, but just in case
+// Hide admin bar for subscribers. Probably won't be needed, but just in case.
 function cc_hide_admin_bar() {
 	if (!current_user_can('edit_posts')) {
 		show_admin_bar(false);
 	}
 }
 add_action('set_current_user', 'cc_hide_admin_bar');
+
+
+// Remove height and width attributes from images so that we can make them responsive
+function remove_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}
+add_filter( 'post_thumbnail_html', 'remove_dimensions', 10 );
+add_filter( 'the_content', 'remove_dimensions', 10 );
+
+
+// Remove extra 10px from width of wp-caption div
+// http://troychaplin.ca/2012/fix-automatically-generated-inline-style-on-wordpress-image-captions/
+function fixed_img_caption_shortcode($attr, $content = null) {
+    if ( ! isset( $attr['caption'] ) ) {
+        if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
+            $content = $matches[1];
+            $attr['caption'] = trim( $matches[2] );
+        }
+    }
+    $output = apply_filters('img_caption_shortcode', '', $attr, $content);
+    if ( $output != '' )
+        return $output;
+    extract(shortcode_atts(array(
+        'id'    => '',
+        'align' => 'alignnone',
+        'width' => '',
+        'caption' => ''
+    ), $attr));
+    if ( 1 > (int) $width || empty($caption) )
+        return $content;
+    if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
+    return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
+    . do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
+}
+add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
+add_shortcode('caption', 'fixed_img_caption_shortcode');
+
+
+function custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
+// Add style selector drop down on the second row of the Visual editor
+function wusm_mce_buttons_2( $buttons ) {
+    // First, check to see if the style selector is already there
+    if ( ( $key = array_search('styleselect',$buttons) ) === false ) {
+        array_unshift( $buttons, 'styleselect' );
+    }
+    return $buttons;
+}
+add_filter( 'mce_buttons_2', 'wusm_mce_buttons_2' );
+
+
+// Customize the MCE editor
+function customize_mce( $settings ) {
+    // Include only these tags in the Visual editor
+    $settings['theme_advanced_blockformats'] = 'p,h2,h3,h4';
+
+    /* Register disclaimer style */
+    $style_formats = array(
+        array(
+            'title'    => 'Disclaimer',
+            'block' => 'div',
+            'classes'  => 'disclaimer',
+            'wrapper' => 'true'
+        ),
+    );
+
+    /* Include the custom styles -- defined above -- in the style dropdown */
+    /* Assumes the WUSM Accordion plugin is activated */
+    $new_styles = array_merge(json_decode($settings['style_formats'], true), $style_formats);
+    $settings['style_formats'] = json_encode($new_styles);
+
+    return $settings;
+}
+add_filter('tiny_mce_before_init', 'customize_mce' );
+
+
+// Image sizes (Settings / Media)
+update_option('medium_size_w', 225);
+update_option('medium_size_h', NULL);
+update_option('large_size_w', 450);
+update_option('large_size_h', NULL);
+update_option('embed_size_w', 450);
+
+add_image_size( 'right-sidebar', 238, NULL );
+
+
+
+// Set default values for Attachment Display Settings
+function attachment_display_settings() {
+    update_option('image_default_align', 'center' );
+    update_option('image_default_link_type', 'none' );
+    update_option('image_default_size', 'large' );
+}
+add_action('after_setup_theme', 'attachment_display_settings');
