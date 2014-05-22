@@ -56,9 +56,9 @@ while( has_sub_field( 'sidebars' ) ):
 			<img class="sidebar-outlook-header" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/outlook.png">
 			<p><?php the_sub_field( 'outlook_title' ); ?></p>
 			<p class="sidebar-small"><?php the_sub_field( 'outlook_tease' ); ?></p>
-			<a class="sidebar-outlook-link" target="_blank" href="http://outlook.wustl.edu">READ IT IN OUTLOOK</a>
+			<a class="sidebar-outlook-link" target="_blank" href="<?php echo get_sub_field('outlook_issue_url'); ?>">READ IT IN OUTLOOK</a>
 		</aside>
-	<?php elseif(get_row_layout() == "connect"): // layout: Connect with us Sidebar ?>
+	<?php elseif(get_row_layout() == "connect"): // layout: Connect with us Sidebar ?>a
 		<aside class="sidebar">
 			<p><?php the_sub_field("connect_title"); ?></p>
 			<hr>
