@@ -15,9 +15,8 @@ while( has_sub_field( 'sidebars' ) ):
 				<?php while(has_sub_field( 'sidebar_links' )):
 					$link = get_sub_field( 'sidebar_link' );
 					$target = $link['new_window'] ? " target='_blank'" : "";
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
 					$description = get_sub_field( 'description' ) ? '<br><span class="secondary">' . get_sub_field( 'description' ) . '</span>' : '';
-					echo "<li><a$target href='$url'>" . $link['title'] . "</a>$description</li>";
+					echo "<li><a$target href='{$link['url']}'>{$link['title']}</a>$description</li>";
 				endwhile; ?>
 				</ul>
 			<?php endif; ?>
@@ -27,12 +26,10 @@ while( has_sub_field( 'sidebars' ) ):
 			<?php 
 				$link = get_sub_field( 'single_link' );
 				$link_target = $link['new_window'] ? "" : " target='_blank'";
-				$link_text = $link['title'];
-				$link_url = $link['url'];
 				$styles = get_sub_field( 'single_link_style' );
 				$link_style = ( $styles !== false ) ? " style='$styles'" : '';
 
-				echo "<a$link_target$link_style href='$link_url'>$link_text</a>";
+				echo "<a$link_target$link_style href='{$link['url']}'>{$link['title']}</a>";
 			?>
 		</aside>
 	<?php elseif(get_row_layout() == "cancer"): // layout: NYT Cancer Series ?>
@@ -45,8 +42,8 @@ while( has_sub_field( 'sidebars' ) ):
 				<?php while(has_sub_field( 'cancer_links' )):
 					$link = get_sub_field( 'cancer_link' );
 					$target = $link['new_window'] ? "" : "target='_blank'";
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
-					echo "<li><a $target href='$url'>" . $link['title'] . "</a></li>";
+					
+					echo "<li><a $target href='{$link['url']}'>" . $link['title'] . "</a></li>";
 				endwhile; ?>
 				</ul>
 			<?php endif; ?>
@@ -89,8 +86,7 @@ while( has_sub_field( 'sidebars' ) ):
 				<?php while(has_sub_field( 'heart_links' )):
 					$link = get_sub_field( 'heart_link' );
 					$target = $link['new_window'] ? "" : "target='_blank'";
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
-					echo "<li><a $target href='$url'>" . $link['title'] . "</a><br>" . the_sub_field( 'heart_link_phone' ) . "</li>";
+					echo "<li><a $target href='{$link['url']}'>" . $link['title'] . "</a><br>" . the_sub_field( 'heart_link_phone' ) . "</li>";
 				endwhile; ?>
 				</ul>
 			<?php endif; ?>
@@ -153,7 +149,7 @@ while( has_sub_field( 'sidebars' ) ):
 				$link = get_field( 'url' );
 				
 				if( $link['url'] != '' ) {
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+					$url = $link['url'];
 					$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
 				} else {
 					$url = get_permalink();
