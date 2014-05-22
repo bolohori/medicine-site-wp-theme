@@ -40,24 +40,24 @@
 	<div  class="sticky-top">
 		<div class="wrapper">
 			<ul>
-				<a target="_blank" href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://wuphysicians.wustl.edu/directory.aspx']);"><li>Find a Doctor</li></a>
-				<a href="<?php echo get_permalink( get_page_by_title( 'Academic Departments &amp; Programs' ) );?>"><li>Departments &amp; Programs</li></a>
-				<a href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>"><li class="sticky-top-last">Admissions</li></a>
+				<a target="_blank" href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','WU Physicians']);"><li>Find a Doctor</li></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','stick-footer','Departments and Programs']);" href="<?php echo get_permalink( get_page_by_title( 'Academic Departments &amp; Programs' ) );?>"><li>Departments &amp; Programs</li></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','stick-footer','Admissions']);" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>"><li class="sticky-top-last">Admissions</li></a>
 			</ul>
 		</div>
 	</div>
 
 	<div class="wrapper">
 		<ul class="sticky-bottom">
-			<li class="first-child"><a href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li><li>
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li><li>
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li><li>
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li><li class='responsive-break'>
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li><li>
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li><li class="last-child">
-			<a href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li><li class="last-child announcements">
-			<a href="javascript:;">Announcements</a></li>
+			<li class="first-child"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Prospective Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li><li>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Current Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li><li>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Faculty']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li><li>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Staff']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li><li class='responsive-break'>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Alumni']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li><li class='responsive-clear'>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Administrators']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li><li>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','facebook']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li><li class="last-child">
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Researchers']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li><li class="last-child announcements">
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Job Seekers']);" href="javascript:;">Announcements</a></li>
 		</ul>
 	</div>  
 	
@@ -71,11 +71,29 @@
 				<ul class="announcement-list">
 <?php
 					$num_to_show = get_option( 'announcements_to_show', 6 );
+
 					$args = array(
 						'post_type' => 'announcement', 
 						'posts_per_page' => $num_to_show, 
-						'orderby' => 'menu_order date', 
-						'order' => 'ASC',
+						'orderby' => 'date',
+						'fields' => 'ids',
+						'meta_query' => array(
+							array(
+								'key' => 'sticky',
+								'value' => 1,
+								'compare' => '=',
+							)
+						)
+					);
+					$loop = new WP_Query( $args );
+					$ids = $loop->posts;
+					$num_to_show = $num_to_show - sizeof( $ids );
+
+					$args = array(
+						'post_type' => 'announcement', 
+						'posts_per_page' => $num_to_show, 
+						'orderby' => 'date',
+						'fields' => 'ids',
 						'meta_query' => array(
 							'relation' => 'OR',
 							array(
@@ -91,6 +109,15 @@
 							)
 						)
 					);
+					$loop = new WP_Query( $args );
+					$ids = array_merge( $ids, $loop->posts );
+
+					$args = array(
+						'post_type' => 'announcement',
+						'orderby' => 'post__in',
+						'post__in' => $ids
+					);
+					
 					$loop = new WP_Query( $args );
 					while ( $loop->have_posts() ) : $loop->the_post();
 						$internal_only = get_field('internal_only');
@@ -116,10 +143,6 @@
 	</div>
 </div>
 
-<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-		 http://chromium.org/developers/how-tos/chrome-frame-getting-started -->
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	
 <?php
    /* Always have wp_footer() just before the closing </body>
 	* tag of your theme, or you will break many plugins, which

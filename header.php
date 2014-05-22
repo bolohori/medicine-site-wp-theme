@@ -55,8 +55,8 @@
 		<div class="wrapper">
 			<nav id="utility-bar" class="clearfix">
 				<ul id="utility-nav">
-					<li><a onclick="javascript:_gaq.push(['_trackEvent','outbound-header','http://www.wustl.edu']);" href="http://wustl.edu/">WUSTL</a></li>
-					<li class="last-child"><a href="/directory">Directories</a></li>
+					<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://www.wustl.edu']);" href="WUSTL">WUSTL</a></li>
+					<li class="last-child"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Directories']);" href="/directory">Directories</a></li>
 				</ul>
 			</nav>
 

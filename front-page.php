@@ -8,7 +8,39 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 		<div id="slider" class="nivoSlider">
 <?php
 			$num_to_show = get_option( 'billboards_to_show', 5 );
-			$args = array( 'post_type' => 'billboard', 'posts_per_page' => $num_to_show );
+			
+			$args = array(
+				'post_type' => 'billboard', 
+				'posts_per_page' => $num_to_show, 
+				'orderby' => 'date',
+				'fields' => 'ids',
+				'meta_query' => array(
+					array(
+						'key' => 'sticky',
+						'value' => 1,
+						'compare' => '=',
+					)
+				)
+			);
+			$loop = new WP_Query( $args );
+			$ids = $loop->posts;
+			$num_to_show = $num_to_show - sizeof( $ids );
+
+			$args = array(
+				'post_type' => 'billboard', 
+				'posts_per_page' => $num_to_show, 
+				'orderby' => 'date',
+				'fields' => 'ids'
+			);
+			$loop = new WP_Query( $args );
+			$ids = array_merge( $ids, $loop->posts );
+
+			$args = array(
+				'post_type' => 'billboard',
+				'orderby' => 'post__in',
+				'post__in' => $ids
+			);
+
 			$loop = new WP_Query( $args );
 			
 			add_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10, 5 );

@@ -2,6 +2,47 @@
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
+		'id' => 'acf_sticky',
+		'title' => 'Sticky',
+		'fields' => array (
+			array (
+				'key' => 'field_537ced48a2ce6',
+				'label' => 'Sticky this item',
+				'name' => 'sticky',
+				'type' => 'true_false',
+				'message' => 'Sticky',
+				'default_value' => 0,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'announcement',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'billboard',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 1,
+	));
+	register_field_group(array (
 		'id' => 'acf_announcement',
 		'title' => 'Announcement',
 		'fields' => array (
@@ -57,7 +98,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 2,
 	));
 	register_field_group(array (
 		'id' => 'acf_billboard',
@@ -102,7 +143,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 3,
 	));
 	register_field_group(array (
 		'id' => 'acf_faculty-profiles',
@@ -189,7 +230,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 4,
 	));
 	register_field_group(array (
 		'id' => 'acf_giving-page-extras',
@@ -222,7 +263,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 5,
 	));
 	register_field_group(array (
 		'id' => 'acf_in-focus',
@@ -256,7 +297,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 6,
 	));
 	register_field_group(array (
 		'id' => 'acf_in-the-news',
@@ -323,7 +364,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 7,
 	));
 	register_field_group(array (
 		'id' => 'acf_locations',
@@ -382,7 +423,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 8,
 	));
 	register_field_group(array (
 		'id' => 'acf_national-leaders',
@@ -430,7 +471,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 9,
 	));
 	register_field_group(array (
 		'id' => 'acf_news-releases',
@@ -484,7 +525,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 10,
 	));
 	register_field_group(array (
 		'id' => 'acf_page-extras',
@@ -545,7 +586,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 11,
 	));
 	register_field_group(array (
 		'id' => 'acf_promoted-result',
@@ -634,7 +675,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 12,
 	));
 	register_field_group(array (
 		'id' => 'acf_research-news',
@@ -705,7 +746,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 13,
 	));
 	register_field_group(array (
 		'id' => 'acf_sidebar',
@@ -1116,7 +1157,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 14,
 	));
 	register_field_group(array (
 		'id' => 'acf_admin-extras',

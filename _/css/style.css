@@ -130,15 +130,17 @@ article .wp-caption {
 
 article .alignleft {
 	float: left;
+	margin: 20px 20px 20px 0;
 }
 
 article .aligncenter {
 	display: block;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 article .alignright {
 	float: right;
+	margin: 20px 0 20px 20px;
 }
 
 article .wp-caption.alignright, article img.alignright {
@@ -147,11 +149,6 @@ article .wp-caption.alignright, article img.alignright {
 
 article .wp-caption.alignleft, article img.alignleft {
 	margin-right: 20px;
-}
-
-article .wp-caption.alignright p.wp-caption-text, article img.alignright,
-article .wp-caption.alignleft p.wp-caption-text, article img.alignleft {
-	/*margin-bottom: 4px;*/
 }
 
 article p.wp-caption-text {
@@ -2216,8 +2213,9 @@ background: url(../img/f_top.png);
 
 .custom-byline {
 	font-size: 11px;
-	border-top: 1px solid #707070;
-	border-bottom: 1px solid #707070;
+	padding: 15px 0;
+	border-top: 1px solid #d5d2d2;
+	border-bottom: 1px solid #d5d2d2;
 }
 
 .custom-archive-link h3 {
