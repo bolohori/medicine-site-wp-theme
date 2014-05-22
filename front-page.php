@@ -96,7 +96,11 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 				$i = 0;
 				$j = 0;
 				$audio_out = '';
-				$args = array( 'post_type' => 'news_releases', 'posts_per_page' => 6, 'orderby' => 'menu_order date', 'order' => 'ASC'  );
+				$args = array( 'post_type' => 'news_releases',
+								'posts_per_page' => 6,
+								'orderby' => 'date',
+								'order' => 'ASC'
+							);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					echo "<li>" . get_the_title() . "<p>";
@@ -150,7 +154,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 				$slider = "";
 				$captions = "";
 				$num_of_spotlights = get_option( 'spotlights_to_show', 4 );
-				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'menu_order date', 'order' => 'ASC' );
+				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'date', 'order' => 'ASC' );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$read_more_link = "";
