@@ -10,7 +10,7 @@
 	<div class="wrapper">
 		<div class="double-footer">
 			<p>Our 2,100 employed and volunteer faculty — the <a target="_blank" href="http://wuphysicians.wustl.edu" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://wuphysicians.wustl.edu']);">Washington University Physicians</a> — also are the medical staff of <a target="_blank" href="http://www.barnesjewish.org/" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://www.barnesjewish.org']);">Barnes-Jewish</a> and <a target="_blank" href="http://www.stlouischildrens.org/" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://www.stlouischildrens.org']);">St. Louis Children's</a> hospitals. Through its hospital affiliations, the School is linked to BJC HealthCare.</p>
-			<p class="small-text">&copy;2013 Washington University School of Medicine in St. Louis</p>
+			<p class="small-text">&copy;<?php echo date("Y") ?> Washington University School of Medicine in St. Louis</p>
 		</div>
 		<div class="single-footer">
 <?php 
