@@ -350,19 +350,22 @@ add_filter( 'posts_where', 'wp_query_posts_where', 10, 2 );
  * we're adding the Google Search Appliance results
  * This comes from Otto
  * https://core.trac.wordpress.org/ticket/11312#comment:6
+ *
+ *  Had to change the filter hook to wp because Yoast's SEO
+ *  plugin hooks in there to check pagination
  */
 if ( ! function_exists( 'my_404_override' ) ) {
 	function my_404_override() {
 		global $wp_query;
 
-		if ($wp_query->query_vars_changed) {
+		if ( isset( $wp_query->query_vars['search_terms_count'] ) ) {
 			status_header( 200 );
 			$wp_query->is_404=false;
 			$wp_query->is_search=true;
 		}
 	}
 }
-add_filter('template_redirect', 'my_404_override' );
+add_filter('wp', 'my_404_override' );
 
 /*
  * add tag support to pages
@@ -488,11 +491,13 @@ add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } )
 add_filter( 'in_focus_date_text', function() { return ''; } );
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
+add_filter( 'billboard_num_per_page', function() { return 10; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'spotlight_excerpt_text', function() { return ''; } );
+
 
 if ( ! function_exists( 'in_focus_link_text_function' ) ) {
 	function in_focus_link_text_function( $id ) {

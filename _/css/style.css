@@ -400,6 +400,12 @@ input {
 	margin-bottom: -3px; /* I don't know why it adds 3px to the height of the featured image without this. */
 }
 
+.page-template-giving-page-php #featured-image,
+.page-template-giving-page-php .attachment-landing-page {
+	min-height: 320px;
+	min-width: 1152px;
+}
+
 #featured-text {
 	font-size: 17px;
 	position: absolute;
