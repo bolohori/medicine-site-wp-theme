@@ -33,6 +33,15 @@ if(function_exists("register_field_group"))
 					'group_no' => 1,
 				),
 			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'media_mentions',
+					'order_no' => 0,
+					'group_no' => 2,
+				),
+			),
 		),
 		'options' => array (
 			'position' => 'side',

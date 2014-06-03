@@ -1,7 +1,4 @@
-<?php get_header();
-function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-} ?>
+<?php get_header(); ?>
 <?php get_sidebar(); ?>
 <div class="slide-wrapper">
 	<div class="slider-wrapper theme-default">
@@ -26,14 +23,16 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 			$ids = $loop->posts;
 			$num_to_show = $num_to_show - sizeof( $ids );
 
-			$args = array(
-				'post_type' => 'billboard', 
-				'posts_per_page' => $num_to_show, 
-				'orderby' => 'date',
-				'fields' => 'ids'
-			);
-			$loop = new WP_Query( $args );
-			$ids = array_merge( $ids, $loop->posts );
+			if ( $num_to_show > 0 ) {
+				$args = array(
+					'post_type' => 'billboard', 
+					'posts_per_page' => $num_to_show, 
+					'orderby' => 'date',
+					'fields' => 'ids'
+				);
+				$loop = new WP_Query( $args );
+				$ids = array_merge( $ids, $loop->posts );
+			}
 
 			$args = array(
 				'post_type' => 'billboard',
@@ -69,8 +68,44 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
 <?php
-				$args = array( 'post_type' => 'media_mentions', 'posts_per_page' => 4 );
+				$num_to_show = 4;
+			
+				$args = array(
+					'post_type' => 'media_mentions', 
+					'posts_per_page' => $num_to_show, 
+					'orderby' => 'date',
+					'fields' => 'ids',
+					'meta_query' => array(
+						array(
+							'key' => 'sticky',
+							'value' => 1,
+							'compare' => '=',
+						)
+					)
+				);
 				$loop = new WP_Query( $args );
+				$ids = $loop->posts;
+				$num_to_show = $num_to_show - sizeof( $ids );
+
+				if( $num_to_show > 0 ) {
+					$args = array(
+						'post_type' => 'media_mentions', 
+						'posts_per_page' => $num_to_show, 
+						'orderby' => 'date',
+						'fields' => 'ids'
+					);
+					$loop = new WP_Query( $args );
+					$ids = array_merge( $ids, $loop->posts );
+				}
+
+				$args = array(
+					'post_type' => 'media_mentions',
+					'orderby' => 'post__in',
+					'post__in' => $ids
+				);
+
+				$loop = new WP_Query( $args );
+
 				$i = 1;
 				$images = "";
 				$captions = "";
@@ -154,7 +189,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 				$slider = "";
 				$captions = "";
 				$num_of_spotlights = get_option( 'spotlights_to_show', 4 );
-				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'date', 'order' => 'ASC' );
+				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'date' );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$read_more_link = "";

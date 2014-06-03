@@ -95,7 +95,7 @@
 				if( $my_query->have_posts() ) { 
 					while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-					<a class="faculty-photo" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'faculty-list' ) ?></a>
+					<a class="faculty-photo" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'faculty-list' ); } else { echo '<img src="' . get_stylesheet_directory_uri() . '/_/img/generic_headshot.jpg">'; } ?></a>
 				<?php endwhile;
 				} ?>
 				

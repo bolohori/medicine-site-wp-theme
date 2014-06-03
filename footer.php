@@ -57,7 +57,7 @@
 			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Administrators']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li><li>
 			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','facebook']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li><li class="last-child">
 			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Researchers']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li><li class="last-child announcements">
-			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Job Seekers']);" href="javascript:;">Announcements</a></li>
+			<a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Announcements']);" href="javascript:;">Announcements</a></li>
 		</ul>
 	</div>  
 	
@@ -68,7 +68,7 @@
 				<p>Updates on campus events, policy changes, road and building construction, calls for papers and more.</p>
 			</div>
 			<div class="announcements-right">
-				<ul class="announcement-list">
+				<ul class="announcement-list" data-columns="2">
 <?php
 					$num_to_show = get_option( 'announcements_to_show', 6 );
 
@@ -89,28 +89,30 @@
 					$ids = $loop->posts;
 					$num_to_show = $num_to_show - sizeof( $ids );
 
-					$args = array(
-						'post_type' => 'announcement', 
-						'posts_per_page' => $num_to_show, 
-						'orderby' => 'date',
-						'fields' => 'ids',
-						'meta_query' => array(
-							'relation' => 'OR',
-							array(
-								'type' => 'DATETIME',
-								'key' => 'expiration_date',
-								'value' => date_i18n("Y-m-d H:i:s"),
-								'compare' => '>',
-							),
-							array(
-								'key' => 'expiration_date',
-								'value' => '',
-								'compare' => '=',
+					if( $num_to_show > 0 ) {
+						$args = array(
+							'post_type' => 'announcement', 
+							'posts_per_page' => $num_to_show, 
+							'orderby' => 'date',
+							'fields' => 'ids',
+							'meta_query' => array(
+								'relation' => 'OR',
+								array(
+									'type' => 'DATETIME',
+									'key' => 'expiration_date',
+									'value' => date_i18n("Y-m-d H:i:s"),
+									'compare' => '>',
+								),
+								array(
+									'key' => 'expiration_date',
+									'value' => '',
+									'compare' => '=',
+								)
 							)
-						)
-					);
-					$loop = new WP_Query( $args );
-					$ids = array_merge( $ids, $loop->posts );
+						);
+						$loop = new WP_Query( $args );
+						$ids = array_merge( $ids, $loop->posts );
+					}
 
 					$args = array(
 						'post_type' => 'announcement',

@@ -78,4 +78,6 @@ jQuery(document).ready(function($) {
 	if($('.main-content').height() < ($(window).height()-526))
 		$('.main-content').css("min-height", $(window).height()-526);
 
+	
+	
 });

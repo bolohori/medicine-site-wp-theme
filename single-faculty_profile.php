@@ -17,7 +17,7 @@
 			<article>
 			<?php
 				the_title('<h1>', '</h1>');
-				echo "<div class='faculty-profile-byline'><h3>" . get_field('award_name') . "</h3><span class='faculty-profile-award-set'>";
+				echo "<div class='faculty-profile-byline'><h3>" . get_field('award_name', $post->ID) . "</h3><span class='faculty-profile-award-set'>";
 				$parents = get_post_ancestors( $post->ID );
 				$id = ( $parents ) ? $parents[ count( $parents ) - 1 ] : $post->ID;
 				echo get_the_title( $id ) . ", " .  get_the_title( $post->post_parent );
@@ -69,6 +69,7 @@
 							'post_type'   => 'faculty_profile',
 							'orderby'     => 'menu_order date',
 							'order'       => 'asc',
+							'posts_per_page' => -1
 						);
 						$my_query = new WP_Query( $args );
 						if ( $my_query->have_posts() ) { 

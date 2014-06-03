@@ -186,6 +186,30 @@ input {
 	clear: right;
 }
 
+input[type=reset],
+input[type=submit] {
+	border: none;
+	border-radius: 3px;
+	font-size: 12px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #900;
+	font-weight: bold;
+	line-height: 38px;
+	cursor: pointer;
+	position: relative;
+	height: 38px;
+	background: #ccc;
+	text-transform: uppercase;
+	max-width: 180px;
+	margin: 0 auto;
+}
+
+input[type=reset]:hover,
+input[type=submit]:hover {
+	background: #e1e1e1;
+}
+
 .button {
 	width: 250px;
 	position: relative;

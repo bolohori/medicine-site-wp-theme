@@ -277,20 +277,39 @@ header {
 	height: 25px;
 }
 
+#dirform input[type=text] {
+	width: 223px;
+}
+
+#dirform label {
+	margin: 16px 0;
+}
+
+#search-box,
+input[type=text],
+input[type=email] {
+	height: 12px;
+	padding: 8px 25px 8px 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+textarea {
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
 #search-box {
+	border: none;
+	background: #680101;
 	position: absolute;
 	top: 6px;
 	left: 30px;
 	margin: 3px 0 0 10px;
-	padding: 8px 25px 8px 10px;
 	width: 205px;
-	height: 12px;
-	border: none;
-	border-radius: 5px;
-	background: #680101;
 	-webkit-box-shadow: inset 1px 1px 1px #000000;
 	-moz-box-shadow: inset 1px 1px 1px #000000;
-	box-shadow: inset 1px 1px 1px #000000;
+	box-shadow: inset 1px 1px 1px #000000;	
 	color: #fff;
 	letter-spacing: 1px;
 	font-style: italic;
@@ -403,7 +422,7 @@ input {
 .page-template-giving-page-php #featured-image,
 .page-template-giving-page-php .attachment-landing-page {
 	min-height: 320px;
-	min-width: 1152px;
+	
 }
 
 #featured-text {
@@ -1008,17 +1027,29 @@ li.sticky-top-last {
 }
 
 .announcement-list {
-	display: inline-block;
+	/*display: inline-block;*/
 	padding: 0 42px 0 20px;
 	width: 100%;
+	columns: 2;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+
+	float: left;
+    position: relative;
+    margin-right: 20px;
 }
 
 .announcement {
 	float: left;
 	padding-right: 16%;
-	width: 50%;
 	height: 60px;
 	font-size: 14px;
+}
+
+.ie7 .announcement,
+.ie8 .announcement,
+.ie9 .announcement {
+	width: 50%;
 }
 
 p.announcements {
@@ -1371,6 +1402,31 @@ article.search-results {
 	font-size: 16px;
 }
 
+input[type=reset],
+input[type=submit] {
+	border: none;
+	border-radius: 3px;
+	font-size: 12px;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #fff;
+	font-weight: bold;
+	line-height: 38px;
+	cursor: pointer;
+	position: relative;
+	height: 38px;
+	background: #990000;
+	text-transform: uppercase;
+	max-width: 180px;
+	margin: 0 auto;
+}
+
+input[type=reset]:hover,
+input[type=submit]:hover {
+	background: #c40000;
+}
+
+
 .hero-button {
 	display: inline-block;
 	font-weight: bold;
@@ -1564,8 +1620,6 @@ article.search-results {
 	padding-top: 45px;
 	text-align: center;
 	background: #fafafa;
-	-webkit-box-shadow: 0 0 6px 6px #e0dfdf;
-	box-shadow: 0 0 6px 6px #e0dfdf;
 }
 
 .page-template-admissions-php h1 {
@@ -1573,6 +1627,7 @@ article.search-results {
 }
 
 .page-template-admissions-php p {
+	line-height: 25px;
 	width: 720px;
 	margin: 0 auto;
 }
@@ -1934,7 +1989,7 @@ background: url(../img/f_top.png);
 
 #award-years-left p {
 	padding: 17px;
-	border-bottom: 1px solid #dedccd;
+	border-bottom: 1px solid #e0e0e0;
 	color: #333;
 	font-size: 16px;
 }
@@ -1970,7 +2025,7 @@ background: url(../img/f_top.png);
 	float: left;
 	min-height: 584px;
 	width: 570px;
-	border-left: 1px solid #dedccd;
+	border-left: 1px solid #e0e0e0;
 }
 
 #award-years-right h2 {
@@ -1986,7 +2041,7 @@ background: url(../img/f_top.png);
 	margin: 0 0 10px -20px;
 	padding-left: 0;
 	min-height: 136px;
-	background: #faf9f6;
+	background: #ffffff;
 }
 
 #award-years-right ul {
@@ -2009,28 +2064,30 @@ background: url(../img/f_top.png);
 
 .faculty-descrip div {
 	margin-top: -2px;
-	color: #b4a086;
+	color: #999;
 	font-size: 11px;
 }
 
-.post-type-archive-faculty_profile h1,.single-faculty_profile h1 {
+.post-type-archive-faculty_profile h1,
+.single-faculty_profile h1 {
 	margin-bottom: 21px;
 	width: 700px;
 }
 
-.post-type-archive-faculty_profile h3,.single-faculty_profile h3 {
-	margin: 20px 0 0 0;
+.post-type-archive-faculty_profile h3,
+.single-faculty_profile h3 {
+	margin: 20px 0 7px 0;
 	width: 475px;
 	border-bottom: 1px solid #e7e5da;
 }
 
 .faculty-profile-headshot {
 	float: left;
-	margin: 10px 10px 10px 0;
+	margin: 7px 20px 10px 0;
 }
 
 .faculty-profile-byline {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .faculty-profile-award-set{

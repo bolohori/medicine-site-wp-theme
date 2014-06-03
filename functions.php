@@ -42,6 +42,11 @@ if ( ! function_exists( 'github_updater_wusm_theme_init' ) ) {
 	}
 }
 
+// Used on the front page to remove dimensions from billboard images
+function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+}
+
 if ( ! function_exists( 'feedburner_rss_redirect' ) ) {
 	function feedburner_rss_redirect( $output, $feed ) {
 		if ( strpos( $output, 'comments' ) )
@@ -410,6 +415,7 @@ if ( !function_exists( 'add_tinymce_buttons' ) ) {
 	function add_tinymce_buttons( $tinyrowthree ) {
 		$tinyrowthree[] = 'styleselect';
 		$tinyrowthree[] = 'fontsizeselect';
+		$tinyrowthree[] = 'visualblocks';
 		return $tinyrowthree;
 	}
 }
@@ -497,6 +503,8 @@ add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 )
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'spotlight_excerpt_text', function() { return ''; } );
+add_filter( 'media_mentions_target', function() { return ' target="_blank"'; } );
+add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
 
 if ( ! function_exists( 'in_focus_link_text_function' ) ) {
@@ -523,6 +531,44 @@ if ( ! function_exists( 'announcement_link_url_function' ) ) {
  */
 add_filter('the_content', function( $content ) { return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content); });
 add_filter('acf/format_value_for_api/type=wysiwyg', function( $value ) { return preg_replace('/<p(.)*>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\2\3', $value); }, 10, 3);
+
+add_filter( 'manage_billboard_posts_columns', 'column_heading', 11, 1 );
+add_action( 'manage_billboard_posts_custom_column', 'column_content', 11, 2 );
+add_filter( 'manage_announcement_posts_columns', 'column_heading', 11, 1 );
+add_action( 'manage_announcement_posts_custom_column', 'column_content', 11, 2 );
+add_filter( 'manage_media_mentions_posts_columns', 'column_heading', 11, 1 );
+add_action( 'manage_media_mentions_posts_custom_column', 'column_content', 11, 2 );
+function column_heading($columns) {
+	unset($columns['wpseo-score']);
+	unset($columns['wpseo-title']);
+	unset($columns['wpseo-metadesc']);
+	unset($columns['wpseo-focuskw']);
+	$columns['sticky'] = 'Sticky';
+	return $columns;
+}
+
+function column_content( $column_name, $post_id ) {
+	if( $column_name === 'sticky' && get_post_meta( $post_id, 'sticky', true ) === '1') {
+		echo '<div class="dashicons dashicons-yes"></div>';
+	}
+}
+
+add_filter( 'wusm-maps_menu_position', function() { return 37; } );
+add_filter( 'eventorganiser_menu_position', function() { return 50; } );
+add_action( 'admin_menu', function() { remove_menu_page( 'edit.php' ); } );
+
+function wusm_register_visualblocks() {
+	$plugins = array('visualblocks'); //Add any more plugins you want to load here
+	$plugins_array = array();
+
+	//Build the response - the key is the plugin name, value is the URL to the plugin JS
+	foreach ($plugins as $plugin ) {
+		$plugins_array[ $plugin ] = get_stylesheet_directory_uri() . '/_/' . $plugin . '/plugin.js';
+	}
+	return $plugins_array;
+}
+
+add_filter('mce_external_plugins', 'wusm_register_visualblocks' );
 
 /*
 ....::::::::,.................................,,:::::::.....
