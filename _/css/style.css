@@ -156,10 +156,12 @@ a {
     height: 18px;
 }
 
+#site-title {
+    padding: 22px;
+}
+
 #site-title a {
-    float: left;
     font-size: 24px;
-    margin: 22px 0 22px 32px;
     color: #fff;
 }
 
@@ -942,17 +944,19 @@ article.search-results {
         display: block;
         float: right;
         position: relative;
-        top: 21px;
         cursor: pointer;
-        margin-right: 22px;
+        margin: 22px 22px 20px;
     }
 
     #search-form {
         display: none;
     }
 
+    #site-title {
+        padding: 24px;
+    }
+
     #site-title a {
-        margin-left: 18px;
         font-size: 23px;
     }
 
