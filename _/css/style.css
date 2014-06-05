@@ -237,7 +237,7 @@ a {
 #left-col {
     float: left;
     width: 180px;
-    padding: 45px 10px 0 0 ;
+    padding: 45px 10px 45px 0 ;
 }
 
 .home #left-col {
