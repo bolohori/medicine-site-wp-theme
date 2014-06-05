@@ -157,7 +157,7 @@ a {
 }
 
 #site-title {
-    padding: 22px;
+    padding: 22px 0 22px 32px;
 }
 
 #site-title a {
@@ -237,7 +237,7 @@ a {
 #left-col {
     float: left;
     width: 180px;
-    padding: 45px 10px 45px 0 ;
+    padding: 45px 10px 45px 0;
 }
 
 .home #left-col {
@@ -945,7 +945,7 @@ article.search-results {
         float: right;
         position: relative;
         cursor: pointer;
-        margin: 22px 22px 20px;
+        margin: 20px 22px 19px;
     }
 
     #search-form {
@@ -953,7 +953,7 @@ article.search-results {
     }
 
     #site-title {
-        padding: 24px;
+        padding: 22px 22px 22px 18px;
     }
 
     #site-title a {
