@@ -7,15 +7,15 @@
 			$num_to_show = get_option( 'billboards_to_show', 5 );
 			
 			$args = array(
-				'post_type' => 'billboard', 
+				'post_type'      => 'billboard', 
 				'posts_per_page' => $num_to_show, 
-				'orderby' => 'date',
-				'fields' => 'ids',
-				'meta_query' => array(
+				'orderby'        => 'date',
+				'fields'         => 'ids',
+				'meta_query'     => array(
 					array(
-						'key' => 'sticky',
-						'value' => 1,
-						'compare' => '=',
+						'key'     => 'sticky',
+						'value'   => 1,
+						'compare' => '='
 					)
 				)
 			);
@@ -25,11 +25,11 @@
 
 			if ( $num_to_show > 0 ) {
 				$args = array(
-					'post_type' => 'billboard', 
+					'post_type'      => 'billboard', 
 					'posts_per_page' => $num_to_show, 
-					'orderby' => 'date',
-					'post__not_in' => $ids,
-					'fields' => 'ids'
+					'orderby'        => 'date',
+					'post__not_in'   => $ids,
+					'fields'         => 'ids'
 				);
 				$loop = new WP_Query( $args );
 				$ids = array_merge( $ids, $loop->posts );
@@ -37,8 +37,8 @@
 
 			$args = array(
 				'post_type' => 'billboard',
-				'orderby' => 'post__in',
-				'post__in' => $ids
+				'orderby'   => 'post__in',
+				'post__in'  => $ids
 			);
 
 			$loop = new WP_Query( $args );
@@ -47,7 +47,7 @@
 
 			while ( $loop->have_posts() ) : $loop->the_post();
 				$internal_only = get_field('internal_only');
-				if ($internal_only && !WASHU_IP)
+				if ( $internal_only && !WASHU_IP )
 					continue;
 
 				$link = get_field('link');
@@ -57,7 +57,6 @@
  				$title = get_the_title();
 
 				echo "<a $target href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
-
 			endwhile;
 			wp_reset_postdata();
 			remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
@@ -72,15 +71,15 @@
 				$num_to_show = 4;
 			
 				$args = array(
-					'post_type' => 'media_mentions', 
+					'post_type'      => 'media_mentions', 
 					'posts_per_page' => $num_to_show, 
-					'orderby' => 'date',
-					'fields' => 'ids',
-					'meta_query' => array(
+					'orderby'        => 'date',
+					'fields'         => 'ids',
+					'meta_query'     => array(
 						array(
-							'key' => 'sticky',
-							'value' => 1,
-							'compare' => '=',
+							'key'     => 'sticky',
+							'value'   => 1,
+							'compare' => '='
 						)
 					)
 				);
@@ -90,11 +89,11 @@
 
 				if( $num_to_show > 0 ) {
 					$args = array(
-						'post_type' => 'media_mentions', 
+						'post_type'      => 'media_mentions', 
 						'posts_per_page' => $num_to_show, 
-						'orderby' => 'date',
-						'post__not_in' => $ids,
-						'fields' => 'ids'
+						'orderby'        => 'date',
+						'post__not_in'   => $ids,
+						'fields'         => 'ids'
 					);
 					$loop = new WP_Query( $args );
 					$ids = array_merge( $ids, $loop->posts );
@@ -102,8 +101,8 @@
 
 				$args = array(
 					'post_type' => 'media_mentions',
-					'orderby' => 'post__in',
-					'post__in' => $ids
+					'orderby'   => 'post__in',
+					'post__in'  => $ids
 				);
 
 				$loop = new WP_Query( $args );
@@ -120,7 +119,7 @@
 					$i++;
 				endwhile;
 				wp_reset_postdata();
-				echo "<div id='news-slider' class='nivoSlider'>" . $images . "</div>" . $captions . "\n";
+				echo "<div id='news-slider' class='nivoSlider'>$images</div>$captions\n";
 ?>
 			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
 		</div>
@@ -133,11 +132,11 @@
 				$i = 0;
 				$j = 0;
 				$audio_out = '';
-				$args = array( 'post_type' => 'news_releases',
-								'posts_per_page' => 6,
-								'orderby' => 'date',
-								'order' => 'ASC'
-							);
+				$args = array(
+					'post_type'      => 'news_releases',
+					'posts_per_page' => 6,
+					'orderby'        => 'date'
+				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					echo "<li>" . get_the_title() . "<p>";

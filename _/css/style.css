@@ -417,6 +417,7 @@ input {
 }
 
 .home #featured-image {
+	float: left;
 	z-index: 1;
 }
 
