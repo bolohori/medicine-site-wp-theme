@@ -120,45 +120,78 @@ while( has_sub_field( 'sidebars' ) ):
 			<h2>Recent Announcements</h2>
 			<ul>
 			<?php 
-			$num_to_show = get_sub_field( 'number_to_show' );
+			$num_to_show = get_option( 'announcements_to_show', 6 );
+
 			$args = array(
 				'post_type' => 'announcement', 
 				'posts_per_page' => $num_to_show, 
-				'orderby' => 'menu_order date', 
+				'orderby' => 'menu_order',
 				'order' => 'ASC',
+				'fields' => 'ids',
 				'meta_query' => array(
-					'relation' => 'OR',
 					array(
-						'type' => 'DATETIME',
-						'key' => 'expiration_date',
-						'value' => date_i18n("Y-m-d H:i:s"),
-						'compare' => '>',
-					),
-					array(
-						'key' => 'expiration_date',
-						'value' => '',
+						'key' => 'sticky',
+						'value' => 1,
 						'compare' => '=',
 					)
 				)
 			);
 			$loop = new WP_Query( $args );
+			$ids = $loop->posts;
+			$num_to_show = $num_to_show - sizeof( $ids );
+
+			if( $num_to_show > 0 ) {
+				$args = array(
+					'post_type' => 'announcement', 
+					'posts_per_page' => $num_to_show, 
+					'orderby' => 'date',
+					'fields' => 'ids',
+					'post__not_in' => $ids,
+					'meta_query' => array(
+						'relation' => 'OR',
+						array(
+							'type' => 'DATETIME',
+							'key' => 'expiration_date',
+							'value' => date_i18n("Y-m-d H:i:s"),
+							'compare' => '>',
+						),
+						array(
+							'key' => 'expiration_date',
+							'value' => '',
+							'compare' => '=',
+						)
+					)
+				);
+				$loop = new WP_Query( $args );
+				$ids = array_merge( $ids, $loop->posts );
+			}
+
+			$args = array(
+				'post_type' => 'announcement',
+				'orderby' => 'post__in',
+				'post__in' => $ids
+			);
+			
+			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) : $loop->the_post();
-				$internal_only = get_field( 'internal_only' );
-				if ( $internal_only && !WASHU_IP )
+				$internal_only = get_field('internal_only');
+				if ( $internal_only && !WASHU_IP ) {
+					echo "internal";
 					continue;
-				$link = get_field( 'url' );
+				}
+				$link = get_field('url');
 				
 				if( $link['url'] != '' ) {
-					$url = $link['url'];
+					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
 					$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
 				} else {
 					$url = get_permalink();
 					$target = "";
 				}
 				echo "\t\t\t\t\t<li><a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement-sidebar','$url']);\">" . get_the_title() . "</a></li>\n";
+				//echo "\t\t\t\t\t<li class='announcement'><a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement','$url']);\">" . get_the_title() . "</a></li>\n";
 				
 			endwhile;
-			wp_reset_query();
 			?>
 			</ul>
 		</aside>
