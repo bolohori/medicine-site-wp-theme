@@ -306,6 +306,7 @@ article {
     float: left;
     max-width: 450px;
     padding: 45px 35px 70px 35px;
+    width: 100%;
 }
 
 article.notch {
