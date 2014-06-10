@@ -90,14 +90,14 @@ if (have_posts()) :
 			<div class="wrapper">
 				<ul class="clearfix">
 					<li class="list-title">Admissions Resources</li>
-					<li><a target="_blank" href="http://medicine.wustl.edu/directory/academic-departments">Academic Departments &amp; Programs</a></li>
-					<li><a target="_blank" href="http://bulletinoftheschoolofmedicine.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
-					<li><a target="_blank" href="https://cme.wustl.edu/">Continuing Medical Education</a></li>
-					<li><a target="_blank" href="http://wumsfinaid.wustl.edu/">Financial Aid</a></li>
-					<li><a target="_blank" href="http://gme.wustl.edu/">Graduate Medical Education</a></li>
-					<li><a target="_blank" href="http://postdoc.wustl.edu/">Postdoctoral Affairs</a></li>
-					<li><a target="_blank" href="http://wusmregistrar.wustl.edu/">Registrar</a></li>
-					<li><a target="_blank" href="http://wustl.edu/admissions/">WUSTL Admissions - Danforth Campus</a></li>
+					<li><a href="http://medicine.wustl.edu/directory/academic-departments">Academic Departments &amp; Programs</a></li>
+					<li><a href="http://bulletinoftheschoolofmedicine.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
+					<li><a href="https://cme.wustl.edu/">Continuing Medical Education</a></li>
+					<li><a href="http://wumsfinaid.wustl.edu/">Financial Aid</a></li>
+					<li><a href="http://gme.wustl.edu/">Graduate Medical Education</a></li>
+					<li><a href="http://postdoc.wustl.edu/">Postdoctoral Affairs</a></li>
+					<li><a href="http://wusmregistrar.wustl.edu/">Registrar</a></li>
+					<li><a href="http://wustl.edu/admissions/">WUSTL Admissions - Danforth Campus</a></li>
 				</ul>
 			</div>
 		</div>

@@ -106,7 +106,7 @@ add_filter( 'the_generator', function() { return ''; });
  */
 if ( ! function_exists( 'wpfme_footer_admin' ) ) {
 	function wpfme_footer_admin () {
-		echo 'Theme designed and developed by WUSTL Medical Public Affairs and powered by <a href="http://wordpress.org" target="_blank">WordPress</a>.';
+		echo 'Theme designed and developed by WUSTL Medical Public Affairs and powered by <a href="http://wordpress.org">WordPress</a>.';
 	}
 }
 add_filter('admin_footer_text', 'wpfme_footer_admin');
@@ -503,7 +503,6 @@ add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 )
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'spotlight_excerpt_text', function() { return ''; } );
-add_filter( 'media_mentions_target', function() { return ' target="_blank"'; } );
 add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
 

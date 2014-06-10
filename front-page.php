@@ -52,11 +52,10 @@
 
 				$link = get_field('link');
 				
-				$target = $link['new_window'] ? "" : "target='_blank'";
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a $target href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
+				echo "<a href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 			endwhile;
 			wp_reset_postdata();
 			remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
@@ -115,7 +114,7 @@
 					$images .= "<img src='";
 					$images .= get_field( 'thumbnail' ) ? get_field( 'thumbnail' ) : get_stylesheet_directory_uri() . "/_/img/itn-default.png'";
 					$images .= "' alt='' title='#htmlcaption" . $i . "' />\n";
-					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a target='_blank' href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$url']);\"><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
+					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$url']);\"><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
@@ -148,9 +147,8 @@
 						$j++;
 					}
 					$link = get_field('url');
-					$target = $link['new_window'] ? "" : "target='_blank'";
 					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 					echo "<a $target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
+ 					echo "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
 					$i++;
 					if($i==3)
 						echo "</ul>\n<ul class='news-list'>";
@@ -209,8 +207,7 @@
 
 					if ( $link['url'] !== null ) {
 						$url = $link['url'];
-						$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
-						$read_more_link = "<a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read More</a>";
+						$read_more_link = "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read More</a>";
 					}
 
 					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";

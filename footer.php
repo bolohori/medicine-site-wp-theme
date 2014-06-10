@@ -2,14 +2,14 @@
 <footer class="clearfix">
 	<div class="campaign-wrapper">
 		<div class="wrapper">
-			<a class="campaign-banner" target="_blank" href="http://together.wustl.edu" onclick="javascript:_gaq.push(['_trackEvent','outbound-campaign','http://together.wustl.edu']);">
+			<a class="campaign-banner" href="http://together.wustl.edu" onclick="javascript:_gaq.push(['_trackEvent','outbound-campaign','http://together.wustl.edu']);">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/campaign.png" alt="Leading Together, the campaign for Washington University">
 			</a>
 		</div>
 	</div>
 	<div class="wrapper">
 		<div class="double-footer">
-			<p>Our 2,100 employed and volunteer faculty — the <a target="_blank" href="http://wuphysicians.wustl.edu" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://wuphysicians.wustl.edu']);">Washington University Physicians</a> — also are the medical staff of <a target="_blank" href="http://www.barnesjewish.org/" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://www.barnesjewish.org']);">Barnes-Jewish</a> and <a target="_blank" href="http://www.stlouischildrens.org/" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://www.stlouischildrens.org']);">St. Louis Children's</a> hospitals. Through its hospital affiliations, the School is linked to BJC HealthCare.</p>
+			<p>Our 2,100 employed and volunteer faculty — the <a href="http://wuphysicians.wustl.edu" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://wuphysicians.wustl.edu']);">Washington University Physicians</a> — also are the medical staff of <a href="http://www.barnesjewish.org/" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://www.barnesjewish.org']);">Barnes-Jewish</a> and <a href="http://www.stlouischildrens.org/" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer','http://www.stlouischildrens.org']);">St. Louis Children's</a> hospitals. Through its hospital affiliations, the School is linked to BJC HealthCare.</p>
 			<p class="small-text">&copy;<?php echo date("Y") ?> Washington University School of Medicine in St. Louis</p>
 		</div>
 		<div class="single-footer">
@@ -24,12 +24,12 @@
 		</div>
 		<div class="single-footer last-child">
 			<p class="social">
-				<a target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','facebook']);" href="http://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" alt="Facebook"></a>
-				<a target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','twitter']);" href="http://twitter.com/WUSTLmed"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt="Twitter"></a>
-				<a target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','linkedin']);" href="http://www.linkedin.com/company/washington-university-school-of-medicine"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/linkedin.png" alt="LinkedIn"></a>
-				<a target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','googleplus']);" href="http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/googleplus.png" alt="Google+"></a>
-				<a target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','rss']);" href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/rss.png" alt="RSS"></a>
-				<a target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','WUSTL reader']);" href="http://reader.wustl.edu/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wustl_reader.png" alt="YouTube"></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','facebook']);" href="http://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" alt="Facebook"></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','twitter']);" href="http://twitter.com/WUSTLmed"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt="Twitter"></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','linkedin']);" href="http://www.linkedin.com/company/washington-university-school-of-medicine"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/linkedin.png" alt="LinkedIn"></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','googleplus']);" href="http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/googleplus.png" alt="Google+"></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','rss']);" href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/rss.png" alt="RSS"></a>
+				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','WUSTL reader']);" href="http://reader.wustl.edu/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wustl_reader.png" alt="YouTube"></a>
 			</p>
 			<p class="small-text pad-top-20">660 S. Euclid Ave.<br>St. Louis, MO 63110</p>
 		</div>
@@ -40,7 +40,7 @@
 	<div  class="sticky-top">
 		<div class="wrapper">
 			<ul>
-				<a target="_blank" href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','WU Physicians']);"><li>Find a Doctor</li></a>
+				<a href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','WU Physicians']);"><li>Find a Doctor</li></a>
 				<a onclick="javascript:_gaq.push(['_trackEvent','stick-footer','Departments and Programs']);" href="<?php echo get_permalink( get_page_by_title( 'Academic Departments &amp; Programs' ) );?>"><li>Departments &amp; Programs</li></a>
 				<a onclick="javascript:_gaq.push(['_trackEvent','stick-footer','Admissions']);" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>"><li class="sticky-top-last">Admissions</li></a>
 			</ul>
@@ -133,12 +133,10 @@
 						
 						if( $link['url'] != '' ) {
 							$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
-							$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
 						} else {
 							$url = get_permalink();
-							$target = "";
 						}
-						echo "\t\t\t\t\t<li class='announcement'><a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement','$url']);\">" . get_the_title() . "</a></li>\n";
+						echo "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement','$url']);\">" . get_the_title() . "</a></li>\n";
 						
 					endwhile;
 ?>
