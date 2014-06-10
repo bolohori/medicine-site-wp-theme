@@ -1202,7 +1202,9 @@ article.search-results {
 
 .slider-wrapper,
 #slider {
-	width: 1200px;
+	/*width: 1200px;*/
+	width: 100%;
+	max-width: 1440px;
 	margin: 0 auto;
 	/*z-index: 1;*/
 }
@@ -1213,6 +1215,16 @@ article.search-results {
 
 .ie7 .slide-wrapper .slider-wrapper {
 	margin-bottom: -22px !important;
+}
+
+.billboard .nivo-prevNav {
+	left: 50% !important;
+	margin-left: -480px;
+}
+
+.billboard .nivo-nextNav {
+	right: 50% !important;
+	margin-right: -480px;
 }
 
 .nivo-controlNav {

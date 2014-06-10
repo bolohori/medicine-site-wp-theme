@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
-<div class="slide-wrapper">
+<div class="slide-wrapper billboard">
 	<div class="slider-wrapper theme-default">
 		<div id="slider" class="nivoSlider">
 <?php
