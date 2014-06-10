@@ -51,15 +51,131 @@
 
 <header>
 
+	<nav id="utility-bar" class="clearfix">
+		<div class="wrapper top-nav">
+			<ul id="action-nav">
+				<li><a href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','utility-nav','WU Physicians']);">Find a Doctor</a></li>
+				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Departments and Programs']);" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
+				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav,'Giving']);" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
+			</ul>
+			<ul id="utility-nav">
+				<li class="information-for"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','information-for-open']);" href="WUSTL">Information for <span class="arrow-down">&nbsp;</span></a></li>
+				<li class="announcements"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','announcements-open']);" href="WUSTL">Announcements <span class="arrow-down">&nbsp;</span></a></li>
+				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://www.wustl.edu']);" href="http://www.wustl.edu">WUSTL</a></li>
+				<li class="last-child"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Directories']);" href="/directory">Directories</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="announcements-div">
+		<div class="wrapper">
+			<div class="announcements-left">
+				<h2>Announcements</h2>
+				<p>Updates on campus events, policy changes, road and building construction, calls for papers and more.</p>
+			</div>
+			<div class="announcements-right">
+				<ul class="announcement-list" data-columns="2">
+		<?php
+			$num_to_show = get_option( 'announcements_to_show', 6 );
+
+			$args = array(
+				'post_type' => 'announcement', 
+				'posts_per_page' => $num_to_show, 
+				'orderby' => 'menu_order',
+				'order' => 'ASC',
+				'fields' => 'ids',
+				'meta_query' => array(
+					array(
+						'key' => 'sticky',
+						'value' => 1,
+						'compare' => '=',
+					)
+				)
+			);
+			$loop = new WP_Query( $args );
+			$ids = $loop->posts;
+			$num_to_show = $num_to_show - sizeof( $ids );
+
+			if( $num_to_show > 0 ) {
+				$args = array(
+					'post_type' => 'announcement', 
+					'posts_per_page' => $num_to_show, 
+					'orderby' => 'date',
+					'fields' => 'ids',
+					'post__not_in' => $ids,
+					'meta_query' => array(
+						'relation' => 'OR',
+						array(
+							'type' => 'DATETIME',
+							'key' => 'expiration_date',
+							'value' => date_i18n("Y-m-d H:i:s"),
+							'compare' => '>',
+						),
+						array(
+							'key' => 'expiration_date',
+							'value' => '',
+							'compare' => '=',
+						)
+					)
+				);
+				$loop = new WP_Query( $args );
+				$ids = array_merge( $ids, $loop->posts );
+			}
+
+			$args = array(
+				'post_type' => 'announcement',
+				'orderby' => 'post__in',
+				'post__in' => $ids
+			);
+			
+			$loop = new WP_Query( $args );
+			while ( $loop->have_posts() ) : $loop->the_post();
+				$internal_only = get_field('internal_only');
+				if ( $internal_only && !WASHU_IP ) {
+					echo "internal";
+					continue;
+				}
+				$link = get_field('url');
+				
+				if( $link['url'] != '' ) {
+					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+				} else {
+					$url = get_permalink();
+				}
+				echo "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement','$url']);\">" . get_the_title() . "</a></li>\n";
+				
+			endwhile;
+		?>
+				</ul>
+			</div>
+			<p class="announcements">close <span class="arrow-up">&nbsp;</span></p>
+		</div>
+	</div>
+
+	<div class="information-for-div">
+		<div class="wrapper">
+			<div class="information-for-left">
+				<h2>Information for Our Community</h2>
+				<p>Whether you are part of our community or are interested in joining us, we welcome you to Washington University School of Medicine.</p>
+			</div>
+			<div class="information-for-right">
+				<ul class="information-for-list" data-columns="2">
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Prospective Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Current Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Faculty']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Staff']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Alumni']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Administrators']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','facebook']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Researchers']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
+				</ul>
+			</div>
+			<p class="information-for">close <span class="arrow-up">&nbsp;</span></p>
+		</div>
+	</div>
+
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper">
-			<nav id="utility-bar" class="clearfix">
-				<ul id="utility-nav">
-					<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://www.wustl.edu']);" href="WUSTL">WUSTL</a></li>
-					<li class="last-child"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Directories']);" href="/directory">Directories</a></li>
-				</ul>
-			</nav>
-
 			<?php /*<div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>*/ ?>
 
 			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.png" alt="Washington University School of Medicine in St. Louis"/><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" alt="Washington University School of Medicine in St. Louis"/></a></div>
