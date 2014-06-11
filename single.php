@@ -62,7 +62,7 @@
 			?>
 		</article>
 
-		<?php get_sidebar( 'right' ); ?>
+		<?php if( !$post->post_type == 'in_focus') get_sidebar( 'right' ); ?>
 
 	</div>
 

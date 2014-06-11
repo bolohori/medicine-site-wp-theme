@@ -70,7 +70,7 @@ function create_custom_post_types() {
 		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
-		'supports' => array('title', 'page-attributes')
+		'supports' => array('title', 'page-attributes', 'post-thumbnail')
 	);
 	register_post_type( 'media_mentions', $args );
 

@@ -54,12 +54,20 @@ jQuery(document).ready(function($) {
 
 	$(".announcements").click(function(e){
 		e.preventDefault();
-		$(".information-for-div").slideUp();
+		$(".announcements .arrow").toggleClass("arrow-down arrow-up");
+		if ( $(".information-for-div").css("display") === "block" ) {
+			$(".information-for .arrow").toggleClass("arrow-down arrow-up");
+			$(".information-for-div").slideToggle();
+		}
 		$(".announcements-div").slideToggle();
 	});
 	$(".information-for").click(function(e){
 		e.preventDefault();
-		$(".announcements-div").slideUp();
+		$(".information-for .arrow").toggleClass("arrow-down arrow-up");
+		if ( $(".announcements-div").css("display") === "block" ) {
+			$(".announcements .arrow").toggleClass("arrow-down arrow-up");
+			$(".announcements-div").slideToggle();
+		}
 		$(".information-for-div").slideToggle();
 	});
 

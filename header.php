@@ -55,19 +55,19 @@
 		<div class="wrapper top-nav">
 			<ul id="action-nav">
 				<li><a href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','utility-nav','WU Physicians']);">Find a Doctor</a></li>
-				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Departments and Programs']);" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
+				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Admissions']);" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
 				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav,'Giving']);" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
 			</ul>
 			<ul id="utility-nav">
-				<li class="information-for"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','information-for-open']);" href="WUSTL">Information for <span class="arrow-down">&nbsp;</span></a></li>
-				<li class="announcements"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','announcements-open']);" href="WUSTL">Announcements <span class="arrow-down">&nbsp;</span></a></li>
-				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','http://www.wustl.edu']);" href="http://www.wustl.edu">WUSTL</a></li>
+				<li><a class="information-for" onclick="javascript:_gaq.push(['_trackEvent','utility-nav','information-for-open']);" href="">Information for <span class="arrow arrow-down">&nbsp;</span></a></li>
+				<li><a class="announcements" onclick="javascript:_gaq.push(['_trackEvent','utility-nav','announcements-open']);" href="">Announcements <span class="arrow arrow-down">&nbsp;</span></a></li>
+				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','WUSTL']);" href="http://www.wustl.edu">WUSTL</a></li>
 				<li class="last-child"><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Directories']);" href="/directory">Directories</a></li>
 			</ul>
 		</div>
 	</nav>
 
-	<div class="announcements-div">
+	<div class="announcements-div hidden-header">
 		<div class="wrapper">
 			<div class="announcements-left">
 				<h2>Announcements</h2>
@@ -148,11 +148,11 @@
 		?>
 				</ul>
 			</div>
-			<p class="announcements">close <span class="arrow-up">&nbsp;</span></p>
+			<p class="announcements">close <span class="arrow arrow-down">&nbsp;</span></p>
 		</div>
 	</div>
 
-	<div class="information-for-div">
+	<div class="information-for-div hidden-header">
 		<div class="wrapper">
 			<div class="information-for-left">
 				<h2>Information for Our Community</h2>
@@ -170,7 +170,7 @@
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Researchers']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
 				</ul>
 			</div>
-			<p class="information-for">close <span class="arrow-up">&nbsp;</span></p>
+			<p class="information-for">close <span class="arrow arrow-down">&nbsp;</span></p>
 		</div>
 	</div>
 
