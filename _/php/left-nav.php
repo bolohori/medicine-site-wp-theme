@@ -107,8 +107,8 @@ class Razorback_Walker_Page_Selective_Children extends Walker_Page {
 			if ( function_exists( 'get_field' ) ) {
 				$nav_title = get_field( 'left_nav_menu_title', $page->ID);
 			}
-			$page_title = ( isset( $nav_title ) ) ? $nav_title : apply_filters( 'the_title', $page->post_title, $page->ID );
-			$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . $page_title . $link_after . '</a>';
+            $page_title = ($nav_title == "") ? apply_filters( 'the_title', $page->post_title, $page->ID ) : $nav_title;
+            $output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . $page_title . $link_after . '</a>';
 		}
 
 		if ( !empty($show_date) ) {
