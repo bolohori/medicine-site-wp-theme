@@ -348,6 +348,10 @@ article h1 + p {
     margin-top: 50px;
 }
 
+article h1 + .accordion-header {
+    margin-top: 45px;
+}
+
 article a {
     color: #980006;
 }

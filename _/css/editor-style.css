@@ -50,6 +50,10 @@ body#tinymce.wp-editor h1 + p {
 	margin-top: 50px;
 }
 
+body#tinymce.wp-editor h1 + .accordion-header {
+    margin-top: 45px;
+}
+
 body#tinymce.wp-editor ul {
 	list-style-type: disc;
 	margin-left: 40px;
