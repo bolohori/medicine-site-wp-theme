@@ -148,7 +148,7 @@ if ( ! function_exists( 'theme_init' ) ) {
 		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'landing-page', 1440, 9999 );
 		add_image_size( 'faculty-list', 80, 112 );
-		add_image_size( 'in-the-news', 340, 250 );
+		add_image_size( 'in-the-news', 340, 250, true );
 		add_image_size( 'spotlight-image', 147, 200, true );
 		add_image_size( 'outlook-thumb', 240, 9999 );
 

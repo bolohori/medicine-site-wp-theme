@@ -43,6 +43,7 @@
 
 			$loop = new WP_Query( $args );
 			
+			// Need this for billboards AND in the news images
 			add_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10, 5 );
 
 			while ( $loop->have_posts() ) : $loop->the_post();
@@ -58,7 +59,6 @@
 				echo "<a href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 			endwhile;
 			wp_reset_postdata();
-			remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>
 		</div>
 	</div>
@@ -111,13 +111,15 @@
 				$captions = "";
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$url = get_field( 'url' );
-					$images .= "<img src='";
-					$images .= get_field( 'thumbnail' ) ? get_field( 'thumbnail' ) : get_stylesheet_directory_uri() . "/_/img/itn-default.png'";
-					$images .= "' alt='' title='#htmlcaption" . $i . "' />\n";
+					$images .= get_the_post_thumbnail() != '' ? get_the_post_thumbnail($post->ID, 'in-the-news', array('alt' => '', 'title' => "#htmlcaption$i" ) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/itn-default.png' alt='' title='#htmlcaption" . $i . "' />\n";;
+					/*$images .= get_field( 'thumbnail' ) ? get_field( 'thumbnail' ) : get_stylesheet_directory_uri() . "/_/img/itn-default.png'";*/
 					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$url']);\"><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
+
+				// This is set before the Billboards, but we need it here too
+				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 				echo "<div id='news-slider' class='nivoSlider'>$images</div>$captions\n";
 ?>
 			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
