@@ -1069,6 +1069,11 @@ article.search-results {
 	overflow: hidden;
 }
 
+#news-slider .nivo-main-image,
+.attachment-in-the-news {
+	width: 340px;
+	height: 250px;
+}
 
 #billboard-slider {
 	width: 1440px;
@@ -1077,10 +1082,6 @@ article.search-results {
 	-webkit-box-shadow: 0 10px 10px 0 #DEDEDE;
 	-moz-box-shadow: 0 10px 10px 0 #DEDEDE;
 	box-shadow: 0 10px 10px 0 #DEDEDE;
-}
-
-.nivoSlider {
-	position: relative;
 }
 
 .billboard .slider-wrapper {
