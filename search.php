@@ -144,6 +144,7 @@ get_header(); ?>
 				}
 				
 				// Display page of search results
+				if( $xml->RES->R ) {
 				foreach( $xml->RES->R as $result ) { ?>
 					<p style="width: 515px;">
 					<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
@@ -153,6 +154,7 @@ get_header(); ?>
 					<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
 					</p>
 			<?php }
+				}
 				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
 			} ?>
 			

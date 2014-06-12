@@ -1069,14 +1069,22 @@ article.search-results {
 	overflow: hidden;
 }
 
-.slider-wrapper,
-#slider {
-	width: 100%;
-	max-width: 1440px;
-	margin: 0 auto;
+
+#billboard-slider {
+	width: 1440px;
+	left: 50%;
+	margin-left: -720px;
+	-webkit-box-shadow: 0 10px 10px 0 #DEDEDE;
+	-moz-box-shadow: 0 10px 10px 0 #DEDEDE;
+	box-shadow: 0 10px 10px 0 #DEDEDE;
 }
 
-.ie7 #slider img.nivo-main-image {
+.nivoSlider {
+	position: relative;
+}
+
+
+.ie7 #billboard-slider img.nivo-main-image {
 	height: auto !important;
 }
 
@@ -1118,13 +1126,6 @@ article.search-results {
 .news-left {
 	float: left;
 	width: 340px;
-}
-
-#slider {
-	float: left;
-	-webkit-box-shadow: 0 10px 10px 0 #DEDEDE;
-	-moz-box-shadow: 0 10px 10px 0 #DEDEDE;
-	box-shadow: 0 10px 10px 0 #DEDEDE;
 }
 
 #news-slider {
