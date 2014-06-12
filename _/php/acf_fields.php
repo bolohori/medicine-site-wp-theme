@@ -98,7 +98,6 @@ if(function_exists("register_field_group"))
 				'name' => 'url',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -156,7 +155,6 @@ if(function_exists("register_field_group"))
 				'name' => 'link',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -479,7 +477,7 @@ if(function_exists("register_field_group"))
 				'name' => 'faculty_member',
 				'type' => 'post_object',
 				'post_type' => array (
-					0 => 'faculty',
+					0 => 'all',
 				),
 				'taxonomy' => array (
 					0 => 'all',
@@ -526,7 +524,6 @@ if(function_exists("register_field_group"))
 				'name' => 'url',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -579,6 +576,7 @@ if(function_exists("register_field_group"))
 				'label' => 'Special header',
 				'name' => 'special_header',
 				'type' => 'post_object',
+				'instructions' => '"Breadcrumb" nav found above page title in Executive Management Fellowship section',
 				'post_type' => array (
 					0 => 'page',
 				),
@@ -625,7 +623,7 @@ if(function_exists("register_field_group"))
 		),
 		'options' => array (
 			'position' => 'acf_after_title',
-			'layout' => 'no_box',
+			'layout' => 'default',
 			'hide_on_screen' => array (
 			),
 		),
@@ -706,7 +704,7 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'user_type',
 					'operator' => '==',
-					'value' => 'super_admin',
+					'value' => 'administrator',
 					'order_no' => 0,
 					'group_no' => 3,
 				),
