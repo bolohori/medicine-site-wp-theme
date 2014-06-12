@@ -91,8 +91,10 @@ get_header(); ?>
 					foreach ( $pageposts as $post ):
 						setup_postdata($post);
 						if( $post->post_type == 'promoted_results' ) {
+							add_filter( 'excerpt_more', function() { return ""; } );
 							$link = get_field('result_url', $post->ID);
 						} else {
+							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_permalink();
 						}
 						echo "<p style='width: 515px;'>
@@ -104,6 +106,7 @@ get_header(); ?>
 					endforeach;
 					echo "<hr>";
 				endif;
+				add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 
 				// Restore original Post Data
 				wp_reset_postdata();

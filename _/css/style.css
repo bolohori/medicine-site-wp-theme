@@ -1083,6 +1083,9 @@ article.search-results {
 	position: relative;
 }
 
+.billboard .slider-wrapper {
+	margin-bottom: -22px;
+}
 
 .ie7 #billboard-slider img.nivo-main-image {
 	height: auto !important;
