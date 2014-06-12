@@ -2251,7 +2251,7 @@ a.sidebar-outlook-link {
 }
 
 #right-col {
-	float: left;
+	float: right;
 	padding: 45px 10px 0 0;
 	background-color: #f4f4f4;
 }

@@ -569,6 +569,11 @@ function wusm_register_visualblocks() {
 
 add_filter('mce_external_plugins', 'wusm_register_visualblocks' );
 
+function load_custom_wp_admin_style() {
+	wp_enqueue_script( 'my-js', get_stylesheet_directory_uri() . '/_/js/acf-custom-admin.js', false );
+}
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+
 /*
 ....::::::::,.................................,,:::::::.....
 ....::?IIIIII?+=~::::::::::::::::::::::::::~=??IIIII+::.....
