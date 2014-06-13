@@ -498,16 +498,29 @@ add_filter( 'in_focus_link_text', 'in_focus_link_text_function', 10, 1 );
 add_filter( 'in_focus_link_field', 'in_focus_link_url_function', 10, 1 );
 add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } );
 add_filter( 'in_focus_date_text', function() { return ''; } );
+
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
 add_filter( 'billboard_num_per_page', function() { return 10; } );
+
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
+
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
+
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
-add_filter( 'spotlight_excerpt_text', function() { return ''; } );
+add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
 add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
+add_filter( 'spotlight_excerpt_text', function() { return ''; } );
+add_filter( 'spotlight_show_thumbnail', function() { return false; } );
+add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
+
+if ( ! function_exists( 'spotlight_link_url_function' ) ) {
+	function spotlight_link_url_function( $id ) {
+		return ( $external_link = get_field( 'nl-link' ) ) ? 'nl-link' : '';
+	}
+}
 
 if ( ! function_exists( 'in_focus_link_text_function' ) ) {
 	function in_focus_link_text_function( $id ) {
