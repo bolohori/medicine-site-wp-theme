@@ -311,6 +311,21 @@ if ( ! function_exists( 'wusm_styles_dropdown' ) ) {
 						'block'    => 'div',
 						'classes'  => 'disclaimer',
 						'wrapper'  => 'true'
+					),
+					array(
+						'title'	   => 'Signature block',
+						'inline'   => 'span',
+						'classes'  => 'signature-block'
+					),
+					array(
+						'title'	   => 'Line height 16',
+						'block'    => 'p',
+						'classes'  => 'line-height-16'
+					),
+					array(
+						'title'	   => 'Line height 12',
+						'block'    => 'p',
+						'classes'  => 'line-height-12'
 					)
 				),
 			),

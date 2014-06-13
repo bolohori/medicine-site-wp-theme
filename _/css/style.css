@@ -378,6 +378,10 @@ textarea {
 	color: #717171;
 }
 
+.line-height-12 {
+	line-height: 12px;
+}
+
 .line-height-16 {
 	line-height: 16px;
 }
@@ -576,6 +580,11 @@ article {
 	float: left;
 	width: 450px;
 	padding: 45px 35px 70px 35px;
+}
+
+.signature-block {
+	font-size: 12px;
+	color: #878787;
 }
 
 .page-template-full-width-page-php .normal-width {

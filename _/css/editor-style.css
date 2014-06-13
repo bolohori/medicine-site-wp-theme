@@ -222,3 +222,8 @@ input[type=submit]:hover {
 	display: inline;
 	margin-right: 10px;
 }
+
+.signature-block {
+	font-size: 12px;
+	color: #878787;
+}
