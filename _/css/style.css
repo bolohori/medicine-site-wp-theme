@@ -712,6 +712,14 @@ article ul li, article ol li {
 	margin-left: 18px;
 }
 
+.callout p {
+	margin-bottom: 0;
+}
+
+.callout .alignleft {
+	margin: 2px 20px 20px 0;
+}
+
 .facts-numbers {
 	float: right;
 	font-weight: bold;
