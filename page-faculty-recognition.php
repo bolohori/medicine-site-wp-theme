@@ -84,7 +84,7 @@
 				
 				$args = array(
 					'post_type' => 'faculty_profile',
-					'orderby'   => 'menu_order date',
+					'orderby'   => 'menu_order',
 					'order'     => 'ASC',
 					'post__in'  => $grandchild_ids
 				);

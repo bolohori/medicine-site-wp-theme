@@ -145,6 +145,7 @@
 				echo "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement','$url']);\">" . get_the_title() . "</a></li>\n";
 				
 			endwhile;
+			wp_reset_query();
 		?>
 				</ul>
 			</div>

@@ -39,7 +39,7 @@
 				$args = array (
 					'post_parent' => $post->ID, 
 					'post_type'   => 'faculty_profile',
-					'orderby'     => 'menu_order date',
+					'orderby'     => 'menu_order',
 					'order'       => 'asc' 
 				);
 				$my_query = new WP_Query( $args );
@@ -67,7 +67,7 @@
 						$args = array (
 							'post_parent' => $first_year, 
 							'post_type'   => 'faculty_profile',
-							'orderby'     => 'menu_order date',
+							'orderby'     => 'menu_order',
 							'order'       => 'asc',
 							'posts_per_page' => -1
 						);

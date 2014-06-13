@@ -1094,6 +1094,14 @@ article.search-results {
 	height: 250px;
 }
 
+#billboard-slider .nivo-directionNav {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 200;
+	margin-top: -15px;
+}
+
 a.news-title {
 	color: #333;
 }
