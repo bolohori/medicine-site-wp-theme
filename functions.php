@@ -1,6 +1,7 @@
 <?php
 // ***************************************
 // "OH SHIT" URL to reactivate twentyfourteen
+// https://medicine-test.wustl.edu/wp-admin/themes.php?action=activate&stylesheet=twentyfourteen&_wpnonce=9139aa2826
 // https://medicine-test.wustl.edu/wp-admin/themes.php?action=activate&stylesheet=twentyfourteen&_wpnonce=60fe37640f
 // ***************************************
 
@@ -234,9 +235,11 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
  */
 if ( ! function_exists( 'enqueue_wusm_styles' ) ) {
 	function enqueue_wusm_styles() {
-		wp_enqueue_style( 'reset-style', get_template_directory_uri() . '/_/css/reset.css' );
-		wp_enqueue_style( 'main-style', get_template_directory_uri() . '/_/css/style.css' );
+		?>
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" media="screen" />
 		
+		<?php
 		if(is_front_page()) {
 		?>
 			<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/nivo-slider.css" type="text/css" media="screen" />

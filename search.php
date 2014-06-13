@@ -91,8 +91,10 @@ get_header(); ?>
 					foreach ( $pageposts as $post ):
 						setup_postdata($post);
 						if( $post->post_type == 'promoted_results' ) {
+							add_filter( 'excerpt_more', function() { return ""; } );
 							$link = get_field('result_url', $post->ID);
 						} else {
+							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_permalink();
 						}
 						echo "<p style='width: 515px;'>
@@ -104,6 +106,7 @@ get_header(); ?>
 					endforeach;
 					echo "<hr>";
 				endif;
+				add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 
 				// Restore original Post Data
 				wp_reset_postdata();
@@ -126,7 +129,8 @@ get_header(); ?>
 
 			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {
 				// and finally the results from Google...
-				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results";
+				$terms = str_replace(' ', '+', $search_terms);
+				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results";
 				
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
 
@@ -144,6 +148,7 @@ get_header(); ?>
 				}
 				
 				// Display page of search results
+				if( $xml->RES->R ) {
 				foreach( $xml->RES->R as $result ) { ?>
 					<p style="width: 515px;">
 					<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
@@ -153,6 +158,7 @@ get_header(); ?>
 					<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
 					</p>
 			<?php }
+				}
 				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
 			} ?>
 			

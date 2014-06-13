@@ -343,18 +343,9 @@ if(function_exists("register_field_group"))
 		'menu_order' => 6,
 	));
 	register_field_group(array (
-		'id' => 'acf_in-the-news',
-		'title' => 'In the News',
+		'id' => 'acf_press',
+		'title' => 'Press',
 		'fields' => array (
-			array (
-				'key' => 'field_51cdd8cc70d6c',
-				'label' => 'Thumbnail',
-				'name' => 'thumbnail',
-				'type' => 'image',
-				'save_format' => 'url',
-				'preview_size' => 'in-the-news',
-				'library' => 'all',
-			),
 			array (
 				'key' => 'field_5273cfea28929',
 				'label' => 'URL',
@@ -378,15 +369,6 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'html',
 				'maxlength' => '',
-			),
-			array (
-				'key' => 'field_5342b4cd52d57',
-				'label' => 'Link',
-				'name' => 'link',
-				'type' => 'website',
-				'website_title' => 1,
-				'output_format' => 1,
-				'default_value' => '',
 			),
 		),
 		'location' => array (
