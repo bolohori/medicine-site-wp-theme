@@ -721,10 +721,6 @@ article ul li, article ol li {
 	margin-left: 18px;
 }
 
-.callout p {
-	margin-bottom: 0;
-}
-
 .callout .alignleft {
 	margin: 2px 20px 20px 0;
 }
@@ -2430,5 +2426,11 @@ a.sidebar-outlook-link {
 
 	#print-logo {
 		display: inline-block;
+	}
+}
+
+@-moz-document url-prefix() { 
+	.spotlight-slider-wrapper {
+		height: 235px;
 	}
 }
