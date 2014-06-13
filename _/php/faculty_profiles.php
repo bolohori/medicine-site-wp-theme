@@ -10,9 +10,9 @@ function get_awards_by_year() {
 	
 	$args = array (
 		'post_parent' => $year, 
-		'post_type' => 'faculty_profile',
-		'orderby' => 'menu_order date',
-		'order' => 'asc'
+		'post_type'   => 'faculty_profile',
+		'orderby'     => 'title',
+		'order'       => 'asc'
 	);
 	$my_query = new WP_Query( $args );
 	if ( $my_query->have_posts() ) { 

@@ -645,8 +645,7 @@ article h3 {
 article h4 {
 	font-weight: bold;
 	font-size: 16px;
-	margin-top: 50px;
-	margin-bottom: 15px;
+	margin: 15px 0;
 	font-family: arial;
 	color: #4f4f4f;
 }
