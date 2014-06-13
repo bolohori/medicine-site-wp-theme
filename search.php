@@ -97,7 +97,7 @@ get_header(); ?>
 							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_permalink();
 						}
-						echo "<p style='width: 515px;'>
+						echo "<p class='search-results'>
 						<span style='font-size: 16px;'><a onclick=\"javascript:_gaq.push(['_trackEvent','top-search-result-$search_terms','$link']);\" href='$link'><b>".get_the_title()."</b></a></span><br>";
 						if(get_the_excerpt() != '')
 							echo get_the_excerpt()."<br>";
@@ -113,15 +113,18 @@ get_header(); ?>
 			}
 			
 			// These are WordPress' search results
-			if ( have_posts() ) : while ( have_posts() ) : the_post();
+			if ( have_posts() ) {
+				echo "<h2>medicine.wustl.edu results</h2>";
+				while ( have_posts() ) {
+					the_post();
 					$num_of_wordpress_results++;
-					echo "<p style='width: 515px;'>
+					echo "<p class='search-results'>
 					<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
 					".get_the_excerpt()."<br>
 					<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
 					</p>";
-				endwhile;
-			endif;
+				}
+			}
 
 			// Visual separtor to mark end of WP search and start of Google search
 			if ( $num_of_wp_result_pages == $paged )
@@ -149,8 +152,9 @@ get_header(); ?>
 				
 				// Display page of search results
 				if( $xml->RES->R ) {
+					echo "<h2>More WUSTL results</h2>";
 				foreach( $xml->RES->R as $result ) { ?>
-					<p style="width: 515px;">
+					<p class='search-result'>
 					<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
 					<?php if( $result->S != '' ) { ?>
 						<br><?php echo $result->S; ?>
