@@ -122,7 +122,7 @@
 				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 				echo "<div id='news-slider' class='nivoSlider'>$images</div>$captions\n";
 ?>
-			
+			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
 		</div>
 			
 		<div class="news-right">

@@ -62,9 +62,7 @@
 					} else {
 						$link = get_field( 'external_link' );
 						the_excerpt();
-						the_post_thumbnail();
-						echo "<br><strong><a href='{$link['url']}'>{$link['title']}</a></strong>";
-						
+						echo "<br><a href='{$link['url']}'><button class='single-link'>{$link['title']}</button></a>";
 					}
 				endwhile;
 			endif;
