@@ -27,7 +27,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/releases' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array(
@@ -67,7 +66,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/press' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array('title', 'page-attributes', 'thumbnail')
@@ -101,7 +99,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/in-the-news' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		/*'supports' => array('title', 'page-attributes')*/
@@ -128,14 +125,13 @@ function create_custom_post_types() {
 		'exclude_from_search' => true,
 		'show_in_nav_menus' => false,
 		'menu_icon' => 'dashicons-welcome-view-site',
-		'public' => true,
-		'publicly_queryable' => true,
+		'public' => false,
+		'publicly_queryable' => false,
 		'show_ui' => true, 
 		'show_in_menu' => true, 
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/features' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array('title', 'page-attributes', 'thumbnail' )
@@ -169,7 +165,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/announcements' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array('title', 'page-attributes', 'editor', 'excerpt')
@@ -203,7 +198,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/leaders' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => true,
 		'menu_position' => null,
 		'supports' => array(
@@ -281,7 +275,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'news/in-focus' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => true,
 		'menu_position' => null,
 		'supports' => array(
@@ -320,7 +313,6 @@ function create_custom_post_types() {
 		'show_in_menu' => true, 
 		'query_var' => true,
 		'capability_type' => 'post',
-		'has_archive' => false, 
 		'hierarchical' => false,
 		'menu_position' => null,
 		/*'supports' => array(
@@ -355,7 +347,6 @@ function create_custom_post_types() {
 		'query_var' => true,
 		'rewrite' => array( 'slug' => 'about/faculty-recognition' ),
 		'capability_type' => 'post',
-		/*'has_archive' => true, */
 		'hierarchical' => true,
 		'menu_position' => null,
 		'taxonomies' => array( 'category', 'post_tag' ),
@@ -394,7 +385,6 @@ function create_custom_post_types() {
 		'show_in_menu' => true, 
 		'query_var' => true,
 		'capability_type' => 'post',
-		'has_archive' => false, 
 		'hierarchical' => false,
 		'menu_position' => null,
 		'supports' => array(
