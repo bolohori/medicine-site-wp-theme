@@ -29,8 +29,8 @@ jQuery(document).ready(function($) {
 		$('#main article').css("min-height", $('#left-col').height() + 123);
 	} else if( $('#right-col').height() > $('#main article').height() ) {
 		$('#main article').css("min-height", $('#right-col').height() + 123);
-	} else if( $(window).height() > $('#main article').height() + 640 ) {
-		$('#main article').css("min-height", $(window).height() - 640 );
+	} else if( $(window).height() > $('#main article').height() + 600 ) {
+		$('#main article').css("min-height", $(window).height() - 600 );
 	}
 
 	// your functions go here
