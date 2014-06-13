@@ -410,10 +410,11 @@ input {
 }
 
 .button input {
-	width: 100px;
+	width: 110px;
 	display: inline;
 	margin-right: 10px;
 	cursor: pointer;
+	-webkit-appearance: none;
 }
 
 /* Featured image
