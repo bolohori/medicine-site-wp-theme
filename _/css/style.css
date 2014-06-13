@@ -1077,6 +1077,10 @@ article.search-results {
 	height: 250px;
 }
 
+a.news-title {
+	color: #333;
+}
+
 #billboard-slider {
 	width: 1440px;
 	left: 50%;
@@ -1372,7 +1376,6 @@ input[type=submit]:hover {
 }
 
 .spotlight-archive {
-	clear: both;
 	letter-spacing: 1px;
 	font-weight: bold;
 	font-size: 11px;
@@ -1407,7 +1410,7 @@ input[type=submit]:hover {
 	top: 0;
 	left: 157px;
 	padding: 32px 45px;
-	width: 301px;
+	width: 300px;
 	border-left: 1px solid #d5d5d5;
 	background: #fff;
 	color: #333;

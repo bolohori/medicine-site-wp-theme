@@ -122,7 +122,7 @@
 				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 				echo "<div id='news-slider' class='nivoSlider'>$images</div>$captions\n";
 ?>
-			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
+			
 		</div>
 			
 		<div class="news-right">
@@ -140,7 +140,10 @@
 				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
-					echo "<li>" . get_the_title() . "<p>";
+					$link = get_field('url');
+					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+ 					
+					echo "<li><a class='news-title' href='$url'>" . get_the_title() . "</a><p>";
 					if( get_field('video') != '')
 						echo "<a rel='prettyPhoto' href='" . get_field('video') . "'>Watch</a> | ";
 					if( get_field('audio') != '') {
@@ -148,9 +151,7 @@
 						echo "<a data-id='mep_$j' href='javascript:return false;' class='audio-file'>Listen</a> | ";
 						$j++;
 					}
-					$link = get_field('url');
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 					echo "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
+					echo "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
 					$i++;
 					if($i==3)
 						echo "</ul>\n<ul class='news-list'>";
@@ -215,7 +216,6 @@
 					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";
 					$i++;
 				endwhile;
-				$captions .= "<div class='mobile-archive spotlight-archive'><a href='/news/leaders'>MORE NATIONAL LEADERS&raquo;</a></div>";
 				wp_reset_postdata();
 ?>
 		</div>

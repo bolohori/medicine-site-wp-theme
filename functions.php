@@ -590,6 +590,13 @@ function load_custom_wp_admin_style() {
 }
 add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
+function wusm_search_filter( $query ) {
+	$id = get_page_by_title( 'A to Z Index' );
+	if ( $query->is_search && $query->is_main_query() ) {
+		$query->set( 'post__not_in', array( $id->ID ) ); 
+	}
+}
+add_filter( 'pre_get_posts', 'wusm_search_filter' );
 /*
 ....::::::::,.................................,,:::::::.....
 ....::?IIIIII?+=~::::::::::::::::::::::::::~=??IIIII+::.....
