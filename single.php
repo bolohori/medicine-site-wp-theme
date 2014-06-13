@@ -49,14 +49,23 @@
 				}
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' )
+					if( $post->post_type != 'in_focus' ) {
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+					}
 					echo "<p class='custom-byline'>";
 					the_date();
 					if(get_field('author'))
 						echo " | " . get_field('author');
 					echo "</p>";
-					the_content();
+					if( get_the_content() ) {
+						the_content();
+					} else {
+						$link = get_field( 'external_link' );
+						the_excerpt();
+						the_post_thumbnail();
+						echo "<br><strong><a href='{$link['url']}'>{$link['title']}</a></strong>";
+						
+					}
 				endwhile;
 			endif;
 			?>

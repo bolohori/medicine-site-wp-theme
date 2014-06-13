@@ -2,7 +2,7 @@
 <?php get_sidebar(); ?>
 <div class="slide-wrapper billboard">
 	<div class="slider-wrapper theme-default">
-		<div id="slider" class="nivoSlider">
+		<div id="billboard-slider" class="nivoSlider">
 <?php
 			$num_to_show = get_option( 'billboards_to_show', 5 );
 			
