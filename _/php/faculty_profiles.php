@@ -35,5 +35,5 @@ function get_awards_by_year() {
 
 	die(); // stop executing script
 }
-add_action( 'MY_AJAX_HANDLER_get_awards', 'get_awards_by_year' ); // ajax for logged in users
-add_action( 'MY_AJAX_HANDLER_nopriv_get_awards', 'get_awards_by_year' ); // ajax for not logged in users
+add_action( 'wusm_ajax_get_awards', 'get_awards_by_year' ); // ajax for logged in users
+add_action( 'wusm_ajax_nopriv_get_awards', 'get_awards_by_year' ); // ajax for not logged in users
