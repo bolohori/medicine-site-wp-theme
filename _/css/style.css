@@ -1531,6 +1531,9 @@ button.single-link:hover {
 /*
  * Admissions specific...because
  */
+.page-template-admissions-php {
+	-webkit-text-size-adjust:none;
+}
 .page-template-admissions-php .intro {
 	position: relative;
 	padding-top: 45px;
@@ -1544,7 +1547,7 @@ button.single-link:hover {
 
 .page-template-admissions-php p {
 	line-height: 25px;
-	width: 720px;
+	width: 520px;
 	margin: 0 auto;
 }
 
