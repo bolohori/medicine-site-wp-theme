@@ -56,7 +56,7 @@
 			<ul id="action-nav">
 				<li><a href="http://wuphysicians.wustl.edu/directory.aspx" onclick="javascript:_gaq.push(['_trackEvent','utility-nav','WU Physicians']);">Find a Doctor</a></li>
 				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Admissions']);" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
-				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav,'Giving']);" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
+				<li><a onclick="javascript:_gaq.push(['_trackEvent','utility-nav','Giving']);" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
 			</ul>
 			<ul id="utility-nav">
 				<li><a class="information-for" onclick="javascript:_gaq.push(['_trackEvent','utility-nav','information-for-open']);" href="">Information for <span class="arrow arrow-down">&nbsp;</span></a></li>
