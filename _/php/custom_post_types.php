@@ -2,13 +2,13 @@
 function create_custom_post_types() {
 	$labels = array(
 		'name' => 'News Releases',
-		'singular_name' => 'News Releases',
+		'singular_name' => 'News Release',
 		'add_new' => 'Add New',
-		'add_new_item' => 'Add New News Releases',
-		'edit_item' => 'Edit News Releases',
-		'new_item' => 'New News Releases',
+		'add_new_item' => 'Add New News Release',
+		'edit_item' => 'Edit News Release',
+		'new_item' => 'New News Release',
 		'all_items' => 'All News Releases',
-		'view_item' => 'View News Releases',
+		'view_item' => 'View News Release',
 		'search_items' => 'Search News Releases',
 		'not_found' =>	'No news Releases found',
 		'not_found_in_trash' => 'No News Releases found in Trash', 

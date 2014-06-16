@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
 		// This does the ajax request
 		jQuery.ajax({
 			type : "post",
-			url: '/wp-content/themes/medicine/_/php/get_faculty_profile.php',
+			url: '/wp-content/themes/medicine/_/php/wusm_ajax.php',
 			data: {
 				'action':'get_awards',
 				'year' : y,

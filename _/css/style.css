@@ -298,7 +298,6 @@ header {
 #search-box,
 .wpcf7 input[type=text],
 .wpcf7 input[type=email] {
-	height: 12px;
 	padding: 8px 25px 8px 10px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
@@ -1079,6 +1078,11 @@ article.search-results {
 
 /* Front Page styles
 -------------------------------------------------------------------------------*/
+.mejs-container {
+	float: left;
+	display: none;
+}
+
 .slide-wrapper {
 	background: #ccc;
 	overflow: hidden;

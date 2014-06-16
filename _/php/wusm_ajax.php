@@ -22,14 +22,15 @@ $action = esc_attr(trim($_POST['action']));
 
 //A bit of security
 $allowed_actions = array(
-	'get_awards'
+	'get_awards',
+	'get_news_release_audio'
 );
 
 if( in_array( $action, $allowed_actions ) ){
 	if( is_user_logged_in() )
-		do_action('MY_AJAX_HANDLER_'.$action);
+		do_action('wusm_ajax_'.$action);
 	else
-		do_action('MY_AJAX_HANDLER_nopriv_'.$action);
+		do_action('wusm_ajax_nopriv_'.$action);
 }
 else{
 	die('-1');
