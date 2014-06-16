@@ -189,7 +189,7 @@ get_header(); ?>
 					if( $p_end > $pages_of_results )
 						$p_end = $pages_of_results;
 					
-					echo "<p style='width: 750px;'>Page: ";
+					echo "<p style='max-width: 750px;'>Page: ";
 					if( $p_start != 1 ) {
 						$back = $paged - 1;
 						echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
