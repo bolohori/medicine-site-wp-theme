@@ -76,7 +76,7 @@ jQuery(document).ready(function($) {
 			e.preventDefault();
 			audio_container = "#" + $(this).data('id');
 			$(audio_container).slideToggle();
-			if($(this).text() == 'Listen') { $(this).text('Hide'); } else { $(this).text('Listen'); $('audio').each(function() {$(this)[0].player.pause();}); }
+			if($(this).text() == 'Listen') { $(this).text('Hide'); $('audio').each(function() {$(this)[0].player.play();}); } else { $(this).text('Listen'); $('audio').each(function() {$(this)[0].player.pause();}); }
 		});
 	}
 
