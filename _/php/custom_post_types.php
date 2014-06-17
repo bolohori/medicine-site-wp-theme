@@ -419,6 +419,34 @@ function create_custom_post_types() {
 	 * Hold on this until v2.0
 	 */
 	//register_post_type( 'faculty', $args );
+	
+	// Register the custom taxonomies for Research News
+	// (Only needed once, but leaving here for posterity)
+	if(0) {
+		if(!term_exists("Alzheimer's disease","expertise"));wp_insert_term("Alzheimer's disease", "expertise");
+		if(!term_exists("Cancer","expertise"));wp_insert_term("Cancer", "expertise");
+		if(!term_exists("Ear, Nose and Throat","expertise"));wp_insert_term("Ear, Nose and Throat", "expertise");
+		if(!term_exists("Endocrinology","expertise"));wp_insert_term("Endocrinology", "expertise");
+		if(!term_exists("Gastroenterology/Digestive","expertise"));wp_insert_term("Gastroenterology/Digestive", "expertise");
+		if(!term_exists("Genomics & Personalized Medicine","expertise"));wp_insert_term("Genomics & Personalized Medicine", "expertise");
+		if(!term_exists("Geriatrics","expertise"));wp_insert_term("Geriatrics", "expertise");
+		if(!term_exists("Heart and Vascular","expertise"));wp_insert_term("Heart and Vascular", "expertise");
+		if(!term_exists("Kidney","expertise"));wp_insert_term("Kidney", "expertise");
+		if(!term_exists("Leadership","expertise"));wp_insert_term("Leadership", "expertise");
+		if(!term_exists("Neurosciences","expertise"));wp_insert_term("Neurosciences", "expertise");
+		if(!term_exists("Obstetrics and Gynecology","expertise"));wp_insert_term("Obstetrics and Gynecology", "expertise");
+		if(!term_exists("Ophthalmology","expertise"));wp_insert_term("Ophthalmology", "expertise");
+		if(!term_exists("Orthopedics","expertise"));wp_insert_term("Orthopedics", "expertise");
+		if(!term_exists("Outreach","expertise"));wp_insert_term("Outreach", "expertise");
+		if(!term_exists("Psychiatry","expertise"));wp_insert_term("Psychiatry", "expertise");
+		if(!term_exists("Public Health","expertise"));wp_insert_term("Public Health", "expertise");
+		if(!term_exists("Pulmonology/Respiratory","expertise"));wp_insert_term("Pulmonology/Respiratory", "expertise");
+		if(!term_exists("Radiology/Imaging","expertise"));wp_insert_term("Radiology/Imaging", "expertise");
+		if(!term_exists("Rheumatology","expertise"));wp_insert_term("Rheumatology", "expertise");
+		if(!term_exists("Surgery","expertise"));wp_insert_term("Surgery", "expertise");
+		if(!term_exists("Transplant","expertise"));wp_insert_term("Transplant", "expertise");
+		if(!term_exists("Urology","expertise"));wp_insert_term("Urology", "expertise");
+	}
 }	
 add_action( 'init', 'create_custom_post_types' );
 
