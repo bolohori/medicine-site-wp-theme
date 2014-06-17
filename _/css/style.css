@@ -1685,13 +1685,13 @@ ul.program-list li.last-child {
 }
 
 .award-set {
-	position: relative;
-	overflow: hidden;
-	margin: 27px auto 3px auto;
-	width: 734px;
-	height: 287px;
-	border-bottom: #dedccd solid 1px;
-	background-color: #faf9f6;
+	position        : relative;
+	overflow        : hidden;
+	margin          : 27px auto 3px auto;
+	width           : 734px;
+	height          : 287px;
+	border-bottom   : #e0e0e0 solid 1px;
+	background-color: #ffffff;
 }
 
 .award-set:last-child {
@@ -1712,14 +1712,14 @@ ul.program-list li.last-child {
 }
 
 .award-set-title h2 {
-	margin: 0;
-	padding: 19px 20px 16px 20px;
-	border-top: solid 1px #dedccd;
+	margin       : 0;
+	padding      : 19px 20px 16px 20px;
+	border-top   : solid 1px #dedccd;
 	border-bottom: solid 1px #dedccd;
-	font-weight: normal;
-	font-size: 23px;
-	font-family: Georgia, Times, serif;
-	line-height: 23px;
+	font-weight  : normal;
+	font-size    : 23px;
+	font-family  : Georgia, Times, serif;
+	line-height  : 23px;
 }
 
 .award-set-title .right-arrow {
@@ -2442,9 +2442,7 @@ a.sidebar-outlook-link {
  * -------------------------------------------------------------------------------
  */
 @media print {
-	#screen-logo,
-	#main-nav, 
-	#utility-bar,
+	header,
 	#search-form,
 	footer, 
 	nav,

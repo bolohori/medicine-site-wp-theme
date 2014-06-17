@@ -200,7 +200,7 @@ if ( ! function_exists( 'enqueue_wusm_styles' ) ) {
 	function enqueue_wusm_styles() {
 		?>
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" />
 		
 		<?php
 		if(is_front_page()) {
