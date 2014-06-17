@@ -296,8 +296,8 @@ header {
 
 
 #search-box,
-.wpcf7 input[type=text],
-.wpcf7 input[type=email] {
+input[type=text],
+input[type=email] {
 	padding: 8px 25px 8px 10px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
@@ -395,7 +395,7 @@ label {
 	width: 170px;
 	font-weight: bold;
 	padding: 0 20px 0 0;
-	margin: 12px 0 0;
+	margin: 18px 0 0;
 }
 
 input {
