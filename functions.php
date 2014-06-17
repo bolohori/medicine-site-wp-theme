@@ -382,9 +382,9 @@ if ( ! function_exists( 'wusm_change_bg' ) ) {
 	return "</article>
 	</div>
 	</div>
-	<div style='background: #$color;width: 100%;float: left;'>
+	<div style='background-color: #$color;width: 100%;float: left;border-top:1px solid #ddd'>
 	<div class='wrapper'>
-	<article style='padding-left: 225px;padding-top: 24px;'>";
+	<article style='background-color: #$color;padding-left: 225px;padding-top: 24px;'>";
 	}
 }
 add_shortcode( 'change_background_to', 'wusm_change_bg' );
