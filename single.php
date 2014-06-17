@@ -29,8 +29,8 @@
 	<div class="wrapper">
 		<nav id="left-col">
 			<ul id="left-nav">
-				<li class="top_level_page"><a href="/news">News</a></li>
-				<li class="<?php echo ($post->post_type == 'reasearch_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research News</a></li>
+				<li class="top_level_page"></li>
+				<li class="<?php echo ($post->post_type == 'research_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research News</a></li>
 				<li class="<?php echo ($post->post_type == 'news_releases') ? "current_page_item " : ""; ?>page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
 				<li class="<?php echo ($post->post_type == 'billboard') ? "current_page_item " : ""; ?>page_item page-item-4715"><a href="/news/features/">Billboards</a></li>
 				<li class="<?php echo ($post->post_type == 'announcements') ? "current_page_item " : ""; ?>page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>

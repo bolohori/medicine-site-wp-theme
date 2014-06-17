@@ -24,12 +24,12 @@
 		</div>
 		<div class="single-footer last-child">
 			<p class="social">
-				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','facebook']);" href="http://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" alt="Facebook"></a>
-				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','twitter']);" href="http://twitter.com/WUSTLmed"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt="Twitter"></a>
-				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','linkedin']);" href="http://www.linkedin.com/company/washington-university-school-of-medicine"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/linkedin.png" alt="LinkedIn"></a>
-				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','googleplus']);" href="http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/googleplus.png" alt="Google+"></a>
-				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','rss']);" href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/rss.png" alt="RSS"></a>
-				<a onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','WUSTL reader']);" href="http://reader.wustl.edu/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wustl_reader.png" alt="YouTube"></a>
+				<a class="facebook" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','facebook']);" href="http://www.facebook.com/WUSTLmedicine.health"></a>
+				<a class="twitter" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','twitter']);" href="http://twitter.com/WUSTLmed"></a>
+				<a class="linkedin" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','linkedin']);" href="http://www.linkedin.com/company/washington-university-school-of-medicine"></a>
+				<a class="googleplus" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','googleplus']);" href="http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"></a>
+				<a class="rss" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','rss']);" href="<?php bloginfo('rss2_url'); ?>"></a>
+				<a class="reader" onclick="javascript:_gaq.push(['_trackEvent','outbound-footer-social','WUSTL reader']);" href="http://reader.wustl.edu/"></a>
 			</p>
 			<p class="small-text pad-top-20">660 S. Euclid Ave.<br>St. Louis, MO 63110</p>
 		</div>

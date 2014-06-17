@@ -118,7 +118,7 @@
 				wp_reset_postdata();
 
 				// This is set before the Billboards, but we need it here too
-				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
+				
 				echo "<div id='news-slider' class='nivoSlider'>$images</div>$captions\n";
 ?>
 			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
@@ -188,7 +188,12 @@
 				$slider = "";
 				$captions = "";
 				$num_of_spotlights = get_option( 'spotlights_to_show', 4 );
-				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'date' );
+				$args = array( 
+					'post_type'      => 'spotlight',
+					'posts_per_page' => $num_of_spotlights,
+					'orderby'        => 'menu_order',
+					'order'          => 'ASC'
+				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$read_more_link = "";
@@ -216,6 +221,7 @@
 					$i++;
 				endwhile;
 				wp_reset_postdata();
+				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>
 		</div>
 		

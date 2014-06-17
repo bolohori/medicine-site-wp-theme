@@ -1,47 +1,9 @@
 <?php
 // ***************************************
-// "OH SHIT" URL to reactivate twentyfourteen
-// https://medicine-test.wustl.edu/wp-admin/themes.php?action=activate&stylesheet=twentyfourteen&_wpnonce=9139aa2826
-// https://medicine-test.wustl.edu/wp-admin/themes.php?action=activate&stylesheet=twentyfourteen&_wpnonce=60fe37640f
-// ***************************************
-
-// ***************************************
 // Google Analytics template
 // onclick="javascript:_gaq.push(['_trackEvent','outbound-<LABEL>','http://<URL OR LABEL>']);"
 // ***************************************
 
-//add_action( 'init', 'github_updater_wusm_theme_init' );
-if ( ! function_exists( 'github_updater_wusm_theme_init' ) ) {
-	function github_updater_wusm_theme_init() {
-
-		if( ! class_exists( 'WP_GitHub_Updater' ) )
-			include_once 'updater.php';
-
-		if( ! defined( 'WP_GITHUB_FORCE_UPDATE' ) )
-			define( 'WP_GITHUB_FORCE_UPDATE', true );
-
-		if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
-			
-			$config = array(
-					'id' => 0,
-					'slug' => plugin_basename( __FILE__ ),
-					'plugin' => plugin_basename(__FILE__),
-					'proper_folder_name' => 'medicine',
-					'api_url' => 'https://api.github.com/repos/coderaaron/medicine',
-					'raw_url' => 'https://raw.github.com/coderaaron/medicine/master',
-					'github_url' => 'https://github.com/coderaaron/medicine',
-					'zip_url' => 'https://github.com/coderaaron/medicine/archive/master.zip',
-					'sslverify' => true,
-					'requires' => '3.0',
-					'tested' => '3.9',
-					'readme' => 'README.md',
-					'access_token' => '',
-			);
-
-			new WP_GitHub_Updater( $config );
-		}
-	}
-}
 
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
@@ -112,6 +74,39 @@ if ( ! function_exists( 'wpfme_footer_admin' ) ) {
 }
 add_filter('admin_footer_text', 'wpfme_footer_admin');
 
+if( !defined( 'WP_LOCAL_INSTALL' ) ) {
+	//check for Wash U IP
+	$verifiedWashU = false;
+	$IP = $_SERVER['REMOTE_ADDR'];
+	list($ip1, $ip2) = explode( '.', $IP );
+
+	if ( $ip1 == "128" && $ip2 == "252" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "172" && $ip2 == "20" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "172" && $ip2 == "18" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "10" && $ip2 == "39" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "10" && $ip2 == "30" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "10" && $ip2 == "40" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "10" && $ip2 == "27" ) {
+		$verifiedWashU = true;
+	} else if ( $ip1 == "10" && $ip2 == "21" ) {
+		$verifiedWashU = true;
+	}
+} else {
+	$verifiedWashU = true;
+}
+define( 'WASHU_IP', $verifiedWashU );
+
+// Stylesheet for TinyMCE
+add_editor_style( '_/css/editor-style.css' );
+
+add_theme_support( 'post-thumbnails' );
+
 /**
  * Intialize all the theme options
  */
@@ -146,11 +141,10 @@ if ( ! function_exists( 'theme_init' ) ) {
 		}
 
 		// Thumbnails
-		add_theme_support( 'post-thumbnails' );
 		add_image_size( 'landing-page', 1440, 9999 );
 		add_image_size( 'faculty-list', 80, 112 );
 		add_image_size( 'in-the-news', 340, 250, true );
-		add_image_size( 'spotlight-image', 147, 200, true );
+		add_image_size( 'spotlight-image', 157, 220, true );
 		add_image_size( 'outlook-thumb', 240, 9999 );
 
 		// Image sizes (Settings / Media)
@@ -162,40 +156,9 @@ if ( ! function_exists( 'theme_init' ) ) {
 		
 		// Manual excerpts for pages as well as posts
 		add_post_type_support( 'page', 'excerpt' );
-
-		if( !defined( 'WP_LOCAL_INSTALL' ) ) {
-			//check for Wash U IP
-			$verifiedWashU = false;
-			$IP = $_SERVER['REMOTE_ADDR'];
-			list($ip1, $ip2) = explode( '.', $IP );
-
-			if ( $ip1 == "128" && $ip2 == "252" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "172" && $ip2 == "20" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "172" && $ip2 == "18" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "10" && $ip2 == "39" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "10" && $ip2 == "30" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "10" && $ip2 == "40" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "10" && $ip2 == "27" ) {
-				$verifiedWashU = true;
-			} else if ( $ip1 == "10" && $ip2 == "21" ) {
-				$verifiedWashU = true;
-			}
-		} else {
-			$verifiedWashU = true;
-		}
-		define( 'WASHU_IP', $verifiedWashU );
-
-		// Stylesheet for TinyMCE
-		add_editor_style( '_/css/editor-style.css' );
 	}
 }
-add_action( 'init', 'theme_init' );
+add_action( 'after_switch_theme', 'theme_init' );
 
 /*
  * Set default values for Attachment Display Settings
@@ -237,7 +200,7 @@ if ( ! function_exists( 'enqueue_wusm_styles' ) ) {
 	function enqueue_wusm_styles() {
 		?>
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" />
 		
 		<?php
 		if(is_front_page()) {
@@ -419,9 +382,9 @@ if ( ! function_exists( 'wusm_change_bg' ) ) {
 	return "</article>
 	</div>
 	</div>
-	<div style='background: #$color;width: 100%;float: left;'>
+	<div style='background-color: #$color;width: 100%;float: left;border-top:1px solid #ddd'>
 	<div class='wrapper'>
-	<article style='padding-left: 225px;padding-top: 24px;'>";
+	<article style='background-color: #$color;padding-left: 225px;padding-top: 24px;'>";
 	}
 }
 add_shortcode( 'change_background_to', 'wusm_change_bg' );
