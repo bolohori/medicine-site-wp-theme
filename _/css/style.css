@@ -1579,6 +1579,10 @@ button.single-link:hover {
 	margin: 0 auto;
 }
 
+.page-template-admissions-php img {
+	border-radius: 10px 10px 0 0;
+}
+
 .page-template-admissions-php .program-list,
 .page-template-admissions-php .hero-list {
 	font-weight: 600;
