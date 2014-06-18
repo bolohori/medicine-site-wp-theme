@@ -191,8 +191,7 @@
 				$args = array( 
 					'post_type'      => 'spotlight',
 					'posts_per_page' => $num_of_spotlights,
-					'orderby'        => 'menu_order',
-					'order'          => 'ASC'
+					'orderby'        => 'date'
 				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();

@@ -997,6 +997,16 @@ footer a {
     margin-right: 20px;
 }
 
+.ie7 .announcement,
+.ie8 .announcement,
+.ie9 .announcement,
+.ie7 .information-for-li,
+.ie8 .information-for-li,
+.ie9 .information-for-li {
+	float: left;
+	width: 200px;
+}
+
 .information-for-li {
 	padding-right: 16%;
 	min-height: 40px;
@@ -1004,16 +1014,10 @@ footer a {
 }
 
 .announcement {
-	float: left;
+	float        : left;
 	padding-right: 16%;
-	min-height: 60px;
-	font-size: 14px;
-}
-
-.ie7 .announcement,
-.ie8 .announcement,
-.ie9 .announcement {
-	width: 50%;
+	min-height   : 60px;
+	font-size    : 14px
 }
 
 p.announcements {
@@ -1445,8 +1449,10 @@ button.single-link:hover {
 	height  : 254px;
 }
 
-.ie7 .spotlight-slider-wrapper {
-	height: 256px;
+.ie7 .spotlight-slider-wrapper,
+.ie8 .spotlight-slider-wrapper,
+.ie9 .spotlight-slider-wrapper {
+	height: 255px;
 }
 
 #spotlight-slider {
@@ -1481,7 +1487,6 @@ button.single-link:hover {
 #spotlight-slider .nivo-caption p {
 	margin: 15px 0 ;
 	padding: 0;
-	/*width: 210px;*/
 	width: 100%;
 	line-height: 20px;
 }
@@ -2425,7 +2430,13 @@ a.sidebar-outlook-link {
 
 .ie7 div.cols-2,
 .ie7 div.cols-3,
-.ie7 div.cols-4 {
+.ie7 div.cols-4,
+.ie8 div.cols-2,
+.ie8 div.cols-3,
+.ie8 div.cols-4,
+.ie9 div.cols-2,
+.ie9 div.cols-3,
+.ie9 div.cols-4  {
 	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	overflow: auto;
 	position: relative;

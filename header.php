@@ -33,10 +33,14 @@
 
 	<?php
 	if ( get_field('page_specific_css') ) { ?>
-	<style>
+<style>
 	<?php the_field('page_specific_css'); ?>
-	
 </style>
+<?php }
+if(defined('WP_LOCAL_INSTALL')) { ?>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+</script>
 	<?php }
 	/* Always have wp_head() just before the closing </head>
 	 * tag of your theme, or you will break many plugins, which
