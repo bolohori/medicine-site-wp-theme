@@ -111,7 +111,7 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'faculty-list', 80, 112,true );
 add_image_size( 'in-the-news', 340, 250, true );
-add_image_size( 'spotlight-image', 157, 220, true );
+add_image_size( 'spotlight-image', 143, 200, true );
 add_image_size( 'outlook-thumb', 240, 9999, true );
 
 // Image sizes (Settings / Media)

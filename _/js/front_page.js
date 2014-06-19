@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
 		manualAdvance:false, //Force manual transitions
-		captionOpacity:0, //Universal caption opacity
+		captionOpacity:0 //Universal caption opacity
 	});
 
 
@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
 		manualAdvance:true, //Force manual transitions
-		captionOpacity:0, //Universal caption opacity
+		captionOpacity:0 //Universal caption opacity
 	});
 	$('#spotlight-slider').nivoSlider({
 		effect:'slideInLeft', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
@@ -53,7 +53,7 @@ jQuery(document).ready(function($) {
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
 		manualAdvance:true, //Force manual transitions
-		captionOpacity:0, //Universal caption opacity
+		captionOpacity:0 //Universal caption opacity
 	});
 
 	$('.audio-file').click(function(e){

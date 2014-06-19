@@ -1446,7 +1446,7 @@ button.single-link:hover {
 .spotlight-slider-wrapper {
 	overflow: hidden;
 	width   : 458px;
-	height  : 254px;
+	height  : 234px;
 }
 
 .ie7 .spotlight-slider-wrapper,
@@ -1458,17 +1458,17 @@ button.single-link:hover {
 #spotlight-slider {
 	float     : left;
 	overflow  : visible;
-	width     : 157px;
-	max-height: 220px;
+	width     : 143px;
+	max-height: 200px;
 	border    : 1px solid #d5d5d5;
 }
 
 #spotlight-slider .nivo-caption {
 	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	top: 0;
-	left: 157px;
+	left: 143px;
 	padding: 32px 45px;
-	width: 300px;
+	width: 314px;
 	border-left: 1px solid #d5d5d5;
 	background: #fff;
 	color: #333;
@@ -1477,11 +1477,11 @@ button.single-link:hover {
 }
 
 #spotlight-slider a.nivo-prevNav {
-	left: 170px;
+	left: 156px;
 }
 
 #spotlight-slider a.nivo-nextNav {
-	right: -290px;
+	right: -300px;
 }
 
 #spotlight-slider .nivo-caption p {
@@ -1512,7 +1512,7 @@ button.single-link:hover {
 }
 
 .spotlight-slider-wrapper .nivo-controlNav {
-	top: 190px;
+	top: 170px;
 	float: none;
 }
 
