@@ -1,5 +1,5 @@
 <?php
-
+wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/js/faculty-recognition.js', array( 'jquery-effects-bounce' ) );
 	get_header();
 
 	if (have_posts()) :

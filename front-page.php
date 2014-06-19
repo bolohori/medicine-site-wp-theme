@@ -9,15 +9,10 @@
 			$args = array(
 				'post_type'      => 'billboard', 
 				'posts_per_page' => $num_to_show, 
-				'orderby'        => 'date',
+				'orderby'        => 'menu_order',
 				'fields'         => 'ids',
-				'meta_query'     => array(
-					array(
-						'key'     => 'sticky',
-						'value'   => 1,
-						'compare' => '='
-					)
-				)
+				'meta_key'       => 'sticky',
+				'meta_value'     => 1
 			);
 			$loop = new WP_Query( $args );
 			$ids = $loop->posts;
@@ -56,7 +51,7 @@
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
+				echo "<a href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$title']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 			endwhile;
 			wp_reset_postdata();
 ?>
@@ -72,15 +67,10 @@
 				$args = array(
 					'post_type'      => 'media_mentions', 
 					'posts_per_page' => $num_to_show, 
-					'orderby'        => 'date',
+					'orderby'        => 'menu_order',
 					'fields'         => 'ids',
-					'meta_query'     => array(
-						array(
-							'key'     => 'sticky',
-							'value'   => 1,
-							'compare' => '='
-						)
-					)
+					'meta_key'       => 'sticky',
+					'meta_value'     => 1
 				);
 				$loop = new WP_Query( $args );
 				$ids = $loop->posts;
@@ -111,8 +101,9 @@
 				$captions = "";
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$url = get_field( 'url' );
+					$title = get_the_title();
 					$images .= get_the_post_thumbnail() != '' ? get_the_post_thumbnail($post->ID, 'in-the-news', array('alt' => '', 'title' => "#htmlcaption$i" ) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/itn-default.png' alt='' title='#htmlcaption" . $i . "' />\n";;
-					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$url']);\"><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
+					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$title']);\"><p class='news-citation'>" . get_field('source') . "</p>$title</a></div>\n";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
@@ -213,7 +204,7 @@
 
 					if ( $link['url'] !== null ) {
 						$url = $link['url'];
-						$read_more_link = "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read More</a>";
+						$read_more_link = "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>";
 					}
 
 					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";

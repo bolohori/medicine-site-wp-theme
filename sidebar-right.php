@@ -117,18 +117,12 @@ while( has_sub_field( 'sidebars' ) ):
 			$num_to_show = get_option( 'announcements_to_show', 6 );
 
 			$args = array(
-				'post_type' => 'announcement', 
+				'post_type'      => 'announcement', 
 				'posts_per_page' => $num_to_show, 
-				'orderby' => 'menu_order',
-				'order' => 'ASC',
-				'fields' => 'ids',
-				'meta_query' => array(
-					array(
-						'key' => 'sticky',
-						'value' => 1,
-						'compare' => '=',
-					)
-				)
+				'orderby'        => 'menu_order',
+				'fields'         => 'ids',
+				'meta_key'       => 'sticky',
+				'meta_value'     => 1
 			);
 			$loop = new WP_Query( $args );
 			$ids = $loop->posts;
@@ -136,22 +130,22 @@ while( has_sub_field( 'sidebars' ) ):
 
 			if( $num_to_show > 0 ) {
 				$args = array(
-					'post_type' => 'announcement', 
+					'post_type'      => 'announcement', 
 					'posts_per_page' => $num_to_show, 
-					'orderby' => 'date',
-					'fields' => 'ids',
-					'post__not_in' => $ids,
-					'meta_query' => array(
-						'relation' => 'OR',
+					'orderby'        => 'date',
+					'fields'         => 'ids',
+					'post__not_in'   => $ids,
+					'meta_query'     => array(
+						'relation'   => 'OR',
 						array(
-							'type' => 'DATETIME',
-							'key' => 'expiration_date',
-							'value' => date_i18n("Y-m-d H:i:s"),
+							'type'    => 'DATETIME',
+							'key'     => 'expiration_date',
+							'value'   => date_i18n("Y-m-d H:i:s"),
 							'compare' => '>',
 						),
 						array(
-							'key' => 'expiration_date',
-							'value' => '',
+							'key'     => 'expiration_date',
+							'value'   => '',
 							'compare' => '=',
 						)
 					)
@@ -162,8 +156,8 @@ while( has_sub_field( 'sidebars' ) ):
 
 			$args = array(
 				'post_type' => 'announcement',
-				'orderby' => 'post__in',
-				'post__in' => $ids
+				'orderby'   => 'post__in',
+				'post__in'  => $ids
 			);
 			
 			$loop = new WP_Query( $args );
@@ -180,7 +174,8 @@ while( has_sub_field( 'sidebars' ) ):
 				} else {
 					$url = get_permalink();
 				}
-				echo "\t\t\t\t\t<li><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-announcement-sidebar','$url']);\">" . get_the_title() . "</a></li>\n";
+				$title = get_the_title();
+				echo "\t\t\t\t\t<li><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','sidebar-announcement','$title']);\">$title</a></li>\n";
 			endwhile;
 			wp_reset_query();
 			?>
