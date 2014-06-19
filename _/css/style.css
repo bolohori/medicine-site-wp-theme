@@ -141,11 +141,11 @@ article .alignright {
 }
 
 article .wp-caption.alignright, article img.alignright {
-	margin-left: 20px;
+	margin: 0 0 20px 0;
 }
 
 article .wp-caption.alignleft, article img.alignleft {
-	margin-right: 20px;
+	margin: 0 20px 0 0;
 }
 
 article p.wp-caption-text {
