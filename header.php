@@ -7,7 +7,7 @@
 <!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!-- the "no-js" class is for Modernizr. -->
 
-<head id="sitename-wustl-edu" data-template-set="html5-reset">
+<head id="medicine-wustl-edu" data-template-set="html5-reset">
 	<meta charset="utf-8">
 
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
