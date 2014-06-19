@@ -107,6 +107,23 @@ add_editor_style( '_/css/editor-style.css' );
 
 add_theme_support( 'post-thumbnails' );
 
+// Thumbnails
+add_image_size( 'landing-page', 1440, 9999, true );
+add_image_size( 'faculty-list', 80, 112,true );
+add_image_size( 'in-the-news', 340, 250, true );
+add_image_size( 'spotlight-image', 157, 220, true );
+add_image_size( 'outlook-thumb', 240, 9999, true );
+
+// Image sizes (Settings / Media)
+update_option('medium_size_w', 225);
+update_option('medium_size_h', NULL);
+update_option('large_size_w', 450);
+update_option('large_size_h', NULL);
+update_option('embed_size_w', 450);
+
+// Manual excerpts for pages as well as posts
+add_post_type_support( 'page', 'excerpt' );
+
 /**
  * Intialize all the theme options
  */
@@ -139,23 +156,6 @@ if ( ! function_exists( 'theme_init' ) ) {
 			$locations['header-menu'] = $menu_id;
 			set_theme_mod('nav_menu_locations', $locations);
 		}
-
-		// Thumbnails
-		add_image_size( 'landing-page', 1440, 9999 );
-		add_image_size( 'faculty-list', 80, 112 );
-		add_image_size( 'in-the-news', 340, 250, true );
-		add_image_size( 'spotlight-image', 157, 220, true );
-		add_image_size( 'outlook-thumb', 240, 9999 );
-
-		// Image sizes (Settings / Media)
-		update_option('medium_size_w', 225);
-		update_option('medium_size_h', NULL);
-		update_option('large_size_w', 450);
-		update_option('large_size_h', NULL);
-		update_option('embed_size_w', 450);
-		
-		// Manual excerpts for pages as well as posts
-		add_post_type_support( 'page', 'excerpt' );
 	}
 }
 add_action( 'after_switch_theme', 'theme_init' );
