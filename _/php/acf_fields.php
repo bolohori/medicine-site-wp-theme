@@ -48,7 +48,7 @@ if(function_exists("register_field_group"))
 				'name' => 'sticky',
 				'type' => 'true_false',
 				'message' => 'Sticky',
-				'default_value' => 0,
+				'default_value' => 1,
 			),
 		),
 		'location' => array (

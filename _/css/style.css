@@ -540,8 +540,9 @@ input {
 	text-transform: uppercase;
 }
 
+.single-faculty_profile ul#left-nav li.current_page_ancestor > a,
 #left-nav li.current_page_item > a {
-	color: #717171;
+ 	color: #717171;
 }
 
 #left-nav li.page_item_has_children ul.children li {
