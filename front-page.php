@@ -9,7 +9,7 @@
 			$args = array(
 				'post_type'      => 'billboard', 
 				'posts_per_page' => $num_to_show, 
-				'orderby'        => 'date',
+				'orderby'        => 'menu_order',
 				'fields'         => 'ids',
 				'meta_query'     => array(
 					array(
@@ -72,7 +72,7 @@
 				$args = array(
 					'post_type'      => 'media_mentions', 
 					'posts_per_page' => $num_to_show, 
-					'orderby'        => 'date',
+					'orderby'        => 'menu_order',
 					'fields'         => 'ids',
 					'meta_query'     => array(
 						array(
