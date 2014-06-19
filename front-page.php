@@ -11,13 +11,8 @@
 				'posts_per_page' => $num_to_show, 
 				'orderby'        => 'menu_order',
 				'fields'         => 'ids',
-				'meta_query'     => array(
-					array(
-						'key'     => 'sticky',
-						'value'   => 1,
-						'compare' => '='
-					)
-				)
+				'meta_key'       => 'sticky',
+				'meta_value'     => 1
 			);
 			$loop = new WP_Query( $args );
 			$ids = $loop->posts;
@@ -74,13 +69,8 @@
 					'posts_per_page' => $num_to_show, 
 					'orderby'        => 'menu_order',
 					'fields'         => 'ids',
-					'meta_query'     => array(
-						array(
-							'key'     => 'sticky',
-							'value'   => 1,
-							'compare' => '='
-						)
-					)
+					'meta_key'       => 'sticky',
+					'meta_value'     => 1
 				);
 				$loop = new WP_Query( $args );
 				$ids = $loop->posts;

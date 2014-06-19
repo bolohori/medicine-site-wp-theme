@@ -83,18 +83,12 @@ var _gaq = _gaq || [];
 			$num_to_show = get_option( 'announcements_to_show', 6 );
 
 			$args = array(
-				'post_type' => 'announcement', 
+				'post_type'      => 'announcement', 
 				'posts_per_page' => $num_to_show, 
-				'orderby' => 'menu_order',
-				'order' => 'ASC',
-				'fields' => 'ids',
-				'meta_query' => array(
-					array(
-						'key' => 'sticky',
-						'value' => 1,
-						'compare' => '=',
-					)
-				)
+				'orderby'        => 'menu_order',
+				'fields'         => 'ids',
+				'meta_key'       => 'sticky',
+				'meta_value'     => 1
 			);
 			$loop = new WP_Query( $args );
 			$ids = $loop->posts;
@@ -102,22 +96,22 @@ var _gaq = _gaq || [];
 
 			if( $num_to_show > 0 ) {
 				$args = array(
-					'post_type' => 'announcement', 
+					'post_type'      => 'announcement', 
 					'posts_per_page' => $num_to_show, 
-					'orderby' => 'date',
-					'fields' => 'ids',
-					'post__not_in' => $ids,
-					'meta_query' => array(
-						'relation' => 'OR',
+					'orderby'        => 'date',
+					'fields'         => 'ids',
+					'post__not_in'   => $ids,
+					'meta_query'     => array(
+						'relation'   => 'OR',
 						array(
-							'type' => 'DATETIME',
-							'key' => 'expiration_date',
-							'value' => date_i18n("Y-m-d H:i:s"),
+							'type'    => 'DATETIME',
+							'key'     => 'expiration_date',
+							'value'   => date_i18n("Y-m-d H:i:s"),
 							'compare' => '>',
 						),
 						array(
-							'key' => 'expiration_date',
-							'value' => '',
+							'key'     => 'expiration_date',
+							'value'   => '',
 							'compare' => '=',
 						)
 					)
@@ -128,8 +122,8 @@ var _gaq = _gaq || [];
 
 			$args = array(
 				'post_type' => 'announcement',
-				'orderby' => 'post__in',
-				'post__in' => $ids
+				'orderby'   => 'post__in',
+				'post__in'  => $ids
 			);
 			
 			$loop = new WP_Query( $args );
@@ -165,14 +159,14 @@ var _gaq = _gaq || [];
 			</div>
 			<div class="information-for-right">
 				<ul class="information-for-list" data-columns="2">
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Prospective Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Current Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Faculty']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Staff']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Alumni']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Administrators']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','facebook']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
-					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','sticky-footer','Researchers']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Prospective Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Current Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Faculty']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Staff']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Alumni']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Administrators']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','facebook']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
+					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Researchers']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
 				</ul>
 			</div>
 			<p class="information-for">close <span class="arrow arrow-down">&nbsp;</span></p>
