@@ -1181,7 +1181,7 @@ a.news-title {
 
 .news-left {
 	float: left;
-	width: 340px;
+	width: 47%;
 }
 
 #news-slider {
@@ -1269,14 +1269,14 @@ a.news-title {
 
 .news-right {
 	float: right;
-	width: 480px;
+	width: 47%;
 }
 
 .news-list {
 	float: left;
-	width: 50%;
-	font-size: 15px;
-	line-height: 19px;
+	width: 100%;
+	font-size: 18px;
+	line-height: 23px;
 }
 
 .news-list li{
@@ -1288,7 +1288,7 @@ a.news-title {
 
 .news-list li p{
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 13px;
 }
 
 .recent-news {

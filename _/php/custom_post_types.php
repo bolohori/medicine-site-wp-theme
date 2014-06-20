@@ -164,7 +164,7 @@ function create_custom_post_types() {
 		'query_var'           => true,
 		'rewrite'             => array( 'slug' => 'news/announcements' ),
 		'capability_type'     => 'post',
-		'hierarchical'        => false,
+		'hierarchical'        => true,
 		'menu_position'       => null,
 		'supports'            => array('title', 'page-attributes', 'editor', 'excerpt')
 	);

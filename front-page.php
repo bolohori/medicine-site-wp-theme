@@ -61,63 +61,46 @@
 <section class="news" >
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
+			<div class="all-news"><a href="news/press">SEE ALL</a></a></div>
+			<h1 class="recent-news">In the Media</h1>
+			<ul class="news-list">
 <?php
-				$num_to_show = 4;
-			
+				$i = 0;
+				$j = 0;
+				$audio_out = '';
 				$args = array(
-					'post_type'      => 'media_mentions', 
-					'posts_per_page' => $num_to_show, 
-					'orderby'        => 'menu_order',
-					'fields'         => 'ids',
-					'meta_key'       => 'sticky',
-					'meta_value'     => 1
+					'post_type'      => 'media_mentions',
+					'posts_per_page' => 3,
+					'orderby'        => 'date'
 				);
 				$loop = new WP_Query( $args );
-				$ids = $loop->posts;
-				$num_to_show = $num_to_show - sizeof( $ids );
-
-				if( $num_to_show > 0 ) {
-					$args = array(
-						'post_type'      => 'media_mentions', 
-						'posts_per_page' => $num_to_show, 
-						'orderby'        => 'date',
-						'post__not_in'   => $ids,
-						'fields'         => 'ids'
-					);
-					$loop = new WP_Query( $args );
-					$ids = array_merge( $ids, $loop->posts );
-				}
-
-				$args = array(
-					'post_type' => 'media_mentions',
-					'orderby'   => 'post__in',
-					'post__in'  => $ids
-				);
-
-				$loop = new WP_Query( $args );
-
-				$i = 1;
-				$images = "";
-				$captions = "";
 				while ( $loop->have_posts() ) : $loop->the_post();
-					$url = get_field( 'url' );
+					$url = get_field('url');
 					$title = get_the_title();
-					$images .= get_the_post_thumbnail() != '' ? get_the_post_thumbnail($post->ID, 'in-the-news', array('alt' => '', 'title' => "#htmlcaption$i" ) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/itn-default.png' alt='' title='#htmlcaption" . $i . "' />\n";;
-					$captions .= "<div id=\"htmlcaption$i\" class=\"nivo-html-caption\"><a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$title']);\"><p class=\"news-citation\">" . get_field('source') . "</p>$title</a></div>\n";
+					//$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+ 					
+					echo "<li><a class='news-title' href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">$title</a><p>";
+					/*if( ( $video = get_field('video') ) !== '')
+						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
+					if( get_field('audio') !== '') {
+						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
+						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" class=\"audio-file\">Listen</a> | ";
+						$j++;
+					}*/
+					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">" . get_field('source') . "</a></p></li>";
 					$i++;
+					/*if( $i === 3 )
+						echo "</ul>\n<ul class='news-list'>";*/
 				endwhile;
 				wp_reset_postdata();
-
-				// This is set before the Billboards, but we need it here too
-				
-				echo "<div id='news-slider' class='nivoSlider'>$images</div>$captions\n";
 ?>
-			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
+			</ul>
+			<?php echo $audio_out; ?>
 		</div>
 			
 		<div class="news-right">
-			<div class="all-news"><a href="news/releases">ALL NEWS</a></a></div>
-			<h1 class="recent-news">Recent News</h1>
+			<div class="all-news"><a href="news/releases">SEE ALL</a></a></div>
+			<h1 class="recent-news">News Releases</h1>
 			<ul class="news-list">
 <?php
 				$i = 0;
@@ -125,7 +108,7 @@
 				$audio_out = '';
 				$args = array(
 					'post_type'      => 'news_releases',
-					'posts_per_page' => 6,
+					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
 				$loop = new WP_Query( $args );
@@ -144,8 +127,8 @@
 					}
 					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read Article</a></p></li>";
 					$i++;
-					if( $i === 3 )
-						echo "</ul>\n<ul class='news-list'>";
+					/*if( $i === 3 )
+						echo "</ul>\n<ul class='news-list'>";*/
 				endwhile;
 				wp_reset_postdata();
 ?>
@@ -203,10 +186,7 @@
 
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
-					if ( $link['url'] !== null ) {
-						$url = $link['url'];
-						$read_more_link = "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>";
-					}
+					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>" : "";
 
 					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong>$content$read_more_link</div>";
 					$i++;
