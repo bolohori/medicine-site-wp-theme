@@ -51,7 +51,7 @@
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$title']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
+				echo "<a href=\"$url\" alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$title']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 			endwhile;
 			wp_reset_postdata();
 ?>
@@ -103,7 +103,7 @@
 					$url = get_field( 'url' );
 					$title = get_the_title();
 					$images .= get_the_post_thumbnail() != '' ? get_the_post_thumbnail($post->ID, 'in-the-news', array('alt' => '', 'title' => "#htmlcaption$i" ) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/itn-default.png' alt='' title='#htmlcaption" . $i . "' />\n";;
-					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$title']);\"><p class='news-citation'>" . get_field('source') . "</p>$title</a></div>\n";
+					$captions .= "<div id=\"htmlcaption$i\" class=\"nivo-html-caption\"><a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$title']);\"><p class=\"news-citation\">" . get_field('source') . "</p>$title</a></div>\n";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
@@ -131,19 +131,20 @@
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$link = get_field('url');
+					$title = get_the_title();
 					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  					
-					echo "<li><a class='news-title' href='$url'>" . get_the_title() . "</a><p>";
-					if( get_field('video') != '')
-						echo "<a rel='prettyPhoto' href='" . get_field('video') . "'>Watch</a> | ";
-					if( get_field('audio') != '') {
-						$audio_out .= wp_audio_shortcode(array('src'=>get_field('audio')));
-						echo "<a data-id='mep_$j' href='javascript:return false;' class='audio-file'>Listen</a> | ";
+					echo "<li><a class='news-title' href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">$title</a><p>";
+					if( ( $video = get_field('video') ) !== '')
+						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
+					if( get_field('audio') !== '') {
+						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
+						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" class=\"audio-file\">Listen</a> | ";
 						$j++;
 					}
-					echo "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
+					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read Article</a></p></li>";
 					$i++;
-					if($i==3)
+					if( $i === 3 )
 						echo "</ul>\n<ul class='news-list'>";
 				endwhile;
 				wp_reset_postdata();
@@ -204,10 +205,10 @@
 
 					if ( $link['url'] !== null ) {
 						$url = $link['url'];
-						$read_more_link = "<a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>";
+						$read_more_link = "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>";
 					}
 
-					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";
+					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong>$content$read_more_link</div>";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
