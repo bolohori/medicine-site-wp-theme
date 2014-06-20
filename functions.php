@@ -575,6 +575,7 @@ function wusm_search_filter( $query ) {
 	}
 }
 add_filter( 'pre_get_posts', 'wusm_search_filter' );
+
 /*
 ....::::::::,.................................,,:::::::.....
 ....::?IIIIII?+=~::::::::::::::::::::::::::~=??IIIII+::.....
