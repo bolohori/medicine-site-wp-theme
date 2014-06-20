@@ -62,12 +62,9 @@
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
 			<div class="all-news"><a href="news/press">SEE ALL</a></a></div>
-			<h1 class="recent-news">In the Media</h1>
+			<h1 class="news-header">In the Media</h1>
 			<ul class="news-list">
 <?php
-				$i = 0;
-				$j = 0;
-				$audio_out = '';
 				$args = array(
 					'post_type'      => 'media_mentions',
 					'posts_per_page' => 3,
@@ -77,33 +74,20 @@
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$url = get_field('url');
 					$title = get_the_title();
-					//$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 					
 					echo "<li><a class='news-title' href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">$title</a><p>";
-					/*if( ( $video = get_field('video') ) !== '')
-						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
-					if( get_field('audio') !== '') {
-						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
-						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" class=\"audio-file\">Listen</a> | ";
-						$j++;
-					}*/
 					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">" . get_field('source') . "</a></p></li>";
-					$i++;
-					/*if( $i === 3 )
-						echo "</ul>\n<ul class='news-list'>";*/
 				endwhile;
 				wp_reset_postdata();
 ?>
 			</ul>
-			<?php echo $audio_out; ?>
 		</div>
 			
 		<div class="news-right">
 			<div class="all-news"><a href="news/releases">SEE ALL</a></a></div>
-			<h1 class="recent-news">News Releases</h1>
+			<h1 class="news-header">News Releases</h1>
 			<ul class="news-list">
 <?php
-				$i = 0;
+
 				$j = 0;
 				$audio_out = '';
 				$args = array(
@@ -126,9 +110,6 @@
 						$j++;
 					}
 					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read Article</a></p></li>";
-					$i++;
-					/*if( $i === 3 )
-						echo "</ul>\n<ul class='news-list'>";*/
 				endwhile;
 				wp_reset_postdata();
 ?>
