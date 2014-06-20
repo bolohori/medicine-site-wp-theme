@@ -155,7 +155,7 @@
 </section>
 
 <div id="featured-image">
-	<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg" alt="Hero image">
+	<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg" alt="" title="Faculty physician Anita Bhandiwad, MD, FACC, and fellow Mark Vogel, MD, of the Cardiovascular Division">
 </div>
 
 <div class="hero-text">
