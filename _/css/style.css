@@ -1205,8 +1205,8 @@ a.news-title {
 .news-list {
 	float: left;
 	width: 100%;
-	font-size: 18px;
-	line-height: 23px;
+	font-size: 15px;
+	line-height: 19px;
 }
 
 .news-list li{
@@ -1218,7 +1218,7 @@ a.news-title {
 
 .news-list li p{
 	font-weight: bold;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .news-header {
