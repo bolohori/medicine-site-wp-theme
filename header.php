@@ -78,10 +78,11 @@ var _gaq = _gaq || [];
 				<p>Updates on campus events, policy changes, road and building construction, calls for papers and more.</p>
 			</div>
 			<div class="announcements-right">
-				<ul class="announcement-list" data-columns="2">
+				<ul class="announcement-list">
 		<?php
 			$num_to_show = get_option( 'announcements_to_show', 6 );
-
+			$i = 0;
+			$j = floor( $num_to_show / 2 );
 			$args = array(
 				'post_type'      => 'announcement', 
 				'posts_per_page' => $num_to_show, 
@@ -127,7 +128,12 @@ var _gaq = _gaq || [];
 			);
 			
 			$loop = new WP_Query( $args );
-			while ( $loop->have_posts() ) : $loop->the_post();
+			while ( $loop->have_posts() ) {
+				$loop->the_post();
+				if( $i == $j ) {
+					echo '</ul>';
+					echo '<ul class="announcement-list">';
+				}
 				$internal_only = get_field('internal_only');
 				if ( $internal_only && !WASHU_IP ) {
 					echo "internal";
@@ -142,8 +148,8 @@ var _gaq = _gaq || [];
 				}
 				$title = get_the_title();
 				echo "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','header-announcement','$title']);\">$title</a></li>\n";
-				
-			endwhile;
+				$i++;
+			}
 			wp_reset_query();
 		?>
 				</ul>
@@ -159,11 +165,13 @@ var _gaq = _gaq || [];
 				<p>Whether you are part of our community or are interested in joining us, we welcome you to Washington University School of Medicine.</p>
 			</div>
 			<div class="information-for-right">
-				<ul class="information-for-list" data-columns="2">
+				<ul class="information-for-list">
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Prospective Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Current Students']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Faculty']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Staff']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
+				</ul>
+				<ul class="information-for-list">
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Alumni']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','Administrators']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
 					<li class="information-for-li"><a onclick="javascript:_gaq.push(['_trackEvent','information-for','facebook']);" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>

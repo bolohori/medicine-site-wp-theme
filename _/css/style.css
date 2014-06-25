@@ -973,29 +973,16 @@ footer a {
 	width: 609px;
 }
 
-.announcement-list {
-	/*display: inline-block;*/
-	padding: 0 42px 0 20px;
-	width: 100%;
-	columns: 2;
-	-webkit-columns: 2;
-	-moz-columns: 2;
-
-	float: left;
-	position: relative;
-	margin-right: 20px;
-}
-
+.announcement-list,
 .information-for-list {
+	*behavior  : url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+	box-sizing: border-box;
 	padding: 0 42px 0 20px;
-	width: 100%;
-	columns: 2;
-	-webkit-columns: 2;
-	-moz-columns: 2;
-
+	width: 50%;
+	
 	float: left;
 	position: relative;
-	margin-right: 20px;
+	
 }
 
 .ie7 .announcement,
