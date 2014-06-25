@@ -425,6 +425,7 @@ input {
 	text-align: center;
 	width     : 100%;
 	z-index   : 50;
+	background: #ccc;
 }
 
 .home #featured-image {
