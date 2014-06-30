@@ -4,9 +4,7 @@
 
         <div class="wrapper">
 
-            <nav id="left-col">
-                <?php get_sidebar( 'left' ); ?>
-            </nav>
+            <?php get_sidebar( 'left' ); ?>
 
             Custom-designed front page
 
