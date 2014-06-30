@@ -131,7 +131,7 @@ function create_custom_post_types() {
 		'query_var'           => true,
 		'rewrite'             => array( 'slug' => 'news/features' ),
 		'capability_type'     => 'post',
-		'hierarchical'        => false,
+		'hierarchical'        => true,
 		'menu_position'       => null,
 		'supports'            => array('title', 'page-attributes', 'thumbnail' )
 	); 
@@ -197,7 +197,7 @@ function create_custom_post_types() {
 		'query_var'           => true,
 		'rewrite'             => array( 'slug' => 'news/leaders' ),
 		'capability_type'     => 'post',
-		'hierarchical'        => true,
+		'hierarchical'        => false,
 		'menu_position'       => null,
 		'supports'            => array(
 			'title',
@@ -298,7 +298,7 @@ function create_custom_post_types() {
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'news/in-focus' ),
 		'capability_type'    => 'post',
-		'hierarchical'       => true,
+		'hierarchical'       => false,
 		'menu_position'      => null,
 		'supports'           => array(
 			'title',
