@@ -918,6 +918,10 @@ article.search-results {
         overflow: hidden;
     }
 
+    #header-site-row .wrapper {
+        position: relative;
+    }
+
     #header-logo {
         display: none;
     }
@@ -943,10 +947,11 @@ article.search-results {
 
     #mobile-menu-icon {
         display: block;
-        float: right;
-        position: relative;
+        position: absolute;
+        top: 50%;
+        right: 0;
         cursor: pointer;
-        margin: 20px 22px 19px;
+        margin: -15px 22px 0 0;
     }
 
     #search-form {
@@ -954,7 +959,7 @@ article.search-results {
     }
 
     #site-title {
-        padding: 22px 22px 22px 18px;
+        padding: 22px 82px 22px 18px;
     }
 
     #site-title a {
