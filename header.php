@@ -87,6 +87,7 @@ var _gaq = _gaq || [];
 				'post_type'      => 'announcement', 
 				'posts_per_page' => $num_to_show, 
 				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
 				'fields'         => 'ids',
 				'meta_key'       => 'sticky',
 				'meta_value'     => 1
