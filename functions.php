@@ -20,7 +20,7 @@ if ( ! function_exists( 'feedburner_rss_redirect' ) ) {
 }
 add_action( 'feed_link', 'feedburner_rss_redirect', 10, 2 );
 
-if( ! defined('WP_LOCAL_INSTALL') ) { require_once( get_template_directory() . '/_/php/acf_fields.php' ); }
+if( ! defined('WP_LOCAL_INSTALL') ) { define( 'ACF_LITE', true ); require_once( get_template_directory() . '/_/php/acf_fields.php' ); }
 
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
