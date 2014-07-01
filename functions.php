@@ -529,8 +529,8 @@ add_filter( 'manage_billboard_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_billboard_posts_custom_column', 'column_content', 11, 2 );
 add_filter( 'manage_announcement_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_announcement_posts_custom_column', 'column_content', 11, 2 );
-add_filter( 'manage_media_mentions_posts_columns', 'column_heading', 11, 1 );
-add_action( 'manage_media_mentions_posts_custom_column', 'column_content', 11, 2 );
+//add_filter( 'manage_media_mentions_posts_columns', 'column_heading', 11, 1 );
+//add_action( 'manage_media_mentions_posts_custom_column', 'column_content', 11, 2 );
 function column_heading($columns) {
 	unset($columns['wpseo-score']);
 	unset($columns['wpseo-title']);
