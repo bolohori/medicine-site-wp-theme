@@ -18,7 +18,9 @@
 
 	<div id="page-background"></div>
 
-	<div class="wrapper">
+	<div class="wrapper clearfix">
+
+		<div id="page-background-inner"></div>
 
 		<?php get_sidebar( 'left' ); ?>
 
