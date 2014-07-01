@@ -12,14 +12,10 @@ jQuery(document).ready(function($) {
 	var $window = $(window);
 
 	// Really need to clean all these up...
-	/*if( $('#left-col').height() > $('#main article').height() )
+	if( $('#left-col').height() > $('#main article').height() )
 		$('#main article').css("min-height", $('#left-col').height() + 123);
 	if( $('#right-col').height() > $('#main article').height() )
 		$('#main article').css("min-height", $('#right-col').height() + 123);
-	if( $(window).height() > $('#main article').height() + 630 )
-		$('#main article').css("min-height", $(window).height() - 630 );
-	if( $('.main-content').height() < ($(window).height()-526) )
-		$('.main-content').css("min-height", $(window).height()-526);*/
 
 	$(".announcements").click(function(e){
 		e.preventDefault();
