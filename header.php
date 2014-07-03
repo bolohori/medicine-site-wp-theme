@@ -102,21 +102,7 @@ var _gaq = _gaq || [];
 					'posts_per_page' => $num_to_show, 
 					'orderby'        => 'date',
 					'fields'         => 'ids',
-					'post__not_in'   => $ids,
-					'meta_query'     => array(
-						'relation'   => 'OR',
-						array(
-							'type'    => 'DATETIME',
-							'key'     => 'expiration_date',
-							'value'   => date_i18n("Y-m-d H:i:s"),
-							'compare' => '>',
-						),
-						array(
-							'key'     => 'expiration_date',
-							'value'   => '',
-							'compare' => '=',
-						)
-					)
+					'post__not_in'   => $ids
 				);
 				$loop = new WP_Query( $args );
 				$ids = array_merge( $ids, $loop->posts );
@@ -125,7 +111,21 @@ var _gaq = _gaq || [];
 			$args = array(
 				'post_type' => 'announcement',
 				'orderby'   => 'post__in',
-				'post__in'  => $ids
+				'post__in'  => $ids,
+				'meta_query'=> array(
+					'relation'   => 'OR',
+					array(
+						'type'    => 'DATETIME',
+						'key'     => 'expiration_date',
+						'value'   => date_i18n("Y-m-d H:i:s"),
+						'compare' => '>',
+					),
+					array(
+						'key'     => 'expiration_date',
+						'value'   => '',
+						'compare' => '=',
+					)
+				)
 			);
 			
 			$loop = new WP_Query( $args );
