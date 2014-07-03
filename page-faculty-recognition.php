@@ -26,7 +26,7 @@ wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/j
 	<div id="page-background-r"></div>
 	<div id="page-background-l"></div>
 
-	<div class="wrapper">
+	<div class="wrapper clearfix">
 
 		<?php get_sidebar(); ?>
 
