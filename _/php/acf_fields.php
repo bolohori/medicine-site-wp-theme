@@ -18,6 +18,17 @@ if(function_exists("register_field_group"))
 				'formatting' => 'html',
 				'maxlength' => '',
 			),
+			array (
+				'key' => 'field_53bd64ee9d1ad',
+				'label' => 'A to Z index',
+				'name' => 'a_to_z_index',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Include in A to Z index?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
+			),
 		),
 		'location' => array (
 			array (
@@ -570,7 +581,7 @@ if(function_exists("register_field_group"))
 					1 => 'Hide in Nav?',
 				),
 				'default_value' => '',
-				'layout' => 'vertical',
+				'layout' => 'horizontal',
 			),
 			array (
 				'key' => 'field_53bd58104efb4',
@@ -581,7 +592,7 @@ if(function_exists("register_field_group"))
 					1 => 'Hide Left Nav?',
 				),
 				'default_value' => '',
-				'layout' => 'vertical',
+				'layout' => 'horizontal',
 			),
 		),
 		'location' => array (
