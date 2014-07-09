@@ -227,3 +227,27 @@ input[type=submit]:hover {
 	font-size: 12px;
 	color: #878787;
 }
+
+.facebook,
+.twitter,
+.linkedin,
+.googleplus,
+.rss,
+.reader {
+	width: 23px;
+	height: 23px;
+	display: inline-block;
+}
+
+.facebook { background:url(../img/facebook.png);}
+.facebook:hover { background:url(../img/facebook_on.png);}
+.twitter { background:url(../img/twitter.png);}
+.twitter:hover { background:url(../img/twitter_on.png);}
+.linkedin { background:url(../img/linkedin.png);}
+.linkedin:hover { background:url(../img/linkedin_on.png);}
+.googleplus { background:url(../img/googleplus.png);}
+.googleplus:hover { background:url(../img/googleplus_on.png);}
+.rss { background:url(../img/rss.png);}
+.rss:hover { background:url(../img/rss_on.png);}
+.reader { background:url(../img/reader.png);}
+.reader:hover { background:url(../img/reader_on.png);}

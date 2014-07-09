@@ -572,6 +572,17 @@ if(function_exists("register_field_group"))
 				'default_value' => '',
 				'layout' => 'vertical',
 			),
+			array (
+				'key' => 'field_53bd58104efb4',
+				'label' => 'Hide Nav',
+				'name' => 'hide_nav',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Hide Left Nav?',
+				),
+				'default_value' => '',
+				'layout' => 'vertical',
+			),
 		),
 		'location' => array (
 			array (
@@ -638,38 +649,110 @@ if(function_exists("register_field_group"))
 		'location' => array (
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'administrator',
+					'value' => 'post',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
 			),
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'editor',
+					'value' => 'page',
 					'order_no' => 0,
 					'group_no' => 1,
 				),
 			),
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'author',
+					'value' => 'location',
 					'order_no' => 0,
 					'group_no' => 2,
 				),
 			),
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'administrator',
+					'value' => 'news_releases',
 					'order_no' => 0,
 					'group_no' => 3,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'media_mentions',
+					'order_no' => 0,
+					'group_no' => 4,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'in_the_news',
+					'order_no' => 0,
+					'group_no' => 5,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'billboard',
+					'order_no' => 0,
+					'group_no' => 6,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'announcement',
+					'order_no' => 0,
+					'group_no' => 7,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'spotlight',
+					'order_no' => 0,
+					'group_no' => 8,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'research_news',
+					'order_no' => 0,
+					'group_no' => 9,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'in_focus',
+					'order_no' => 0,
+					'group_no' => 10,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'faculty_profile',
+					'order_no' => 0,
+					'group_no' => 11,
 				),
 			),
 		),
