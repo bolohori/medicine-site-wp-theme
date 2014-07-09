@@ -133,7 +133,7 @@ get_header(); ?>
 			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {
 				// and finally the results from Google...
 				$terms = str_replace(' ', '+', $search_terms);
-				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results";
+				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results&as_eq='medschool.wustl.edu+medicine.wustl.edu'";
 				
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
 

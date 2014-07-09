@@ -28,6 +28,7 @@
 
 	<div class="wrapper">
 		<nav id="left-col">
+			<?php if( ! get_field( 'hide_nav' ) ) { ?>
 			<ul id="left-nav">
 				<li class="top_level_page"></li>
 				<li class="<?php echo ($post->post_type == 'research_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research News</a></li>
@@ -39,6 +40,7 @@
 				<li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
 				<li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
 			</ul>
+			<?php } ?>
 		</nav>
 
 		<article<?php echo $classes; ?>>

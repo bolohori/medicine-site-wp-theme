@@ -17,7 +17,7 @@
 			<?php
 				$walker = new Razorback_Walker_Page_Selective_Children();
 				
-				if ( ( is_page() || $force  || ( sizeof( $post->ancestors ) > 0 ) ) &&  ! ( is_search() ) && ! ( get_field('hide_in_nav', $post->ID) ) ) {
+				if ( ( is_page() || $force  || ( sizeof( $post->ancestors ) > 0 ) ) &&  ! ( is_search() ) &&  ! ( get_field( 'hide_nav' ) ) ) {
 
 					// This is a page
 					if ( ( is_page() && $post->post_parent ) || ( $force ) ) {

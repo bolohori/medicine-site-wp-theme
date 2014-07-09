@@ -85,6 +85,9 @@ class Razorback_Walker_Page_Selective_Children extends Walker_Page {
 	}
 
 	function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+		if ( get_field('hide_in_nav', $page->ID) )
+			return;
+
 		if ( $depth )
 			$indent = str_repeat("\t", $depth);
 		else
