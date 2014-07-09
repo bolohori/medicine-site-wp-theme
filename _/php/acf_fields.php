@@ -127,6 +127,17 @@ if(function_exists("register_field_group"))
 				'save_as_timestamp' => 'false',
 				'get_as_timestamp' => 'false',
 			),
+			array (
+				'key' => 'field_53bd808628cda',
+				'label' => 'Hide Nav',
+				'name' => 'hide_nav',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Hide Left Nav?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
+			),
 		),
 		'location' => array (
 			array (
@@ -520,6 +531,17 @@ if(function_exists("register_field_group"))
 				'append' => '',
 				'formatting' => 'none',
 				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_53bd8213f1b9a',
+				'label' => 'Hide Nav',
+				'name' => 'hide_nav',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Hide Left Nav?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
 			),
 		),
 		'location' => array (
