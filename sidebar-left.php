@@ -5,7 +5,7 @@
         <ul id="left-nav">
 
             <?php
-            if ((in_menu($id) || (sizeof($post->ancestors) > 0)) && !(is_search())) {
+            if ((in_menu($id) || is_page() || (sizeof($post->ancestors) > 0)) && !(is_search())) {
 
                 $walker = new Razorback_Walker_Page_Selective_Children();
 
