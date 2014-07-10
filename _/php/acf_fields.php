@@ -788,6 +788,15 @@ if(function_exists("register_field_group"))
 					'group_no' => 11,
 				),
 			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'promoted_results',
+					'order_no' => 0,
+					'group_no' => 12,
+				),
+			),
 		),
 		'options' => array (
 			'position' => 'side',
