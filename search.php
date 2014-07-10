@@ -47,7 +47,8 @@ if(($num_of_wordpress_results == 0) && ($paged != 1)) {
 $num_of_wp_result_pages = ceil($num_of_wordpress_results/10);
 
 // Total hack, just get the 1st result of the Google search, but it brings along with it...
-$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=1&num=1";
+$terms = str_replace(' ', '+', $search_terms);
+$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=1&num=1&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 $xml = new SimpleXMLElement(file_get_contents($search_url));
 // ...the total number of results
 $total_google_results = $xml->RES->M;
@@ -133,10 +134,8 @@ get_header(); ?>
 			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {
 				// and finally the results from Google...
 				$terms = str_replace(' ', '+', $search_terms);
-				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results&as_eq='medschool.wustl.edu+medicine.wustl.edu'";
-				
+				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
-
 				$start_num = $xml->RES['SN'];
 
 				if( $start > $start_num ) {
