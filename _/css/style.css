@@ -5,8 +5,6 @@ SOMEDAY WE'LL GET TO USE THIS
  }
  */
 
-.chromeframe {position: absolute; top: 0;}
-
 /* Hide only visually, but have it available for screenreaders */
 .visuallyhidden {
 	position: absolute !important;
