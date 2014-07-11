@@ -1256,7 +1256,9 @@ a.news-title {
 
 input[type=reset],
 input[type=submit] {
-	line-height: 38px;
+	line-height        : 38px;
+	-moz-appearance    : none;
+	-webkit-appearance : none;
 }
 
 button.single-link {
