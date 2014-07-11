@@ -2362,6 +2362,10 @@ a.sidebar-outlook-link {
 	line-height: 16px;
 }
 
+.accordion-header {
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+}
+
 /*
  * Print styles
  * -------------------------------------------------------------------------------
