@@ -1254,7 +1254,9 @@ a.news-title {
 
 input[type=reset],
 input[type=submit] {
-	line-height: 38px;
+	line-height        : 38px;
+	-moz-appearance    : none;
+	-webkit-appearance : none;
 }
 
 button.single-link {
@@ -2356,6 +2358,10 @@ a.sidebar-outlook-link {
 	position: absolute;
 	right: 0;
 	line-height: 16px;
+}
+
+.accordion-header {
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 }
 
 /*
