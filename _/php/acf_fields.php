@@ -1240,6 +1240,24 @@ if(function_exists("register_field_group"))
 					'group_no' => 0,
 				),
 			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'announcement',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'news_releases',
+					'order_no' => 0,
+					'group_no' => 2,
+				),
+			),
 		),
 		'options' => array (
 			'position' => 'normal',
