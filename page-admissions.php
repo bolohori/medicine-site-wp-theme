@@ -21,7 +21,7 @@ if (have_posts()) :
 		</div>
 		<div class="hero-lists clearfix">
 			<div class="wrapper">
-				<div class="left-col">
+				<div class="admissions-left-col">
 					<ul id="medical-education" class="hero-list left-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/medical-education.jpg" alt=""></li>
 						<li class="hero-list-title">Medical Education</li>
@@ -53,7 +53,7 @@ if (have_posts()) :
 						<li><a href="http://www.ot.wustl.edu/education/doctorate-otd-140">Occupational Therapy (OTD)</a></li>
 					</ul>
 				</div>
-				<div class="right-col">
+				<div class="admissions-right-col">
 					<ul id="PACS" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/pacs.jpg" alt=""></li>
 						<li class="hero-list-title">Audiology &amp; Communication Sciences</li>
