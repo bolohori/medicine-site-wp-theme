@@ -42,7 +42,8 @@
 			</ul>
 			<?php } ?>
 		</nav>
-
+		
+		<?php if( ! ($post->post_type == 'in_focus') )get_sidebar( 'right' ); ?>
 		<article<?php echo $classes; ?>>
 			<?php
 				if(get_field('special_header')) {
@@ -70,8 +71,6 @@
 			endif;
 			?>
 		</article>
-
-		<?php if( !$post->post_type == 'in_focus') get_sidebar( 'right' ); ?>
 
 	</div>
 
