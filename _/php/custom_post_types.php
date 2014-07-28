@@ -273,19 +273,19 @@ function create_custom_post_types() {
 	register_taxonomy( 'expertise', array( 'research_news' ), $args );
 
 	$labels = array(
-		'name'               => 'In Focus',
-		'singular_name'      => 'In Focus',
+		'name'               => 'Campus Life',
+		'singular_name'      => 'Campus Life',
 		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New In Focus',
-		'edit_item'          => 'Edit In Focus',
-		'new_item'           => 'New In Focus',
-		'all_items'          => 'All In Focuss',
-		'view_item'          => 'View In Focus',
-		'search_items'       => 'Search In Focuses',
-		'not_found'          =>	'No In Focuses found',
-		'not_found_in_trash' => 'No In Focuses found in Trash', 
+		'add_new_item'       => 'Add New Campus Life',
+		'edit_item'          => 'Edit Campus Life',
+		'new_item'           => 'New Campus Life',
+		'all_items'          => 'All Campus Lifes',
+		'view_item'          => 'View Campus Life',
+		'search_items'       => 'Search Campus Lifes',
+		'not_found'          =>	'No Campus Lifes found',
+		'not_found_in_trash' => 'No Campus Lifes found in Trash', 
 		'parent_item_colon'  => '',
-		'menu_name'          => 'In Focus'
+		'menu_name'          => 'Campus Life'
 	);
 	$args = array(
 		'labels'             => $labels,
