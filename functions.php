@@ -30,8 +30,8 @@ require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
 /*
  * Remove some of the unused stuff from the header
  */
-if ( ! function_exists( 'wusm_head_cleanup' ) ) {
-	function wusm_head_cleanup() {
+if ( ! function_exists( 'medicine_head_cleanup' ) ) {
+	function medicine_head_cleanup() {
 		remove_action( 'wp_head', 'rsd_link' );
 		remove_action( 'wp_head', 'wlwmanifest_link' );
 		remove_action( 'wp_head', 'wp_generator' );
@@ -44,20 +44,20 @@ if ( ! function_exists( 'wusm_head_cleanup' ) ) {
 		update_option( 'timezone_string', 'America/Chicago' );
 	}
 }
-add_action( 'init', 'wusm_head_cleanup' );
+add_action( 'init', 'medicine_head_cleanup' );
 
 /*
  * Remove WP version from scripts
  */
-if ( ! function_exists( 'remove_wp_ver_css_js' ) ) {
-	function remove_wp_ver_css_js( $src ) {
+if ( ! function_exists( 'medicine_remove_wp_ver_css_js' ) ) {
+	function medicine_remove_wp_ver_css_js( $src ) {
 		if ( strpos( $src, 'ver=' ) )
 			$src = remove_query_arg( 'ver', $src );
 		return $src;
 	}
 }
-add_filter( 'style_loader_src', 'remove_wp_ver_css_js');
-add_filter( 'script_loader_src', 'remove_wp_ver_css_js');
+add_filter( 'style_loader_src', 'medicine_remove_wp_ver_css_js');
+add_filter( 'script_loader_src', 'medicine_remove_wp_ver_css_js');
 
 /*
  * remove WP version from RSS
@@ -67,12 +67,12 @@ add_filter( 'the_generator', function() { return ''; });
 /**
  * Customize the footer in admin area
  */
-if ( ! function_exists( 'wpfme_footer_admin' ) ) {
-	function wpfme_footer_admin () {
+if ( ! function_exists( 'medicine_footer_admin' ) ) {
+	function medicine_footer_admin () {
 		echo 'Theme designed and developed by WUSTL Medical Public Affairs and powered by <a href="http://wordpress.org">WordPress</a>.';
 	}
 }
-add_filter('admin_footer_text', 'wpfme_footer_admin');
+add_filter('admin_footer_text', 'medicine_footer_admin');
 
 if( !defined( 'WP_LOCAL_INSTALL' ) ) {
 	//check for Wash U IP
@@ -127,8 +127,8 @@ add_post_type_support( 'page', 'excerpt' );
 /**
  * Intialize all the theme options
  */
-if ( ! function_exists( 'theme_init' ) ) {
-	function theme_init() {
+if ( ! function_exists( 'medicine_theme_setup' ) ) {
+	function medicine_theme_setup() {
 		// Create Header Menu theme location
 		register_nav_menus( array( 
 			'header-menu' => 'Header Menu',
@@ -156,22 +156,16 @@ if ( ! function_exists( 'theme_init' ) ) {
 			$locations['header-menu'] = $menu_id;
 			set_theme_mod('nav_menu_locations', $locations);
 		}
-	}
-}
-add_action( 'after_switch_theme', 'theme_init' );
 
-/*
- * Set default values for Attachment Display Settings
- */
-if ( ! function_exists( 'attachment_display_settings' ) ) {
-	function attachment_display_settings() {
+		/*
+		 * Set default values for Attachment Display Settings
+		 */
 		update_option('image_default_align', 'center' );
 		update_option('image_default_link_type', 'none' );
 		update_option('image_default_size', 'large' );
 	}
 }
-add_action('after_setup_theme', 'attachment_display_settings');
-
+add_action( 'after_setup_theme', 'medicine_theme_setup' );
 
 /*
  * Hide admin bar for subscribers. This enables us to keep the site
@@ -179,14 +173,14 @@ add_action('after_setup_theme', 'attachment_display_settings');
  * with non-logged in "public" users (i.e. enables the "we need to
  * show the dean" functionality)
  */
-if ( ! function_exists( 'cc_hide_admin_bar' ) ) {
-	function cc_hide_admin_bar() {
+if ( ! function_exists( 'medicine_hide_admin_bar' ) ) {
+	function medicine_hide_admin_bar() {
 		if (!current_user_can('edit_posts')) {
 			show_admin_bar(false);
 		}
 	}
 }
-add_action('set_current_user', 'cc_hide_admin_bar');
+add_action('set_current_user', 'medicine_hide_admin_bar');
 
 /*
  * Excerpt length as requested by the editors
@@ -196,8 +190,8 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
 /*
  * Stylesheets, not really the traditional WordPress, but it works
  */
-if ( ! function_exists( 'enqueue_wusm_styles' ) ) {
-	function enqueue_wusm_styles() {
+if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
+	function medicine_enqueue_styles() {
 		?>
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" />
@@ -211,14 +205,14 @@ if ( ! function_exists( 'enqueue_wusm_styles' ) ) {
 		}
 	}
 }
-add_action( 'wp_head', 'enqueue_wusm_styles' );
+add_action( 'wp_head', 'medicine_enqueue_styles' );
 
 /*
  * Add "Clear" button to ACF Location fields
  */
-if ( is_admin() && !function_exists( 'acf_location_clear_button' )) {
-	function acf_location_clear_button() {
-?>
+if ( is_admin() && !function_exists( 'medicine_acf_location_clear_button' )) {
+	function medicine_acf_location_clear_button() {
+?>	
 <script type="text/javascript">
 jQuery(document).ready(function() {
 	jQuery('div.field_type-location-field').each(function(index) {
@@ -247,11 +241,11 @@ jQuery(document).ready(function() {
 <?php
 	}
 }
-add_action('admin_head', 'acf_location_clear_button');
+add_action('admin_head', 'medicine_acf_location_clear_button');
 
 // Add new styles to the TinyMCE "formats" menu dropdown
-if ( ! function_exists( 'wusm_styles_dropdown' ) ) {
-	function wusm_styles_dropdown( $settings ) {
+if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
+	function medicine_styles_dropdown( $settings ) {
 
 		// Create array of new styles
 		$new_styles = array(
@@ -309,7 +303,7 @@ if ( ! function_exists( 'wusm_styles_dropdown' ) ) {
 
 	}
 }
-add_filter( 'tiny_mce_before_init', 'wusm_styles_dropdown' );
+add_filter( 'tiny_mce_before_init', 'medicine_styles_dropdown' );
 
 /*
  * Change [...] to MORE>> (w/ link)
@@ -319,8 +313,8 @@ add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="
 /*
  * Search post titles as well as content
  */
-if ( ! function_exists( 'wp_query_posts_where' ) ) {
-	function wp_query_posts_where( $where, &$wp_query ) {
+if ( ! function_exists( 'medicine_wp_query_posts_where' ) ) {
+	function medicine_wp_query_posts_where( $where, &$wp_query ) {
 		global $wpdb;
 		if ( $post_title = $wp_query->get( 'post_title' ) ) {
 			$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( like_escape( $post_title ) ) . '%\'';
@@ -328,7 +322,7 @@ if ( ! function_exists( 'wp_query_posts_where' ) ) {
 		return $where;
 	}
 }
-add_filter( 'posts_where', 'wp_query_posts_where', 10, 2 );
+add_filter( 'posts_where', 'medicine_wp_query_posts_where', 10, 2 );
 
 /*
  * By default, WordPress throws a 404 if you try to paginate beyond
@@ -340,8 +334,8 @@ add_filter( 'posts_where', 'wp_query_posts_where', 10, 2 );
  *  Had to change the filter hook to wp because Yoast's SEO
  *  plugin hooks in there to check pagination
  */
-if ( ! function_exists( 'my_404_override' ) ) {
-	function my_404_override() {
+if ( ! function_exists( 'medicine_404_override' ) ) {
+	function medicine_404_override() {
 		global $wp_query;
 
 		if ( isset( $wp_query->query_vars['search_terms_count'] ) ) {
@@ -351,7 +345,7 @@ if ( ! function_exists( 'my_404_override' ) ) {
 		}
 	}
 }
-add_filter('wp', 'my_404_override' );
+add_filter('wp', 'medicine_404_override' );
 
 /*
  * add tag support to pages
@@ -362,19 +356,19 @@ add_action('init', function() { register_taxonomy_for_object_type('post_tag', 'p
  * ensure all tags are included in queries
  * THIS NEEDS SOME TESTING BEFORE GOING LIVE
  */ 
-if ( ! function_exists( 'tags_support_query' ) ) {
-	function tags_support_query($wp_query) {
+if ( ! function_exists( 'medicine_tags_support_query' ) ) {
+	function medicine_tags_support_query($wp_query) {
 		if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
 	}
 }
-//add_action('pre_get_posts', 'tags_support_query');
+//add_action('pre_get_posts', 'medicine_tags_support_query');
 
 /*
  * Shortcode to change the background, initially used for the admissions page, but
  * may be needed elsewhere
  */
-if ( ! function_exists( 'wusm_change_bg' ) ) {
-	function wusm_change_bg( $atts ) {
+if ( ! function_exists( 'medicine_change_bg' ) ) {
+	function medicine_change_bg( $atts ) {
 		extract( shortcode_atts( array(
 			'color' => 'f4f4f4'
 		), $atts ) );
@@ -387,52 +381,52 @@ if ( ! function_exists( 'wusm_change_bg' ) ) {
 	<article style='background-color: #$color;padding-left: 225px;padding-top: 24px;'>";
 	}
 }
-add_shortcode( 'change_background_to', 'wusm_change_bg' );
+add_shortcode( 'change_background_to', 'medicine_change_bg' );
 
 /*
  * Add extra buttons to TinyMCE
  */
-if ( !function_exists( 'add_tinymce_buttons' ) ) {
-	function add_tinymce_buttons( $tinyrowthree ) {
+if ( !function_exists( 'medicine_add_tinymce_buttons' ) ) {
+	function medicine_add_tinymce_buttons( $tinyrowthree ) {
 		$tinyrowthree[] = 'styleselect';
 		$tinyrowthree[] = 'fontsizeselect';
 		$tinyrowthree[] = 'visualblocks';
 		return $tinyrowthree;
 	}
 }
-add_filter( 'mce_buttons_3', 'add_tinymce_buttons' );
+add_filter( 'mce_buttons_3', 'medicine_add_tinymce_buttons' );
 
 /* 
  * Customize mce editor font sizes
  */
-if ( !function_exists( 'wpex_mce_text_sizes' ) ) {
-	function wpex_mce_text_sizes( $initArray ){
+if ( !function_exists( 'medicine_mce_text_sizes' ) ) {
+	function medicine_mce_text_sizes( $initArray ){
 		$initArray['fontsize_formats'] = "9px 10px 12px 13px 14px 16px 18px 21px 24px 28px 32px 36px";
 		return $initArray;
 	}
 }
-add_filter( 'tiny_mce_before_init', 'wpex_mce_text_sizes' );
+add_filter( 'tiny_mce_before_init', 'medicine_mce_text_sizes' );
 
 /*
 / Remove height and width attributes from images
  */
-if ( ! function_exists( 'remove_dimensions' ) ) {
-	function remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+if ( ! function_exists( 'medicine_remove_dimensions' ) ) {
+	function medicine_remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 		if( $size == 'landing-page' || $size == 'faculty-list' )
 			return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 		return $html;
 	}
 }
-add_filter( 'post_thumbnail_html', 'remove_dimensions', 10, 5 );
+add_filter( 'post_thumbnail_html', 'medicine_remove_dimensions', 10, 5 );
 // Don't need it in the content (?)
-// add_filter( 'the_content', 'remove_dimensions', 10 );
+// add_filter( 'the_content', 'medicine_remove_dimensions', 10 );
 
 /*
  * Remove extra 10px from width of wp-caption div
  * http://troychaplin.ca/2012/fix-automatically-generated-inline-style-on-wordpress-image-captions/
  */
-if ( ! function_exists( 'fixed_img_caption_shortcode' ) ) {
-	function fixed_img_caption_shortcode($attr, $content = null) {
+if ( ! function_exists( 'medicine_fixed_img_caption_shortcode' ) ) {
+	function medicine_fixed_img_caption_shortcode($attr, $content = null) {
 		if ( ! isset( $attr['caption'] ) ) {
 			if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
 				$content = $matches[1];
@@ -455,18 +449,18 @@ if ( ! function_exists( 'fixed_img_caption_shortcode' ) ) {
 		. do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
 	}
 }
-add_shortcode('wp_caption', 'fixed_img_caption_shortcode');
-add_shortcode('caption', 'fixed_img_caption_shortcode');
+add_shortcode('wp_caption', 'medicine_fixed_img_caption_shortcode');
+add_shortcode('caption', 'medicine_fixed_img_caption_shortcode');
 
 /*
  * Favicon on the admin side, just for fun
  */
-if ( ! function_exists( 'admin_favicon' ) ) {
-	function admin_favicon() {
+if ( ! function_exists( 'medicine_admin_favicon' ) ) {
+	function medicine_admin_favicon() {
 		echo "<link rel='shortcut icon' href='" . get_stylesheet_directory_uri() . "/inc/img/favicon.ico' />";
 	}
 }
-add_action('admin_head', 'admin_favicon');
+add_action('admin_head', 'medicine_admin_favicon');
 
 /*
  * These are all the filters and function that work with the wusm-archives plugin
@@ -550,7 +544,7 @@ add_filter( 'wusm-maps_menu_position', function() { return 37; } );
 add_filter( 'eventorganiser_menu_position', function() { return 50; } );
 add_action( 'admin_menu', function() { remove_menu_page( 'edit.php' ); } );
 
-function wusm_register_visualblocks() {
+function medicine_register_visualblocks() {
 	$plugins = array('visualblocks'); //Add any more plugins you want to load here
 	$plugins_array = array();
 
@@ -561,20 +555,20 @@ function wusm_register_visualblocks() {
 	return $plugins_array;
 }
 
-add_filter('mce_external_plugins', 'wusm_register_visualblocks' );
+add_filter('mce_external_plugins', 'medicine_register_visualblocks' );
 
-function load_custom_wp_admin_style() {
+function medicine_load_admin_style() {
 	wp_enqueue_script( 'my-js', get_stylesheet_directory_uri() . '/_/js/acf-custom-admin.js', false );
 }
-add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+add_action( 'admin_enqueue_scripts', 'medicine_load_admin_style' );
 
-function wusm_search_filter( $query ) {
+function medicine_search_filter( $query ) {
 	$id = get_page_by_title( 'A to Z Index' );
 	if ( $query->is_search && $query->is_main_query() ) {
 		$query->set( 'post__not_in', array( $id->ID ) ); 
 	}
 }
-add_filter( 'pre_get_posts', 'wusm_search_filter' );
+add_filter( 'pre_get_posts', 'medicine_search_filter' );
 
 /*
 ....::::::::,.................................,,:::::::.....
