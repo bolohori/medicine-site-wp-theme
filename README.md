@@ -1,4 +1,4 @@
-[Washington University](/screenshot.png?raw=true "WUSTL Shield")
+[Washington University](/screenshot.jpg?raw=true "WUSTL Shield")
 [Washington University](/_/img/wusm-logo.png?raw=true "WUSTL Shield")
 ========
 
