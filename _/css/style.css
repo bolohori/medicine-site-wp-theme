@@ -5,8 +5,6 @@ SOMEDAY WE'LL GET TO USE THIS
  }
  */
 
-.chromeframe {position: absolute; top: 0;}
-
 /* Hide only visually, but have it available for screenreaders */
 .visuallyhidden {
 	position: absolute !important;
@@ -47,38 +45,37 @@ body {
 }
 
 a {
-	color          : #900;
+	color: #980006;
 	text-decoration: none;
 }
 
+a:hover {
+	color: #555;
+}
+
 h1 {
-	margin-bottom: 30px;
-	color        : #333333;
-	font-weight  : normal;
-	font-size    : 30px;
-	font-family  : Georgia, Times, serif;
+	font-family: Georgia, serif;
+	font-weight: normal;
+	font-size: 30px;
 }
 
 h2 {
-	font-weight: bold;
-	font-size  : 21px;
-	font-family: Arial, sans-serif;
-	display    : inline-block;
+	font-size: 21px;
+	margin-top: 45px;
+	margin-bottom: 15px;
 }
 
 h3 {
-	font-weight: bold;
-	font-size  : 17px;
-	font-family: Arial, sans-serif;
+	font-size: 17px;
+	margin-top: 36px;
+	margin-bottom: 15px;
 }
 
 h4 {
-	margin-bottom : 13px;
-	padding-bottom: 2px;
-	border-bottom : 1px solid #e0e0e0;
-	font-weight   : normal;
-	font-size     : 18px;
-	font-family   : Georgia, Times, serif;
+	font-weight: bold;
+	font-size: 14px;
+	margin-top: 50px;
+	margin-bottom: 15px;
 }
 
 h5 {
@@ -155,35 +152,15 @@ article p.wp-caption-text {
 	border-bottom: 1px solid #e0e0e0;
 }
 
-/* Clearfix
--------------------------------------------------------------------------------*/
-
-.clearfix:after {
-	content   : ".";
-	display   : block;
-	height    : 0;
-	clear     : both;
-	visibility: hidden;
-}
-
-.clearfix {
-	display: inline-block;
-}
-
-* html .clearfix {
-	height: 1%;
-}
-
-/* Hides from IE-mac */
-.clearfix {
-	display: block;
-}
-
 /* Header
 -------------------------------------------------------------------------------*/
 header {
 	width: 100%;
 	z-index: 200;
+}
+
+header h2 {
+	margin-top: 0;
 }
 
 #header-logo-row {
@@ -291,7 +268,6 @@ header {
 	width: 223px;
 }
 
-
 #search-box,
 input[type=text],
 input[type=email] {
@@ -374,17 +350,8 @@ textarea {
 	color: #717171;
 }
 
-.line-height-12 {
-	line-height: 12px;
-}
-
-.line-height-16 {
-	line-height: 16px;
-}
-
-/*
- * Forms
- */
+/* Forms
+-------------------------------------------------------------------------------*/
 label {
 	float      : left;
 	display    : inline;
@@ -414,7 +381,44 @@ input {
 	display           : inline;
 	margin-right      : 10px;
 	cursor            : pointer;
+	-moz-appearance    : none;
 	-webkit-appearance: none;
+}
+
+input[type=reset],
+input[type=submit] {
+	line-height        : 38px;
+	-moz-appearance    : none;
+	-webkit-appearance : none;
+}
+
+button.single-link {
+	padding: 0 34px;
+}
+
+input[type=reset],
+input[type=submit],
+button.single-link {
+	border        : none;
+	border-radius : 3px;
+	font-size     : 12px;
+	text-align    : center;
+	letter-spacing: 1px;
+	color         : #fff;
+	font-weight   : bold;
+	cursor        : pointer;
+	position      : relative;
+	height        : 38px;
+	background    : #990000;
+	text-transform: uppercase;
+	max-width     : 180px;
+	margin        : 0 auto;
+}
+
+input[type=reset]:hover,
+input[type=submit]:hover,
+button.single-link:hover {
+	background: #c40000;
 }
 
 /* Featured image
@@ -428,28 +432,12 @@ input {
 }
 
 .home #featured-image {
-	float: left;
+	float  : left;
 	z-index: 1;
 }
 
 #featured-image img{
 	margin-bottom: -3px; /* I don't know why it adds 3px to the height of the featured image without this. */
-}
-
-#featured-text {
-	font-size  : 17px;
-	position   : absolute;
-	top        : 65px;
-	left       : 50%;
-	margin-left: -450px;
-	width      : 300px;
-	line-height: 30px;
-	text-align : left;
-}
-
-#featured-text a {
-	font-size: 14px;
-	font-weight: bold;
 }
 
 /* Main
@@ -478,21 +466,8 @@ input {
 	background-color: #ffffff;
 }
 
-#page-background {
-	left: -750px;
-	padding-right: 750px;
-	top: 0;
-	background: #eaeaea url(../img/giving-bg.png) no-repeat center 12px;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-}
-
-
 /* Left column
 -------------------------------------------------------------------------------*/
-
 #left-col {
 	float: left;
 	width: 180px;
@@ -566,17 +541,11 @@ input {
 
 /* Main content column
 -------------------------------------------------------------------------------*/
-
 article {
 	background-color: #f4f4f4;
 	float           : left;
 	width           : 450px;
 	padding         : 45px 35px 70px 35px;
-}
-
-.signature-block {
-	font-size: 12px;
-	color    : #878787;
 }
 
 .page-template-full-width-page-php .normal-width {
@@ -626,32 +595,6 @@ article .disclaimer {
 	color    : #333;
 }
 
-article h1 {
-	font-family: Georgia, serif;
-	font-weight: normal;
-	font-size  : 30px;
-}
-
-article h2 {
-	font-size    : 21px;
-	margin-top   : 24px;
-	margin-bottom: 15px;
-}
-
-article h3 {
-	font-size    : 17px;
-	margin-top   : 50px;
-	margin-bottom: 15px;
-}
-
-article h4 {
-	font-weight: bold;
-	font-size: 16px;
-	margin: 15px 0;
-	font-family: arial;
-	color: #4f4f4f;
-}
-
 article p {
 	line-height: 25px;
 	margin-bottom: 20px;
@@ -659,14 +602,6 @@ article p {
 
 article h1 + p {
 	margin-top: 50px;
-}
-
-article a {
-	color: #980006;
-}
-
-article a:hover {
-	color: #555;
 }
 
 p + ul {
@@ -1234,7 +1169,7 @@ a.news-title {
 	position: relative;
 	z-index: 2;
 	float: left;
-	margin-top: -58px;
+	margin-top: -43px;
 	min-height: 225px;
 	width: 100%;
 	background: url(../img/hero/hero-bg.png) center no-repeat;
@@ -1254,42 +1189,20 @@ a.news-title {
 	font-size: 16px;
 }
 
-input[type=reset],
-input[type=submit] {
-	line-height        : 38px;
-	-moz-appearance    : none;
-	-webkit-appearance : none;
+.spotlight-left,
+.spotlight-right {
+	display: inline-block;
 }
 
-button.single-link {
-	padding: 0 34px;
+.spotlight-left {
+	float: left;
+	width: 330px;
 }
 
-input[type=reset],
-input[type=submit],
-button.single-link {
-	border        : none;
-	border-radius : 3px;
-	font-size     : 12px;
-	text-align    : center;
-	letter-spacing: 1px;
-	color         : #fff;
-	font-weight   : bold;
-	cursor        : pointer;
-	position      : relative;
-	height        : 38px;
-	background    : #990000;
-	text-transform: uppercase;
-	max-width     : 180px;
-	margin        : 0 auto;
+#spotlight-slider .nivo-directionNav a,
+#spotlight-slider .nivo-directionNav a:hover {
+	background-image: url(../css/default/spotlight-arrows.png);
 }
-
-input[type=reset]:hover,
-input[type=submit]:hover,
-button.single-link:hover {
-	background: #c40000;
-}
-
 
 .hero-button {
 	display: inline-block;
@@ -1527,13 +1440,13 @@ ul.program-list li.last-child {
 	padding-bottom: 20px;
 }
 
-.left-col {
+.admissions-left-col {
 	float      : left;
 	width      : 43%;
 	margin-left: 6%;
 }
 
-.right-col {
+.admissions-right-col {
 	float       : right;
 	width       : 43%;
 	margin-right: 6%;
@@ -1601,9 +1514,8 @@ ul.program-list li.last-child {
 }
 
 
-/*
- * Faculty Profile specific stuff
- */
+/* Faculty Profiles
+-------------------------------------------------------------------------------*/
 .faculty-profile-width {
 	width: 700px;
 }
@@ -2045,10 +1957,6 @@ ul.program-list li.last-child {
 	padding         : 4px;
 }
 
-.georgia {
-	font-family: Georgia, Times, serif;
-}
-
 #bio-bottom {
 	float     : left;
 	clear     : both;
@@ -2094,63 +2002,6 @@ ul.program-list li.last-child {
 
 .single-faculty_profile ul{
 	list-style: none;
-}
-
-.spotlight-left,
-.spotlight-right {
-	display: inline-block;
-}
-
-.spotlight-left {
-	float: left;
-	width: 330px;
-}
-
-#spotlight-slider .nivo-directionNav a,
-#spotlight-slider .nivo-directionNav a:hover {
-	background-image: url(../css/default/spotlight-arrows.png);
-}
-
-.custom-archive-entry {
-	margin-bottom: 20px;
-}
-
-.in_focus-custom-archive-entry h3 {
-	margin-top: 0;
-}
-
-.in_focus-custom-archive-link {
-	padding-top: 8px;
-}
-
-.in_focus-custom-archive-entry {
-	background   : #fff;
-	border       : 1px #efefef solid;
-	border-radius: 3px;
-}
-
-.in_focus-custom-archive-thumb {
-	float                    : left;
-	border-bottom-left-radius: 3px;
-	border-top-left-radius   : 3px;
-}
-
-.custom-intro {
-	color      : #787878;
-	font-size  : 18px;
-	line-height: 30px;
-}
-
-.custom-byline {
-	font-size    : 11px;
-	padding      : 15px 0;
-	border-top   : 1px solid #d5d2d2;
-	border-bottom: 1px solid #d5d2d2;
-}
-
-.custom-archive-link h3 {
-	margin-top   : 0;
-	margin-bottom: 0;
 }
 
 /* Sidebars, YO!
@@ -2257,9 +2108,10 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside h2 {
-	width: 100%;
-	font-size: 17px;
-	border-bottom: 1px solid #d5d2d2;
+	margin-top    : 0;
+	width         : 100%;
+	font-size     : 17px;
+	border-bottom : 1px solid #d5d2d2;
 	padding-bottom: 12px;
 }
 
@@ -2342,6 +2194,9 @@ a.sidebar-outlook-link {
 	background-color: #dadada;
 }
 
+
+/* Plugin styles, overrides, and hacks
+-------------------------------------------------------------------------------*/
 .ie7 div.cols-2,
 .ie7 div.cols-3,
 .ie7 div.cols-4,
@@ -2366,10 +2221,69 @@ a.sidebar-outlook-link {
 	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 }
 
-/*
- * Print styles
- * -------------------------------------------------------------------------------
- */
+.custom-archive-entry {
+	margin-bottom: 20px;
+}
+
+.in_focus-custom-archive-entry h3 {
+	margin-top: 0;
+}
+
+.in_focus-custom-archive-link {
+	padding-top: 8px;
+}
+
+.in_focus-custom-archive-entry {
+	background   : #fff;
+	border       : 1px #efefef solid;
+	border-radius: 3px;
+}
+
+.in_focus-custom-archive-thumb {
+	float                    : left;
+	border-bottom-left-radius: 3px;
+	border-top-left-radius   : 3px;
+}
+
+.custom-intro {
+	color      : #787878;
+	font-size  : 18px;
+	line-height: 30px;
+}
+
+.custom-byline {
+	font-size    : 11px;
+	padding      : 15px 0;
+	border-top   : 1px solid #d5d2d2;
+	border-bottom: 1px solid #d5d2d2;
+}
+
+.custom-archive-link h3 {
+	margin-top   : 0;
+	margin-bottom: 0;
+}
+
+/* TinyMCE Custom styles
+-------------------------------------------------------------------------------*/
+.line-height-12 {
+	line-height: 12px;
+}
+
+.line-height-16 {
+	line-height: 16px;
+}
+
+.signature-block {
+	font-size: 12px;
+	color    : #878787;
+}
+
+.georgia {
+	font-family: Georgia, Times, serif;
+}
+
+/* Print styles
+-------------------------------------------------------------------------------*/
 @media print {
 	header,
 	#search-form,
@@ -2384,6 +2298,8 @@ a.sidebar-outlook-link {
 	}
 }
 
+/* Firefox "hack"
+-------------------------------------------------------------------------------*/
 @-moz-document url-prefix() { 
 	.spotlight-slider-wrapper {
 		height: 235px;
