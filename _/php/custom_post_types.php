@@ -459,10 +459,10 @@ function rewrite_flush() {
 add_action( 'after_switch_theme', 'rewrite_flush' );
 
 
-function add_announcement_settings () { add_submenu_page( 'edit.php?post_type=announcement', 'announcement settings', 'Settings', 'manage_options', 'announcement-settings', 'announcement_settings_callback' ); }
+function add_announcement_settings () { add_submenu_page( 'edit.php?post_type=announcement', 'announcement settings', 'Settings', 'manage_categories', 'announcement-settings', 'announcement_settings_callback' ); }
 add_action( 'admin_menu', 'add_announcement_settings' );
 
-function add_spotlight_settings () { add_submenu_page( 'edit.php?post_type=spotlight', 'spotlight settings', 'Settings', 'manage_options', 'spotlight-settings', 'spotlight_settings_callback' ); }
+function add_spotlight_settings () { add_submenu_page( 'edit.php?post_type=spotlight', 'spotlight settings', 'Settings', 'manage_categories', 'spotlight-settings', 'spotlight_settings_callback' ); }
 add_action( 'admin_menu', 'add_spotlight_settings' );
 
 function announcement_settings_callback() { ?>
@@ -564,7 +564,7 @@ function update_spotlights_callback() {
 }
 add_action('wp_ajax_update_spotlights', 'update_spotlights_callback');
 
-function add_billboard_settings () { add_submenu_page( 'edit.php?post_type=billboard', 'Billboard settings', 'Settings', 'manage_options', 'billboard-settings', 'billboard_settings_callback' ); }
+function add_billboard_settings () { add_submenu_page( 'edit.php?post_type=billboard', 'Billboard settings', 'Settings', 'manage_categories', 'billboard-settings', 'billboard_settings_callback' ); }
 add_action( 'admin_menu', 'add_billboard_settings' );
 
 function billboard_settings_callback() { ?>
