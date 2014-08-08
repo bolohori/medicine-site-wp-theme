@@ -2046,6 +2046,10 @@ ul.program-list li.last-child {
 	padding-right: 6px;
 }
 
+#right-col aside a.sidebar-img img {
+	border-radius: 0;
+}
+
 .sidebar-heart-list li {
 	line-height: 17px;
 	margin-top : 10px;
@@ -2108,6 +2112,8 @@ a.sidebar-outlook-link {
 	background-color: #fff;
 	border: 1px solid #e5e5e5;
 	border-radius: 5px;
+	box-sizing: border-box;
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 }
 
 #right-col aside h2 {

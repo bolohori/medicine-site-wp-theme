@@ -53,7 +53,7 @@ while( has_sub_field( 'sidebars' ) ):
 			</a>
 			<a class="sidebar-outlook-link" href="<?php echo get_sub_field('outlook_issue_url'); ?>">READ IT IN OUTLOOK</a>
 		</aside>
-	<?php elseif(get_row_layout() == "connect"): // layout: Connect with us Sidebar ?>a
+	<?php elseif(get_row_layout() == "connect"): // layout: Connect with us Sidebar ?>
 		<aside class="sidebar">
 			<p><?php the_sub_field("connect_title"); ?></p>
 			<hr>
