@@ -62,7 +62,7 @@ while( has_sub_field( 'sidebars' ) ):
 			?><a class="sidebar-img" href="http://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" alt=""></a><?php
 			}
 			if( in_array( 'twitter', get_sub_field( 'connect_buttons' ) ) ) {
-			?><a class="sidebar-img" href="http://twitter.com/WUSTLmedschool"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt=""></a><?php
+			?><a class="sidebar-img" href="https://twitter.com/WUSTLmed"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" alt=""></a><?php
 			}
 			if( in_array( 'in', get_sub_field( 'connect_buttons' ) ) ) {
 			?><a class="sidebar-img" href="http://www.linkedin.com/company/washington-university-school-of-medicine"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/linkedin.png" alt=""></a><?php
