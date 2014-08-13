@@ -71,7 +71,7 @@ var _gaq = _gaq || [];
 		</div>
 	</nav>
 
-	<div class="announcements-div hidden-header">
+	<div class="announcements-div hidden-header clearfix">
 		<div class="wrapper">
 			<div class="announcements-left">
 				<h2>Announcements</h2>
@@ -159,7 +159,7 @@ var _gaq = _gaq || [];
 		</div>
 	</div>
 
-	<div class="information-for-div hidden-header">
+	<div class="information-for-div hidden-header clearfix">
 		<div class="wrapper">
 			<div class="information-for-left">
 				<h2>Information for Our Community</h2>
