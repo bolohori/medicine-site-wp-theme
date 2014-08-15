@@ -1010,7 +1010,7 @@ article.search-results {
 
 /* Front Page styles
 -------------------------------------------------------------------------------*/
-.mejs-container {
+.home .mejs-container {
 	float: left;
 	display: none;
 }
