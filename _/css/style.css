@@ -552,7 +552,8 @@ article {
 }
 
 .page-template-full-width-page-php article,
-.single-in_focus article {
+.single-in_focus article,
+.postid-7991 article /* Highly Cited Researchers 2014 */ {
 	width: 700px;
 }
 
