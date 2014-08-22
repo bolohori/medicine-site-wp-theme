@@ -1322,10 +1322,11 @@ a.news-title {
 }
 
 #spotlight-slider .nivo-caption a {
-	float        : left;
 	border-bottom: none;
 	color        : #900;
 	font-weight  : bold;
+	display: block!important;
+	margin: 15px 0 0;
 }
 
 #spotlight-slider .nivo-caption a:hover, .news-citation a:hover {

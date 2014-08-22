@@ -170,7 +170,7 @@
 
 					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>" : "";
 
-					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong>$content$read_more_link</div>";
+					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong>$read_more_link</div>";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
