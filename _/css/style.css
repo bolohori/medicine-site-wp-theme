@@ -515,6 +515,7 @@ button.single-link:hover {
 }
 
 .single-faculty_profile ul#left-nav li.current_page_ancestor > a,
+.single-faculty_profile ul#left-nav li.current_page_ancestor > a,
 #left-nav li.current_page_item > a {
 	color: #717171;
 }
