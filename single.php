@@ -8,7 +8,7 @@
 			$class = '';
 			$classes = '';
 			$margin = ' non-landing-page';
-			if (get_the_post_thumbnail() != '' && $post->post_type != 'in_focus') {
+			if (get_the_post_thumbnail() != '' && ! in_array( $post->post_type, array( 'in_focus', 'spotlight' ) ) ) {
 				$class .= ' notch';
 				$margin = ' landing-page';
 				echo '<div id="featured-image">';
@@ -66,8 +66,9 @@
 						the_content();
 					} else {
 						$link = get_field( 'external_link' );
+						$button_text = $link['title'] !== null ? $link['title'] : "Read Article";
 						the_excerpt();
-						echo "<br><a href='{$link['url']}'><button class='single-link'>{$link['title']}</button></a>";
+						echo "<br><a href='{$link['url']}'><button class='single-link'>$button_text</button></a>";
 					}
 				endwhile;
 			endif;
