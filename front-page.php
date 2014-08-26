@@ -164,13 +164,17 @@
 					}
 
 					$title = get_the_title();
-					$content = "<p>".get_the_content()."</p>";
 
+					$limit = 11;
+					$excerpt = explode(' ', get_the_excerpt(), $limit);
+					array_pop($excerpt);
+					$excerpt = implode(" ",$excerpt);
+					
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
 					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>" : "";
 
-					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong>$read_more_link</div>";
+					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong><p>$excerpt</p>$read_more_link</div>";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
