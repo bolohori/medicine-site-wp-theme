@@ -116,12 +116,10 @@ class Razorback_Walker_Page_Selective_Children extends Walker_Page {
 			$page->post_title = sprintf( __( '#%d (no title)' ), $page->ID );
 
 		/** This filter is documented in wp-includes/post-template.php */
-		if( !get_field('hide_in_nav', $page->ID) ) {
-			$nav_title = get_field('nav_menu_title', $page->ID);
-			$page_title = ($nav_title == "") ? apply_filters( 'the_title', $page->post_title, $page->ID ) : $nav_title;
-			$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . $page_title . $link_after . '</a>';
-		}
-
+		$nav_title = get_field('nav_menu_title', $page->ID);
+		$page_title = ($nav_title == "") ? apply_filters( 'the_title', $page->post_title, $page->ID ) : $nav_title;
+		$output .= $indent . '<li class="' . $css_class . '"><a href="' . get_permalink($page->ID) . '">' . $link_before . $page_title . $link_after . '</a>';
+		
 		if ( !empty($show_date) ) {
 			if ( 'modified' == $show_date )
 				$time = $page->post_modified;

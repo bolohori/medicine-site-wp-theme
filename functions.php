@@ -570,6 +570,12 @@ function medicine_search_filter( $query ) {
 }
 add_filter( 'pre_get_posts', 'medicine_search_filter' );
 
+function national_leaders_custom_rewrite_rules( $wp_rewrite ) {
+	$my_rule = array( 'news/leaders/([^/]+)(/[0-9]+)?/?$' => 'index.php?pagename=$matches[1]&page=$matches[2]' );
+	$wp_rewrite->rules = $my_rule + $wp_rewrite->rules;
+}
+add_action( 'generate_rewrite_rules', 'national_leaders_custom_rewrite_rules' ); 
+
 /*
 ....::::::::,.................................,,:::::::.....
 ....::?IIIIII?+=~::::::::::::::::::::::::::~=??IIIII+::.....
