@@ -137,7 +137,6 @@ var _gaq = _gaq || [];
 				}
 				$internal_only = get_field('internal_only');
 				if ( $internal_only && !WASHU_IP ) {
-					echo "internal";
 					continue;
 				}
 				$link = get_field('url');
