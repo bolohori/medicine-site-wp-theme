@@ -20,7 +20,7 @@ function create_custom_post_types() {
 		'exclude_from_search' => true,
 		'show_in_nav_menus'   => false,
 		'menu_icon'           => 'dashicons-list-view',
-		'public'              => false,
+		'public'              => true,
 		'publicly_queryable'  => true,
 		'show_ui'             => true, 
 		'show_in_menu'        => true, 
@@ -31,6 +31,7 @@ function create_custom_post_types() {
 		'menu_position'       => null,
 		'supports'            => array(
 			'title',
+			'editor',
 			'revisions',
 			'page-attributes',
 			'excerpt'
