@@ -191,21 +191,16 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
  * Stylesheets, not really the traditional WordPress, but it works
  */
 if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
-	function medicine_enqueue_styles() {
-		?>
+	function medicine_enqueue_styles() { ?>
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" />
-		
-		<?php
-		if(is_front_page()) {
-		?>
-			<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/nivo-slider.css" type="text/css" media="screen" />
-			<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/default/default.css" type="text/css" media="screen" />
-		<?php
-		}
+	<?php if(is_front_page()) { ?>
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/nivo-slider.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/default/default.css" type="text/css" media="screen" />
+	<?php }
 	}
 }
-add_action( 'wp_head', 'medicine_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
 
 /*
  * Add "Clear" button to ACF Location fields
