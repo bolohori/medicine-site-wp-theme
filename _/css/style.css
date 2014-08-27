@@ -810,11 +810,16 @@ footer a {
 .double-footer {
 	float: left;
 	margin: 52px 0;
-	height: 161px;
-	border-right: 1px solid #bcbcbc;
+	min-height: 161px;
 	text-align: left;
 	font-size: 13px
 }
+
+.footer-menu-block {
+	border-left: 1px solid #bcbcbc;
+	border-right: 1px solid #bcbcbc;
+}
+
 
 .last-child {
 	border-right: none !important;
