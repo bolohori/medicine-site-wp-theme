@@ -31,7 +31,6 @@ function create_custom_post_types() {
 		'menu_position'       => null,
 		'supports'            => array(
 			'title',
-			'editor',
 			'revisions',
 			'page-attributes',
 			'excerpt'
