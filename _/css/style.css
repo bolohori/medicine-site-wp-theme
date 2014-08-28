@@ -905,12 +905,10 @@ footer a {
 .information-for-list {
 	*behavior  : url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	box-sizing: border-box;
-	padding: 0 42px 0 20px;
+	padding: 0 0 0 20px;
 	width: 50%;
-	
 	float: left;
 	position: relative;
-	
 }
 
 .ie7 .announcement,
