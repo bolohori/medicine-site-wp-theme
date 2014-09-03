@@ -48,18 +48,19 @@ $num_of_wp_result_pages = ceil($num_of_wordpress_results/10);
 
 // Total hack, just get the 1st result of the Google search, but it brings along with it...
 $terms = str_replace(' ', '+', $search_terms);
+
 $search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=1&num=1&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 $xml = new SimpleXMLElement(file_get_contents($search_url));
 // ...the total number of results
-$total_google_results = $xml->RES->M;
+$total_google_results = (int) $xml->RES->M;
+
+if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 // Google result to start with
-$start = ($num_of_wp_result_pages == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10) +  $num_of_google_results;
+$start = ($num_of_wp_result_pages + 1 == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10);
 
 // Total pages of results, displaying 10 items per page
 $pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
-
-if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
@@ -127,7 +128,7 @@ get_header(); ?>
 				}
 			}
 
-			// Visual separtor to mark end of WP search and start of Google search
+			// Visual separator to mark end of WP search and start of Google search
 			if ( $num_of_wp_result_pages == $paged )
 				echo "<hr>";
 
@@ -137,6 +138,12 @@ get_header(); ?>
 				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
 				$start_num = $xml->RES['SN'];
+
+/*			var_dump($search_url);
+			var_dump($start);
+			var_dump($num_of_google_results);*/
+			
+
 
 				if( $start > $start_num ) {
 					$start = $start_num - 1;
