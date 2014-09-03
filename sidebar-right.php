@@ -167,7 +167,6 @@ while( has_sub_field( 'sidebars' ) ):
 			while ( $loop->have_posts() ) : $loop->the_post();
 				$internal_only = get_field('internal_only');
 				if ( $internal_only && !WASHU_IP ) {
-					echo "internal";
 					continue;
 				}
 				$link = get_field('url');
