@@ -164,6 +164,8 @@ get_header(); ?>
 						</p>
 				<?php
 					}
+					// If there are duplicate results, Google won't tell you until you hit the last page of
+					// "real" results, this checks that and adds the standard Google message
 					if ( ( (int) $xml->RES->M !== $total_google_results ) && ( sizeof( $xml->RES->R ) < 10 ) ) {
 						echo "<p style='font-size: 16px;'><i>In order to show you the most relevant results, we have omitted some entries very similar to the " . $xml->RES->M . " already displayed.</i></p>";
 						$truncate_pagination = $paged;
