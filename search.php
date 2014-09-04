@@ -31,7 +31,7 @@ $num_of_wordpress_results = $wp_query->found_posts;
 // and how many results are on the last page?
 $last_wp_page_results_cnt = $num_of_wordpress_results % 10;
 
-$num_of_google_results = ($last_wp_page_results_cnt == 0) ? 10 : 10-$last_wp_page_results_cnt;
+$num_of_google_results = ($last_wp_page_results_cnt == 0) ? 10 : 10 - $last_wp_page_results_cnt;
 
 // so hackey, if we go past the last page it flips out so we've gotta back
 // up a bit to get some important numbers
@@ -46,20 +46,22 @@ if(($num_of_wordpress_results == 0) && ($paged != 1)) {
 // How many pages of WP results do we have (with 10 results per page)
 $num_of_wp_result_pages = ceil($num_of_wordpress_results/10);
 
-// Total hack, just get the 1st result of the Google search, but it brings along with it...
+// Spaces are BAD in search terms
 $terms = str_replace(' ', '+', $search_terms);
+
+// Total hack, just get the 1st result of the Google search, but it brings along with it...
 $search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=1&num=1&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 $xml = new SimpleXMLElement(file_get_contents($search_url));
 // ...the total number of results
-$total_google_results = $xml->RES->M;
+$total_google_results = (int) $xml->RES->M;
+
+if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 // Google result to start with
-$start = ($num_of_wp_result_pages == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10) +  $num_of_google_results;
+$start = ($num_of_wp_result_pages + 1 == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10);
 
 // Total pages of results, displaying 10 items per page
 $pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
-
-if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
@@ -127,7 +129,7 @@ get_header(); ?>
 				}
 			}
 
-			// Visual separtor to mark end of WP search and start of Google search
+			// Visual separator to mark end of WP search and start of Google search
 			if ( $num_of_wp_result_pages == $paged )
 				echo "<hr>";
 
@@ -152,15 +154,22 @@ get_header(); ?>
 				// Display page of search results
 				if( $xml->RES->R ) {
 					echo "<h2>More WUSTL results</h2>";
-				foreach( $xml->RES->R as $result ) { ?>
-					<p class='search-result'>
-					<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
-					<?php if( $result->S != '' ) { ?>
-						<br><?php echo $result->S; ?>
-					<?php } ?>
-					<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
-					</p>
-			<?php }
+					foreach( $xml->RES->R as $result ) { ?>
+						<p class='search-result'>
+						<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
+						<?php if( $result->S != '' ) { ?>
+							<br><?php echo $result->S; ?>
+						<?php } ?>
+						<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
+						</p>
+				<?php
+					}
+					// If there are duplicate results, Google won't tell you until you hit the last page of
+					// "real" results, this checks that and adds the standard Google message
+					if ( ( (int) $xml->RES->M !== $total_google_results ) && ( sizeof( $xml->RES->R ) < 10 ) ) {
+						echo "<p style='font-size: 16px;'><i>In order to show you the most relevant results, we have omitted some entries very similar to the " . $xml->RES->M . " already displayed.</i></p>";
+						$truncate_pagination = $paged;
+					}
 				}
 				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
 			} ?>
@@ -187,6 +196,10 @@ get_header(); ?>
 					
 					if( $p_end > $pages_of_results )
 						$p_end = $pages_of_results;
+
+					if ( isset($truncate_pagination) ) {
+						$p_end = $truncate_pagination;
+					}
 					
 					echo "<p style='max-width: 750px;'>Page: ";
 					if( $p_start != 1 ) {
@@ -203,7 +216,7 @@ get_header(); ?>
 					}
 					$adv = $paged + 1;
 					
-					if( $p_end != $pages_of_results ) {
+					if( ( $p_end != $pages_of_results ) && ! isset( $truncate_pagination ) ) {
 						echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
 					}
 					echo "</p>";
