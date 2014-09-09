@@ -468,7 +468,7 @@ add_filter( 'in_focus_date_text', function() { return ''; } );
 
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
-add_filter( 'billboard_num_per_page', function() { return 9999; } );
+add_filter( 'billboard_num_per_page', function() { return 10; } );
 
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
