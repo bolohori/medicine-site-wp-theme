@@ -82,7 +82,12 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 		<?php
 			$num_to_show = get_option( 'announcements_to_show', 6 );
 			$i = 0;
-			$j = floor( $num_to_show / 2 );
+			
+			// Using this to order down instead of across
+			$num_per_column = floor( $num_to_show / 2 );
+
+			// First off, lets get all the 'sticky' announcements,
+			// ordered by their drag-n-drop position
 			$args = array(
 				'post_type'      => 'announcement', 
 				'posts_per_page' => $num_to_show, 
@@ -94,8 +99,12 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 			);
 			$loop = new WP_Query( $args );
 			$ids = $loop->posts;
+			
+			// Just decrement the number to show by the 
+			// number of 'sticky's found
 			$num_to_show = $num_to_show - sizeof( $ids );
 
+			// We have more to show than just 'sticky's
 			if( $num_to_show > 0 ) {
 				$args = array(
 					'post_type'      => 'announcement', 
@@ -108,6 +117,9 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 				$ids = array_merge( $ids, $loop->posts );
 			}
 
+			// Take the array from the first two loops
+			// and mash it into one huge array of ids
+			// to get
 			$args = array(
 				'post_type' => 'announcement',
 				'orderby'   => 'post__in',
@@ -131,7 +143,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) {
 				$loop->the_post();
-				if( $i == $j ) {
+				if( $i == $num_per_column ) {
 					echo '</ul>';
 					echo '<ul class="announcement-list">';
 				}

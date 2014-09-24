@@ -72,11 +72,11 @@ a {color: #336699;}
 		<span style="width: 100%; font-size: 16px; padding-top: 10px; text-transform: uppercase; float: left;">Contact us with your story ideas</span>
 		<div style="width: 630px; margin: 33px auto; height: auto; display: inline-block;">
 			<div style="width: 210px; float: left; display: inline-block;">
-				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Anne Bassett</p>
+				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Nicholas McLaren</p>
 				<p style="margin: 0 0 10px 0;">Barnes-Jewish Hospital<br>
 					Marketing/Communications</p>
-				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:abassett@bjc.org">abassett@bjc.org</a></p>
-				<p style="margin: 0 0 10px 0;">314.286.0303</p>
+				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:nicholas.mclaren@bjc.org">nicholas.mclaren@bjc.org</a></p>
+				<p style="margin: 0 0 10px 0;">314.286.0051</p>
 					<a href="https://twitter.com/Barnesjewish"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
 					<a href="https://www.facebook.com/barnesjewishhospital"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
 				<p><a style="color: #fff; text-decoration: none;" href="http://barnesjewish.org/news">barnesjewish.org/news</a></p>
