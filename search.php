@@ -94,7 +94,8 @@ get_header(); ?>
 					foreach ( $pageposts as $post ):
 						setup_postdata($post);
 						if( $post->post_type == 'promoted_results' ) {
-							add_filter( 'excerpt_more', function() { return ""; } );
+							//result_url
+							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_field( 'result_url', get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_field('result_url', $post->ID);
 						} else {
 							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
