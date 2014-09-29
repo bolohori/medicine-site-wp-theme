@@ -165,10 +165,11 @@
 
 					$title = get_the_title();
 
-					$limit = 11;
+					/*$limit = 11;
 					$excerpt = explode(' ', get_the_excerpt(), $limit);
 					array_pop($excerpt);
-					$excerpt = implode(" ",$excerpt);
+					$excerpt = implode(" ",$excerpt);*/
+					$excerpt = get_the_excerpt( );
 					
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
