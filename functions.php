@@ -479,7 +479,7 @@ add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
 add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
-add_filter( 'spotlight_excerpt_text', function() { return ''; } );
+//add_filter( 'spotlight_excerpt_text', function() { return ''; } );
 add_filter( 'spotlight_show_thumbnail', function() { return false; } );
 add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
 
