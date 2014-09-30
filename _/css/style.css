@@ -648,6 +648,10 @@ article ul li, article ol li {
 	margin-left: 18px;
 }
 
+.callout ul.bulleted-ul {
+	list-style: disc;
+}
+
 .callout .alignleft {
 	margin: 2px 20px 20px 0;
 }
