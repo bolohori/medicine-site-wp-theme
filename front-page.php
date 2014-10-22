@@ -1,34 +1,60 @@
-<?php get_header();
-function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-} ?>
+<?php get_header(); ?>
 <?php get_sidebar(); ?>
-<div class="slide-wrapper">
+<div class="slide-wrapper billboard">
 	<div class="slider-wrapper theme-default">
-		<div id="slider" class="nivoSlider">
+		<div id="billboard-slider" class="nivoSlider">
 <?php
 			$num_to_show = get_option( 'billboards_to_show', 5 );
-			$args = array( 'post_type' => 'billboard', 'posts_per_page' => $num_to_show );
+			
+			$args = array(
+				'post_type'      => 'billboard', 
+				'posts_per_page' => $num_to_show, 
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'fields'         => 'ids',
+				'meta_key'       => 'sticky',
+				'meta_value'     => 1
+			);
+			$loop = new WP_Query( $args );
+			$ids = $loop->posts;
+			$num_to_show = $num_to_show - sizeof( $ids );
+
+			if ( $num_to_show > 0 ) {
+				$args = array(
+					'post_type'      => 'billboard', 
+					'posts_per_page' => $num_to_show, 
+					'orderby'        => 'date',
+					'post__not_in'   => $ids,
+					'fields'         => 'ids'
+				);
+				$loop = new WP_Query( $args );
+				$ids = array_merge( $ids, $loop->posts );
+			}
+
+			$args = array(
+				'post_type' => 'billboard',
+				'orderby'   => 'post__in',
+				'post__in'  => $ids
+			);
+
 			$loop = new WP_Query( $args );
 			
+			// Need this for billboards AND in the news images
 			add_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10, 5 );
 
 			while ( $loop->have_posts() ) : $loop->the_post();
 				$internal_only = get_field('internal_only');
-				if ($internal_only && !WASHU_IP)
+				if ( $internal_only && !WASHU_IP )
 					continue;
 
 				$link = get_field('link');
 				
-				$target = $link['new_window'] ? "" : "target='_blank'";
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a $target href='$url' alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$url']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
-
+				echo "<a href=\"$url\" alt='$title' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-billboard','$title']);\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 			endwhile;
 			wp_reset_postdata();
-			remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>
 		</div>
 	</div>
@@ -36,52 +62,55 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 <section class="news" >
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
+			<div class="all-news"><a href="news/press">SEE ALL</a></a></div>
+			<h1 class="news-header">In the Media</h1>
+			<ul class="news-list">
 <?php
-				$args = array( 'post_type' => 'media_mentions', 'posts_per_page' => 4 );
+				$args = array(
+					'post_type'      => 'media_mentions',
+					'posts_per_page' => 3,
+					'orderby'        => 'date'
+				);
 				$loop = new WP_Query( $args );
-				$i = 1;
-				$images = "";
-				$captions = "";
 				while ( $loop->have_posts() ) : $loop->the_post();
-					$url = get_field( 'url' );
-					$images .= "<img src='";
-					$images .= get_field( 'thumbnail' ) ? get_field( 'thumbnail' ) : get_stylesheet_directory_uri() . "/_/img/itn-default.png'";
-					$images .= "' alt='' title='#htmlcaption" . $i . "' />\n";
-					$captions .= "<div id='htmlcaption" . $i . "' class='nivo-html-caption'><a target='_blank' href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-in-the-media','$url']);\"><p class='news-citation'>" . get_field('source') . "</p>" . get_the_title() . "</a></div>\n";
-					$i++;
+					$url = get_field('url');
+					$title = get_the_title();
+					echo "<li><a class='news-title' href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">$title</a><p>";
+					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">" . get_field('source') . "</a></p></li>";
 				endwhile;
 				wp_reset_postdata();
-				echo "<div id='news-slider' class='nivoSlider'>" . $images . "</div>" . $captions . "\n";
 ?>
-			<a class="in-the-news-archive" href="/news/press">MORE <span class="mobile-archive">PRESS MENTIONS&raquo;</span></a>
+			</ul>
 		</div>
 			
 		<div class="news-right">
-			<div class="all-news"><a href="news/releases">ALL NEWS</a></a></div>
-			<h1 class="recent-news">Recent News</h1>
+			<div class="all-news"><a href="news/releases">SEE ALL</a></a></div>
+			<h1 class="news-header">News Releases</h1>
 			<ul class="news-list">
 <?php
-				$i = 0;
+
 				$j = 0;
 				$audio_out = '';
-				$args = array( 'post_type' => 'news_releases', 'posts_per_page' => 6, 'orderby' => 'menu_order', 'order' => 'ASC'  );
+				$args = array(
+					'post_type'      => 'news_releases',
+					'posts_per_page' => 3,
+					'orderby'        => 'date'
+				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
-					echo "<li>" . get_the_title() . "<p>";
-					if( get_field('video') != '')
-						echo "<a rel='prettyPhoto' href='" . get_field('video') . "'>Watch</a> | ";
-					if( get_field('audio') != '') {
-						$audio_out .= wp_audio_shortcode(array('src'=>get_field('audio')));
-						echo "<a data-id='mep_$j' href='javascript:return false;' class='audio-file'>Listen</a> | ";
+					$link = get_field('url');
+					$title = get_the_title();
+					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+ 					
+					echo "<li><a class='news-title' href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">$title</a><p>";
+					if( ( $video = get_field('video') ) !== '')
+						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
+					if( get_field('audio') !== '') {
+						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
+						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" class=\"audio-file\">Listen</a> | ";
 						$j++;
 					}
-					$link = get_field('url');
-					$target = $link['new_window'] ? "" : "target='_blank'";
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 					echo "<a $target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read Article</a></p></li>";
-					$i++;
-					if($i==3)
-						echo "</ul>\n<ul class='news-list'>";
+					echo "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read Article</a></p></li>";
 				endwhile;
 				wp_reset_postdata();
 ?>
@@ -91,10 +120,8 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 	</div>
 </section>
 
-<div class="hero">
-	<div class="wrapper">
-		<img class="hero-image" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/image1.png" alt="Hero image">
-	</div>
+<div id="featured-image">
+	<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg" alt="" title="Faculty physician Anita Bhandiwad, MD, FACC, and fellow Mark Vogel, MD, of the Cardiovascular Division">
 </div>
 
 <div class="hero-text">
@@ -118,7 +145,11 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 				$slider = "";
 				$captions = "";
 				$num_of_spotlights = get_option( 'spotlights_to_show', 4 );
-				$args = array( 'post_type' => 'spotlight', 'posts_per_page' => $num_of_spotlights, 'orderby' => 'menu_order', 'order' => 'ASC' );
+				$args = array( 
+					'post_type'      => 'spotlight',
+					'posts_per_page' => $num_of_spotlights,
+					'orderby'        => 'date'
+				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$read_more_link = "";
@@ -133,21 +164,22 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 					}
 
 					$title = get_the_title();
-					$content = "<p>".get_the_content()."</p>";
 
+					/*$limit = 11;
+					$excerpt = explode(' ', get_the_excerpt(), $limit);
+					array_pop($excerpt);
+					$excerpt = implode(" ",$excerpt);*/
+					$excerpt = get_the_excerpt( );
+					
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
-					if ( $link['url'] !== null ) {
-						$url = $link['url'];
-						$target = ( $link['new_window'] !== 0 ) ? " target='_blank'" : "";
-						$read_more_link = "<a$target href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$url']);\">Read More</a>";
-					}
+					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"javascript:_gaq.push(['_trackEvent','outbound-news_release','$title']);\">Read More</a>" : "";
 
-					$captions .= "<div id='spotlightcaption$i' class='nivo-html-caption'><strong style='font-size:15px'>" . $title . "</strong>$content$read_more_link</div>";
+					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong><p>$excerpt</p>$read_more_link</div>";
 					$i++;
 				endwhile;
-				$captions .= "<div class='mobile-archive spotlight-archive'><a href='/news/leaders'>MORE NATIONAL LEADERS&raquo;</a></div>";
 				wp_reset_postdata();
+				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>
 		</div>
 		

@@ -1,5 +1,5 @@
 <?php
-
+wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/js/faculty-recognition.js', array( 'jquery-effects-bounce' ) );
 	get_header();
 
 	if (have_posts()) :
@@ -26,7 +26,7 @@
 	<div id="page-background-r"></div>
 	<div id="page-background-l"></div>
 
-	<div class="wrapper">
+	<div class="wrapper clearfix">
 
 		<?php get_sidebar(); ?>
 
@@ -35,11 +35,11 @@
 			the_title('<h1>', '</h1>');
 
 	$args = array( 
-		'post_type' => 'faculty_profile',
+		'post_type'      => 'faculty_profile',
 		'posts_per_page' => -1,
-		'post_parent' => 0,
-		'orderby' => 'menu_order',
-		'order' => 'ASC' 
+		'post_parent'    => 0,
+		'orderby'        => 'menu_order date',
+		'order'          => 'ASC' 
 	);
 	$loop = new WP_Query( $args );
 	while ( $loop->have_posts() ) : $loop->the_post(); ?>
@@ -95,7 +95,7 @@
 				if( $my_query->have_posts() ) { 
 					while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-					<a class="faculty-photo" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'faculty-list' ) ?></a>
+					<a class="faculty-photo" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'faculty-list' ); } else { echo '<img src="' . get_stylesheet_directory_uri() . '/_/img/generic_headshot.jpg">'; } ?></a>
 				<?php endwhile;
 				} ?>
 				

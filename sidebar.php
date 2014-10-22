@@ -8,7 +8,7 @@
 		$post = get_page_by_title( 'Faculty Recognition' );
 		setup_postdata( $post );
 		$force = 1;
-		add_filter( 'page_css_class', function( $css_class, $page ) use( &$post) { if ( $page->ID == $post->ID ) $css_class[] = 'current_page_item'; return $css_class; }, 10, 2 );
+		//add_filter( 'page_css_class', function( $css_class, $page ) use( &$post) { if ( $page->ID == $post->ID ) $css_class[] = 'current_page_item'; return $css_class; }, 10, 2 );
 	}
 	?>
 
@@ -17,7 +17,7 @@
 			<?php
 				$walker = new Razorback_Walker_Page_Selective_Children();
 				
-				if (( is_page() || $force  || (sizeof($post->ancestors) > 0)) && !(is_search())) {
+				if ( ( is_page() || $force  || ( sizeof( $post->ancestors ) > 0 ) ) &&  ! ( is_search() ) &&  ! ( get_field( 'hide_nav' ) ) ) {
 
 					// This is a page
 					if ( ( is_page() && $post->post_parent ) || ( $force ) ) {
@@ -28,7 +28,7 @@
 						$get_children_of = ( isset( $post->ID ) ) ? (int) $post->ID : 0;
 					}
 
-					$ptg = sizeof($post->ancestors) > 0 ? $post->ancestors[sizeof($post->ancestors) - 1 ] : $post;
+					$ptg = sizeof( $post->ancestors ) > 0 ? $post->ancestors[sizeof( $post->ancestors ) - 1 ] : $post;
 
 					$children = wp_list_pages( array (
 						'sort_column'  => 'menu_order',
@@ -36,7 +36,7 @@
 						'child_of'     => $get_children_of,
 						'walker'       => $walker,
 						'echo'         => 0
-					));
+					) );
 
 					$post_to_get = get_post($ptg);
 					$nav_title = get_field('nav_menu_title', $post_to_get->ID);
@@ -57,7 +57,11 @@
 
 	<?php endif; ?>
 
-	<?php if(0) { ?>
+	<?php 
+	/*
+	 * Keeping this in here for the future, right now we're not using it, but hopefully someday we will
+	 */
+	if(0) { ?>
 	<ul id="mobile-nav">
         <li>
             <form method="get" id="mobile-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">

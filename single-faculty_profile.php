@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php 
+wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/js/faculty-recognition.js', array( 'jquery-effects-bounce' ) );
+get_header(); 
+?>
 
 <div id="main" class="clearfix non-landing-page">
 
@@ -17,7 +20,7 @@
 			<article>
 			<?php
 				the_title('<h1>', '</h1>');
-				echo "<div class='faculty-profile-byline'><h3>" . get_field('award_name') . "</h3><span class='faculty-profile-award-set'>";
+				echo "<div class='faculty-profile-byline'><h3>" . get_field('award_name', $post->ID) . "</h3><span class='faculty-profile-award-set'>";
 				$parents = get_post_ancestors( $post->ID );
 				$id = ( $parents ) ? $parents[ count( $parents ) - 1 ] : $post->ID;
 				echo get_the_title( $id ) . ", " .  get_the_title( $post->post_parent );
@@ -69,6 +72,7 @@
 							'post_type'   => 'faculty_profile',
 							'orderby'     => 'menu_order',
 							'order'       => 'asc',
+							'posts_per_page' => -1
 						);
 						$my_query = new WP_Query( $args );
 						if ( $my_query->have_posts() ) { 
@@ -103,26 +107,4 @@
 	</div>
 
 </div>
-<script>
-jQuery(document).ready(function($) {
-	$("#year-list li").on("click", function(e) {
-		// We'll pass this variable to the PHP function example_ajax_request
-		$(".selected-year").removeClass("selected-year");
-		$(this).addClass("selected-year");
-		var y = $(this).attr("data-post_id"),
-			data = {
-				'action':'get_awards',
-				'year'  : y,
-				'_ajax_nonce' : '<?php echo wp_create_nonce("wusm-faculty-profiles"); ?>'
-			};
-
-		console.log(data);
-
-		$.post(ajax_object.ajax_url, data, function(data) {
-			console.log(data);
-			$('#award-years-right').html(data);
-		});
-	});
-});
-</script>
 <?php get_footer(); ?>

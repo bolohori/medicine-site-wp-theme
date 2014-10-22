@@ -31,7 +31,7 @@ $num_of_wordpress_results = $wp_query->found_posts;
 // and how many results are on the last page?
 $last_wp_page_results_cnt = $num_of_wordpress_results % 10;
 
-$num_of_google_results = ($last_wp_page_results_cnt == 0) ? 10 : 10-$last_wp_page_results_cnt;
+$num_of_google_results = ($last_wp_page_results_cnt == 0) ? 10 : 10 - $last_wp_page_results_cnt;
 
 // so hackey, if we go past the last page it flips out so we've gotta back
 // up a bit to get some important numbers
@@ -46,19 +46,22 @@ if(($num_of_wordpress_results == 0) && ($paged != 1)) {
 // How many pages of WP results do we have (with 10 results per page)
 $num_of_wp_result_pages = ceil($num_of_wordpress_results/10);
 
+// Spaces are BAD in search terms
+$terms = str_replace(' ', '+', $search_terms);
+
 // Total hack, just get the 1st result of the Google search, but it brings along with it...
-$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=1&num=1";
+$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=1&num=1&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 $xml = new SimpleXMLElement(file_get_contents($search_url));
 // ...the total number of results
-$total_google_results = $xml->RES->M;
+$total_google_results = (int) $xml->RES->M;
+
+if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 // Google result to start with
-$start = ($num_of_wp_result_pages == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10) +  $num_of_google_results;
+$start = ($num_of_wp_result_pages + 1 == $paged) ? 0 : (($paged - $num_of_wp_result_pages - 1) * 10);
 
 // Total pages of results, displaying 10 items per page
 $pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
-
-if( !isset( $paged ) || $paged == 0 ) $paged = 1;
 
 get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
@@ -81,21 +84,24 @@ get_header(); ?>
 			
 			// Only display "promoted results" on the first page
 			if( $paged == 1 ) {
-				$querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE ID IN (SELECT post_id FROM $wpdb->postmeta WHERE $wpdb->postmeta.meta_value = '".$search_terms."') AND $wpdb->posts.post_status = 'publish';";
+				$querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE ID IN (SELECT post_id FROM $wpdb->postmeta WHERE $wpdb->postmeta.meta_key LIKE '%promoted_result%' AND $wpdb->postmeta.meta_value = '".$search_terms."') AND $wpdb->posts.post_status = 'publish';";
 				
 				$pageposts = $wpdb->get_results($querystr, OBJECT);
 
-				if ($pageposts):
+				if ( $pageposts ):
 					echo "<h2>Top search results</h2>";
 					global $post;
-					foreach ($pageposts as $post):
+					foreach ( $pageposts as $post ):
 						setup_postdata($post);
-						if($post->post_type == 'promoted_results') {
+						if( $post->post_type == 'promoted_results' ) {
+							//result_url
+							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_field( 'result_url', get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_field('result_url', $post->ID);
 						} else {
+							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_permalink();
 						}
-						echo "<p style='width: 515px;'>
+						echo "<p class='search-results'>
 						<span style='font-size: 16px;'><a onclick=\"javascript:_gaq.push(['_trackEvent','top-search-result-$search_terms','$link']);\" href='$link'><b>".get_the_title()."</b></a></span><br>";
 						if(get_the_excerpt() != '')
 							echo get_the_excerpt()."<br>";
@@ -104,32 +110,35 @@ get_header(); ?>
 					endforeach;
 					echo "<hr>";
 				endif;
+				add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 
 				// Restore original Post Data
 				wp_reset_postdata();
 			}
 			
 			// These are WordPress' search results
-			if ( have_posts() ) : while ( have_posts() ) : the_post();
+			if ( have_posts() ) {
+				echo "<h2>medicine.wustl.edu results</h2>";
+				while ( have_posts() ) {
+					the_post();
 					$num_of_wordpress_results++;
-					echo "<p style='width: 515px;'>
+					echo "<p class='search-results'>
 					<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
 					".get_the_excerpt()."<br>
 					<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
 					</p>";
-				endwhile;
-			endif;
+				}
+			}
 
-			// Visual separtor to mark end of WP search and start of Google search
-			if ( $num_of_wp_result_pages == $paged)
+			// Visual separator to mark end of WP search and start of Google search
+			if ( $num_of_wp_result_pages == $paged )
 				echo "<hr>";
 
 			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {
 				// and finally the results from Google...
-				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$search_terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results";
-				
+				$terms = str_replace(' ', '+', $search_terms);
+				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results&as_eq=medschool.wustl.edu+medicine.wustl.edu";
 				$xml = new SimpleXMLElement(file_get_contents($search_url));
-
 				$start_num = $xml->RES['SN'];
 
 				if( $start > $start_num ) {
@@ -144,15 +153,25 @@ get_header(); ?>
 				}
 				
 				// Display page of search results
-				foreach( $xml->RES->R as $result ) { ?>
-					<p style="width: 515px;">
-					<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
-					<?php if( $result->S != '' ) { ?>
-						<br><?php echo $result->S; ?>
-					<?php } ?>
-					<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
-					</p>
-			<?php }
+				if( $xml->RES->R ) {
+					echo "<h2>More WUSTL results</h2>";
+					foreach( $xml->RES->R as $result ) { ?>
+						<p class='search-result'>
+						<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
+						<?php if( $result->S != '' ) { ?>
+							<br><?php echo $result->S; ?>
+						<?php } ?>
+						<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
+						</p>
+				<?php
+					}
+					// If there are duplicate results, Google won't tell you until you hit the last page of
+					// "real" results, this checks that and adds the standard Google message
+					if ( ( (int) $xml->RES->M !== $total_google_results ) && ( sizeof( $xml->RES->R ) < 10 ) ) {
+						echo "<p style='font-size: 16px;'><i>In order to show you the most relevant results, we have omitted some entries very similar to the " . $xml->RES->M . " already displayed.</i></p>";
+						$truncate_pagination = $paged;
+					}
+				}
 				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
 			} ?>
 			
@@ -178,8 +197,12 @@ get_header(); ?>
 					
 					if( $p_end > $pages_of_results )
 						$p_end = $pages_of_results;
+
+					if ( isset($truncate_pagination) ) {
+						$p_end = $truncate_pagination;
+					}
 					
-					echo "<p style='width: 750px;'>Page: ";
+					echo "<p style='max-width: 750px;'>Page: ";
 					if( $p_start != 1 ) {
 						$back = $paged - 1;
 						echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
@@ -194,7 +217,7 @@ get_header(); ?>
 					}
 					$adv = $paged + 1;
 					
-					if( $p_end != $pages_of_results ) {
+					if( ( $p_end != $pages_of_results ) && ! isset( $truncate_pagination ) ) {
 						echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
 					}
 					echo "</p>";

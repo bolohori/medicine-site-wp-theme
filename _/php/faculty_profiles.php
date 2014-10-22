@@ -5,16 +5,14 @@
  */
 
 function get_awards_by_year() {
-	check_ajax_referer( 'wusm-faculty-profiles' );
-
 	$year = $_POST['year']; // getting variables from ajax post
 	// doing ajax stuff
 	
 	$args = array (
 		'post_parent' => $year, 
-		'post_type' => 'faculty_profile',
-		'orderby' => 'menu_order',
-		'order' => 'asc'
+		'post_type'   => 'faculty_profile',
+		'orderby'     => 'menu_order',
+		'order'       => 'asc'
 	);
 	$my_query = new WP_Query( $args );
 	if ( $my_query->have_posts() ) { 
@@ -37,5 +35,5 @@ function get_awards_by_year() {
 
 	die(); // stop executing script
 }
-add_action( 'wp_ajax_get_awards', 'get_awards_by_year' ); // ajax for logged in users
-add_action( 'wp_ajax_nopriv_get_awards', 'get_awards_by_year' ); // ajax for not logged in users
+add_action( 'wusm_ajax_get_awards', 'get_awards_by_year' ); // ajax for logged in users
+add_action( 'wusm_ajax_nopriv_get_awards', 'get_awards_by_year' ); // ajax for not logged in users

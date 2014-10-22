@@ -2,6 +2,95 @@
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
+		'id' => 'acf_promoted-results',
+		'title' => 'Promoted Results',
+		'fields' => array (
+			array (
+				'key' => 'field_52fe37a94f99c',
+				'label' => 'Result URL',
+				'name' => 'result_url',
+				'type' => 'text',
+				'required' => 1,
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_53bd64ee9d1ad',
+				'label' => 'A to Z index',
+				'name' => 'a_to_z_index',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Include in A to Z index?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'promoted_results',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'acf_after_title',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf_sticky',
+		'title' => 'Sticky',
+		'fields' => array (
+			array (
+				'key' => 'field_537ced48a2ce6',
+				'label' => 'Sticky this item',
+				'name' => 'sticky',
+				'type' => 'true_false',
+				'message' => 'Sticky',
+				'default_value' => 1,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'announcement',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'billboard',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'side',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 1,
+	));
+	register_field_group(array (
 		'id' => 'acf_announcement',
 		'title' => 'Announcement',
 		'fields' => array (
@@ -11,7 +100,6 @@ if(function_exists("register_field_group"))
 				'name' => 'url',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -39,6 +127,17 @@ if(function_exists("register_field_group"))
 				'save_as_timestamp' => 'false',
 				'get_as_timestamp' => 'false',
 			),
+			array (
+				'key' => 'field_53bd808628cda',
+				'label' => 'Hide Nav',
+				'name' => 'hide_nav',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Hide Left Nav?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
+			),
 		),
 		'location' => array (
 			array (
@@ -57,7 +156,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 2,
 	));
 	register_field_group(array (
 		'id' => 'acf_billboard',
@@ -69,7 +168,6 @@ if(function_exists("register_field_group"))
 				'name' => 'link',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 1,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -102,7 +200,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 3,
 	));
 	register_field_group(array (
 		'id' => 'acf_faculty-profiles',
@@ -189,7 +287,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 4,
 	));
 	register_field_group(array (
 		'id' => 'acf_giving-page-extras',
@@ -222,7 +320,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 5,
 	));
 	register_field_group(array (
 		'id' => 'acf_in-focus',
@@ -234,7 +332,6 @@ if(function_exists("register_field_group"))
 				'name' => 'external_link',
 				'type' => 'website',
 				'website_title' => 1,
-				'internal_link' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -256,21 +353,12 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 6,
 	));
 	register_field_group(array (
-		'id' => 'acf_in-the-news',
-		'title' => 'In the News',
+		'id' => 'acf_press',
+		'title' => 'Press',
 		'fields' => array (
-			array (
-				'key' => 'field_51cdd8cc70d6c',
-				'label' => 'Thumbnail',
-				'name' => 'thumbnail',
-				'type' => 'image',
-				'save_format' => 'url',
-				'preview_size' => 'in-the-news',
-				'library' => 'all',
-			),
 			array (
 				'key' => 'field_5273cfea28929',
 				'label' => 'URL',
@@ -295,16 +383,6 @@ if(function_exists("register_field_group"))
 				'formatting' => 'html',
 				'maxlength' => '',
 			),
-			array (
-				'key' => 'field_5342b4cd52d57',
-				'label' => 'Link',
-				'name' => 'link',
-				'type' => 'website',
-				'website_title' => 1,
-				'internal_link' => 0,
-				'output_format' => 1,
-				'default_value' => '',
-			),
 		),
 		'location' => array (
 			array (
@@ -323,7 +401,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 7,
 	));
 	register_field_group(array (
 		'id' => 'acf_locations',
@@ -382,33 +460,18 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 8,
 	));
 	register_field_group(array (
 		'id' => 'acf_national-leaders',
 		'title' => 'National Leaders',
 		'fields' => array (
 			array (
-				'key' => 'field_530b6a6f312df',
-				'label' => 'Faculty Member',
-				'name' => 'faculty_member',
-				'type' => 'post_object',
-				'post_type' => array (
-					0 => 'faculty',
-				),
-				'taxonomy' => array (
-					0 => 'all',
-				),
-				'allow_null' => 1,
-				'multiple' => 0,
-			),
-			array (
 				'key' => 'field_52a0fb4d5f46c',
-				'label' => 'Link',
+				'label' => 'Optional Link',
 				'name' => 'nl-link',
 				'type' => 'website',
-				'website_title' => 1,
-				'internal_link' => 0,
+				'website_title' => 0,
 				'output_format' => 1,
 				'default_value' => '',
 			),
@@ -430,7 +493,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 9,
 	));
 	register_field_group(array (
 		'id' => 'acf_news-releases',
@@ -442,9 +505,20 @@ if(function_exists("register_field_group"))
 				'name' => 'url',
 				'type' => 'website',
 				'website_title' => 0,
-				'internal_link' => 1,
 				'output_format' => 1,
 				'default_value' => '',
+			),
+			array (
+				'key' => 'field_526ad43464149',
+				'label' => 'Audio',
+				'name' => 'audio',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => 'http://mpaweb1.wustl.edu/XXXXXXXXXX',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
 			),
 			array (
 				'key' => 'field_526562a5de521',
@@ -459,12 +533,15 @@ if(function_exists("register_field_group"))
 				'maxlength' => '',
 			),
 			array (
-				'key' => 'field_526ad43464149',
-				'label' => 'Audio',
-				'name' => 'audio',
-				'type' => 'file',
-				'save_format' => 'url',
-				'library' => 'all',
+				'key' => 'field_53bd8213f1b9a',
+				'label' => 'Hide Nav',
+				'name' => 'hide_nav',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Hide Left Nav?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
 			),
 		),
 		'location' => array (
@@ -479,12 +556,12 @@ if(function_exists("register_field_group"))
 			),
 		),
 		'options' => array (
-			'position' => 'normal',
+			'position' => 'acf_after_title',
 			'layout' => 'no_box',
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 10,
 	));
 	register_field_group(array (
 		'id' => 'acf_page-extras',
@@ -495,6 +572,7 @@ if(function_exists("register_field_group"))
 				'label' => 'Special header',
 				'name' => 'special_header',
 				'type' => 'post_object',
+				'instructions' => '"Breadcrumb" nav found above page title in Executive Management Fellowship section',
 				'post_type' => array (
 					0 => 'page',
 				),
@@ -525,7 +603,18 @@ if(function_exists("register_field_group"))
 					1 => 'Hide in Nav?',
 				),
 				'default_value' => '',
-				'layout' => 'vertical',
+				'layout' => 'horizontal',
+			),
+			array (
+				'key' => 'field_53bd58104efb4',
+				'label' => 'Hide Nav',
+				'name' => 'hide_nav',
+				'type' => 'checkbox',
+				'choices' => array (
+					1 => 'Hide Left Nav?',
+				),
+				'default_value' => '',
+				'layout' => 'horizontal',
 			),
 		),
 		'location' => array (
@@ -541,11 +630,11 @@ if(function_exists("register_field_group"))
 		),
 		'options' => array (
 			'position' => 'acf_after_title',
-			'layout' => 'no_box',
+			'layout' => 'default',
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 11,
 	));
 	register_field_group(array (
 		'id' => 'acf_promoted-result',
@@ -593,38 +682,119 @@ if(function_exists("register_field_group"))
 		'location' => array (
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'administrator',
+					'value' => 'post',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
 			),
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'editor',
+					'value' => 'page',
 					'order_no' => 0,
 					'group_no' => 1,
 				),
 			),
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'author',
+					'value' => 'location',
 					'order_no' => 0,
 					'group_no' => 2,
 				),
 			),
 			array (
 				array (
-					'param' => 'user_type',
+					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'super_admin',
+					'value' => 'news_releases',
 					'order_no' => 0,
 					'group_no' => 3,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'media_mentions',
+					'order_no' => 0,
+					'group_no' => 4,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'in_the_news',
+					'order_no' => 0,
+					'group_no' => 5,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'billboard',
+					'order_no' => 0,
+					'group_no' => 6,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'announcement',
+					'order_no' => 0,
+					'group_no' => 7,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'spotlight',
+					'order_no' => 0,
+					'group_no' => 8,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'research_news',
+					'order_no' => 0,
+					'group_no' => 9,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'in_focus',
+					'order_no' => 0,
+					'group_no' => 10,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'faculty_profile',
+					'order_no' => 0,
+					'group_no' => 11,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'promoted_results',
+					'order_no' => 0,
+					'group_no' => 12,
 				),
 			),
 		),
@@ -634,84 +804,12 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
-	));
-	register_field_group(array (
-		'id' => 'acf_promoted-results',
-		'title' => 'Promoted Results',
-		'fields' => array (
-			array (
-				'key' => 'field_52fe37a94f99c',
-				'label' => 'Result URL',
-				'name' => 'result_url',
-				'type' => 'text',
-				'required' => 1,
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'html',
-				'maxlength' => '',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'promoted_results',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'acf_after_title',
-			'layout' => 'no_box',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
+		'menu_order' => 12,
 	));
 	register_field_group(array (
 		'id' => 'acf_research-news',
 		'title' => 'Research News',
 		'fields' => array (
-			array (
-				'key' => 'field_51cde10369cdc',
-				'label' => 'Expertise',
-				'name' => 'expertise',
-				'type' => 'select',
-				'required' => 1,
-				'choices' => array (
-					'ad' => 'Alzheimer\'s disease',
-					'cancer' => 'Cancer',
-					'ant' => 'Ear, Nose and Throat',
-					'endo' => 'Endocrinology',
-					'gastro' => 'Gastroenterology/Digestive',
-					'genomics' => 'Genomics & Personalized Medicine',
-					'geriatrics' => 'Geriatrics',
-					'vascular' => 'Heart and Vascular',
-					'kidney' => 'Kidney',
-					'leadership' => 'Leadership',
-					'neuro' => 'Neurosciences',
-					'obgyn' => 'Obstetrics and Gynecology',
-					'eyes' => 'Ophthalmology',
-					'ortho' => 'Orthopedics',
-					'outreach' => 'Outreach',
-					'psych' => 'Psychiatry',
-					'public' => 'Public Health',
-					'respiratory' => 'Pulmonology/Respiratory',
-					'radiology' => 'Radiology/Imaging',
-					'arthritis' => 'Rheumatology',
-					'surgery' => 'Surgery',
-					'transplant' => 'Transplant',
-					'urology' => 'Urology',
-				),
-				'default_value' => '',
-				'allow_null' => 0,
-				'multiple' => 1,
-			),
 			array (
 				'key' => 'field_5321d99f086fc',
 				'label' => 'Author',
@@ -742,7 +840,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 13,
 	));
 	register_field_group(array (
 		'id' => 'acf_sidebar',
@@ -801,7 +899,6 @@ if(function_exists("register_field_group"))
 										'type' => 'website',
 										'column_width' => '',
 										'website_title' => 1,
-										'internal_link' => 0,
 										'output_format' => 1,
 										'default_value' => '',
 									),
@@ -873,7 +970,6 @@ if(function_exists("register_field_group"))
 								'type' => 'website',
 								'column_width' => '',
 								'website_title' => 1,
-								'internal_link' => 0,
 								'output_format' => 1,
 								'default_value' => '',
 							),
@@ -893,7 +989,6 @@ if(function_exists("register_field_group"))
 								'type' => 'website',
 								'column_width' => '',
 								'website_title' => 1,
-								'internal_link' => 1,
 								'output_format' => 1,
 								'default_value' => '',
 							),
@@ -1056,7 +1151,6 @@ if(function_exists("register_field_group"))
 										'type' => 'website',
 										'column_width' => '',
 										'website_title' => 1,
-										'internal_link' => 1,
 										'output_format' => 1,
 										'default_value' => '',
 									),
@@ -1146,6 +1240,33 @@ if(function_exists("register_field_group"))
 					'group_no' => 0,
 				),
 			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'announcement',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			),
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'news_releases',
+					'order_no' => 0,
+					'group_no' => 2,
+				),
+			),
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'research_news',
+                    'order_no' => 0,
+                    'group_no' => 3,
+                ),
+            ),
 		),
 		'options' => array (
 			'position' => 'normal',
@@ -1153,7 +1274,7 @@ if(function_exists("register_field_group"))
 			'hide_on_screen' => array (
 			),
 		),
-		'menu_order' => 0,
+		'menu_order' => 14,
 	));
 	register_field_group(array (
 		'id' => 'acf_admin-extras',

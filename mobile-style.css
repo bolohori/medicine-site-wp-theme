@@ -1,3 +1,83 @@
+/* Mobile navigation
+-------------------------------------------------------------------------------*/
+#mobile-search-form {
+	width: 214px;
+	height: 20px;
+	padding: 20px 18px;
+	margin: 0;
+	background-color: #222;
+	white-space: nowrap;
+	border-bottom: 1px solid #454545;
+	box-shadow: 0 1px 0 0 #252525;
+}
+
+#mobile-search-box {
+	width: 195px;
+	font-family: Arial, sans-serif;
+	font-style: italic;
+	font-size: 14px;
+	border: 0;
+	padding: 0;
+	color: #fff;
+	background-color: #222;
+}
+
+#mobile-search-box::-webkit-input-placeholder { /* WebKit browsers */
+	color:    #fff;
+}
+#mobile-search-box:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:    #fff;
+}
+#mobile-search-box::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:    #fff;
+}
+#mobile-search-box:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:    #fff;
+}
+
+#mobile-search-btn {
+	width: 13px;
+	border: 0;
+}
+
+#jPanelMenu-menu {
+	background-color: #333;
+}
+
+.admin-bar #jPanelMenu-menu {
+	top: 28px;
+}
+
+#jPanelMenu-menu .current_page_item a {
+	color: #fff;
+}
+
+#jPanelMenu-menu a, #jPanelMenu-menu .current_page_item .children a {
+	color: #ddd;
+}
+
+#jPanelMenu-menu .page_item {
+	text-transform: uppercase;
+	padding: 14px 18px;
+	border-bottom: 1px solid #454545;
+	box-shadow: 0 1px 0 0 #252525;
+}
+
+#jPanelMenu-menu .page_item .children .page_item {
+	text-transform: none;
+	padding: 14px 18px 0 14px;
+	border-bottom: none;
+	box-shadow: none;
+}
+
+#jPanelMenu-menu .page_item .children .page_item a {
+	font-weight: 400;
+}
+
+.jPanelMenu-panel {
+	box-shadow: 4px 0 10px 0 #252525;
+}
+
 /* 
  * Mobile Media queries
  * -------------------------------------------------------------------------------

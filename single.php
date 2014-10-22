@@ -8,7 +8,7 @@
 			$class = '';
 			$classes = '';
 			$margin = ' non-landing-page';
-			if (get_the_post_thumbnail() != '' && $post->post_type != 'in_focus') {
+			if (get_the_post_thumbnail() != '' && ! in_array( $post->post_type, array( 'in_focus', 'spotlight' ) ) ) {
 				$class .= ' notch';
 				$margin = ' landing-page';
 				echo '<div id="featured-image">';
@@ -28,18 +28,23 @@
 
 	<div class="wrapper">
 		<nav id="left-col">
+			<?php if( ! get_field( 'hide_nav' ) ) { ?>
 			<ul id="left-nav">
-				<li class="top_level_page"><a href="/news">News</a></li>
-				<li class="<?php echo ($post->post_type == 'reasearch_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research News</a></li>
+				<li class="top_level_page"></li>
 				<li class="<?php echo ($post->post_type == 'news_releases') ? "current_page_item " : ""; ?>page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
-				<li class="<?php echo ($post->post_type == 'billboard') ? "current_page_item " : ""; ?>page_item page-item-4715"><a href="/news/features/">Billboards</a></li>
-				<li class="<?php echo ($post->post_type == 'announcements') ? "current_page_item " : ""; ?>page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>
-				<li class="<?php echo ($post->post_type == 'media_mentions') ? "current_page_item " : ""; ?>page_item page-item-4721"><a href="/news/press/">In the News</a></li>
-				<li class="<?php echo ($post->post_type == 'in_focus') ? "current_page_item " : ""; ?>page_item page-item-329"><a href="/news/in-focus/">In Focus</a></li>
-				<li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
+				<li class="<?php echo ($post->post_type == 'media_mentions') ? "current_page_item " : ""; ?>page_item page-item-4721"><a href="/news/press/">In the Media</a></li>
 				<li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
+				<li class="<?php echo ($post->post_type == 'research_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research Highlights</a></li>
+				<li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
+				<li class="page_item page-item-7224"><a href="/news/publications/">Publications</a></li>
+				<li class="<?php echo ($post->post_type == 'announcements') ? "current_page_item " : ""; ?>page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>
+				<li class="<?php echo ($post->post_type == 'in_focus') ? "current_page_item " : ""; ?>page_item page-item-329"><a href="/news/in-focus/">Campus Life</a></li>
+
 			</ul>
+			<?php } ?>
 		</nav>
+		
+		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' ); ?>
 
 		<article<?php echo $classes; ?>>
 			<?php
@@ -49,20 +54,26 @@
 				}
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' )
+					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' ) {
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+					}
 					echo "<p class='custom-byline'>";
 					the_date();
 					if(get_field('author'))
 						echo " | " . get_field('author');
 					echo "</p>";
-					the_content();
+					if( get_the_content() ) {
+						the_content();
+					} else {
+						$link = get_field( 'external_link' );
+						$button_text = $link['title'] !== null ? $link['title'] : "Read Article";
+						the_excerpt();
+						echo "<br><a href='{$link['url']}'><button class='single-link'>$button_text</button></a>";
+					}
 				endwhile;
 			endif;
 			?>
 		</article>
-
-		<?php get_sidebar( 'right' ); ?>
 
 	</div>
 

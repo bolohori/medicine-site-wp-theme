@@ -22,9 +22,9 @@ a {color: #336699;}
 <div style="width: 660px; margin: 0 auto;">
 	<div style="text-align: center;">
 		<span style="color: #707070; font-size: 10px; line-height: 20px; padding-bottom: 20px; display: inline-block;">A bi-weekly review of Barnes-Jewish Hospital, St Louis Children's Hospital and Washington University School of Medicine media appearances</span>
-		<a target="_blank" href="http://www.barnesjewish.org"><img src="http://medicine.wustl.edu/assets/images/itn_BJH.png" style="border: 0px"></a>
-		<a target="_blank" href="http://medicine.wustl.edu"><img src="http://medicine.wustl.edu/assets/images/itn_WUSM.png" style="border: 0px"></a>
-		<a target="_blank" href="http://www.stlouischildrens.org/"><img src="http://medicine.wustl.edu/assets/images/itn_SLC.png" style="border: 0px"></a>
+		<a href="http://www.barnesjewish.org"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/itn_BJH.png" style="border: 0px"></a>
+		<a href="http://medicine.wustl.edu"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/itn_WUSM.png" style="border: 0px"></a>
+		<a href="http://www.stlouischildrens.org/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/itn_SLC.png" style="border: 0px"></a>
 	</div>
 	<div style="color: #fff; background: #4a824c; padding: 10px 12px; margin: 23px 0 0 0;">
 		<span style="font-size: 23px; font-weight: bold;">IN THE NEWS</span>
@@ -72,14 +72,14 @@ a {color: #336699;}
 		<span style="width: 100%; font-size: 16px; padding-top: 10px; text-transform: uppercase; float: left;">Contact us with your story ideas</span>
 		<div style="width: 630px; margin: 33px auto; height: auto; display: inline-block;">
 			<div style="width: 210px; float: left; display: inline-block;">
-				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Anne Bassett</p>
+				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Nicholas McLaren</p>
 				<p style="margin: 0 0 10px 0;">Barnes-Jewish Hospital<br>
 					Marketing/Communications</p>
-				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:abassett@bjc.org">abassett@bjc.org</a></p>
-				<p style="margin: 0 0 10px 0;">314.286.0303</p>
-					<a target="_blank" href="https://twitter.com/Barnesjewish"><img src="http://medicine.wustl.edu/assets/images/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
-					<a target="_blank" href="https://www.facebook.com/barnesjewishhospital"><img src="http://medicine.wustl.edu/assets/images/facebook_icon.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
-				<p><a target="_blank" style="color: #fff; text-decoration: none;" href="http://barnesjewish.org/news">barnesjewish.org/news</a></p>
+				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:nicholas.mclaren@bjc.org">nicholas.mclaren@bjc.org</a></p>
+				<p style="margin: 0 0 10px 0;">314.286.0051</p>
+					<a href="https://twitter.com/Barnesjewish"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
+					<a href="https://www.facebook.com/barnesjewishhospital"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
+				<p><a style="color: #fff; text-decoration: none;" href="http://barnesjewish.org/news">barnesjewish.org/news</a></p>
 			</div>
 			<div style="width: 210px; float: left; display: inline-block;">
 				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Judy Martin</p>
@@ -88,9 +88,9 @@ a {color: #336699;}
 					Media Relations</p>
 				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:martinju@wustl.edu">martinju@wustl.edu</a></p>
 				<p style="margin: 0 0 10px 0;">314.286.0105</p>
-					<a target="_blank" href="https://twitter.com/WUSTLmed"><img src="http://medicine.wustl.edu/assets/images/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
-					<a target="_blank" href="https://www.facebook.com/WUSTLmedicine.health"><img src="http://medicine.wustl.edu/assets/images/facebook_icon.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
-				<p><a target="_blank" style="color: #fff; text-decoration: none;" href="http://medicine.wustl.edu">medicine.wustl.edu</a></p>
+					<a href="https://twitter.com/WUSTLmed"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
+					<a href="https://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
+				<p><a style="color: #fff; text-decoration: none;" href="http://medicine.wustl.edu">medicine.wustl.edu</a></p>
 			</div>
 			<div style="width: 210px; float: left; display: inline-block;">
 				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Jackie Ferman</p>
@@ -98,9 +98,9 @@ a {color: #336699;}
 					Marketing/Communications</p>
 				<p style="margin: 0 0 10px 0;"><a style="color: #fff; text-decoration: none;" href="mailto:jferman@bjc.org">jferman@bjc.org</a></p>
 				<p style="margin: 0 0 10px 0;">314.286.0304</p>
-					<a target="_blank" href="https://twitter.com/STLChildrens"><img src="http://medicine.wustl.edu/assets/images/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
-					<a target="_blank" href="https://www.facebook.com/stlchildrens"><img src="http://medicine.wustl.edu/assets/images/facebook_icon.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
-				<p><a target="_blank" style="color: #fff; text-decoration: none;" href="http://stlouischildrens.org/media-center">stlouischildrens.org/media-center</a></p>
+					<a href="https://twitter.com/STLChildrens"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
+					<a href="https://www.facebook.com/stlchildrens"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
+				<p><a style="color: #fff; text-decoration: none;" href="http://stlouischildrens.org/media-center">stlouischildrens.org/media-center</a></p>
 			</div>
 		
 	</div>
