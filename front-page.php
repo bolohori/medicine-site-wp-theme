@@ -112,7 +112,7 @@ function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size
 	<div class="wrapper">
 		<div class="spotlight-left">
 		<h1>National Leadership</h1>
-		<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are actively defining the future of health and medicine.</p>
+		<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
 <?php
 				$i = 0;
 				$slider = "";
