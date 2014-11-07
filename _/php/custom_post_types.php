@@ -265,9 +265,11 @@ function create_custom_post_types() {
 		'hierarchical'      => true,
 		'labels'            => $labels,
 		'show_ui'           => true,
+		'public'            => false,
+		'rewrite'           => false,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'expertise' ),
+		/*'rewrite'           => array( 'slug' => 'expertise' ),*/
 	);
 
 	register_taxonomy( 'expertise', array( 'research_news' ), $args );
