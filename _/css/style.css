@@ -1084,6 +1084,32 @@ a.news-title {
 	height: 22px;
 }
 
+#emergency-ribbon-wrapper {
+    background-color: #d2232a;
+    padding: 20px 0;
+}
+
+#emergency-ribbon {
+    color: #fff;
+    margin: 0 auto;
+    width: 585px;
+}
+
+#emergency-ribbon img {
+    float: left;
+    margin: 1px 18px 0 0;
+}
+
+#emergency-text {
+    font-size: 16px;
+}
+
+#emergency-url a {
+    font-size: 21px;
+    font-weight: bold;
+    color: #fff;
+}
+
 .news {
 	float: left;
 	padding: 50px 0;

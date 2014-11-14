@@ -59,6 +59,15 @@
 		</div>
 	</div>
 </div>
+
+<div id="emergency-ribbon-wrapper">
+    <div id="emergency-ribbon">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/warning.png" alt="!">
+        <div id="emergency-text">For updates on events that may affect the Washington University campus,</div>
+        <div id="emergency-url"><a href="http://emergency.wustl.edu/">visit emergency.wustl.edu.</a></div>
+    </div>
+</div>
+
 <section class="news" >
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
