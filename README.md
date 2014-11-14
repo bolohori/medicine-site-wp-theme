@@ -1,4 +1,4 @@
-![Washington University](/_/img/wusm-logo.png?raw=true "WUSTL Shield")
+![Washington University](http://medicine.wustl.edu/wp-content/themes/medicine/_/img/wusm-logo.png "WUSTL Shield")
 ========
 
 This is the WordPress theme for the Washington University School of Medicine's main site
@@ -6,4 +6,4 @@ This is the WordPress theme for the Washington University School of Medicine's m
 
 It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
-![Washington University](/screenshot.jpg?raw=true "screenshot")
+![Washington University](http://medicine.wustl.edu/wp-content/themes/medicine/screenshot.jpg "screenshot")
