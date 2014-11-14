@@ -50,7 +50,7 @@ img.size-full {
 /* General HTML elements
 -------------------------------------------------------------------------------*/
 body {
-	font-family: Arial, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size  : 14px;
 	color      : #333;
 }
@@ -1478,7 +1478,7 @@ ul.program-list li.last-child {
 
 .page-template-admissions-php .hero-list-title {
 	font-size    : 17px;
-	font-family  : Arial, sans-serif;
+	font-family  : 'Open Sans', sans-serif;
 	border-bottom: 1px solid #d5d2d2;
 	line-height  : 40px;
 	padding      : 10px 0;
@@ -1504,7 +1504,7 @@ ul.program-list li.last-child {
 
 .admission-footer .list-title {
 	font-size    : 17px;
-	font-family  : Arial, sans-serif;
+	font-family  : 'Open Sans', sans-serif;
 	line-height  : 40px;
 	border-bottom: 1px solid #d5d2d2;
 	width        : 100%;
