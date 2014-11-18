@@ -59,6 +59,13 @@
 		</div>
 	</div>
 </div>
+
+<?php
+    if (function_exists('wusm_emergency_ribbon')) {
+        echo wusm_emergency_ribbon();
+    }
+?>
+
 <section class="news" >
 	<div class="wrapper">
 		<div class="news-left slider-wrapper theme-default">
