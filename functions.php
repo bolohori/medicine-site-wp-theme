@@ -1,7 +1,7 @@
 <?php
 // ***************************************
 // Google Analytics template
-// onclick="javascript:_gaq.push(['_trackEvent','outbound-<LABEL>','http://<URL OR LABEL>']);"
+// onclick="ga('send','event','outbound-<LABEL>','http://<URL OR LABEL>');"
 // ***************************************
 
 

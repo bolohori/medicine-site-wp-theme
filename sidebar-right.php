@@ -177,7 +177,7 @@ while( has_sub_field( 'sidebars' ) ):
 					$url = get_permalink();
 				}
 				$title = get_the_title();
-				echo "\t\t\t\t\t<li><a href='$url' onclick=\"javascript:_gaq.push(['_trackEvent','sidebar-announcement','$title']);\">$title</a></li>\n";
+				echo "\t\t\t\t\t<li><a href='$url' onclick=\"ga('send','event','sidebar-announcement','$title');\">$title</a></li>\n";
 			endwhile;
 			wp_reset_query();
 			?>

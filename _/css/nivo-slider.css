@@ -95,10 +95,10 @@
 	cursor:pointer;
 }
 .nivo-prevNav {
-	left:0px;
+	left:0;
 }
 .nivo-nextNav {
-	right:0px;
+	right:0;
 }
 /* Control nav styles (e.g. 1,2,3...) */
 .nivo-controlNav {
