@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+
 	$('#billboard-slider').nivoSlider({
 		effect:'fade', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
 		slices:15,
@@ -15,9 +16,20 @@ jQuery(document).ready(function($) {
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
 		manualAdvance:false, //Force manual transitions
-		captionOpacity:0 //Universal caption opacity
+		captionOpacity:0, //Universal caption opacity
+        afterLoad: function(){ // event tracking for the first slide
+            var sliderData = $('#billboard-slider').data("nivo:vars");
+            var slideNum = sliderData.currentSlide; // return the slider position
+            var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
+            ga('send','event','billboard','slide ' + slideNum, label);
+        },
+        afterChange: function(){ // event tracking for subsequent slide views
+            var sliderData = $('#billboard-slider').data("nivo:vars");
+            var slideNum = sliderData.currentSlide; // return the slider position
+            var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
+            ga('send','event','billboard','slide ' + slideNum, label);
+        }
 	});
-
 
 	$('#news-slider').nivoSlider({
 		effect:'fade', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
@@ -37,6 +49,7 @@ jQuery(document).ready(function($) {
 		manualAdvance:true, //Force manual transitions
 		captionOpacity:0 //Universal caption opacity
 	});
+
 	$('#spotlight-slider').nivoSlider({
 		effect:'slideInLeft', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
 		slices:15,
@@ -53,8 +66,21 @@ jQuery(document).ready(function($) {
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
 		manualAdvance:true, //Force manual transitions
-		captionOpacity:0 //Universal caption opacity
-	});
+		captionOpacity:0, //Universal caption opacity
+        afterLoad: function(){ // event tracking for the first slide
+            var sliderData = $('#spotlight-slider').data("nivo:vars");
+            var slideNum = sliderData.currentSlide; // return the slider position
+            var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
+            ga('send','event','national-leadership','slide ' + slideNum, label);
+        },
+        afterChange: function(){ // event tracking for subsequent slide views
+            var sliderData = $('#spotlight-slider').data("nivo:vars");
+            var slideNum = sliderData.currentSlide; // return the slider position
+            var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
+            ga('send','event','national-leadership','slide ' + slideNum, label);
+        }
+
+    });
 
 	$('.audio-file').click(function(e){
 		var action = $(this).text();
