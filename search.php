@@ -102,7 +102,7 @@ get_header(); ?>
 							$link = get_permalink();
 						}
 						echo "<p class='search-results'>
-						<span style='font-size: 16px;'><a onclick=\"javascript:_gaq.push(['_trackEvent','top-search-result-$search_terms','$link']);\" href='$link'><b>".get_the_title()."</b></a></span><br>";
+						<span style='font-size: 16px;'><a onclick=\"ga('send','event','top-search-result-$search_terms','$link');\" href='$link'><b>".get_the_title()."</b></a></span><br>";
 						if(get_the_excerpt() != '')
 							echo get_the_excerpt()."<br>";
 						echo "<a href='".$link."' class='search-url'>".$link."</a>
@@ -157,11 +157,11 @@ get_header(); ?>
 					echo "<h2>More WUSTL results</h2>";
 					foreach( $xml->RES->R as $result ) { ?>
 						<p class='search-result'>
-						<span style="font-size: 16px;"><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
+						<span style="font-size: 16px;"><a onclick="ga('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>');" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
 						<?php if( $result->S != '' ) { ?>
 							<br><?php echo $result->S; ?>
 						<?php } ?>
-						<br/><a onclick="javascript:_gaq.push(['_trackEvent','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>']);" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
+						<br/><a onclick="ga('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>');" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
 						</p>
 				<?php
 					}
