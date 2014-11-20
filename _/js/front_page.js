@@ -16,19 +16,7 @@ jQuery(document).ready(function($) {
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
 		manualAdvance:false, //Force manual transitions
-		captionOpacity:0, //Universal caption opacity
-        afterLoad: function(){ // event tracking for the first slide
-            var sliderData = $('#billboard-slider').data("nivo:vars");
-            var slideNum = sliderData.currentSlide; // return the slider position
-            var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
-            ga('send','event','billboard','slide ' + slideNum, label);
-        },
-        afterChange: function(){ // event tracking for subsequent slide views
-            var sliderData = $('#billboard-slider').data("nivo:vars");
-            var slideNum = sliderData.currentSlide; // return the slider position
-            var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
-            ga('send','event','billboard','slide ' + slideNum, label);
-        }
+		captionOpacity:0 //Universal caption opacity
 	});
 
 	$('#news-slider').nivoSlider({
@@ -69,13 +57,13 @@ jQuery(document).ready(function($) {
 		captionOpacity:0, //Universal caption opacity
         afterLoad: function(){ // event tracking for the first slide
             var sliderData = $('#spotlight-slider').data("nivo:vars");
-            var slideNum = sliderData.currentSlide; // return the slider position
+            var slideNum = sliderData.currentSlide + 1; // return the slider position
             var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
             ga('send','event','national-leadership','slide ' + slideNum, label);
         },
         afterChange: function(){ // event tracking for subsequent slide views
             var sliderData = $('#spotlight-slider').data("nivo:vars");
-            var slideNum = sliderData.currentSlide; // return the slider position
+            var slideNum = sliderData.currentSlide + 1; // return the slider position
             var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
             ga('send','event','national-leadership','slide ' + slideNum, label);
         }
