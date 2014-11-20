@@ -64,6 +64,10 @@
     if (function_exists('wusm_emergency_ribbon')) {
         echo wusm_emergency_ribbon();
     }
+
+    if (function_exists('wusm_yellow_ribbon')) {
+        echo wusm_yellow_ribbon();
+    }
 ?>
 
 <section class="news" >
