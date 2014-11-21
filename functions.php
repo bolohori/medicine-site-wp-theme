@@ -191,13 +191,26 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
  * Stylesheets, not really the traditional WordPress, but it works
  */
 if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
-	function medicine_enqueue_styles() { ?>
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/reset.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/style.css" type="text/css" />
-	<?php if(is_front_page()) { ?>
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/nivo-slider.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/_/css/default/default.css" type="text/css" media="screen" />
-	<?php }
+	function medicine_enqueue_styles() {
+		/**
+		 * The admin bar enqueues these two when a user is logged in, we need manually include
+		 * them if they aren't logged in
+		 */
+		wp_dequeue_style( 'open-sans-css' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' );
+		wp_dequeue_style( 'dashicons-css' );
+		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
+
+		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
+		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
+		
+		/**
+		 * Nivo Slider styles
+		 */
+		if( is_front_page() ) { 
+			wp_enqueue_style( 'nivo-slider-base', get_stylesheet_directory_uri(). '/_/css/nivo-slider.css' );
+			wp_enqueue_style( 'nivo-slider-theme', get_stylesheet_directory_uri(). '/_/css/default/default.css' );
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );

@@ -1,8 +1,7 @@
 /* Ok, this is where the fun starts.
 -------------------------------------------------------------------------------*/
-/* A Linux-and Windows-friendly sans-serif font stack:  http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
 body {
-	font: 14px Helmet, Freesans, sans-serif;
+	font: 14px 'Open Sans', sans-serif;
 	width: 450px;
 }
 
@@ -73,14 +72,12 @@ h1 {
 }
 
 h2 {
-	font-family: Helmet, Freesans, sans-serif;
 	font-size: 21px;
 	font-weight: bold;
 	display: inline-block;
 }
 
 h3 {
-	font-family: Helmet, Freesans, sans-serif;
 	font-size: 17px;
 	font-weight: bold;
 }
