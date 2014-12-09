@@ -80,8 +80,8 @@
         ) );
         ?>
 
-        <li class="page_item"><a onclick="ga('send','event','mobile-utility-nav','http://wustl.edu/');" href="http://wustl.edu/">WUSTL</a></li>
-        <li class="page_item"><a onclick="ga('send','event','mobile-utility-nav','http://medicine.wustl.edu/directory');" href="http://medicine.wustl.edu/directory">Directories</a></li>
+        <li class="page_item"><a onclick="__gaTracker('send','event','mobile-utility-nav','http://wustl.edu/');" href="http://wustl.edu/">WUSTL</a></li>
+        <li class="page_item"><a onclick="__gaTracker('send','event','mobile-utility-nav','http://medicine.wustl.edu/directory');" href="http://medicine.wustl.edu/directory">Directories</a></li>
     </ul>
     <?php } ?>
 </nav>

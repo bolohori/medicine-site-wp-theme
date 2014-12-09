@@ -52,7 +52,7 @@
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a href=\"$url\" alt='$title' onclick=\"ga('send','event','outbound-billboard','$title');\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
+				echo "<a href=\"$url\" alt='$title' onclick=\"__gaTracker('send','event','outbound-billboard','$title');\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
 			endwhile;
 			wp_reset_postdata();
 ?>
@@ -86,8 +86,8 @@
 				while ( $loop->have_posts() ) : $loop->the_post();
 					$url = get_field('url');
 					$title = get_the_title();
-					echo "<li><a class='news-title' href=\"$url\" onclick=\"ga('send','event','outbound-news_release','$title');\">$title</a><p>";
-					echo "<a href=\"$url\" onclick=\"ga('send','event','outbound-news_release','$title');\">" . get_field('source') . "</a></p></li>";
+					echo "<li><a class='news-title' href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">$title</a><p>";
+					echo "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">" . get_field('source') . "</a></p></li>";
 				endwhile;
 				wp_reset_postdata();
 ?>
@@ -113,7 +113,7 @@
 					$title = get_the_title();
 					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  					
-					echo "<li><a class='news-title' href=\"$url\" onclick=\"ga('send','event','outbound-news_release','$title');\">$title</a><p>";
+					echo "<li><a class='news-title' href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">$title</a><p>";
 					if( ( $video = get_field('video') ) !== '')
 						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
 					if( get_field('audio') !== '') {
@@ -121,7 +121,7 @@
 						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" class=\"audio-file\">Listen</a> | ";
 						$j++;
 					}
-					echo "<a href=\"$url\" onclick=\"ga('send','event','outbound-news_release','$title');\">Read Article</a></p></li>";
+					echo "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read Article</a></p></li>";
 				endwhile;
 				wp_reset_postdata();
 ?>
@@ -139,9 +139,9 @@
 	<div class="wrapper">
 		<h1>Advancing&nbsp;Health, Enriching&nbsp;Lives</h1>
 		<p>Connecting some of the brightest minds in human health, Washington University School of Medicine is a national leader in medical research, teaching and patient care. An outstanding faculty and rigorous curriculum prepare some of the world's most promising students to become the health care leaders of tomorrow.</p>
-		<a class="hero-button" onclick="ga('send','event','hero-education','<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>');" href="<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>">education</a>
-		<a class="hero-button" onclick="ga('send','event','hero-patient-care','<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>');" href="<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>">patient care</a>
-		<a class="hero-button" onclick="ga('send','event','hero-research','<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>');" href="<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>">research</a>
+		<a class="hero-button" onclick="__gaTracker('send','event','hero-education','<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>');" href="<?php echo get_permalink( get_page_by_title( 'Education' ) ); ?>">education</a>
+		<a class="hero-button" onclick="__gaTracker('send','event','hero-patient-care','<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>');" href="<?php echo get_permalink( get_page_by_title( 'Patient Care' ) ); ?>">patient care</a>
+		<a class="hero-button" onclick="__gaTracker('send','event','hero-research','<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>');" href="<?php echo get_permalink( get_page_by_title( 'Research' ) ); ?>">research</a>
 	</div>
 </div>
 
@@ -184,7 +184,7 @@
 					
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 
-					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"ga('send','event','outbound-news_release','$title');\">Read More</a>" : "";
+					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read More</a>" : "";
 
 					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong><p>$excerpt</p>$read_more_link</div>";
 					$i++;

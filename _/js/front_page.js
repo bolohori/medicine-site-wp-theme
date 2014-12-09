@@ -59,13 +59,13 @@ jQuery(document).ready(function($) {
             var sliderData = $('#spotlight-slider').data("nivo:vars");
             var slideNum = sliderData.currentSlide + 1; // return the slider position
             var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
-            ga('send','event','national-leadership','slide ' + slideNum, label);
+            __gaTracker('send','event','national-leadership','slide ' + slideNum, label);
         },
         afterChange: function(){ // event tracking for subsequent slide views
             var sliderData = $('#spotlight-slider').data("nivo:vars");
             var slideNum = sliderData.currentSlide + 1; // return the slider position
             var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
-            ga('send','event','national-leadership','slide ' + slideNum, label);
+            __gaTracker('send','event','national-leadership','slide ' + slideNum, label);
         }
 
     });
