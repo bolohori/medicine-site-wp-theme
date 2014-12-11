@@ -38,7 +38,7 @@
 				<li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
 				<li class="page_item page-item-7224"><a href="/news/publications/">Publications</a></li>
 				<li class="<?php echo ($post->post_type == 'announcements') ? "current_page_item " : ""; ?>page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>
-				<li class="<?php echo ($post->post_type == 'in_focus') ? "current_page_item " : ""; ?>page_item page-item-329"><a href="/news/in-focus/">Campus Life</a></li>
+				<li class="<?php echo ($post->post_type == 'in_focus') ? "current_page_item " : ""; ?>page_item page-item-329"><a href="/news/multimedia/">Campus Life</a></li>
 
 			</ul>
 			<?php } ?>
