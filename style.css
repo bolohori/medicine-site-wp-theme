@@ -1,16 +1,11 @@
 /*
-Theme Name:			WUSM
-Theme URI: 			http://medicine.wustl.edu
-Description: 		Main School of Medicine site theme
-Author: 	 		Medical Public Affairs
-Author URI:			http://medicine.wustl.edu
-<<<<<<< HEAD
-Version:            14.11.20.1
-=======
-Version:14.14.11.04
->>>>>>> develop
-
-License: GNU General Public License v2 or later
+Theme Name:  WUSM
+Theme URI:   http://medicine.wustl.edu
+Description: Main School of Medicine site theme
+Author:      Medical Public Affairs
+Author URI:  http://medicine.wustl.edu
+Version:     14.12.12.0
+License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
@@ -152,11 +147,11 @@ article .alignright {
 }
 
 article .wp-caption.alignright, article img.alignright {
-	margin: 0 0 20px 0;
+	margin: 7px 0 20px 0;
 }
 
 article .wp-caption.alignleft, article img.alignleft {
-	margin: 0 20px 0 0;
+	margin: 7px 20px 0 0;
 }
 
 article p.wp-caption-text {
