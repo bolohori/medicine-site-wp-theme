@@ -147,7 +147,7 @@ article .alignright {
 }
 
 article .wp-caption.alignright, article img.alignright {
-	margin: 7px 0 20px 0;
+	margin: 7px 0 0 20px;
 }
 
 article .wp-caption.alignleft, article img.alignleft {
