@@ -258,6 +258,23 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 		// Create array of new styles
 		$new_styles = array(
 			array(
+				'title' => 'Signature',
+				'items' => array(
+					array(
+						'title'		=> 'Name',
+						'block'		=> 'p',
+						'classes'	=> 'signature-name',
+						'wrapper'	=> false
+					),
+					array(
+						'title'		=> 'Title(s)',
+						'block'		=> 'p',
+						'classes'	=> 'signature-title',
+						'wrapper'	=> false
+					)
+				)
+			),
+			array(
 				'title'	=> 'Custom Styles',
 				'items'	=> array(
 					array(

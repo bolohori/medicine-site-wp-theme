@@ -125,6 +125,19 @@ h6 {
 	margin: 0 auto;
 }
 
+.signature-name {
+    font-size: 16px;
+    margin-bottom: 0;
+    line-height: 24px;
+}
+
+.signature-title {
+    font-size: 12px;
+    line-height: 14px;
+    color: #878787;
+    margin: 0 0 20px;
+}
+
 #map-canvas {
 	border: 2px solid red;
 	width: 100px;
