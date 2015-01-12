@@ -344,12 +344,12 @@ textarea {
 
 #main-nav li {
 	float  : left;
-	padding: 12px 30px 0 0;
+	padding: 11px 30px 0 0;
 }
 
 #main-nav li a {
-	font-size     : 12px;
-	font-weight   : bold;
+	font-size     : 14px;
+    font-weight   : 600;
 	color         : #900;
 	text-transform: uppercase;
 }
