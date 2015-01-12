@@ -574,7 +574,7 @@ function column_content( $column_name, $post_id ) {
 	}
 }
 
-add_filter( 'wusm-maps_menu_position', function() { return 37; } );
+add_filter( 'wusm-maps_menu_position', function() { return 40; } );
 add_filter( 'eventorganiser_menu_position', function() { return 50; } );
 add_action( 'admin_menu', function() { remove_menu_page( 'edit.php' ); } );
 
