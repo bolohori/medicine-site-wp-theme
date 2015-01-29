@@ -70,8 +70,8 @@
     }
 ?>
 
-<section class="news" >
-	<div class="wrapper">
+<section class="news">
+	<div class="news-wrap">
 		<div class="news-left slider-wrapper theme-default">
 			<div class="all-news"><a href="news/press">SEE ALL</a></a></div>
 			<h1 class="news-header">In the Media</h1>
@@ -146,8 +146,8 @@
 </div>
 
 
-<div class="spotlight">
-	<div class="wrapper">
+<section class="spotlight">
+	<div class="spotlight-wrap">
 		<div class="spotlight-left">
 		<h1>National Leadership</h1>
 		<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
@@ -205,5 +205,5 @@
 		<?php echo $captions; ?>
 	
 	</div>
-</div>
+</section>
 <?php get_footer(); ?>

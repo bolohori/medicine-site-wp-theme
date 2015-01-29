@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 
 	$('#spotlight-slider').nivoSlider({
 		effect:'slideInLeft', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
-		slices:15,
+		slices:1,
 		animSpeed:500, //Slide transition speed
 		pauseTime:5000,
 		startSlide:0, //Set starting Slide (0 index)
