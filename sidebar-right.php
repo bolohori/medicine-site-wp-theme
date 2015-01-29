@@ -3,7 +3,7 @@
 * Loop through a Flexible Content field and display it's content with different views for different layouts
 */
 ?>
-<div id="right-col">
+<div id="right-col" class="clearfix">
 <?php
 while( has_sub_field( 'sidebars' ) ):
 	if( get_row_layout() === 'default' ): // layout: Default Sidebar ?>

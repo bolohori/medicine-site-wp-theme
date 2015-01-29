@@ -29,7 +29,6 @@
 	<div class="wrapper clearfix">
 
 		<?php get_sidebar(); ?>
-		<?php get_sidebar( 'right' ); ?>
 		<article<?php echo $classes; ?>>
 			<?php
 				if(get_field('special_header')) {
@@ -41,8 +40,7 @@
 			endwhile;
 		endif; ?>
 		</article>
-
-		
+		<?php get_sidebar( 'right' ); ?>
 
 	</div>
 

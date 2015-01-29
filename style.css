@@ -84,7 +84,7 @@ h3 {
 h4 {
 	font-weight: bold;
 	font-size: 14px;
-	margin-top: 50px;
+	margin-top: 30px;
 	margin-bottom: 15px;
 }
 
@@ -146,6 +146,10 @@ article .alignright {
 	margin: 20px 0 20px 20px;
 }
 
+article .alignnone {
+	margin: 20px 0;
+}
+
 article .wp-caption.alignright, article img.alignright {
 	margin: 7px 0 0 20px;
 }
@@ -179,7 +183,7 @@ header h2 {
 
 .wrapper {
 	margin: 0 auto;
-	width : 960px;
+	max-width : 960px;
 	height: 100%;
 }
 
@@ -250,6 +254,7 @@ header h2 {
 }
 
 #header-site-row {
+	position: relative;
 	background: #990000;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #990000 0%, #720000 72%);
@@ -261,8 +266,9 @@ header h2 {
 	filter:     progid:DXImageTransform.Microsoft.gradient( startColorstr='#990000', endColorstr='#720000',GradientType=0 );
 }
 
-#mobile-menu-icon {
-	display: none;
+#mobile-menu-icon,
+#mobile-search-icon {
+    display: none;
 }
 
 #search-form {
@@ -359,6 +365,121 @@ textarea {
 #main-nav li.current-page-ancestor > a {
 	color: #717171;
 }
+
+
+
+
+
+
+/* Mobile navigation
+-------------------------------------------------------------------------------*/
+#mobile-nav,
+#mobile-search-form {
+    display: none;
+}
+
+.mobile-container {
+    position: absolute;
+    z-index: 120;
+    width: 100%;
+}
+
+#mobile-search-form {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 18px;
+    margin: 0;
+    background-color: #222;
+    white-space: nowrap;
+    border-bottom: 1px solid #454545;
+    box-shadow: 0 1px 0 0 #252525;
+}
+
+#mobile-search-box {
+    width: 100%;
+    font-style: italic;
+    font-size: 16px;
+    border: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #222;
+    margin: 0;
+}
+
+#mobile-search-box::-webkit-input-placeholder,
+#mobile-search-box:-moz-placeholder,
+#mobile-search-box::-moz-placeholder,
+#mobile-search-box:-ms-input-placeholder {
+    color: #fff;
+}
+
+#mobile-search-btn {
+    border: 0;
+    position: absolute;
+    right: 30px;
+    background: transparent;
+    color: #fff;
+}
+
+#mobile-nav {
+    background-color: #333;
+    width: 100%;
+}
+
+#mobile-nav .current_page_item > a {
+    color: #fff;
+    background-color: #4c4c4c;
+}
+
+#mobile-nav li a {
+    font-size: 16px;
+    display: inline-block;
+    padding: 14px 50px 14px 18px;
+    color: #bababa;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#mobile-nav .page_item {
+    font-weight: bold;
+    border-bottom: 1px solid #454545;
+    position: relative;
+}
+
+#mobile-nav .page_item:last-child {
+    border-bottom: none;
+}
+
+#mobile-nav .page_item .children .page_item a {
+    font-weight: 400;
+}
+
+#mobile-nav ul.children { 
+    padding-left: 18px;
+    border-top : 1px solid #454545;
+    display: none;
+}
+
+.jpm-expand {
+    float: right;
+    background-color: #222;
+    border-left: 1px solid #454545;    
+    padding: 13px 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-sizing: border-box;
+}
+
+.jpm-expand.dashicons {
+    height : 50px;
+    width  : 50px;
+    color  : #fff;
+}
+
+
+
 
 /* Forms
 -------------------------------------------------------------------------------*/
@@ -542,10 +663,6 @@ button.single-link:hover {
 
 #left-nav li.page_item_has_children ul.children li:last-child {
 	padding-bottom: 0;
-}
-
-#mobile-nav {
-	display: none;
 }
 
 
@@ -2311,6 +2428,154 @@ a.sidebar-outlook-link {
 .georgia {
 	font-family: Georgia, Times, serif;
 }
+
+/* Temporary solution to wide logo issue */
+#site-title-text {
+	display: none;
+}
+
+
+@media screen and (max-width: 960px) {
+	
+	#site-title {
+		display: none;
+	}
+	#site-title-text {
+		display: block;
+	    font-size: 24px;
+	    color: #fff;
+        padding: 22px 120px 22px 18px;
+    }
+    #site-title-text a {
+	    color: #fff;
+	}
+    #action-nav,
+	.utility-wustl,
+	.utility-directories,
+	.announcements-left p,
+	.information-for-left p,
+	#main-nav,
+	#search-form,
+	#left-col {
+		display: none;
+	}
+	.announcements-left,
+	.information-for-left {
+		padding: 0 40px;
+		margin-bottom: 0;
+		width: auto;
+	}
+	.announcements-right,
+	.information-for-right {
+		width: 100%;
+		border-left: none;
+	}
+	#utility-nav {
+		position: relative;
+		float: right;
+	}
+	#mobile-menu-icon {
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    #mobile-search-icon {
+        right: 65px;
+        width: 50px;
+        height: 50px;
+    }
+
+    #mobile-menu-icon,
+    #mobile-search-icon {
+        display : block;
+        position: absolute;
+        top     : 50%;
+        cursor  : pointer;
+        margin-top : -25px;
+    }
+    
+    #mobile-menu-icon .dashicons,
+    #mobile-search-icon .dashicons {
+        
+        right   : 20px;
+        position: absolute;
+    }
+
+    #mobile-menu-icon .dashicons {
+        top     : 8px;
+        font-size: 35px;
+        color    : #fff;
+    }
+
+    #mobile-search-icon .dashicons {
+        top     : 11px;
+        font-size: 30px;
+        color    : #fff;
+    }
+    article {
+    	max-width: 640px;
+    	width: auto;
+    	margin: 0 auto;
+    	float: none;
+    	padding-bottom: 35px;
+    }
+    article.notch {
+    	margin-top: 0;
+    	padding-top: 45px;
+    }
+    #right-col {
+    	float: none;
+    	max-width: 560px;
+    	margin: 0 auto;
+    	padding: 0 15px 35px;
+    }
+    #right-col aside {
+    	float: left;
+    	margin: 0 20px 20px;
+    }
+    .sidebar {
+    	margin-top: 0;
+    }
+    .non-landing-page #right-col {
+    	padding: 0 15px 35px;
+    }
+    #page-background-l {
+		background-color: #f4f4f4;
+	}
+	.campaign-wrapper {
+		height: auto;
+	}
+	.campaign-banner {
+		position: relative;
+		float: none;
+		width: 100%;
+		height: auto;
+	}
+	.double-footer {
+		float: none;
+		max-width: 640px;
+		width: 90%;
+		padding: 0;
+		min-height: 0;
+		margin: 20px auto 30px;
+	}
+	.footer-pair {
+		max-width: 680px;
+		width: 96%;
+		margin: 20px auto;
+	}
+	.single-footer {
+		width: 43%;
+		margin: 0;
+		padding: 0 3%;
+	}
+	.footer-menu-block {
+		border-left: none;
+	}
+}
+
+
 
 /* Print styles
 -------------------------------------------------------------------------------*/

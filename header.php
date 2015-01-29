@@ -13,7 +13,7 @@
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title><?php wp_title(); ?></title>
+	<title><?php wp_title(''); ?></title>
 
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
 	<meta name="author" content="Washington University School of Medicine in St. Louis">
@@ -62,11 +62,11 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 				<li><a onclick="__gaTracker('send','event','utility-nav','Admissions');" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
 				<li><a onclick="__gaTracker('send','event','utility-nav','Giving');" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
 			</ul>
-			<ul id="utility-nav">
+			<ul id="utility-nav" class="clearfix">
 				<li><a class="information-for" onclick="__gaTracker('send','event','utility-nav','information-for-open');" href="">Information for <span class="arrow arrow-down">&nbsp;</span></a></li>
 				<li><a class="announcements" onclick="__gaTracker('send','event','utility-nav','announcements-open');" href="">Announcements <span class="arrow arrow-down">&nbsp;</span></a></li>
-				<li><a onclick="__gaTracker('send','event','utility-nav','WUSTL');" href="http://www.wustl.edu">WUSTL</a></li>
-				<li class="last-child"><a onclick="__gaTracker('send','event','utility-nav','Directories');" href="/directory">Directories</a></li>
+				<li class="utility-wustl"><a onclick="__gaTracker('send','event','utility-nav','WUSTL');" href="http://www.wustl.edu">WUSTL</a></li>
+				<li class="utility-directories last-child"><a onclick="__gaTracker('send','event','utility-nav','Directories');" href="/directory">Directories</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -196,9 +196,10 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper">
-			<?php /*<div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>*/ ?>
-
+			<div id="mobile-search-icon"><div class="dashicons dashicons-search"></div></div>
+            <div id="mobile-menu-icon"><div class="dashicons dashicons-menu"></div></div>
 			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" alt="Washington University School of Medicine in St. Louis"/></a></div>
+			<div id="site-title-text"><a href="<?php echo home_url(); ?>">Washington University School of Medicine</a></div>
 			<?php get_search_form(); ?>
 		</div>
 	</div>
@@ -210,5 +211,31 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 		'container_id'   => 'main-nav',
 		'items_wrap'     => '<div class="wrapper"><ul>%3$s</ul></div>',
 	) ); ?>
+
+	<div class="mobile-container">
+        <form method="get" id="mobile-search-form" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+            <input type="text" name="s" id="mobile-search-box" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" placeholder="<?php esc_attr_e( 'Search' ); ?>">
+            <!-- <input type="submit" class="submit" name="submit" value="GO" id="mobile-search-btn"> -->
+        </form>
+
+        <nav id="mobile-nav">
+            <ul>
+                <li class="page_item<?php echo is_front_page() ? ' current_page_item' : '' ?>"><a href="<?php echo home_url(); ?>">Home</a></li>
+
+                <?php
+                $frontpage_id = get_option('page_on_front');
+                wp_list_pages( array(
+                    'sort_column' => 'menu_order',
+                    'title_li'    => '',
+                    'exclude'     => $frontpage_id
+                ) );
+                ?>
+	
+				<li class="page_item"><a onclick="__gaTracker('send', 'event', 'mobile-utility-nav', 'http://wuphysicians.wustl.edu/directory.aspx', 'Find a Doctor');" href="http://wuphysicians.wustl.edu/directory.aspx">Find a Doctor</a></li>
+                <li class="page_item"><a onclick="__gaTracker('send', 'event', 'mobile-utility-nav', 'http://wustl.edu', 'WUSTL');" href="http://wustl.edu/">WUSTL</a></li>
+                <li class="page_item"><a onclick="__gaTracker('send', 'event', 'mobile-utility-nav', 'http://medicine.wustl.edu/directory', 'Directories');" href="http://medicine.wustl.edu/directory">Directories</a></li>
+            </ul>
+        </nav>
+    </div>
 
 </header>

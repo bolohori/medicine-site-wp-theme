@@ -1,6 +1,6 @@
 </div>
 <footer class="clearfix">
-	<div class="campaign-wrapper">
+	<div class="campaign-wrapper clearfix">
 		<div class="wrapper">
 			<a class="campaign-banner" href="http://together.wustl.edu" onclick="__gaTracker('send','event','outbound-campaign','http://together.wustl.edu');">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/campaign.png" alt="Leading Together, the campaign for Washington University">
@@ -12,6 +12,7 @@
 			<p>Our 2,100 employed and volunteer faculty — the <a href="http://wuphysicians.wustl.edu" onclick="__gaTracker('send','event','outbound-footer','http://wuphysicians.wustl.edu');">Washington University Physicians</a> — also are the medical staff of <a href="http://www.barnesjewish.org/" onclick="__gaTracker('send','event','outbound-footer','http://www.barnesjewish.org');">Barnes-Jewish</a> and <a href="http://www.stlouischildrens.org/" onclick="__gaTracker('send','event','outbound-footer','http://www.stlouischildrens.org');">St. Louis Children's</a> hospitals. Through its hospital affiliations, the School is linked to BJC HealthCare.</p>
 			<p class="small-text"><a href="http://www.wustl.edu/policies/copyright.html">&copy; <?php echo date("Y") ?> Washington University in St. Louis</a></p>
 		</div>
+		<div class="footer-pair clearfix">
 		<div class="single-footer footer-menu-block">
 <?php 
 			wp_nav_menu( array(
@@ -32,6 +33,7 @@
 				<a title="WUSTL Reader mobile app" class="reader" onclick="__gaTracker('send','event','outbound-footer-social','WUSTL reader');" href="http://reader.wustl.edu/"></a>
 			</p>
 			<p class="small-text pad-top-20">660 S. Euclid Ave.<br>St. Louis, MO 63110</p>
+		</div>
 		</div>
 	</div>
 </footer>
