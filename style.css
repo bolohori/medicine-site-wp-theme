@@ -67,6 +67,7 @@ h1 {
 	font-family: Georgia, serif;
 	font-weight: normal;
 	font-size: 30px;
+	margin-bottom: 25px;
 }
 
 h2 {
@@ -281,7 +282,7 @@ header h2 {
 }
 
 #dirform input[type=text] {
-	width: 223px;
+	max-width: 223px;
 }
 
 #search-box,
@@ -501,15 +502,17 @@ input {
 }
 
 .button {
-	width       : 250px;
+	max-width: 258px;
 	position    : relative;
 	left        : 190px;
 	margin-right: -190px;
+	margin-top: 8px;
 }
 
 .button input {
-	width             : 110px;
-	display           : inline;
+	width             : auto;
+	display           : inline-block;
+	padding: 0 15px;
 	margin-right      : 10px;
 	cursor            : pointer;
 	-moz-appearance    : none;
@@ -552,6 +555,30 @@ button.single-link:hover {
 	background: #c40000;
 }
 
+.button input {
+	margin-right      : 15px;
+}
+
+@media screen and (max-width: 550px) {
+	.dir-group label {
+		display: block;
+		float: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+	.dir-group input[type=text],
+	.dir-group input[type=email] {
+		margin: 5px 0 15px;
+		width: auto;
+	}
+	.button {
+		left: 0;
+		width: 100%;
+	}
+}
+
+
 /* Featured image
 -------------------------------------------------------------------------------*/
 #featured-image {
@@ -568,7 +595,8 @@ button.single-link:hover {
 }
 
 #featured-image img{
-	margin-bottom: -3px; /* I don't know why it adds 3px to the height of the featured image without this. */
+	display: block;
+	margin: 0 auto;
 }
 
 /* Main
@@ -676,13 +704,15 @@ article {
 }
 
 .page-template-full-width-page-php .normal-width {
-	width: 450px;
+	max-width: 450px;
+	width: auto;
 }
 
 .page-template-full-width-page-php article,
 .single-in_focus article,
 .postid-7991 article /* Highly Cited Researchers 2014 */ {
-	width: 700px;
+	max-width: 700px;
+	width: auto;
 }
 
 .page-template-full-width-page-php article.notch {
@@ -690,7 +720,8 @@ article {
 }
 
 .page-template-full-width-page-php article.notch h1 {
-	width           : 450px;
+	max-width       : 450px;
+	width: 100%;
 	padding         : 24px 35px 0 35px;
 	margin-top      : -82px;
 	margin-left     : -35px;
@@ -765,15 +796,14 @@ article ul li, article ol li {
 
 .callout {
 	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
-	box-sizing: border-box;
 	border: 1px solid #ddd;
 	background: #fff;
-	margin: 20px 0;
-	width: 100%;
+	margin-bottom: 20px;
+	width: 95%;
 	clear: both;
 	float: left;
 	border-radius: 10px;
-	padding: 20px;
+	padding: 2.5%;
 }
 
 .callout h1, .callout h2, .callout h3 {
@@ -810,6 +840,17 @@ article ul li, article ol li {
 	font-size: 12px;
 	margin-bottom: 4px;
 	display: inline-block;
+}
+
+@media screen and (max-width: 960px) {
+	div.cols-3 {
+		width: 50%;
+	}
+}
+@media screen and (max-width: 550px) {
+	div.cols-3 {
+		width: 100%;
+	}
 }
 
 /* Tables
@@ -1133,7 +1174,7 @@ article.search-results {
 }
 
 .search-result {
-	width: 525px;
+	max-width: 525px;
 	overflow: hidden;
 }
 
@@ -1648,13 +1689,18 @@ a.news-title {
 	background: #fafafa;
 }
 
+.page-template-admissions-php .intro .wrapper {
+	width: 90%;
+}
+
 .page-template-admissions-php h1 {
 	color: #000;
+	margin-bottom: 15px;
 }
 
 .page-template-admissions-php p {
 	line-height: 25px;
-	width: 520px;
+	max-width: 520px;
 	margin: 0 auto;
 }
 
@@ -1667,7 +1713,7 @@ a.news-title {
 	font-weight  : 600;
 	display      : inline-block;
 	line-height  : 17px;
-	width        : 720px;
+	max-width    : 720px;
 	position     : relative;
 	border       : 1px solid #ddd;
 	border-radius: 10px;
@@ -1710,6 +1756,22 @@ ul.program-list li.last-child {
 	border-bottom: 1px solid #e0e0e0;
 }
 
+@media screen and (max-width: 750px) {
+	.page-template-admissions-php .program-list {
+		max-width: 300px;
+	}
+	.page-template-admissions-php .program-list li {
+		width: 96%;
+	}
+	.admissions-left-col,
+	.admissions-right-col {
+		float      : none;
+		width      : 90%;
+		max-width: 420px;
+		margin: 0 auto;
+	}
+}
+
 .page-template-admissions-php .hero-lists {
 	padding-top: 50px;
 	background: #f2f0f0;
@@ -1719,9 +1781,9 @@ ul.program-list li.last-child {
 	font-size    : 17px;
 	font-family  : 'Open Sans', sans-serif;
 	border-bottom: 1px solid #d5d2d2;
-	line-height  : 40px;
-	padding      : 10px 0;
-	margin       : 0 20px;
+	line-height  : 25px;
+	padding      : 10px 0 10px;
+	margin       : 0 20px 5px;
 }
 
 .hero-list li {
@@ -1741,25 +1803,38 @@ ul.program-list li.last-child {
 	background: #f5f5f5;
 }
 
+.admission-footer .wrapper {
+	width: 90%;
+}
+
 .admission-footer .list-title {
 	font-size    : 17px;
 	font-family  : 'Open Sans', sans-serif;
 	line-height  : 40px;
 	border-bottom: 1px solid #d5d2d2;
-	width        : 100%;
+	width        : 98%;
 }
 
 .admission-footer ul {
-	width      : 550px;
+	max-width: 550px;
+	width: 100%;
 	margin     : 0 auto;
 	padding    : 50px 0;
 	line-height: 25px;
 }
 
 .admission-footer li {
-	width  : 48%;
+	width  : 46%;
 	float  : left;
-	padding: 5px;
+	padding: 1% 3% 1% 1%;
+}
+
+@media screen and (max-width: 500px) {
+	.admission-footer li {
+		width  : 96%;
+		float  : left;
+		padding: 1% 3% 1% 1%;
+	}
 }
 
 
@@ -2498,14 +2573,52 @@ a.sidebar-outlook-link {
 
 .in_focus-custom-archive-thumb {
 	float                    : left;
+	width: 45%;
 	border-bottom-left-radius: 3px;
 	border-top-left-radius   : 3px;
+	height: auto;
+}
+
+.archive-info {
+	float: right;
+	width: 47%;
+	max-width: 330px;
+	padding: 3% 4% 3% 2%;
+}
+
+@media screen and (max-width: 770px) {
+	.in_focus-custom-archive-thumb {
+		width: 40%;
+		padding: 2.5%;
+		border-bottom-left-radius: 0;
+		border-top-left-radius: 0;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.in_focus-custom-archive-entry {
+		max-width: 320px;
+		margin: 0 auto 20px;
+	}
+	.in_focus-custom-archive-thumb {
+		float: none;
+		width: 100%;
+		padding: 0;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+	}
+	.archive-info {
+		float: none;
+		width: auto;
+		padding: 15px 20px;
+	}
 }
 
 .custom-intro {
 	color      : #787878;
 	font-size  : 18px;
 	line-height: 30px;
+	margin-top: 20px;
 }
 
 .custom-byline {
@@ -2519,6 +2632,43 @@ a.sidebar-outlook-link {
 	margin-top   : 0;
 	margin-bottom: 0;
 }
+
+/* Individual page adjustments */
+
+.billboard-custom-archive-entry img {
+	height: auto;
+}
+
+.single-research_news h1 {
+	margin-bottom: 20px;
+}
+
+.releases-intro {
+	letter-spacing: 0.05rem;
+	width: 56%;
+	float: left;
+	padding: 1% 2%;
+	font-size: 18px;
+}
+.mpa-contact {
+	float: right;
+	width: 29%;
+	padding: 1% 2%;
+}
+
+@media screen and (max-width: 700px) {
+	.releases-callout {
+		max-width: 500px;
+	}
+	.releases-intro {
+		width: 96%;
+		margin-bottom: 20px;
+	}
+	.mpa-contact {
+		width: 96%;
+	}
+}
+
 
 /* TinyMCE Custom styles
 -------------------------------------------------------------------------------*/
@@ -2633,6 +2783,11 @@ a.sidebar-outlook-link {
     article.notch {
     	margin-top: 0;
     	padding-top: 45px;
+    }
+    .page-template-full-width-page-php article.notch h1 {
+    	margin: 0;
+    	background: none;
+    	padding: 0;
     }
     #right-col {
     	float: none;
