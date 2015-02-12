@@ -398,6 +398,7 @@ textarea {
 
 #mobile-search-box {
     width: 100%;
+    font-family: 'Open Sans', sans-serif;
     font-style: italic;
     font-size: 16px;
     border: 0;
@@ -1109,8 +1110,8 @@ footer a {
 
 .information-for-li {
 	padding-right: 16%;
-	min-height: 40px;
 	font-size: 14px;
+	margin-bottom: 20px;
 }
 
 .announcement {
@@ -2721,14 +2722,24 @@ a.sidebar-outlook-link {
 	}
 	.announcements-left,
 	.information-for-left {
-		padding: 0 40px;
-		margin-bottom: 0;
+		padding: 0 5%;
+		margin-bottom: 15px;
 		width: auto;
 	}
 	.announcements-right,
 	.information-for-right {
-		width: 100%;
+		width: 90%;
 		border-left: none;
+		padding: 0 5%;
+		margin: 0 0 22px;
+	}
+	.announcement-list,
+	.information-for-list {
+		padding: 0;
+	}
+	.announcement {
+		min-height: 0;
+		margin-bottom: 15px;
 	}
 	#utility-nav {
 		position: relative;
@@ -2837,6 +2848,18 @@ a.sidebar-outlook-link {
 	}
 	.footer-menu-block {
 		border-left: none;
+	}
+}
+@media screen and (max-width: 500px) {
+	.announcements-right {
+		margin-bottom: 30px;
+	}
+	.announcement-list {
+		float: none;
+		width: 100%;
+	}
+	.announcement {
+		padding-right: 0;
 	}
 }
 
