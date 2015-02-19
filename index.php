@@ -23,12 +23,14 @@
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
 
-	<div id="page-background-r"></div>
-	<div id="page-background-l"></div>
+	<div id="page-background"></div>
 
 	<div class="wrapper clearfix">
 
+		<div id="page-background-inner"></div>
+
 		<?php get_sidebar(); ?>
+
 		<article<?php echo $classes; ?>>
 			<?php
 				if(get_field('special_header')) {
