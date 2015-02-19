@@ -11,12 +11,6 @@
 jQuery(document).ready(function($) {
 	var $window = $(window);
 
-	// Really need to clean all these up...
-	if( $('#left-col').height() > $('#main article').height() )
-		$('#main article').css("min-height", $('#left-col').height() + 123);
-	if( $('#right-col').height() > $('#main article').height() )
-		$('#main article').css("min-height", $('#right-col').height() + 123);
-
 	$(".announcements").click(function(e){
 		e.preventDefault();
 		$(".announcements .arrow").toggleClass("arrow-down arrow-up");
@@ -36,12 +30,9 @@ jQuery(document).ready(function($) {
 		}
 		$(".information-for-div").slideToggle();
 	});
+
 	$('#mobile-menu-icon').click(function() {
         $('#mobile-nav').slideToggle();
-        $(".dashicons-arrow-down-alt2").each(function() {
-            if($(this).parent().height() != 0)
-                $(this).height($(this).parent().height() - 26);
-        });
     });
     
     $('#mobile-search-icon').click(function() {
@@ -49,19 +40,26 @@ jQuery(document).ready(function($) {
     });
 
     $("#mobile-nav .page_item_has_children > a").each(function() {
-        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 jpm-expand'></div>" );
+        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
     });
 
-    $(".jpm-expand").click( function() {
+    $("#mobile-nav .menu-item-has-children > a").each(function() {
+        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
+    });
+
+    $(".expand").click( function() {
         if( $(this).parent().parent().parent().attr('id') == 'mobile-nav' ){
-            $(".jpm-expanded").not($(this).next()).removeClass("jpm-expanded").slideUp();
-            $(".jpm-expand").not($(this)).addClass("dashicons-arrow-down-alt2").removeClass("dashicons-arrow-up-alt2");
+            $(".expanded").not($(this).next()).removeClass("expanded").slideUp();
+            $(".expand").not($(this)).addClass("dashicons-arrow-down-alt2").removeClass("dashicons-arrow-up-alt2");
         }
-        $(this).next().toggleClass("jpm-expanded").slideToggle();
+        $(this).next().toggleClass("expanded").slideToggle();
         $(this).toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
     });
 
-    $("#mobile-nav .current_page_ancestor > .children").addClass("jpm-expanded").slideToggle();
+    $("#mobile-nav .current_page_ancestor > .children").addClass("expanded").slideToggle();
+    $("#mobile-nav .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+
+    $("#mobile-nav .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
     $("#mobile-nav .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 });
 

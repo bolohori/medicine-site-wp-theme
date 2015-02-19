@@ -1,19 +1,12 @@
 <!doctype html>
 
-<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
-<!--[if IE 7 ]>	 <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
-<!--[if IE 8 ]>	 <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
-<!--[if IE 9 ]>	 <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
+<html class="no-js" lang="en">
 
 <head data-template-set="html5-reset">
 	<meta charset="utf-8">
 
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-	<title><?php wp_title(''); ?></title>
 
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
 	<meta name="author" content="Washington University School of Medicine in St. Louis">
@@ -43,7 +36,11 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 ?>
 </head>
 
-<body <?php body_class(); ?>>
+<!--[if IE 7 ]>  <body <?php body_class('ie ie7 ie-lt10 ie-lt9 ie-lt8'); ?>> <![endif]-->
+<!--[if IE 8 ]>  <body <?php body_class('ie ie8 ie-lt10 ie-lt9'); ?>> <![endif]-->
+<!--[if IE 9 ]>  <body <?php body_class('ie ie9 ie-lt10'); ?>> <![endif]-->
+<!--[if gt IE 9]><!--><body <?php body_class(); ?>><!--<![endif]-->
+
 <img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo-print.png" alt="Washington University School of Medicine in St. Louis"/>
 <header>
 
@@ -207,25 +204,18 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 	<div class="mobile-container">
         <form method="get" id="mobile-search-form" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
             <input type="text" name="s" id="mobile-search-box" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" placeholder="<?php esc_attr_e( 'Search' ); ?>">
-            <!-- <input type="submit" class="submit" name="submit" value="GO" id="mobile-search-btn"> -->
         </form>
 
         <nav id="mobile-nav">
             <ul>
-                <li class="page_item<?php echo is_front_page() ? ' current_page_item' : '' ?>"><a href="<?php echo home_url(); ?>">Home</a></li>
-
                 <?php
-                $frontpage_id = get_option('page_on_front');
-                wp_list_pages( array(
-                    'sort_column' => 'menu_order',
-                    'title_li'    => '',
-                    'exclude'     => $frontpage_id
+                wp_nav_menu( array(
+                	'theme_location' => 'mobile-menu',
+                	'container' => false,
+                    'items_wrap' => '%3$s',
+                    'echo' => true,
                 ) );
                 ?>
-	
-				<li class="page_item"><a onclick="__gaTracker('send', 'event', 'mobile-utility-nav', 'http://wuphysicians.wustl.edu/directory.aspx', 'Find a Doctor');" href="http://wuphysicians.wustl.edu/directory.aspx">Find a Doctor</a></li>
-                <li class="page_item"><a onclick="__gaTracker('send', 'event', 'mobile-utility-nav', 'http://wustl.edu', 'WUSTL');" href="http://wustl.edu/">WUSTL</a></li>
-                <li class="page_item"><a onclick="__gaTracker('send', 'event', 'mobile-utility-nav', 'http://medicine.wustl.edu/directory', 'Directories');" href="http://medicine.wustl.edu/directory">Directories</a></li>
             </ul>
         </nav>
     </div>

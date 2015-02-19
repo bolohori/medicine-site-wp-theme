@@ -5,6 +5,11 @@
 // ***************************************
 
 
+function theme_slug_setup() {
+   
+}
+add_action( 'after_setup_theme', 'theme_slug_setup' );
+
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
@@ -129,9 +134,14 @@ add_post_type_support( 'page', 'excerpt' );
  */
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
 	function medicine_theme_setup() {
+
+		// Allow WordPress to handle <title> tags, as recommended in make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
+		add_theme_support( 'title-tag' );
+
 		// Create Header Menu theme location
 		register_nav_menus( array( 
 			'header-menu' => 'Header Menu',
+			'mobile-menu' => 'Mobile Menu',
 			'footer-menu' => 'Footer Menu',
 			'sticky-footer-menu' => 'Sticky Footer Menu'
 		) );
