@@ -40,19 +40,19 @@ function create_custom_post_types() {
 	register_post_type( 'news_releases', $args );
 
 	$labels = array(
-		'name'               => 'Press',
-		'singular_name'      => 'Press',
+		'name'               => 'In the Media',
+		'singular_name'      => 'In the Media',
 		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Press',
-		'edit_item'          => 'Edit Press',
-		'new_item'           => 'New Press',
-		'all_items'          => 'All Press',
-		'view_item'          => 'View Press',
-		'search_items'       => 'Search Press',
-		'not_found'          =>	'No Press found',
-		'not_found_in_trash' => 'No Press found in Trash', 
+		'add_new_item'       => 'Add New In the Media',
+		'edit_item'          => 'Edit In the Media',
+		'new_item'           => 'New In the Media',
+		'all_items'          => 'All In the Media',
+		'view_item'          => 'View In the Media',
+		'search_items'       => 'Search In the Media',
+		'not_found'          =>	'No In the Media found',
+		'not_found_in_trash' => 'No In the Media found in Trash', 
 		'parent_item_colon'  => '',
-		'menu_name'          => 'Press'
+		'menu_name'          => 'In the Media'
 	);
 	$args = array(
 		'labels'              => $labels,
@@ -64,7 +64,7 @@ function create_custom_post_types() {
 		'show_ui'             => true, 
 		'show_in_menu'        => true, 
 		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'news/press' ),
+		'rewrite'             => array( 'slug' => 'news/in-the-media' ),
 		'capability_type'     => 'post',
 		'hierarchical'        => false,
 		'menu_position'       => null,
@@ -100,7 +100,7 @@ function create_custom_post_types() {
 		'rewrite'             => array( 'slug' => 'news/in-the-news' ),
 		'capability_type'     => 'post',
 		'hierarchical'        => false,
-		'menu_position'       => null,
+		'menu_position'       => 5,
 	);
 	register_post_type( 'in_the_news', $args );
 
