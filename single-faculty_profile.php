@@ -38,7 +38,7 @@ get_header();
 
 			<?php 
 				the_title('<h1>', '</h1>');
-				echo "<p>" . get_the_content() . "</p>";
+				the_content();
 				$args = array (
 					'post_parent' => $post->ID, 
 					'post_type'   => 'faculty_profile',

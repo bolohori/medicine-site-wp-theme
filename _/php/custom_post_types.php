@@ -414,6 +414,7 @@ function create_custom_post_types() {
 		'supports'           => array(
 			'title',
 			'editor',
+			'excerpt',
 			'thumbnail',
 			'revisions',
 			'page-attributes',
