@@ -182,7 +182,9 @@
 					$excerpt = implode(" ",$excerpt);*/
 					$excerpt = get_the_excerpt( );
 					
+					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">" : "";
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
+					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
 
 					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read More</a>" : "";
 
@@ -199,7 +201,7 @@
 				<?php echo $slider; ?>
 			</div>
 			<div class="spotlight-archive">
-				<a href="/news/leaders">MORE</a>
+				<a href="/news/leaders">SEE ALL</a>
 			</div>
 		</div>
 		<?php echo $captions; ?>
