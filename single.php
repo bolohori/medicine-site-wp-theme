@@ -65,8 +65,14 @@
 					if( get_the_content() ) {
 						the_content();
 					} else {
-						$link = get_field( 'external_link' );
-						$button_text = $link['title'] !== null ? $link['title'] : "Read Article";
+						$link = get_field( 'url' );
+						if($post->post_type == 'news_releases') {
+							$button_text = "See News Release";
+						} elseif($post->post_type == 'announcement') {
+							$button_text = "View Announcement";
+						} else {
+							$button_text = "View Article";
+						}
 						the_excerpt();
 						echo "<br><a href='{$link['url']}'><button class='single-link'>$button_text</button></a>";
 					}
