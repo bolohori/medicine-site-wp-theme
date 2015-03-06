@@ -79,7 +79,7 @@ a {color: #336699;}
 				<p style="margin: 0 0 10px 0;">314.286.0051</p>
 					<a href="https://twitter.com/Barnesjewish"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/twitter.png" style="margin-right: 4px;" alt="Twitter"><a>
 					<a href="https://www.facebook.com/barnesjewishhospital"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
-				<p><a style="color: #fff; text-decoration: none;" href="http://barnesjewish.org/news">barnesjewish.org/news</a></p>
+				<p><a style="color: #fff; text-decoration: none;" href="http://www.barnesjewish.org/news">barnesjewish.org/news</a></p>
 			</div>
 			<div style="width: 210px; float: left; display: inline-block;">
 				<p style="margin: 0 0 10px 0; font-weight: bold; font-size: 14px;">Judy Martin</p>

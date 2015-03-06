@@ -24,9 +24,9 @@
 		</div>
 		<div class="single-footer last-child">
 			<p class="social">
-				<a title="Facebook" class="facebook" onclick="__gaTracker('send','event','outbound-footer-social','facebook');" href="http://www.facebook.com/WUSTLmedicine.health"></a>
+				<a title="Facebook" class="facebook" onclick="__gaTracker('send','event','outbound-footer-social','facebook');" href="https://www.facebook.com/WUSTLmedicine.health"></a>
 				<a title="Twitter" class="twitter" onclick="__gaTracker('send','event','outbound-footer-social','twitter');" href="http://twitter.com/WUSTLmed"></a>
-				<a title="LinkedIn" class="linkedin" onclick="__gaTracker('send','event','outbound-footer-social','linkedin');" href="http://www.linkedin.com/company/washington-university-school-of-medicine"></a>
+				<a title="LinkedIn" class="linkedin" onclick="__gaTracker('send','event','outbound-footer-social','linkedin');" href="https://www.linkedin.com/company/washington-university-school-of-medicine"></a>
 				<a title="Google Plus" class="googleplus" onclick="__gaTracker('send','event','outbound-footer-social','googleplus');" href="http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"></a>
 				<a title="RSS feed" class="rss" onclick="__gaTracker('send','event','outbound-footer-social','rss');" href="<?php bloginfo('rss2_url'); ?>"></a>
 				<a title="WUSTL Reader mobile app" class="reader" onclick="__gaTracker('send','event','outbound-footer-social','WUSTL reader');" href="http://reader.wustl.edu/"></a>
