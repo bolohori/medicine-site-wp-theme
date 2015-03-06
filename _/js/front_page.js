@@ -53,7 +53,7 @@ jQuery(document).ready(function($) {
 		controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
-		manualAdvance:true, //Force manual transitions
+		manualAdvance:false, //Force manual transitions
 		captionOpacity:0, //Universal caption opacity
         afterLoad: function(){ // event tracking for the first slide
             var sliderData = $('#spotlight-slider').data("nivo:vars");
