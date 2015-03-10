@@ -91,6 +91,7 @@ function create_custom_post_types() {
 		'labels'              => $labels,
 		'exclude_from_search' => true,
 		'show_in_nav_menus'   => false,
+		'has_archive'         => true,
 		'menu_icon'           => 'dashicons-feedback',
 		'public'              => false,
 		'publicly_queryable'  => true,
