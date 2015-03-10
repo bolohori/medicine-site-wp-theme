@@ -39,10 +39,10 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#spotlight-slider').nivoSlider({
-		effect:'slideInLeft', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
-		slices:1,
+		effect:'fade', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
+		slices:15,
 		animSpeed:500, //Slide transition speed
-		pauseTime:5000,
+		pauseTime:6500,
 		startSlide:0, //Set starting Slide (0 index)
 		directionNav:true, //Next & Prev
 		directionNavHide:true, //Only show on hover
@@ -53,7 +53,7 @@ jQuery(document).ready(function($) {
 		controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
 		keyboardNav:true, //Use left & right arrows
 		pauseOnHover:true, //Stop animation while hovering
-		manualAdvance:true, //Force manual transitions
+		manualAdvance:false, //Force manual transitions
 		captionOpacity:0, //Universal caption opacity
         afterLoad: function(){ // event tracking for the first slide
             var sliderData = $('#spotlight-slider').data("nivo:vars");

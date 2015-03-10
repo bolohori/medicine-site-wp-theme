@@ -51,7 +51,7 @@ wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/j
 				<a href="<?php echo $the_link; ?>"><h2><?php the_title(); ?></h2>
 				<div class="right-arrow">»</div></a>
 			</div>
-			<?php the_content(); ?>
+			<?php the_excerpt(); ?>
 				<div class="photo-container">
 				<?php
 				$grandchild_ids = array();

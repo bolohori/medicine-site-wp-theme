@@ -34,7 +34,7 @@
 			<ul id="left-nav">
 				<li class="top_level_page"></li>
 				<li class="<?php echo ($post->post_type == 'news_releases') ? "current_page_item " : ""; ?>page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
-				<li class="<?php echo ($post->post_type == 'media_mentions') ? "current_page_item " : ""; ?>page_item page-item-4721"><a href="/news/press/">In the Media</a></li>
+				<li class="<?php echo ($post->post_type == 'media_mentions') ? "current_page_item " : ""; ?>page_item page-item-4721"><a href="/news/in-the-media/">In the Media</a></li>
 				<li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
 				<li class="<?php echo ($post->post_type == 'research_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research Highlights</a></li>
 				<li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
@@ -67,8 +67,14 @@
 					if( get_the_content() ) {
 						the_content();
 					} else {
-						$link = get_field( 'external_link' );
-						$button_text = $link['title'] !== null ? $link['title'] : "Read Article";
+						$link = get_field( 'url' );
+						if($post->post_type == 'news_releases') {
+							$button_text = "See News Release";
+						} elseif($post->post_type == 'announcement') {
+							$button_text = "View Announcement";
+						} else {
+							$button_text = "View Article";
+						}
 						the_excerpt();
 						echo "<br><a href='{$link['url']}'><button class='single-link'>$button_text</button></a>";
 					}
