@@ -75,7 +75,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 		<div class="wrapper">
 			<div class="announcements-left">
 				<h2>Announcements</h2>
-				<p>Updates on campus events, policy changes, road and building construction, calls for papers and more.</p>
+				<p>Updates on campus events, policies, construction and more.</p>
 			</div>
 			<div class="announcements-right">
 				<ul class="announcement-list">
