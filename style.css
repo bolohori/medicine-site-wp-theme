@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.03.09.1
+Version:     15.03.17.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -451,19 +451,19 @@ textarea {
 }
 
 #mobile-nav li .children .page_item a {
-	padding: 14px 65px 14px 36px;
+	padding: 19px 65px 19px 36px;
 }
 
 #mobile-nav li .sub-menu .menu-item a {
-	padding: 14px 65px 14px 36px;
+	padding: 19px 65px 19px 36px;
 }
 
 #mobile-nav li .children .page_item .children .page_item a {
-	padding: 14px 65px 14px 54px;
+	padding: 19px 65px 19px 54px;
 }
 
 #mobile-nav li .sub-menu .menu-item .sub-menu .menu-item a {
-	padding: 14px 65px 14px 54px;
+	padding: 19px 65px 19px 54px;
 }
 
 #mobile-nav .page_item {
@@ -511,7 +511,7 @@ textarea {
 #mobile-nav .expand {
     float: right;
     border-left: 1px solid #e3e3e3;    
-    padding: 20px 10px;
+    padding: 19px 10px;
     cursor: pointer;
     position: absolute;
     right: 0;
@@ -521,16 +521,16 @@ textarea {
 
 #mobile-nav .expand.dashicons {
     height : 100%;
-    width  : 50px;
+    width  : 58px;
     color  : #9a0202;
 }
 
 #mobile-nav .page_item .children .page_item .expand {
-	padding: 15px 10px;
+	padding: 19px 10px;
 }
 
 #mobile-nav .menu-item .sub-menu .menu-item .expand {
-	padding: 15px 10px;
+	padding: 19px 10px;
 }
 
 
