@@ -5,7 +5,7 @@
 <head data-template-set="html5-reset">
 	<meta charset="utf-8">
 
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+	<!-- Always force latest IE rendering engine (even in intranet) -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
@@ -187,7 +187,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 		<div class="wrapper clearfix">
 			<div id="mobile-search-icon"><div class="dashicons dashicons-search"></div></div>
             <div id="mobile-menu-icon"><div class="dashicons dashicons-menu"></div></div>
-			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.svg" width="607" height="33" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/header-logo.png';this.onerror=null;" alt="Washington University School of Medicine in St. Louis"/></a></div>
+			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.svg" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/></a></div>
 			<div id="site-title-text"><a href="<?php echo home_url(); ?>">Washington University School of Medicine</a></div>
 			<?php get_search_form(); ?>
 		</div>

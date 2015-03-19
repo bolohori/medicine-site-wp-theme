@@ -241,7 +241,7 @@ header h2 {
 #action-nav li a {
 	color         : #cbb8b8;
 	letter-spacing: .5px;
-	font-weight   : bold;
+	font-weight   : 600;
 	font-size     : 13px;
 }
 
@@ -266,6 +266,10 @@ header h2 {
 	background: -ms-linear-gradient(top, #990000 0%,#720000 72%);
 	background: linear-gradient(to bottom, #990000 0%,#720000 72%);
 	filter:     progid:DXImageTransform.Microsoft.gradient( startColorstr='#990000', endColorstr='#720000',GradientType=0 );
+}
+
+.ie-lt8 #header-site-row {
+	height: 82px;
 }
 
 #mobile-menu-icon,
@@ -332,8 +336,8 @@ textarea {
 	color    : #fff;
 }
 
-.ie7 #site-title a {
-	padding-bottom: 22px;
+.ie-lt9 #site-title img[src$=".png"] {
+	max-width: none;
 }
 
 #main-nav {
@@ -712,7 +716,7 @@ button.single-link:hover {
 
 #left-nav li a {
 	color      : #980006;
-	font-weight: bold;
+	font-weight: 600;
 	font-size  : 13px;
 	margin-left: 10px;
 	display    : block;
@@ -999,7 +1003,7 @@ footer p {
 }
 
 footer a {
-	font-weight: bold;
+	font-weight: 600;
 }
 
 .facebook,
@@ -1035,10 +1039,6 @@ footer a {
 	background        : url(_/img/campaign-bg.png);
 	width             : 100%;
 	height            : 39px;
-}
-
-.campaign-wrapper:hover {
-	background: url(_/img/campaign-bg-hover.png);
 }
 
 
@@ -1196,7 +1196,7 @@ footer a {
 p.announcements {
 	float: right;
 	margin: -30px 16px 0 0;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 11px;	
 	cursor: pointer;
 }
@@ -1204,7 +1204,7 @@ p.announcements {
 p.information-for {
 	float: right;
 	margin: -30px 16px 0 0;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 11px;	
 	cursor: pointer;
 }
@@ -1391,7 +1391,7 @@ a.news-title {
 }
 
 .news-list li p{
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 12px;
 }
 
@@ -1500,7 +1500,7 @@ a.news-title {
 
 .hero-button {
 	display: inline-block;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 12px;
 	text-transform: uppercase;
 	color: #fff;
@@ -1589,7 +1589,6 @@ a.news-title {
 	overflow  : visible;
 	width     : 143px;
 	max-height: 200px;
-	border    : 1px solid #d5d5d5;
 }
 
 #spotlight-slider .nivo-caption {
@@ -1598,7 +1597,6 @@ a.news-title {
 	left       : 143px;
 	padding    : 32px 45px;
 	width      : 314px;
-	border-left: 1px solid #d5d5d5;
 	background : #fff;
 	color      : #333;
 	font-size  : 13px;
@@ -1745,7 +1743,7 @@ a.news-title {
 	float: right;
 	margin: 16px 0 0 0;
 	letter-spacing: 1px;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 11px;
 }
 

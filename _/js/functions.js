@@ -61,6 +61,13 @@ jQuery(document).ready(function($) {
 
     $("#mobile-nav .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
     $("#mobile-nav .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+
+    if (!Modernizr.svg) {
+    $('img[src$=".svg"]').each(function()
+    {
+        $(this).attr('src', $(this).attr('src').replace('.svg', '.png'));
+    });
+}
 });
 
 
