@@ -23,6 +23,18 @@
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_/img/favicon.ico">
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/_/img/apple-touch-icon.png">
 
+	<script type="application/ld+json">
+	{ "@context" : "http://schema.org",
+	  "@type" : "Organization",
+	  "name" : "Washington University School of Medicine",
+	  "url" : "http://medicine.wustl.edu",
+	  "sameAs" : [ "http://www.facebook.com/WUSTLmedicine.health",
+	    "http://www.twitter.com/WUSTLmed",
+	    "https://www.linkedin.com/company/washington-university-school-of-medicine",
+	    "http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"] 
+	}
+	</script>
+
 	<!--[if gte IE 9]>
 	<style type="text/css">
 		.gradient {
