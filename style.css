@@ -1298,6 +1298,7 @@ a.news-title {
 	overflow: hidden;
 	width   : 458px;
 	height  : 234px;
+	background: #fff;
 }
 
 .ie7 .spotlight-slider-wrapper,
