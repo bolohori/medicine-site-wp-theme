@@ -93,7 +93,7 @@ function create_custom_post_types() {
 		'show_in_nav_menus'   => false,
 		'has_archive'         => true,
 		'menu_icon'           => 'dashicons-feedback',
-		'public'              => false,
+		'public'              => true,
 		'publicly_queryable'  => true,
 		'show_ui'             => true, 
 		'show_in_menu'        => true, 
