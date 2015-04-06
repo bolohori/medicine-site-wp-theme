@@ -1,6 +1,46 @@
 <?php
 function create_custom_post_types() {
 	$labels = array(
+		'name'               => 'Student Profiles',
+		'singular_name'      => 'Student Profile',
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New Student Profile',
+		'edit_item'          => 'Edit Student Profile',
+		'new_item'           => 'New Student Profile',
+		'all_items'          => 'All Student Profiles',
+		'view_item'          => 'View Student Profile',
+		'search_items'       => 'Search Student Profiles',
+		'not_found'          =>	'No Student Profiles found',
+		'not_found_in_trash' => 'No Student Profiles found in Trash', 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Student Profiles'
+	);
+	$args = array(
+		'labels'              => $labels,
+		'exclude_from_search' => true,
+		'show_in_nav_menus'   => false,
+		'menu_icon'           => 'dashicons-nametag',
+		'public'              => true,
+		'publicly_queryable'  => true,
+		'show_ui'             => true, 
+		'show_in_menu'        => true, 
+		'query_var'           => true,
+		'rewrite'             => array( 'slug' => '' ),
+		'capability_type'     => 'post',
+		'hierarchical'        => false,
+		'menu_position'       => null,
+		'supports'            => array(
+			'title',
+			'editor',
+			'thumbnail',
+			'revisions',
+			'page-attributes',
+			'excerpt'
+		)
+	);
+	register_post_type( 'profile', $args );
+
+	$labels = array(
 		'name'               => 'News Releases',
 		'singular_name'      => 'News Release',
 		'add_new'            => 'Add New',
