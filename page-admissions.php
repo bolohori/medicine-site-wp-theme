@@ -48,7 +48,7 @@ if (have_posts()) :
 					<ul id="OT" class="hero-list left-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/ot.jpg" alt=""></li>
 						<li class="hero-list-title">Occupational Therapy</li>
-						<li><a href="http://www.ot.wustl.edu/education/phd-in-rehabilitation-participation-science-142">Rehabilitation and Participation Science (PhD)</a></li>
+						<li><a href="http://www.ot.wustl.edu/education/phd-in-rehabilitation-and-participation-science-142">Rehabilitation and Participation Science (PhD)</a></li>
 						<li><a href="http://www.ot.wustl.edu/education/masters-msot-131">Occupational Therapy (MS)</a></li>
 						<li><a href="http://www.ot.wustl.edu/education/doctorate-otd-140">Occupational Therapy (OTD)</a></li>
 					</ul>
@@ -69,7 +69,7 @@ if (have_posts()) :
 						<li><a href="http://crtc.wustl.edu/degrees/msci.html">Clinical Investigation (MSCI)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/GEMS/Pages/default.aspx">Genetic Epidemiology (MS)</a></li>
 						<li><a href="http://www.mphs.wustl.edu/en">Population Health (MPHS)</a></li>
-						<li><a href="http://brownschool.wustl.edu/Admissions/MPH/Pages/MPHLanding.aspx">Public Health (MPH)</a></li>
+						<li><a href="http://mph.wustl.edu/">Public Health (MPH)</a></li>
 					</ul>
 					<ul id="PT" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/pt.jpg" alt=""></li>
@@ -87,7 +87,7 @@ if (have_posts()) :
 					<li><a href="http://medicine.wustl.edu/directory/academic-departments">Academic Departments &amp; Programs</a></li>
 					<li><a href="http://bulletinoftheschoolofmedicine.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
 					<li><a href="https://cme.wustl.edu/">Continuing Medical Education</a></li>
-					<li><a href="http://wumsfinaid.wustl.edu/">Financial Aid</a></li>
+					<li><a href="http://finaid.med.wustl.edu/">Financial Aid</a></li>
 					<li><a href="http://gme.wustl.edu/">Graduate Medical Education</a></li>
 					<li><a href="http://postdoc.wustl.edu/">Postdoctoral Affairs</a></li>
 					<li><a href="http://wusmregistrar.wustl.edu/">Registrar</a></li>

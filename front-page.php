@@ -118,7 +118,7 @@
 						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
 					if( get_field('audio') !== '') {
 						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
-						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" class=\"audio-file\">Listen</a> | ";
+						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" onclick=\"__gaTracker('send','event','news-release-audio','$title');\" class=\"audio-file\">Listen</a> | ";
 						$j++;
 					}
 					echo "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read Article</a></p></li>";
