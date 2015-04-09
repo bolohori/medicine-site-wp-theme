@@ -25,7 +25,7 @@ function create_custom_post_types() {
 		'show_ui'             => true, 
 		'show_in_menu'        => true, 
 		'query_var'           => true,
-		'rewrite'             => array( 'slug' => '' ),
+		'rewrite'             => array( 'slug' => 'about/people' ),
 		'capability_type'     => 'post',
 		'hierarchical'        => false,
 		'menu_position'       => null,
