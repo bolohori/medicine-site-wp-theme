@@ -206,8 +206,8 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * The admin bar enqueues these two when a user is logged in, we need manually include
 		 * them if they aren't logged in
 		 */
-		wp_dequeue_style( 'open-sans-css' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' );
+		wp_deregister_style( 'open-sans' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 
@@ -514,6 +514,7 @@ add_filter( 'in_focus_link_text', 'in_focus_link_text_function', 10, 1 );
 add_filter( 'in_focus_link_field', 'in_focus_link_url_function', 10, 1 );
 add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } );
 add_filter( 'in_focus_date_text', function() { return ''; } );
+add_filter( 'in_focus_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
 
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
@@ -523,6 +524,14 @@ add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 
 add_filter( 'news_releases_link_field', function() { return 'url'; } );
+
+// SO meta!
+add_filter( 'profile_excerpt_text', function() {
+		add_filter( 'excerpt_more', function() { return '&hellip;'; }, 999 );
+		add_filter( 'excerpt_length', function() { return 30; }, 999 );
+		return get_the_excerpt();
+});
+add_filter( 'profile_template_file', function() { return get_stylesheet_directory() . "/_/php/profile-template.php"; } );
 
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
