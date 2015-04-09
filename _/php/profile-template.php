@@ -1,5 +1,6 @@
 <?php
 
+echo "<hr>";
 echo "<div class='$type-custom-archive-entry custom-archive-entry clearfix'>";
 echo "<a onclick=\"javascript:_gaq.push(['_trackEvent','{$type}-archive','$ga_title']);\" href='$url'>";
 if( $show_thumbnail ) {

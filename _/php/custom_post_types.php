@@ -1,19 +1,19 @@
 <?php
 function create_custom_post_types() {
 	$labels = array(
-		'name'               => 'Student Profiles',
-		'singular_name'      => 'Student Profile',
+		'name'               => 'Profiles',
+		'singular_name'      => 'Profile',
 		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Student Profile',
-		'edit_item'          => 'Edit Student Profile',
-		'new_item'           => 'New Student Profile',
-		'all_items'          => 'All Student Profiles',
-		'view_item'          => 'View Student Profile',
-		'search_items'       => 'Search Student Profiles',
-		'not_found'          =>	'No Student Profiles found',
-		'not_found_in_trash' => 'No Student Profiles found in Trash', 
+		'add_new_item'       => 'Add New Profile',
+		'edit_item'          => 'Edit Profile',
+		'new_item'           => 'New Profile',
+		'all_items'          => 'All Profiles',
+		'view_item'          => 'View Profile',
+		'search_items'       => 'Search Profiles',
+		'not_found'          =>	'No Profiles found',
+		'not_found_in_trash' => 'No Profiles found in Trash', 
 		'parent_item_colon'  => '',
-		'menu_name'          => 'Student Profiles'
+		'menu_name'          => 'Profiles'
 	);
 	$args = array(
 		'labels'              => $labels,
