@@ -25,7 +25,7 @@ if (have_posts()) :
 					<ul id="medical-education" class="hero-list left-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/medical-education.jpg" alt=""></li>
 						<li class="hero-list-title">Medical Education</li>
-						<li><a href="http://medadmissions.wustl.edu/Education/Pages/Education.aspx">Doctor of Medicine (MD)</a></li>
+						<li><a href="http://mdadmissions.wustl.edu">Doctor of Medicine (MD)</a></li>
 						<li><a href="http://mstp.wustl.edu/admissions/Pages/Admissions.aspx">MSTP (MD/PhD)</a></li>
 						<li><a href="http://bme.wustl.edu/graduateprograms/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
 					</ul>

@@ -532,7 +532,10 @@ add_filter( 'profile_excerpt_text', function() {
 		return get_the_excerpt();
 });
 add_filter( 'profile_template_file', function() { return get_stylesheet_directory() . "/_/php/profile-template.php"; } );
+<<<<<<< HEAD
+=======
 add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
+>>>>>>> master
 
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
