@@ -1,16 +1,10 @@
 <!doctype html>
 
-<!--[if lt IE 7 ]> <html class="ie ie6 ie-lt10 ie-lt9 ie-lt8 ie-lt7 no-js" lang="en"> <![endif]-->
-<!--[if IE 7 ]>	 <html class="ie ie7 ie-lt10 ie-lt9 ie-lt8 no-js" lang="en"> <![endif]-->
-<!--[if IE 8 ]>	 <html class="ie ie8 ie-lt10 ie-lt9 no-js" lang="en"> <![endif]-->
-<!--[if IE 9 ]>	 <html class="ie ie9 ie-lt10 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
+<html class="no-js" lang="en">
 
-<head id="medicine-wustl-edu" data-template-set="html5-reset">
+<head data-template-set="html5-reset">
 	<meta charset="utf-8">
 
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<title><?php wp_title(); ?></title>
@@ -18,30 +12,8 @@
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
 	<meta name="author" content="Washington University School of Medicine in St. Louis">
 
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> -->
-
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_/img/favicon.ico">
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/_/img/apple-touch-icon.png">
-
-	<script type="application/ld+json">
-	{ "@context" : "http://schema.org",
-	  "@type" : "Organization",
-	  "name" : "Washington University School of Medicine",
-	  "url" : "http://medicine.wustl.edu",
-	  "sameAs" : [ "http://www.facebook.com/WUSTLmedicine.health",
-	    "http://www.twitter.com/WUSTLmed",
-	    "https://www.linkedin.com/company/washington-university-school-of-medicine",
-	    "http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"] 
-	}
-	</script>
-
-	<!--[if gte IE 9]>
-	<style type="text/css">
-		.gradient {
-			filter: none;
-		}
-	</style>
-	<![endif]-->
 
 	<?php
 	if ( get_field('page_specific_css') ) { ?>
@@ -63,7 +35,11 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 ?>
 </head>
 
-<body <?php body_class(); ?>>
+<!--[if IE 7 ]>  <body <?php body_class('ie ie7 ie-lt10 ie-lt9 ie-lt8'); ?>> <![endif]-->
+<!--[if IE 8 ]>  <body <?php body_class('ie ie8 ie-lt10 ie-lt9'); ?>> <![endif]-->
+<!--[if IE 9 ]>  <body <?php body_class('ie ie9 ie-lt10'); ?>> <![endif]-->
+<!--[if gt IE 9]><!--><body <?php body_class(); ?>><!--<![endif]-->
+
 <img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.png" alt="Washington University School of Medicine in St. Louis"/>
 <header>
 
@@ -207,7 +183,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 	</div>
 
 	<div id="header-site-row" class="clearfix">
-		<div class="wrapper">
+		<div class="wrapper clearfix">
 			<?php /*<div id="mobile-menu-icon"><img src="<?php echo get_template_directory_uri(); ?>/_/img/mobile-menu-icon.png"></div>*/ ?>
 
 			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" alt="Washington University School of Medicine in St. Louis"/></a></div>

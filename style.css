@@ -1,20 +1,13 @@
 /*
-Theme Name:  WUSM
+Theme Name:  WUSM-prod
 Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.04.10.2
+Version:     15.04.14.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
-
-/* apply a natural box layout model to all elements
-SOMEDAY WE'LL GET TO USE THIS
-*, *:before, *:after {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
- }
- */
 
 /* Hide only visually, but have it available for screenreaders */
 .visuallyhidden {
@@ -42,7 +35,7 @@ img.size-full {
 	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 
- .wp-caption { 
+.wp-caption { 
 	width: 100%; 
  }
 
@@ -67,6 +60,7 @@ h1 {
 	font-family: Georgia, serif;
 	font-weight: normal;
 	font-size: 30px;
+	margin-bottom: 30px;
 }
 
 h2 {
@@ -146,6 +140,10 @@ article .alignright {
 	margin: 20px 0 20px 20px;
 }
 
+article .alignnone {
+	margin: 20px 0;
+}
+
 article .wp-caption.alignright, article img.alignright {
 	margin: 7px 0 0 20px;
 }
@@ -181,6 +179,8 @@ header h2 {
 	margin: 0 auto;
 	width : 960px;
 	height: 100%;
+	position: relative;
+
 }
 
 #header-logo {
@@ -250,8 +250,8 @@ header h2 {
 }
 
 #header-site-row {
+	position: relative;
 	background: #990000;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #990000 0%, #720000 72%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#990000), color-stop(72%,#720000));
 	background: -webkit-linear-gradient(top, #990000 0%,#720000 72%);
@@ -266,12 +266,13 @@ header h2 {
 }
 
 #search-form {
-	float       : right;
-	position    : relative;
+	float: right;
+	position: absolute;
 	margin-right: 10px;
-	width       : 280px;
-	height      : 25px;
-	top         : 20px;
+	width: 240px;
+	top: 50%;
+	margin-top: -19px;
+	right: 0;
 }
 
 #dirform input[type=text] {
@@ -292,27 +293,28 @@ textarea {
 }
 
 #search-box {
-	border            : none;
-	background        : #680101;
-	position          : absolute;
-	top               : 6px;
-	left              : 30px;
-	margin            : 3px 0 0 10px;
-	width             : 205px;
-	-webkit-box-shadow: inset 1px 1px 1px #000000;
-	-moz-box-shadow   : inset 1px 1px 1px #000000;
-	box-shadow        : inset 1px 1px 1px #000000;	
-	color             : #fff;
-	letter-spacing    : 1px;
-	font-style        : italic;
-	font-size         : 12px;
+	margin: 0;
+    width: 200px;
+    padding: 10px 30px 11px 10px;
+    border: none;
+    border-radius: 5px;
+    background: #a70000;
+    color: #fff;
+    letter-spacing: 1px;
+    font-style: italic;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+
 }
 
 #search-btn {
 	position: absolute;
-	top     : 16px;
-	left    : 258px;
-	cursor  : pointer;
+	top: 50%;
+	margin: -7px 0 0 0;
+	right: 10px;
+	cursor: pointer;
+	width: auto;
+
 }
 
 .ie7 #search-btn {
@@ -446,7 +448,9 @@ button.single-link:hover {
 }
 
 #featured-image img{
-	margin-bottom: -3px; /* I don't know why it adds 3px to the height of the featured image without this. */
+	display: block;
+	margin: 0 auto;
+
 }
 
 /* Main
@@ -483,12 +487,12 @@ button.single-link:hover {
 }
 
 .landing-page #left-col {
-	padding: 45px 10px 0 0;
+	padding: 45px 10px 50px 0;
 }
 
 .archive #left-col,
 .non-landing-page #left-col {
-	padding: 123px 10px 0 0;
+	padding: 123px 10px 50px 0;
 }
 
 .home #left-col {
@@ -532,7 +536,11 @@ button.single-link:hover {
 #left-nav li.page_item_has_children ul.children li {
 	margin-left  : 20px;
 	border-bottom: none;
-	padding      : 10px 0;
+	padding      : 6px 0;
+}
+
+#left-nav li.page_item_has_children ul.children li:first-child {
+	padding-top: 12px;
 }
 
 #left-nav li.page_item_has_children ul.children li a {
@@ -540,11 +548,7 @@ button.single-link:hover {
 }
 
 #left-nav li.page_item_has_children ul.children li:last-child {
-	padding-bottom: 0;
-}
-
-#mobile-nav {
-	display: none;
+	padding-bottom: 4px;
 }
 
 
@@ -746,7 +750,6 @@ footer {
 	position: relative;
 	float: left;
 	width: 100%;
-	border-top: 1px solid #efe2c9;
 	text-align: center;
 	line-height: 19px;
 	background: #dedede;
@@ -803,7 +806,6 @@ footer a {
 	background        : url(_/img/campaign-bg.png);
 	width             : 100%;
 	height            : 39px;
-	border-bottom     : 1px solid #efe2c9;
 }
 
 .campaign-wrapper:hover {
@@ -1192,18 +1194,24 @@ a.news-title {
 	margin-top: -43px;
 	min-height: 225px;
 	width: 100%;
-	background: url(_/img/hero/hero-bg.png) center no-repeat;
+	background: url(_/img/hero/hero-bg.png) top center no-repeat;
 	text-align: center;
 	padding: 0px 0px 32px 0px;
 	}
 
 .hero-text .wrapper {
-	padding: 56px 0 8px 0;
+	padding: 36px 0 38px 0;
+	max-width: 960px;
+	width: 90%;
+}
+
+.hero-text h1 {
+	margin-bottom: 25px;
 }
 
 .hero-text p {
-	margin: 0 auto;
-	width: 580px;
+	margin: 0 auto 15px;
+	max-width: 580px;
 	line-height: 26px;
 	color: #525252;
 	font-size: 16px;
@@ -1219,6 +1227,10 @@ a.news-title {
 	width: 330px;
 }
 
+.spotlight-left h1 {
+	margin-bottom: 15px;
+}
+
 #spotlight-slider .nivo-directionNav a,
 #spotlight-slider .nivo-directionNav a:hover {
 	background-image: url(_/css/default/spotlight-arrows.png);
@@ -1232,10 +1244,9 @@ a.news-title {
 	color: #fff;
 	padding: 12px 0;
 	width: 145px;
-	margin: 30px 5px;
+	margin: 15px 5px 0;
 	letter-spacing: 0.1em;
 	background: #da2a2a;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RhMmEyYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5MzAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top,  #da2a2a 0%, #930000 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#da2a2a), color-stop(100%,#930000));
 	background: -webkit-linear-gradient(top,  #da2a2a 0%,#930000 100%);
@@ -1248,7 +1259,6 @@ a.news-title {
 
 .hero-button:hover {
 	background: #f24444;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YyNDQ0NCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjMjAyMDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top,  #f24444 0%, #c20202 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f24444), color-stop(100%,#c20202));
 	background: -webkit-linear-gradient(top,  #f24444 0%,#c20202 100%);
@@ -1422,6 +1432,7 @@ a.news-title {
 
 .page-template-admissions-php h1 {
 	color: #000;
+	margin-bottom: 15px;
 }
 
 .page-template-admissions-php p {
