@@ -261,6 +261,10 @@ header h2 {
 	filter:     progid:DXImageTransform.Microsoft.gradient( startColorstr='#990000', endColorstr='#720000',GradientType=0 );
 }
 
+.ie-lt8 #header-site-row {
+    height: 80px;
+}
+
 #mobile-menu-icon {
 	display: none;
 }
@@ -326,10 +330,6 @@ textarea {
 	font-size: 24px;
 	margin   : 27px 0 12px 10px;
 	color    : #fff;
-}
-
-.ie7 #site-title a {
-	padding-bottom: 22px;
 }
 
 #main-nav {
