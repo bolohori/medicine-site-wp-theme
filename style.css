@@ -1,10 +1,10 @@
 /*
-Theme Name:  WUSM-prod
+Theme Name:  WUSM
 Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.04.14.0
+Version:     15.04.16.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -755,8 +755,8 @@ footer {
 	background: #dedede;
 }
 
-.ie7 footer {
-	padding-bottom: 123px;
+footer .wrapper {
+	min-height: 311px;
 }
 
 footer li {
@@ -784,34 +784,76 @@ footer a {
 	display: inline-block;
 }
 
-.facebook { background:url(_/img/facebook.png);}
-.facebook:hover { background:url(_/img/facebook_on.png);}
-.twitter { background:url(_/img/twitter.png);}
-.twitter:hover { background:url(_/img/twitter_on.png);}
-.linkedin { background:url(_/img/linkedin.png);}
-.linkedin:hover { background:url(_/img/linkedin_on.png);}
-.googleplus { background:url(_/img/googleplus.png);}
-.googleplus:hover { background:url(_/img/googleplus_on.png);}
-.rss { background:url(_/img/rss.png);}
-.rss:hover { background:url(_/img/rss_on.png);}
-.reader { background:url(_/img/reader.png);}
-.reader:hover { background:url(_/img/reader_on.png);}
+.facebook {
+	background: #3b5998;
+}
+
+.facebook:hover {
+	opacity: 0.8;
+}
+
+.twitter {
+	background: #55acee;
+}
+
+.twitter:hover {
+	opacity: 0.8;
+}
+
+.linkedin {
+	background: #007db5;
+}
+
+.linkedin:hover {
+	opacity: 0.8;
+}
+
+.googleplus {
+	background: #dd4b39;
+}
+
+.googleplus:hover {
+	opacity: 0.8;
+}
+
+.rss {
+	background: #f2861d;
+}
+
+.rss:hover {
+	opacity: 0.8;
+}
+
+.reader:hover {
+	opacity: 0.8;
+}
 
 .campaign-wrapper {
-	-webkit-transition: background-image 0.2s ease-in-out;
-	-moz-transition   : background-image 0.2s ease-in-out;
-	-ms-transition    : background-image 0.2s ease-in-out;
-	-o-transition     : background-image 0.2s ease-in-out;
-	transition        : background-image 0.2s ease-in-out;
 	background        : url(_/img/campaign-bg.png);
 	width             : 100%;
 	height            : 39px;
 }
 
-.campaign-wrapper:hover {
+.campaign-wrapper:after {
 	background: url(_/img/campaign-bg-hover.png);
+	content: "";
+	position: absolute;
+    top: 0;
+    left: 0;
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out;
+	width: 100%;
+    height: 39px;
 }
 
+.campaign-wrapper:hover:after {
+	opacity: 1;
+}
+
+.campaign-wrapper .wrapper {
+	z-index: 99;
+	min-height: 0;
+}
 
 .social {
 	border-bottom: 1px solid #bcbcbc;
@@ -827,13 +869,13 @@ footer a {
 }
 
 .double-footer {
-	padding: 0 15px 0 72px;
-	width: 410px;
+	padding: 0 20px 0 72px;
+	width: 390px;
 }
 
 .single-footer {
-	width: 175px;
-	padding: 0 3px 0 26px;
+	width: 172px;
+	padding: 0 20px 0 20px;
 }
 
 .single-footer,
@@ -1155,7 +1197,6 @@ a.news-title {
 
 .news-list li{
 	display: block;
-	float: left;
 	padding: 14px 10px 10px 0;
 	
 }
@@ -1380,9 +1421,7 @@ a.news-title {
 }
 
 .campaign-banner {
-	position: relative;
-	float: left;
-	width: 960px;
+	width: 100%;
 	height: 38px;
 }
 
