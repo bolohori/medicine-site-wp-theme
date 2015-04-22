@@ -66,10 +66,12 @@ $pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 1
 get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
 
-	<div id="page-background-r"></div>
-	<div id="page-background-l"></div>
+	<div id="page-background"></div>
 
 	<div class="wrapper">
+
+		<div id="page-background-inner"></div>
+		
 		<nav id="left-col">
 		</nav>
 

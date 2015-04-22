@@ -11,12 +11,6 @@
 jQuery(document).ready(function($) {
 	var $window = $(window);
 
-	// Really need to clean all these up...
-	if( $('#left-col').height() > $('#main article').height() )
-		$('#main article').css("min-height", $('#left-col').height() + 123);
-	if( $('#right-col').height() > $('#main article').height() )
-		$('#main article').css("min-height", $('#right-col').height() + 123);
-
 	$(".announcements").click(function(e){
 		e.preventDefault();
 		$(".announcements .arrow").toggleClass("arrow-down arrow-up");
