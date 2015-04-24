@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.04.22.0
+Version:     15.04.24.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -437,6 +437,16 @@ input[type=submit]:hover,
 button.single-link:hover {
 	background: #c40000;
 }
+
+/* Gravity Forms */
+article .gform_wrapper .top_label .gfield_label {
+    margin-bottom: 0;
+}
+
+article .gform_wrapper .top_label .gfield_description {
+    padding-top: 0;
+}
+
 
 /* Featured image
 -------------------------------------------------------------------------------*/
