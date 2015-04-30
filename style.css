@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.04.29.0
+Version:     15.04.30.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -264,7 +264,8 @@ header h2 {
     height: 80px;
 }
 
-#mobile-menu-icon {
+#mobile-menu-icon,
+#mobile-search-icon {
 	display: none;
 }
 
@@ -279,13 +280,12 @@ header h2 {
 }
 
 #dirform input[type=text] {
-	width: 223px;
+	max-width: 223px;
 }
 
-#search-box,
 input[type=text],
 input[type=email] {
-	padding      : 8px 25px 8px 10px;
+	padding      : 8px;
 	border-radius: 5px;
 	border       : 1px solid #ccc;
 }
@@ -388,19 +388,46 @@ input {
 }
 
 #dirform .button {
-	width        : 250px;
-	position     : relative;
-	left         : 190px;
-	margin-right : -190px;
+	max-width: 258px;
+	margin: 8px 0 0 190px;
 }
 
 #dirform .button input {
-	width             : 110px;
-	display           : inline;
-	margin-right      : 10px;
-	cursor            : pointer;
-	-moz-appearance    : none;
+	width: auto;
+	display: inline-block;
+	padding: 0 18px;
+	margin-right: 15px;
+	cursor: pointer;
+	-moz-appearance: none;
 	-webkit-appearance: none;
+	font-family: 'Open Sans', sans-serif;
+}
+
+@media screen and (max-width: 550px) {
+	#dirform .dir-group label {
+		display: block;
+		float: none;
+		margin: 0;
+		padding: 0;
+		text-align: left;
+	}
+	#dirform .dir-group input[type=text],
+	#dirform .dir-group input[type=email] {
+		margin: 5px 0 15px;
+		width: auto;
+	}
+	#dirform .button {
+		margin-left: 0;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 310px) {
+	#dirform .dir-group input[type=text],
+	#dirform .dir-group input[type=email] {
+		width: 100%;
+		max-width: none;
+		box-sizing: border-box;
+	}
 }
 
 input[type=reset],
@@ -466,7 +493,6 @@ article .gform_wrapper .top_label .gfield_description {
 #featured-image img{
 	display: block;
 	margin: 0 auto;
-
 }
 
 /* Main
@@ -1077,7 +1103,7 @@ article.search-results {
 }
 
 .search-result {
-	width: 525px;
+	max-width: 525px;
 	overflow: hidden;
 }
 
@@ -1474,16 +1500,22 @@ a.news-title {
 }
 
 /*
- * Admissions specific...because
+ * Admissions
  */
+
 .page-template-admissions-php {
 	-webkit-text-size-adjust:none;
 }
+
 .page-template-admissions-php .intro {
 	position: relative;
 	padding-top: 45px;
 	text-align: center;
 	background: #fafafa;
+}
+
+.page-template-admissions-php .intro .wrapper {
+	width: 90%;
 }
 
 .page-template-admissions-php h1 {
@@ -1493,7 +1525,7 @@ a.news-title {
 
 .page-template-admissions-php p {
 	line-height: 25px;
-	width: 520px;
+	max-width: 520px;
 	margin: 0 auto;
 }
 
@@ -1503,14 +1535,14 @@ a.news-title {
 
 .page-template-admissions-php .program-list,
 .page-template-admissions-php .hero-list {
-	font-weight  : 600;
-	display      : inline-block;
-	line-height  : 17px;
-	width        : 720px;
-	position     : relative;
-	border       : 1px solid #ddd;
+	font-weight: 600;
+	display: inline-block;
+	line-height: 17px;
+	max-width: 720px;
+	position: relative;
+	border: 1px solid #ddd;
 	border-radius: 10px;
-	background   : #fff;
+	background: #fff;
 	margin-bottom: 30px;
 }
 
@@ -1524,29 +1556,45 @@ ul.program-list li.last-child {
 }
 
 .page-template-admissions-php ul.hero-list {
-	width         : 100%;
+	width: 100%;
 	padding-bottom: 20px;
 }
 
 .admissions-left-col {
-	float      : left;
-	width      : 43%;
+	float: left;
+	width: 43%;
 	margin-left: 6%;
 }
 
 .admissions-right-col {
-	float       : right;
-	width       : 43%;
+	float: right;
+	width: 43%;
 	margin-right: 6%;
 }
 
 .page-template-admissions-php .program-list li {
-	width        : 44%;
-	margin       : 0 3%;
-	text-align   : left;
-	float        : right;
-	line-height  : 38px;
+	width: 44%;
+	margin: 0 3%;
+	text-align: left;
+	float: right;
+	line-height: 38px;
 	border-bottom: 1px solid #e0e0e0;
+}
+
+@media screen and (max-width: 750px) {
+	.page-template-admissions-php .program-list {
+		max-width: 300px;
+	}
+	.page-template-admissions-php .program-list li {
+		width: 96%;
+	}
+	.admissions-left-col,
+	.admissions-right-col {
+		float: none;
+		width: 90%;
+		max-width: 420px;
+		margin: 0 auto;
+	}
 }
 
 .page-template-admissions-php .hero-lists {
@@ -1555,12 +1603,12 @@ ul.program-list li.last-child {
 }
 
 .page-template-admissions-php .hero-list-title {
-	font-size    : 17px;
-	font-family  : 'Open Sans', sans-serif;
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
 	border-bottom: 1px solid #d5d2d2;
-	line-height  : 40px;
-	padding      : 10px 0;
-	margin       : 0 20px;
+	line-height: 25px;
+	padding: 10px 0;
+	margin: 0 20px 5px;
 }
 
 .hero-list li {
@@ -1580,27 +1628,39 @@ ul.program-list li.last-child {
 	background: #f5f5f5;
 }
 
+.admission-footer .wrapper {
+	width: 90%;
+}
+
 .admission-footer .list-title {
-	font-size    : 17px;
-	font-family  : 'Open Sans', sans-serif;
-	line-height  : 40px;
+	font-size: 17px;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 30px;
 	border-bottom: 1px solid #d5d2d2;
-	width        : 100%;
+	width: 98%;
+	padding: 1%;
+	margin-bottom: 8px;
 }
 
 .admission-footer ul {
-	width      : 550px;
-	margin     : 0 auto;
-	padding    : 50px 0;
+	max-width: 550px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 50px 0;
 	line-height: 25px;
 }
 
 .admission-footer li {
-	width  : 48%;
-	float  : left;
-	padding: 5px;
+	width: 46%;
+	float: left;
+	padding: 1% 3% 1% 1%;
 }
 
+@media screen and (max-width: 500px) {
+	.admission-footer li {
+		width: 96%;
+	}
+}
 
 /* Faculty Profiles
 -------------------------------------------------------------------------------*/
