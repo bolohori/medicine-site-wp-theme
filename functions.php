@@ -132,11 +132,8 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		// Create Header Menu theme location
 		register_nav_menus( array( 
 			'header-menu' => 'Header Menu',
-			'footer-menu' => 'Footer Menu',
-			'sticky-footer-menu' => 'Sticky Footer Menu'
+			'footer-menu' => 'Footer Menu'
 		) );
-
-		register_sidebar();
 
 		if ( !is_nav_menu( 'Header' )) {
 			// Create Header menu, if it doesn't already exist

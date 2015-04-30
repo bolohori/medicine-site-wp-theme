@@ -5,10 +5,11 @@ get_header();
 
 <div id="main" class="clearfix non-landing-page">
 
-	<div id="page-background-r"></div>
-	<div id="page-background-l"></div>
+	<div id="page-background"></div>
 
 	<div class="wrapper">
+
+		<div id="page-background-inner"></div>
 
 		<?php get_sidebar(); ?>
 		<?php 
