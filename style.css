@@ -280,7 +280,7 @@ header h2 {
 }
 
 #dirform input[type=text] {
-	max-width: 223px;
+	max-width: 242px;
 }
 
 input[type=text],
@@ -414,7 +414,6 @@ input {
 	#dirform .dir-group input[type=text],
 	#dirform .dir-group input[type=email] {
 		margin: 5px 0 15px;
-		width: auto;
 	}
 	#dirform .button {
 		margin-left: 0;
