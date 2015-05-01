@@ -30,7 +30,7 @@
 		<div id="page-background-inner"></div>
 
 		<?php get_sidebar(); ?>
-
+		
 		<article<?php echo $classes; ?>>
 			<?php
 				if(get_field('special_header')) {
@@ -42,6 +42,7 @@
 			endwhile;
 		endif; ?>
 		</article>
+
 		<?php get_sidebar( 'right' ); ?>
 
 	</div>

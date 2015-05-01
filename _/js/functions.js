@@ -32,23 +32,49 @@ jQuery(document).ready(function($) {
 	});
 
 	$('#mobile-menu-icon').click(function() {
-        $('#mobile-nav').slideToggle();
+        if($(this).hasClass('closed')) {
+            $('.mobile-nav').fadeIn('fast');
+            $('.open').hide();
+            $('.close').show();
+        } else {
+            $('.mobile-nav').fadeOut();
+            $('.close').hide();
+            $('.open').show();
+        }
+        if($(this).hasClass('closed')) {
+            $('.primary-navigation').children().each(function(i){
+                var $li = $(this);
+                setTimeout(function() {
+                    $li.addClass('active');
+                }, (i+1) * 100);
+            });
+            $(this).removeClass('closed');
+        } else {
+            $('.primary-navigation li').removeClass('active');
+            $(this).addClass('closed');
+        }
     });
+
+    $('.mobile-container .close').click(function() {
+        $('.mobile-container').fadeOut();
+        $('#mobile-nav ul li').removeClass('active');
+        $('#mobile-menu-icon').addClass('closed');
+    })
     
     $('#mobile-search-icon').click(function() {
         $('#mobile-search-form').slideToggle();
     });
 
-    $("#mobile-nav .page_item_has_children > a").each(function() {
+    $(".primary-navigation .page_item_has_children > a").each(function() {
         $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
     });
 
-    $("#mobile-nav .menu-item-has-children > a").each(function() {
+    $(".primary-navigation .menu-item-has-children > a").each(function() {
         $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
     });
 
     $(".expand").click( function() {
-        if( $(this).parent().parent().parent().attr('id') == 'mobile-nav' ){
+        if( $(this).parent().parent().parent().attr('class') == 'primary-navigation' ){
             $(".expanded").not($(this).next()).removeClass("expanded").slideUp();
             $(".expand").not($(this)).addClass("dashicons-arrow-down-alt2").removeClass("dashicons-arrow-up-alt2");
         }
@@ -56,18 +82,22 @@ jQuery(document).ready(function($) {
         $(this).toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
     });
 
-    $("#mobile-nav .current_page_ancestor > .children").addClass("expanded").slideToggle();
-    $("#mobile-nav .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $(".primary-navigation .current_page_ancestor > .children").addClass("expanded").slideToggle();
+    $(".primary-navigation .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 
-    $("#mobile-nav .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
-    $("#mobile-nav .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $(".primary-navigation .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
+    $(".primary-navigation .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 
-    if (!Modernizr.svg) {
-    $('img[src$=".svg"]').each(function()
-    {
-        $(this).attr('src', $(this).attr('src').replace('.svg', '.png'));
+    $(".info-for").click(function(e){
+        e.preventDefault();
+        $(".info-for .arrow").toggleClass("arrow-down arrow-up");
+        $(".info-for ul").slideToggle();
     });
-}
+    $(".announce").click(function(e){
+        e.preventDefault();
+        $(".announce .arrow").toggleClass("arrow-down arrow-up");
+        $(".announce ul").slideToggle();
+    });
 });
 
 

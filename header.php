@@ -5,7 +5,6 @@
 <head data-template-set="html5-reset">
 	<meta charset="utf-8">
 
-	<!-- Always force latest IE rendering engine (even in intranet) -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
@@ -15,26 +14,6 @@
 
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_/img/favicon.ico">
 	<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/_/img/apple-touch-icon.png">
-
-	<script type="application/ld+json">
-	{ "@context" : "http://schema.org",
-	  "@type" : "Organization",
-	  "name" : "Washington University School of Medicine",
-	  "url" : "http://medicine.wustl.edu",
-	  "sameAs" : [ "http://www.facebook.com/WUSTLmedicine.health",
-	    "http://www.twitter.com/WUSTLmed",
-	    "https://www.linkedin.com/company/washington-university-school-of-medicine",
-	    "http://plus.google.com/+WashingtonUniversitySchoolofMedicineStLouis/"] 
-	}
-	</script>
-
-	<!--[if gte IE 9]>
-	<style type="text/css">
-		.gradient {
-			filter: none;
-		}
-	</style>
-	<![endif]-->
 
 	<?php
 	if ( get_field('page_specific_css') ) { ?>
@@ -61,7 +40,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 <!--[if IE 9 ]>  <body <?php body_class('ie ie9 ie-lt10'); ?>> <![endif]-->
 <!--[if gt IE 9]><!--><body <?php body_class(); ?>><!--<![endif]-->
 
-<img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo-print.png" alt="Washington University School of Medicine in St. Louis"/>
+<img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.png" alt="Washington University School of Medicine in St. Louis"/>
 <header>
 
 	<nav id="utility-bar" class="clearfix">
@@ -148,6 +127,8 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 					)
 				)
 			);
+
+			$announcements = '';
 			
 			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) {
@@ -168,9 +149,10 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 					$url = get_permalink();
 				}
 				$title = get_the_title();
-				echo "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"__gaTracker('send','event','header-announcement','$title');\">$title</a></li>\n";
+				$announcements .= "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"__gaTracker('send','event','header-announcement','$title');\">$title</a></li>\n";
 				$i++;
 			}
+			echo $announcements;
 			wp_reset_query();
 		?>
 				</ul>
@@ -205,10 +187,13 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper clearfix">
-			<div id="mobile-search-icon"><div class="dashicons dashicons-search"></div></div>
-            <div id="mobile-menu-icon"><div class="dashicons dashicons-menu"></div></div>
-			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.svg" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/></a></div>
-			<div id="site-title-text"><a href="<?php echo home_url(); ?>">Washington University School of Medicine</a></div>
+			<div id="mobile-search-icon"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg"></div>
+            <div id="mobile-menu-icon" class="closed"><img class="open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg"><img class="close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
+			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.png" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/></a></div>
+			<div id="site-title-text"><a href="<?php echo home_url(); ?>">
+				<div class="university">Washington University</div>
+				<div class="school">School of Medicine</div>
+			</a></div>
 			<?php get_search_form(); ?>
 		</div>
 	</div>
@@ -222,12 +207,11 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 	) ); ?>
 
 	<div class="mobile-container">
-        <form method="get" id="mobile-search-form" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<form method="get" id="mobile-search-form" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
             <input type="text" name="s" id="mobile-search-box" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" placeholder="<?php esc_attr_e( 'Search' ); ?>">
         </form>
-
-        <nav id="mobile-nav">
-            <ul>
+        <nav class="mobile-nav">
+            <ul class="primary-navigation">
                 <?php
                 wp_nav_menu( array(
                 	'theme_location' => 'mobile-menu',
@@ -236,6 +220,37 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
                     'echo' => true,
                 ) );
                 ?>
+            </ul>
+            <ul class="cta-navigation">
+            	<li><a href="">Find a Doctor</a></li>
+            	<li><a href="">Admissions</a></li>
+            	<li><a href="">Giving</a></li>
+            	<li class="info-for">Information for<div class='dashicons dashicons-arrow-down-alt2 expand'></div>
+					<ul>
+            			<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Current Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Faculty');" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni');" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Administrators');" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','facebook');" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
+						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
+            		</ul>
+            	</li>
+            	<li class="announce">Announcements<div class='dashicons dashicons-arrow-down-alt2 expand'></div>
+            		<ul>
+            			<?php echo $announcements; ?>
+            		</ul>
+            	</li>
+            </ul>
+            <ul class="secondary-navigation">
+				<li><a href="">Directories</a></li>
+				<li><a href="">Maps &amp; Directions</a></li>
+				<li><a href="">Calendar</a></li>
+				<li><a href="">Contact</a></li>
+				<li><a href="">Policies</a></li>
+				<li><a href="">Emergency Information</a></li>
+				<li><a href="">WUSTL</a></li>
             </ul>
         </nav>
     </div>

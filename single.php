@@ -28,7 +28,7 @@
 	<div class="wrapper">
 
 		<div id="page-background-inner"></div>
-		
+
 		<nav id="left-col">
 			<?php if( ! get_field( 'hide_nav' ) ) { ?>
 			<ul id="left-nav">

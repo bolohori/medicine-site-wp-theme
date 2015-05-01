@@ -5,11 +5,6 @@
 // ***************************************
 
 
-function theme_slug_setup() {
-   
-}
-add_action( 'after_setup_theme', 'theme_slug_setup' );
-
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
@@ -142,11 +137,8 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		register_nav_menus( array( 
 			'header-menu' => 'Header Menu',
 			'mobile-menu' => 'Mobile Menu',
-			'footer-menu' => 'Footer Menu',
-			'sticky-footer-menu' => 'Sticky Footer Menu'
+			'footer-menu' => 'Footer Menu'
 		) );
-
-		register_sidebar();
 
 		if ( !is_nav_menu( 'Header' )) {
 			// Create Header menu, if it doesn't already exist
@@ -206,8 +198,8 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * The admin bar enqueues these two when a user is logged in, we need manually include
 		 * them if they aren't logged in
 		 */
-		wp_deregister_style( 'open-sans' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600' );
+		wp_dequeue_style( 'open-sans-css' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 

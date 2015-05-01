@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
 	$('#billboard-slider').nivoSlider({
 		effect:'fade', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
-		slices:15,
+		slices:1,
 		animSpeed:500, //Slide transition speed
 		pauseTime:5000,
 		startSlide:0, //Set starting Slide (0 index)
@@ -19,28 +19,9 @@ jQuery(document).ready(function($) {
 		captionOpacity:0 //Universal caption opacity
 	});
 
-	$('#news-slider').nivoSlider({
-		effect:'fade', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
-		slices:15,
-		animSpeed:500, //Slide transition speed
-		pauseTime:5000,
-		startSlide:0, //Set starting Slide (0 index)
-		directionNav:true, //Next & Prev
-		directionNavHide:true, //Only show on hover
-		controlNav:true, //1,2,3...
-		controlNavThumbs:false, //Use thumbnails for Control Nav
-		controlNavThumbsFromRel:false, //Use image rel for thumbs
-		controlNavThumbsSearch: '.jpg', //Replace this with...
-		controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
-		keyboardNav:true, //Use left & right arrows
-		pauseOnHover:true, //Stop animation while hovering
-		manualAdvance:true, //Force manual transitions
-		captionOpacity:0 //Universal caption opacity
-	});
-
 	$('#spotlight-slider').nivoSlider({
 		effect:'fade', //Specify sets like: 'sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft, fold, fade, random'
-		slices:15,
+		slices:1,
 		animSpeed:500, //Slide transition speed
 		pauseTime:6500,
 		startSlide:0, //Set starting Slide (0 index)
@@ -59,13 +40,13 @@ jQuery(document).ready(function($) {
             var sliderData = $('#spotlight-slider').data("nivo:vars");
             var slideNum = sliderData.currentSlide + 1; // return the slider position
             var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
-            __gaTracker('send','event','national-leadership','slide ' + slideNum, label);
+            //__gaTracker('send','event','national-leadership','slide ' + slideNum, label);
         },
         afterChange: function(){ // event tracking for subsequent slide views
             var sliderData = $('#spotlight-slider').data("nivo:vars");
             var slideNum = sliderData.currentSlide + 1; // return the slider position
             var label = sliderData.currentImage.attr('alt'); // extract the alt attribute
-            __gaTracker('send','event','national-leadership','slide ' + slideNum, label);
+            //__gaTracker('send','event','national-leadership','slide ' + slideNum, label);
         }
 
     });

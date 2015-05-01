@@ -22,10 +22,10 @@
 			<?php
 					the_title('<h1>', '</h1>');
 					the_post_thumbnail('landing-page');
-					
+
 					echo "<p><span style='font-weight:700;'>" . get_field('student_profile_class_of') . "</span> &#8226; " . get_field('student_profile_program') . "</p>";
 					the_content();
-					
+
 				endwhile;
 			endif;
 			?>
