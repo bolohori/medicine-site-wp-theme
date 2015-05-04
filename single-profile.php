@@ -28,7 +28,7 @@
 					echo "</p>";
 					the_post_thumbnail('landing-page');
 					
-					echo "<p class=wp-caption-text'>" .  get_post(get_post_thumbnail_id())->post_excerpt . "</p>";
+					echo "<p class='wp-caption-text'>" .  get_post(get_post_thumbnail_id())->post_excerpt . "</p>";
 					the_content();
 
 				endwhile;
