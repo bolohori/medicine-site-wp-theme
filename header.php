@@ -188,7 +188,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper clearfix">
 			<div id="mobile-search-icon"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg"></div>
-            <div id="mobile-menu-icon" class="closed"><img class="open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg"><img class="close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
+            <div id="mobile-menu-icon"><img class="mobile-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg"><img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
 			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.png" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/></a></div>
 			<div id="site-title-text"><a href="<?php echo home_url(); ?>">
 				<div class="university">Washington University</div>
@@ -211,7 +211,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
             <input type="text" name="s" id="mobile-search-box" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" placeholder="<?php esc_attr_e( 'Search' ); ?>">
         </form>
         <nav class="mobile-nav">
-            <ul class="primary-navigation">
+            <ul class="mobile-primary">
                 <?php
                 wp_nav_menu( array(
                 	'theme_location' => 'mobile-menu',
@@ -221,36 +221,30 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
                 ) );
                 ?>
             </ul>
-            <ul class="cta-navigation">
-            	<li><a href="">Find a Doctor</a></li>
-            	<li><a href="">Admissions</a></li>
-            	<li><a href="">Giving</a></li>
-            	<li class="info-for">Information for<div class='dashicons dashicons-arrow-down-alt2 expand'></div>
-					<ul>
-            			<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Current Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Faculty');" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni');" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Administrators');" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','facebook');" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
-						<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
-            		</ul>
-            	</li>
-            	<li class="announce">Announcements<div class='dashicons dashicons-arrow-down-alt2 expand'></div>
-            		<ul>
-            			<?php echo $announcements; ?>
-            		</ul>
-            	</li>
+            <ul class="mobile-secondary">
+				<li><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','Current Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','Faculty');" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','Staff');" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','Alumni');" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','Administrators');" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','facebook');" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
+				<li><a onclick="__gaTracker('send','event','information-for','Researchers');" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
             </ul>
-            <ul class="secondary-navigation">
-				<li><a href="">Directories</a></li>
-				<li><a href="">Maps &amp; Directions</a></li>
-				<li><a href="">Calendar</a></li>
-				<li><a href="">Contact</a></li>
-				<li><a href="">Policies</a></li>
-				<li><a href="">Emergency Information</a></li>
-				<li><a href="">WUSTL</a></li>
+            <ul class="mobile-secondary">
+            	<li><a href="http://wuphysicians.wustl.edu/directory.aspx">Find a Doctor</a></li>
+            	<li><a href="/education/admissions/">Admissions</a></li>
+            	<li><a href="/giving/">Giving</a></li>
+			</ul>
+            <ul class="mobile-secondary">
+            	<li><a href="/news/announcements/">Announcements</a></li>
+				<li><a href="/directory/">Directories</a></li>
+				<li><a href="/maps/">Maps &amp; Directions</a></li>
+				<li><a href="/calendar/">Calendar</a></li>
+				<li><a href="/contact/">Contact</a></li>
+				<li><a href="/policies/">Policies</a></li>
+				<li><a href="https://emergency.wustl.edu">Emergency Information</a></li>
+				<li><a href="http://wustl.edu/">WUSTL</a></li>
             </ul>
         </nav>
     </div>

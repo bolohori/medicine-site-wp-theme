@@ -31,28 +31,36 @@ jQuery(document).ready(function($) {
 		$(".information-for-div").slideToggle();
 	});
 
+    if(!$('body').hasClass('page-child')) {
+        $('.mobile-primary').children().each(function(i){
+            $(this).addClass('animate');
+        });
+    }
+
 	$('#mobile-menu-icon').click(function() {
-        if($(this).hasClass('closed')) {
+        if(!$(this).hasClass('open')) {
             $('.mobile-nav').fadeIn('fast');
-            $('.open').hide();
-            $('.close').show();
+            $('.mobile-open').hide();
+            $('.mobile-close').show();
         } else {
             $('.mobile-nav').fadeOut();
-            $('.close').hide();
-            $('.open').show();
+            $('.mobile-close').hide();
+            $('.mobile-open').show();
         }
-        if($(this).hasClass('closed')) {
-            $('.primary-navigation').children().each(function(i){
-                var $li = $(this);
-                setTimeout(function() {
-                    $li.addClass('active');
-                }, (i+1) * 100);
-            });
-            $(this).removeClass('closed');
-        } else {
-            $('.primary-navigation li').removeClass('active');
-            $(this).addClass('closed');
-        }
+        if(!$(this).hasClass('open')) {
+            if(!$('body').hasClass('page-child')) {
+                $('.mobile-primary').children().each(function(i){
+                    var $li = $(this);
+                    setTimeout(function() {
+                        $li.addClass('active');
+                    }, (i+1) * 100);
+                });
+            }
+            $(this).addClass('open');
+            } else {
+                $(this).removeClass('open');
+                $('.mobile-primary li').removeClass('active');
+            }
     });
 
     $('.mobile-container .close').click(function() {
@@ -65,16 +73,16 @@ jQuery(document).ready(function($) {
         $('#mobile-search-form').slideToggle();
     });
 
-    $(".primary-navigation .page_item_has_children > a").each(function() {
+    $(".mobile-primary .page_item_has_children > a").each(function() {
         $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
     });
 
-    $(".primary-navigation .menu-item-has-children > a").each(function() {
+    $(".mobile-primary .menu-item-has-children > a").each(function() {
         $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
     });
 
     $(".expand").click( function() {
-        if( $(this).parent().parent().parent().attr('class') == 'primary-navigation' ){
+        if( $(this).parent().parent().parent().attr('class') == 'mobile-primary' ){
             $(".expanded").not($(this).next()).removeClass("expanded").slideUp();
             $(".expand").not($(this)).addClass("dashicons-arrow-down-alt2").removeClass("dashicons-arrow-up-alt2");
         }
@@ -82,11 +90,11 @@ jQuery(document).ready(function($) {
         $(this).toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
     });
 
-    $(".primary-navigation .current_page_ancestor > .children").addClass("expanded").slideToggle();
-    $(".primary-navigation .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $(".mobile-primary .current_page_ancestor > .children").addClass("expanded").slideToggle();
+    $(".mobile-primary .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 
-    $(".primary-navigation .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
-    $(".primary-navigation .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $(".mobile-primary .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
+    $(".mobile-primary .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 
     $(".info-for").click(function(e){
         e.preventDefault();
