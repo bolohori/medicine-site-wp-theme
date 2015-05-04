@@ -521,6 +521,7 @@ add_filter( 'profile_excerpt_text', function() {
 });
 add_filter( 'profile_template_file', function() { return get_stylesheet_directory() . "/_/php/profile-template.php"; } );
 add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
+add_filter( 'profile_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
