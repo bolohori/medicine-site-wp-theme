@@ -20,10 +20,15 @@
 
 		<article<?php echo $classes; ?>>
 			<?php
-					the_title('<h1>', '</h1>');
+					the_title('<h1 class="profile-page-title">', '</h1>');
+					add_filter( 'excerpt_more', function() { return ''; } );
+					echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+					echo "<p class='custom-byline'>";
+						the_date();
+					echo "</p>";
 					the_post_thumbnail('landing-page');
-
-					echo "<p><span style='font-weight:700;'>" . get_field('student_profile_class_of') . "</span> &#8226; " . get_field('student_profile_program') . "</p>";
+					
+					echo "<p class=wp-caption-text'>" .  get_post(get_post_thumbnail_id())->post_excerpt . "</p>";
 					the_content();
 
 				endwhile;
