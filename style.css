@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.04.30.0
+Version:     15.05.01.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -726,9 +726,83 @@ article ul li, article ol li {
 	margin: 2px 20px 20px 0;
 }
 
+.facts-glance {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.facts-glance-int {
+	margin: 15px 20px 10px;
+}
+
+.facts-glance h3 {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+.facts-glance ul {
+	margin-left: 15px;
+}
+
+.facts-glance p {
+	line-height: 16px;
+	position: relative;
+	padding-right: 45px;
+}
+
+.facts-glance p + ul {
+  margin-top: -5px;
+}
+
+.facts-glance div.cols-3 {
+	padding: 0;
+	margin-right: 4%;
+	width: 30.66%;
+}
+
+.facts-glance div.cols-3.last-child {
+	margin: 0;
+}
+
+.facts-glance .cols-3.first-child ul {
+	margin-left: 0;
+}
+
+.facts-glance li {
+	position: relative;
+	padding-right: 45px;
+	line-height: 16px;
+	margin-bottom: 15px;
+}
+
 .facts-numbers {
-	float: right;
 	font-weight: bold;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+@media screen and (max-width: 960px) {
+	.facts-glance div.cols-3 {
+		width: 46%;
+		margin-right: 8%;
+	}
+	.facts-glance div.cols-3.first-child {
+		margin: 0 auto 40px;
+		float: none;
+	}
+}
+@media screen and (max-width: 550px) {
+	.facts-glance div.cols-3 {
+		margin-right: 0;
+		margin-bottom: 25px;
+		width: 100%;
+	}
+	.facts-glance div.cols-3.first-child {
+		margin-bottom: 40px;
+	}
 }
 
 .special-head {
@@ -2153,6 +2227,56 @@ ul.program-list li.last-child {
 
 .single-faculty_profile ul{
 	list-style: none;
+}
+
+/* Cardiology & Vascular Specialists
+-------------------------------------------------------------------------------*/
+.cardio-vascular {
+	background: #fff;
+	width: 100%;
+	margin-top: 36px;
+}
+
+.cardio-vascular h3 {
+	padding: 20px 70px 15px 20px;
+	margin: 0px;
+	line-height: 22px;
+	position: relative;
+}
+
+.cardio-vascular h3 img {
+	position: absolute;
+	top: 25px;
+	right: 20px;
+}
+
+.cardio-vascular .half {
+	width: 50%;
+	float: left;
+	background: #fff;
+}
+
+.cv-border {
+	border-left: 1px #ebe9dd solid;
+}
+
+.cardio-vascular .half img {
+	margin: 0 auto;
+	display: block;
+	max-width: 184px;
+}
+
+.cardio-vascular p {
+	margin: 20px 0 0;
+}
+
+@media screen and (max-width: 520px) {
+	.cardio-vascular .half {
+		width: 100%;
+	}
+	.cv-border {
+		border: none;
+	}
 }
 
 /* Sidebars
