@@ -2,72 +2,6 @@
 if( function_exists('register_field_group') ):
 
 register_field_group(array (
-	'key' => 'group_551f0494e2163',
-	'title' => 'Student Profiles',
-	'fields' => array (
-		array (
-			'key' => 'field_551f04a052955',
-			'label' => 'Class of',
-			'name' => 'student_profile_class_of',
-			'prefix' => '',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-			'readonly' => 0,
-			'disabled' => 0,
-		),
-		array (
-			'key' => 'field_551f04b669a35',
-			'label' => 'Program',
-			'name' => 'student_profile_program',
-			'prefix' => '',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
-			'readonly' => 0,
-			'disabled' => 0,
-		),
-	),
-	'location' => array (
-		array (
-			array (
-				'param' => 'post_type',
-				'operator' => '==',
-				'value' => 'profile',
-			),
-		),
-	),
-	'menu_order' => 0,
-	'position' => 'acf_after_title',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-));
-
-register_field_group(array (
 	'key' => 'group_acf_promoted-results',
 	'title' => 'Promoted Results',
 	'fields' => array (
@@ -137,6 +71,72 @@ register_field_group(array (
 	),
 	'id' => 'acf_promoted-results',
 	'local' => 'php',
+));
+
+register_field_group(array (
+	'key' => 'group_551f0494e2163',
+	'title' => 'Student Profiles',
+	'fields' => array (
+		array (
+			'key' => 'field_551f04a052955',
+			'label' => 'Class of',
+			'name' => 'student_profile_class_of',
+			'prefix' => '',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+		array (
+			'key' => 'field_551f04b669a35',
+			'label' => 'Program',
+			'name' => 'student_profile_program',
+			'prefix' => '',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'profile',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
 ));
 
 register_field_group(array (
@@ -383,7 +383,7 @@ register_field_group(array (
 			'prefix' => '',
 			'type' => 'text',
 			'instructions' => '',
-			'required' => 0,
+			'required' => 1,
 			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
@@ -663,8 +663,6 @@ register_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'media_mentions',
-				'order_no' => 0,
-				'group_no' => 0,
 			),
 		),
 	),
@@ -673,10 +671,7 @@ register_field_group(array (
 	'style' => 'seamless',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
-	'hide_on_screen' => array (
-	),
-	'id' => 'acf_press',
-	'local' => 'php',
+	'hide_on_screen' => '',
 ));
 
 register_field_group(array (
@@ -700,6 +695,13 @@ register_field_group(array (
 			'preview_size' => 'map-img',
 			'library' => 'all',
 			'return_format' => 'id',
+			'min_width' => 0,
+			'min_height' => 0,
+			'min_size' => 0,
+			'max_width' => 0,
+			'max_height' => 0,
+			'max_size' => 0,
+			'mime_types' => '',
 		),
 		array (
 			'key' => 'field_524f29fd79223',
@@ -1459,6 +1461,13 @@ register_field_group(array (
 							'preview_size' => 'medium',
 							'library' => 'all',
 							'return_format' => 'id',
+							'min_width' => 0,
+							'min_height' => 0,
+							'min_size' => 0,
+							'max_width' => 0,
+							'max_height' => 0,
+							'max_size' => 0,
+							'mime_types' => '',
 						),
 						array (
 							'key' => 'field_534c1199fbb9a',
@@ -1623,6 +1632,13 @@ register_field_group(array (
 							'preview_size' => 'outlook-thumb',
 							'library' => 'all',
 							'return_format' => 'url',
+							'min_width' => 0,
+							'min_height' => 0,
+							'min_size' => 0,
+							'max_width' => 0,
+							'max_height' => 0,
+							'max_size' => 0,
+							'mime_types' => '',
 						),
 						array (
 							'key' => 'field_526ad793494de',
@@ -1933,7 +1949,8 @@ register_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'message' => '<img style="max-width:100%;" src=\'/wp-content/themes/medicine/_/img/sidebars.jpg\'>',
+			'message' => '<img src=\'/wp-content/themes/medicine/_/img/sidebars.jpg\'>',
+			'esc_html' => 0,
 		),
 	),
 	'location' => array (
@@ -1942,8 +1959,6 @@ register_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'page',
-				'order_no' => 0,
-				'group_no' => 0,
 			),
 		),
 		array (
@@ -1951,8 +1966,6 @@ register_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'announcement',
-				'order_no' => 0,
-				'group_no' => 1,
 			),
 		),
 		array (
@@ -1960,8 +1973,6 @@ register_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'news_releases',
-				'order_no' => 0,
-				'group_no' => 2,
 			),
 		),
 		array (
@@ -1969,8 +1980,13 @@ register_field_group(array (
 				'param' => 'post_type',
 				'operator' => '==',
 				'value' => 'research_news',
-				'order_no' => 0,
-				'group_no' => 3,
+			),
+		),
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'profile',
 			),
 		),
 	),
@@ -1979,10 +1995,7 @@ register_field_group(array (
 	'style' => 'seamless',
 	'label_placement' => 'top',
 	'instruction_placement' => 'label',
-	'hide_on_screen' => array (
-	),
-	'id' => 'acf_sidebar',
-	'local' => 'php',
+	'hide_on_screen' => '',
 ));
 
 register_field_group(array (
@@ -2037,7 +2050,7 @@ register_field_group(array (
 	'location' => array (
 		array (
 			array (
-				'param' => 'user_type',
+				'param' => 'current_user_role',
 				'operator' => '==',
 				'value' => 'administrator',
 				'order_no' => 0,

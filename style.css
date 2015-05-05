@@ -2470,8 +2470,12 @@ a.sidebar-outlook-link {
 }
 
 .profile-custom-archive-entry h3 {
-	padding-top: 20px;
+	padding-top: 10px;
 	font-size: 21px;
+}
+
+.profile-custom-archive-link {
+	padding-bottom: 0;
 }
 
 .in_focus-custom-archive-entry h3 {

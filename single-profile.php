@@ -12,8 +12,7 @@
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
 
-	<div id="page-background-r"></div>
-	<div id="page-background-l"></div>
+	<div id="page-background"></div>
 
 	<div class="wrapper">
 		<?php get_sidebar(); ?>
