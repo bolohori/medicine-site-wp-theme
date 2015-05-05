@@ -34,7 +34,9 @@
 			endif;
 			?>
 		</article>
-
+	
+		<?php get_sidebar( 'right' ); ?>
+		
 	</div>
 
 </div>
