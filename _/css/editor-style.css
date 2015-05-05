@@ -125,6 +125,12 @@ h6 {
 	margin: 0 auto;
 }
 
+.intro-text {
+    color: #787878;
+    font-size: 18px;
+    line-height: 30px;
+}
+
 .signature-name {
     font-size: 16px;
     margin-bottom: 0;
