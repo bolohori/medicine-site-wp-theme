@@ -276,6 +276,12 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 				'title'	=> 'Custom Styles',
 				'items'	=> array(
 					array(
+						'title'		=> 'Intro Text',
+						'block'		=> 'p',
+						'classes'	=> 'intro-text',
+						'wrapper'	=> false
+					),
+					array(
 						'title'	   => 'Main content callout',
 						'block'	   => 'div',
 						'classes'  => 'callout',
