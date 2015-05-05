@@ -2229,6 +2229,56 @@ ul.program-list li.last-child {
 	list-style: none;
 }
 
+/* Cardiology & Vascular Specialists
+-------------------------------------------------------------------------------*/
+.cardio-vascular {
+	background: #fff;
+	width: 100%;
+	margin-top: 36px;
+}
+
+.cardio-vascular h3 {
+	padding: 20px 70px 15px 20px;
+	margin: 0px;
+	line-height: 22px;
+	position: relative;
+}
+
+.cardio-vascular h3 img {
+	position: absolute;
+	top: 25px;
+	right: 20px;
+}
+
+.cardio-vascular .half {
+	width: 50%;
+	float: left;
+	background: #fff;
+}
+
+.cv-border {
+	border-left: 1px #ebe9dd solid;
+}
+
+.cardio-vascular .half img {
+	margin: 0 auto;
+	display: block;
+	max-width: 184px;
+}
+
+.cardio-vascular p {
+	margin: 20px 0 0;
+}
+
+@media screen and (max-width: 520px) {
+	.cardio-vascular .half {
+		width: 100%;
+	}
+	.cv-border {
+		border: none;
+	}
+}
+
 /* Sidebars
 -------------------------------------------------------------------------------*/
 .raw-sidebar,
