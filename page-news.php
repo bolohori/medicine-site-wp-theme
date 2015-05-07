@@ -108,7 +108,7 @@ $washington_people = new WP_Query ( $args );
 
 
             <div class="card">
-                <h2><a href="/news/releases">News Releases</a></h2>
+                <h2><a href="/news/releases/">News Releases</a></h2>
                 <?php if ( $news_releases->have_posts() ) : ?>
                     <ul>
                         <?php while ( $news_releases->have_posts() ) : $news_releases->the_post(); ?>
@@ -122,7 +122,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card">
-                <h2><a href="/news/in-the-media">In the Media</a></h2>
+                <h2><a href="/news/in-the-media/">In the Media</a></h2>
                 <?php if ( $in_the_media->have_posts() ) : ?>
                 <ul>
                     <?php while ( $in_the_media->have_posts() ) : $in_the_media->the_post(); ?>
@@ -136,7 +136,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card">
-                <h2><a href="/news/headlines">Research Highlights</a></h2>
+                <h2><a href="/news/headlines/">Research Highlights</a></h2>
                 <?php if ( $research_highlights->have_posts() ) : ?>
                     <ul>
                         <?php while ( $research_highlights->have_posts() ) : $research_highlights->the_post(); ?>
@@ -150,7 +150,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card">
-                <h2><a href="/news/outlook">Outlook Magazine</a></h2>
+                <h2><a href="/news/outlook/">Outlook Magazine</a></h2>
                 <?php if ( $outlook->have_posts() ) : ?>
                     <ul>
                         <?php while ( $outlook->have_posts() ) : $outlook->the_post(); ?>
@@ -164,7 +164,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card full-width">
-                <h2><a href="/news/leaders">National Leaders</a></h2>
+                <h2><a href="/news/leaders/">National Leaders</a></h2>
                 <?php if ( $national_leaders->have_posts() ) : ?>
                     <ul>
                         <?php while ( $national_leaders->have_posts() ) : $national_leaders->the_post(); ?>
@@ -178,7 +178,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card">
-                <h2><a href="/news/multimedia">Campus Life</a></h2>
+                <h2><a href="/news/multimedia/">Campus Life</a></h2>
                 <?php if ( $campus_life->have_posts() ) : ?>
                     <?php while ( $campus_life->have_posts() ) : $campus_life->the_post(); ?>
                         <?php the_post_thumbnail( array(325, 218) ); ?>
@@ -201,7 +201,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card">
-                <h2><a href="/news/washington-people">Washington People</a></h2>
+                <h2><a href="/news/washington-people/">Washington People</a></h2>
                 <?php if ( $washington_people->have_posts() ) : ?>
                     <?php while ( $washington_people->have_posts() ) : $washington_people->the_post(); ?>
                         <?php the_post_thumbnail( array(325, 218) ); ?>
@@ -218,7 +218,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card short">
-                <h2><a href="/news/announcements">Announcements</a></h2>
+                <h2><a href="/news/announcements/">Announcements</a></h2>
                 <ul>
                     <li><p>Updates on campus events, policy changes, road and building construction, calls for papers and more. <a class="more" href="/news/announcements">See announcements</a></p></li>
                 </ul>
