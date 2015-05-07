@@ -35,7 +35,7 @@ if (have_posts()) :
                 <ul id="left-nav">
                     <li class="current_page_item top_level_page"><a href="/news/">News</a></li>
                     <li class="page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
-                    <li class="page_item page-item-4721"><a href="/news/in-the-media/">In the Media</a></li>
+                    <li class="page_item page-item-4721"><a href="/news/press/">In the Media</a></li>
                     <li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
                     <li class="page_item page-item-4741"><a href="/news/headlines/">Research Highlights</a></li>
                     <li class="page_item"><a href="/news/outlook/">Outlook Magazine</a></li>
