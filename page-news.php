@@ -114,7 +114,7 @@ $washington_people = new WP_Query ( $args );
                         <?php while ( $news_releases->have_posts() ) : $news_releases->the_post(); ?>
                             <li>
                                 <div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-                                <a href="<?php echo get_field('url')['url']; ?>"><?php the_title(); ?></a>
+                                <a href="<?php $link = get_field('url'); echo $link['url']; ?>"><?php the_title(); ?></a>
                             </li>
                         <?php endwhile; ?>
                     </ul>
@@ -169,7 +169,7 @@ $washington_people = new WP_Query ( $args );
                     <ul>
                         <?php while ( $national_leaders->have_posts() ) : $national_leaders->the_post(); ?>
                             <li>
-                                <a href="<?php echo get_field('nl-link')['url']; ?>"><?php the_title(); ?></a>
+                                <a href="<?php $link = get_field('nl-link'); echo $link['url']; ?>"><?php the_title(); ?></a>
                                 <?php the_excerpt(); ?>
                             </li>
                         <?php endwhile; ?>
@@ -187,8 +187,10 @@ $washington_people = new WP_Query ( $args );
                             <li>
                                 <div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
                                 <?php
-                                    $url = get_field('external_link')['url'] ? get_field('external_link')['url'] : get_permalink();
-                                    $link_text = get_field('external_link')['title'] ? get_field('external_link')['title'] : 'See photos';
+                                    $external_link = get_field('external_link');
+
+                                    $url = $external_link['url'] ? $external_link['url'] : get_permalink();
+                                    $link_text = $external_link['title'] ? $external_link['title'] : 'See photos';
                                 ?>
                                 <a href="<?php echo $url; ?>"><?php the_title(); ?></a>
                                 <p><?php echo get_the_excerpt(); ?> <a class="more" href="<?php echo $url; ?>"><?php echo $link_text; ?></a></p>
