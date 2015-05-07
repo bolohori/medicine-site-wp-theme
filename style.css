@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.04.24.0
+Version:     15.05.07.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -1472,6 +1472,100 @@ a.news-title {
 	font-weight: bold;
 	font-size: 11px;
 }
+
+
+
+
+/* News page
+-------------------------------------------------------------------------------*/
+article.full-width {
+    width: 100%;
+    max-width: 725px;
+    padding-right: 0;
+}
+
+.card {
+    width: 325px;
+    height: 375px;
+    float: left;
+    background-color: #fff;
+    margin: 0 35px 35px 0;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #eee;
+}
+
+.card.full-width {
+    width: 687px;
+    height: auto;
+}
+
+.card.short {
+    height: 155px;
+}
+
+.card h2 {
+    margin: 0 0 20px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.card h2 a {
+    background-color: #900;
+    color: #fff;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 5px 0;
+}
+
+.card h2 a:hover {
+    background-color: #555;
+}
+
+.card ul {
+    list-style: none;
+    margin: 0 15px;
+}
+
+.card .dateline {
+    font-weight: 600;
+    font-size: 12px;
+    color: #515151;
+}
+
+.card .dateline .date {
+    text-transform: uppercase;
+}
+
+.card ul li {
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.card li a {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.card img.wp-post-image {
+    border-radius: 5px 5px 0 0;
+    width:325px;
+    height:218px;
+    position:relative;
+    top:-59px;
+    margin-bottom:-59px;
+    padding-bottom: 20px;
+}
+
+.card a.more {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
 
 /*
  * Admissions specific...because

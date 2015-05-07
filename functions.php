@@ -136,8 +136,6 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 			'sticky-footer-menu' => 'Sticky Footer Menu'
 		) );
 
-		register_sidebar();
-
 		if ( !is_nav_menu( 'Header' )) {
 			// Create Header menu, if it doesn't already exist
 			$menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );

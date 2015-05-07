@@ -2056,4 +2056,108 @@ register_field_group(array (
 	'local' => 'php',
 ));
 
+register_field_group(array (
+    'key' => 'group_5543e197ee59a',
+    'title' => 'Outlook Article',
+    'fields' => array (
+        array (
+            'key' => 'field_5543e1c8e980c',
+            'label' => 'URL',
+            'name' => 'url',
+            'prefix' => '',
+            'type' => 'url',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+        ),
+    ),
+    'location' => array (
+        array (
+            array (
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'outlook',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'acf_after_title',
+    'style' => 'seamless',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => array (
+        0 => 'the_content',
+        1 => 'excerpt',
+        2 => 'custom_fields',
+        3 => 'discussion',
+        4 => 'comments',
+        5 => 'author',
+        6 => 'format',
+        7 => 'page_attributes',
+        8 => 'featured_image',
+        9 => 'categories',
+        10 => 'tags',
+        11 => 'send-trackbacks',
+    ),
+));
+
+
+register_field_group(array (
+    'key' => 'group_554b901c12e30',
+    'title' => 'Washington Person',
+    'fields' => array (
+        array (
+            'key' => 'field_554b902fe745c',
+            'label' => 'URL',
+            'name' => 'url',
+            'prefix' => '',
+            'type' => 'url',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+        ),
+    ),
+    'location' => array (
+        array (
+            array (
+                'param' => 'post_type',
+                'operator' => '==',
+                'value' => 'washington_people',
+            ),
+        ),
+    ),
+    'menu_order' => 0,
+    'position' => 'acf_after_title',
+    'style' => 'seamless',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => array (
+        0 => 'the_content',
+        1 => 'custom_fields',
+        2 => 'discussion',
+        3 => 'comments',
+        4 => 'author',
+        5 => 'format',
+        6 => 'page_attributes',
+        7 => 'categories',
+        8 => 'tags',
+        9 => 'send-trackbacks',
+    ),
+));
+
+
 endif;
