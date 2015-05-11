@@ -2011,28 +2011,6 @@ register_field_group(array (
 			'readonly' => 0,
 			'disabled' => 0,
 		),
-		array (
-			'key' => 'field_534e9ba7c7d37',
-			'label' => 'Page-specific JS',
-			'name' => 'page_specific_js',
-			'prefix' => '',
-			'type' => 'textarea',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'placeholder' => '',
-			'maxlength' => '',
-			'rows' => '',
-			'new_lines' => '',
-			'readonly' => 0,
-			'disabled' => 0,
-		),
 	),
 	'location' => array (
 		array (
