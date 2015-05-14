@@ -231,10 +231,16 @@ $washington_people = new WP_Query ( $args );
                 </ul>
             </div>
 
+
+
+
+
         </article>
 
     </div>
 
 </div>
+
+
 
 <?php get_footer(); ?>
