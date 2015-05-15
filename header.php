@@ -166,16 +166,16 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 			</div>
 			<div class="information-for-right">
 				<ul class="information-for-list">
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Prospective Students' ) );?>">Prospective Students</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Current Students');" href="<?php echo get_permalink( get_page_by_title( 'Information for Current Students' ) );?>">Current Students</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Faculty');" href="<?php echo get_permalink( get_page_by_title( 'Information for Faculty' ) );?>">Faculty</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="<?php echo get_permalink( get_page_by_title( 'Information for Staff' ) );?>">Staff</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="/info/prospective-students/">Prospective Students</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Current Students');" href="/info/current-students/">Current Students</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Faculty');" href="/info/faculty/">Faculty</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="/info/staff/">Staff</a></li>
 				</ul>
 				<ul class="information-for-list">
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni');" href="<?php echo get_permalink( get_page_by_title( 'Information for Alumni & Friends' ) );?>">Alumni &amp; Friends</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Administrators');" href="<?php echo get_permalink( get_page_by_title( 'Information for Administrators' ) );?>">Administrators</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','facebook');" href="<?php echo get_permalink( get_page_by_title( 'Information for Researchers' ) );?>">Researchers</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="<?php echo get_permalink( get_page_by_title( 'Information for Job Seekers' ) );?>">Job Seekers</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni');" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Administrators');" href="/info/administrators/">Administrators</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','facebook');" href="/info/researchers/">Researchers</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="/info/job-seekers/">Job Seekers</a></li>
 				</ul>
 			</div>
 			<p class="information-for">close <span class="arrow arrow-down">&nbsp;</span></p>
