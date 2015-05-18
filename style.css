@@ -1475,7 +1475,6 @@ a.news-title {
 
 
 
-
 /* News page
 -------------------------------------------------------------------------------*/
 article.full-width {
@@ -1496,11 +1495,6 @@ article.full-width {
 
 .card.full-width {
     width: 687px;
-    height: auto;
-}
-
-.card.short {
-    height: 155px;
 }
 
 .card h2 {
@@ -1553,9 +1547,12 @@ article.full-width {
     width:325px;
     height:218px;
     position:relative;
+    padding-bottom: 20px;
+}
+
+.card h2 + img.wp-post-image {
     top:-59px;
     margin-bottom:-59px;
-    padding-bottom: 20px;
 }
 
 .card a.more {

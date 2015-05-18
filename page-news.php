@@ -217,23 +217,19 @@ $washington_people = new WP_Query ( $args );
                 <?php endif; ?>
             </div>
 
-            <div class="card short">
+            <div class="card">
                 <h2><a href="/news/announcements/">Announcements</a></h2>
                 <ul>
                     <li><p>Updates on campus events, policy changes, road and building construction, calls for papers and more. <a class="more" href="/news/announcements">See announcements</a></p></li>
                 </ul>
             </div>
 
-            <div class="card short">
+            <div class="card">
                 <h2><a href="http://news.wustl.edu/run/Pages/Record.aspx">The Record</a></h2>
                 <ul>
                     <li><p>University-wide information including research, achievements and campus events. <a class="more" href="http://news.wustl.edu/run/Pages/Record.aspx">Go to The Record</a></p></li>
                 </ul>
             </div>
-
-
-
-
 
         </article>
 
