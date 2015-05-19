@@ -490,7 +490,7 @@ article .gform_wrapper .gsection {
 
 article .gform_wrapper h2.gsection_title {
     font-size: 21px;
-    padding-bottom: 5px;
+    padding-bottom: 5px !important;
     border-bottom: 1px solid #ccc;
 }
 
