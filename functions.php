@@ -348,6 +348,25 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 add_filter( 'tiny_mce_before_init', 'medicine_styles_dropdown' );
 
 /*
+ * Add call to action button to insert dropdown
+ */
+function medicine_button() {
+	add_filter( "mce_external_plugins", "medicine_add_button" );
+	add_filter( 'mce_buttons', 'medicine_register_button' );
+}
+function medicine_add_button( $plugin_array ) {
+	$plugin_array['medicinebutton'] = get_template_directory_uri() . '/_/js/wusm-button.js';
+	return $plugin_array;
+}
+function medicine_register_button( $buttons ) {
+	if( ! in_array( 'medicinebutton', $buttons) ) {
+		array_push( $buttons, 'medicinebutton' );
+	}
+	return $buttons;
+}
+add_action( 'admin_head', 'medicine_button' );
+
+/*
  * Change [...] to MORE>> (w/ link)
  */
 add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
