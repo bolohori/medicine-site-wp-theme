@@ -11,7 +11,7 @@ function queue_wusm_scripts() {
 
 	wp_localize_script( 'custom_functions', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
-    if ( strpos(get_page_template(), 'page-news.php') ) {
+    if ( strpos(get_page_template(), 'page-news.php') || get_the_title() == 'Campus Life' ) {
         wp_enqueue_script('match_height', get_stylesheet_directory_uri() . '/_/js/jquery.matchHeight-min.js', array( 'jquery' ) );
     }
 }
