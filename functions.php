@@ -129,6 +129,10 @@ add_post_type_support( 'page', 'excerpt' );
  */
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
 	function medicine_theme_setup() {
+
+		// Let WordPress manage the document title.
+		add_theme_support( 'title-tag' );
+
 		// Create Header Menu theme location
 		register_nav_menus( array( 
 			'header-menu' => 'Header Menu',
