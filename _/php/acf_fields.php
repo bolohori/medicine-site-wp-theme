@@ -1949,7 +1949,7 @@ register_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'message' => '<img src=\'/wp-content/themes/medicine/_/img/sidebars.jpg\'>',
+			'message' => '<img style="max-width:100%;" src=\'/wp-content/themes/medicine/_/img/sidebars.jpg\'>',
 			'esc_html' => 0,
 		),
 	),
