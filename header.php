@@ -7,8 +7,6 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title><?php wp_title(); ?></title>
-
 	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
 	<meta name="author" content="Washington University School of Medicine in St. Louis">
 

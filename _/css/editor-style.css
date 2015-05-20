@@ -226,6 +226,27 @@ input[type=submit]:hover {
 	background: #e1e1e1;
 }
 
+a.wusm-button {
+    display: inline-block;
+	line-height: 14px;
+	margin: 0 20px 0 0;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #fff;
+    background: #990000;
+    padding: 15px 50px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: background 0.1s ease;
+    cursor: pointer;
+}
+
+a.wusm-button:hover {
+	background: #720000;
+	color: #fff;
+}
+
 .button {
 	width: 250px;
 	position: relative;

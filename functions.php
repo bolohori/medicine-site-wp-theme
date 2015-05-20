@@ -129,6 +129,10 @@ add_post_type_support( 'page', 'excerpt' );
  */
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
 	function medicine_theme_setup() {
+
+		// Let WordPress manage the document title.
+		add_theme_support( 'title-tag' );
+
 		// Create Header Menu theme location
 		register_nav_menus( array( 
 			'header-menu' => 'Header Menu',
@@ -342,6 +346,25 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 	}
 }
 add_filter( 'tiny_mce_before_init', 'medicine_styles_dropdown' );
+
+/*
+ * Add call to action button to insert dropdown
+ */
+function medicine_button() {
+	add_filter( "mce_external_plugins", "medicine_add_button" );
+	add_filter( 'mce_buttons', 'medicine_register_button' );
+}
+function medicine_add_button( $plugin_array ) {
+	$plugin_array['medicinebutton'] = get_template_directory_uri() . '/_/js/wusm-button.js';
+	return $plugin_array;
+}
+function medicine_register_button( $buttons ) {
+	if( ! in_array( 'medicinebutton', $buttons) ) {
+		array_push( $buttons, 'medicinebutton' );
+	}
+	return $buttons;
+}
+add_action( 'admin_head', 'medicine_button' );
 
 /*
  * Change [...] to MORE>> (w/ link)
