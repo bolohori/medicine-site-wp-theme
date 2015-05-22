@@ -113,7 +113,7 @@ while( has_sub_field( 'sidebars' ) ):
 		</aside>
 	<?php elseif (get_row_layout() == 'announcements' ): // Announcements ?>
 		<aside class="links">
-			<h2>Recent Announcements</h2>
+			<h2>Announcements</h2>
 			<ul>
 			<?php 
 			$num_to_show = get_option( 'announcements_to_show', 6 );

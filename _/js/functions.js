@@ -31,15 +31,32 @@ jQuery(document).ready(function($) {
 		$(".information-for-div").slideToggle();
 	});
 
-    if(!$('body').hasClass('page-child')) {
-        $('.mobile-primary').children().each(function(i){
-            $(this).addClass('animate');
-        });
-    }
+    $(".mobile-nav .menu-item-has-children > a").each(function() {
+        $(this).wrap( "<div></div>" );
+    });
+
+    $('.mobile-primary > li').children().not('.sub-menu').each(function(){
+        $(this).addClass('animate');
+    });
+
+    $(".mobile-primary .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
+
+    $('.current-page-ancestor .expanded > li').each(function(){
+        $(this).children().first().addClass('animate');
+    });
+
+    $(".mobile-nav .menu-item-has-children > div > a").each(function() {
+        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
+    });
+    $(".mobile-nav .current_page_ancestor > div .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 
 	$('#mobile-menu-icon').click(function() {
+        if($('#mobile-search-icon').hasClass('search-active')) {
+            $('#mobile-search-form').css('top', '-62px');
+            $('#mobile-search-icon').removeClass('search-active');
+        }
         if(!$(this).hasClass('open')) {
-            $('.mobile-nav').fadeIn('fast');
+            $('.mobile-nav').fadeIn();
             $('.mobile-open').hide();
             $('.mobile-close').show();
         } else {
@@ -47,54 +64,66 @@ jQuery(document).ready(function($) {
             $('.mobile-close').hide();
             $('.mobile-open').show();
         }
+        header = $('header').height();
+        $('.billboard').css('margin-top', header);
+        $('header .wrap').toggleClass('pull');
+        $('html').toggleClass('stick');
         if(!$(this).hasClass('open')) {
-            if(!$('body').hasClass('page-child')) {
-                $('.mobile-primary').children().each(function(i){
+                $('.animate').each(function(i){
                     var $li = $(this);
                     setTimeout(function() {
                         $li.addClass('active');
                     }, (i+1) * 100);
                 });
-            }
             $(this).addClass('open');
             } else {
                 $(this).removeClass('open');
-                $('.mobile-primary li').removeClass('active');
+                $('.active').removeClass('active');
             }
     });
 
     $('.mobile-container .close').click(function() {
         $('.mobile-container').fadeOut();
-        $('#mobile-nav ul li').removeClass('active');
         $('#mobile-menu-icon').addClass('closed');
-    })
-    
-    $('#mobile-search-icon').click(function() {
-        $('#mobile-search-form').slideToggle();
-    });
-
-    $(".mobile-primary .page_item_has_children > a").each(function() {
-        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
-    });
-
-    $(".mobile-primary .menu-item-has-children > a").each(function() {
-        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
-    });
+    }); 
 
     $(".expand").click( function() {
-        if( $(this).parent().parent().parent().attr('class') == 'mobile-primary' ){
-            $(".expanded").not($(this).next()).removeClass("expanded").slideUp();
+
+        var submenu = $(this).parent().next();
+
+        if( $(this).parent().parent().parent().parent().attr('class') == 'mobile-primary' ){
+            $(".expanded").not(submenu).removeClass("expanded").slideUp();
             $(".expand").not($(this)).addClass("dashicons-arrow-down-alt2").removeClass("dashicons-arrow-up-alt2");
         }
-        $(this).next().toggleClass("expanded").slideToggle();
+        $(submenu).toggleClass("expanded").slideToggle("fast");
         $(this).toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+
+        if((submenu).hasClass('expanded')) {
+            $(submenu).children().each(function(){
+                $(this).children().first().addClass('animate active');
+            });
+            $(submenu).find('.expanded').each(function(){
+                $(this).children().each(function(){
+                    $(this).children().addClass('animate active');
+                });
+            });
+        } else {
+            $(submenu).children().not('.sub-menu').each(function(){
+                $(this).find('.animate').removeClass('animate');
+            });
+        }
     });
 
-    $(".mobile-primary .current_page_ancestor > .children").addClass("expanded").slideToggle();
-    $(".mobile-primary .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
-
-    $(".mobile-primary .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
-    $(".mobile-primary .current_page_ancestor > .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $('#mobile-search-icon').click(function() {
+        if($(this).hasClass('search-active')) {
+            $('#mobile-search-form').animate({top:'-62px'}, {duration: 300});
+        } else {
+            $('#mobile-search-form').animate({top:'0'}, {duration: 300, complete: function() { $('#mobile-search-form input').focus(); }
+            });
+        }
+        $('#mobile-search-form').toggleClass('active');
+        $(this).toggleClass('search-active');
+    });
 
     $(".info-for").click(function(e){
         e.preventDefault();
@@ -105,6 +134,19 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         $(".announce .arrow").toggleClass("arrow-down arrow-up");
         $(".announce ul").slideToggle();
+    });
+});
+
+jQuery(document).ready(function($) {
+    selectedyear = jQuery('.selected-year').text();
+    jQuery('.displayed-year p').text(selectedyear);
+    $('.displayed-year p').click(function() {
+        $('#year-list').toggle();
+    });
+    $('#year-list li').click(function() {
+        selectedyear = jQuery('.selected-year').text();
+        jQuery('.displayed-year p').text(selectedyear);
+        $('#year-list').hide();
     });
 });
 

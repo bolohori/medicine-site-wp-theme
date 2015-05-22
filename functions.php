@@ -130,7 +130,7 @@ add_post_type_support( 'page', 'excerpt' );
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
 	function medicine_theme_setup() {
 
-		// Allow WordPress to handle <title> tags, as recommended in make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
+		// Let WordPress manage the document title.
 		add_theme_support( 'title-tag' );
 
 		// Create Header Menu theme location
@@ -198,8 +198,8 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * The admin bar enqueues these two when a user is logged in, we need manually include
 		 * them if they aren't logged in
 		 */
-		wp_dequeue_style( 'open-sans-css' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' );
+		wp_deregister_style( 'open-sans' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 
@@ -280,6 +280,12 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 				'title'	=> 'Custom Styles',
 				'items'	=> array(
 					array(
+						'title'		=> 'Intro Text',
+						'block'		=> 'p',
+						'classes'	=> 'intro-text',
+						'wrapper'	=> false
+					),
+					array(
 						'title'	   => 'Main content callout',
 						'block'	   => 'div',
 						'classes'  => 'callout',
@@ -340,6 +346,25 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 	}
 }
 add_filter( 'tiny_mce_before_init', 'medicine_styles_dropdown' );
+
+/*
+ * Add call to action button to insert dropdown
+ */
+function medicine_button() {
+	add_filter( "mce_external_plugins", "medicine_add_button" );
+	add_filter( 'mce_buttons', 'medicine_register_button' );
+}
+function medicine_add_button( $plugin_array ) {
+	$plugin_array['medicinebutton'] = get_template_directory_uri() . '/_/js/wusm-button.js';
+	return $plugin_array;
+}
+function medicine_register_button( $buttons ) {
+	if( ! in_array( 'medicinebutton', $buttons) ) {
+		array_push( $buttons, 'medicinebutton' );
+	}
+	return $buttons;
+}
+add_action( 'admin_head', 'medicine_button' );
 
 /*
  * Change [...] to MORE>> (w/ link)
@@ -525,6 +550,7 @@ add_filter( 'profile_excerpt_text', function() {
 });
 add_filter( 'profile_template_file', function() { return get_stylesheet_directory() . "/_/php/profile-template.php"; } );
 add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
+add_filter( 'profile_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'media_mentions_link_field', function() { return 'url'; } );
 add_filter( 'media_mentions_show_thumbnail', function() { return false; } );

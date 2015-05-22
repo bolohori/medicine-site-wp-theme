@@ -502,8 +502,87 @@ function create_custom_post_types() {
 	 * Hold on this until v2.0
 	 */
 	//register_post_type( 'faculty', $args );
-	
-	// Register the custom taxonomies for Research News
+
+
+    $labels = array(
+        'name'               => 'Outlook Articles',
+        'singular_name'      => 'Outlook Article',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New Outlook Article',
+        'edit_item'          => 'Edit Outlook Article',
+        'new_item'           => 'New Outlook Article',
+        'all_items'          => 'All Outlook Articles',
+        'view_item'          => 'View Outlook Article',
+        'search_items'       => 'Search Outlook Articles',
+        'not_found'          =>	'No Outlook articles found',
+        'not_found_in_trash' => 'No Outlook articles found in Trash',
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Outlook Articles'
+    );
+    $args = array(
+        'labels'              => $labels,
+        'exclude_from_search' => true,
+        'show_in_nav_menus'   => false,
+        'menu_icon'           => 'dashicons-list-view',
+        'public'              => true,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'query_var'           => true,
+        'rewrite'             => array( 'slug' => 'news/outlook' ),
+        'capability_type'     => 'post',
+        'hierarchical'        => false,
+        'menu_position'       => null,
+        'supports'            => array(
+            'title',
+            'revisions'
+        )
+    );
+    register_post_type( 'outlook', $args );
+
+
+    $labels = array(
+        'name'               => 'Washington People',
+        'singular_name'      => 'Washington Person',
+        'add_new'            => 'Add New',
+        'add_new_item'       => 'Add New Washington Person',
+        'edit_item'          => 'Edit Washington Person',
+        'new_item'           => 'New Washington Person',
+        'all_items'          => 'All Washington People',
+        'view_item'          => 'View Washington Person',
+        'search_items'       => 'Search Washington People',
+        'not_found'          =>	'No Washington People found',
+        'not_found_in_trash' => 'No Washington People found in Trash',
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Washington People'
+    );
+    $args = array(
+        'labels'              => $labels,
+        'exclude_from_search' => true,
+        'show_in_nav_menus'   => false,
+        'menu_icon'           => 'dashicons-list-view',
+        'public'              => true,
+        'publicly_queryable'  => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'query_var'           => true,
+        'rewrite'             => array( 'slug' => 'news/washington-people' ),
+        'capability_type'     => 'post',
+        'hierarchical'        => false,
+        'menu_position'       => null,
+        'supports'            => array(
+            'title',
+            'thumbnail',
+            'excerpt',
+            'revisions'
+        )
+    );
+    register_post_type( 'washington_people', $args );
+
+
+
+
+    // Register the custom taxonomies for Research News
 	// (Only needed once, but leaving here for posterity)
 	if(0) {
 		if(!term_exists("Alzheimer's disease","expertise"));wp_insert_term("Alzheimer's disease", "expertise");

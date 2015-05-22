@@ -1,8 +1,9 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
+
 <div class="slide-wrapper billboard">
 	<div class="slider-wrapper theme-default">
-		<div id="billboard-slider" class="nivoSlider">
+		<ul class="billboard-slider">
 <?php
 			$num_to_show = get_option( 'billboards_to_show', 5 );
 			
@@ -52,11 +53,13 @@
 				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
  				$title = get_the_title();
 
-				echo "<a href=\"$url\" alt='$title' onclick=\"__gaTracker('send','event','outbound-billboard','$title');\">" . get_the_post_thumbnail( $post->ID ) . "</a>\n";
+ 				$imgurl = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+
+				echo "<li><a href=\"$url\" alt='$title' onclick=\"__gaTracker('send','event','outbound-billboard','$title');\"><div style='background-image:url(" . $imgurl . ");'><div class='billboard-overlay'></div>" . get_the_post_thumbnail( $post->ID ) . "<div class='billboard-title-wrap'><p class='billboard-title'>$title &raquo;</p></div></div></a></li>\n";
 			endwhile;
 			wp_reset_postdata();
 ?>
-		</div>
+		</ul>
 	</div>
 </div>
 
