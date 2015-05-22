@@ -42,7 +42,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 
 <img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.png" alt="Washington University School of Medicine in St. Louis"/>
 <header>
-<div class="wrap">
+<div class="header-wrap">
 
 	<nav id="utility-bar" class="clearfix">
 		<div class="wrapper top-nav">

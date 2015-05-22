@@ -180,18 +180,17 @@ $washington_people = new WP_Query ( $args );
             <div class="card">
                 <h2><a href="/news/multimedia/">Campus Life</a></h2>
                 <?php if ( $campus_life->have_posts() ) : ?>
-                    <?php while ( $campus_life->have_posts() ) : $campus_life->the_post(); ?>
-                        <?php the_post_thumbnail( array(325, 218) ); ?>
+                    <?php while ( $campus_life->have_posts() ) : $campus_life->the_post();
+                        $external_link = get_field('external_link');
+                        $url = $external_link['url'] ? $external_link['url'] : get_permalink();
+                        $link_text = $external_link['title'] ? $external_link['title'] : 'See photos';
+                    ?>
+
+                        <a href="<?php echo $url; ?>"><?php the_post_thumbnail( array(325, 218) ); ?></a>
 
                         <ul>
                             <li>
                                 <div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-                                <?php
-                                    $external_link = get_field('external_link');
-
-                                    $url = $external_link['url'] ? $external_link['url'] : get_permalink();
-                                    $link_text = $external_link['title'] ? $external_link['title'] : 'See photos';
-                                ?>
                                 <a href="<?php echo $url; ?>"><?php the_title(); ?></a>
                                 <p><?php echo get_the_excerpt(); ?> <a class="more" href="<?php echo $url; ?>"><?php echo $link_text; ?></a></p>
                             </li>
@@ -204,7 +203,7 @@ $washington_people = new WP_Query ( $args );
                 <h2><a href="/news/washington-people/">Washington People</a></h2>
                 <?php if ( $washington_people->have_posts() ) : ?>
                     <?php while ( $washington_people->have_posts() ) : $washington_people->the_post(); ?>
-                        <?php the_post_thumbnail( array(325, 218) ); ?>
+                        <a href="<?php echo get_field('url'); ?>"><?php the_post_thumbnail( array(325, 218) ); ?></a>
         
                         <ul>
                             <li>
@@ -217,23 +216,19 @@ $washington_people = new WP_Query ( $args );
                 <?php endif; ?>
             </div>
 
-            <div class="card short">
+            <div class="card">
                 <h2><a href="/news/announcements/">Announcements</a></h2>
                 <ul>
                     <li><p>Updates on campus events, policy changes, road and building construction, calls for papers and more. <a class="more" href="/news/announcements">See announcements</a></p></li>
                 </ul>
             </div>
 
-            <div class="card short">
+            <div class="card">
                 <h2><a href="http://news.wustl.edu/run/Pages/Record.aspx">The Record</a></h2>
                 <ul>
                     <li><p>University-wide information including research, achievements and campus events. <a class="more" href="http://news.wustl.edu/run/Pages/Record.aspx">Go to The Record</a></p></li>
                 </ul>
             </div>
-
-
-
-
 
         </article>
 

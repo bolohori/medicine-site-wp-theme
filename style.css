@@ -59,7 +59,7 @@ a {
 }
 
 a:hover {
-	color: #717171;
+	color: #555;
 }
 
 h1 {
@@ -179,7 +179,7 @@ header {
 	position: relative;
 }
 
-header .wrap.pull {
+.header-wrap.pull {
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -195,7 +195,7 @@ header .wrap.pull {
 	background-color: #f0f0f0;
 }
 
-.admin-bar .wrap.pull {
+.admin-bar .header-wrap.pull {
 	top: 46px;
 }
 
@@ -515,9 +515,12 @@ textarea {
 .mobile-primary .menu-item {
 	position: relative;
 }
-.mobile-primary .menu-item a {
+.mobile-primary .menu-item {
     font-weight: normal;
     border-bottom: 1px solid #e3e3e3;
+}
+.mobile-primary .sub-menu .menu-item:last-child {
+    border-bottom: none;
 }
 .mobile-primary .menu-item .sub-menu .menu-item a {
     font-size: 15px;
@@ -526,6 +529,7 @@ textarea {
 .mobile-nav ul.sub-menu {
 	background: #f0f0f0;
     display: none;
+    border-top: 1px solid #e3e3e3;
 }
 .mobile-nav .expand {
     border-left: 1px solid #e3e3e3;    
@@ -709,6 +713,24 @@ article .gform_wrapper .top_label .gfield_description {
 
 body article .gform_wrapper label.gfield_label+div.ginput_container {
     margin-top: 0;
+}
+
+article .gform_wrapper .gsection {
+    border-bottom: none;
+    padding: 0;
+    margin: 1.8em 0 0 0;
+}
+
+article .gform_wrapper h2.gsection_title {
+    font-size: 21px;
+    padding-bottom: 5px !important;
+    border-bottom: 1px solid #ccc;
+}
+
+article .gform_wrapper .gsection.no-label h2.gsection_title{
+    /* custom CSS class */
+    padding-bottom: 0 !important;
+    border-bottom: none;
 }
 
 article .gform_wrapper .field_sublabel_above .gfield_date_day label, article .gform_wrapper .field_sublabel_above .gfield_date_month label, article .gform_wrapper .field_sublabel_above .gfield_date_year label, article .gform_wrapper .field_sublabel_above .gfield_time_ampm label, article .gform_wrapper .field_sublabel_above .gfield_time_hour label, article .gform_wrapper .field_sublabel_above .gfield_time_minute label, article .gform_wrapper .field_sublabel_above .ginput_complex label, article .gform_wrapper .field_sublabel_above .instruction {
@@ -896,6 +918,26 @@ article.giving-notch h1{
 article.notch {
 	margin-top: -58px;
 	padding-top: 24px;
+}
+
+a.wusm-button {
+    display: inline-block;
+    line-height: 14px;
+    margin: 0 20px 0 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #990000;
+    padding: 15px 50px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: background 0.1s ease;
+}
+
+a.wusm-button:hover {
+    background: #c40000;
+    color: #fff;
 }
 
 article .intro-text {
@@ -1643,10 +1685,9 @@ a#wusm-google-plus:hover img {
 }
 
 .announcement {
-	float        : left;
 	padding-right: 16%;
-	min-height   : 60px;
-	font-size    : 14px
+	font-size: 14px;
+	margin-bottom: 20px;
 }
 
 p.announcements {
@@ -2389,11 +2430,6 @@ article.full-width {
 
 .card.full-width {
     width: 687px;
-    height: auto;
-}
-
-.card.short {
-    height: 155px;
 }
 
 .card h2 {
@@ -2446,9 +2482,12 @@ article.full-width {
     width:325px;
     height:218px;
     position:relative;
+    padding-bottom: 20px;
+}
+
+.card h2 + img.wp-post-image {
     top:-59px;
     margin-bottom:-59px;
-    padding-bottom: 20px;
 }
 
 .card a.more {

@@ -66,7 +66,7 @@ jQuery(document).ready(function($) {
         }
         header = $('header').height();
         $('.billboard').css('margin-top', header);
-        $('header .wrap').toggleClass('pull');
+        $('.header-wrap').toggleClass('pull');
         $('html').toggleClass('stick');
         if(!$(this).hasClass('open')) {
                 $('.animate').each(function(i){
@@ -149,13 +149,3 @@ jQuery(document).ready(function($) {
         $('#year-list').hide();
     });
 });
-
-
-// Lucky Orange analytics
-window.__wtw_lucky_site_id = 32316;
-
-(function() {
-    var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
-    wa.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://cdn') + '.luckyorange.com/w.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
-})();
