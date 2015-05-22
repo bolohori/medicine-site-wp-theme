@@ -510,7 +510,6 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 }
 
 .home #featured-image {
-	float  : left;
 	z-index: 1;
 }
 
@@ -916,7 +915,6 @@ td p:last-child {
 -------------------------------------------------------------------------------*/
 footer {
 	position: relative;
-	float: left;
 	width: 100%;
 	text-align: center;
 	line-height: 19px;
@@ -924,7 +922,7 @@ footer {
 }
 
 footer .wrapper {
-	min-height: 311px;
+	min-height: 265px;
 }
 
 footer li {
@@ -1321,7 +1319,6 @@ a.news-title {
 }
 
 .news {
-	float: left;
 	padding: 50px 0;
 	min-height: 245px;
 	width: 100%;
@@ -1399,7 +1396,6 @@ a.news-title {
 .hero-text {
 	position: relative;
 	z-index: 2;
-	float: left;
 	margin-top: -43px;
 	min-height: 225px;
 	width: 100%;
@@ -1479,7 +1475,6 @@ a.news-title {
 }
 
 .spotlight {
-	float     : left;
 	padding   : 50px 0;
 	min-height: 254px;
 	width     : 100%;
@@ -2258,7 +2253,7 @@ ul.program-list li.last-child {
 	font-size: 13px;
 }
 
-	.section img {
+.section img {
 	float: left;
 	margin-right: 11px;
 }
