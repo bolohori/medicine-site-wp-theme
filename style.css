@@ -41,6 +41,11 @@ img.size-full {
 
 /* General HTML elements
 -------------------------------------------------------------------------------*/
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-size  : 14px;
@@ -307,7 +312,6 @@ textarea {
     font-style: italic;
     font-size: 12px;
     font-family: 'Open Sans', sans-serif;
-
 }
 
 #search-btn {
