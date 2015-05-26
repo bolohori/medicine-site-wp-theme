@@ -1103,10 +1103,6 @@ footer a {
 	font-size: 12px;
 }
 
-.announcements-left p {
-	padding-top: 10px;
-}
-
 .announcements-right {
 	float: left;
 	margin: 22px 0;
@@ -1125,10 +1121,6 @@ footer a {
 
 .information-for-left h2 {
 	line-height: 28px;
-} 
-
-.information-for-left p {
-	padding-top: 10px;
 }
 
 .information-for-right {
