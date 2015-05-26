@@ -185,7 +185,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper clearfix">
-			<div id="mobile-search-icon"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg"></div>
+			<div id="mobile-search-icon"><img class="search-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg"><img class="search-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
             <div id="mobile-menu-icon"><img class="mobile-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg"><img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
 			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/></a></div>
 			<div id="site-title-text"><a href="<?php echo home_url(); ?>">
