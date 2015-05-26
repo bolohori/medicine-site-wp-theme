@@ -185,13 +185,25 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper clearfix">
-			<div id="mobile-search-icon"><img class="search-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg"><img class="search-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
-            <div id="mobile-menu-icon"><img class="mobile-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg"><img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg"></div>
-			<div id="site-title"><a href="<?php echo home_url(); ?>"><img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/></a></div>
-			<div id="site-title-text"><a href="<?php echo home_url(); ?>">
-				<div class="university">Washington University</div>
-				<div class="school">School of Medicine</div>
-			</a></div>
+			<div id="mobile-search-icon">
+				<img class="search-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/mobile-search.png';this.onerror=null;">
+				<img class="search-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
+			</div>
+            <div id="mobile-menu-icon">
+            	<img class="mobile-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/menu.png';this.onerror=null;">
+            	<img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
+            </div>
+			<div id="site-title">
+				<a href="<?php echo home_url(); ?>">
+					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/>
+				</a>
+			</div>
+			<div id="site-title-text">
+				<a href="<?php echo home_url(); ?>">
+					<div class="university">Washington University</div>
+					<div class="school">School of Medicine</div>
+				</a>
+			</div>
 			<?php get_search_form(); ?>
 		</div>
 	</div>

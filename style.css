@@ -378,12 +378,13 @@ textarea {
 	color : #fff;
 }
 
-.university {
+#site-title-text .university {
 	font-size: 11px;
 	text-transform: uppercase;
+	font-weight: 600;
 }
 
-.school {
+#site-title-text .school {
 	font-size: 22px;
 }
 
