@@ -489,7 +489,7 @@ textarea {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #f0f0f0;
+    background-color: #e0e0e0;
     padding-bottom: 25px;
 }
 .mobile-nav .current_page_item > a,
@@ -530,7 +530,7 @@ textarea {
     border-top: 1px solid #e3e3e3;
 }
 .mobile-primary > .menu-item:last-child a {
-	border-bottom: 1px solid #e3e3e3;
+	border-bottom: 1px solid #d2d2d2;
 }
 .mobile-primary > .menu-item:first-child a {
     border-top: none;
@@ -540,7 +540,6 @@ textarea {
     background: #f0f0f0;
 }
 .mobile-nav ul.sub-menu {
-	background: #f0f0f0;
     display: none;
 }
 .mobile-nav .expand {
@@ -575,7 +574,7 @@ textarea {
 }
 .mobile-secondary {
 	margin: 20px 0 20px;
-	border-top: 1px solid #e3e3e3;
+	border-top: 1px solid #d2d2d2;
 	position: relative;
 	z-index: 10;
 }
@@ -590,6 +589,9 @@ textarea {
 	background: #fff;
 	position: relative;
 	border-bottom: 1px solid #e3e3e3;
+}
+.mobile-secondary > li:last-child a {
+	border-bottom: 1px solid #d2d2d2;
 }
 .mobile-secondary li.current_page_item > a {
 	color: #717171;
