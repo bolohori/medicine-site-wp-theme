@@ -175,11 +175,6 @@
 					}
 
 					$title = get_the_title();
-
-					/*$limit = 11;
-					$excerpt = explode(' ', get_the_excerpt(), $limit);
-					array_pop($excerpt);
-					$excerpt = implode(" ",$excerpt);*/
 					$excerpt = get_the_excerpt( );
 					
 					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">" : "";
