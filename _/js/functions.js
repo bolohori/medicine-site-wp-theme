@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
             $('.search-open').show();
         }
         if(!$(this).hasClass('open')) {
-            $('.mobile-nav').fadeIn();
+            $('.mobile-nav').show();
             $('.mobile-open').hide();
             $('.mobile-close').show();
         } else {
@@ -118,12 +118,11 @@ jQuery(document).ready(function($) {
             $('.active').removeClass('active');
         }
         if($(this).hasClass('search-active')) {
-            $('#mobile-search-form').animate({top:'-62px'}, {duration: 300});
+            $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
             $('.search-close').hide();
             $('.search-open').show();
         } else {
-            $('#mobile-search-form').animate({top:'0'}, {duration: 300, complete: function() { $('#mobile-search-form input').focus(); }
-            });
+            $('#mobile-search-form').animate({top:'0'}, {duration:300});
             $('.search-open').hide();
             $('.search-close').show();
         }
@@ -142,5 +141,13 @@ jQuery(document).ready(function($) {
         selectedyear = jQuery('.selected-year').text();
         jQuery('.displayed-year p').text(selectedyear);
         $('#year-list').hide();
+    });
+});
+
+jQuery(document).ready(function($) {
+    jQuery('.section-nav ul').hide();
+    jQuery('.current-page-title').click(function() {
+        $('.section-nav ul').toggle();
+        $(this).toggleClass('open');
     });
 });

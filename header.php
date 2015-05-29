@@ -242,7 +242,6 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 				<li><a onclick="__gaTracker('send','event','information-for','Researchers');" href="/info/job-seekers/">Job Seekers</a></li>
             </ul>
             <ul class="mobile-secondary">
-            	
 				<li class="menu-item-has-children<?php if(is_page('directory')){ echo ' current_page_item'; } ?>"><a href="/directory/">Directories</a>
 					<?php $args = array(
 						'child_of'     => 332,
@@ -261,26 +260,27 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 					<?php wp_list_pages( $args ); ?>
 					</ul>
 				</li>
-				<li class="menu-item-has-children<?php if(is_page('calendar')){ echo ' current_page_item'; } ?>"><a href="/calendar/">Calendar</a>
-					<?php $args = array(
-						'child_of'     => 439,
-						'title_li'     => __('')
-					); ?>
-					<ul class="sub-menu">
-					<?php wp_list_pages( $args ); ?>
-					</ul>
+				<li class="<?php if(is_page('calendar')){ echo ' current_page_item'; } ?>"><a href="/calendar/">Calendar</a>
 				</li>
-				<li><a href="/contact/">Contact</a></li>
+				<li class="<?php if(is_page('contact')){ echo ' current_page_item'; } ?>"><a href="/contact/">Contact</a></li>
 				<li class="menu-item-has-children<?php if(is_page('giving')){ echo ' current_page_item"'; } ?>"><a href="/giving/">Giving</a>
 					<?php $args = array(
-						'child_of'     => 9556,
+						'child_of'     => 11,
 						'title_li'     => __('')
 					); ?>
 					<ul class="sub-menu">
 					<?php wp_list_pages( $args ); ?>
 					</ul>
 				</li>
-				<li <?php if(is_page('policies')){ echo 'class="current_page_item"'; } ?>><a href="/policies/">Policies</a></li>
+				<li class="menu-item-has-children<?php if(is_page('policies')){ echo 'current_page_item"'; } ?>"><a href="/policies/">Policies</a>
+					<?php $args = array(
+						'child_of'     => 1444,
+						'title_li'     => __('')
+					); ?>
+					<ul class="sub-menu">
+					<?php wp_list_pages( $args ); ?>
+					</ul>
+				</li>
             </ul>
         </nav>
     </div>

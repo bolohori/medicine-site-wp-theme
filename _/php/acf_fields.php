@@ -1018,6 +1018,22 @@ register_field_group(array (
 			),
 			'layout' => 'horizontal',
 		),
+		array (
+			'key' => 'field_556874152b2b6',
+			'label' => 'Section Nav',
+			'name' => 'section_nav',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => 'Display section nav',
+			'default_value' => 0,
+		),
 	),
 	'location' => array (
 		array (

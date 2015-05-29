@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.05.15.0
+Version:     15.05.29.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -168,9 +168,6 @@ article p.wp-caption-text {
 
 /* Header
 -------------------------------------------------------------------------------*/
-
-
-
 header {
 	width: 100%;
 	z-index: 999;
@@ -195,7 +192,7 @@ header {
 		z-index: 999999;
 		outline: 0;
 		padding-left: 0;
-		background-color: #f0f0f0;
+		background-color: #e0e0e0;
 	}
 
 	.admin-bar .header-wrap.pull {
@@ -563,15 +560,15 @@ textarea {
 }
 .mobile-primary li .animate {
 	opacity: 0.0;
-	-webkit-transform: translate3d(0,100%,0);
-	transform: translate3d(0,100%,0);
-	-webkit-transition: -webkit-transform 400ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
+	transform: translate(0,59px);
+	-webkit-transform: translate(0,59px);
 	transition: transform 400ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
+	-webkit-transition: -webkit-transform 400ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
 }
 .mobile-primary li .animate.active {
 	opacity: 1.0;
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
+	-webkit-transform: translate(0,0);
+	transform: translate(0,0);
 }
 .mobile-secondary {
 	margin: 20px 0 20px;
@@ -633,6 +630,8 @@ input {
 
 #dirform input {
 	margin: 10px 0;
+	-moz-appearance: none;
+	-webkit-appearance: none;
 }
 
 #dirform .button {
@@ -646,9 +645,14 @@ input {
 	padding: 0 18px;
 	margin-right: 15px;
 	cursor: pointer;
-	-moz-appearance: none;
-	-webkit-appearance: none;
 	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+}
+
+@media screen and (max-width: 960px) {
+	#dirform input {
+		font-size: 16px;
+	}
 }
 
 @media screen and (max-width: 550px) {
@@ -935,6 +939,85 @@ article.notch {
 	padding-top: 24px;
 }
 
+.section-nav {
+	display: none;
+}
+
+@media screen and (max-width: 960px) {
+	.section-nav {
+		display: block;
+		margin: -15px 0 30px;
+		overflow: hidden;
+		font-size: 12px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+
+	.current-page-title {
+		position: relative;
+		width: auto;
+		display: block;
+		z-index: 99;
+		border-radius: 9px;
+		color: #990000;
+		text-transform: uppercase;
+		letter-spacing: .05em;
+		padding: 10px 35px 10px 14px;
+		line-height: 1.5;
+		font-weight: bold;
+		cursor: pointer;
+		border: 1px solid #e0e0e0;
+		background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f1f0f0), color-stop(50%, #ebebeb), color-stop(100%, #e5e5e5));
+		background-image: -webkit-linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+		background-image: -moz-linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+		background-image: -o-linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+		background-image: linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+	}
+
+	.current-page-title:after {
+		content: '\25BE';
+		position: absolute;
+		right: 14px;
+		top: 50%;
+		margin-top: -10px;
+	}
+
+	.current-page-title.open {
+		border-radius: 9px 9px 0 0;
+	}
+
+	.current-page-title.open:after {
+		-webkit-transform: rotate(0.5turn);
+		-ms-transform: rotate(0.5turn);
+		transform: rotate(0.5turn);
+	}
+
+	.section-nav ul {
+		list-style: none;
+		margin: 0;
+		border-radius: 0 0 9px 9px;
+		border: 1px solid #e0e0e0;
+		border-top: none;
+		overflow: hidden;
+	}
+
+	.section-nav li {
+		margin: 0;
+	}
+
+	.section-nav ul a {
+		padding: 5px 13px;
+		background: #fff;
+		display: block;
+		transition: background 0.1s;
+	}
+
+	.section-nav ul a:hover {
+		background: #f1f0f0;
+	}
+}
+
 a.wusm-button {
     display: inline-block;
     line-height: 14px;
@@ -1139,8 +1222,10 @@ article ul li, article ol li {
 	}
 }
 
-.special-head {
-	padding-top: 31px;
+@media screen and (min-width: 960px) {
+	.special-head {
+		padding-top: 31px;
+	}
 }
 
 .special-header {
@@ -1637,10 +1722,6 @@ a#wusm-google-plus:hover img {
 	font-size: 12px;
 }
 
-.announcements-left p {
-	padding-top: 10px;
-}
-
 .announcements-right {
 	float: left;
 	margin: 22px 0;
@@ -1659,10 +1740,6 @@ a#wusm-google-plus:hover img {
 
 .information-for-left h2 {
 	line-height: 28px;
-} 
-
-.information-for-left p {
-	padding-top: 10px;
 }
 
 .information-for-right {
@@ -1873,7 +1950,9 @@ a.news-title {
 	color: #fff;
 	font-weight: bold;
 	padding-bottom: 10px;
+	border-bottom: 1px solid #fff;
 	border-bottom: 1px solid rgba(255,255,255,0.4);
+	text-shadow: 1px 1px 5px rgb(71,71,71);
 }
 
 .bx-pager {
@@ -2981,6 +3060,7 @@ ul.program-list li.last-child {
 	padding: 6px 10px 3px 10px;
 	font-family: 'Open Sans',sans-serif;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 #award-years-left .displayed-year p:after {
@@ -3115,7 +3195,7 @@ box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
 	font-size: 13px;
 }
 
-	.section img {
+.section img {
 	float: left;
 	margin-right: 11px;
 }
@@ -3520,8 +3600,12 @@ a.sidebar-outlook-link {
 }
 
 .profile-custom-archive-entry h3 {
-	padding-top: 20px;
+	padding-top: 10px;
 	font-size: 21px;
+}
+
+.profile-custom-archive-link {
+	padding-bottom: 0;
 }
 
 .in_focus-custom-archive-entry h3 {
@@ -3540,45 +3624,8 @@ a.sidebar-outlook-link {
 
 .in_focus-custom-archive-thumb {
 	float                    : left;
-	width: 45%;
 	border-bottom-left-radius: 3px;
 	border-top-left-radius   : 3px;
-	height: auto;
-}
-
-.archive-info {
-	float: right;
-	width: 47%;
-	max-width: 330px;
-	padding: 3% 4% 3% 2%;
-}
-
-@media screen and (max-width: 770px) {
-	.in_focus-custom-archive-thumb {
-		width: 40%;
-		padding: 2.5%;
-		border-bottom-left-radius: 0;
-		border-top-left-radius: 0;
-	}
-}
-
-@media screen and (max-width: 550px) {
-	.in_focus-custom-archive-entry {
-		max-width: 320px;
-		margin: 0 auto 20px;
-	}
-	.in_focus-custom-archive-thumb {
-		float: none;
-		width: 100%;
-		padding: 0;
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-	}
-	.archive-info {
-		float: none;
-		width: auto;
-		padding: 15px 20px;
-	}
 }
 
 .custom-intro {
@@ -3800,6 +3847,9 @@ a.sidebar-outlook-link {
     	background: none;
     	padding: 0;
     }
+    .special-header {
+		display: none;
+	}
     #right-col {
     	float: none;
     	max-width: 560px;
