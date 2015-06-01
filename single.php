@@ -67,16 +67,18 @@
 					if( get_the_content() ) {
 						the_content();
 					} else {
-						$link = get_field( 'url' );
+                        $link = get_field( 'url' );
 						if($post->post_type == 'news_releases') {
-							$button_text = "See News Release";
-						} elseif($post->post_type == 'announcement') {
+                            $link = $link['url'];
+                            $button_text = "See News Release";
+                        } elseif($post->post_type == 'announcement') {
+                            $link = $link['url'];
 							$button_text = "View Announcement";
 						} else {
 							$button_text = "View Article";
 						}
 						the_excerpt();
-						echo "<br><a href='{$link['url']}'><button class='single-link'>$button_text</button></a>";
+						echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
 					}
 				endwhile;
 			endif;

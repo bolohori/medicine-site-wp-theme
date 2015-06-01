@@ -530,6 +530,8 @@ add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y"
 add_filter( 'spotlight_show_thumbnail', function() { return false; } );
 add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
 
+add_filter( 'washington_people_link_field', function() { return 'url'; } );
+
 if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	function spotlight_link_url_function( $id ) {
 		return ( $external_link = get_field( 'nl-link' ) ) ? 'nl-link' : '';
