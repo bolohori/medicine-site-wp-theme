@@ -2,7 +2,10 @@ jQuery(document).ready(function($) {
 
 	$('.billboard-slider').bxSlider({
 		mode: 'fade',
-		auto: true
+		auto: true,
+		onSliderLoad: function(){
+	    	$('.billboard').css("visibility", "visible");
+	    }
 	});
 
 	$('#spotlight-slider').nivoSlider({

@@ -1,12 +1,3 @@
-// Browser detection for when you get desparate. A measure of last resort.
-// http://rog.ie/post/9089341529/html5boilerplatejs
-
-// var b = document.documentElement;
-// b.setAttribute('data-useragent',  navigator.userAgent);
-// b.setAttribute('data-platform', navigator.platform);
-
-// sample CSS: html[data-useragent*='Chrome/13.0'] { ... }
-
 // remap jQuery to $
 jQuery(document).ready(function($) {
 	var $window = $(window);
@@ -45,14 +36,19 @@ jQuery(document).ready(function($) {
         $(this).children().first().addClass('animate');
     });
 
+    $('.current_page_ancestor .expanded > li').each(function(){
+        $(this).children().first().addClass('animate');
+    });
+
     $(".mobile-nav .menu-item-has-children > div > a").each(function() {
         $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
     });
-    $(".mobile-nav .current_page_ancestor > div .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $(".mobile-primary .current_page_ancestor > div .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $(".mobile-secondary .expanded").parent().find('.dashicons-arrow-down-alt2').toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
 
 	$('#mobile-menu-icon').click(function() {
         if($('#mobile-search-icon').hasClass('search-active')) {
-            $('#mobile-search-form').css('top', '-62px');
+            $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
             $('#mobile-search-icon').removeClass('search-active');
             $('.search-close').hide();
             $('.search-open').show();
@@ -61,24 +57,31 @@ jQuery(document).ready(function($) {
             $('.mobile-nav').show();
             $('.mobile-open').hide();
             $('.mobile-close').show();
+            var siteHeader = $('header').height();
+            $('body').css('padding-top', siteHeader);
+            
         } else {
-            $('.mobile-nav').fadeOut();
+            $('.mobile-nav').hide();
             $('.mobile-close').hide();
             $('.mobile-open').show();
+            $('body').css('padding-top', 0);
         }
         $('.header-wrap').toggleClass('pull');
         $('html').toggleClass('stick');
         if(!$(this).hasClass('open')) {
+            function delayAnimate() { 
                 $('.animate').each(function(i){
-                    var $li = $(this);
+                    var li = $(this);
                     setTimeout(function() {
-                        $li.addClass('active');
+                        li.addClass('active');
                     }, (i+1) * 100);
                 });
+            }
+            setTimeout(delayAnimate, 200)
             $(this).addClass('open');
         } else {
             $(this).removeClass('open');
-            $('.active').removeClass('active');
+            $('.mobile-nav .active').removeClass('active');
         }
     }); 
 
@@ -109,13 +112,14 @@ jQuery(document).ready(function($) {
 
     $('#mobile-search-icon').click(function() {
         if($('#mobile-menu-icon').hasClass('open')) {
-            $('.mobile-nav').fadeOut();
+            $('body').css('padding-top', 0);
+            $('.mobile-nav').hide();
             $('.mobile-close').hide();
             $('.mobile-open').show();
             $('.header-wrap').toggleClass('pull');
             $('html').removeClass('stick');
             $('#mobile-menu-icon').removeClass('open');
-            $('.active').removeClass('active');
+            $('.mobile-nav .active').removeClass('active');
         }
         if($(this).hasClass('search-active')) {
             $('#mobile-search-form').animate({top:'-62px'}, {duration:300});

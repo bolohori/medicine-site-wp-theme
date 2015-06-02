@@ -53,6 +53,12 @@ body {
 	color      : #333;
 }
 
+@media screen and (min-width: 960px) {
+	body {
+		padding-top: 0!important;
+	}
+}
+
 a {
 	color: #980006;
 	text-decoration: none;
@@ -171,7 +177,6 @@ article p.wp-caption-text {
 header {
 	width: 100%;
 	z-index: 999;
-	position: relative;
 }
 
 @media screen and ( max-width: 960px ) {
@@ -185,11 +190,10 @@ header {
 		right: 0;
 		bottom: 0;
 		left: 0;
-		overflow-x: hidden;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
 		display: block;
-		z-index: 999999;
+		z-index: 1001;
 		outline: 0;
 		padding-left: 0;
 		background-color: #e0e0e0;
@@ -421,7 +425,6 @@ textarea {
 
 .mobile-container {
     position: relative;
-    height: 100%;
     z-index: 120;
     width: 100%;
     display: block;
@@ -513,6 +516,8 @@ textarea {
     box-sizing: border-box;
     position: relative;
     background-color: #fff;
+    transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
 }
 .mobile-primary li .sub-menu .menu-item a {
 	padding: 19px 65px 19px 36px;
@@ -527,8 +532,12 @@ textarea {
     font-weight: normal;
     border-top: 1px solid #e3e3e3;
 }
-.mobile-primary > .menu-item:last-child a {
+.mobile-primary > .menu-item:last-child > div a,
+.mobile-primary > .menu-item:last-child > .sub-menu .menu-item:last-child a {
 	border-bottom: 1px solid #d2d2d2;
+}
+.mobile-primary .menu-item:last-child > .sub-menu .menu-item:first-child a {
+	border-top: none;
 }
 .mobile-primary > .menu-item:first-child a {
     border-top: none;
@@ -560,15 +569,15 @@ textarea {
 }
 .mobile-primary li .animate {
 	opacity: 0.0;
-	transform: translate(0,59px);
-	-webkit-transform: translate(0,59px);
-	transition: transform 400ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
-	-webkit-transition: -webkit-transform 400ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
+	-webkit-transform: translate3d(0,59px,0);
+	transform: translate3d(0,59px,0);
+	-webkit-transition: -webkit-transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
+	transition: transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
 }
 .mobile-primary li .animate.active {
 	opacity: 1.0;
-	-webkit-transform: translate(0,0);
-	transform: translate(0,0);
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
 }
 .mobile-secondary {
 	margin: 20px 0 20px;
@@ -772,16 +781,38 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 	text-align: center;
 	width     : 100%;
 	z-index   : 50;
-	background: #ccc;
-}
-
-.home #featured-image {
-	z-index: 1;
+	background-color: #ccc;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 400px;
+	overflow: hidden;
 }
 
 #featured-image img{
-	display: block;
+	display: none;
 	margin: 0 auto;
+}
+
+.home #featured-image {
+	height: auto;
+	z-index: 1;
+}
+
+.home #featured-image img {
+	display: block;
+}
+
+@media screen and (max-width: 960px) {
+	#featured-image {
+		height: auto;
+		background: #ccc;
+	}
+	#featured-image img {
+		display: block;
+		max-width: 150%;
+		margin-left: -25%;
+		height: auto;
+	}
 }
 
 /* Main
@@ -1883,7 +1914,7 @@ a.news-title {
 
 .billboard {
 	position: relative;
-	overflow: hidden;
+	visibility: hidden;
 }
 
 .billboard .slider-wrapper {
@@ -1922,11 +1953,6 @@ a.news-title {
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-}
-
-.ie-lt9 .billboard-slider li a > div {
-	height: 400px;
-	background-image: none;
 }
 
 .billboard-slider li img {
@@ -1979,6 +2005,9 @@ a.news-title {
 		max-width: 140%;
 		margin-left: -20%;
 		height: auto;
+	}
+	.ie-lt9 .billboard-slider li a > div {
+		background-image: none;
 	}
 }
 @media screen and (max-width:650px) {
@@ -2213,16 +2242,13 @@ a.news-title {
 	font-size: 16px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
 	.hero-text {
 		background: none;
 		margin-top: 0;
 	}
 	.hero-text .wrapper {
 		padding: 25px 0 8px 0;
-	}
-	.home #featured-image {
-		overflow: hidden;
 	}
 	.home #featured-image img {
 		margin-left: -20%;
@@ -2326,7 +2352,7 @@ a.news-title {
 	*behavior  : url(/wp-content/themes/medicine/_/js/boxsizing.htc);
 	top        : 0;
 	left       : 143px;
-	padding    : 32px 45px;
+	padding    : 30px 42px;
 	width      : 314px;
 	background : #fff;
 	color      : #333;
@@ -2343,7 +2369,7 @@ a.news-title {
 }
 
 #spotlight-slider .nivo-caption p {
-	margin: 15px 0 ;
+	margin: 15px 0 10px;
 	padding: 0;
 	width: 100%;
 	font-size: 13px;
@@ -2384,7 +2410,7 @@ a.news-title {
 	color        : #900;
 	font-weight  : bold;
 	display: block!important;
-	margin: 15px 0 0;
+	margin: 10px 0 0;
 }
 
 #spotlight-slider .nivo-caption a:hover, .news-citation a:hover {
@@ -3724,6 +3750,7 @@ a.sidebar-outlook-link {
 	    font-size: 24px;
 	    color: #fff;
         padding: 18px 120px 18px 20px;
+        -webkit-font-smoothing: subpixel-antialiased;
     }
     #site-title-text a {
 	    color: #fff;
@@ -3902,6 +3929,17 @@ a.sidebar-outlook-link {
 	.announcement {
 		padding-right: 0;
 	}
+}
+@media screen and (max-width: 350px) {
+	#site-title-text {
+        padding: 18px 110px 18px 12px;
+    }
+    #mobile-search-icon {
+    	right: 50px;
+    }
+    #mobile-menu-icon {
+    	right: 5px;
+    }
 }
 
 

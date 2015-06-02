@@ -1,66 +1,63 @@
 <?php get_header(); ?>
-<?php get_sidebar(); ?>
 
 <div class="slide-wrapper billboard">
-	<div class="slider-wrapper theme-default">
-		<ul class="billboard-slider">
+	<ul class="billboard-slider">
 <?php
-			$num_to_show = get_option( 'billboards_to_show', 5 );
-			
+		$num_to_show = get_option( 'billboards_to_show', 5 );
+		
+		$args = array(
+			'post_type'      => 'billboard', 
+			'posts_per_page' => $num_to_show, 
+			'orderby'        => 'menu_order',
+			'order'          => 'ASC',
+			'fields'         => 'ids',
+			'meta_key'       => 'sticky',
+			'meta_value'     => 1
+		);
+		$loop = new WP_Query( $args );
+		$ids = $loop->posts;
+		$num_to_show = $num_to_show - sizeof( $ids );
+
+		if ( $num_to_show > 0 ) {
 			$args = array(
 				'post_type'      => 'billboard', 
 				'posts_per_page' => $num_to_show, 
-				'orderby'        => 'menu_order',
-				'order'          => 'ASC',
-				'fields'         => 'ids',
-				'meta_key'       => 'sticky',
-				'meta_value'     => 1
+				'orderby'        => 'date',
+				'post__not_in'   => $ids,
+				'fields'         => 'ids'
 			);
 			$loop = new WP_Query( $args );
-			$ids = $loop->posts;
-			$num_to_show = $num_to_show - sizeof( $ids );
+			$ids = array_merge( $ids, $loop->posts );
+		}
 
-			if ( $num_to_show > 0 ) {
-				$args = array(
-					'post_type'      => 'billboard', 
-					'posts_per_page' => $num_to_show, 
-					'orderby'        => 'date',
-					'post__not_in'   => $ids,
-					'fields'         => 'ids'
-				);
-				$loop = new WP_Query( $args );
-				$ids = array_merge( $ids, $loop->posts );
-			}
+		$args = array(
+			'post_type' => 'billboard',
+			'orderby'   => 'post__in',
+			'post__in'  => $ids
+		);
 
-			$args = array(
-				'post_type' => 'billboard',
-				'orderby'   => 'post__in',
-				'post__in'  => $ids
-			);
+		$loop = new WP_Query( $args );
+		
+		// Need this for billboards AND in the news images
+		add_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10, 5 );
 
-			$loop = new WP_Query( $args );
+		while ( $loop->have_posts() ) : $loop->the_post();
+			$internal_only = get_field('internal_only');
+			if ( $internal_only && !WASHU_IP )
+				continue;
+
+			$link = get_field('link');
 			
-			// Need this for billboards AND in the news images
-			add_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10, 5 );
+			$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+				$title = get_the_title();
 
-			while ( $loop->have_posts() ) : $loop->the_post();
-				$internal_only = get_field('internal_only');
-				if ( $internal_only && !WASHU_IP )
-					continue;
+				$imgurl = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
 
-				$link = get_field('link');
-				
-				$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
- 				$title = get_the_title();
-
- 				$imgurl = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
-
-				echo "<li><a href=\"$url\" alt='$title' onclick=\"__gaTracker('send','event','outbound-billboard','$title');\"><div style='background-image:url(" . $imgurl . ");'><div class='billboard-overlay'></div>" . get_the_post_thumbnail( $post->ID ) . "<div class='billboard-title-wrap'><p class='billboard-title'>$title &raquo;</p></div></div></a></li>\n";
-			endwhile;
-			wp_reset_postdata();
+			echo "<li><a href=\"$url\" alt='$title' onclick=\"__gaTracker('send','event','outbound-billboard','$title');\"><div style='background-image:url(" . $imgurl . ");'><div class='billboard-overlay'></div>" . get_the_post_thumbnail( $post->ID ) . "<div class='billboard-title-wrap'><p class='billboard-title'>$title &raquo;</p></div></div></a></li>\n";
+		endwhile;
+		wp_reset_postdata();
 ?>
-		</ul>
-	</div>
+	</ul>
 </div>
 
 <?php
@@ -206,4 +203,5 @@
 	
 	</div>
 </section>
+
 <?php get_footer(); ?>

@@ -11,7 +11,8 @@
 			if (get_the_post_thumbnail() != '') {
 				$class .= ' notch';
 				$margin = ' landing-page';
-				echo '<div id="featured-image">';
+				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
+				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
 				the_post_thumbnail('landing-page');
 				echo '</div>';
 			}
