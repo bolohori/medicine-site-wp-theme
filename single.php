@@ -56,7 +56,7 @@
 				}
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' ) {
+					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' && $post->post_type != 'outlook' ) {
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
 					}
 					echo "<p class='custom-byline'>";
