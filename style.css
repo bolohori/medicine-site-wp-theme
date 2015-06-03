@@ -60,12 +60,12 @@ body {
 }
 
 a {
-	color: #980006;
+	color: #990000;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #555;
+	color: #717171;
 }
 
 h1 {
@@ -409,7 +409,7 @@ textarea {
 #main-nav li a {
 	font-size     : 14px;
     font-weight   : 600;
-	color         : #900;
+	color         : #990000;
 	text-transform: uppercase;
 }
 
@@ -876,7 +876,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 }
 
 #left-nav li a {
-	color      : #980006;
+	color      : #990000;
 	font-weight: bold;
 	font-size  : 13px;
 	margin-left: 10px;
@@ -1347,7 +1347,7 @@ td p:last-child {
 }
 
 #site-footer a {
-    color: #971a20;
+    color: #990000;
 }
 
 #site-footer a:hover {
@@ -1887,7 +1887,7 @@ article.search-results {
 }
 
 #paginate-results a {
-	color: #980006;
+	color: #990000;
 }
 
 /* Front Page styles
@@ -1979,6 +1979,7 @@ a.news-title {
 	border-bottom: 1px solid #fff;
 	border-bottom: 1px solid rgba(255,255,255,0.4);
 	text-shadow: 1px 1px 5px rgb(71,71,71);
+	-webkit-font-smoothing: antialiased;
 }
 
 .bx-pager {
@@ -2391,7 +2392,6 @@ a.news-title {
 	border: 1px solid #c7c7c7;
 	border-radius: 50%;
 	margin: 0 5px;
-	font-size: 0;
 }
 
 .spotlight-wrap .spotlight-slider-wrapper .nivo-controlNav a.active {
@@ -3518,7 +3518,7 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside a {
-	color: #900;
+	color: #990000;
 }
 
 #right-col aside a:hover {
@@ -3586,7 +3586,7 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside a.opt-link:hover {
-	color           : #900;
+	color           : #990000;
 	background-color: #dadada;
 }
 

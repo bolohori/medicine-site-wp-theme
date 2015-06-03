@@ -195,7 +195,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
             </div>
 			<div id="site-title">
 				<a href="<?php echo home_url(); ?>">
-					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.png" width="607" height="33" alt="Washington University School of Medicine in St. Louis"/>
+					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.svg" alt="Washington University School of Medicine in St. Louis" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/header-logo.png';this.onerror=null;"/>
 				</a>
 			</div>
 			<div id="site-title-text">
