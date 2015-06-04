@@ -561,8 +561,10 @@ add_filter( 'spotlight_show_thumbnail', function() { return false; } );
 add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
 
 add_filter( 'washington_people_link_field', function() { return 'url'; } );
+add_filter( 'washington_people_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'outlook_link_field', function() { return 'url'; } );
+add_filter( 'outlook_thumbnail_size', function() { return 'large'; }, 999 );
 
 if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	function spotlight_link_url_function( $id ) {
