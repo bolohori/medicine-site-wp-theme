@@ -437,7 +437,7 @@ if ( ! function_exists( 'medicine_change_bg' ) ) {
 	return "</article>
 	</div>
 	</div>
-	<div style='background-color: #$color;width: 100%;float: left;border-top:1px solid #ddd'>
+	<div style='background-color: #$color;width: 100%;border-top:1px solid #ddd' class='clearfix'>
 	<div class='wrapper'>
 	<article style='background-color: #$color;padding-left: 225px;padding-top: 24px;'>";
 	}
