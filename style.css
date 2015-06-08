@@ -176,7 +176,7 @@ article p.wp-caption-text {
 -------------------------------------------------------------------------------*/
 header {
 	width: 100%;
-	z-index: 999;
+	z-index: 200;
 }
 
 @media screen and ( max-width: 960px ) {
@@ -394,6 +394,8 @@ textarea {
 	border-bottom   : 1px solid #cccccc;
 	white-space     : nowrap;
 	background-color: #fff;
+	position: relative;
+	z-index: 121;
 }
 
 #main-nav ul {
@@ -788,7 +790,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 	overflow: hidden;
 }
 
-#featured-image img{
+#featured-image img {
 	display: none;
 	margin: 0 auto;
 }
@@ -1162,6 +1164,7 @@ article ul li, article ol li {
 	height: 0;
 	overflow: hidden;
 	max-width: 100%;
+	margin-bottom: 20px;
 }
 
 .embed-container iframe,
@@ -1315,7 +1318,8 @@ td p:last-child {
 .campaign {
 	background-color: #990000;
 	background-image: url(_/img/campaign-wide.png);
-	background-image: url(_/img/campaign-wide.svg), linear-gradient(transparent, transparent);
+	background-image: -webkit-linear-gradient(transparent, transparent), url(_/img/campaign-wide.svg);
+	background-image: linear-gradient(transparent, transparent), url(_/img/campaign-wide.svg);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 414px;
@@ -1325,7 +1329,8 @@ td p:last-child {
 @media screen and (max-width: 650px) {
 	.campaign {
 		background-image: url(_/img/campaign.png);
-		background-image: url(_/img/campaign.svg), linear-gradient(transparent, transparent);
+		background-image: -webkit-linear-gradient(transparent, transparent), url(_/img/campaign.svg);
+		background-image: linear-gradient(transparent, transparent), url(_/img/campaign.svg);
 		background-size: 207px;
 		height: 60px;
 	}
@@ -1898,7 +1903,6 @@ article.search-results {
 }
 
 .slide-wrapper {
-	background: #ccc;
 	overflow: hidden;
 }
 
@@ -2529,7 +2533,6 @@ a.news-title {
 
 
 
-
 /* News page
 -------------------------------------------------------------------------------*/
 article.full-width {
@@ -2605,7 +2608,7 @@ article.full-width {
     padding-bottom: 20px;
 }
 
-.card h2 + img.wp-post-image {
+.card h2 + a img.wp-post-image {
     top:-59px;
     margin-bottom:-59px;
 }

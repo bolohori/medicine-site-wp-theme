@@ -41,7 +41,7 @@
 
 				$parent_page = get_top_parent_page_id($post->ID);
 				if(get_field('section_nav', $parent_page)) {
-					?><div class="section-nav"><div class="current-page-title"><?php echo get_the_title($parent_page); ?></div><ul><li><a href="<?php echo get_permalink($parent_page); ?>">Home</a></li><?php
+					?><div class="section-nav"><div class="current-page-title"><?php echo get_the_title($parent_page); ?></div><ul><li><a href="<?php echo get_permalink($parent_page); ?>"><?php echo get_the_title($parent_page); ?></a></li><?php
 					wp_list_pages("title_li=&child_of=$parent_page"); ?></ul></div><?php
 				}
 

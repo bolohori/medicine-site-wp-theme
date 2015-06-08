@@ -2,7 +2,7 @@
 
 <html class="no-js" lang="en">
 
-<head data-template-set="html5-reset">
+<head>
 	<meta charset="utf-8">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
