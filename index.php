@@ -20,7 +20,7 @@
 				$class .= ' special-head';
 			if ( $class !== '' )
 				$classes = " class ='$class'";
-?>		
+?>	
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
 

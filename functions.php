@@ -429,9 +429,9 @@ if ( ! function_exists( 'medicine_change_bg' ) ) {
 	return "</article>
 	</div>
 	</div>
-	<div style='background-color: #$color;width: 100%;float: left;border-top:1px solid #ddd'>
+	<div class='clearfix' style='background-color: #$color;width: 100%;border-top:1px solid #ddd'>
 	<div class='wrapper'>
-	<article style='background-color: #$color;padding-left: 225px;padding-top: 24px;'>";
+	<article class='giving-bottom' style='background-color: #$color;padding-top: 24px;'>";
 	}
 }
 add_shortcode( 'change_background_to', 'medicine_change_bg' );
@@ -552,6 +552,12 @@ add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y"
 add_filter( 'spotlight_show_thumbnail', function() { return false; } );
 add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
 
+add_filter( 'washington_people_link_field', function() { return 'url'; } );
+add_filter( 'washington_people_thumbnail_size', function() { return 'large'; }, 999 );
+
+add_filter( 'outlook_link_field', function() { return 'url'; } );
+add_filter( 'outlook_thumbnail_size', function() { return 'large'; }, 999 );
+
 if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	function spotlight_link_url_function( $id ) {
 		return ( $external_link = get_field( 'nl-link' ) ) ? 'nl-link' : '';
@@ -638,10 +644,7 @@ function national_leaders_custom_rewrite_rules( $wp_rewrite ) {
 	$my_rule = array( 'news/leaders/([^/]+)(/[0-9]+)?/?$' => 'index.php?pagename=$matches[1]&page=$matches[2]' );
 	$wp_rewrite->rules = $my_rule + $wp_rewrite->rules;
 }
-add_action( 'generate_rewrite_rules', 'national_leaders_custom_rewrite_rules' );
-
-
-
+add_action( 'generate_rewrite_rules', 'national_leaders_custom_rewrite_rules' ); 
 
 function get_top_parent_page_id() {
     global $post;

@@ -57,7 +57,7 @@
 				}
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' ) {
+					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' && $post->post_type != 'outlook' ) {
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
 					}
 					echo "<p class='custom-byline'>";
@@ -68,16 +68,18 @@
 					if( get_the_content() ) {
 						the_content();
 					} else {
-						$link = get_field( 'url' );
+                        $link = get_field( 'url' );
 						if($post->post_type == 'news_releases') {
-							$button_text = "See News Release";
-						} elseif($post->post_type == 'announcement') {
+                            $link = $link['url'];
+                            $button_text = "See News Release";
+                        } elseif($post->post_type == 'announcement') {
+                            $link = $link['url'];
 							$button_text = "View Announcement";
 						} else {
 							$button_text = "View Article";
 						}
 						the_excerpt();
-						echo "<br><a href='{$link['url']}'><button class='single-link'>$button_text</button></a>";
+						echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
 					}
 				endwhile;
 			endif;
