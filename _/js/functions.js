@@ -22,15 +22,24 @@ jQuery(document).ready(function($) {
 		$(".information-for-div").slideToggle();
 	});
 
-    $(".mobile-nav .menu-item-has-children > a").each(function() {
-        $(this).wrap( "<div></div>" );
+    var mobilenav = $('.mobile-nav'),
+        mobile_close = $('.mobile-close'),
+        mobile_open = $('.mobile-open'),
+        search_close = $('.search-close'),
+        search_open = $('.search-open'),
+        siteHeader = $('header').height();
+        body = $('body');
+        html = $('html');
+
+    mobilenav.find('.menu-item-has-children > a').each(function() {
+        $(this).wrap( '<div></div>' );
     });
     $('.mobile-primary > li').children().not('.sub-menu').each(function(){
         $(this).addClass('animate');
     });
 
-    $(".mobile-primary .current_page_ancestor > .sub-menu").addClass("expanded").slideToggle();
-    $(".mobile-secondary .sub-menu .current_page_item").parent().addClass("expanded").slideToggle();
+    $('.mobile-primary .current_page_ancestor > .sub-menu').addClass('expanded').slideToggle();
+    $('.mobile-secondary .sub-menu .current_page_item').parent().addClass('expanded').slideToggle();
 
     $('.current-page-ancestor .expanded > li').each(function(){
         $(this).children().first().addClass('animate');
@@ -40,61 +49,56 @@ jQuery(document).ready(function($) {
         $(this).children().first().addClass('animate');
     });
 
-    $(".mobile-nav .menu-item-has-children > div > a").each(function() {
-        $(this).after( "<div class='dashicons dashicons-arrow-down-alt2 expand'></div>" );
+    mobilenav.find('.menu-item-has-children > div > a').each(function() {
+        $(this).after( '<div class="dashicons dashicons-arrow-down-alt2 expand"></div>' );
     });
-    $(".mobile-primary .current_page_ancestor > div .dashicons-arrow-down-alt2").toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
-    $(".mobile-secondary .expanded").parent().find('.dashicons-arrow-down-alt2').toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+    $('.mobile-primary .current_page_ancestor > div .dashicons-arrow-down-alt2').toggleClass('dashicons-arrow-up-alt2 dashicons-arrow-down-alt2');
+    $('.mobile-secondary .expanded').parent().find('.dashicons-arrow-down-alt2').toggleClass('dashicons-arrow-up-alt2 dashicons-arrow-down-alt2');
 
 	$('#mobile-menu-icon').click(function() {
-        if($('#mobile-search-icon').hasClass('search-active')) {
-            $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
-            $('#mobile-search-icon').removeClass('search-active');
-            $('.search-close').hide();
-            $('.search-open').show();
-        }
-        if(!$(this).hasClass('open')) {
-            $('.mobile-nav').show();
-            $('.mobile-open').hide();
-            $('.mobile-close').show();
-            var siteHeader = $('header').height();
-            $('body').css('padding-top', siteHeader);
-            
-        } else {
-            $('.mobile-nav').hide();
-            $('.mobile-close').hide();
-            $('.mobile-open').show();
-            $('body').css('padding-top', 0);
-        }
         $('.header-wrap').toggleClass('pull');
-        $('html').toggleClass('stick');
-        if(!$(this).hasClass('open')) {
+        html.toggleClass('stick');
+        if($('#mobile-menu-icon').hasClass('open')) {
+            mobilenav.hide();
+            mobile_close.hide();
+            mobile_open.show();
+            body.css('padding-top', 0);
+            $('#mobile-menu-icon').removeClass('open');
+            mobilenav.find('.active').removeClass('active');
+        } else {
+            mobilenav.show();
+            mobile_open.hide();
+            mobile_close.show();
+            body.css('padding-top', siteHeader);
             function delayAnimate() { 
-                $('.animate').each(function(i){
-                    var li = $(this);
+                mobilenav.find('.animate').each(function(i){
+                    var animate = $(this);
                     setTimeout(function() {
-                        li.addClass('active');
+                        animate.addClass('active');
                     }, (i+1) * 100);
                 });
             }
             setTimeout(delayAnimate, 200)
-            $(this).addClass('open');
-        } else {
-            $(this).removeClass('open');
-            $('.mobile-nav .active').removeClass('active');
+            $('#mobile-menu-icon').addClass('open');
+        }
+        if($('#mobile-search-icon').hasClass('search-active')) {
+            $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
+            $('#mobile-search-icon').removeClass('search-active');
+            search_close.hide();
+            search_open.show();
         }
     }); 
 
-    $(".expand").click( function() {
+    $('.expand').click( function() {
         var submenu = $(this).parent().next();
         if( $(this).parent().parent().parent().parent().attr('class') == 'mobile-primary' ){
-            $(".expanded").not(submenu).removeClass("expanded").slideUp();
-            $(".expand").not($(this)).addClass("dashicons-arrow-down-alt2").removeClass("dashicons-arrow-up-alt2");
+            $('.expanded').not(submenu).removeClass('expanded').slideUp();
+            $('.expand').not($(this)).addClass('dashicons-arrow-down-alt2').removeClass('dashicons-arrow-up-alt2');
         }
-        $(submenu).toggleClass("expanded").slideToggle("fast");
-        $(this).toggleClass("dashicons-arrow-up-alt2 dashicons-arrow-down-alt2");
+        submenu.toggleClass('expanded').slideToggle('fast');
+        $(this).toggleClass('dashicons-arrow-up-alt2 dashicons-arrow-down-alt2');
 
-        if((submenu).hasClass('expanded')) {
+        if(submenu.hasClass('expanded')) {
             $(submenu).children().each(function(){
                 $(this).children().first().addClass('animate active');
             });
@@ -113,44 +117,40 @@ jQuery(document).ready(function($) {
     $('#mobile-search-icon').click(function() {
         if($('#mobile-menu-icon').hasClass('open')) {
             $('body').css('padding-top', 0);
-            $('.mobile-nav').hide();
-            $('.mobile-close').hide();
-            $('.mobile-open').show();
+            mobilenav.hide();
+            mobile_close.hide();
+            mobile_open.show();
             $('.header-wrap').toggleClass('pull');
             $('html').removeClass('stick');
             $('#mobile-menu-icon').removeClass('open');
-            $('.mobile-nav .active').removeClass('active');
+            mobilenav.find('.active').removeClass('active');
         }
-        if($(this).hasClass('search-active')) {
+        if($('#mobile-search-icon').hasClass('search-active')) {
             $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
-            $('.search-close').hide();
-            $('.search-open').show();
+            search_close.hide();
+            search_open.show();
         } else {
             $('#mobile-search-form').animate({top:'0'}, {duration:300});
-            $('.search-open').hide();
-            $('.search-close').show();
+            search_open.hide();
+            search_close.show();
         }
         $('#mobile-search-form').toggleClass('active');
-        $(this).toggleClass('search-active');
+        $('#mobile-search-icon').toggleClass('search-active');
     });
-});
 
-jQuery(document).ready(function($) {
-    selectedyear = jQuery('.selected-year').text();
-    jQuery('.displayed-year p').text(selectedyear);
+    selectedyear = $('.selected-year').text();
+    $('.displayed-year p').text(selectedyear);
     $('.displayed-year p').click(function() {
         $('#year-list').toggle();
     });
     $('#year-list li').click(function() {
-        selectedyear = jQuery('.selected-year').text();
-        jQuery('.displayed-year p').text(selectedyear);
+        selectedyear = $('.selected-year').text();
+        $('.displayed-year p').text(selectedyear);
         $('#year-list').hide();
     });
-});
 
-jQuery(document).ready(function($) {
-    jQuery('.section-nav ul').hide();
-    jQuery('.current-page-title').click(function() {
+    $('.section-nav ul').hide();
+    $('.current-page-title').click(function() {
         $('.section-nav ul').toggle();
         $(this).toggleClass('open');
     });

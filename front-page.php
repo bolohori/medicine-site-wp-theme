@@ -131,7 +131,7 @@
 	</div>
 </section>
 
-<div id="featured-image">
+<div id="featured-image" style="background-image:url(<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg);">
 	<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg" alt="" title="Faculty physician Anita Bhandiwad, MD, FACC, and fellow Mark Vogel, MD, of the Cardiovascular Division">
 </div>
 
@@ -148,17 +148,17 @@
 
 <section class="spotlight">
 	<div class="spotlight-wrap">
-		<div class="spotlight-left">
-		<h1>National Leadership</h1>
-		<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
+		<div class="spotlight-intro">
+			<h1>National Leadership</h1>
+			<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
+		</div>
 <?php
 				$i = 0;
 				$slider = "";
 				$captions = "";
-				$num_of_spotlights = get_option( 'spotlights_to_show', 4 );
 				$args = array( 
 					'post_type'      => 'spotlight',
-					'posts_per_page' => $num_of_spotlights,
+					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
 				$loop = new WP_Query( $args );
@@ -176,31 +176,29 @@
 
 					$title = get_the_title();
 					$excerpt = get_the_excerpt( );
-					
-					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">" : "";
+
+					$slider .= "<li class='clearfix'><div class='spotlight-individual clearfix'>";
+					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image', 'title' => $slidetitle) ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image' title='" . $slidetitle . "'>";
 					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
 
-					$read_more_link = ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read More</a>" : "";
+					$read_more_link = ( $url = $link['url'] ) ? "<a class='spotlight-more' href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">Read More</a>" : "";
 
-					$captions .= "<div id=\"spotlightcaption$i\" class=\"nivo-html-caption\"><strong style=\"font-size:15px\">$title</strong><p>$excerpt</p>$read_more_link</div>";
+					$slider .= "<h2>";
+					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
+					$slider .= "$title";
+					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
+					$slider .= "</h2><p>$excerpt&nbsp;&nbsp;$read_more_link</p>";
+					$slider .= "</div></li>";
 					$i++;
 				endwhile;
 				wp_reset_postdata();
 				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>
-		</div>
-		
-		<div class="spotlight-div spotlight-slider-wrapper slider-wrapper theme-default">
-			<div class="spotlight-div" id="spotlight-slider" class="nivoSlider">
-				<?php echo $slider; ?>
-			</div>
-			<div class="spotlight-archive">
-				<a href="/news/leaders">SEE ALL</a>
-			</div>
-		</div>
-		<?php echo $captions; ?>
-	
+		<ul class="spotlight-featured">
+			<?php echo $slider; ?>
+		</ul>
+		<a class="spotlight-archive" href="/news/leaders">SEE ALL</a>
 	</div>
 </section>
 

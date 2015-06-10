@@ -205,14 +205,6 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
 		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
-		
-		/**
-		 * Nivo Slider styles
-		 */
-		if( is_front_page() ) { 
-			wp_enqueue_style( 'nivo-slider-base', get_stylesheet_directory_uri(). '/_/css/nivo-slider.css' );
-			wp_enqueue_style( 'nivo-slider-theme', get_stylesheet_directory_uri(). '/_/css/default/default.css' );
-		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
