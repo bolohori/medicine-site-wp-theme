@@ -272,7 +272,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 					<?php wp_list_pages( $args ); ?>
 					</ul>
 				</li>
-				<li class="menu-item-has-children<?php if(is_page('policies')){ echo 'current_page_item"'; } ?>"><a href="/policies/">Policies</a>
+				<li class="menu-item-has-children<?php if(is_page('policies')){ echo ' current_page_item"'; } ?>"><a href="/policies/">Policies</a>
 					<?php $args = array(
 						'child_of'     => 1444,
 						'title_li'     => __('')

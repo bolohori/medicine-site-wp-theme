@@ -24,10 +24,12 @@
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
 
-	<div id="page-background-r"></div>
-	<div id="page-background-l"></div>
+	<div id="page-background"></div>
 
-	<div class="wrapper">
+	<div class="wrapper clearfix">
+
+		<div id="page-background-inner"></div>
+		
 		<nav id="left-col">
 			<?php if( ! get_field( 'hide_nav' ) ) { ?>
 			<ul id="left-nav">
