@@ -11,7 +11,8 @@
 			if (get_the_post_thumbnail() != '') {
 				$class .= ' notch';
 				$margin = ' landing-page';
-				echo '<div id="featured-image">';
+				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
+				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
 				the_post_thumbnail('landing-page');
 				echo '</div>';
 			}
@@ -19,7 +20,7 @@
 				$class .= ' special-head';
 			if ( $class !== '' )
 				$classes = " class ='$class'";
-?>
+?>	
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
 
@@ -37,6 +38,13 @@
 					$special_header = get_field('special_header');
 					echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
 				}
+
+				$parent_page = get_top_parent_page_id($post->ID);
+				if(get_field('section_nav', $parent_page)) {
+					?><div class="section-nav"><div class="current-page-title"><?php echo get_the_title($parent_page); ?></div><ul><li><a href="<?php echo get_permalink($parent_page); ?>"><?php echo get_the_title($parent_page); ?></a></li><?php
+					wp_list_pages("title_li=&child_of=$parent_page"); ?></ul></div><?php
+				}
+
 				the_title('<h1>', '</h1>');
 				the_content();
 			endwhile;

@@ -50,7 +50,7 @@ get_header();
 			?>
 				<div id="all_award-years">
 					<div id="award-years-left">
-						<p class="georgia">Select Year</p>
+						<p>Select Year</p><div class="displayed-year"><p></p>
 						<ul id="year-list">
 							<?php 
 							$first_year = -1;
@@ -65,6 +65,7 @@ get_header();
 							}
 							?>
 						</ul>
+						</div>
 					</div>
 					<div id="award-years-right">
 						<?php 

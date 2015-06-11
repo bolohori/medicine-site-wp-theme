@@ -107,7 +107,7 @@ get_header(); ?>
 						<span style='font-size: 16px;'><a onclick=\"__gaTracker('send','event','top-search-result-$search_terms','$link');\" href='$link'><b>".get_the_title()."</b></a></span><br>";
 						if(get_the_excerpt() != '')
 							echo get_the_excerpt()."<br>";
-						echo "<a href='".$link."' class='search-url'>".$link."</a>
+						echo "<a href='".$link."' class='result-url'>".$link."</a>
 						</p>";
 					endforeach;
 					echo "<hr>";
@@ -127,7 +127,7 @@ get_header(); ?>
 					echo "<p class='search-results'>
 					<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
 					".get_the_excerpt()."<br>
-					<a href='".get_permalink()."' class='search-url'>".get_permalink()."</a>
+					<a href='".get_permalink()."' class='result-url'>".get_permalink()."</a>
 					</p>";
 				}
 			}
@@ -163,7 +163,7 @@ get_header(); ?>
 						<?php if( $result->S != '' ) { ?>
 							<br><?php echo $result->S; ?>
 						<?php } ?>
-						<br/><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>');" href="<?php echo $result->U; ?>" class="search-url"><?php echo $result->U; ?></a>
+						<br/><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>');" href="<?php echo $result->U; ?>" class="result-url"><?php echo $result->U; ?></a>
 						</p>
 				<?php
 					}
@@ -204,7 +204,7 @@ get_header(); ?>
 						$p_end = $truncate_pagination;
 					}
 					
-					echo "<p style='max-width: 750px;'>Page: ";
+					echo "<p style='max-width: 750px;word-wrap: break-word;'>Page: ";
 					if( $p_start != 1 ) {
 						$back = $paged - 1;
 						echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
