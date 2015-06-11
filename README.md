@@ -6,4 +6,4 @@ This is the WordPress theme for the Washington University School of Medicine's m
 
 It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
-![Washington University](http://medicine.wustl.edu/wp-content/themes/medicine/screenshot.jpg "screenshot")
+![Washington University](http://medicine.wustl.edu/wp-content/themes/medicine/screenshot.png "screenshot")
