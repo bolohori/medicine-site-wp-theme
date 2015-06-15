@@ -35,11 +35,6 @@ img.size-full {
 	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 
-.wp-caption { 
-	width: 100%!important;
-	max-width: 450px;
-}
-
 /* General HTML elements
 -------------------------------------------------------------------------------*/
 html {
@@ -162,6 +157,12 @@ article .wp-caption.alignright, article img.alignright {
 
 article .wp-caption.alignleft, article img.alignleft {
 	margin: 7px 20px 0 0;
+}
+
+article .wp-caption.aligncenter,
+article .wp-caption.alignnone {
+	width: 100%!important;
+	max-width: 450px;
 }
 
 article p.wp-caption-text {
@@ -1141,6 +1142,10 @@ article ol {
 article ul li, article ol li {
 	line-height: 25px;
 	margin-bottom: 10px;
+}
+
+article ul ul {
+	margin-top: 10px;
 }
 
 .callout {
