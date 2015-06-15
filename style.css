@@ -3022,9 +3022,10 @@ ul.program-list li.last-child {
 }
 
 #award-years-left .displayed-year p:after {
-	content: "▼";
+	content: '\25BC';
 	font-size: 10px;
 	margin-left: 8px;
+	vertical-align: top;
 }
 
 #year-list {
