@@ -139,7 +139,7 @@ article .alignleft {
 
 article .aligncenter {
 	display: block;
-	margin : 20px auto;
+	margin :  0 auto 20px;
 }
 
 article .alignright {
@@ -148,7 +148,7 @@ article .alignright {
 }
 
 article .alignnone {
-	margin: 20px 0;
+	margin: 0 0 20px;
 }
 
 article .wp-caption.alignright, article img.alignright {
@@ -1110,18 +1110,17 @@ article .signature-title {
     margin: 0;
 }
 
+article h1 + h2 {
+	margin-top: 0;
+}
+
 article p {
 	line-height: 25px;
 	margin-bottom: 20px;
 }
 
-article h1 + img,
-article h1 + p {
-	margin-top: 50px;
-}
-
 p + ul {
-	margin-top: -20px;
+	margin-top: -10px;
 }
 
 article ul {
