@@ -46,8 +46,6 @@
 			</ul>
 			<?php } ?>
 		</nav>
-		
-		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' ); ?>
 
 		<article<?php echo $classes; ?>>
 			<?php
@@ -85,6 +83,8 @@
 			endif;
 			?>
 		</article>
+
+		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' ); ?>
 
 	</div>
 
