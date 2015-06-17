@@ -154,4 +154,6 @@ jQuery(document).ready(function($) {
         $('.section-nav ul').toggle();
         $(this).toggleClass('open');
     });
+
+    $('#main').find('article').fitVids();
 });
