@@ -35,11 +35,6 @@ img.size-full {
 	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 
-.wp-caption { 
-	width: 100%!important;
-	max-width: 450px;
-}
-
 /* General HTML elements
 -------------------------------------------------------------------------------*/
 html {
@@ -55,7 +50,7 @@ body {
 
 @media screen and (min-width: 960px) {
 	body {
-		padding-top: 0!important;
+		margin-top: 0!important;
 	}
 }
 
@@ -144,7 +139,7 @@ article .alignleft {
 
 article .aligncenter {
 	display: block;
-	margin : 20px auto;
+	margin :  0 auto 20px;
 }
 
 article .alignright {
@@ -153,7 +148,7 @@ article .alignright {
 }
 
 article .alignnone {
-	margin: 20px 0;
+	margin: 0 0 20px;
 }
 
 article .wp-caption.alignright, article img.alignright {
@@ -162,6 +157,12 @@ article .wp-caption.alignright, article img.alignright {
 
 article .wp-caption.alignleft, article img.alignleft {
 	margin: 7px 20px 0 0;
+}
+
+article .wp-caption.aligncenter,
+article .wp-caption.alignnone {
+	width: 100%!important;
+	max-width: 450px;
 }
 
 article p.wp-caption-text {
@@ -185,15 +186,12 @@ header {
 
 	.header-wrap.pull {
 		position: fixed;
+		z-index: 300;
 		top: 0;
-		right: 0;
 		bottom: 0;
-		left: 0;
+		width: 100%;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
-		z-index: 300;
-		outline: 0;
-		padding-left: 0;
 		background-color: #e0e0e0;
 	}
 
@@ -425,7 +423,7 @@ textarea {
 
 .mobile-container {
     position: relative;
-    z-index: 198;
+    z-index: 197;
     width: 100%;
     display: block;
 }
@@ -438,6 +436,7 @@ textarea {
 
 #mobile-search-form {
 	position: absolute;
+	z-index: 198;
 	top: 0;
 	left: 0;
     height: 62px;
@@ -487,10 +486,6 @@ textarea {
 .mobile-nav {
     width: 100%;
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #e0e0e0;
     padding-bottom: 25px;
 }
 .mobile-nav .current_page_item > a,
@@ -1115,18 +1110,17 @@ article .signature-title {
     margin: 0;
 }
 
+article h1 + h2 {
+	margin-top: 0;
+}
+
 article p {
 	line-height: 25px;
 	margin-bottom: 20px;
 }
 
-article h1 + img,
-article h1 + p {
-	margin-top: 50px;
-}
-
 p + ul {
-	margin-top: -20px;
+	margin-top: -10px;
 }
 
 article ul {
@@ -1141,6 +1135,10 @@ article ol {
 article ul li, article ol li {
 	line-height: 25px;
 	margin-bottom: 10px;
+}
+
+article ul ul {
+	margin-top: 5px;
 }
 
 .callout {
@@ -3030,9 +3028,10 @@ ul.program-list li.last-child {
 }
 
 #award-years-left .displayed-year p:after {
-	content: "▼";
+	content: '\25BC';
 	font-size: 10px;
 	margin-left: 8px;
+	vertical-align: top;
 }
 
 #year-list {
@@ -3043,8 +3042,8 @@ ul.program-list li.last-child {
 	margin: 0;
 	z-index: 10;
 	-webkit-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
 }
 
 #year-list li {

@@ -27,8 +27,8 @@ jQuery(document).ready(function($) {
         mobile_open = $('.mobile-open'),
         search_close = $('.search-close'),
         search_open = $('.search-open'),
-        siteHeader = $('header').height();
-        body = $('body');
+        siteHeader = $('header').height(),
+        body = $('body'),
         html = $('html');
 
     mobilenav.find('.menu-item-has-children > a').each(function() {
@@ -59,17 +59,17 @@ jQuery(document).ready(function($) {
         $('.header-wrap').toggleClass('pull');
         html.toggleClass('stick');
         if($('#mobile-menu-icon').hasClass('open')) {
+            body.css('marginTop', 0);
             mobilenav.hide();
             mobile_close.hide();
             mobile_open.show();
-            body.css('padding-top', 0);
             $('#mobile-menu-icon').removeClass('open');
             mobilenav.find('.active').removeClass('active');
         } else {
             mobilenav.show();
             mobile_open.hide();
             mobile_close.show();
-            body.css('padding-top', siteHeader);
+            body.css('marginTop', siteHeader);
             function delayAnimate() { 
                 mobilenav.find('.animate').each(function(i){
                     var animate = $(this);
@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
             $('#mobile-menu-icon').addClass('open');
         }
         if($('#mobile-search-icon').hasClass('search-active')) {
-            $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
+            $('#mobile-search-form').css('top', '-62px');
             $('#mobile-search-icon').removeClass('search-active');
             search_close.hide();
             search_open.show();
@@ -116,12 +116,12 @@ jQuery(document).ready(function($) {
 
     $('#mobile-search-icon').click(function() {
         if($('#mobile-menu-icon').hasClass('open')) {
-            $('body').css('padding-top', 0);
+            body.css('marginTop', 0);
             mobilenav.hide();
             mobile_close.hide();
             mobile_open.show();
             $('.header-wrap').toggleClass('pull');
-            $('html').removeClass('stick');
+            html.removeClass('stick');
             $('#mobile-menu-icon').removeClass('open');
             mobilenav.find('.active').removeClass('active');
         }
@@ -154,4 +154,6 @@ jQuery(document).ready(function($) {
         $('.section-nav ul').toggle();
         $(this).toggleClass('open');
     });
+
+    $('#main').find('article').fitVids();
 });
