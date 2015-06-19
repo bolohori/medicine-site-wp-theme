@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.06.17.1
+Version:     15.06.19.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -488,6 +488,9 @@ textarea {
     display: none;
     padding-bottom: 25px;
 }
+.header-wrap.pull .mobile-nav {
+	display: block;
+}
 .mobile-nav .current_page_item > a,
 .mobile-nav .current_page_item > div a {
     color: #333;
@@ -564,13 +567,16 @@ textarea {
 	opacity: 0.0;
 	-webkit-transform: translateY(59px);
 	transform: translateY(59px);
-	-webkit-transition: -webkit-transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
-	transition: transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
+	-webkit-transition: none;
+	transition: none;
+	
 }
 .mobile-primary li .animate.active {
 	opacity: 1.0;
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
+	-webkit-transition: -webkit-transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
+	transition: transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
 }
 .mobile-secondary {
 	margin: 20px 0 20px;
@@ -3755,6 +3761,22 @@ a.sidebar-outlook-link {
     #mobile-search-icon .search-close {
     	display: none;
     	padding: 1px 0 0 2px;
+    }
+
+    #mobile-search-icon.search-active .search-close {
+    	display: block;
+    }
+
+    #mobile-search-icon.search-active .search-open {
+    	display: none;
+    }
+
+    #mobile-menu-icon.open .mobile-close {
+    	display: block;
+    }
+
+    #mobile-menu-icon.open .mobile-open {
+    	display: none;
     }
     
     #mobile-search-icon {
