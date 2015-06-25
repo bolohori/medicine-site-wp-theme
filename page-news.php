@@ -30,25 +30,7 @@ if (have_posts()) :
 
         <div id="page-background-inner"></div>
 
-
-        <nav id="left-col">
-            <?php if( ! get_field( 'hide_nav' ) ) { ?>
-                <ul id="left-nav">
-                    <li class="current_page_item top_level_page"><a href="/news/">News</a></li>
-                    <li class="page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
-                    <li class="page_item page-item-4721"><a href="/news/press/">In the Media</a></li>
-                    <li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
-                    <li class="page_item page-item-4741"><a href="/news/headlines/">Research Highlights</a></li>
-                    <li class="page_item"><a href="/news/outlook/">Outlook Magazine</a></li>
-                    <li class="page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
-                    <li class="page_item page-item-7224"><a href="/news/publications/">Publications</a></li>
-                    <li class="page_item page-item-329"><a href="/news/multimedia/">Campus Life</a></li>
-                    <li class="page_item"><a href="/news/washington-people/">Washington People</a></li>
-                    <li class="page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>
-                </ul>
-            <?php } ?>
-        </nav>
-
+        <?php get_sidebar(); ?>
 
         <article<?php echo $classes; ?>>
         <?php
