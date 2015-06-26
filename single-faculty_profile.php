@@ -104,8 +104,6 @@ get_header();
 			endwhile;
 		endif; ?>
 
-		<?php get_sidebar( 'right' ); ?>
-
 	</div>
 
 </div>
