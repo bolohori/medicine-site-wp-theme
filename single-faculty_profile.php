@@ -28,7 +28,7 @@ get_header();
 				echo "</span></div>";
 				the_post_thumbnail( 'full', array('class' => 'faculty-profile-headshot' ) );
 				the_content();
-				echo "<div class='faculty-profile-date'><strong>Published:</strong>" . get_the_date('m/d/Y') . "</div>";
+				echo "<div class='faculty-profile-date'><strong>Published:</strong> " . get_the_date('m/d/Y') . "</div>";
 			?>
 			</article>
 			<?php
