@@ -231,6 +231,8 @@ $washington_people = new WP_Query ( $args );
                 </ul>
             </div>
 
+            <p class="disclaimer">Feature Photo: Jay Fram</p>
+
         </article>
 
     </div>
