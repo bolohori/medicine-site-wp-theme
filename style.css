@@ -3010,8 +3010,9 @@ ul.program-list li.last-child {
 }
 
 #award-years-left p {
-	padding: 17px;
+	padding: 17px 15px 17px 0;
 	color: #333;
+	margin: 0;
 	font-size: 16px;
 	font-family: Georgia, serif;
 	display: inline-block;
@@ -3076,58 +3077,108 @@ ul.program-list li.last-child {
 	cursor       : pointer;
 }
 
-#award-years-right {
-	position   : relative;
-}
-
-#award-years-right .award-list {
+#award-years-right li {
+	display: inline-block;
+	vertical-align: top;
+	width: 50%;
 	margin: 0;
 }
 
-#award-years-right h2 {
-	margin     : 0;
-	font-weight: normal;
-	font-size  : 14px;
-	font-family: Georgia, Times, serif;
-	line-height: 14px;
-}
-
-#award-years-right li {
-	overflow    : hidden;
-	margin      : 0 0 10px 0;
-	padding-left: 0;
-	min-height  : 126px;
-	background  : #ffffff;
-	position: relative;
-}
-
-#award-years-right li img {
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
 #award-years-right ul {
-	margin: 0 0 0 37px;
+	margin: 0 -30px 0 0;
 }
 
-#award-years-right p {
-	margin     : 0;
-	color      : #232323;
-	font-size  : 12px;
-	line-height: 19px;
+.faculty-individual {
+	margin: 15px 30px 15px 0;
+	padding: 20px;
+	border-radius: 3px;
+	position: relative;
+	text-align: left;
+	background: #fff;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
+	transition: box-shadow 0.2s;
 }
 
-.faculty-descrip {
-	float       : left;
-	width: auto;
-	margin: 15px 15px 15px 105px;
+.faculty-individual:hover {
+	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
 }
 
-.faculty-descrip div {
-	margin-top: -2px;
-	color     : #999;
-	font-size : 11px;
+.faculty-individual:before {
+	content: '';
+	height: 195px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	background: #f6f6f6;
+}
+
+.faculty-individual img {
+	display: inline-block;
+	margin-bottom: 20px;
+	z-index: 2;
+	position: relative;
+	max-width: 143px;
+}
+
+.faculty-individual h2 {
+	font-size: 18px;
+	margin: 0 0 8px;
+	font-weight: 600;
+}
+
+.faculty-individual p {
+	font-size: 14px;
+	line-height: 1.6;
+	margin-bottom: 10px;
+}
+
+.faculty-individual p.award-name {
+	font-size: 12px;
+	color: #999;
+	line-height: 1;
+	margin-bottom: 12px;
+}
+
+@media screen and (max-width: 770px) {
+	#award-years-right ul {
+		margin-right: 0;
+	}
+	#award-years-right li {
+		width: 100%;
+	}
+	.faculty-individual:before {
+		display: none;
+		height: 150px;
+	}
+	.faculty-individual {
+		margin: 10px 0;
+	}
+	.faculty-individual img {
+		float: left;
+		margin-bottom: 0;
+		max-width: 110px;
+		height: auto;
+	}
+	.faculty-individual div {
+		margin-left: 130px;
+	}
+}
+
+@media screen and (max-width: 470px) {
+	.faculty-individual:before {
+		display: block;
+	}
+	.faculty-individual img {
+		float: none;
+		margin-bottom: 15px;
+	}
+	.faculty-individual div {
+		margin-left: 0;
+	}
 }
 
 .post-type-archive-faculty_profile h1,

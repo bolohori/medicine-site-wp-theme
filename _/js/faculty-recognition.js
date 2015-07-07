@@ -22,6 +22,7 @@ jQuery(document).ready(function() {
 			success:function(data) {
 				// This outputs the result of the ajax request
 				jQuery('#award-years-right').html(data);
+				jQuery('.faculty-individual').matchHeight();
 			},
 			error: function(errorThrown){
 				/*console.log(errorThrown);*/
