@@ -81,9 +81,9 @@ get_header();
 							echo "<ul class='award-list'>";
 							while ( $my_query->have_posts() ) { 
 								$my_query->the_post();
-								echo "<li><div class='faculty-individual clearfix'>";
+								echo "<li><div class='faculty-individual clearfix'><a href='".get_permalink()."'>";
 									the_post_thumbnail();
-								echo "<div><h2><a href='".get_permalink()."'>".get_the_title()."</a></h2>
+								echo "</a><div><h2><a href='".get_permalink()."'>".get_the_title()."</a></h2>
 										<p class='award-name'>".get_field('award_name')."</p>
 										<p>".get_the_excerpt( )."</p></div>
 								</div></li>";

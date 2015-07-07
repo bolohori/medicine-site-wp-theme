@@ -3117,8 +3117,8 @@ ul.program-list li.last-child {
 }
 
 .faculty-individual img {
-	display: inline-block;
-	margin-bottom: 20px;
+	display: block;
+	margin-bottom: 18px;
 	z-index: 2;
 	position: relative;
 	max-width: 143px;
