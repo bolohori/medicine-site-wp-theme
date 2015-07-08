@@ -119,11 +119,13 @@ jQuery(document).ready(function($) {
     $('.displayed-year p').text(selectedyear);
     $('.displayed-year p').click(function() {
         $('#year-list').toggle();
+        $('.displayed-year p').toggleClass('open');
     });
     $('#year-list li').click(function() {
         selectedyear = $('.selected-year').text();
         $('.displayed-year p').text(selectedyear);
         $('#year-list').hide();
+        $('.displayed-year p').removeClass('open');
     });
 
     $('.section-nav ul').hide();

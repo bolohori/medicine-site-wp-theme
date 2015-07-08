@@ -20,14 +20,12 @@ function get_awards_by_year() {
 		while ( $my_query->have_posts() ) { 
 			$my_query->the_post();
 			//echo "<li>" . get_the_title() . "</li>";
-			echo "<li>";
-				the_post_thumbnail( 'faculty-list', array( 'class' => 'faculty-photo-med' ) );
-			echo "<div class='faculty-descrip'>
-					<h2><a href='".get_permalink()."'>".get_the_title()."</a></h2>
-					<div>".get_field('award_name')."</div>
-					<p>".get_the_excerpt( )."</p>
-				</div>
-			</li>";
+			echo "<li><div class='faculty-individual clearfix'><a href='".get_permalink()."'>";
+				the_post_thumbnail();
+			echo "</a><div><h2><a href='".get_permalink()."'>".get_the_title()."</a></h2>
+					<p class='award-name'>".get_field('award_name')."</p>
+					<p>".get_the_excerpt( )."</p></div>
+			</div></li>";
 		}
 		echo "</ul>";
 	}
