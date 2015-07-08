@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     15.06.26.0
+Version:     15.07.08.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -3013,68 +3013,95 @@ ul.program-list li.last-child {
 	padding: 17px 15px 17px 0;
 	color: #333;
 	margin: 0;
-	font-size: 16px;
-	font-family: Georgia, serif;
 	display: inline-block;
 }
 
-#year-list li.selected-year {
-	background: #333;
-	color: #fff;
+#award-years-left {
+	display: block;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
-.displayed-year {
-	position: relative;
+#award-years-left .displayed-year {
 	display: inline-block;
 }
 
 #award-years-left .displayed-year p {
-	padding: 0;
-	margin: 0;
-	background: #333;
-	color: #fff;
-	padding: 6px 10px 3px 10px;
-	font-family: 'Open Sans',sans-serif;
+	position: relative;
+	width: auto;
+	z-index: 99;
+	width: 35px;
+	border-radius: 9px;
+	color: #990000;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	padding: 8px 35px 8px 14px;
+	font-size: 14px;
+	line-height: 1.5;
 	font-weight: bold;
 	cursor: pointer;
+	border: 1px solid #e0e0e0;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f1f0f0), color-stop(50%, #ebebeb), color-stop(100%, #e5e5e5));
+	background-image: -webkit-linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+	background-image: -moz-linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+	background-image: -o-linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
+	background-image: linear-gradient(#f1f0f0,#ebebeb,#e5e5e5);
 }
 
 #award-years-left .displayed-year p:after {
-	content: '\25BC';
-	font-size: 10px;
-	margin-left: 8px;
-	vertical-align: top;
+	content: '\25BE';
+	position: absolute;
+	right: 14px;
+	top: 50%;
+	margin-top: -10px;
+	font-size: 12px;
+}
+
+#award-years-left .displayed-year p.open {
+	border-radius: 9px 9px 0 0;
+}
+
+#award-years-left .displayed-year p.open:after {
+	-webkit-transform: rotate(0.5turn);
+	-ms-transform: rotate(0.5turn);
+	transform: rotate(0.5turn);
 }
 
 #year-list {
-	position: absolute;
-	display: none;
-	background: #fff;
-	padding: 10px;
+	list-style: none;
 	margin: 0;
+	border-radius: 0 0 9px 9px;
+	border: 1px solid #e0e0e0;
+	border-top: none;
+	overflow: hidden;
+	position: absolute;
+	background: #fff;
+	display: none;
+	width: 84px;
 	z-index: 10;
-	-webkit-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
-	box-shadow: 0px 1px 21px -8px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 1px 12px -8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 1px 12px -8px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 12px -8px rgba(0,0,0,0.75);
 }
 
 #year-list li {
-	position     : relative;
-	z-index      : 101;
-	overflow     : visible;
-	margin-bottom: 0;
-	margin-left  : 0;
-	padding-right: 34px;
-	padding-left : 11px;
-	margin: 3px 0;
-	background   : none;
-	color        : #900;
-	font-weight  : bold;
-	line-height: 1;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	font-size    : 17.28px;
-	cursor       : pointer;
+	margin: 0;
+	background: #fff;
+	display: block;
+	transition: background 0.1s;
+	color: #900;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	padding: 5px 0;
+}
+
+#year-list li:hover,
+#year-list li.selected-year {
+	background: #f1f0f0;
+	color: #717171;
 }
 
 #award-years-right li {
