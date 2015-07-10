@@ -105,7 +105,7 @@ $washington_people = new WP_Query ( $args );
             </div>
 
             <div class="card">
-                <h2><a href="/news/press/">In the Media</a></h2>
+                <h2><a href="/news/in-the-media/">In the Media</a></h2>
                 <?php if ( $in_the_media->have_posts() ) : ?>
                 <ul>
                     <?php while ( $in_the_media->have_posts() ) : $in_the_media->the_post(); ?>
