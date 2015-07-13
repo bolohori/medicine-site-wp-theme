@@ -163,20 +163,23 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 		<div class="wrapper">
 			<div class="information-for-left">
 				<h2>Information for Our Community</h2>
-				<p>Whether you are part of our community or are interested in joining us, we welcome you to Washington University School of Medicine.</p>
+				<p>Whether you are part of our community or are interested in joining us, we welcome you.</p>
 			</div>
 			<div class="information-for-right">
 				<ul class="information-for-list">
 					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="/info/prospective-students/">Prospective Students</a></li>
 					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Current Students');" href="/info/current-students/">Current Students</a></li>
 					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Faculty');" href="/info/faculty/">Faculty</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="/info/staff/">Staff</a></li>
 				</ul>
 				<ul class="information-for-list">
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni');" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="/info/staff/">Staff</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="/info/researchers/">Researchers</a></li>
 					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Administrators');" href="/info/administrators/">Administrators</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','facebook');" href="/info/researchers/">Researchers</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="/info/job-seekers/">Job Seekers</a></li>
+				</ul>
+				<ul class="information-for-list">
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni &amp; Friends');" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Faculty');" href="">Prospective Faculty</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Job Seekers');" href="/info/job-seekers/">Job Seekers</a></li>
 				</ul>
 			</div>
 			<p class="information-for">close <span class="arrow arrow-down">&nbsp;</span></p>

@@ -1819,6 +1819,11 @@ a#wusm-google-plus:hover img {
 	position: relative;
 }
 
+.information-for-list {
+	width: 33.3333%;
+	min-height: 130px;
+}
+
 .ie7 .announcement,
 .ie8 .announcement,
 .ie9 .announcement,
