@@ -1,0 +1,20 @@
+.dist-links,
+.fluid-width-video-wrapper,
+.twitter-tweet,
+blockquote,
+#search-form,
+#main-nav,
+#utility-bar,
+#featured-image,
+#page-background,
+#page-background-inner,
+.campaign,
+#wusm-footer,
+#left-col,
+#lists {
+	display: none !important;
+}
+
+article {
+	background-color: #fff;
+}

@@ -4,6 +4,11 @@
 // onclick="__gaTracker('send','event','outbound-<LABEL>','http://<URL OR LABEL>');"
 // ***************************************
 
+function parameter_queryvars( $qvars ) {
+	$qvars[] = 'newstype';
+	return $qvars;
+}
+add_filter('query_vars', 'parameter_queryvars' );
 
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
@@ -205,6 +210,15 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
 		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
+		if( get_query_var( 'newstype' ) ) {
+			add_filter('show_admin_bar', '__return_false');
+			if( get_query_var( 'newstype' ) == 'newsroom' ) {
+				wp_enqueue_style( 'newsroom', get_stylesheet_directory_uri(). '/_/css/newsroom.css' );
+			}
+			if( get_query_var( 'newstype' ) == 'maestro' ) {
+				wp_enqueue_style( 'maestro', get_stylesheet_directory_uri(). '/_/css/maestro.css' );
+			}
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );

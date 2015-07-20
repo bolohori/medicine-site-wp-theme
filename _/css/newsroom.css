@@ -1,0 +1,17 @@
+.dist-links,
+.fluid-width-video-wrapper,
+.twitter-tweet,
+blockquote,
+header,
+#featured-image,
+footer,
+#left-col,
+#page-background,
+#page-background-inner,
+#lists {
+	display: none !important;
+}
+
+article {
+	background-color: #fff;
+}
