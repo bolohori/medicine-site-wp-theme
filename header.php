@@ -178,7 +178,7 @@ if(defined('WP_LOCAL_INSTALL')) { ?>
 				</ul>
 				<ul class="information-for-list">
 					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni &amp; Friends');" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Faculty');" href="">Prospective Faculty</a></li>
+					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Faculty');" href="https://facultyopportunities-stage.wustl.edu">Prospective Faculty</a></li>
 					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Job Seekers');" href="/info/job-seekers/">Job Seekers</a></li>
 				</ul>
 			</div>
