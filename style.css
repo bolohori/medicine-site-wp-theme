@@ -35,8 +35,10 @@ img.size-full {
 	width: auto; /* Prevent stretching of full-size images with height and >>width attributes in IE8 */
 }
 
+
 /* General HTML elements
 -------------------------------------------------------------------------------*/
+
 html {
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -173,8 +175,10 @@ article p.wp-caption-text {
 	border-bottom: 1px solid #e0e0e0;
 }
 
+
 /* Header
 -------------------------------------------------------------------------------*/
+
 header {
 	width: 100%;
 }
@@ -483,18 +487,22 @@ textarea {
     background: transparent;
     color: #fff;
 }
+
 .mobile-nav {
     width: 100%;
     display: none;
     padding-bottom: 25px;
 }
+
 .header-wrap.pull .mobile-nav {
 	display: block;
 }
+
 .mobile-nav .current_page_item > a,
 .mobile-nav .current_page_item > div a {
     color: #333;
 }
+
 .mobile-nav .current_page_item > a:before,
 .mobile-nav .current_page_item > div a:before {
 	content: '';
@@ -505,6 +513,7 @@ textarea {
 	top: 4px;
 	bottom: 4px;
 }
+
 .mobile-primary li a {
     font-size: 22px;
     display: inline-block;
@@ -515,36 +524,46 @@ textarea {
     position: relative;
     background-color: #fff;
 }
+
 .mobile-primary li .sub-menu .menu-item a {
 	padding: 19px 65px 19px 36px;
 }
+
 .mobile-primary li .sub-menu .menu-item .sub-menu .menu-item a {
 	padding: 19px 65px 19px 54px;
 }
+
 .mobile-primary .menu-item {
 	position: relative;
 }
+
 .mobile-primary .menu-item a {
     font-weight: normal;
     border-top: 1px solid #e3e3e3;
 }
+
 .mobile-primary > .menu-item:last-child > div a,
 .mobile-primary > .menu-item:last-child > .sub-menu .menu-item:last-child a {
 	border-bottom: 1px solid #d2d2d2;
 }
+
 .mobile-primary > .menu-item:last-child .sub-menu .menu-item:first-child a {
 	border-top: none;
 }
+
 .mobile-primary > .menu-item:first-child a {
     border-top: none;
 }
+
 .mobile-primary .menu-item .sub-menu .menu-item a {
     font-size: 15px;
     background: #f0f0f0;
 }
+
 .mobile-nav ul.sub-menu {
     display: none;
 }
+
 .mobile-nav .expand {
     border-left: 1px solid #e3e3e3;    
     padding: 19px 10px;
@@ -555,22 +574,25 @@ textarea {
     box-sizing: border-box;
     z-index: 100;
 }
+
 .expand.dashicons {
     height: 100%;
     width: 58px;
     color: #9a0202;
 }
+
 .menu-item .sub-menu .menu-item .expand {
 	padding: 19px 10px;
 }
+
 .mobile-primary li .animate {
 	opacity: 0.0;
 	-webkit-transform: translateY(59px);
 	transform: translateY(59px);
 	-webkit-transition: none;
-	transition: none;
-	
+	transition: none;	
 }
+
 .mobile-primary li .animate.active {
 	opacity: 1.0;
 	-webkit-transform: translateY(0);
@@ -578,15 +600,18 @@ textarea {
 	-webkit-transition: -webkit-transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
 	transition: transform 500ms cubic-bezier(0.29, 0, 0, 1), opacity 400ms ease;
 }
+
 .mobile-secondary {
 	margin: 20px 0 20px;
 	border-top: 1px solid #d2d2d2;
 	position: relative;
 	z-index: 10;
 }
+
 .mobile-secondary li {
 	position: relative;
 }
+
 .mobile-secondary li a {
 	padding: 10px 20px;
 	display: block;
@@ -596,29 +621,37 @@ textarea {
 	position: relative;
 	border-bottom: 1px solid #e3e3e3;
 }
+
 .mobile-secondary > li:last-child a {
 	border-bottom: 1px solid #d2d2d2;
 }
+
 .mobile-secondary li.current_page_item > a {
 	color: #717171;
 }
+
 .mobile-secondary .expand {    
     padding: 11px 10px;
 }
+
 .mobile-secondary .sub-menu {
 	position: relative;
 	z-index: 101;
 }
+
 .mobile-secondary li .sub-menu .page_item a {
 	padding: 10px 65px 10px 36px;
 }
+
 .mobile-secondary li .sub-menu .page_item a {
     font-size: 15px;
     background: #f0f0f0;
 }
 
+
 /* Forms
 -------------------------------------------------------------------------------*/
+
 #dirform label {
 	float: left;
 	display: inline;
@@ -671,15 +704,18 @@ input {
 		padding: 0;
 		text-align: left;
 	}
+
 	#dirform .dir-group input[type=text],
 	#dirform .dir-group input[type=email] {
 		margin: 5px 0 15px;
 	}
+
 	#dirform .button {
 		margin-left: 0;
 		width: 100%;
 	}
 }
+
 @media screen and (max-width: 310px) {
 	#dirform .dir-group input[type=text],
 	#dirform .dir-group input[type=email] {
@@ -783,6 +819,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 /* Featured image
 -------------------------------------------------------------------------------*/
+
 #featured-image {
 	position: relative;
 	text-align: center;
@@ -819,22 +856,27 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 		height: auto;
 		background: #ccc;
 	}
+
 	.home #featured-image {
 		height: auto;
 	}
+
 	#featured-image img {
 		display: block;
 		max-width: 150%;
 		margin-left: -25%;
 		height: auto;
 	}
+
 	.home #featured-image img {
 		display: block;
 	}
 }
 
+
 /* Main
 -------------------------------------------------------------------------------*/
+
 #main {
 	position: relative;
 	z-index: 100;
@@ -860,8 +902,10 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
     background-color: #f4f4f4;
 }
 
+
 /* Left column
 -------------------------------------------------------------------------------*/
+
 #left-col {
 	float: left;
 	width: 180px;
@@ -935,6 +979,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 /* Main content column
 -------------------------------------------------------------------------------*/
+
 article {
 	background-color: #f4f4f4;
 	float: left;
@@ -1181,25 +1226,6 @@ article ul ul {
 	margin: 2px 20px 20px 0;
 }
 
-.embed-container {
-	position: relative;
-	padding-bottom: 56.25%;
-	height: 0;
-	overflow: hidden;
-	max-width: 100%;
-	margin-bottom: 20px;
-}
-
-.embed-container iframe,
-.embed-container object,
-.embed-container embed {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
 .facts-glance {
 	width: 100%;
 	box-sizing: border-box;
@@ -1263,6 +1289,7 @@ article ul ul {
 		width: 46%;
 		margin-right: 8%;
 	}
+
 	.facts-glance div.cols-3.first-child {
 		margin: 0 auto 40px;
 		float: none;
@@ -1274,6 +1301,7 @@ article ul ul {
 		margin-bottom: 25px;
 		width: 100%;
 	}
+
 	.facts-glance div.cols-3.first-child {
 		margin-bottom: 40px;
 	}
@@ -1291,9 +1319,9 @@ article ul ul {
 	display: inline-block;
 }
 
+
 /* Tables
 -------------------------------------------------------------------------------*/
-
 
 tr:nth-child(odd) {
 	background-color: #e4e3e3;
@@ -1336,8 +1364,10 @@ td p:last-child {
 	margin-bottom: 0;
 }
 
+
 /* Footer styles
 -------------------------------------------------------------------------------*/
+
 .campaign {
 	background-color: #990000;
 	background-image: url(_/img/campaign-wide.png);
@@ -1597,6 +1627,7 @@ a#wusm-google-plus:hover img {
 	footer .wrapper {
         max-width: 640px;
     }
+
 	#site-footer, #wusm-footer-left, #wusm-footer-right {
         padding-left: 35px;
         padding-right: 35px;
@@ -1881,6 +1912,7 @@ p.information-for {
 
 /* Search results
 -------------------------------------------------------------------------------*/
+
 #search-results-wrapper {
 	float: left;
 	background-color: #f4f4f4;
@@ -1919,8 +1951,10 @@ article.search-results {
 	color: #990000;
 }
 
+
 /* Front Page styles
 -------------------------------------------------------------------------------*/
+
 .home .mejs-container {
 	float: left;
 	display: none;
@@ -2029,12 +2063,14 @@ a.news-title {
 	.billboard-slider li a > div {
 		height: auto;
 	}
+
 	.billboard-slider li img {
 		display: block;
 		max-width: 125%;
 		margin-left: -12.5%;
 		height: auto;
 	}
+
 	.ie-lt9 .billboard-slider li a > div {
 		background-image: none;
 	}
@@ -2048,9 +2084,11 @@ a.news-title {
 	.billboard-title-wrap {
 		bottom: 28px;
 	}
+
 	.billboard-title {
 		font-size: 16px;
 	}
+
 	.bx-pager {
 		bottom: 10px;
 	}
@@ -2060,6 +2098,7 @@ a.news-title {
 	.bx-controls-direction {
 		display: block;
 	}
+
 	.bx-controls-direction a {
 		display: block;
 		margin: -25px 0 0;
@@ -2188,6 +2227,7 @@ a.news-title {
 	.news {
 		padding: 30px 0;
 	}
+
 	.news-left,
 	.news-right {
 		float: none;
@@ -2195,9 +2235,11 @@ a.news-title {
 		max-width: 550px;
 		margin: 0 auto;
 	}
+
 	.news-left {
 		margin-bottom: 25px;
 	}
+
 	.news-list,
 	.news-list li {
 		float: none;
@@ -2206,7 +2248,6 @@ a.news-title {
 
 .hero {
 	position: relative;
-
 }
 
 .ie7 .hero {
@@ -2254,9 +2295,11 @@ a.news-title {
 		background: none;
 		margin-top: 0;
 	}
+
 	.hero-text .wrapper {
 		padding: 25px 0 8px 0;
 	}
+
 	.home #featured-image img {
 		margin-left: -20%;
 		max-width: 140%;
@@ -2391,13 +2434,16 @@ a.news-title {
 		max-width: 550px;
 		margin: 0 auto;
 	}
+
 	.spotlight-individual {
 		height: auto;
 		margin: 15px 25px;
 	}
+
 	.spotlight-individual:before {
 		display: none;
 	}
+
 	.spotlight-individual img {
 		width: 100px;
 		float: left;
@@ -2410,12 +2456,14 @@ a.news-title {
 	.spotlight-individual:before {
 		display: block;
 	}
+
 	.spotlight-individual img {
 		width: auto;
 		float: none;
 		display: inline-block;
 		margin: 0 0 25px 0;
 	}
+
 	.spotlight-individual p {
 		margin-bottom: 10px;
 	}
@@ -2454,9 +2502,9 @@ a.news-title {
 }
 
 
-
 /* News page
 -------------------------------------------------------------------------------*/
+
 article.full-width {
     width: 100%;
     max-width: 725px;
@@ -2566,10 +2614,8 @@ article.full-width {
 }
 
 
-
-/*
- * Admissions
- */
+/* Admissions
+-------------------------------------------------------------------------------*/
 
 .page-template-admissions-php {
 	-webkit-text-size-adjust:none;
@@ -2653,9 +2699,11 @@ ul.program-list li.last-child {
 	.page-template-admissions-php .program-list {
 		max-width: 300px;
 	}
+
 	.page-template-admissions-php .program-list li {
 		width: 96%;
 	}
+
 	.admissions-left-col,
 	.admissions-right-col {
 		float: none;
@@ -2731,8 +2779,10 @@ ul.program-list li.last-child {
 	margin-bottom: 0;
 }
 
+
 /* Faculty Profiles
 -------------------------------------------------------------------------------*/
+
 .faculty-profile-width {
 	width: 700px;
 }
@@ -2751,6 +2801,7 @@ ul.program-list li.last-child {
 	border-bottom: #e0e0e0 solid 1px;
 	background-color: #ffffff;
 }
+
 @media screen and (max-width: 960px) {
 	.award-set {
 		width: 100%;
@@ -2849,6 +2900,7 @@ ul.program-list li.last-child {
 		float: none;
 		height: auto;
 	}
+
 	.award-set p {
 		margin: 5px 15px 25px;
 		padding: 0;
@@ -2961,7 +3013,7 @@ ul.program-list li.last-child {
 	color: #555;
 }
 
-.right-cta>p {
+.right-cta > p {
 	margin: 0;
 	padding: 13px 13px 7px 13px;
 	border-bottom: 1px solid #f5f2ed;
@@ -3170,22 +3222,27 @@ ul.program-list li.last-child {
 	#award-years-right ul {
 		margin-right: 0;
 	}
+
 	#award-years-right li {
 		width: 100%;
 	}
+
 	.faculty-individual:before {
 		display: none;
 		height: 150px;
 	}
+
 	.faculty-individual {
 		margin: 10px 0;
 	}
+
 	.faculty-individual img {
 		float: left;
 		margin-bottom: 0;
 		max-width: 110px;
 		height: auto;
 	}
+
 	.faculty-individual div {
 		margin-left: 130px;
 	}
@@ -3195,10 +3252,12 @@ ul.program-list li.last-child {
 	.faculty-individual:before {
 		display: block;
 	}
+
 	.faculty-individual img {
 		float: none;
 		margin-bottom: 15px;
 	}
+
 	.faculty-individual div {
 		margin-left: 0;
 	}
@@ -3355,8 +3414,10 @@ ul.program-list li.last-child {
 	list-style: none;
 }
 
+
 /* Cardiology & Vascular Specialists
 -------------------------------------------------------------------------------*/
+
 .cardio-vascular {
 	background: #fff;
 	width: 100%;
@@ -3401,13 +3462,16 @@ ul.program-list li.last-child {
 	.cardio-vascular .half {
 		width: 100%;
 	}
+
 	.cv-border {
 		border: none;
 	}
 }
 
+
 /* Sidebars
 -------------------------------------------------------------------------------*/
+
 .raw-sidebar,
 .sidebar {
 	font-size: 12px;
@@ -3614,6 +3678,7 @@ a.sidebar-outlook-link {
 
 /* Plugin styles, overrides, and hacks
 -------------------------------------------------------------------------------*/
+
 .ie7 div.cols-2,
 .ie7 div.cols-3,
 .ie7 div.cols-4,
@@ -3694,7 +3759,9 @@ a.sidebar-outlook-link {
 	margin-bottom: 0;
 }
 
-/* Individual page adjustments */
+
+/* Individual page adjustments
+-------------------------------------------------------------------------------*/
 
 .billboard-custom-archive-entry img {
 	height: auto;
@@ -3728,17 +3795,21 @@ a.sidebar-outlook-link {
 	.releases-callout {
 		max-width: 500px;
 	}
+
 	.releases-intro {
 		width: 96%;
 		margin-bottom: 20px;
 	}
+
 	.mpa-contact {
 		width: 96%;
 	}
 }
 
+
 /* TinyMCE Custom styles
 -------------------------------------------------------------------------------*/
+
 .line-height-12 {
 	line-height: 12px;
 }
@@ -3762,10 +3833,10 @@ a.sidebar-outlook-link {
 
 
 @media screen and (max-width: 960px) {
-	
 	#site-title {
 		display: none;
 	}
+
 	#site-title-text {
 		display: inline-block;
 	    font-size: 24px;
@@ -3773,9 +3844,11 @@ a.sidebar-outlook-link {
         padding: 18px 120px 18px 20px;
         -webkit-font-smoothing: subpixel-antialiased;
     }
+
     #site-title-text a {
 	    color: #fff;
 	}
+
     #utility-bar,
 	.announcements-left p,
 	.information-for-left p,
@@ -3784,15 +3857,18 @@ a.sidebar-outlook-link {
 	#left-col {
 		display: none;
 	}
+
 	.announcements-left,
 	.information-for-left {
 		padding: 0 5%;
 		margin-bottom: 15px;
 		width: auto;
 	}
+
 	.announce-dropdown {
 		display: none;
 	}
+
 	.announcements-right,
 	.information-for-right {
 		width: 90%;
@@ -3800,18 +3876,22 @@ a.sidebar-outlook-link {
 		padding: 0 5%;
 		margin: 0 0 22px;
 	}
+
 	.announcement-list,
 	.information-for-list {
 		padding: 0;
 	}
+
 	.announcement {
 		min-height: 0;
 		margin-bottom: 15px;
 	}
+
 	#utility-nav {
 		position: relative;
 		float: right;
 	}
+
 	#mobile-menu-icon {
         right: 15px;
         width: 50px;
@@ -3855,6 +3935,7 @@ a.sidebar-outlook-link {
         width: 50px;
         height: 50px;
     }
+
     #mobile-search-icon img {
         top: 15px;
 		left: 15px;
@@ -3872,7 +3953,6 @@ a.sidebar-outlook-link {
     
     #mobile-menu-icon .dashicons,
     #mobile-search-icon .dashicons {
-        
         right: 20px;
         position: absolute;
     }
@@ -3888,13 +3968,16 @@ a.sidebar-outlook-link {
         font-size: 30px;
         color: #fff;
     }
+
     #page-background,
     #page-background-inner {
         display: none;
     }
+
     #main {
         background-color: #f4f4f4;
     }
+
     article {
     	max-width: 640px;
     	width: auto;
@@ -3902,44 +3985,55 @@ a.sidebar-outlook-link {
     	float: none;
     	padding-bottom: 35px;
     }
+
     article.notch {
     	margin-top: 0;
     	padding-top: 45px;
     }
+
     article.full-width {
 	    width: auto;
 	    padding-right: 35px;
 	}
+
 	article.giving-bottom {
 		padding-left: 35px;
 	}
+
     .page-template-full-width-page-php article.notch h1 {
     	margin: 0;
     	background: none;
     	padding: 0;
     }
+
     .special-header {
 		display: none;
 	}
+
     #right-col {
     	float: none;
     	max-width: 560px;
     	margin: 0 auto;
     	padding: 0 15px 35px;
     }
+
     #right-col aside {
     	float: left;
     	margin: 0 20px 20px;
     }
+
     .sidebar {
     	margin-top: 0;
     }
+
     .non-landing-page #right-col {
     	padding: 0 15px 35px;
     }
+
     #page-background-l {
 		background-color: #f4f4f4;
 	}
+
 	.double-footer {
 		float: none;
 		max-width: 640px;
@@ -3948,48 +4042,57 @@ a.sidebar-outlook-link {
 		min-height: 0;
 		margin: 20px auto 30px;
 	}
+
 	.footer-pair {
 		max-width: 680px;
 		width: 96%;
 		margin: 20px auto;
 	}
+
 	.single-footer {
 		width: 43%;
 		margin: 0;
 		padding: 0 3%;
 	}
+
 	.footer-menu-block {
 		border-left: none;
 	}
 }
+
 @media screen and (max-width: 500px) {
 	.announcements-right {
 		margin-bottom: 30px;
 	}
+
 	.announcement-list {
 		float: none;
 		width: 100%;
 	}
+
 	.announcement {
 		padding-right: 0;
 	}
 }
+
 @media screen and (max-width: 350px) {
 	#site-title-text {
         padding: 18px 110px 18px 12px;
     }
+
     #mobile-search-icon {
     	right: 50px;
     }
+
     #mobile-menu-icon {
     	right: 5px;
     }
 }
 
 
-
 /* Print styles
 -------------------------------------------------------------------------------*/
+
 @media print {
 	header,
 	#search-form,
@@ -4004,8 +4107,10 @@ a.sidebar-outlook-link {
 	}
 }
 
+
 /* Firefox "hack"
 -------------------------------------------------------------------------------*/
+
 @-moz-document url-prefix() { 
 	.spotlight-slider-wrapper {
 		height: 235px;
