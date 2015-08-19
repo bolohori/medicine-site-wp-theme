@@ -31,7 +31,6 @@
                     <ul>
                         <li><a href="/directory/academic-departments/">Departments &amp; Programs</a></li>
                         <li><a href="/directory/index/">A to Z Index</a></li>
-                        <li><a href="/news/">News</a></li>
                         <li><a href="/news/announcements/">Announcements</a></li>
                         <li><a href="http://outlook.wustl.edu/">Outlook Magazine</a></li>
                     </ul>
