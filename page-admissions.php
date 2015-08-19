@@ -26,7 +26,10 @@ if (have_posts()) :
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/medical-education.jpg" alt=""></li>
 						<li class="hero-list-title">Medical Education</li>
 						<li><a href="http://mdadmissions.wustl.edu">Doctor of Medicine (MD)</a></li>
-						<li><a href="http://mstp.wustl.edu/admissions/Pages/Admissions.aspx">MSTP (MD/PhD)</a></li>
+						<li><a href="http://dbbs.wustl.edu/divprograms/mamd/Pages/mamd.aspx">Doctor of Medicine and Master of Arts (MD/MA)</a></li>
+						<li>Doctor of Medicine and <a href="http://crtc.wustl.edu/degrees/msci.html">Master of Science in Clinical Investigation</a> (MD/MSCI)</li>
+						<li><a href="http://www.mphs.wustl.edu/en/Academics/MD-MPHS">Doctor of Medicine and Master of Population Health Sciences (MD/MPHS)</a></li>
+						<li><a href="http://mstp.wustl.edu/admissions/Pages/Admissions.aspx">Medical Scientist Training Program (MD/PhD)</a></li>
 						<li><a href="http://bme.wustl.edu/graduateprograms/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
 					</ul>
 					<ul id="DBBS" class="hero-list left-row">
