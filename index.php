@@ -33,7 +33,8 @@
 		<?php get_sidebar(); ?>
 		
 		<article<?php echo $classes; ?>>
-			<?php
+
+            <?php
 				if(get_field('special_header')) {
 					$special_header = get_field('special_header');
 					echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
@@ -46,12 +47,11 @@
 				}
 
 				the_title('<h1>', '</h1>');
+                get_sidebar( 'right' );
 				the_content();
 			endwhile;
 		endif; ?>
 		</article>
-
-		<?php get_sidebar( 'right' ); ?>
 
 	</div>
 

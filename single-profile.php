@@ -20,6 +20,7 @@
 		<article<?php echo $classes; ?>>
 			<?php
 					the_title('<h1 class="profile-page-title">', '</h1>');
+                    get_sidebar( 'right' );
 					add_filter( 'excerpt_more', function() { return ''; } );
 					echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
 					echo "<p class='custom-byline'>";
@@ -35,8 +36,6 @@
 			?>
 		</article>
 	
-		<?php get_sidebar( 'right' ); ?>
-		
 	</div>
 
 </div>

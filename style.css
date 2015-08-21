@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     2015.08.19.0
+Version:     2015.08.21.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -46,7 +46,7 @@ html {
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
+	font-size: 18px;
 	color: #333;
 }
 
@@ -983,8 +983,8 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 article {
 	background-color: #f4f4f4;
 	float: left;
-	width: 450px;
-	padding: 45px 35px 70px 35px;
+	width: 733px;
+	padding: 45px 0 70px 35px;
 }
 
 .page-template-full-width-page-php .normal-width {
@@ -3573,11 +3573,8 @@ a.sidebar-outlook-link {
 
 #right-col {
 	float: right;
-	padding: 45px 10px 0 0;
-}
-
-.non-landing-page #right-col {
-	padding: 130px 10px 0 0;
+    padding-right: 10px;
+    margin: 0 0 35px 35px;
 }
 
 #right-col aside {
@@ -3979,11 +3976,11 @@ a.sidebar-outlook-link {
     }
 
     article {
-    	max-width: 640px;
+    	max-width: 605px;
     	width: auto;
     	margin: 0 auto;
     	float: none;
-    	padding-bottom: 35px;
+        padding: 45px 35px 35px 35px;
     }
 
     article.notch {
@@ -4011,23 +4008,15 @@ a.sidebar-outlook-link {
 	}
 
     #right-col {
-    	float: none;
-    	max-width: 560px;
-    	margin: 0 auto;
-    	padding: 0 15px 35px;
+    	margin: 0 0 10px 10px;
     }
 
     #right-col aside {
-    	float: left;
     	margin: 0 20px 20px;
     }
 
     .sidebar {
     	margin-top: 0;
-    }
-
-    .non-landing-page #right-col {
-    	padding: 0 15px 35px;
     }
 
     #page-background-l {
@@ -4058,6 +4047,25 @@ a.sidebar-outlook-link {
 	.footer-menu-block {
 		border-left: none;
 	}
+}
+
+@media screen and (max-width: 615px) {
+    article {
+        max-width: 100%;
+        width: 80%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    #right-col {
+        float: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #right-col aside {
+        margin: 0 0 20px 0;
+    }
 }
 
 @media screen and (max-width: 500px) {

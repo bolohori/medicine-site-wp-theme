@@ -39,8 +39,6 @@
 			</ul>
 			<?php } ?>
 		</nav>
-		
-		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' ); ?>
 
 		<article<?php echo $classes; ?>>
 			<?php
@@ -49,6 +47,7 @@
 					echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
 				}
 					the_title('<h1>', '</h1>');
+                    if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' );
 					add_filter( 'excerpt_more', function() { return ''; } );
 					echo "<p class='custom-byline'>";
 					the_date();
