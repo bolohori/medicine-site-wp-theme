@@ -395,7 +395,7 @@ textarea {
 	white-space: nowrap;
 	background-color: #fff;
 	position: relative;
-	z-index: 121;
+	z-index: 199;
 }
 
 #main-nav ul {
@@ -441,16 +441,14 @@ textarea {
 #mobile-search-form {
 	position: absolute;
 	z-index: 198;
-	top: 0;
+	top: -62px;
 	left: 0;
     height: 62px;
-	width: 100%;
     box-sizing: border-box;
     width: 100%;
     padding: 0 18px;
     background-color: #fff;
     white-space: nowrap;
-    top: -62px;
     -webkit-transition: box-shadow 0.3s ease;
     transition: box-shadow 0.3s ease;
 }
