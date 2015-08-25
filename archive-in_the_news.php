@@ -11,8 +11,6 @@
 		<article>
 			<h1>In the News archive</h1>
 		<?php
-        get_sidebar( 'right' );
-
 		// WP_Query arguments
 		$args = array (
 			'post_type'              => 'in_the_news',
@@ -37,6 +35,8 @@
 		wp_reset_postdata();
 		?>
 		</article>
+
+        <?php get_sidebar( 'right' ); ?>
 
 	</div>
 

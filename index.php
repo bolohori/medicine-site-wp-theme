@@ -47,13 +47,14 @@
 				}
 
 				the_title('<h1>', '</h1>');
-                get_sidebar( 'right' );
 				the_content();
 			endwhile;
 		endif; ?>
 		</article>
 
-	</div>
+        <?php get_sidebar( 'right' ); ?>
+
+    </div>
 
 </div>
 

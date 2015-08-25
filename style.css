@@ -892,7 +892,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 #page-background-inner {
     position: absolute;
-    width: 770px;
+    width: 712px;
     right: 0;
     top: 0;
     height: 100%;
@@ -906,7 +906,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 #left-col {
 	float: left;
-	width: 180px;
+	width: 238px;
 }
 
 .landing-page #left-col {
@@ -980,8 +980,8 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 article {
 	background-color: #f4f4f4;
-	float: left;
-	width: 733px;
+	float: right;
+	width: 675px;
 	padding: 45px 0 70px 35px;
 }
 
@@ -3571,9 +3571,9 @@ a.sidebar-outlook-link {
 }
 
 #right-col {
-	float: right;
+	float: left;
     padding-right: 10px;
-    margin: 0 0 35px 35px;
+    margin-bottom: 35px;
 }
 
 #right-col aside {
@@ -3975,11 +3975,11 @@ a.sidebar-outlook-link {
     }
 
     article {
-    	max-width: 605px;
+    	max-width: 640px;
     	width: auto;
     	margin: 0 auto;
     	float: none;
-        padding: 45px 35px 35px 35px;
+        padding-bottom: 35px;
     }
 
     article.notch {
@@ -4007,7 +4007,10 @@ a.sidebar-outlook-link {
 	}
 
     #right-col {
-    	margin: 0 0 10px 10px;
+        float: none;
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 0 15px 35px;
     }
 
     #right-col aside {
@@ -4049,17 +4052,11 @@ a.sidebar-outlook-link {
 }
 
 @media screen and (max-width: 615px) {
-    article {
+    article, #right-col {
         max-width: 100%;
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
-    }
-
-    #right-col {
-        float: none;
-        margin: 0;
-        padding: 0;
     }
 
     #right-col aside {

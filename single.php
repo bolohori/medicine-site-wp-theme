@@ -54,37 +54,37 @@
 					$special_header = get_field('special_header');
 					echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
 				}
-					the_title('<h1>', '</h1>');
-                    if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' );
-					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' && $post->post_type != 'outlook' ) {
-						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
-					}
-					echo "<p class='custom-byline'>";
-					the_date();
-					if(get_field('author'))
-						echo " | " . get_field('author');
-					echo "</p>";
-					if( get_the_content() ) {
-						the_content();
-					} else {
-                        $link = get_field( 'url' );
-						if($post->post_type == 'news_releases') {
-                            $link = $link['url'];
-                            $button_text = "See News Release";
-                        } elseif($post->post_type == 'announcement') {
-                            $link = $link['url'];
-							$button_text = "View Announcement";
-						} else {
-							$button_text = "View Article";
-						}
-						the_excerpt();
-						echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
-					}
-				endwhile;
-			endif;
+                the_title('<h1>', '</h1>');
+                add_filter( 'excerpt_more', function() { return ''; } );
+                if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' && $post->post_type != 'outlook' ) {
+                    echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+                }
+                echo "<p class='custom-byline'>";
+                the_date();
+                if(get_field('author'))
+                    echo " | " . get_field('author');
+                echo "</p>";
+                if( get_the_content() ) {
+                    the_content();
+                } else {
+                    $link = get_field( 'url' );
+                    if($post->post_type == 'news_releases') {
+                        $link = $link['url'];
+                        $button_text = "See News Release";
+                    } elseif($post->post_type == 'announcement') {
+                        $link = $link['url'];
+                        $button_text = "View Announcement";
+                    } else {
+                        $button_text = "View Article";
+                    }
+                    the_excerpt();
+                    echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
+                }
+                echo '</article>';
+                if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' );
+	    endwhile;
+	endif;
 			?>
-		</article>
 
 	</div>
 
