@@ -212,45 +212,6 @@ function create_custom_post_types() {
 	register_post_type( 'announcement', $args );
 
 	$labels = array(
-		'name'               => 'Campus Alerts',
-		'singular_name'      => 'Campus Alert',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Campus Alert',
-		'edit_item'          => 'Edit Campus Alert',
-		'new_item'           => 'New Campus Alert',
-		'all_items'          => 'All Campus Alerts',
-		'view_item'          => 'View Campus Alert',
-		'search_items'       => 'Search Campus Alerts',
-		'not_found'          =>	'No Campus Alerts found',
-		'not_found_in_trash' => 'No Campus Alerts found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Campus Alerts'
-	);
-	$args = array(
-		'labels'              => $labels,
-		'exclude_from_search' => true,
-		'show_in_nav_menus'   => false,
-		'menu_icon'           => 'dashicons-megaphone',
-		'public'              => true,
-		'publicly_queryable'  => true,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
-		'query_var'           => true,
-		/*'rewrite'             => array( 'slug' => 'campus-alerts' ),*/
-		'capability_type'     => 'post',
-		'hierarchical'        => true,
-		'menu_position'       => null,
-		'supports'           => array(
-			'title',
-			'editor',
-			'excerpt',
-			'revisions',
-			'page-attributes',
-		)
-	);
-	register_post_type( 'campus-alerts', $args );
-
-	$labels = array(
 		'name'               => 'National Leaders',
 		'singular_name'      => 'National Leader',
 		'add_new'            => 'Add New',
