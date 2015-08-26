@@ -68,12 +68,12 @@ a:hover {
 h1 {
 	font-family: Georgia, serif;
 	font-weight: normal;
-	font-size: 30px;
+	font-size: 40px;
 	margin-bottom: 30px;
 }
 
 h2 {
-	font-size: 21px;
+	font-size: 26px;
 	margin-top: 45px;
 	margin-bottom: 15px;
 }
@@ -1136,7 +1136,7 @@ a.wusm-button:hover {
 
 article .intro-text {
     color: #787878;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 30px;
     margin-top: 30px;
 }
@@ -1164,7 +1164,7 @@ article h1 + h2 {
 }
 
 article p {
-	line-height: 25px;
+	line-height: 30px;
 	margin-bottom: 20px;
 }
 
