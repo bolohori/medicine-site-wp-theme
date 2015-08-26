@@ -9,7 +9,6 @@ wp_enqueue_script( 'faculty-recognition', get_stylesheet_directory_uri() . '/_/j
 			$classes = '';
 			$margin = ' non-landing-page';
 			if (get_the_post_thumbnail() != '') {
-				$class .= ' notch';
 				$margin = ' landing-page';
 				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
 				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';

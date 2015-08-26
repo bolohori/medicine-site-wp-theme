@@ -997,42 +997,8 @@ article {
 	width: auto;
 }
 
-.page-template-full-width-page-php article.notch {
-	margin-top: 0;
-}
-
-.page-template-full-width-page-php article.notch h1 {
-	max-width: 450px;
-	width: 100%;
-	padding: 24px 35px 0 35px;
-	margin-top: -82px;
-	margin-left: -35px;
-	background-color: #f4f4f4;
-}
-
-article.giving-notch {
-	margin-top: -58px;
-	padding-top: 24px;
-	padding-bottom: 0;
-	background: none;
-}
-
-article.giving-notch h1{
-	margin-top: -24px;
-	padding-top: 24px;
-	margin-left: -35px;
-	padding-left: 35px;
-	width: 485px;
-	background: #eaeaea;
-}
-
 article.giving-bottom {
 	padding-left: 225px;
-}
-
-article.notch {
-	margin-top: -58px;
-	padding-top: 24px;
 }
 
 .section-nav {
@@ -3982,11 +3948,6 @@ a.sidebar-outlook-link {
         padding-bottom: 35px;
     }
 
-    article.notch {
-    	margin-top: 0;
-    	padding-top: 45px;
-    }
-
     article.full-width {
 	    width: auto;
 	    padding-right: 35px;
@@ -3995,12 +3956,6 @@ a.sidebar-outlook-link {
 	article.giving-bottom {
 		padding-left: 35px;
 	}
-
-    .page-template-full-width-page-php article.notch h1 {
-    	margin: 0;
-    	background: none;
-    	padding: 0;
-    }
 
     .special-header {
 		display: none;
