@@ -3,6 +3,7 @@ jQuery(document).ready(function($) {
 	$('.billboard-slider').bxSlider({
 		mode: 'fade',
 		auto: true,
+		pause: 4500,
 		onSliderLoad: function(){
 	    	$('.billboard').css("visibility", "visible");
 	    }
