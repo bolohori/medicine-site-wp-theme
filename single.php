@@ -79,8 +79,8 @@
                     the_excerpt();
                     echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
                 }
-                echo '</article>';
                 if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' );
+                echo '</article>';
 	    endwhile;
 	endif;
 			?>
