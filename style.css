@@ -3441,7 +3441,6 @@ ul.program-list li.last-child {
 .sidebar {
 	font-size: 12px;
 	line-height: 17px;
-	margin-top: 30px;
 	width: 200px;
 	margin-bottom: 30px;
 }
@@ -3539,7 +3538,7 @@ a.sidebar-outlook-link {
 #right-col {
 	float: left;
     padding-right: 10px;
-    margin-bottom: 35px;
+    margin-top: 30px;
 }
 
 #right-col aside {
@@ -3963,13 +3962,7 @@ a.sidebar-outlook-link {
 
     #right-col {
         float: none;
-        max-width: 560px;
-        margin: 0 auto;
-        padding: 0 15px 35px;
-    }
-
-    #right-col aside {
-    	margin: 0 20px 20px;
+        padding-right: 0;
     }
 
     .sidebar {
@@ -4007,7 +4000,7 @@ a.sidebar-outlook-link {
 }
 
 @media screen and (max-width: 615px) {
-    article, #right-col {
+    article {
         max-width: 100%;
         width: 80%;
         padding-left: 10%;
