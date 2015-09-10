@@ -3542,8 +3542,9 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside {
+    float: left;
 	width: 238px;
-	margin-bottom: 20px;
+	margin: 0 20px 20px 0;
 	background-color: #fff;
 	border: 1px solid #e5e5e5;
 	border-radius: 5px;
@@ -4005,10 +4006,6 @@ a.sidebar-outlook-link {
         width: 80%;
         padding-left: 10%;
         padding-right: 10%;
-    }
-
-    #right-col aside {
-        margin: 0 0 20px 0;
     }
 }
 
