@@ -658,3 +658,10 @@ function get_top_parent_page_id() {
         return $post->ID;
     }
 }
+
+/* Jetpack Related Posts */
+function allow_my_post_types($allowed_post_types) {
+    $allowed_post_types[] = 'research_news';
+    return $allowed_post_types;
+}
+add_filter( 'rest_api_allowed_post_types', 'allow_my_post_types' );
