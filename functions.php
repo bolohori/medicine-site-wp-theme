@@ -665,3 +665,16 @@ function allow_my_post_types($allowed_post_types) {
     return $allowed_post_types;
 }
 add_filter( 'rest_api_allowed_post_types', 'allow_my_post_types' );
+
+function medicine_add_post_types_to_related( $post_type, $post_id ) {
+    if ( is_array( $post_type ) ) {
+        $search_types = $post_type;
+    } else {
+        $search_types = array( $post_type );
+    }
+ 
+    // Add pages
+    $search_types[] = 'research_news';
+    return $search_types;
+}
+add_filter( 'jetpack_relatedposts_filter_post_type', 'medicine_add_post_types_to_related', 10, 2 );
