@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     2015.08.21.0
+Version:     2015.10.05.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -46,7 +46,7 @@ html {
 
 body {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 18px;
+	font-size: 14px;
 	color: #333;
 }
 
@@ -68,25 +68,26 @@ a:hover {
 h1 {
 	font-family: Georgia, serif;
 	font-weight: normal;
-	font-size: 40px;
+	font-size: 35px;
 	margin-bottom: 30px;
 }
 
 h2 {
-	font-size: 26px;
+	font-size: 21px;
 	margin-top: 45px;
 	margin-bottom: 15px;
+	font-weight: 600;
 }
 
 h3 {
-	font-size: 17px;
+	font-size: 19px;
 	margin-top: 36px;
 	margin-bottom: 15px;
 }
 
 h4 {
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	margin-top: 30px;
 	margin-bottom: 15px;
 }
@@ -892,7 +893,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 #page-background-inner {
     position: absolute;
-    width: 712px;
+    width: 745px;
     right: 0;
     top: 0;
     height: 100%;
@@ -906,16 +907,8 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 #left-col {
 	float: left;
-	width: 238px;
-}
-
-.landing-page #left-col {
-	padding: 45px 10px 50px 0;
-}
-
-.archive #left-col,
-.non-landing-page #left-col {
-	padding: 123px 10px 50px 0;
+	width: 195px;
+	padding: 45px 20px 45px 0;
 }
 
 .home #left-col {
@@ -927,8 +920,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 }
 
 #left-nav li {
-	padding: 12px 0;
-	border-bottom: 1px solid #eae8e8;
+	padding: 10px 0;
 }
 
 #left-nav li:last-child {
@@ -937,9 +929,8 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 #left-nav li a {
 	color: #990000;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 14px;
-	margin-left: 10px;
 	display: block;
 }
 
@@ -959,11 +950,11 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 #left-nav li.page_item_has_children ul.children li {
 	margin-left: 20px;
 	border-bottom: none;
-	padding: 6px 0;
+	padding: 8px 0;
 }
 
 #left-nav li.page_item_has_children ul.children li:first-child {
-	padding-top: 12px;
+	padding-top: 16px;
 }
 
 #left-nav li.page_item_has_children ul.children li a {
@@ -971,7 +962,7 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 }
 
 #left-nav li.page_item_has_children ul.children li:last-child {
-	padding-bottom: 4px;
+	padding-bottom: 0px;
 }
 
 
@@ -980,21 +971,9 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 
 article {
 	background-color: #f4f4f4;
-	float: right;
-	width: 675px;
-	padding: 45px 0 70px 35px;
-}
-
-.page-template-full-width-page-php .normal-width {
-	max-width: 450px;
-	width: auto;
-}
-
-.page-template-full-width-page-php article,
-.single-in_focus article,
-.postid-7991 article /* Highly Cited Researchers 2014 */ {
-	max-width: 700px;
-	width: auto;
+	float: left;
+	width: 645px;
+	padding: 40px 50px 70px 50px;
 }
 
 article.giving-bottom {
@@ -1125,13 +1104,19 @@ article .signature-title {
     margin: 0;
 }
 
+article h1 {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
 article h1 + h2 {
 	margin-top: 0;
 }
 
 article p {
-	line-height: 30px;
+	line-height: 28px;
 	margin-bottom: 20px;
+	font-size: 16px;
 }
 
 p + ul {
@@ -1141,6 +1126,7 @@ p + ul {
 article ul {
 	list-style-type: disc;
 	margin-left: 40px;
+	font-size: 16px;
 }
 
 article ol {
@@ -1148,7 +1134,7 @@ article ol {
 }
 
 article ul li, article ol li {
-	line-height: 25px;
+	line-height: 28px;
 	margin-bottom: 10px;
 }
 
@@ -1920,6 +1906,10 @@ article.search-results {
 /* Front Page styles
 -------------------------------------------------------------------------------*/
 
+.home h1 {
+	font-size: 30px;
+}
+
 .home .mejs-container {
 	float: left;
 	display: none;
@@ -2472,12 +2462,12 @@ a.news-title {
 
 article.full-width {
     width: 100%;
-    max-width: 725px;
+    max-width: 695px;
     padding-right: 0;
 }
 
 .card {
-    width: 325px;
+    width: 310px;
     float: left;
     background-color: #fff;
     margin: 0 35px 35px 0;
@@ -2492,7 +2482,7 @@ article.full-width {
 }
 
 .card.full-width {
-    width: 687px;
+    width: 659px;
 }
 
 .card h2 {
@@ -2747,17 +2737,6 @@ ul.program-list li.last-child {
 
 /* Faculty Profiles
 -------------------------------------------------------------------------------*/
-
-.faculty-profile-width {
-	width: 700px;
-}
-
-@media screen and (max-width: 960px) {
-	.faculty-profile-width {
-		max-width: 700px;
-		width: auto;
-	}
-}
 
 .award-set {
 	position: relative;
@@ -3558,6 +3537,11 @@ a.sidebar-outlook-link {
 	font-size: 17px;
 	border-bottom: 1px solid #d5d2d2;
 	padding-bottom: 12px;
+}
+
+#right-col aside.links ul {
+	list-style: none;
+	margin: 0;
 }
 
 #right-col aside.links li {
