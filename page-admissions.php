@@ -67,7 +67,7 @@ if (have_posts()) :
 					<ul id="CPR" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/cpr.jpg" alt=""></li>
 						<li class="hero-list-title">Clinical &amp; Population Research</li>
-						<li><a href="http://dhbr.dom.wustl.edu/education/overview.html">Applied Health Behavior Research (MS)</a></li>
+						<li><a href="http://crtc.wustl.edu/degrees/ahbr.html">Applied Health Behavior Research (MS)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/MS/Pages/default.aspx">Biostatistics (MS)</a></li>
 						<li><a href="http://crtc.wustl.edu/degrees/msci.html">Clinical Investigation (MSCI)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/GEMS/Pages/default.aspx">Genetic Epidemiology (MS)</a></li>
