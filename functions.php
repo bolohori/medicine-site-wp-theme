@@ -199,7 +199,7 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * them if they aren't logged in
 		 */
 		wp_deregister_style( 'open-sans' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600|Open+Sans+Condensed:700' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 
@@ -208,6 +208,38 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
+
+
+/*
+ * Switch "Posts" to "News"
+ */
+function wusm_change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'News';
+    $submenu['edit.php'][5][0] = 'News';
+    echo '';
+}
+function wusm_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'News';
+    $labels->singular_name = 'News';
+    $labels->add_new = 'Add News';
+    $labels->add_new_item = 'Add Article';
+    $labels->edit_item = 'Edit Article';
+    $labels->new_item = 'News';
+    $labels->view_item = 'View Article';
+    $labels->search_items = 'Search Articles';
+    $labels->not_found = 'No articles found';
+    $labels->not_found_in_trash = 'No articles found in Trash';
+    $labels->all_items = 'All Articles';
+    $labels->menu_name = 'News';
+    $labels->name_admin_bar = 'Article';
+}
+add_action( 'admin_menu', 'wusm_change_post_label' );
+add_action( 'init', 'wusm_change_post_object' );
+
 
 /*
  * Add "Clear" button to ACF Location fields
@@ -612,7 +644,6 @@ function column_content( $column_name, $post_id ) {
 
 add_filter( 'wusm-maps_menu_position', function() { return 40; } );
 add_filter( 'eventorganiser_menu_position', function() { return 50; } );
-add_action( 'admin_menu', function() { remove_menu_page( 'edit.php' ); } );
 
 function medicine_register_visualblocks() {
 	$plugins = array('visualblocks'); //Add any more plugins you want to load here

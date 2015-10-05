@@ -2612,6 +2612,194 @@ article.full-width {
 }
 
 
+/* Single news story
+-------------------------------------------------------------------------------*/
+.single article {
+	background: none;
+	max-width: 940px;
+	margin: 0 auto;
+	width: 90%;
+	padding: 20px 0;
+	float: none;
+	-webkit-font-smoothing: antialiased;
+}
+.article-header {
+	max-width: 700px;
+	margin-bottom: 30px;
+}
+.visit-news-hub {
+	margin: 0 0 22px;
+	display: inline-block;
+	position: relative;
+	padding-left: 16px;
+}
+.arrow-left {
+	content: '';
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-right: 6px solid #990000;
+	position: absolute;
+	left: 0;
+	top: 5px;
+}
+.visit-news-hub:hover .arrow-left {
+	border-right: 6px solid #717171;
+}
+.post-categories {
+	list-style: none;
+	margin: 0 0 5px;
+}
+.post-categories li {
+	margin: 0 15px 0 0;
+	text-transform: uppercase;
+	font-size: 12px;
+	display: inline-block;
+}
+.post-categories a {
+	color: #6e6e6e;
+	font-weight: 600;
+}
+.article-header h1 {
+	margin: 0 0 12px;
+	font-size: 35px;
+	line-height: 43px;
+}
+.article-header .subhead {
+	margin: 0 0 25px;
+	font-size: 22px;
+	font-family: 'Open Sans', sans-serif;
+	color: #787878;
+}
+.single article > p {
+	max-width: 700px;
+	margin: 0 0 35px;
+	font-size: 22px;
+	font-family: Georgia, serif;
+	line-height: 36px;
+}
+.single p.meta-header {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	margin: 10px auto 35px;
+	letter-spacing: 0.5px;
+}
+.single p.meta-header a {
+	font-weight: 600;
+}
+.meta-separator {
+	padding: 0 12px;
+}
+.single img {
+	display: block;
+}
+.single .aligncenter,
+.single .alignnone {
+	margin-bottom: 35px;
+}
+.single .aligncenter {
+	margin: 0 0 35px;
+	width: 700px;
+}
+.article-header .wp-post-image {
+	max-width: 700px;
+	width: 100%;
+}
+.single article .wp-caption.alignleft,
+.single article img.alignleft {
+	margin-right: 25px;
+}
+.wp-caption img {
+	margin-bottom: 15px;
+}
+.single-post .wp-caption-text {
+	font-size: 16px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin: 0;
+	padding: 0 0 10px;
+	line-height: 1.3;
+	border-bottom: 1px solid #999;
+	color: #333;
+}
+.article-footer {
+	max-width: 700px;
+}
+.article-footer p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+}
+.footer-author {
+	width: 50%;
+}
+.footer-author a {
+	font-weight: 600;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+.footer-related {
+	background: #f5f5f5;
+	padding: 45px 0;
+}
+.footer-related h3 {
+	text-align: center;
+	margin: 0 0 20px;
+	font-size: 21px;
+	font-weight: 600;
+}
+.footer-related ul {
+	list-style: none;
+	margin: 0 auto;
+	max-width: 960px;
+}
+.footer-related li {
+	width: 33.3333%;
+	float: left;
+}
+.footer-related div {
+	margin: 10px;
+	padding-bottom: 24px;
+	border-radius: 3px;
+	background: #fff;
+	overflow: hidden;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
+	transition: box-shadow 0.2s;
+}
+.footer-related div:hover {
+	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
+}
+.footer-related li img {
+	height: auto;
+}
+.footer-related p.article-date {
+	font-size: 12px;
+	text-transform: uppercase;
+	margin: 24px 24px 0;
+	letter-spacing: 0.9px;
+}
+.footer-related h4 {
+	margin: 0 24px;
+	font-size: 18px;
+	font-weight: 600;
+}
+.footer-related p {
+	margin: 24px 24px 0;
+}
+
+
+@media screen and (max-width: 960px) {
+	.single-post #main {
+		background: none;
+	}
+	.article-header h1 {
+		margin: 0;
+	}
+	.single-post p {
+		padding-right: 0;
+	}
+}
+
+
 /* Admissions
 -------------------------------------------------------------------------------*/
 

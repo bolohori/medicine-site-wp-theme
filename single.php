@@ -5,90 +5,64 @@
 	if (have_posts()) :
 		while (have_posts()) :
 			the_post();
-			$class = '';
-			$classes = '';
-			$margin = ' non-landing-page';
-			if (get_the_post_thumbnail() != '' && ! in_array( $post->post_type, array( 'in_focus', 'spotlight' ) ) ) {
-				$class .= ' notch';
-				$margin = ' landing-page';
-				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
-				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
-				the_post_thumbnail('landing-page');
-				echo '</div>';
-			}
-			if (get_field('special_header'))
-				$class .= ' special-head';
-			if ( $class !== '' )
-				$classes = " class ='$class'";
+
 ?>
 
-<div id="main" class="clearfix<?php echo $margin; ?>">
-
-	<div id="page-background"></div>
-
-	<div class="wrapper clearfix">
-
-		<div id="page-background-inner"></div>
-
-		<nav id="left-col">
-			<?php if( ! get_field( 'hide_nav' ) ) { ?>
-			<ul id="left-nav">
-				<li class="top_level_page"><a href="/news/">News</a></li>
-				<li class="<?php echo ($post->post_type == 'news_releases') ? "current_page_item " : ""; ?>page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
-				<li class="<?php echo ($post->post_type == 'media_mentions') ? "current_page_item " : ""; ?>page_item page-item-4721"><a href="/news/in-the-media/">In the Media</a></li>
-				<li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
-				<li class="<?php echo ($post->post_type == 'research_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research Highlights</a></li>
-                <li class="<?php echo ($post->post_type == 'outlook') ? "current_page_item" : ""; ?>"><a href="/news/outlook/">Outlook Magazine</a></li>
-                <li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
-				<li class="page_item page-item-7224"><a href="/news/publications/">Publications</a></li>
-                <li class="<?php echo ($post->post_type == 'in_focus') ? "current_page_item " : ""; ?>page_item page-item-329"><a href="/news/multimedia/">Campus Life</a></li>
-                <li class="<?php echo ($post->post_type == 'washington_people') ? "current_page_item" : ""; ?>"><a href="/news/washington-people/">Washington People</a></li>
-				<li class="<?php echo ($post->post_type == 'announcements') ? "current_page_item " : ""; ?>page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>
-			</ul>
-			<?php } ?>
-		</nav>
-
-		<article<?php echo $classes; ?>>
+<div id="main">
+		<article>
+			<header class="article-header">
+			<a href="/news" class="visit-news-hub"><div class="arrow-left"></div>Visit the News Hub</a>
 			<?php
-				if(get_field('special_header')) {
-					$special_header = get_field('special_header');
-					echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
-				}
-					the_title('<h1>', '</h1>');
-					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' && $post->post_type != 'outlook' ) {
-						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
-					}
-					echo "<p class='custom-byline'>";
-					the_date();
-					if(get_field('author'))
-						echo " | " . get_field('author');
-					echo "</p>";
-					if( get_the_content() ) {
-						the_content();
-					} else {
-                        $link = get_field( 'url' );
-						if($post->post_type == 'news_releases') {
-                            $link = $link['url'];
-                            $button_text = "See News Release";
-                        } elseif($post->post_type == 'announcement') {
-                            $link = $link['url'];
-							$button_text = "View Announcement";
-						} else {
-							$button_text = "View Article";
-						}
-						the_excerpt();
-						echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
-					}
+				echo get_the_category_list();
+				the_title('<h1>', '</h1>');
+				if(get_field('subhead'))
+					echo "<p class='subhead'>" . get_field('subhead') . "</p>";
+				echo "<p class='meta-header'>";
+			?>by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a><span class="meta-separator">&bull;</span><?php
+				the_date();
+				echo "</p>";
+				the_post_thumbnail('landing-page');
+			?>
+			</header>
+			<?php
+				the_content();
+			?>
+			<footer class="article-footer">
+				<div class="footer-author">
+					<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a>
+					<p><?php the_author_meta( 'description' ); ?></p>
+				</div>
+				<div class="footer-media-contact">
+
+				</div>
+			</footer>
+			<?php
 				endwhile;
 			endif;
 			?>
 		</article>
+	<div class="footer-related clearfix">
+		<h3>Related Articles</h3>
 
-		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' ); ?>
+		<?php
+		$the_query = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 3) );
 
+		if ( $the_query->have_posts() ) {
+			echo '<ul>';
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				echo '<li><div>';
+				the_post_thumbnail('in-the-news');
+				echo '<p class="article-date">' . get_the_time('M d, Y') . '</p>';
+				echo '<a href="' . get_the_permalink() . '">';
+				the_title('<h4>', '</h4>');
+				echo '</a>';
+				the_excerpt();
+				echo '</div></li>';
+			}
+			echo '</ul>';
+		} ?>
 	</div>
-
 </div>
 
 <?php get_footer(); ?>
