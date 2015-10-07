@@ -1951,23 +1951,6 @@ register_field_group(array (
 				),
 			),
 		),
-		array (
-			'key' => 'field_525ea7532a560',
-			'label' => 'Sidebar Examples',
-			'name' => '',
-			'prefix' => '',
-			'type' => 'message',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'message' => '<img style="max-width:100%;" src=\'/wp-content/themes/medicine/_/img/sidebars.jpg\'>',
-			'esc_html' => 0,
-		),
 	),
 	'location' => array (
 		array (
