@@ -1,0 +1,42 @@
+{
+    "key": "group_acf_national-leaders",
+    "title": "National Leaders",
+    "fields": [
+        {
+            "key": "field_52a0fb4d5f46c",
+            "label": "Optional Link",
+            "name": "nl-link",
+            "type": "website",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "website_title": 0,
+            "output_format": 1,
+            "default_value": "",
+            "internal_link": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "spotlight"
+            }
+        ]
+    ],
+    "menu_order": 9,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1444408232
+}
