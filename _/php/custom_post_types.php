@@ -557,32 +557,6 @@ function create_custom_post_types() {
 	 * Custom Taxonomies associated with news stories
 	 */
 	$labels = array(
-		'name'              => 'Expertises',
-		'singular_name'     => 'Expertise',
-		'search_items'      => 'Search Expertises',
-		'all_items'         => 'All Expertises',
-		'parent_item'       => 'Parent Expertise',
-		'parent_item_colon' => 'Parent Expertise:',
-		'edit_item'         => 'Edit Expertise',
-		'update_item'       => 'Update Expertise',
-		'add_new_item'      => 'Add New Expertise',
-		'new_item_name'     => 'New Expertise Name',
-		'menu_name'         => 'Expertise',
-	);
-
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'public'            => false,
-		'rewrite'           => false,
-		'show_admin_column' => true,
-		'query_var'         => true,
-	);
-
-	register_taxonomy( 'expertise', array( 'research_news', 'post' ), $args );
-
-	$labels = array(
 		'name'					=> 'News Types',
 		'singular_name'			=> 'News Type',
 		'search_items'			=> 'Search News Types',
@@ -614,6 +588,32 @@ function create_custom_post_types() {
 	);
 	
 	register_taxonomy( 'news', array( 'post' ), $args );
+
+	$labels = array(
+		'name'              => 'Research News Expertise',
+		'singular_name'     => 'Research News Expertise',
+		'search_items'      => 'Search Research News Expertise',
+		'all_items'         => 'All Research News Expertise',
+		'parent_item'       => 'Parent Research News Expertise',
+		'parent_item_colon' => 'Parent Research News Expertise:',
+		'edit_item'         => 'Edit Research News Expertise',
+		'update_item'       => 'Update Research News Expertise',
+		'add_new_item'      => 'Add New Research News Expertise',
+		'new_item_name'     => 'New Research News Expertise',
+		'menu_name'         => 'Research News Expertise',
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'public'            => false,
+		'rewrite'           => false,
+		'show_admin_column' => true,
+		'query_var'         => true,
+	);
+
+	register_taxonomy( 'expertise', array( 'research_news', 'post' ), $args );
 	/**
 	 * End custom taxonomies associated with news stories
 	 */
