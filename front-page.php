@@ -6,7 +6,13 @@
 		$num_to_show = get_option( 'billboards_to_show', 5 );
 		
 		$args = array(
-			'post_type'      => 'billboard', 
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'news',
+					'field'    => 'slug',
+					'terms'    => 'billboard',
+				),
+			),
 			'posts_per_page' => $num_to_show, 
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
@@ -20,7 +26,13 @@
 
 		if ( $num_to_show > 0 ) {
 			$args = array(
-				'post_type'      => 'billboard', 
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'news',
+						'field'    => 'slug',
+						'terms'    => 'billboard',
+					),
+				),
 				'posts_per_page' => $num_to_show, 
 				'orderby'        => 'date',
 				'post__not_in'   => $ids,
@@ -31,7 +43,13 @@
 		}
 
 		$args = array(
-			'post_type' => 'billboard',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'news',
+					'field'    => 'slug',
+					'terms'    => 'billboard',
+				),
+			),
 			'orderby'   => 'post__in',
 			'post__in'  => $ids
 		);
@@ -78,7 +96,13 @@
 			<ul class="news-list">
 <?php
 				$args = array(
-					'post_type'      => 'media_mentions',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'news',
+							'field'    => 'slug',
+							'terms'    => 'in-the-media',
+						),
+					),
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
@@ -103,7 +127,13 @@
 				$j = 0;
 				$audio_out = '';
 				$args = array(
-					'post_type'      => 'news_releases',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'news',
+							'field'    => 'slug',
+							'terms'    => 'news-release',
+						),
+					),
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);

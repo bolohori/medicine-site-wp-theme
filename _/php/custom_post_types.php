@@ -1,229 +1,5 @@
 <?php
 function create_custom_post_types() {
-	$labels = array(
-		'name'               => 'News Releases',
-		'singular_name'      => 'News Release',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New News Release',
-		'edit_item'          => 'Edit News Release',
-		'new_item'           => 'New News Release',
-		'all_items'          => 'All News Releases',
-		'view_item'          => 'View News Release',
-		'search_items'       => 'Search News Releases',
-		'not_found'          =>	'No news Releases found',
-		'not_found_in_trash' => 'No News Releases found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'News Releases'
-	);
-	$args = array(
-		'labels'              => $labels,
-		'exclude_from_search' => true,
-		'show_in_nav_menus'   => false,
-		'menu_icon'           => 'dashicons-list-view',
-		'public'              => true,
-		'publicly_queryable'  => true,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
-		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'news/releases' ),
-		'capability_type'     => 'post',
-		'hierarchical'        => false,
-		'menu_position'       => null,
-		'supports'            => array(
-			'title',
-			'editor',
-			'revisions',
-			'page-attributes',
-			'excerpt'
-		)
-	);
-	register_post_type( 'news_releases', $args );
-	$labels = array(
-		'name'               => 'Billboards',
-		'singular_name'      => 'Billboard',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Billboard',
-		'edit_item'          => 'Edit Billboard',
-		'new_item'           => 'New Billboard',
-		'all_items'          => 'All Billboards',
-		'view_item'          => 'View Billboard',
-		'search_items'       => 'Search Billboards',
-		'not_found'          =>	'No billboards found',
-		'not_found_in_trash' => 'No billboards found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Billboards'
-	);
-	$args = array(
-		'labels'              => $labels,
-		'exclude_from_search' => true,
-		'show_in_nav_menus'   => false,
-		'menu_icon'           => 'dashicons-welcome-view-site',
-		'public'              => false,
-		'publicly_queryable'  => false,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
-		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'news/features' ),
-		'capability_type'     => 'post',
-		'hierarchical'        => true,
-		'menu_position'       => null,
-		'supports'            => array('title', 'page-attributes', 'thumbnail' )
-	); 
-	register_post_type( 'billboard', $args );
-	$labels = array(
-		'name'               => 'Research News',
-		'singular_name'      => 'Research News Story',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Research News Story',
-		'edit_item'          => 'Edit Research News Story',
-		'new_item'           => 'New Research News Story',
-		'all_items'          => 'All Research News Stories',
-		'view_item'          => 'View Research News Story',
-		'search_items'       => 'Search Research News Stories',
-		'not_found'          =>	'No research news stories found',
-		'not_found_in_trash' => 'No research news stories found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Research News'
-	);
-	$args = array(
-		'labels'             => $labels,
-		'show_in_nav_menus'  => false,
-		'menu_icon'          => 'dashicons-chart-bar',
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true, 
-		'show_in_menu'       => true, 
-		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'news/headlines' ),
-		'capability_type'    => 'post',
-		'hierarchical'       => false,
-		'menu_position'      => null,
-		'supports'           => array(
-			'title',
-			'editor',
-			'excerpt',
-			'revisions',
-			'page-attributes',
-		)
-	); 
-	register_post_type( 'research_news', $args );
-	$labels = array(
-		'name'               => 'Campus Life',
-		'singular_name'      => 'Campus Life',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Campus Life',
-		'edit_item'          => 'Edit Campus Life',
-		'new_item'           => 'New Campus Life',
-		'all_items'          => 'All Campus Lifes',
-		'view_item'          => 'View Campus Life',
-		'search_items'       => 'Search Campus Lifes',
-		'not_found'          =>	'No Campus Lifes found',
-		'not_found_in_trash' => 'No Campus Lifes found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Campus Life'
-	);
-	$args = array(
-		'labels'             => $labels,
-		'show_in_nav_menus'  => false,
-		'menu_icon'          => 'dashicons-slides',
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true, 
-		'show_in_menu'       => true, 
-		'query_var'          => true,
-		'rewrite'            => array( 'slug' => 'news/multimedia' ),
-		'capability_type'    => 'post',
-		'hierarchical'       => false,
-		'menu_position'      => null,
-		'supports'           => array(
-			'title',
-			'editor',
-			'thumbnail',
-			'revisions',
-			'page-attributes',
-			'excerpt'
-		)
-	); 
-	register_post_type( 'in_focus', $args );
-    $labels = array(
-        'name'               => 'Outlook Articles',
-        'singular_name'      => 'Outlook Article',
-        'add_new'            => 'Add New',
-        'add_new_item'       => 'Add New Outlook Article',
-        'edit_item'          => 'Edit Outlook Article',
-        'new_item'           => 'New Outlook Article',
-        'all_items'          => 'All Outlook Articles',
-        'view_item'          => 'View Outlook Article',
-        'search_items'       => 'Search Outlook Articles',
-        'not_found'          =>	'No Outlook articles found',
-        'not_found_in_trash' => 'No Outlook articles found in Trash',
-        'parent_item_colon'  => '',
-        'menu_name'          => 'Outlook Articles'
-    );
-    $args = array(
-        'labels'              => $labels,
-        'exclude_from_search' => true,
-        'show_in_nav_menus'   => false,
-        'menu_icon'           => 'dashicons-list-view',
-        'public'              => true,
-        'publicly_queryable'  => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'query_var'           => true,
-        'rewrite'             => array( 'slug' => 'news/outlook' ),
-        'capability_type'     => 'post',
-        'hierarchical'        => false,
-        'menu_position'       => null,
-        'supports'            => array(
-            'title',
-            'thumbnail',
-            'excerpt',
-            'revisions'
-        )
-    );
-    register_post_type( 'outlook', $args );
-    $labels = array(
-        'name'               => 'Washington People',
-        'singular_name'      => 'Washington Person',
-        'add_new'            => 'Add New',
-        'add_new_item'       => 'Add New Washington Person',
-        'edit_item'          => 'Edit Washington Person',
-        'new_item'           => 'New Washington Person',
-        'all_items'          => 'All Washington People',
-        'view_item'          => 'View Washington Person',
-        'search_items'       => 'Search Washington People',
-        'not_found'          =>	'No Washington People found',
-        'not_found_in_trash' => 'No Washington People found in Trash',
-        'parent_item_colon'  => '',
-        'menu_name'          => 'Washington People'
-    );
-    $args = array(
-        'labels'              => $labels,
-        'exclude_from_search' => true,
-        'show_in_nav_menus'   => false,
-        'menu_icon'           => 'dashicons-list-view',
-        'public'              => true,
-        'publicly_queryable'  => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'query_var'           => true,
-        'rewrite'             => array( 'slug' => 'news/washington-people' ),
-        'capability_type'     => 'post',
-        'hierarchical'        => false,
-        'menu_position'       => null,
-        'supports'            => array(
-            'title',
-            'thumbnail',
-            'excerpt',
-            'revisions'
-        )
-    );
-    register_post_type( 'washington_people', $args );
-    /**
-     * END CPTs to be deleted
-     */
-
-
 
 	$labels = array(
 		'name'               => 'Profiles',
@@ -389,7 +165,6 @@ function create_custom_post_types() {
 		'show_ui'             => true, 
 		'show_in_menu'        => true, 
 		'query_var'           => true,
-		/*'rewrite'             => array( 'slug' => 'campus-alerts' ),*/
 		'capability_type'     => 'post',
 		'hierarchical'        => true,
 		'menu_position'       => null,
@@ -577,7 +352,7 @@ function create_custom_post_types() {
 		'labels'            => $labels,
 		'public'            => true,
 		'show_in_nav_menus' => true,
-		'show_admin_column' => false,
+		'show_admin_column' => true,
 		'hierarchical'      => true,
 		'show_tagcloud'     => true,
 		'show_ui'           => true,
@@ -609,7 +384,7 @@ function create_custom_post_types() {
 		'show_ui'           => true,
 		'public'            => false,
 		'rewrite'           => false,
-		'show_admin_column' => true,
+		'show_admin_column' => false,
 		'query_var'         => true,
 	);
 
