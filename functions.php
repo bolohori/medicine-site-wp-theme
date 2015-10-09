@@ -522,8 +522,8 @@ add_action('admin_head', 'medicine_admin_favicon');
  * These are all the filters and function that work with the wusm-archives plugin
  * to create the custom post type archive pages
  */
-add_filter( 'campus-life_link_text', 'campus-life_link_text_function', 10, 1 );
-add_filter( 'campus-life_link_field', 'campus-life_link_url_function', 10, 1 );
+add_filter( 'campus-life_link_text', 'campus_life_link_text_function', 10, 1 );
+add_filter( 'campus-life_link_field', 'campus_life_link_url_function', 10, 1 );
 add_filter( 'campus-life_thumbnail_size', function() { return array(320, 9999); } );
 add_filter( 'campus-life_date_text', function() { return ''; } );
 add_filter( 'campus-life_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
