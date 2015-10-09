@@ -612,7 +612,6 @@ function column_content( $column_name, $post_id ) {
 
 add_filter( 'wusm-maps_menu_position', function() { return 40; } );
 add_filter( 'eventorganiser_menu_position', function() { return 50; } );
-add_action( 'admin_menu', function() { remove_menu_page( 'edit.php' ); } );
 
 function medicine_register_visualblocks() {
 	$plugins = array('visualblocks'); //Add any more plugins you want to load here
