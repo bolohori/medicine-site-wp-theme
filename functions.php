@@ -522,11 +522,11 @@ add_action('admin_head', 'medicine_admin_favicon');
  * These are all the filters and function that work with the wusm-archives plugin
  * to create the custom post type archive pages
  */
-add_filter( 'in_focus_link_text', 'in_focus_link_text_function', 10, 1 );
-add_filter( 'in_focus_link_field', 'in_focus_link_url_function', 10, 1 );
-add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } );
-add_filter( 'in_focus_date_text', function() { return ''; } );
-add_filter( 'in_focus_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
+add_filter( 'campus-life_link_text', 'campus-life_link_text_function', 10, 1 );
+add_filter( 'campus-life_link_field', 'campus-life_link_url_function', 10, 1 );
+add_filter( 'campus-life_thumbnail_size', function() { return array(320, 9999); } );
+add_filter( 'campus-life_date_text', function() { return ''; } );
+add_filter( 'campus-life_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
 
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
@@ -535,7 +535,7 @@ add_filter( 'billboard_num_per_page', function() { return 9999; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 
-add_filter( 'news_releases_link_field', function() { return 'url'; } );
+add_filter( 'news-releases_link_field', function() { return 'url'; } );
 
 // SO meta!
 add_filter( 'profile_excerpt_text', function() {
@@ -547,16 +547,16 @@ add_filter( 'profile_template_file', function() { return get_stylesheet_director
 add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
 add_filter( 'profile_thumbnail_size', function() { return 'large'; }, 999 );
 
-add_filter( 'media_mentions_link_field', function() { return 'url'; } );
-add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
-add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
+add_filter( 'in-the-media_link_field', function() { return 'url'; } );
+add_filter( 'in-the-media_show_thumbnail', function() { return false; } );
+add_filter( 'in-the-media_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
 //add_filter( 'spotlight_excerpt_text', function() { return ''; } );
 add_filter( 'spotlight_show_thumbnail', function() { return false; } );
 add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
 
-add_filter( 'washington_people_link_field', function() { return 'url'; } );
-add_filter( 'washington_people_thumbnail_size', function() { return 'large'; }, 999 );
+add_filter( 'washington-people_link_field', function() { return 'url'; } );
+add_filter( 'washington-people_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'outlook_link_field', function() { return 'url'; } );
 add_filter( 'outlook_thumbnail_size', function() { return 'large'; }, 999 );
@@ -567,14 +567,14 @@ if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	}
 }
 
-if ( ! function_exists( 'in_focus_link_text_function' ) ) {
-	function in_focus_link_text_function( $id ) {
+if ( ! function_exists( 'campus-life_link_text_function' ) ) {
+	function campus-life_link_text_function( $id ) {
 		return ( $external_link = get_field( 'external_link' ) ) ? "<b>" . $external_link['title'] . "</b>" : '<b>See photos</b>';
 	}
 }
 
-if ( ! function_exists( 'in_focus_link_url_function' ) ) {
-	function in_focus_link_url_function( $id ) {
+if ( ! function_exists( 'campus-life_link_url_function' ) ) {
+	function campus-life_link_url_function( $id ) {
 		return ( $external_link = get_field( 'external_link' ) ) ? 'external_link' : '';
 	}
 }
@@ -596,8 +596,8 @@ add_filter( 'manage_billboard_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_billboard_posts_custom_column', 'column_content', 11, 2 );
 add_filter( 'manage_announcement_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_announcement_posts_custom_column', 'column_content', 11, 2 );
-//add_filter( 'manage_media_mentions_posts_columns', 'column_heading', 11, 1 );
-//add_action( 'manage_media_mentions_posts_custom_column', 'column_content', 11, 2 );
+//add_filter( 'manage_in-the-media_posts_columns', 'column_heading', 11, 1 );
+//add_action( 'manage_in-the-media_posts_custom_column', 'column_content', 11, 2 );
 function column_heading($columns) {
 	unset($columns['wpseo-score']);
 	unset($columns['wpseo-title']);
