@@ -131,7 +131,7 @@
 						array(
 							'taxonomy' => 'news',
 							'field'    => 'slug',
-							'terms'    => 'news-release',
+							'terms'    => 'news-releases',
 						),
 					),
 					'posts_per_page' => 3,
