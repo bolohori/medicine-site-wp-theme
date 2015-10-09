@@ -46,25 +46,25 @@ endif;
 
 // Queries to retrieve the data for the cards on the News page
 $args = array(
-    'post_type'      => 'news_releases',
+    'news'      => 'news-release',
     'posts_per_page' => 3
 );
 $news_releases = new WP_Query ( $args );
 
 $args = array(
-    'post_type'      => 'media_mentions',
+    'news'      => 'in-the-media',
     'posts_per_page' => 3
 );
 $in_the_media = new WP_Query ( $args );
 
 $args = array(
-    'post_type'      => 'research_news',
+    'news'      => 'research-news',
     'posts_per_page' => 3
 );
 $research_highlights = new WP_Query ( $args );
 
 $args = array(
-    'post_type'      => 'outlook',
+    'news'      => 'outlook',
     'posts_per_page' => 3
 );
 $outlook = new WP_Query ( $args );
@@ -76,13 +76,13 @@ $args = array(
 $national_leaders = new WP_Query ( $args );
 
 $args = array(
-    'post_type'      => 'in_focus',
+    'news'      => 'campus-life',
     'posts_per_page' => 1
 );
 $campus_life = new WP_Query ( $args );
 
 $args = array(
-    'post_type'      => 'washington_people',
+    'news'      => 'washington-people',
     'posts_per_page' => 1
 );
 $washington_people = new WP_Query ( $args );
