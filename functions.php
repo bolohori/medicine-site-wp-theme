@@ -567,14 +567,14 @@ if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	}
 }
 
-if ( ! function_exists( 'campus-life_link_text_function' ) ) {
-	function campus-life_link_text_function( $id ) {
+if ( ! function_exists( 'campus_life_link_text_function' ) ) {
+	function campus_life_link_text_function( $id ) {
 		return ( $external_link = get_field( 'external_link' ) ) ? "<b>" . $external_link['title'] . "</b>" : '<b>See photos</b>';
 	}
 }
 
-if ( ! function_exists( 'campus-life_link_url_function' ) ) {
-	function campus-life_link_url_function( $id ) {
+if ( ! function_exists( 'campus_life_link_url_function' ) ) {
+	function campus_life_link_url_function( $id ) {
 		return ( $external_link = get_field( 'external_link' ) ) ? 'external_link' : '';
 	}
 }
