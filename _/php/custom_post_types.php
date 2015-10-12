@@ -42,39 +42,6 @@ function create_custom_post_types() {
 	register_post_type( 'profile', $args );
 
 	$labels = array(
-		'name'               => 'In the Media',
-		'singular_name'      => 'In the Media',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New In the Media',
-		'edit_item'          => 'Edit In the Media',
-		'new_item'           => 'New In the Media',
-		'all_items'          => 'All In the Media',
-		'view_item'          => 'View In the Media',
-		'search_items'       => 'Search In the Media',
-		'not_found'          =>	'No In the Media found',
-		'not_found_in_trash' => 'No In the Media found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'In the Media'
-	);
-	$args = array(
-		'labels'              => $labels,
-		'exclude_from_search' => true,
-		'show_in_nav_menus'   => false,
-		'menu_icon'           => 'dashicons-testimonial',
-		'public'              => false,
-		'publicly_queryable'  => true,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
-		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'news/in-the-media' ),
-		'capability_type'     => 'post',
-		'hierarchical'        => false,
-		'menu_position'       => null,
-		'supports'            => array('title', 'page-attributes', 'thumbnail')
-	);
-	register_post_type( 'media_mentions', $args );
-
-	$labels = array(
 		'name'               => 'In The News',
 		'singular_name'      => 'In The News',
 		'add_new'            => 'Add New',
