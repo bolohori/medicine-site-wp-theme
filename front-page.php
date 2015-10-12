@@ -6,13 +6,7 @@
 		$num_to_show = get_option( 'billboards_to_show', 5 );
 		
 		$args = array(
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'news',
-					'field'    => 'slug',
-					'terms'    => 'billboard',
-				),
-			),
+			'news'           => 'billboard',
 			'posts_per_page' => $num_to_show, 
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
@@ -26,13 +20,7 @@
 
 		if ( $num_to_show > 0 ) {
 			$args = array(
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'news',
-						'field'    => 'slug',
-						'terms'    => 'billboard',
-					),
-				),
+				'news'           => 'billboard',
 				'posts_per_page' => $num_to_show, 
 				'orderby'        => 'date',
 				'post__not_in'   => $ids,
@@ -43,15 +31,9 @@
 		}
 
 		$args = array(
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'news',
-					'field'    => 'slug',
-					'terms'    => 'billboard',
-				),
-			),
-			'orderby'   => 'post__in',
-			'post__in'  => $ids
+			'news'     => 'billboard',
+			'orderby'  => 'post__in',
+			'post__in' => $ids
 		);
 
 		$loop = new WP_Query( $args );
@@ -91,18 +73,12 @@
 <section class="news">
 	<div class="news-wrap">
 		<div class="news-left slider-wrapper theme-default">
-			<div class="all-news"><a href="news/in-the-media">SEE ALL</a></a></div>
+			<div class="all-news"><a href="news/press">SEE ALL</a></a></div>
 			<h1 class="news-header">In the Media</h1>
 			<ul class="news-list">
 <?php
 				$args = array(
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'news',
-							'field'    => 'slug',
-							'terms'    => 'in-the-media',
-						),
-					),
+					'news'           => 'in-the-media',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
@@ -127,13 +103,7 @@
 				$j = 0;
 				$audio_out = '';
 				$args = array(
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'news',
-							'field'    => 'slug',
-							'terms'    => 'news-release',
-						),
-					),
+					'news'           => 'news-release',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
@@ -191,7 +161,7 @@
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
-				
+
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) {
 					
