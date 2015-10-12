@@ -191,17 +191,25 @@
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
+				
 				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();
+				while ( $loop->have_posts() ) {
+					
+					$loop->the_post();
+					
 					$read_more_link = "";
 					$link = get_field('nl-link');
 					$slidetitle = "#spotlightcaption$i";
 					
 					if ( get_field( 'faculty_member' ) ) {
+
 						$faculty_member = get_field( 'faculty_member' );
 						$img_to_get = $faculty_member->ID;
+
 					} else {
+
 						$img_to_get = $post->ID;
+
 					}
 
 					$title = get_the_title();
@@ -220,8 +228,10 @@
 					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
 					$slider .= "</h2><p>$excerpt&nbsp;&nbsp;$read_more_link</p>";
 					$slider .= "</div></li>";
+					
 					$i++;
-				endwhile;
+				
+				}
 				wp_reset_postdata();
 				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>

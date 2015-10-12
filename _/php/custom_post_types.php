@@ -331,9 +331,6 @@ add_action( 'after_switch_theme', 'rewrite_flush' );
 function add_announcement_settings () { add_submenu_page( 'edit.php?post_type=announcement', 'announcement settings', 'Settings', 'manage_categories', 'announcement-settings', 'announcement_settings_callback' ); }
 add_action( 'admin_menu', 'add_announcement_settings' );
 
-function add_spotlight_settings () { add_submenu_page( 'edit.php?post_type=spotlight', 'spotlight settings', 'Settings', 'manage_categories', 'spotlight-settings', 'spotlight_settings_callback' ); }
-add_action( 'admin_menu', 'add_spotlight_settings' );
-
 function announcement_settings_callback() { ?>
 	<div class="wrap">
 	<h2>Announcement Settings</h2>
@@ -345,21 +342,6 @@ function announcement_settings_callback() { ?>
 		</tr>
 		</tbody></table>
 		<?php submit_button( 'Save Setting', 'primary', 'announcements-save', true, array( 'id' => 'announcements-save' ) );?>
-	</div>
-<?php }
-
-function spotlight_settings_callback() { ?>
-	<div class="wrap">
-	<h2>National Leaders</h2>
-		<table class="form-table">
-		<tbody>
-		<tr valign="top">
-		<th scope="row"><label for="spotlights">Number of National Leaders to display</label></th>
-		<td><input id="spotlights" type="number" name="spotlights" min="1" max="100" value="<?php echo get_option( 'spotlights_to_show', 4 ); ?>">
-		</tr>
-		</tbody></table>
-		<?php submit_button( 'Save Setting', 'primary', 'spotlights-save', true, array( 'id' => 'spotlights-save' ) );?>
-		
 	</div>
 <?php }
 
