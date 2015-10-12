@@ -187,7 +187,7 @@
 				$slider = "";
 				$captions = "";
 				$args = array( 
-					'post_type'      => 'spotlight',
+					'news'           => 'national-leader',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
