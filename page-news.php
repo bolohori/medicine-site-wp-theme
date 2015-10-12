@@ -80,7 +80,7 @@ $args = array(
 $outlook = new WP_Query ( $args );
 
 $args = array(
-	'news'           => 'nation-leader',
+	'news'           => 'national-leader',
 	'posts_per_page' => 3
 );
 $national_leaders = new WP_Query ( $args );
