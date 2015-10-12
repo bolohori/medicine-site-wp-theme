@@ -68,7 +68,7 @@ $args = array(
 $in_the_media = new WP_Query ( $args );
 
 $args = array(
-	'news'           => 'research-news',
+	'news'           => 'other-news',
 	'posts_per_page' => 3
 );
 $research_highlights = new WP_Query ( $args );
