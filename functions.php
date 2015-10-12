@@ -535,7 +535,7 @@ add_filter( 'billboard_num_per_page', function() { return 9999; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 
-add_filter( 'news-releases_link_field', function() { return 'url'; } );
+add_filter( 'news-release_link_field', function() { return 'url'; } );
 
 // SO meta!
 add_filter( 'profile_excerpt_text', function() {
