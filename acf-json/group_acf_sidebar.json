@@ -1,0 +1,695 @@
+{
+    "key": "group_acf_sidebar",
+    "title": "Sidebar",
+    "fields": [
+        {
+            "key": "field_526ad52c059e3",
+            "label": "Right Sidebars",
+            "name": "sidebars",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "button_label": "Add Sidebar",
+            "min": "",
+            "max": "",
+            "layouts": [
+                {
+                    "key": "54bfe34723e88",
+                    "name": "default",
+                    "label": "Related Links",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_526ad66326cd9",
+                            "label": "Sidebar Title",
+                            "name": "sidebar_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_534c10c04fa5c",
+                            "label": "Text",
+                            "name": "sidebar_text",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_526ad66e26cda",
+                            "label": "Link",
+                            "name": "sidebar_links",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "row_min": "",
+                            "row_limit": "",
+                            "layout": "row",
+                            "button_label": "Add Row",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_526ad67d26cdb",
+                                    "label": "Sidebar Link",
+                                    "name": "sidebar_link",
+                                    "type": "website",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "website_title": 1,
+                                    "output_format": 1,
+                                    "default_value": "",
+                                    "internal_link": 0
+                                },
+                                {
+                                    "key": "field_534c4c809befe",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "formatting": "html",
+                                    "maxlength": "",
+                                    "readonly": 0,
+                                    "disabled": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe34723f29",
+                    "name": "image_&_text",
+                    "label": "Image & Text",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_534c1180fbb99",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "preview_size": "medium",
+                            "library": "all",
+                            "return_format": "id",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_534c1199fbb9a",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_534c11a5fbb9b",
+                            "label": "Text",
+                            "name": "text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "tabs": "all"
+                        },
+                        {
+                            "key": "field_534c11d3fbb9c",
+                            "label": "Link",
+                            "name": "link",
+                            "type": "website",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "website_title": 1,
+                            "output_format": 1,
+                            "default_value": "",
+                            "internal_link": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe34723fcd",
+                    "name": "single",
+                    "label": "Single Link",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_526ad6c326cdd",
+                            "label": "Single Link",
+                            "name": "single_link",
+                            "type": "website",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "website_title": 1,
+                            "output_format": 1,
+                            "default_value": "",
+                            "internal_link": 0
+                        },
+                        {
+                            "key": "field_534d8f5510564",
+                            "label": "Style",
+                            "name": "single_link_style",
+                            "type": "text",
+                            "instructions": "Styles to be applied to the link",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe347240c0",
+                    "name": "outlook",
+                    "label": "Outlook Option",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_526ad764494dc",
+                            "label": "Outlook Issue URL",
+                            "name": "outlook_issue_url",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "http:\/\/outlook.wustl.edu",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "none",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_526ad77b494dd",
+                            "label": "Outlook Thumbnail",
+                            "name": "outlook_thumbnail",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "preview_size": "outlook-thumb",
+                            "library": "all",
+                            "return_format": "url",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0,
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_526ad793494de",
+                            "label": "Outlook Title",
+                            "name": "outlook_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_526ad79f494df",
+                            "label": "Outlook Tease",
+                            "name": "outlook_tease",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe34724164",
+                    "name": "connect",
+                    "label": "Connect with us",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_526ad7c4494e1",
+                            "label": "Connect with us Title",
+                            "name": "connect_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Connect with us",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_526ad7dc494e2",
+                            "label": "Connect with us Buttons",
+                            "name": "connect_buttons",
+                            "type": "checkbox",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "fb": "Facebook",
+                                "twitter": "Twitter",
+                                "in": "LinkedIn",
+                                "youtube": "Youtube",
+                                "rss": "RSS"
+                            },
+                            "default_value": {
+                                "": ""
+                            },
+                            "layout": "vertical",
+                            "toggle": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe347241f9",
+                    "name": "heart",
+                    "label": "Heart\/Vascular",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_526ad85ccbe7c",
+                            "label": "Heart title",
+                            "name": "heart_title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Find a Heart Specialist",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_526ad86ccbe7d",
+                            "label": "Heart subtitle",
+                            "name": "heart_subtitle",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "To schedule an appointment with a Washington University heart specialist",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "formatting": "html",
+                            "maxlength": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        },
+                        {
+                            "key": "field_526ad882cbe7e",
+                            "label": "Heart Links",
+                            "name": "heart_links",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "row_min": "",
+                            "row_limit": "",
+                            "layout": "table",
+                            "button_label": "Add Row",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_526ad88acbe7f",
+                                    "label": "Heart Link",
+                                    "name": "heart_link",
+                                    "type": "website",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "website_title": 1,
+                                    "output_format": 1,
+                                    "default_value": "",
+                                    "internal_link": 0
+                                },
+                                {
+                                    "key": "field_526ad898cbe80",
+                                    "label": "Heart Link Phone",
+                                    "name": "heart_link_phone",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "formatting": "html",
+                                    "maxlength": "",
+                                    "readonly": 0,
+                                    "disabled": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe34724294",
+                    "name": "one_off",
+                    "label": "One-off",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5279311ab7bd6",
+                            "label": "Raw HTML",
+                            "name": "raw_html",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "tabs": "all"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                {
+                    "key": "54bfe34724382",
+                    "name": "announcements",
+                    "label": "Announcements",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_534d981e9fb89",
+                            "label": "Number of announcements to show",
+                            "name": "number_to_show",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 6,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "min": 1,
+                            "max": "",
+                            "step": "",
+                            "readonly": 0,
+                            "disabled": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ]
+        },
+        {
+            "key": "field_525ea7532a560",
+            "label": "Sidebar Examples",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<img style=\"max-width:100%;\" src='\/wp-content\/themes\/medicine\/_\/img\/sidebars.jpg'>",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "announcement"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "news_releases"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "research_news"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "profile"
+            }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "news:news-release"
+            }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "news:research-news"
+            }
+        ]
+    ],
+    "menu_order": 14,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1444408317
+}
