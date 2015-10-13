@@ -8,18 +8,31 @@
 			$class = '';
 			$classes = '';
 			$margin = ' non-landing-page';
-			if (get_the_post_thumbnail() != '' && ! in_array( $post->post_type, array( 'in_focus', 'spotlight' ) ) ) {
+
+			
+
+			if ( get_the_post_thumbnail() != '' && ! has_term( 'campus-life', 'news' ) && ! has_term( 'national-leader', 'news' ) ) {
+
 				$class .= ' notch';
 				$margin = ' landing-page';
 				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
 				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
 				the_post_thumbnail('landing-page');
 				echo '</div>';
+
 			}
-			if (get_field('special_header'))
+
+			if ( get_field( 'special_header' ) ) {
+
 				$class .= ' special-head';
-			if ( $class !== '' )
+
+			}
+
+			if ( $class !== '' ) {
+
 				$classes = " class ='$class'";
+
+			}
 ?>
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
@@ -56,26 +69,44 @@
 				}
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
-					if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' && $post->post_type != 'outlook' ) {
+					
+					if( $post->post_type != 'campus-life' && $post->post_type != 'national-leader' && $post->post_type != 'outlook' ) {
+
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+
 					}
+					
 					echo "<p class='custom-byline'>";
 					the_date();
-					if(get_field('author'))
+					
+					if( get_field( 'author' ) ) {
+					
 						echo " | " . get_field('author');
+
+					}
+
 					echo "</p>";
 					if( get_the_content() ) {
+					
 						the_content();
+					
 					} else {
+                    
                         $link = get_field( 'url' );
-						if($post->post_type == 'news_releases') {
+						if($post->post_type == 'news-release') {
+
                             $link = $link['url'];
                             $button_text = "See News Release";
+
                         } elseif($post->post_type == 'announcement') {
+
                             $link = $link['url'];
 							$button_text = "View Announcement";
+
 						} else {
+
 							$button_text = "View Article";
+
 						}
 						the_excerpt();
 						echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
@@ -85,7 +116,7 @@
 			?>
 		</article>
 
-		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'spotlight' )get_sidebar( 'right' ); ?>
+		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'national-leader' )get_sidebar( 'right' ); ?>
 
 	</div>
 
