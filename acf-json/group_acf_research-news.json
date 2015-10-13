@@ -37,7 +37,7 @@
             {
                 "param": "post_taxonomy",
                 "operator": "==",
-                "value": "news:research-news"
+                "value": "news:other-news"
             }
         ]
     ],
