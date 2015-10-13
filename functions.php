@@ -131,6 +131,7 @@ add_post_type_support( 'page', 'excerpt' );
  * Intialize all the theme options
  */
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
+	
 	function medicine_theme_setup() {
 
 		// Let WordPress manage the document title.
@@ -144,6 +145,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		) );
 
 		if ( !is_nav_menu( 'Header' )) {
+
 			// Create Header menu, if it doesn't already exist
 			$menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );
 
@@ -160,6 +162,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 			$locations = get_theme_mod('nav_menu_locations');
 			$locations['header-menu'] = $menu_id;
 			set_theme_mod('nav_menu_locations', $locations);
+			
 		}
 
 		/*
@@ -169,6 +172,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		update_option('image_default_link_type', 'none' );
 		update_option('image_default_size', 'large' );
 	}
+
 }
 add_action( 'after_setup_theme', 'medicine_theme_setup' );
 
@@ -179,11 +183,17 @@ add_action( 'after_setup_theme', 'medicine_theme_setup' );
  * show the dean" functionality)
  */
 if ( ! function_exists( 'medicine_hide_admin_bar' ) ) {
+
 	function medicine_hide_admin_bar() {
+	
 		if (!current_user_can('edit_posts')) {
+	
 			show_admin_bar(false);
+	
 		}
+	
 	}
+
 }
 add_action('set_current_user', 'medicine_hide_admin_bar');
 
@@ -196,7 +206,9 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
  * Stylesheets, not really the traditional WordPress, but it works
  */
 if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
+
 	function medicine_enqueue_styles() {
+	
 		/**
 		 * The admin bar enqueues these two when a user is logged in, we need manually include
 		 * them if they aren't logged in
@@ -208,7 +220,9 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
 		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
+	
 	}
+
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
 
