@@ -8,8 +8,10 @@
 			$class = '';
 			$classes = '';
 			$margin = ' non-landing-page';
+
 			
-			if (get_the_post_thumbnail() != '' && ! in_array( $post->post_type, array( 'campus-life', 'national-leader' ) ) ) {
+
+			if ( get_the_post_thumbnail() != '' && ! has_term( 'campus-life', 'news' ) && ! has_term( 'national-leader', 'news' ) ) {
 
 				$class .= ' notch';
 				$margin = ' landing-page';
