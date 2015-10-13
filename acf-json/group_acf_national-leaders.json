@@ -28,6 +28,13 @@
                 "operator": "==",
                 "value": "national-leader"
             }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "news:national-leader"
+            }
         ]
     ],
     "menu_order": 9,
@@ -38,5 +45,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1444408232
+    "modified": 1444767073
 }
