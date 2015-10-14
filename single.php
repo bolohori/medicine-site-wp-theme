@@ -46,17 +46,17 @@
 		<nav id="left-col">
 			<?php if( ! get_field( 'hide_nav' ) ) { ?>
 			<ul id="left-nav">
-				<li class="top_level_page"><a href="/news/">News</a></li>
-				<li class="<?php echo ($post->post_type == 'news_releases') ? "current_page_item " : ""; ?>page_item page-item-4713"><a href="/news/releases/">News Releases</a></li>
-				<li class="<?php echo ($post->post_type == 'media_mentions') ? "current_page_item " : ""; ?>page_item page-item-4721"><a href="/news/in-the-media/">In the Media</a></li>
-				<li class="page_item page-item-436"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
-				<li class="<?php echo ($post->post_type == 'research_news') ? "current_page_item " : ""; ?>page_item page-item-4741"><a href="/news/headlines/">Research Highlights</a></li>
-                <li class="<?php echo ($post->post_type == 'outlook') ? "current_page_item" : ""; ?>"><a href="/news/outlook/">Outlook Magazine</a></li>
-                <li class="<?php echo ($post->post_type == 'spotlight') ? "current_page_item " : ""; ?>page_item page-item-4723"><a href="/news/leaders/">National Leaders</a></li>
-				<li class="page_item page-item-7224"><a href="/news/publications/">Publications</a></li>
-                <li class="<?php echo ($post->post_type == 'in_focus') ? "current_page_item " : ""; ?>page_item page-item-329"><a href="/news/multimedia/">Campus Life</a></li>
-                <li class="<?php echo ($post->post_type == 'washington_people') ? "current_page_item" : ""; ?>"><a href="/news/washington-people/">Washington People</a></li>
-				<li class="<?php echo ($post->post_type == 'announcements') ? "current_page_item " : ""; ?>page_item page-item-4719"><a href="/news/announcements/">Announcements</a></li>
+				<li class="top_level_page"><a href="/news">News</a></li>
+				<li class="page_item<?php if( has_term( 'news-release', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/releases/">News Releases</a></li>
+				<li class="page_item<?php if( has_term( 'in-the-media', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/press/">In the Media</a></li>
+				<li class="page_item<?php if( has_term( 'other-news', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/headlines/">Research Highlights</a></li>
+				<li class="page_item"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
+				<li class="page_item<?php if( has_term( 'national-leader', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/leaders/">National Leaders</a></li>
+				<li class="page_item<?php if( has_term( 'washington-people', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/washington-people/">Washington People</a></li>
+				<li class="page_item<?php if( has_term( 'campus-life', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/multimedia/">Campus Life</a></li>
+				<li class="page_item<?php if( has_term( 'outlook', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/outlook-magazine/">Outlook Magazine</a></li>
+				<li class="page_item"><a href="/news/publications/">Publications</a></li>
+				<li class="page_item<?php if( $post->post_type == 'announcements' ) { echo " current_page_item"; } ?>"><a href="/news/announcements/">Announcements</a></li>
 			</ul>
 			<?php } ?>
 		</nav>
