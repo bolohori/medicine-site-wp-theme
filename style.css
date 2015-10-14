@@ -50,7 +50,7 @@ body {
 	color: #333;
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 970px) {
 	body {
 		margin-top: 0!important;
 	}
@@ -184,7 +184,7 @@ header {
 	width: 100%;
 }
 
-@media screen and ( max-width: 960px ) {
+@media screen and ( max-width: 970px ) {
 	html.stick {
 		overflow: hidden;
 	}
@@ -689,13 +689,13 @@ input {
 	font-size: 12px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	#dirform input {
 		font-size: 16px;
 	}
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 570px) {
 	#dirform .dir-group label {
 		display: block;
 		float: none;
@@ -928,8 +928,8 @@ article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_r
 }
 
 #left-nav li a {
-	color: #990000;
 	font-weight: 600;
+	margin-left: 10px;
 	font-size: 14px;
 	display: block;
 }
@@ -984,7 +984,7 @@ article.giving-bottom {
 	display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	.section-nav {
 		display: block;
 		margin: -15px 0 30px;
@@ -1235,7 +1235,7 @@ article ul ul {
 	right: 0;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	.facts-glance div.cols-3 {
 		width: 46%;
 		margin-right: 8%;
@@ -1258,7 +1258,7 @@ article ul ul {
 	}
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 970px) {
 	.special-head {
 		padding-top: 31px;
 	}
@@ -1575,7 +1575,7 @@ a#wusm-google-plus:hover img {
     padding-right: 0;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	footer .wrapper {
         max-width: 640px;
     }
@@ -2020,7 +2020,7 @@ a.news-title {
 	display: none;
 }
 
-@media screen and (max-width:960px) {
+@media screen and (max-width: 970px) {
 	.billboard-slider li a > div {
 		height: auto;
 	}
@@ -2036,12 +2036,12 @@ a.news-title {
 		background-image: none;
 	}
 }
-@media screen and (max-width:650px) {
+@media screen and (max-width: 650px) {
 	.billboard-title {
 		font-size: 18px;
 	}
 }
-@media screen and (max-width:450px) {
+@media screen and (max-width: 450px) {
 	.billboard-title-wrap {
 		bottom: 28px;
 	}
@@ -2055,7 +2055,7 @@ a.news-title {
 	}
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 970px) {
 	.bx-controls-direction {
 		display: block;
 	}
@@ -2753,7 +2753,7 @@ ul.program-list li.last-child {
 	background-color: #ffffff;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	.award-set {
 		width: 100%;
 	}
@@ -3785,7 +3785,7 @@ a.sidebar-outlook-link {
 }
 
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	#site-title {
 		display: none;
 	}
