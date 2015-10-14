@@ -27,13 +27,14 @@
 			<?php
 				the_content();
 			?>
-			<footer class="article-footer">
+			<footer class="article-footer clearfix">
 				<div class="footer-author">
 					<a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a>
 					<p><?php the_author_meta( 'description' ); ?></p>
 				</div>
 				<div class="footer-media-contact">
-
+					<a href="">Media Contact</a>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 				</div>
 			</footer>
 			<?php
@@ -51,7 +52,7 @@
 			echo '<ul>';
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post();
-				echo '<li><div>';
+				echo '<li><div class="card">';
 				the_post_thumbnail('in-the-news');
 				echo '<p class="article-date">' . get_the_time('M d, Y') . '</p>';
 				echo '<a href="' . get_the_permalink() . '">';

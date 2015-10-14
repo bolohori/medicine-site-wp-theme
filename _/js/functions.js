@@ -134,3 +134,15 @@ jQuery(document).ready(function($) {
         $(this).toggleClass('open');
     });
 });
+
+function next_posts() {
+    jQuery(".next-posts a").click(function(a) {
+        jQuery.get(jQuery(this).attr("href"), function(a) {
+            jQuery(".pagination .next-posts a", a).length > 0 ? jQuery(".next-posts a").attr("href", jQuery(".pagination .next-posts a", a).attr("href")) : jQuery(".pagination").remove(), jQuery(".news-cards ul").after(jQuery(".news-cards ul", a))
+        }), a.preventDefault()
+    })
+}
+
+jQuery(document).ready(function() {
+    jQuery(".next-posts").length > 0 && next_posts()
+});
