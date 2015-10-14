@@ -30,6 +30,24 @@ require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
 require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
 
+function move_news_type_rewrites( $rules ){
+
+	$news_rules = array();
+
+    foreach ($rules as $rule => $rewrite) {
+
+        if ( preg_match('/^news.*/',$rule) ) {
+        	
+        	$news_rules[ $rule ] = $rules[$rule];
+            unset($rules[$rule]);
+        }
+
+    }
+
+    return array_merge( $rules, $news_rules );
+}
+add_filter('rewrite_rules_array', 'move_news_type_rewrites');
+
 /*
  * Remove some of the unused stuff from the header
  */
