@@ -7,9 +7,6 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<meta name="title" content="<?php is_front_page() ? bloginfo('name') : wp_title(''); ?> | <?php is_front_page() ? 'Washington University School of Medicine in St. Louis' : bloginfo('name'); ?>">
-	<meta name="author" content="Washington University School of Medicine in St. Louis">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/_/img/favicon.ico">
@@ -21,7 +18,8 @@
 	<?php the_field('page_specific_css'); ?>
 </style>
 <?php }
-if(defined('WP_LOCAL_INSTALL')) { ?>
+// This fixes JS errors that occur locally if Google Analytics plugin isn't installed
+if( defined( 'WP_DEBUG') ) { ?>
 	<script type="text/javascript">
 	var _gaq = _gaq || [];
 	</script>
