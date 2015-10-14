@@ -131,17 +131,38 @@ class Razorback_Walker_Page_Selective_Children extends Walker_Page {
 	}
 }
 
-function in_menu($id) {
+/**
+ * Checks to see whether or not a specific page/post ID is in the header nav
+ * @param  int  $id ID of the post/page to check
+ * @return bool     true if post/page is in menu, otherwise false
+ */
+function in_menu( $id ) {
+	
 	$menu_name = 'header-menu';
+
+	// Get the menu object that is in the header-menu position (defined in funcitons.php)
 	if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
 	
+		// wp_get_nav_menu_items needs the ID of the menu, this is the easiest way to get it
 		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+
+		// Get all the nav menu items
 		$menu_items = wp_get_nav_menu_items($menu->term_id);
+
+		// Loop through all the menu items
 		foreach ( (array) $menu_items as $key => $menu_item ) {
+
+			// If the ID of the menu item matches to one that was passed in, we've found it
 			if($menu_item->object_id == $id) {
+
 				return true;
+
 			}
+	
 		}
+	
 	}
+
+	// Didn't find it :(
 	return false;
 }
