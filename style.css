@@ -319,8 +319,27 @@ header h2 {
 	margin-right: 10px;
 	width: 240px;
 	top: 50%;
-	margin-top: -19px;
+	margin-top: -18px;
 	right: 0;
+}
+
+#search-form p {
+    position: relative;
+}
+
+#search-form p br {
+    display: none;
+}
+
+#search-form label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: text;
+    color: #fff;
+    font-style: italic;
+    letter-spacing: 1px;
+    font-size:12px;
 }
 
 #dirform input[type=text] {
@@ -342,13 +361,14 @@ textarea {
 #search-box {
 	margin: 0;
     width: 200px;
-    padding: 10px 30px 11px 10px;
+    height: 17px;
+    padding: 10px 30px 10px 10px;
     border: none;
+    outline: 0;
     border-radius: 5px;
     background: #a70000;
     color: #fff;
     letter-spacing: 1px;
-    font-style: italic;
     font-size: 12px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -356,10 +376,12 @@ textarea {
 #search-btn {
 	position: absolute;
 	top: 50%;
-	margin: -7px 0 0 0;
+	margin-top: -7px;
+	padding: 0;
 	right: 10px;
 	cursor: pointer;
-	width: auto;
+	border: 0;
+	background: none;
 }
 
 #search-btn img {
