@@ -4016,13 +4016,16 @@ a.sidebar-outlook-link {
 @media screen and (max-width: 615px) {
     article {
         max-width: 100%;
-        width: 80%;
-        padding-left: 10%;
-        padding-right: 10%;
+        width: 88%;
+        padding: 7% 6% 70px;
     }
 }
 
 @media screen and (max-width: 500px) {
+	article h1 {
+        font-size: 28px;
+    }
+
 	.announcements-right {
 		margin-bottom: 30px;
 	}
