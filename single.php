@@ -91,8 +91,19 @@
 						the_content();
 					
 					} else {
-                    
-                        $link = get_field( 'url' );
+                    	
+						if( has_term( 'national-leader', 'news' ) ) {
+
+							$link = get_field( 'nl-link' );
+							$link = $link[ 'url' ];
+
+
+						} else {
+
+                        	$link = get_field( 'url' );
+
+                        }
+
 						if( has_term( 'news-release', 'news' ) ) {
 
                             $link = $link['url'];
