@@ -95,6 +95,7 @@
 						if( has_term( 'national-leader', 'news' ) ) {
 
 							$link = get_field( 'nl-link' );
+							$link = $link[ 'url' ];
 
 
 						} else {
