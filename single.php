@@ -70,7 +70,7 @@
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
 					
-					if( $post->post_type != 'campus-life' && $post->post_type != 'national-leader' && $post->post_type != 'outlook' ) {
+					if( !has_term( 'campus-life', 'news' ) && !has_term( 'national-leader', 'news' ) && !has_term( 'outlook', 'news' ) ) {
 
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
 
@@ -93,7 +93,7 @@
 					} else {
                     
                         $link = get_field( 'url' );
-						if($post->post_type == 'news-release') {
+						if( has_term( 'news-release', 'news' ) ) {
 
                             $link = $link['url'];
                             $button_text = "See News Release";
@@ -116,7 +116,7 @@
 			?>
 		</article>
 
-		<?php if( $post->post_type != 'in_focus' && $post->post_type != 'national-leader' )get_sidebar( 'right' ); ?>
+		<?php if( !has_term( 'campus-life', 'news' ) && !has_term( 'national-leader', 'news' ) ) { get_sidebar( 'right' ); } ?>
 
 	</div>
 
