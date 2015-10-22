@@ -6,7 +6,7 @@
 		$num_to_show = get_option( 'billboards_to_show', 5 );
 		
 		$args = array(
-			'news'           => 'billboard',
+			'post_type'      => 'billboard',
 			'posts_per_page' => $num_to_show, 
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
@@ -20,7 +20,7 @@
 
 		if ( $num_to_show > 0 ) {
 			$args = array(
-				'news'           => 'billboard',
+				'post_type'      => 'billboard',
 				'posts_per_page' => $num_to_show, 
 				'orderby'        => 'date',
 				'post__not_in'   => $ids,
@@ -31,9 +31,9 @@
 		}
 
 		$args = array(
-			'news'     => 'billboard',
-			'orderby'  => 'post__in',
-			'post__in' => $ids
+			'post_type' => 'billboard',
+			'orderby'   => 'post__in',
+			'post__in'  => $ids
 		);
 
 		$loop = new WP_Query( $args );
