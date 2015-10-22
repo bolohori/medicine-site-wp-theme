@@ -12,7 +12,7 @@ if (have_posts()) :
             
             <?php the_title('<h1>', '</h1>'); ?>
 
-            <ul class="news-subnav">
+            <ul class="news-subnav clearfix">
                 <li><a href="">Publications</a></li>
                 <li><a href="">For Media</a></li>
                 <li><a href="">About Public Affairs</a></li>
@@ -28,6 +28,32 @@ if (have_posts()) :
         </header>
 
         <article>
+
+            <?php $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 1,
+            );
+            $the_query = new WP_Query( $args );
+
+            if ( $the_query->have_posts() ) { ?>
+            <div class="editors-pick">
+                <?php while ( $the_query->have_posts() ) {
+                    $the_query->the_post(); ?>
+                    <div>
+                        <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                                <?php the_post_thumbnail(); ?>
+                        </a>
+                        <div class="editors-pick-text">
+                            <p class="article-date"><?php the_time('M j, Y'); ?></p>
+                            <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                                <?php the_title('<h2>', '</h2>'); ?>
+                            </a>
+                            <?php the_excerpt(); ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+            <?php } ?>
 
             <div class="news-cards">
 

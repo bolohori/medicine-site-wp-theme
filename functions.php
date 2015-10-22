@@ -689,3 +689,13 @@ function get_top_parent_page_id() {
         return $post->ID;
     }
 }
+
+
+// NEWS
+// Add Phone Number to User Profiles
+function new_contactmethods( $contactmethods ) {
+   $contactmethods['phone'] = 'Phone Number'; // Add Phone Number
+
+   return $contactmethods;
+}
+add_filter('user_contactmethods','new_contactmethods',10,1);
