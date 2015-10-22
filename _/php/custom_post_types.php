@@ -2,6 +2,39 @@
 function create_custom_post_types() {
 
 	$labels = array(
+		'name'               => 'Billboards',
+		'singular_name'      => 'Billboard',
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New Billboard',
+		'edit_item'          => 'Edit Billboard',
+		'new_item'           => 'New Billboard',
+		'all_items'          => 'All Billboards',
+		'view_item'          => 'View Billboard',
+		'search_items'       => 'Search Billboards',
+		'not_found'          =>	'No billboards found',
+		'not_found_in_trash' => 'No billboards found in Trash', 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'Billboards'
+	);
+	$args = array(
+		'labels'              => $labels,
+		'exclude_from_search' => true,
+		'show_in_nav_menus'   => false,
+		'menu_icon'           => 'dashicons-welcome-view-site',
+		'public'              => false,
+		'publicly_queryable'  => false,
+		'show_ui'             => true, 
+		'show_in_menu'        => true, 
+		'query_var'           => true,
+		'rewrite'             => array( 'slug' => 'news/features' ),
+		'capability_type'     => 'post',
+		'hierarchical'        => true,
+		'menu_position'       => null,
+		'supports'            => array('title', 'page-attributes', 'thumbnail' )
+	); 
+	register_post_type( 'billboard', $args );
+
+	$labels = array(
 		'name'               => 'Profiles',
 		'singular_name'      => 'Profile',
 		'add_new'            => 'Add New',
