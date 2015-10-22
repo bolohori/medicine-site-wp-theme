@@ -2578,6 +2578,10 @@ article.full-width {
     font-weight: bold;
 }
 
+.feature-photo-credit {
+	clear: left;
+}
+
 @media screen and (max-width: 793px) {
     .card.full-width {
         width: 325px;
