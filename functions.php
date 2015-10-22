@@ -30,6 +30,24 @@ require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
 require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
 
+function move_news_type_rewrites( $rules ){
+
+	$news_rules = array();
+
+    foreach ($rules as $rule => $rewrite) {
+
+        if ( preg_match('/^news.*/',$rule) ) {
+        	
+        	$news_rules[ $rule ] = $rules[$rule];
+            unset($rules[$rule]);
+        }
+
+    }
+
+    return array_merge( $rules, $news_rules );
+}
+add_filter('rewrite_rules_array', 'move_news_type_rewrites');
+
 /*
  * Remove some of the unused stuff from the header
  */
@@ -655,12 +673,6 @@ function medicine_search_filter( $query ) {
 	}
 }
 add_filter( 'pre_get_posts', 'medicine_search_filter' );
-
-function national_leaders_custom_rewrite_rules( $wp_rewrite ) {
-	$my_rule = array( 'news/leaders/([^/]+)(/[0-9]+)?/?$' => 'index.php?pagename=$matches[1]&page=$matches[2]' );
-	$wp_rewrite->rules = $my_rule + $wp_rewrite->rules;
-}
-add_action( 'generate_rewrite_rules', 'national_leaders_custom_rewrite_rules' ); 
 
 function get_top_parent_page_id() {
     global $post;
