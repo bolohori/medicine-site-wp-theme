@@ -141,9 +141,9 @@ add_image_size( 'outlook-thumb', 240, 9999, true );
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 225);
 update_option('medium_size_h', NULL);
-update_option('large_size_w', 450);
+update_option('large_size_w', 645);
 update_option('large_size_h', NULL);
-update_option('embed_size_w', 450);
+update_option('embed_size_w', 645);
 
 // Manual excerpts for pages as well as posts
 add_post_type_support( 'page', 'excerpt' );
@@ -558,7 +558,7 @@ if ( ! function_exists( 'medicine_fixed_img_caption_shortcode' ) ) {
 		if ( 1 > (int) $width || empty($caption) )
 			return $content;
 		if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-		return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
+		return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="max-width: ' . $width . 'px">'
 		. do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
 	}
 }

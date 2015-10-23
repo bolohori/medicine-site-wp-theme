@@ -1,5 +1,5 @@
 /*
-Theme Name:  School of Medicine
+Theme Name:  School of Medicine - two column updated updated
 Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
@@ -132,7 +132,6 @@ article blockquote p {
 
 article .wp-caption {
 	width: 100%;
-	border-top: 1px solid #d7d7d7;
 }
 
 article .alignleft {
@@ -164,15 +163,14 @@ article .wp-caption.alignleft, article img.alignleft {
 
 article .wp-caption.aligncenter,
 article .wp-caption.alignnone {
-	width: 100%!important;
-	max-width: 450px;
+	max-width: 645px;
 }
 
 article p.wp-caption-text {
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 20px;
 	color: #6a6a6a;
-	padding: 15px 0 25px 0;
+	padding: 15px 0 20px 0;
 	border-bottom: 1px solid #e0e0e0;
 }
 
@@ -1114,6 +1112,12 @@ article .disclaimer {
 	color: #333;
 }
 
+article .disclaimer p {
+	font-size: 14px;
+	color: #333;
+	line-height: 24px;
+}
+
 article .signature-name {
     font-size: 16px;
     line-height: 24px;
@@ -1246,7 +1250,7 @@ article ul ul {
 .facts-glance li {
 	position: relative;
 	padding-right: 45px;
-	line-height: 16px;
+	line-height: 20px;
 	margin-bottom: 15px;
 }
 
@@ -1325,7 +1329,7 @@ th:first-child, td:first-child {
 }
 
 td {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 td p {
