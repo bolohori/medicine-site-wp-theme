@@ -37,17 +37,17 @@ function move_news_type_rewrites( $rules ){
 
 	$news_rules = array();
 
-    foreach ($rules as $rule => $rewrite) {
+	foreach ($rules as $rule => $rewrite) {
 
-        if ( preg_match('/^news.*/',$rule) ) {
-        	
-        	$news_rules[ $rule ] = $rules[$rule];
-            unset($rules[$rule]);
-        }
+		if ( preg_match('/^news.*/',$rule) ) {
+			
+			$news_rules[ $rule ] = $rules[$rule];
+			unset($rules[$rule]);
+		}
 
-    }
+	}
 
-    return array_merge( $rules, $news_rules );
+	return array_merge( $rules, $news_rules );
 }
 add_filter('rewrite_rules_array', 'move_news_type_rewrites');
 
@@ -454,6 +454,28 @@ if ( ! function_exists( 'medicine_tags_support_query' ) ) {
 }
 //add_action('pre_get_posts', 'medicine_tags_support_query');
 
+
+
+function remove_news_items_from_search_results( $query ) {
+	
+	if ( !$query->is_search )
+		return $query;
+
+	$taxquery = array(
+		array(
+			'taxonomy' => 'news',
+			'field'    => 'slug',
+			'terms'    => array( 'news-release','national-leader','washington-people','outlook' ),
+			'operator' => 'NOT IN'
+		)
+	);
+
+	$query->set( 'tax_query', $taxquery );
+
+}
+add_action('pre_get_posts', 'remove_news_items_from_search_results');
+
+
 /*
  * Shortcode to change the background, initially used for the admissions page, but
  * may be needed elsewhere
@@ -678,14 +700,14 @@ function medicine_search_filter( $query ) {
 add_filter( 'pre_get_posts', 'medicine_search_filter' );
 
 function get_top_parent_page_id() {
-    global $post;
-    $ancestors = $post->ancestors;
-    // Check if page is a child page (any level)
-    if ($ancestors) {
-        //  Grab the ID of top-level page from the tree
-        return end($ancestors);
-    } else {
-        // Page is the top level, so use  it's own id
-        return $post->ID;
-    }
+	global $post;
+	$ancestors = $post->ancestors;
+	// Check if page is a child page (any level)
+	if ($ancestors) {
+		//  Grab the ID of top-level page from the tree
+		return end($ancestors);
+	} else {
+		// Page is the top level, so use  it's own id
+		return $post->ID;
+	}
 }
