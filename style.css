@@ -2625,11 +2625,11 @@ article.full-width {
 
 .page-template-admissions-php h1 {
 	color: #000;
-	margin-bottom: 15px;
+	margin-bottom: 18px;
 }
 
 .page-template-admissions-php p {
-	line-height: 25px;
+	line-height: 28px;
 	max-width: 520px;
 	margin: 0 auto;
 	font-size: 16px;
@@ -2643,7 +2643,8 @@ article.full-width {
 .page-template-admissions-php .hero-list {
 	font-weight: 600;
 	display: inline-block;
-	line-height: 17px;
+	font-size: 16px;
+	line-height: 20px;
 	max-width: 720px;
 	position: relative;
 	border: 1px solid #ddd;
@@ -2681,13 +2682,14 @@ ul.program-list li.last-child {
 .page-template-admissions-php .program-list li {
 	width: 44%;
 	margin: 0 3%;
+	padding: 10px 0;
 	text-align: left;
 	float: right;
-	line-height: 38px;
+	line-height: 20px;
 	border-bottom: 1px solid #e0e0e0;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 780px) {
 	.page-template-admissions-php .program-list {
 		max-width: 300px;
 	}
@@ -2711,7 +2713,7 @@ ul.program-list li.last-child {
 }
 
 .page-template-admissions-php .hero-list-title {
-	font-size: 17px;
+	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
 	border-bottom: 1px solid #d5d2d2;
 	line-height: 25px;
@@ -2738,17 +2740,17 @@ ul.program-list li.last-child {
 }
 
 .admission-footer .list-title {
-	font-size: 17px;
+	font-size: 18px;
 	font-family: 'Open Sans', sans-serif;
-	line-height: 30px;
+	line-height: 25px;
 	border-bottom: 1px solid #d5d2d2;
 	width: 98%;
-	padding: 1%;
+	padding: 10px 1%;
 	margin-bottom: 8px;
 }
 
 .admission-footer ul {
-	max-width: 550px;
+	max-width: 650px;
 	width: 100%;
 	margin: 0 auto;
 	padding: 50px 0;
@@ -2758,10 +2760,11 @@ ul.program-list li.last-child {
 .admission-footer li {
 	width: 46%;
 	float: left;
+	font-size: 16px;
 	padding: 1% 3% 1% 1%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
 	.admission-footer li {
 		width: 96%;
 	}
