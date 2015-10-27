@@ -1,10 +1,10 @@
 /*
-Theme Name:  School of Medicine - two column updated updated
+Theme Name:  School of Medicine
 Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:15.10.22.4
+Version:	 2015.10.27.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -117,17 +117,24 @@ h6 {
 }
 
 article blockquote {
-	margin: 30px 0 45px 60px;
-	padding-left: 20px;
-	border-left: 3px solid #900;
+	margin: 35px 0 35px 40px;
+	padding-left: 25px;
+	border-left: 2px solid #900;
 	font-weight: 300;
-	font-size: 20px;
+	font-size: 22px;
 	line-height: 32px;
 }
 
 article blockquote p {
+	font-size: 22px;
 	line-height: 32px;
-	margin-bottom: 45px;
+	margin-bottom: 25px;
+}
+
+@media screen and (max-width: 600px) {
+	article blockquote {
+		margin-left: 0;
+	}
 }
 
 article .wp-caption {
