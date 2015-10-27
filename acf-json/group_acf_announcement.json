@@ -1,0 +1,107 @@
+{
+    "key": "group_acf_announcement",
+    "title": "Announcement",
+    "fields": [
+        {
+            "key": "field_5273e0d6627ef",
+            "label": "URL",
+            "name": "url",
+            "type": "website",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "website_title": 0,
+            "output_format": 1,
+            "default_value": "",
+            "internal_link": 0
+        },
+        {
+            "key": "field_5273d8df144ef",
+            "label": "Internal only",
+            "name": "internal_only",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Internal Only"
+            },
+            "default_value": {
+                "": ""
+            },
+            "layout": "vertical",
+            "toggle": 0
+        },
+        {
+            "key": "field_5274121ad05c0",
+            "label": "Expiration Date",
+            "name": "expiration_date",
+            "type": "date_time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_date": "true",
+            "date_format": "yy-mm-dd",
+            "time_format": "HH:mm",
+            "show_week_number": "false",
+            "picker": "slider",
+            "save_as_timestamp": "false",
+            "get_as_timestamp": "false"
+        },
+        {
+            "key": "field_53bd808628cda",
+            "label": "Hide Nav",
+            "name": "hide_nav",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Hide Left Nav?"
+            },
+            "default_value": {
+                "": ""
+            },
+            "layout": "horizontal",
+            "toggle": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "announcement"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1444408118
+}

@@ -3,7 +3,15 @@
 // Google Analytics template
 // onclick="__gaTracker('send','event','outbound-<LABEL>','http://<URL OR LABEL>');"
 // ***************************************
-
+if( file_exists( get_stylesheet_directory() . '/_/php/acf_fields.php' ) ) {
+	unlink( get_stylesheet_directory() . '/_/php/acf_fields.php' );
+}
+if( file_exists( get_stylesheet_directory() . '/_/php/post2news.php' ) ) {
+	unlink( get_stylesheet_directory() . '/_/php/post2news.php' );
+}
+if( file_exists( get_stylesheet_directory() . '/_/img/sidebars.jpg' ) ) {
+	unlink( get_stylesheet_directory() . '/_/img/sidebars.jpg' );
+}
 
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
@@ -20,12 +28,28 @@ if ( ! function_exists( 'feedburner_rss_redirect' ) ) {
 }
 add_action( 'feed_link', 'feedburner_rss_redirect', 10, 2 );
 
-if( ! defined('WP_LOCAL_INSTALL') ) { define( 'ACF_LITE', true ); require_once( get_template_directory() . '/_/php/acf_fields.php' ); }
-
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
 require_once( get_template_directory() . '/_/php/sidebar_helper.php' );
+
+function move_news_type_rewrites( $rules ){
+
+	$news_rules = array();
+
+	foreach ($rules as $rule => $rewrite) {
+
+		if ( preg_match('/^news.*/',$rule) ) {
+			
+			$news_rules[ $rule ] = $rules[$rule];
+			unset($rules[$rule]);
+		}
+
+	}
+
+	return array_merge( $rules, $news_rules );
+}
+add_filter('rewrite_rules_array', 'move_news_type_rewrites');
 
 /*
  * Remove some of the unused stuff from the header
@@ -74,7 +98,7 @@ if ( ! function_exists( 'medicine_footer_admin' ) ) {
 }
 add_filter('admin_footer_text', 'medicine_footer_admin');
 
-if( !defined( 'WP_LOCAL_INSTALL' ) ) {
+if( !defined( 'WP_DEBUG' ) ) {
 	//check for Wash U IP
 	$verifiedWashU = false;
 	$IP = $_SERVER['REMOTE_ADDR'];
@@ -117,9 +141,9 @@ add_image_size( 'outlook-thumb', 240, 9999, true );
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 225);
 update_option('medium_size_h', NULL);
-update_option('large_size_w', 450);
+update_option('large_size_w', 645);
 update_option('large_size_h', NULL);
-update_option('embed_size_w', 450);
+update_option('embed_size_w', 645);
 
 // Manual excerpts for pages as well as posts
 add_post_type_support( 'page', 'excerpt' );
@@ -128,6 +152,7 @@ add_post_type_support( 'page', 'excerpt' );
  * Intialize all the theme options
  */
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
+	
 	function medicine_theme_setup() {
 
 		// Let WordPress manage the document title.
@@ -141,6 +166,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		) );
 
 		if ( !is_nav_menu( 'Header' )) {
+
 			// Create Header menu, if it doesn't already exist
 			$menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );
 
@@ -157,6 +183,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 			$locations = get_theme_mod('nav_menu_locations');
 			$locations['header-menu'] = $menu_id;
 			set_theme_mod('nav_menu_locations', $locations);
+			
 		}
 
 		/*
@@ -166,6 +193,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		update_option('image_default_link_type', 'none' );
 		update_option('image_default_size', 'large' );
 	}
+
 }
 add_action( 'after_setup_theme', 'medicine_theme_setup' );
 
@@ -176,11 +204,17 @@ add_action( 'after_setup_theme', 'medicine_theme_setup' );
  * show the dean" functionality)
  */
 if ( ! function_exists( 'medicine_hide_admin_bar' ) ) {
+
 	function medicine_hide_admin_bar() {
+	
 		if (!current_user_can('edit_posts')) {
+	
 			show_admin_bar(false);
+	
 		}
+	
 	}
+
 }
 add_action('set_current_user', 'medicine_hide_admin_bar');
 
@@ -193,7 +227,9 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
  * Stylesheets, not really the traditional WordPress, but it works
  */
 if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
+
 	function medicine_enqueue_styles() {
+	
 		/**
 		 * The admin bar enqueues these two when a user is logged in, we need manually include
 		 * them if they aren't logged in
@@ -205,7 +241,9 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
 		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
+	
 	}
+
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
 
@@ -448,6 +486,28 @@ if ( ! function_exists( 'medicine_tags_support_query' ) ) {
 }
 //add_action('pre_get_posts', 'medicine_tags_support_query');
 
+
+
+function remove_news_items_from_search_results( $query ) {
+	
+	if ( !$query->is_search )
+		return $query;
+
+	$taxquery = array(
+		array(
+			'taxonomy' => 'news',
+			'field'    => 'slug',
+			'terms'    => array( 'news-release','national-leader','washington-people','outlook' ),
+			'operator' => 'NOT IN'
+		)
+	);
+
+	$query->set( 'tax_query', $taxquery );
+
+}
+add_action('pre_get_posts', 'remove_news_items_from_search_results');
+
+
 /*
  * Shortcode to change the background, initially used for the admissions page, but
  * may be needed elsewhere
@@ -530,7 +590,7 @@ if ( ! function_exists( 'medicine_fixed_img_caption_shortcode' ) ) {
 		if ( 1 > (int) $width || empty($caption) )
 			return $content;
 		if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-		return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: ' . $width . 'px">'
+		return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="max-width: ' . $width . 'px">'
 		. do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
 	}
 }
@@ -551,11 +611,11 @@ add_action('admin_head', 'medicine_admin_favicon');
  * These are all the filters and function that work with the wusm-archives plugin
  * to create the custom post type archive pages
  */
-add_filter( 'in_focus_link_text', 'in_focus_link_text_function', 10, 1 );
-add_filter( 'in_focus_link_field', 'in_focus_link_url_function', 10, 1 );
-add_filter( 'in_focus_thumbnail_size', function() { return array(320, 9999); } );
-add_filter( 'in_focus_date_text', function() { return ''; } );
-add_filter( 'in_focus_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
+add_filter( 'campus-life_link_text', 'campus_life_link_text_function', 10, 1 );
+add_filter( 'campus-life_link_field', 'campus_life_link_url_function', 10, 1 );
+add_filter( 'campus-life_thumbnail_size', function() { return array(320, 9999); } );
+add_filter( 'campus-life_date_text', function() { return ''; } );
+add_filter( 'campus-life_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
 
 add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
 add_filter( 'billboard_link_field', function() { return 'link'; } );
@@ -564,7 +624,7 @@ add_filter( 'billboard_num_per_page', function() { return 9999; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 
-add_filter( 'news_releases_link_field', function() { return 'url'; } );
+add_filter( 'news-release_link_field', function() { return 'url'; } );
 
 // SO meta!
 add_filter( 'profile_excerpt_text', function() {
@@ -576,16 +636,16 @@ add_filter( 'profile_template_file', function() { return get_stylesheet_director
 add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
 add_filter( 'profile_thumbnail_size', function() { return 'large'; }, 999 );
 
-add_filter( 'media_mentions_link_field', function() { return 'url'; } );
-add_filter( 'media_mentions_show_thumbnail', function() { return false; } );
-add_filter( 'media_mentions_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
+add_filter( 'in-the-media_link_field', function() { return 'url'; } );
+add_filter( 'in-the-media_show_thumbnail', function() { return false; } );
+add_filter( 'in-the-media_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
 //add_filter( 'spotlight_excerpt_text', function() { return ''; } );
-add_filter( 'spotlight_show_thumbnail', function() { return false; } );
-add_filter( 'spotlight_link_field', 'spotlight_link_url_function', 10, 1 );
+add_filter( 'national-leader_show_thumbnail', function() { return false; } );
+add_filter( 'national-leader_link_field', 'spotlight_link_url_function', 10, 1 );
 
-add_filter( 'washington_people_link_field', function() { return 'url'; } );
-add_filter( 'washington_people_thumbnail_size', function() { return 'large'; }, 999 );
+add_filter( 'washington-people_link_field', function() { return 'url'; } );
+add_filter( 'washington-people_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'outlook_link_field', function() { return 'url'; } );
 add_filter( 'outlook_thumbnail_size', function() { return 'large'; }, 999 );
@@ -596,14 +656,14 @@ if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	}
 }
 
-if ( ! function_exists( 'in_focus_link_text_function' ) ) {
-	function in_focus_link_text_function( $id ) {
+if ( ! function_exists( 'campus_life_link_text_function' ) ) {
+	function campus_life_link_text_function( $id ) {
 		return ( $external_link = get_field( 'external_link' ) ) ? "<b>" . $external_link['title'] . "</b>" : '<b>See photos</b>';
 	}
 }
 
-if ( ! function_exists( 'in_focus_link_url_function' ) ) {
-	function in_focus_link_url_function( $id ) {
+if ( ! function_exists( 'campus_life_link_url_function' ) ) {
+	function campus_life_link_url_function( $id ) {
 		return ( $external_link = get_field( 'external_link' ) ) ? 'external_link' : '';
 	}
 }
@@ -625,8 +685,8 @@ add_filter( 'manage_billboard_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_billboard_posts_custom_column', 'column_content', 11, 2 );
 add_filter( 'manage_announcement_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_announcement_posts_custom_column', 'column_content', 11, 2 );
-//add_filter( 'manage_media_mentions_posts_columns', 'column_heading', 11, 1 );
-//add_action( 'manage_media_mentions_posts_custom_column', 'column_content', 11, 2 );
+//add_filter( 'manage_in-the-media_posts_columns', 'column_heading', 11, 1 );
+//add_action( 'manage_in-the-media_posts_custom_column', 'column_content', 11, 2 );
 function column_heading($columns) {
 	unset($columns['wpseo-score']);
 	unset($columns['wpseo-title']);
@@ -671,23 +731,17 @@ function medicine_search_filter( $query ) {
 }
 add_filter( 'pre_get_posts', 'medicine_search_filter' );
 
-function national_leaders_custom_rewrite_rules( $wp_rewrite ) {
-	$my_rule = array( 'news/leaders/([^/]+)(/[0-9]+)?/?$' => 'index.php?pagename=$matches[1]&page=$matches[2]' );
-	$wp_rewrite->rules = $my_rule + $wp_rewrite->rules;
-}
-add_action( 'generate_rewrite_rules', 'national_leaders_custom_rewrite_rules' ); 
-
 function get_top_parent_page_id() {
-    global $post;
-    $ancestors = $post->ancestors;
-    // Check if page is a child page (any level)
-    if ($ancestors) {
-        //  Grab the ID of top-level page from the tree
-        return end($ancestors);
-    } else {
-        // Page is the top level, so use  it's own id
-        return $post->ID;
-    }
+	global $post;
+	$ancestors = $post->ancestors;
+	// Check if page is a child page (any level)
+	if ($ancestors) {
+		//  Grab the ID of top-level page from the tree
+		return end($ancestors);
+	} else {
+		// Page is the top level, so use  it's own id
+		return $post->ID;
+	}
 }
 
 

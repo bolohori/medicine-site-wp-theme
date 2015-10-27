@@ -18,7 +18,8 @@
 	<?php the_field('page_specific_css'); ?>
 </style>
 <?php }
-if(defined('WP_LOCAL_INSTALL')) { ?>
+// This fixes JS errors that occur locally if Google Analytics plugin isn't installed
+if( defined( 'WP_DEBUG') ) { ?>
 	<script type="text/javascript">
 	var _gaq = _gaq || [];
 	</script>

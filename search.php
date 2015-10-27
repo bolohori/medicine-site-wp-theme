@@ -81,7 +81,9 @@ get_header(); ?>
 			
 			// If there are no matching results, display appropriate message
 			if( ! ($num_of_wordpress_results + $total_google_results) ) {
+				
 				echo "<p>No pages were found containing: <strong>" . $search_terms . "</strong>.</p>\n";
+			
 			}
 			
 			// Only display "promoted results" on the first page
@@ -90,28 +92,47 @@ get_header(); ?>
 				
 				$pageposts = $wpdb->get_results($querystr, OBJECT);
 
-				if ( $pageposts ):
+				if ( $pageposts ) {
+
 					echo "<h2>Top search results</h2>";
+					
 					global $post;
-					foreach ( $pageposts as $post ):
+					
+					foreach ( $pageposts as $post ) {
+
 						setup_postdata($post);
+						
 						if( $post->post_type == 'promoted_results' ) {
+						
 							//result_url
 							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_field( 'result_url', get_the_ID() ) . '">MORE»</a>'; } );
-							$link = get_field('result_url', $post->ID);
+							$link = get_field( 'result_url', $post->ID );
+						
 						} else {
+						
 							add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 							$link = get_permalink();
+						
 						}
-						echo "<p class='search-results'>
-						<span style='font-size: 16px;'><a onclick=\"__gaTracker('send','event','top-search-result-$search_terms','$link');\" href='$link'><b>".get_the_title()."</b></a></span><br>";
-						if(get_the_excerpt() != '')
-							echo get_the_excerpt()."<br>";
-						echo "<a href='".$link."' class='result-url'>".$link."</a>
+						
+						echo "<p class='search-results'>";
+						echo "<span style='font-size: 16px;'><a onclick=\"__gaTracker('send','event','top-search-result-$search_terms','$link');\" href='$link'><b>".get_the_title()."</b></a></span><br>";
+						
+						if( ( $post_excerpt = get_the_excerpt() ) !== '' ) {
+						
+							echo "$post_excerpt<br>";
+
+						}
+						
+						echo "<a href='$link' class='result-url'>$link</a>
 						</p>";
-					endforeach;
+					
+					}
+					
 					echo "<hr>";
-				endif;
+				
+				}
+
 				add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 
 				// Restore original Post Data
@@ -120,23 +141,40 @@ get_header(); ?>
 			
 			// These are WordPress' search results
 			if ( have_posts() ) {
+
 				echo "<h2>medicine.wustl.edu results</h2>";
+				
 				while ( have_posts() ) {
+				
 					the_post();
 					$num_of_wordpress_results++;
-					echo "<p class='search-results'>
-					<span style='font-size: 16px;'><a href='".get_permalink()."'><b>".get_the_title()."</b></a></span><br>
-					".get_the_excerpt()."<br>
-					<a href='".get_permalink()."' class='result-url'>".get_permalink()."</a>
-					</p>";
+
+					$link = get_permalink();
+				
+					echo "<p class='search-results'>";
+					echo "<span style='font-size: 16px;'><a href='$link'><b>".get_the_title()."</b></a></span><br>";
+					
+					if( ( $post_excerpt = get_the_excerpt() ) !== '' ) {
+						
+						echo "$post_excerpt<br>";
+
+					}
+
+					echo "<a href='$link' class='result-url'>$link</a>";
+					echo "</p>";
+				
 				}
 			}
 
 			// Visual separator to mark end of WP search and start of Google search
-			if ( $num_of_wp_result_pages == $paged )
+			if ( $num_of_wp_result_pages == $paged ) {
+
 				echo "<hr>";
 
+			}
+
 			if(($num_of_wp_result_pages <= $paged) || ( $num_of_wp_result_pages < 2 ) ) {
+			
 				// and finally the results from Google...
 				$terms = str_replace(' ', '+', $search_terms);
 				$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_google_results&as_eq=medschool.wustl.edu+medicine.wustl.edu";
@@ -144,14 +182,19 @@ get_header(); ?>
 				$start_num = $xml->RES['SN'];
 
 				if( $start > $start_num ) {
+			
 					$start = $start_num - 1;
+			
 				}
 
 				// Adjust the end count if it is less than the total count per page. For example, if there are only
 				// 7 results but the default is to display 10 per page, don't show: Results 1 - 7 of 10
 				$end_cnt = 10;
+			
 				if( ($total_google_results - $start) < 10 ) {
+			
 					$end_cnt = $total_google_results - $start;
+			
 				}
 				
 				// Display page of search results
@@ -175,56 +218,82 @@ get_header(); ?>
 					}
 				}
 				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
-			} ?>
-			
+			}
 
-			<?php 
-				// If there are more than one page of results, show pager navigation
-				if( $pages_of_results > 1 ) {
-					// For first 10 pages, keep pager navigation static
-					if( $paged < 10 ) {
-						$p_start = 1;
-						if( $pages_of_results < 15 ) {
-							$p_end = $pages_of_results;
-						} else {
-							$p_end = 15;
-						}
-
-					// Otherwise, starting on page 11, pull one page from beginning of pager navigation
-					// and add it to the end, thus maintaining 15 items in navigation
-					} else {
-						$p_start = $paged - 10;
-						$p_end = $paged + 4;
-					}
-					
-					if( $p_end > $pages_of_results )
+			// If there are more than one page of results, show pager navigation
+			if( $pages_of_results > 1 ) {
+				
+				// For first 10 pages, keep pager navigation static
+				if( $paged < 10 ) {
+				
+					$p_start = 1;
+				
+					if( $pages_of_results < 15 ) {
+				
 						$p_end = $pages_of_results;
+				
+					} else {
+				
+						$p_end = 15;
+				
+					}
 
-					if ( isset($truncate_pagination) ) {
-						$p_end = $truncate_pagination;
-					}
-					
-					echo "<p style='max-width: 750px;word-wrap: break-word;'>Page: ";
-					if( $p_start != 1 ) {
-						$back = $paged - 1;
-						echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
-					}
-					for( $i = $p_start ; $i <= $p_end ; $i++ ) {          
-						if( $paged != $i ) {
-							echo "<a href='/?s=$search_terms&paged=$i'>$i</a>";
-						} else {
-							echo "$i";
-						}
-						echo "&nbsp;&nbsp;&nbsp;";
-					}
-					$adv = $paged + 1;
-					
-					if( ( $p_end != $pages_of_results ) && ! isset( $truncate_pagination ) ) {
-						echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
-					}
-					echo "</p>";
+				// Otherwise, starting on page 11, pull one page from beginning of pager navigation
+				// and add it to the end, thus maintaining 15 items in navigation
+				} else {
+				
+					$p_start = $paged - 10;
+					$p_end = $paged + 4;
+				
 				}
-			?>
+				
+				if( $p_end > $pages_of_results ) {
+					
+					$p_end = $pages_of_results;
+
+				}
+
+				if ( isset($truncate_pagination) ) {
+				
+					$p_end = $truncate_pagination;
+				
+				}
+				
+				echo "<p style='max-width: 750px;word-wrap: break-word;'>Page: ";
+				
+				if( $p_start != 1 ) {
+				
+					$back = $paged - 1;
+					echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
+				
+				}
+				
+				for( $i = $p_start ; $i <= $p_end ; $i++ ) {          
+				
+					if( $paged != $i ) {
+				
+						echo "<a href='/?s=$search_terms&paged=$i'>$i</a>";
+				
+					} else {
+				
+						echo "$i";
+				
+					}
+				
+					echo "&nbsp;&nbsp;&nbsp;";
+				
+				}
+				
+				$adv = $paged + 1;
+				
+				if( ( $p_end != $pages_of_results ) && ! isset( $truncate_pagination ) ) {
+					
+					echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
+
+				}
+
+				echo "</p>";
+			} ?>
 
 		</article>
 

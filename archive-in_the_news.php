@@ -8,10 +8,9 @@
 	<div class="wrapper clearfix">
 
 		<?php get_sidebar(); ?>
-		<?php get_sidebar( 'right' ); ?>
 		<article>
 			<h1>In the News archive</h1>
-		<?php 
+		<?php
 		// WP_Query arguments
 		$args = array (
 			'post_type'              => 'in_the_news',
@@ -34,6 +33,8 @@
 
 		// Restore original Post Data
 		wp_reset_postdata();
+
+        get_sidebar( 'right' );
 		?>
 		</article>
 

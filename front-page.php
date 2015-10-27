@@ -6,7 +6,7 @@
 		$num_to_show = get_option( 'billboards_to_show', 5 );
 		
 		$args = array(
-			'post_type'      => 'billboard', 
+			'post_type'      => 'billboard',
 			'posts_per_page' => $num_to_show, 
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
@@ -20,7 +20,7 @@
 
 		if ( $num_to_show > 0 ) {
 			$args = array(
-				'post_type'      => 'billboard', 
+				'post_type'      => 'billboard',
 				'posts_per_page' => $num_to_show, 
 				'orderby'        => 'date',
 				'post__not_in'   => $ids,
@@ -78,7 +78,7 @@
 			<ul class="news-list">
 <?php
 				$args = array(
-					'post_type'      => 'media_mentions',
+					'news'           => 'in-the-media',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
@@ -103,7 +103,7 @@
 				$j = 0;
 				$audio_out = '';
 				$args = array(
-					'post_type'      => 'news_releases',
+					'news'           => 'news-release',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
@@ -157,21 +157,29 @@
 				$slider = "";
 				$captions = "";
 				$args = array( 
-					'post_type'      => 'spotlight',
+					'news'           => 'national-leader',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
+
 				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) : $loop->the_post();
+				while ( $loop->have_posts() ) {
+					
+					$loop->the_post();
+					
 					$read_more_link = "";
 					$link = get_field('nl-link');
 					$slidetitle = "#spotlightcaption$i";
 					
 					if ( get_field( 'faculty_member' ) ) {
+
 						$faculty_member = get_field( 'faculty_member' );
 						$img_to_get = $faculty_member->ID;
+
 					} else {
+
 						$img_to_get = $post->ID;
+
 					}
 
 					$title = get_the_title();
@@ -190,8 +198,10 @@
 					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
 					$slider .= "</h2><p>$excerpt&nbsp;&nbsp;$read_more_link</p>";
 					$slider .= "</div></li>";
+					
 					$i++;
-				endwhile;
+				
+				}
 				wp_reset_postdata();
 				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
 ?>

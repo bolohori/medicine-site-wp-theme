@@ -1,0 +1,49 @@
+{
+    "key": "group_acf_in-focus",
+    "title": "Campus Life",
+    "fields": [
+        {
+            "key": "field_5351884a9f959",
+            "label": "External Link",
+            "name": "external_link",
+            "type": "website",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "website_title": 1,
+            "output_format": 1,
+            "default_value": "",
+            "internal_link": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "in_focus"
+            }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "news:campus-life"
+            }
+        ]
+    ],
+    "menu_order": 6,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1444408172
+}
