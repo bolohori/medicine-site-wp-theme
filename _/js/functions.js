@@ -143,6 +143,11 @@ function next_posts() {
     })
 }
 
-jQuery(document).ready(function() {
-    jQuery(".next-posts").length > 0 && next_posts()
+jQuery(document).ready(function($) {
+    $('.news-filters li ul').hide();
+    $('.news-filters > li.parent > a').click(function(e) {
+        e.preventDefault();
+        $(this).next('ul').toggle();
+    });
+    $('.next-posts').length > 0 && next_posts()
 });

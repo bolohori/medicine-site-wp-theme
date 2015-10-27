@@ -2546,11 +2546,12 @@ a.news-title {
 	padding-top: 30px;
 	margin-bottom: 30px;
 }
-.news-filters li {
+.news-filters > li {
 	display: inline-block;
 	margin-right: 12px;
+	position: relative;
 }
-.news-filters li a {
+.news-filters > li > a {
 	padding: 10px 15px;
 	background: #e3e3e3;
 	border-radius: 3px;
@@ -2562,6 +2563,26 @@ a.news-title {
 	background: #990000;
 	color: #fff;
 	text-transform: uppercase;
+}
+.news-filters ul {
+	position: absolute;
+	background: #fff;
+	width: 140px;
+	margin-top: 5px;
+	padding: 20px 22px;
+	border-radius: 3px;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
+}
+.news-filters ul li {
+	margin-bottom: 12px;
+}
+.news-filters ul li:last-child {
+	margin-bottom: 0;
+}
+.news-filters ul li a {
+	color: #333;
+	display: block;
+	font-weight: 600;
 }
 .page-news article {
 	float: none;

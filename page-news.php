@@ -21,8 +21,18 @@ if (have_posts()) :
             <ul class="news-filters">
                 <li class="active"><a href="/news">All</a></li>
                 <li><a href="">Editor's Picks</a></li>
-                <li><a href="">Topics</a></li>
-                <li><a href="">Source</a></li>
+                <li class="parent"><a href="">Topics</a></li>
+                <li class="parent"><a href="">Source</a>
+                    <ul>
+                        <li><a href="">News Release</a></li>
+                        <li><a href="">Other News</a></li>
+                        <li><a href="">Media Mention</a></li>
+                        <li><a href="">Campus Life</a></li>
+                        <li><a href="">National Leaders</a></li>
+                        <li><a href="">Outlook Magazine</a></li>
+                        <li><a href="">Washington People</a></li>
+                    </ul>
+                </li>
             </ul>
 
         </header>
