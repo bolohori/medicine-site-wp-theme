@@ -9,10 +9,8 @@
 	if (have_posts()) :
 		while (have_posts()) :
 			the_post();
-			$class = '';
 			$margin = ' non-landing-page';
 			if (get_the_post_thumbnail() != '') {
-				$class = ' class="notch"';
 				$margin = ' landing-page';
 				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
 				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
@@ -31,7 +29,7 @@
 
 		<?php get_sidebar(); ?>
 
-		<article<?php echo $class; ?>>
+		<article>
 			<?php
 					the_title('<h1>', '</h1>');
 					the_content();
@@ -39,8 +37,6 @@
 			endif;
 			?>
 		</article>
-
-		<?php /*get_sidebar( 'right' );*/ ?>
 
 	</div>
 

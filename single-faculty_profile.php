@@ -35,7 +35,7 @@ get_header();
 				} else { // This is the "year list" for an award set
 			?>
 
-			<article class="faculty-profile-width">
+			<article>
 
 			<?php 
 				the_title('<h1>', '</h1>');
