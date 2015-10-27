@@ -13,7 +13,7 @@
 			<header class="article-header">
 			<a href="/news" class="visit-news-hub"><div class="arrow-left"></div>Visit the News Hub</a>
 			<?php
-				echo get_the_category_list();
+				echo get_the_term_list( $post->ID, 'news', '<ul class="news-types"><li>', '</li><li>', '</li></ul>' );
 				the_title('<h1>', '</h1>');
 				if(get_field('subhead'))
 					echo "<p class='subhead'>" . get_field('subhead') . "</p>";
@@ -25,7 +25,7 @@
 				    sharing_display( '', true );
 				}
 				the_post_thumbnail('landing-page');
-				if(get_post(get_post_thumbnail_id())->post_excerpt): echo '<p class="featured-image-caption">' . get_post(get_post_thumbnail_id())->post_excerpt . '</p>'; endif;
+				if(has_post_thumbnail()):if(get_post(get_post_thumbnail_id())->post_excerpt): echo '<p class="featured-image-caption">' . get_post(get_post_thumbnail_id())->post_excerpt . '</p>'; endif;endif;
 			?>
 			</header>
 			<?php

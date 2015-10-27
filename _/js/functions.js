@@ -155,10 +155,11 @@ jQuery(document).ready(function($) {
 });
 
 function next_posts() {
+    var counter = 2;
     jQuery(".next-posts a").click(function(a) {
         jQuery.get(jQuery(this).attr("href"), function(a) {
-            jQuery(".pagination .next-posts a", a).length > 0 ? jQuery(".next-posts a").attr("href", jQuery(".pagination .next-posts a", a).attr("href")) : jQuery(".pagination").remove(), jQuery(".news-cards ul").after(jQuery(".news-cards ul", a))
-        }), a.preventDefault()
+            jQuery(".pagination .next-posts a", a).length > 0 ? jQuery(".next-posts a").attr("href", jQuery(".pagination .next-posts a", a).attr("href")) : jQuery(".pagination").remove(), jQuery(".news-cards").append(jQuery(".news-cards ul", a).addClass('page' + counter))
+        }).done(function() { jQuery('.page' + counter + ' .card').matchHeight(); counter++; } ), a.preventDefault()
     })
 }
 

@@ -20,7 +20,7 @@ if (have_posts()) :
 
             <ul class="news-filters">
                 <li class="active"><a href="/news">All</a></li>
-                <li><a href="">Editor's Picks</a></li>
+                <li><a href="<?php $category_id = get_cat_ID( "Editor's Pick" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
                 <li class="parent"><a href="">Topics</a></li>
                 <li class="parent"><a href="">Source</a>
                     <ul>
@@ -93,6 +93,7 @@ if (have_posts()) :
                     </li>
                 <?php } ?>
                 </ul>
+            </div>
                 <?php if ($the_query->max_num_pages > 1) { ?>
                     <div class="pagination">
                         <div class="next-posts"><?php next_posts_link( 'Load More', $the_query->max_num_pages ); ?></div>
@@ -100,8 +101,6 @@ if (have_posts()) :
                 <?php } ?>
             <?php }
             wp_reset_postdata(); ?>
-
-            </div>
 
         </article>
 
