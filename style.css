@@ -2512,6 +2512,7 @@ a.news-title {
 }
 .page-news h1 {
 	display: inline-block;
+	float: left;
 }
 .news-subnav {
 	float: right;
@@ -2521,6 +2522,7 @@ a.news-title {
 @media screen and (max-width: 700px) {
 	.page-news h1 {
 		margin-bottom: 20px;
+		float: none;
 	}
 	.news-subnav {
 		float: none;
@@ -2541,6 +2543,7 @@ a.news-title {
 	border-top: 1px solid #ccc;
 	padding-top: 30px;
 	margin-bottom: 30px;
+	clear: both;
 }
 .news-filters > li {
 	display: inline-block;
@@ -2604,7 +2607,7 @@ a.news-title {
 	margin: 0 auto;
 }
 .editors-pick > div {
-	margin: 10px;
+	margin: 10px 10px 15px;
 	border-radius: 3px;
 	background: #fff;
 	overflow: hidden;
@@ -2652,6 +2655,7 @@ a.news-title {
 .news-cards li {
 	width: 33.3333%;
 	float: left;
+	margin: 0 0 5px;
 }
 .news-cards li div {
 	margin: 10px;
@@ -2676,6 +2680,7 @@ a.news-title {
 }
 .news-cards li img {
 	height: auto;
+	display: block;
 }
 .news-cards li h2 {
 	font-size: 18px;
@@ -2686,7 +2691,7 @@ a.news-title {
 	margin: 0 23px;
 }
 .news-cards .article-date {
-	margin: 5px 23px 0;
+	margin: 10px 23px 0;
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;

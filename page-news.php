@@ -10,28 +10,30 @@ if (have_posts()) :
 
         <header>
             
-            <?php the_title('<h1>', '</h1>'); ?>
+            <h1>News</h1>
 
             <ul class="news-subnav clearfix">
-                <li><a href="">Publications</a></li>
+                <li><a href="<?php echo get_page_link( 7224 ) ?>">Publications</a></li>
                 <li><a href="">For Media</a></li>
                 <li><a href="">About Public Affairs</a></li>
             </ul>
 
             <ul class="news-filters">
                 <li class="active"><a href="/news">All</a></li>
-                <li><a href="<?php $category_id = get_cat_ID( "Editor's Pick" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
-                <li class="parent"><a href="">Topics</a></li>
+                <li><a href="<?php $category_id = get_cat_ID( "Editor's Picks" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
+                <li class="parent"><a href="">Topics</a>
+                    <ul><?php echo wp_list_categories( 'title_li=' ); ?></ul>
+                </li>
                 <li class="parent"><a href="">Source</a>
-                    <ul>
-                        <li><a href="">News Release</a></li>
-                        <li><a href="">Other News</a></li>
-                        <li><a href="">Media Mention</a></li>
-                        <li><a href="">Campus Life</a></li>
-                        <li><a href="">National Leaders</a></li>
-                        <li><a href="">Outlook Magazine</a></li>
-                        <li><a href="">Washington People</a></li>
-                    </ul>
+                    <?php  $terms = get_terms( 'news', 'orderby=count&order=DESC' );
+                    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+                        echo '<ul>';
+                        foreach ( $terms as $term ) {
+                            echo '<li>' . '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>';
+                            
+                        }
+                        echo '</ul>';
+                    } ?>
                 </li>
             </ul>
 
@@ -42,6 +44,7 @@ if (have_posts()) :
             <?php $args = array(
                 'post_type' => 'post',
                 'posts_per_page' => 1,
+                'category_name' => 'editors-pick',
             );
             $the_query = new WP_Query( $args );
 
