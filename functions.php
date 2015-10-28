@@ -762,3 +762,15 @@ function number_of_posts_on_archive($query){
     return $query;
 }
 add_filter('pre_get_posts', 'number_of_posts_on_archive');
+
+// Display featured image caption by using the_post_thumbnail_caption();
+function the_post_thumbnail_caption() {
+  global $post;
+
+  $thumbnail_id    = get_post_thumbnail_id($post->ID);
+  $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment', 'post_status' => null, 'post_parent' => $post->ID, 'include' => $thumbnail_id));
+
+  if ($thumbnail_image && isset($thumbnail_image[0])) {
+    echo '<p class="featured-image-caption">'.$thumbnail_image[0]->post_excerpt.'</p>';
+  }
+}

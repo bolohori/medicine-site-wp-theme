@@ -25,7 +25,7 @@
 			    sharing_display( '', true );
 			}
 			the_post_thumbnail('landing-page');
-			if(has_post_thumbnail()): echo '<p class="featured-image-caption">' . get_post(get_post_thumbnail_id())->post_excerpt . '</p>'; endif;
+			the_post_thumbnail_caption();
 		?>
 		</header>
 		<?php
