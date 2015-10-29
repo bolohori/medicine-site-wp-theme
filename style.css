@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2015.10.27.0
+Version:	 2015.10.29.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -751,15 +751,6 @@ input {
 	}
 }
 
-input[type=reset],
-input[type=submit] {
-	line-height: 38px;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-}
-
-input[type=reset],
-input[type=submit],
 button.single-link {
 	border: none;
 	border-radius: 3px;
@@ -788,59 +779,10 @@ button.single-link {
     transition: background 0.1s ease;
 }
 
-input[type=reset]:hover,
-input[type=submit]:hover,
 button.single-link:hover {
 	background: #c40000;
 }
 
-/* Gravity Forms */
-article .gform_wrapper .gsection_description {
-    font-size: inherit;
-    line-height: inherit;
-}
-
-article .gform_wrapper .top_label .gfield_label {
-    margin-bottom: 0;
-}
-
-article .gform_wrapper .top_label .gfield_description {
-    padding-top: 0;
-}
-
-body article .gform_wrapper label.gfield_label+div.ginput_container {
-    margin-top: 0;
-}
-
-article .gform_wrapper .gsection {
-    border-bottom: none;
-    padding: 0;
-    margin: 1.8em 0 0 0;
-}
-
-article .gform_wrapper h2.gsection_title {
-    font-size: 21px;
-    padding-bottom: 5px !important;
-    border-bottom: 1px solid #ccc;
-}
-
-article .gform_wrapper .gsection.no-label h2.gsection_title{
-    /* custom CSS class */
-    padding-bottom: 0 !important;
-    border-bottom: none;
-}
-
-article .gform_wrapper .field_sublabel_above .gfield_date_day label, article .gform_wrapper .field_sublabel_above .gfield_date_month label, article .gform_wrapper .field_sublabel_above .gfield_date_year label, article .gform_wrapper .field_sublabel_above .gfield_time_ampm label, article .gform_wrapper .field_sublabel_above .gfield_time_hour label, article .gform_wrapper .field_sublabel_above .gfield_time_minute label, article .gform_wrapper .field_sublabel_above .ginput_complex label, article .gform_wrapper .field_sublabel_above .instruction {
-    margin-top: 0;
-}
-
-article .gform_wrapper ul li {
-    margin-bottom: 0;
-}
-
-article .gform_wrapper ul.gfield_checkbox li, article .gform_wrapper ul.gfield_radio li {
-    overflow: visible;
-}
 
 
 /* Featured image
