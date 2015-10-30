@@ -70,7 +70,7 @@
 					the_title('<h1>', '</h1>');
 					add_filter( 'excerpt_more', function() { return ''; } );
 					
-					if( !has_term( 'campus-life', 'news' ) && !has_term( 'national-leader', 'news' ) && !has_term( 'outlook', 'news' ) ) {
+					if( !has_term( 'campus-life', 'news' ) && !has_term( 'national-leader', 'news' ) && !has_term( 'washington-people', 'news' ) && !has_term( 'outlook', 'news' ) ) {
 
 						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
 
