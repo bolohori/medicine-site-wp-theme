@@ -456,26 +456,6 @@ if ( ! function_exists( 'medicine_tags_support_query' ) ) {
 
 
 
-function remove_news_items_from_search_results( $query ) {
-	
-	if ( !$query->is_search )
-		return $query;
-
-	$taxquery = array(
-		array(
-			'taxonomy' => 'news',
-			'field'    => 'slug',
-			'terms'    => array( 'news-release','national-leader','washington-people','outlook' ),
-			'operator' => 'NOT IN'
-		)
-	);
-
-	$query->set( 'tax_query', $taxquery );
-
-}
-add_action('pre_get_posts', 'remove_news_items_from_search_results');
-
-
 /*
  * Shortcode to change the background, initially used for the admissions page, but
  * may be needed elsewhere
