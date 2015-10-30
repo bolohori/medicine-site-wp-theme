@@ -2561,9 +2561,23 @@ a.news-title {
 .news-filters .active a {
 	background: #990000;
 	color: #fff;
-	text-transform: uppercase;
+}
+.news-filters .parent {
+	width: 140px;
+}
+.news-filters .parent:after {
+	content: '';
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid #990000;
+	position: absolute;
+	right: 15px;
+	top: 17px;
 }
 .news-filters ul {
+	display: none;
 	position: absolute;
 	background: #fff;
 	width: 140px;
@@ -2571,6 +2585,9 @@ a.news-title {
 	padding: 20px 22px;
 	border-radius: 3px;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
+}
+.news-filters ul.open {
+	display: block;
 }
 .news-filters ul li {
 	margin-bottom: 12px;
@@ -2679,7 +2696,8 @@ a.news-title {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
 }
 .news-cards li img {
-	height: auto;
+	height: 221px;
+	width: auto;
 	display: block;
 }
 .news-cards li h2 {
@@ -2690,13 +2708,17 @@ a.news-title {
 .news-cards p {
 	margin: 0 23px;
 }
-.news-cards .article-date {
+.news-cards .article-meta {
 	margin: 10px 23px 0;
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
 	font-size: 12px;
 	letter-spacing: 0.9px;
+}
+.news-cards .article-meta .news-source {
+	text-transform: none;
+	letter-spacing: 0;
 }
 .page-news .pagination {
 	padding: 30px 0;
@@ -2705,7 +2727,7 @@ a.news-title {
 .page-news .next-posts {
 	display: inline-block;
 	line-height: 14px;
-    margin: 0 20px 0 0;
+    margin: 0;
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
@@ -2850,6 +2872,7 @@ a.news-title {
 .single article img.alignleft {
 	margin-right: 25px;
 	max-width: 40%;
+	width: auto;
 }
 .single article .wp-caption.alignright,
 .single article img.alignright {
@@ -2882,6 +2905,33 @@ a.news-title {
 .single-post .alignright .wp-caption-text {
 	border-bottom: 1px solid #999;
 }
+.credit-container {
+	margin-bottom: 35px;
+	display: block;
+	max-width: 700px;
+}
+.wp-caption .credit-container {
+	margin-bottom: 25px;
+}
+.alignleft .credit-container,
+.alignright .credit-container {
+	margin-bottom: 20px;
+}
+.single .credit-container img {
+	max-width: 100%;
+	margin: 0;
+}
+.image-credit {
+	font-size: 11px;
+	text-transform: uppercase;
+	line-height: 11px;
+	text-align: right;
+	font-family: 'Open Sans', sans-serif;
+	margin: 3px 0;
+	display: block;
+	color: #909090;
+	float: right;
+}
 .single-post article blockquote {
 	margin: 0;
 	padding: 0;
@@ -2900,6 +2950,7 @@ a.news-title {
 .article-footer {
 	max-width: 700px;
 	padding: 20px 0 30px;
+	clear: both;
 }
 .article-footer p {
 	font-family: 'Open Sans', sans-serif;

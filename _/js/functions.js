@@ -164,10 +164,15 @@ function next_posts() {
 }
 
 jQuery(document).ready(function($) {
-    $('.news-filters li ul').hide();
     $('.news-filters > li.parent > a').click(function(e) {
+        e.stopPropagation();
         e.preventDefault();
-        $(this).next('ul').toggle();
+        $('.news-filters .open').not($(this).next('ul')).removeClass('open');
+        $(this).next('ul').toggleClass('open');
     });
     $('.next-posts').length > 0 && next_posts()
+});
+
+jQuery(document).click( function(){
+    jQuery('.news-filters .open').removeClass('open');
 });

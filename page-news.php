@@ -84,10 +84,18 @@ if (have_posts()) :
                     $the_query->the_post(); ?>
                     <li>
                         <div class="card">
-                            <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                <?php the_post_thumbnail('in-the-news'); ?>
-                            </a>
-                            <p class="article-date"><?php the_time('M j, Y'); ?></p>
+                            <?php if(has_post_thumbnail()) { ?>
+                                <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                                    <?php the_post_thumbnail('in-the-news'); ?>
+                                </a>
+                            <?php } else { ?>
+                                <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
+                            <?php } ?>
+                            <p class="article-meta"><?php the_time('M j, Y'); ?>
+                            <?php if(get_field('source')):
+                                echo '<span class="news-source">&bull; ' . get_field('source') . '</span>';
+                            endif; ?>
+                            </p>
                             <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                                 <?php the_title('<h2>', '</h2>'); ?>
                             </a>

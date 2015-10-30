@@ -566,36 +566,51 @@ add_filter( 'post_thumbnail_html', 'medicine_remove_dimensions', 10, 5 );
 // Don't need it in the content (?)
 // add_filter( 'the_content', 'medicine_remove_dimensions', 10 );
 
-/*
- * Remove extra 10px from width of wp-caption div
- * http://troychaplin.ca/2012/fix-automatically-generated-inline-style-on-wordpress-image-captions/
- */
-if ( ! function_exists( 'medicine_fixed_img_caption_shortcode' ) ) {
-	function medicine_fixed_img_caption_shortcode($attr, $content = null) {
-		if ( ! isset( $attr['caption'] ) ) {
-			if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
-				$content = $matches[1];
-				$attr['caption'] = trim( $matches[2] );
-			}
-		}
-		$output = apply_filters('img_caption_shortcode', '', $attr, $content);
-		if ( $output != '' )
-			return $output;
-		extract(shortcode_atts(array(
-			'id'    => '',
-			'align' => 'alignnone',
-			'width' => '',
-			'caption' => ''
-		), $attr));
-		if ( 1 > (int) $width || empty($caption) )
-			return $content;
-		if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-		return '<div ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="max-width: ' . $width . 'px">'
-		. do_shortcode( $content ) . '<p class="wp-caption-text">' . $caption . '</p></div>';
+// Remove height from [caption] shortcode
+function my_img_caption_shortcode_filter($val, $attr, $content)
+{
+	extract(shortcode_atts(array(
+		'id'	=> '',
+		'align'	=> '',
+		'width'	=> '',
+		'caption' => ''
+	), $attr));
+	
+	if ( 1 > (int) $width || empty($caption) )
+		return $val;
+
+	$imageID = $int = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+	$creditName = esc_html( get_post_meta( $imageID, 'image_credit', true ) );
+	if (!empty($creditName)) {
+		$credit = '<span class="image-credit">' . $creditName . '</span>';
 	}
+
+	$capid = '';
+	if ( $id ) {
+		$id = esc_attr($id);
+		$capid = 'id="figcaption_'. $id . '" ';
+		$id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
+	}
+
+	$maxWidth = '';
+	$captionAlign = esc_attr($align);
+	if ($captionAlign == 'alignleft' || $captionAlign == 'alignright') {
+		$maxWidth = 'style="max-width: ' . (0 + (int) $width) . 'px;"';
+	}
+
+	$captionOutput = '<div class="wp-caption ' . $captionAlign . '">';
+	if (!empty($creditName)) {
+		$captionOutput .= '<div class="credit-container"' . $maxWidth . '>';
+	}
+	$captionOutput .= do_shortcode( $content );
+	if (!empty($creditName)) {
+		$captionOutput .= $credit . '</div>';
+	}
+	$captionOutput .= '<div ' . $capid . 'class="wp-caption-text"' . $maxWidth . '>' . $caption . '</div></div>';
+
+	return $captionOutput;
 }
-add_shortcode('wp_caption', 'medicine_fixed_img_caption_shortcode');
-add_shortcode('caption', 'medicine_fixed_img_caption_shortcode');
+add_filter('img_caption_shortcode', 'my_img_caption_shortcode_filter', 10, 3 );
 
 /*
  * Favicon on the admin side, just for fun
@@ -756,8 +771,8 @@ add_filter('user_contactmethods','new_contactmethods',10,1);
 
 // Show 24 posts per page on archive pages
 function number_of_posts_on_archive($query){
-    if ($query->is_archive) {
-            $query->set('posts_per_page', 24);
+    if (is_category() || is_tax('news')) {
+		$query->set('posts_per_page', 24);
    }
     return $query;
 }
@@ -774,3 +789,78 @@ function the_post_thumbnail_caption() {
     echo '<p class="featured-image-caption">'.$thumbnail_image[0]->post_excerpt.'</p>';
   }
 }
+
+// Add field for photo credits
+function add_image_credit( $form_fields, $post ) {
+	$form_fields['credit'] = array(
+		'label' => 'Credit',
+		'input' => 'text',
+		'value' => get_post_meta( $post->ID, 'image_credit', true ),
+	);
+
+	return $form_fields;
+}
+add_filter( 'attachment_fields_to_edit', 'add_image_credit', 10, 2 );
+
+// Save field for photo credits
+function image_credit_save( $post, $attachment ) {
+	if( isset( $attachment['credit'] ) )
+		update_post_meta( $post['ID'], 'image_credit', $attachment['credit'] );
+
+	return $post;
+}
+add_filter( 'attachment_fields_to_save', 'image_credit_save', 10, 2 );
+
+// Add image credits to images without captions
+function ic_wrap_image( $content ) {
+	if (is_single()) {
+		global $post;
+		// Regex to find all <img ... > tags
+		$ic_url_regex = "/\<img [^>]*src=\"([^\"]+)\"[^>]*>/";
+
+		// If we get any hits then put the code before and after the img tags
+		if ( preg_match_all( $ic_url_regex , $content, $ic_matches ) ) {;
+		    for ( $ic_count = 0; $ic_count < count( $ic_matches[0] ); $ic_count++ ) {
+				// Old img tag
+	            $ic_old = $ic_matches[0][$ic_count];
+		        if( strpos($ic_old, 'align')) {
+
+		            if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
+		            	$creditID = $found[1];
+					}
+
+					if (preg_match("/align(\w+)/", $ic_old, $found)) {
+		            	$alignment = $found[0];
+					}
+
+					$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+					if (!empty($creditName)) {
+						$credit = '<span class="image-credit">' . $creditName . '</span>';
+					}
+
+		            // Get the img URL, it's needed for the button code
+		            $ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
+		            $ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
+
+		            // Put together the image credit code to place before the img tag
+		            $ic_credit_code = '<span class="credit-container ' . $alignment . '">';
+
+		            if (!empty($creditName)) {
+						// Replace before the img tag in the new string
+		            	$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
+		            	// After the img tag
+		            	$ic_new = preg_replace( '/$/' , $credit . '</span>' , $ic_new );
+					} 
+					else {
+						$ic_new = $ic_old;
+					}
+
+		            // make the substitution
+		            $content = str_replace( $ic_old, $ic_new , $content );
+		        }
+	        }
+	    }
+		return $content;
+	}
+}
+add_filter( 'the_content' , 'ic_wrap_image' );
