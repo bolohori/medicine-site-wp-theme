@@ -40,14 +40,12 @@
 				<p><?php the_author_meta( 'description' ); ?></p>
 				<?php $user_id = get_the_author_meta( 'ID' ); ?>
 				<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
-				<?php if(get_user_meta( $user_id, 'phone', true) && get_the_author_meta( 'user_email', $user_id )) { echo '<span class="footer-bullet">&bull;</span>'; } ?>
 				<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
 			</div>
 			<div class="footer-media-contact">
 				<a href="">Media Contact</a>
 				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 				<p class="phone-number">555-555-5555</p>
-				<span class="footer-bullet">&bull;</span>
 				<p class="email-address"><a href="mailto:email@wustl.edu">email@wustl.edu</a></p>
 			</div>
 		</footer>

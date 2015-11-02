@@ -17,25 +17,32 @@ if (have_posts()) :
                 <li><a href="">For Media</a></li>
                 <li><a href="">About Public Affairs</a></li>
             </ul>
-
-            <ul class="news-filters">
-                <li class="active"><a href="/news">All</a></li>
-                <li><a href="<?php $category_id = get_cat_ID( "Editor's Picks" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
-                <li class="parent"><a href="">Topics</a>
-                    <ul><?php echo wp_list_categories( 'title_li=' ); ?></ul>
-                </li>
-                <li class="parent"><a href="">Source</a>
-                    <?php  $terms = get_terms( 'news', 'orderby=count&order=DESC' );
-                    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-                        echo '<ul>';
-                        foreach ( $terms as $term ) {
-                            echo '<li>' . '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>';
-                            
-                        }
-                        echo '</ul>';
-                    } ?>
-                </li>
-            </ul>
+            <div class="news-filters clearfix">
+                <div class="collapse">Filter</div>
+                <ul>
+                    <li class="active"><a href="/news">All</a></li>
+                    <li><a href="<?php $category_id = get_cat_ID( "Editor's Picks" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
+                    <li class="parent"><a href="">Topics</a>
+                        <ul><?php echo wp_list_categories( 'title_li=' ); ?></ul>
+                    </li>
+                    <li class="parent"><a href="">Source</a>
+                        <?php  $terms = get_terms( 'news', 'orderby=count&order=DESC' );
+                        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+                            echo '<ul>';
+                            foreach ( $terms as $term ) {
+                                echo '<li>' . '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>';
+                            }
+                            echo '</ul>';
+                        } ?>
+                    </li>
+                </ul>
+                <div class="search"><div class="search-btn"><img src="<?php echo get_template_directory_uri() . '/_/img/search-news.svg'; ?>"></div>
+                    <form class="search-news" name="search" method="get" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <input type="hidden" name="post_type" value="post" />
+                        <input type="text" id="search-box-news" name="s">
+                    </form>
+                </div>
+            </div>
 
         </header>
 
@@ -91,14 +98,13 @@ if (have_posts()) :
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
                             <?php } ?>
-                            <p class="article-meta"><?php the_time('M j, Y'); ?>
-                            <?php if(get_field('source')):
-                                echo '<span class="news-source">&bull; ' . get_field('source') . '</span>';
-                            endif; ?>
-                            </p>
+                            <p class="article-meta"><?php the_time('M j, Y'); ?></p>
                             <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                                 <?php the_title('<h2>', '</h2>'); ?>
                             </a>
+                            <?php if(get_field('source')):
+                                echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
+                            endif; ?>
                             <?php the_excerpt(); ?>
                         </div>
                     </li>
