@@ -17,8 +17,8 @@ get_header(); ?>
             <div class="news-filters clearfix">
                 <div class="collapse">Filter</div>
                 <ul>
-                    <li class="active"><a href="/news">All</a></li>
-                    <li><a href="<?php $category_id = get_cat_ID( "Editor's Picks" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
+                    <li><a href="/news">All</a></li>
+                    <li<?php if(is_category( "Editor's Picks" )) { echo ' class="active"'; } ?>><a href="<?php $category_id = get_cat_ID( "Editor's Picks" ); echo esc_url(get_category_link( $category_id )); ?> ">Editor's Picks</a></li>
                     <li class="parent"><a href="">Topics</a>
                         <ul><?php echo wp_list_categories( 'title_li=' ); ?></ul>
                     </li>
