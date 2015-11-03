@@ -1165,6 +1165,7 @@ article ul ul {
 
 .facts-glance ul {
 	margin-left: 15px;
+	list-style: none;
 }
 
 .facts-glance p {
