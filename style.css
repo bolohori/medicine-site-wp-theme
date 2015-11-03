@@ -1139,11 +1139,6 @@ article ul ul {
 	line-height: 28px;
 }
 
-.callout ul {
-	list-style: none;
-	margin-left: 18px;
-}
-
 .callout ul.bulleted-ul {
 	list-style: disc;
 }
