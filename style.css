@@ -2576,7 +2576,7 @@ a.news-title {
 	float: left;
 	cursor: pointer;
 }
-.news-filters .parent:after,
+.news-filters .parent > a:after,
 .news-filters .collapse:after {
 	content: '';
 	width: 0;
@@ -2591,6 +2591,7 @@ a.news-title {
 .news-filters ul ul {
 	display: none;
 	position: absolute;
+	z-index: 5;
 	background: #fff;
 	width: 140px;
 	margin-top: 5px;
@@ -2625,6 +2626,7 @@ a.news-title {
 .news-filters .search-news {
 	display: none;
 	position: absolute;
+	z-index: 5;
 	left: 0;
 	margin-top: 5px;
 	padding: 5px;
@@ -2737,6 +2739,7 @@ a.news-title {
 	margin: 0 0 5px;
 }
 .news-cards li div {
+	position: relative;
 	margin: 10px;
 	padding-bottom: 24px;
 	border-radius: 3px;
@@ -2745,13 +2748,36 @@ a.news-title {
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
 	transition: box-shadow 0.2s;
 }
-@media screen and (max-width: 600px) {
+.news-cards li.headshot div:before {
+	content: '';
+	height: 195px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	background: #f6f6f6;
+}
+.news-cards li.headshot a:first-child {
+	min-height: 221px;
+	display: block;
+}
+@media screen and (max-width: 1005px) {
+	.news-cards ul {
+		max-width: 640px;
+	}
+	.news-cards li {
+		width: 50%;
+	}
+}
+@media screen and (max-width: 680px) {
+	.news-cards ul {
+		max-width: 320px;
+	}
 	.news-cards li {
 		width: 100%;
-	}
-	.news-cards li div {
-		max-width: 320px;
-		margin: 10px auto;
 	}
 }
 .news-cards li div:hover {
@@ -2762,6 +2788,12 @@ a.news-title {
 	width: auto;
 	display: block;
 }
+.news-cards li.headshot img {
+	height: 200px;
+	padding: 21px 0 0 20px;
+	z-index: 2;
+	position: relative;
+}
 .news-cards li h2 {
 	font-size: 18px;
 	font-weight: 600;
@@ -2770,7 +2802,7 @@ a.news-title {
 .news-cards p {
 	margin: 0 23px;
 }
-.news-cards .article-meta {
+.news-cards .article-date {
 	margin: 10px 23px 0;
 	text-transform: uppercase;
 	color: #838383;
@@ -2882,6 +2914,11 @@ a.news-title {
 	max-width: 700px;
 	line-height: 1.5;
 }
+.single article h3 {
+	margin: 55px 0 25px;
+	max-width: 700px;
+	line-height: 1.5;
+}
 .single article > p {
 	max-width: 700px;
 	margin: 0 0 35px;
@@ -2901,11 +2938,15 @@ a.news-title {
 .meta-separator {
 	padding: 0 12px;
 }
-.single article > ul {
+.single article > ul,
+.single article > ol {
 	font-family: Georgia, serif;
 	font-size: 22px;
 	max-width: 680px;
 	margin: 0 0 35px 20px;
+}
+.single article > ol {
+	margin-left: 40px;
 }
 .single article > li {
 	line-height: 36px;

@@ -33,7 +33,7 @@ get_header(); ?>
                         } ?>
                     </li>
                 </ul>
-                <div class="search"><div class="search-btn"><img src="<?php echo get_template_directory_uri() . '/_/img/search-news.svg'; ?>"></div>
+                <div class="search"><div class="search-btn"><img src="<?php echo get_template_directory_uri() . '/_/img/search-news.svg'; ?>" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/search-news.png';this.onerror=null;"></div>
                     <form class="search-news" name="search" method="get" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <input type="hidden" name="post_type" value="post" />
                         <input type="text" id="search-box-news" name="s">
@@ -60,7 +60,7 @@ get_header(); ?>
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
                             <?php } ?>
-                            <p class="article-meta"><?php the_time('M j, Y'); ?></p>
+                            <p class="article-date"><?php the_time('M j, Y'); ?></p>
 
                             <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                                 <?php the_title('<h2>', '</h2>'); ?>
