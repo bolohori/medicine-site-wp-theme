@@ -139,7 +139,7 @@ add_image_size( 'spotlight-image', 143, 200, true );
 add_image_size( 'outlook-thumb', 240, 9999, true );
 
 // Image sizes (Settings / Media)
-update_option('medium_size_w', 225);
+update_option('medium_size_w', 300);
 update_option('medium_size_h', NULL);
 update_option('large_size_w', 645);
 update_option('large_size_h', NULL);
@@ -189,7 +189,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 		/*
 		 * Set default values for Attachment Display Settings
 		 */
-		update_option('image_default_align', 'center' );
+		update_option('image_default_align', 'none' );
 		update_option('image_default_link_type', 'none' );
 		update_option('image_default_size', 'large' );
 	}
