@@ -401,19 +401,6 @@ add_action( 'admin_head', 'medicine_button' );
  */
 add_filter( 'excerpt_more', function() { return '... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">MORE»</a>'; } );
 
-/*
- * Search post titles as well as content
- */
-if ( ! function_exists( 'medicine_wp_query_posts_where' ) ) {
-	function medicine_wp_query_posts_where( $where, &$wp_query ) {
-		global $wpdb;
-		if ( $post_title = $wp_query->get( 'post_title' ) ) {
-			$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( like_escape( $post_title ) ) . '%\'';
-		}
-		return $where;
-	}
-}
-add_filter( 'posts_where', 'medicine_wp_query_posts_where', 10, 2 );
 
 /*
  * By default, WordPress throws a 404 if you try to paginate beyond
@@ -454,26 +441,6 @@ if ( ! function_exists( 'medicine_tags_support_query' ) ) {
 }
 //add_action('pre_get_posts', 'medicine_tags_support_query');
 
-
-
-function remove_news_items_from_search_results( $query ) {
-	
-	if ( !$query->is_search )
-		return $query;
-
-	$taxquery = array(
-		array(
-			'taxonomy' => 'news',
-			'field'    => 'slug',
-			'terms'    => array( 'news-release','national-leader','washington-people','outlook' ),
-			'operator' => 'NOT IN'
-		)
-	);
-
-	$query->set( 'tax_query', $taxquery );
-
-}
-add_action('pre_get_posts', 'remove_news_items_from_search_results');
 
 
 /*

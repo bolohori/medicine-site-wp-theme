@@ -17,6 +17,7 @@ In The News | Washington University School of Medicine in St. Louis</title>
 <style type="text/css">
 body { font-family: Arial, sans-serif; margin: 0;}
 a {color: #336699;}
+strong { font-size: 16px; }
 </style>
 <body>
 <div style="width: 660px; margin: 0 auto;">
@@ -105,5 +106,13 @@ a {color: #336699;}
 		
 	</div>
 </div>
+
+<?php
+   /* Always have wp_footer() just before the closing </body>
+	* tag of your theme, or you will break many plugins, which
+	* generally use this hook to reference JavaScript files.
+	*/
+	wp_footer();
+?>
 </body>
 </html>
