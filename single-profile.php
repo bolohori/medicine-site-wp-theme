@@ -32,11 +32,11 @@
 
 				endwhile;
 			endif;
+
+            get_sidebar( 'right' );
 			?>
 		</article>
-	
-		<?php get_sidebar( 'right' ); ?>
-		
+
 	</div>
 
 </div>
