@@ -2947,7 +2947,7 @@ a.news-title {
 	.single article img.alignright {
 		float: none;
 		max-width: 100%;
-		margin-bottom: 20px;
+		margin: 0 0 35px;
 	}
 }
 .wp-caption img {
