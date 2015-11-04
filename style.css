@@ -1,5 +1,5 @@
 /*
-Theme Name:  School of Medicine
+Theme Name:  School of Medicine - News
 Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
@@ -2797,8 +2797,10 @@ a.news-title {
 	float: none;
 	-webkit-font-smoothing: antialiased;
 }
-.article-header {
+.single article > div {
 	max-width: 700px;
+}
+.article-header {
 	margin-bottom: 30px;
 }
 .visit-news-hub {
@@ -2848,25 +2850,34 @@ a.news-title {
 	font-size: 22px;
 	font-family: 'Open Sans', sans-serif;
 	color: #787878;
+	line-height: 28px;
 }
 .single article h2 {
 	font-size: 24px;
 	margin: 55px 0 25px;
 	font-weight: 700;
-	max-width: 700px;
 	line-height: 1.5;
 }
 .single article h3 {
 	margin: 55px 0 25px;
-	max-width: 700px;
 	line-height: 1.5;
 }
-.single article > p {
-	max-width: 700px;
+.single article p {
 	margin: 0 0 35px;
 	font-size: 22px;
 	font-family: Georgia, serif;
 	line-height: 36px;
+}
+@media screen and (max-width: 500px) {
+	.article-header h1 {
+		font-size: 30px;
+	}
+	.article-header .subhead {
+		font-size: 20px;
+	}
+	.single article p {
+		font-size: 20px;
+	}
 }
 .single p.meta-header {
 	font-family: 'Open Sans', sans-serif;
@@ -2892,12 +2903,6 @@ a.news-title {
 }
 .single article > li {
 	line-height: 36px;
-}
-.single article hr {
-	max-width: 700px;
-}
-.single article .callout {
-	max-width: 700px;
 }
 .single article img {
 	display: block;
@@ -2933,6 +2938,7 @@ a.news-title {
 .single article img.alignright {
 	margin-left: 25px;
 	max-width: 40%;
+	width: auto;
 }
 @media screen and (max-width: 600px) {
 	.single article .wp-caption.alignleft,
@@ -2987,42 +2993,74 @@ a.news-title {
 	color: #909090;
 	float: right;
 }
-.single-post article blockquote {
+.single-post blockquote {
 	margin: 0;
 	padding: 0;
 	border: none;
 	font-weight: 700;
 	font-style: italic;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 32px;
-	max-width: 700px;
 	text-align: center;
 	line-height: 40px;
 }
-.single-post article blockquote p {
+.single-post blockquote p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 32px;
 	line-height: 40px;
 	margin: 45px 0;
+}
+.single-post blockquote .name {
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	margin: -20px auto 45px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+}
+@media screen and (max-width: 750px) {
+	.single-post blockquote p {
+		font-size: 27px;
+	}
+	.single-post .name {
+		font-size: 16px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.single-post blockquote p {
+		font-size: 22px;
+	}
+	.single-post .name {
+		font-size: 14px;
+	}
 }
 .article-footer {
 	max-width: 700px;
 	padding: 20px 0 30px;
 	clear: both;
 }
-.article-footer p {
+.single .article-footer p {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	line-height: 21px;
-	margin-right: 15px;
+	margin: 0 15px 20px 0;
 }
 .boilerplate {
-	border-bottom: 2px solid #ccc;
 	margin-bottom: 30px;
 }
-.boilerplate p {
+.single .boilerplate p {
 	font-size: 12px;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 21px;
 	margin: 0 0 25px;
+}
+.bio-wrapper {
+	border-top: 2px solid #ccc;
+	padding-top: 30px;
 }
 .footer-author {
 	width: 48.5%;
+	margin: 0 1.5% 30px 0;
 	float: left;
 }
 .footer-author > a,
@@ -3033,10 +3071,11 @@ a.news-title {
 }
 .footer-media-contact {
 	width: 48.5%;
-	float: right;
+	margin: 0 1.5% 30px 0;
+	float: left;
 }
-.article-footer .phone-number,
-.article-footer .email-address {
+.single .article-footer .phone-number,
+.single .article-footer .email-address {
 	font-size: 14px;
 	margin: 0;
 }
@@ -3130,12 +3169,9 @@ a.news-title {
 	clear: left;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 970px) {
 	.single-post #main {
 		background: none;
-	}
-	.article-header h1 {
-		margin: 0;
 	}
 	.single-post p {
 		padding-right: 0;

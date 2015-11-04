@@ -285,10 +285,44 @@ body.post-type-post {
 	width: auto;
 	max-width: 700px;
 }
+body.post-type-post h2 {
+	font-size: 24px;
+	margin: 20px 0 0;
+	font-weight: 700;
+	line-height: 1.5;
+}
+body.post-type-post h3 {
+	margin: 55px 0 25px;
+	line-height: 1.5;
+}
 body.post-type-post p {
 	font-family: Georgia;
 	font-size: 22px;
 	line-height: 36px;
+	margin: 35px 0;
+}
+body.post-type-post blockquote {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-style: italic;
+	font-size: 32px;
+	max-width: 700px;
+	text-align: center;
+	line-height: 40px;
+	margin: 0;
+}
+body.post-type-post blockquote p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 32px;
+	line-height: 40px;
+}
+body.post-type-post blockquote .name {
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	margin: -20px auto 45px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 

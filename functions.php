@@ -354,6 +354,12 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 						'wrapper'  => 'true'
 					),
 					array(
+						'title'	   => 'Name',  
+						'block'    => 'p',  
+						'classes'  => 'name',
+						'wrapper'  => false,
+					),
+					array(
 						'title'	   => 'Normal width (for full width pages)',
 						'block'    => 'p',
 						'selector' => 'p',
@@ -738,7 +744,7 @@ add_filter('user_contactmethods','new_contactmethods',10,1);
 
 // Show 24 posts per page on archive pages
 function number_of_posts_on_archive($query){
-    if (is_category() || is_tax('news')) {
+    if (is_category() || is_tax('news') || is_author()) {
 		$query->set('posts_per_page', 24);
    }
     return $query;

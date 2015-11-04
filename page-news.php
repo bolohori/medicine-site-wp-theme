@@ -51,7 +51,7 @@ if (have_posts()) :
             <?php $args = array(
                 'post_type' => 'post',
                 'posts_per_page' => 1,
-                'category_name' => 'editors-pick',
+                'category_name' => 'editors-picks',
             );
             $the_query = new WP_Query( $args );
 
