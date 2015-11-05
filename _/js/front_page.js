@@ -15,7 +15,9 @@ jQuery(document).ready(function($) {
 		// Prevent the link from firing and pause anything that
 		// may be playing
 		e.preventDefault();
-		$('audio').each(function() {$(this)[0].player.pause();});
+		$('.mejs-pause').each(function() {
+			$(this).click();
+		});
 
 		// If there is an open audio player, change the label back
 		// and close the player
@@ -26,7 +28,9 @@ jQuery(document).ready(function($) {
 			// Grab the ID of the audio player container from the data
 			// attribute of the <li> and start playing the file
 			audio_container = "#" + $(this).data('id');
-			$(audio_container + ' audio').each(function() {$(this)[0].player.play();});
+			$(audio_container + ' .mejs-play').each(function() {
+				$(this).click();
+			});
 
 			// Add class to audio player and open it and change the
 			// label that was clicked on

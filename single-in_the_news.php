@@ -17,7 +17,7 @@ In The News | Washington University School of Medicine in St. Louis</title>
 <style type="text/css">
 body { font-family: Arial, sans-serif; margin: 0;}
 a {color: #336699;}
-strong { font-size: 16px; }
+p > strong { font-size: 16px; }
 </style>
 <body>
 <div style="width: 660px; margin: 0 auto;">
