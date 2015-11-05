@@ -4,8 +4,8 @@ function queue_wusm_scripts() {
 	wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/_/js/modernizr.js', false, '2.6.2');
 
 	if(is_front_page()) {
-		wp_enqueue_script('bxslider', get_stylesheet_directory_uri() . '/_/js/jquery.bxslider.min.js', array( 'jquery' ) );
-		wp_enqueue_script('front_page_js', get_stylesheet_directory_uri() . '/_/js/front_page.js', array( 'bxslider' ) );
+		wp_enqueue_script('bxslider', get_stylesheet_directory_uri() . '/_/js/jquery.bxslider.min.js', array( 'jquery' ), '', true );
+		wp_enqueue_script('front_page_js', get_stylesheet_directory_uri() . '/_/js/front_page.js', array( 'bxslider' ), '', true );
 	}
 
 	wp_register_script('wusm-fitvids', get_template_directory_uri() . '/_/js/jquery.fitvids.min.js', array( 'jquery' ), '1.1', true );
