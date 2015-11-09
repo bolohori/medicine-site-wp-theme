@@ -52,16 +52,28 @@ if (have_posts()) :
                 'post_type' => 'post',
                 'posts_per_page' => 1,
                 'category_name' => 'editors-picks',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'news',
+                        'field'    => 'term_id',
+                        'terms'    => array( 37 ),
+                        'operator' => 'NOT IN',
+                    ),
+                ),
             );
             $the_query = new WP_Query( $args );
+
+            // If there is an editor's pick, store the post ID to exclude it from the main query
+            $exclude = array();
 
             if ( $the_query->have_posts() ) { ?>
             <div class="editors-pick">
                 <?php while ( $the_query->have_posts() ) {
-                    $the_query->the_post(); ?>
+                    $the_query->the_post(); 
+                    $exclude[] = $post->ID; ?>
                     <div>
                         <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                <?php the_post_thumbnail(); ?>
+                                <?php the_post_thumbnail('editors-pick'); ?>
                         </a>
                         <div class="editors-pick-text">
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
@@ -81,7 +93,8 @@ if (have_posts()) :
             $args = array(
                 'post_type' => 'post',
                 'posts_per_page' => 24,
-                'paged' => $paged
+                'paged' => $paged,
+                'post__not_in' => $exclude
             );
             $the_query = new WP_Query( $args );
 
@@ -97,7 +110,7 @@ if (have_posts()) :
                         <div class="card">
                             <?php if(has_post_thumbnail()) { ?>
                                 <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                    <?php the_post_thumbnail('in-the-news'); ?>
+                                    <?php the_post_thumbnail('news-card'); ?>
                                 </a>
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">

@@ -55,7 +55,7 @@ get_header(); ?>
                         <div class="card">
                             <?php if(has_post_thumbnail()) { ?>
                                 <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                    <?php the_post_thumbnail('in-the-news'); ?>
+                                    <?php the_post_thumbnail('news-card'); ?>
                                 </a>
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
