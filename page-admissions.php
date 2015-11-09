@@ -9,12 +9,12 @@ if (have_posts()) :
 				<?php the_title('<h1>', '</h1>'); ?>
 				<?php the_content(); ?>
 				<ul class="program-list clearfix">
-					<li><a href="#CPR">Clinical &amp; Population Research</a></li>
 					<li><a href="#medical-education">Medical Education</a></li>
-					<li><a href="#OT">Occupational Therapy</a></li>
 					<li><a href="#PACS">Audiology &amp; Communication Sciences</a></li>
-					<li><a href="#PT">Physical Therapy</a></li>
-					<li class="last-child"><a href="#DBBS">Biology &amp; Biomedical Sciences</a></li>
+					<li><a href="#DBBS">Biology &amp; Biomedical Sciences</a></li>
+					<li><a href="#CPR">Clinical &amp; Population Research</a></li>
+					<li><a href="#OT">Occupational Therapy</a></li>
+					<li class="last-child"><a href="#PT">Physical Therapy</a></li>
 					<li class="last-child"><a href="#admissions-resources">Admissions Resources</a></li>
 				</ul>
 			</div>
