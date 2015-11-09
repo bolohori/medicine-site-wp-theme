@@ -14,7 +14,8 @@ if (have_posts()) :
 					<li><a href="#DBBS">Biology &amp; Biomedical Sciences</a></li>
 					<li><a href="#CPR">Clinical &amp; Population Research</a></li>
 					<li><a href="#OT">Occupational Therapy</a></li>
-					<li class="last-child"><a href="#PT">Physical Therapy</a></li>
+					<li><a href="#PT">Physical Therapy</a></li>
+					<li class="last-child"><a href="#st-louis">About St. Louis</a></li>
 					<li class="last-child"><a href="#admissions-resources">Admissions Resources</a></li>
 				</ul>
 			</div>
@@ -83,10 +84,18 @@ if (have_posts()) :
 				</div>
 			</div>
 		</div>
-		<div id="admissions-resources" class="admission-footer clearfix">
-			<div class="wrapper">
+
+		<div class="admission-footer clearfix">
+
+			<div id="st-louis" class="callout admissions-st-louis">
+				<h2>About St. Louis</h2>
+				<p>The Medical Campus lies at the intersection of two of the city's most popular entertainment districts, one of the largest urban parks in the country, and a rapidly growing biotech and innovation community.</p>
+				<a href="http://explorestlouis.com">Explore St. Louis &raquo;</a>
+			</div>
+		
+			<div id="admissions-resources" class="wrapper">
 				<ul class="clearfix">
-					<li class="list-title">Admissions Resources</li>
+					<li class="list-title">Admissions resources</li>
 					<li><a href="http://medicine.wustl.edu/directory/academic-departments">Academic Departments &amp; Programs</a></li>
 					<li><a href="http://bulletinoftheschoolofmedicine.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
 					<li><a href="https://cme.wustl.edu/">Continuing Medical Education</a></li>

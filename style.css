@@ -2573,7 +2573,7 @@ article.full-width {
 	margin-bottom: 18px;
 }
 
-.page-template-admissions-php p {
+.page-template-admissions-php .intro p {
 	line-height: 28px;
 	max-width: 520px;
 	margin: 0 auto;
@@ -2688,6 +2688,24 @@ ul.program-list li.last-child {
 	background: #f5f5f5;
 }
 
+.admissions-st-louis {
+	max-width: 762px;
+	margin: 50px auto 0;
+	float: none;
+	padding: 20px 25px;
+	width: 90%;
+}
+
+.admissions-st-louis p {
+	line-height: 28px;
+	font-size: 16px;
+	margin-bottom: 15px;
+}
+
+.admissions-st-louis a {
+	font-size: 16px;
+}
+
 .admission-footer .wrapper {
 	width: 90%;
 }
@@ -2706,7 +2724,7 @@ ul.program-list li.last-child {
 	max-width: 650px;
 	width: 100%;
 	margin: 0 auto;
-	padding: 50px 0;
+	padding: 30px 0 50px;
 	line-height: 25px;
 }
 
