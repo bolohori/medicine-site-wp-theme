@@ -187,7 +187,7 @@
 
 					$slider .= "<li class='clearfix'><div class='spotlight-individual clearfix'>";
 					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
-					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image') ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image'>";
+					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'headshot', array('class' => 'headshot') ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='headshot'>";
 					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
 
 					$read_more_link = ( $url = $link['url'] ) ? "<a class='spotlight-more' href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">Read More</a>" : "";

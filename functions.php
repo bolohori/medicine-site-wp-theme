@@ -133,10 +133,7 @@ add_theme_support( 'post-thumbnails' );
 
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
-add_image_size( 'faculty-list', 80, 112,true );
-add_image_size( 'in-the-news', 340, 250, true );
-add_image_size( 'spotlight-image', 143, 200, true );
-add_image_size( 'outlook-thumb', 240, 9999, true );
+add_image_size( 'headshot', 145, 200, true );
 
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);
@@ -144,6 +141,15 @@ update_option('medium_size_h', NULL);
 update_option('large_size_w', 645);
 update_option('large_size_h', NULL);
 update_option('embed_size_w', 645);
+
+// Add headshot to image size dropdown
+function wusm_image_size_choose( $sizes ) {
+    $custom_sizes = array(
+        'headshot' => 'Headshot',
+    );
+    return array_merge( $sizes, $custom_sizes );
+}
+add_filter( 'image_size_names_choose', 'wusm_image_size_choose' );
 
 // Manual excerpts for pages as well as posts
 add_post_type_support( 'page', 'excerpt' );
@@ -492,7 +498,7 @@ add_filter( 'tiny_mce_before_init', 'medicine_mce_text_sizes' );
  */
 if ( ! function_exists( 'medicine_remove_dimensions' ) ) {
 	function medicine_remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-		if( $size == 'landing-page' || $size == 'faculty-list' )
+		if( $size == 'landing-page' )
 			return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 		return $html;
 	}
