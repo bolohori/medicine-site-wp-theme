@@ -51,12 +51,18 @@ get_header(); ?>
                 <ul class="clearfix">
                 <?php while (have_posts()) {
                     the_post(); ?>
-                    <li>
+                    <?php $cardClass = '';
+                    if(has_term('national-leader','news')) {
+                        $cardClass = ' class="headshot"';
+                    } ?>
+                    <li<?php echo $cardClass; ?>>
                         <div class="card">
                             <?php if(has_post_thumbnail()) { ?>
                                 <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                                     <?php the_post_thumbnail('news'); ?>
                                 </a>
+                            <?php } elseif(has_term('national-leader','news')) { ?>
+                                <img src="<?php echo get_template_directory_uri() . '/_/img/spotlight-default.png' ?>">
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
                             <?php } ?>

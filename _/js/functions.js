@@ -159,7 +159,11 @@ function next_posts() {
     jQuery(".next-posts a").click(function(a) {
         jQuery.get(jQuery(this).attr("href"), function(a) {
             jQuery(".pagination .next-posts a", a).length > 0 ? jQuery(".next-posts a").attr("href", jQuery(".pagination .next-posts a", a).attr("href")) : jQuery(".pagination").remove(), jQuery(".news-cards").append(jQuery(".news-cards ul", a).addClass('page' + counter))
-        }).done(function() { jQuery('.page' + counter + ' .card').matchHeight(); counter++; } ), a.preventDefault()
+        }).done(function() { 
+            jQuery('.page' + counter).imagesLoaded().then(function(){
+                jQuery('.page' + counter + ' .card').matchHeight(); counter++;
+            });
+        } ), a.preventDefault()
     })
 }
 
@@ -167,8 +171,8 @@ jQuery(document).ready(function($) {
     $('.news-filters ul > li.parent > a').click(function(e) {
         e.stopPropagation();
         e.preventDefault();
-        $('.news-filters .open').not($(this).next()).removeClass('open');
-        $(this).next().toggleClass('open');
+        $('.news-filters .open').not($(this)).removeClass('open');
+        $(this).toggleClass('open');
     });
     $('.news-filters > .search > .search-btn').click(function(e) {
         e.stopPropagation();
@@ -191,3 +195,31 @@ jQuery(document).click( function(e) {
         jQuery('.news-filters .open').removeClass('open');
     }
 });
+
+
+
+jQuery.fn.imagesLoaded = function () {
+
+    // Edit: in strict mode, the var keyword is needed
+    var $imgs = this.find('img[src!=""]');
+    // if there's no images, just return an already resolved promise
+    if (!$imgs.length) {return jQuery.Deferred().resolve().promise();}
+
+    // for each image, add a deferred object to the array which resolves when the image is loaded (or if loading fails)
+    var dfds = [];  
+    $imgs.each(function(){
+
+        var dfd = jQuery.Deferred();
+        dfds.push(dfd);
+        var img = new Image();
+        img.onload = function(){dfd.resolve();}
+        img.onerror = function(){dfd.resolve();}
+        img.src = this.src;
+
+    });
+
+    // return a master promise object which will resolve when all the deferred objects have resolved
+    // IE - when all the images are loaded
+    return jQuery.when.apply(jQuery,dfds);
+
+}

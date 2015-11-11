@@ -2504,8 +2504,13 @@ a.news-title {
 	color: #333;
 	font-weight: 700;
 	display: block;
+	transition: 0.1s;
 }
-.news-filters .active a {
+.news-filters > ul > li > a:hover {
+	background: #eee;
+}
+.news-filters .active a,
+.news-filters .active a:hover {
 	background: #990000;
 	color: #fff;
 }
@@ -2535,17 +2540,24 @@ a.news-title {
 	position: absolute;
 	z-index: 5;
 	background: #fff;
-	width: 140px;
+	width: 160px;
 	margin-top: 5px;
-	padding: 20px 22px;
+	padding: 15px 12px;
 	border-radius: 3px;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
 }
-.news-filters .open {
+.news-filters .open + ul {
 	display: block;
 }
+.news-filters .open {
+	background: #eee;
+}
+.news-filters .parent .open:after {
+	border-top: none;
+	border-bottom: 4px solid #990000;
+}
 .news-filters ul ul li {
-	margin-bottom: 12px;
+	margin-bottom: 5px;
 }
 .news-filters ul ul li:last-child {
 	margin-bottom: 0;
@@ -2554,6 +2566,12 @@ a.news-title {
 	color: #333;
 	display: block;
 	font-weight: 600;
+	padding: 5px 10px;
+	border-radius: 3px;
+	transition: 0.1s;
+}
+.news-filters ul ul li a:hover {
+	background: #f4f4f4;
 }
 .news-filters .search {
 	vertical-align: top;
@@ -2648,8 +2666,8 @@ a.news-title {
 }
 .editors-pick-text {
 	float: right;
-	width: 30%;
-	padding: 1.5%;
+	width: 29%;
+	padding: 1.5% 2.5%;
 }
 .editors-pick-text .article-date {
 	margin: 5px 0 0;
@@ -2666,6 +2684,37 @@ a.news-title {
 }
 .editors-pick-text p {
 	margin: 0;
+}
+@media screen and (max-width: 900px) {
+	.editors-pick img {
+		width: 50%;
+	}
+	.editors-pick-text {
+		width: 45%;
+	}
+}
+@media screen and (max-width: 750px) {
+	.editors-pick > div {
+		padding-bottom: 24px;
+	}
+	.editors-pick img {
+		width: 100%;
+		float: none;
+	}
+	.editors-pick-text {
+		width: auto;
+		padding: 0;
+		float: none;
+	}
+	.editors-pick-text h2 {
+		margin: 0 23px 10px;
+	}
+	.editors-pick-text p {
+		margin: 0 23px;
+	}
+	.editors-pick-text .article-date {
+		margin: 10px 23px 0;
+	}
 }
 .news-cards {
 	background: #f5f5f5;
@@ -2706,18 +2755,12 @@ a.news-title {
 	min-height: 221px;
 	display: block;
 }
-@media screen and (max-width: 1005px) {
-	.news-cards ul {
-		max-width: 640px;
-	}
+@media screen and (max-width: 1000px) {
 	.news-cards li {
 		width: 50%;
 	}
 }
 @media screen and (max-width: 680px) {
-	.news-cards ul {
-		max-width: 320px;
-	}
 	.news-cards li {
 		width: 100%;
 	}
@@ -2726,8 +2769,8 @@ a.news-title {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
 }
 .news-cards li img {
-	height: 221px;
 	width: auto;
+	height: auto;
 	display: block;
 }
 .news-cards li.headshot img {
