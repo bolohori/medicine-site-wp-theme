@@ -133,13 +133,9 @@ add_theme_support( 'post-thumbnails' );
 
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
-add_image_size( 'faculty-list', 80, 112,true );
-add_image_size( 'in-the-news', 340, 250, true );
-add_image_size( 'spotlight-image', 143, 200, true );
-add_image_size( 'outlook-thumb', 240, 9999, true );
+add_image_size( 'headshot', 145, 200, true );
 
-add_image_size( 'news-card', 350, 265, true );
-add_image_size( 'editors-pick', 700, 500, true );
+add_image_size( 'news', 620, 456, true );
 
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);

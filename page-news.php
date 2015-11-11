@@ -73,7 +73,7 @@ if (have_posts()) :
                     $exclude[] = $post->ID; ?>
                     <div>
                         <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                <?php the_post_thumbnail('editors-pick'); ?>
+                                <?php the_post_thumbnail('news'); ?>
                         </a>
                         <div class="editors-pick-text">
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
@@ -110,7 +110,7 @@ if (have_posts()) :
                         <div class="card">
                             <?php if(has_post_thumbnail()) { ?>
                                 <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                    <?php the_post_thumbnail('news-card'); ?>
+                                    <?php the_post_thumbnail('news'); ?>
                                 </a>
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
