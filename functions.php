@@ -831,8 +831,8 @@ function ic_wrap_image( $content ) {
 		            $content = str_replace( $ic_old, $ic_new , $content );
 		        }
 	        }
-	    }
-		return $content;
+	    }	
 	}
+	return $content;
 }
 add_filter( 'the_content' , 'ic_wrap_image' );
