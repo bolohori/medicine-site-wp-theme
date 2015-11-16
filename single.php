@@ -37,7 +37,7 @@
 				if(function_exists( 'sharing_display')) {
 				    sharing_display( '', true );
 				}
-				the_post_thumbnail('landing-page');
+				the_post_thumbnail();
 				the_post_thumbnail_caption();
 			?>
 			</header>
@@ -91,18 +91,16 @@
 	<div class="footer-related clearfix">
 		<h3>Related Articles</h3>
 		<?php
-		$the_query = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 3) );
+		$the_query = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 6) );
 		if ( $the_query->have_posts() ) {
 			echo '<ul>';
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post();
 				echo '<li><div class="card">';
-				the_post_thumbnail('in-the-news');
 				echo '<p class="article-date">' . get_the_time('M d, Y') . '</p>';
 				echo '<a href="' . get_the_permalink() . '">';
 				the_title('<h4>', '</h4>');
 				echo '</a>';
-				the_excerpt();
 				echo '</div></li>';
 			}
 			echo '</ul>';

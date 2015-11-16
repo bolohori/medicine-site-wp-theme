@@ -2969,7 +2969,8 @@ a.news-title {
 }
 .article-header .wp-post-image {
 	max-width: 700px;
-	width: 100%;
+	height: auto;
+	width: auto;
 }
 .single article .wp-caption.alignleft,
 .single article img.alignleft {
@@ -3179,7 +3180,7 @@ a.news-title {
 .footer-related p.article-date {
 	font-size: 12px;
 	text-transform: uppercase;
-	margin: 24px 24px 0;
+	margin: 20px 24px 0;
 	letter-spacing: 0.9px;
 }
 .footer-related h4 {
@@ -3197,8 +3198,6 @@ a.news-title {
 		text-align: center;
 	}
 	.footer-related li div {
-		max-width: 320px;
-		display: inline-block;
 		text-align: left;
 	}
 }
