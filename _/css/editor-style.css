@@ -104,6 +104,11 @@ h6 {
 	font-weight: bold;
 }
 
+p {
+	line-height: 28px;
+	margin: 0 0 20px;
+}
+
 .alignleft {
 	float: left;
 	margin: 20px 20px 20px 0;
@@ -162,8 +167,9 @@ h6 {
 .callout {
 	border: 1px solid #ddd;
 	background: #fff;
-	margin: 20px 0;
-	width: 700px;
+	margin: 0 0 20px;
+	max-width: 603px;
+	width: 100%;
 	clear: both;
 	padding: 20px;
 	float: left;
@@ -174,9 +180,17 @@ h6 {
 	line-height: 28px;
 }
 
-.callout ul {
-	list-style: none;
-	margin-left: 18px;
+.callout p {
+	margin-top: 0;
+}
+
+.callout li {
+	margin-bottom: 10px;
+}
+
+.callout p:last-child,
+.callout ul:last-child {
+	margin-bottom: 0;
 }
 
 .facts-numbers {
