@@ -109,11 +109,11 @@
 				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
-					$link = get_field('url');
+					$url = get_field('url');
 					$title = get_the_title();
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+					$link = (strpos($url, "http") !== false) ? $url : "http://" . $url;
  					
-					echo "<li><a class='news-title' href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">$title</a><p>";
+					echo "<li><a class='news-title' href=\"$link\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">$title</a><p>";
 					if( ( $video = get_field('video') ) !== '')
 						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
 					if( get_field('audio') !== '') {
@@ -121,7 +121,7 @@
 						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" onclick=\"__gaTracker('send','event','news-release-audio','$title');\" class=\"audio-file\">Listen</a> | ";
 						$j++;
 					}
-					echo "<a href=\"$url\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read Article</a></p></li>";
+					echo "<a href=\"$link\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">Read Article</a></p></li>";
 				endwhile;
 				wp_reset_postdata();
 ?>
@@ -168,7 +168,7 @@
 					$loop->the_post();
 					
 					$read_more_link = "";
-					$link = get_field('nl-link');
+					$url = get_field('url');
 					$slidetitle = "#spotlightcaption$i";
 					
 					if ( get_field( 'faculty_member' ) ) {
@@ -186,16 +186,16 @@
 					$excerpt = get_the_excerpt( );
 
 					$slider .= "<li class='clearfix'><div class='spotlight-individual clearfix'>";
-					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
-					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'spotlight-image', array('class' => 'spotlight-image') ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='spotlight-image'>";
-					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
+					$slider .= ( $url ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
+					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'headshot', array('class' => 'headshot') ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='headshot'>";
+					$slider .= ( $url ) ? "</a>" : "";
 
-					$read_more_link = ( $url = $link['url'] ) ? "<a class='spotlight-more' href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">Read More</a>" : "";
+					$read_more_link = ( $url ) ? "<a class='spotlight-more' href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">Read More</a>" : "";
 
 					$slider .= "<h2>";
-					$slider .= ( $url = $link['url'] ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
+					$slider .= ( $url ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
 					$slider .= "$title";
-					$slider .= ( $url = $link['url'] ) ? "</a>" : "";
+					$slider .= ( $url ) ? "</a>" : "";
 					$slider .= "</h2><p>$excerpt&nbsp;&nbsp;$read_more_link</p>";
 					$slider .= "</div></li>";
 					

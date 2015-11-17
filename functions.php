@@ -134,7 +134,6 @@ add_theme_support( 'post-thumbnails' );
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 145, 200, true );
-
 add_image_size( 'news', 620, 456, true );
 
 // Image sizes (Settings / Media)
@@ -143,6 +142,15 @@ update_option('medium_size_h', NULL);
 update_option('large_size_w', 645);
 update_option('large_size_h', NULL);
 update_option('embed_size_w', 645);
+
+// Add headshot to image size dropdown
+function wusm_image_size_choose( $sizes ) {
+    $custom_sizes = array(
+        'headshot' => 'Headshot',
+    );
+    return array_merge( $sizes, $custom_sizes );
+}
+add_filter( 'image_size_names_choose', 'wusm_image_size_choose' );
 
 // Manual excerpts for pages as well as posts
 add_post_type_support( 'page', 'excerpt' );
@@ -529,7 +537,7 @@ add_filter( 'tiny_mce_before_init', 'medicine_mce_text_sizes' );
  */
 if ( ! function_exists( 'medicine_remove_dimensions' ) ) {
 	function medicine_remove_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-		if( $size == 'landing-page' || $size == 'faculty-list' )
+		if( $size == 'landing-page' )
 			return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
 		return $html;
 	}
@@ -639,19 +647,19 @@ add_filter( 'outlook_thumbnail_size', function() { return 'large'; }, 999 );
 
 if ( ! function_exists( 'spotlight_link_url_function' ) ) {
 	function spotlight_link_url_function( $id ) {
-		return ( $external_link = get_field( 'nl-link' ) ) ? 'nl-link' : '';
+		return ( $external_link = get_field( 'url' ) ) ? 'url' : '';
 	}
 }
 
 if ( ! function_exists( 'campus_life_link_text_function' ) ) {
 	function campus_life_link_text_function( $id ) {
-		return ( $external_link = get_field( 'external_link' ) ) ? "<b>" . $external_link['title'] . "</b>" : '<b>See photos</b>';
+		return '<b>See photos</b>';
 	}
 }
 
 if ( ! function_exists( 'campus_life_link_url_function' ) ) {
 	function campus_life_link_url_function( $id ) {
-		return ( $external_link = get_field( 'external_link' ) ) ? 'external_link' : '';
+		return ( $external_link = get_field( 'url' ) ) ? 'url' : '';
 	}
 }
 

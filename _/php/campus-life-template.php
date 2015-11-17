@@ -1,8 +1,7 @@
 <div class="card">
     <?php
-        $external_link = get_field('external_link');
-        $url = $external_link['url'] ? $external_link['url'] : get_permalink();
-        $link_text = $external_link['title'] ? $external_link['title'] : 'See photos';
+        $url = get_field('url') ? get_field('url') : get_permalink();
+        $link_text = 'See photos';
     ?>
 
     <a href="<?php echo $url; ?>"><?php the_post_thumbnail( array(325, 218) ); ?></a>

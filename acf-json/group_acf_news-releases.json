@@ -3,24 +3,6 @@
     "title": "News Releases",
     "fields": [
         {
-            "key": "field_5273d2931a04c",
-            "label": "URL",
-            "name": "url",
-            "type": "website",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "website_title": 0,
-            "output_format": 1,
-            "default_value": "",
-            "internal_link": 0
-        },
-        {
             "key": "field_526ad43464149",
             "label": "Audio",
             "name": "audio",
@@ -90,26 +72,19 @@
     "location": [
         [
             {
-                "param": "post_type",
-                "operator": "==",
-                "value": "news_releases"
-            }
-        ],
-        [
-            {
                 "param": "post_taxonomy",
                 "operator": "==",
                 "value": "news:news-release"
             }
         ]
     ],
-    "menu_order": 10,
-    "position": "acf_after_title",
+    "menu_order": 1,
+    "position": "normal",
     "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1444408245
+    "modified": 1447772988
 }
