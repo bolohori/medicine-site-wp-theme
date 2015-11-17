@@ -2491,6 +2491,7 @@ a.news-title {
 	padding-top: 30px;
 	margin-bottom: 30px;
 	clear: both;
+	position: relative;
 }
 .news-filters > ul {
 	float: left;
@@ -2500,6 +2501,9 @@ a.news-title {
 	display: inline-block;
 	margin-right: 12px;
 	position: relative;
+}
+.news-filters > ul > li:last-child {
+	margin-right: 0;
 }
 .news-filters > ul > li > a,
 .news-filters .collapse {
@@ -2539,6 +2543,7 @@ a.news-title {
 	position: absolute;
 	right: 15px;
 	top: 17px;
+	color: #990000;
 }
 .news-filters ul ul {
 	display: none;
@@ -2557,7 +2562,8 @@ a.news-title {
 .news-filters .open {
 	background: #eee;
 }
-.news-filters .parent .open:after {
+.news-filters .parent .open:after,
+.news-filters .visible:after {
 	border-top: none;
 	border-bottom: 4px solid #990000;
 }
@@ -2582,9 +2588,10 @@ a.news-title {
 	vertical-align: top;
 	position: relative;
 	float: left;
+	margin-left: 12px;
 }
 .news-filters .search img {
-	padding: 11px 10px 10px 5px;
+	padding: 10px 10px 10px 5px;
 	display: block;
 	cursor: pointer;
 }
@@ -2610,7 +2617,9 @@ a.news-title {
 }
 @media screen and (max-width: 970px) {
 	.news-filters .search {
-		float: right;
+		position: absolute;
+		top: 30px;
+		right: 0;
 		margin: 0;
 	}
 	.news-filters .search-news {
@@ -2619,10 +2628,14 @@ a.news-title {
 	}
 }
 @media screen and (max-width: 700px) {
-	.news-filters ul {
+	.news-filters > ul {
 		display: none;
+		margin-right: 44px;
 	}
-	.news-filters ul.visible {
+	.news-filters > ul > li {
+		margin-top: 15px;
+	}
+	.news-filters .visible + ul {
 		display: block;
 	}
 	.news-filters .collapse {
@@ -2974,6 +2987,7 @@ a.news-title {
 }
 .article-header .wp-post-image {
 	max-width: 700px;
+	max-height: 600px;
 	height: auto;
 	width: auto;
 }
@@ -3085,7 +3099,7 @@ a.news-title {
 }
 .article-footer {
 	max-width: 700px;
-	padding: 20px 0 30px;
+	padding: 20px 0 20px;
 	clear: both;
 }
 .single .article-footer p {
@@ -3109,19 +3123,22 @@ a.news-title {
 }
 .footer-author {
 	width: 48.5%;
-	margin: 0 1.5% 30px 0;
-	float: left;
+	margin: 0 1.5% 40px 0;
+	display: inline-block;
+	vertical-align: top;
 }
-.footer-author > a,
-.footer-media-contact > a {
+.footer-author p.name,
+.footer-media-contact p.name {
 	font-weight: 700;
+	font-size: 14px;
 	margin-bottom: 10px;
 	display: inline-block;
 }
 .footer-media-contact {
 	width: 48.5%;
-	margin: 0 1.5% 30px 0;
-	float: left;
+	margin: 0 1.5% 40px 0;
+	display: inline-block;
+	vertical-align: top;
 }
 .single .article-footer .phone-number,
 .single .article-footer .email-address {

@@ -178,6 +178,7 @@ jQuery(document).ready(function($) {
         e.stopPropagation();
         e.preventDefault();
         $('.news-filters .open').not($('.search-news')).removeClass('open');
+        $('.news-filters .visible').removeClass('visible');
         $('.search-news').toggleClass('open');
         if($('.search-news').hasClass('open')) {
             $('#search-box-news').focus();
@@ -185,7 +186,8 @@ jQuery(document).ready(function($) {
     });
     $('.news-filters .collapse').click(function(e) {
         e.stopPropagation();
-        $('.news-filters > ul').toggleClass('visible');
+        $('.news-filters .collapse').toggleClass('visible');
+        jQuery('.news-filters .open').removeClass('open');
     });
     $('.next-posts').length > 0 && next_posts()
 });

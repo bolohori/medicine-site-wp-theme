@@ -50,37 +50,41 @@
 						<?php the_field('boilerplate'); ?>
 					</div>
 				<?php } ?>
+				<?php $has_author = '';
+				$rows = get_field( 'article_author' );
+				$has_author = $rows[0]['author']; ?>
+				<?php if( $has_author || get_field('media_contact') ): ?>
 				<div class="bio-wrapper">
 				<?php if( have_rows('article_author') ):
-				    while ( have_rows('article_author') ) : the_row(); ?>
-				        <?php if(get_sub_field('custom_author')) { ?>
-				        <div class="footer-author">
-				        	<?php the_sub_field('name'); ?>
+				    while ( have_rows('article_author') ) : the_row();
+				    	if(get_sub_field('custom_author')) {
+				        ?><div class="footer-author">
+				        	<p class="name"><?php the_sub_field('name'); ?></p>
 							<p><?php the_sub_field('bio'); ?></p>
-							<p class="phone-number"><?php the_sub_field('phone'); ?></p>
-							<p class="email-address"><a href="mailto:<?php the_sub_field('email'); ?>"><?php the_sub_field('phone'); ?></a></p>
-						</div>
-				        <?php } elseif(get_sub_field('author')) {
+							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
+							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
+						</div><?php
+						} elseif(get_sub_field('author')) {
 				        	$author = get_sub_field('author');
-							$user_id = $author['ID']; ?>
-						<div class="footer-author">
-							<a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a>
+							$user_id = $author['ID'];
+						?><div class="footer-author">
+							<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
 							<p><?php the_author_meta( 'description', $user_id ); ?></p>
 							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
-						</div>
-				        <?php } ?>
-				    <?php endwhile;
-				endif; ?>
-
-				<div class="footer-media-contact">
-					<a href="">Media Contact</a>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-					<p class="phone-number">555-555-5555</p>
-					<p class="email-address"><a href="mailto:email@wustl.edu">email@wustl.edu</a></p>
+						</div><?php } endwhile; endif;
+						if(get_field('media_contact')):
+							$author = get_field('media_contact');
+							$user_id = $author['ID'];
+						?><div class="footer-media-contact">
+						<p class="name">Media Contact</p>
+						<p><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
+						<p><?php $user_title = get_user_meta( $user_id, 'title', true); echo $user_title; ?></p>
+						<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
+						<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
+					</div><?php endif; ?>
 				</div>
-				
-				</div>
+				<?php endif; ?>
 			</footer>
 			<?php
 				endwhile;

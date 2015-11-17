@@ -744,6 +744,7 @@ function get_top_parent_page_id() {
 // Add Phone Number to User Profiles
 function new_contactmethods( $contactmethods ) {
    $contactmethods['phone'] = 'Phone Number'; // Add Phone Number
+   $contactmethods['title'] = 'Title'; // Add Phone Number
 
    return $contactmethods;
 }
