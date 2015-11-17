@@ -28,13 +28,6 @@
     "location": [
         [
             {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ],
-        [
-            {
                 "param": "post_taxonomy",
                 "operator": "==",
                 "value": "news:other-news"
@@ -49,5 +42,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1444767043
+    "modified": 1447773182
 }
