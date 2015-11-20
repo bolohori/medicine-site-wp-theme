@@ -3,28 +3,6 @@
     "title": "In the Media",
     "fields": [
         {
-            "key": "field_5273cfea28929",
-            "label": "URL",
-            "name": "url",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "formatting": "none",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_5273ce6644829",
             "label": "Source",
             "name": "source",
@@ -50,13 +28,6 @@
     "location": [
         [
             {
-                "param": "post_type",
-                "operator": "==",
-                "value": "media_mentions"
-            }
-        ],
-        [
-            {
                 "param": "post_taxonomy",
                 "operator": "==",
                 "value": "news:in-the-media"
@@ -71,5 +42,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1444408203
+    "modified": 1447773132
 }

@@ -106,7 +106,7 @@ $washington_people = new WP_Query ( $args );
 						<?php while ( $news_releases->have_posts() ) : $news_releases->the_post(); ?>
 							<li>
 								<div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-								<a href="<?php $link = get_field('url'); echo $link['url']; ?>"><?php the_title(); ?></a>
+								<a href="<?php $url = get_field('url'); echo $url; ?>"><?php the_title(); ?></a>
 							</li>
 						<?php endwhile; ?>
 					</ul>
@@ -161,7 +161,7 @@ $washington_people = new WP_Query ( $args );
 					<ul>
 						<?php while ( $national_leaders->have_posts() ) : $national_leaders->the_post(); ?>
 							<li>
-								<a href="<?php $link = get_field('nl-link'); echo $link['url']; ?>"><?php the_title(); ?></a>
+								<a href="<?php $url = get_field('url'); echo $url; ?>"><?php the_title(); ?></a>
 								<?php the_excerpt(); ?>
 							</li>
 						<?php endwhile; ?>
@@ -173,9 +173,8 @@ $washington_people = new WP_Query ( $args );
 				<h2><a href="/news/multimedia/">Campus Life</a></h2>
 				<?php if ( $campus_life->have_posts() ) : ?>
 					<?php while ( $campus_life->have_posts() ) : $campus_life->the_post();
-						$external_link = get_field('external_link');
-						$url = $external_link['url'] ? $external_link['url'] : get_permalink();
-						$link_text = $external_link['title'] ? $external_link['title'] : 'See photos';
+						$url = get_field('url') ? get_field('url') : get_permalink();
+						$link_text = 'See photos';
 					?>
 
 						<a href="<?php echo $url; ?>"><?php the_post_thumbnail( array(325, 218) ); ?></a>

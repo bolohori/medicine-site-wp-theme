@@ -92,26 +92,14 @@
 					
 					} else {
                     	
-						if( has_term( 'national-leader', 'news' ) ) {
-
-							$link = get_field( 'nl-link' );
-							$link = $link[ 'url' ];
-
-
-						} else {
-
-                        	$link = get_field( 'url' );
-
-                        }
+                        $url = get_field( 'url' );
 
 						if( has_term( 'news-release', 'news' ) ) {
 
-                            $link = $link['url'];
                             $button_text = "See News Release";
 
                         } elseif($post->post_type == 'announcement') {
 
-                            $link = $link['url'];
 							$button_text = "View Announcement";
 
 						} else {
@@ -120,7 +108,7 @@
 
 						}
 						the_excerpt();
-						echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
+						echo "<br><a href=\"$url\"><button class=\"single-link\">$button_text</button></a>";
 					}
 				endwhile;
 			endif;
