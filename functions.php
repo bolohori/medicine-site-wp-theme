@@ -139,7 +139,7 @@ add_image_size( 'news', 620, 456, true );
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);
 update_option('medium_size_h', NULL);
-update_option('large_size_w', 645);
+update_option('large_size_w', 700);
 update_option('large_size_h', NULL);
 update_option('embed_size_w', 645);
 

@@ -138,9 +138,13 @@ jQuery(document).ready(function($) {
 
 
     $("#search-form label").inFieldLabels({ fadeDuration: 0 });
+    $(".search-news label").inFieldLabels({ fadeDuration: 0 });
     $('#search-btn').attr('disabled', 'disabled');
+    $('#search-btn-news').attr('disabled', 'disabled');
     $searchBox = $('#search-box');
     $searchBtn = $('#search-btn');
+    $searchBoxNews = $('#search-box-news');
+    $searchBtnNews = $('#search-btn-news');
     $searchBox.keyup(function() {
         var empty = false;
         if ($searchBox.val() == '') {
@@ -150,6 +154,17 @@ jQuery(document).ready(function($) {
             $searchBtn.attr('disabled', 'disabled');
         } else {
             $searchBtn.removeAttr('disabled');
+        }
+    });
+    $searchBoxNews.keyup(function() {
+        var emptyNews = false;
+        if ($searchBoxNews.val() == '') {
+            emptyNews = true;
+        }
+        if (emptyNews) {
+            $searchBtnNews.attr('disabled', 'disabled');
+        } else {
+            $searchBtnNews.removeAttr('disabled');
         }
     });
 });
@@ -179,6 +194,7 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         $('.news-filters .open').not($('.search-news')).removeClass('open');
         $('.news-filters .visible').removeClass('visible');
+        $('.news-filters').toggleClass('search-open');
         $('.search-news').toggleClass('open');
         if($('.search-news').hasClass('open')) {
             $('#search-box-news').focus();

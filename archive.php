@@ -34,9 +34,11 @@ get_header(); ?>
                     </li>
                 </ul>
                 <div class="search"><div class="search-btn"><img src="<?php echo get_template_directory_uri() . '/_/img/search-news.svg'; ?>" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/search-news.png';this.onerror=null;"></div>
-                    <form class="search-news" name="search" method="get" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <form class="search-news" name="search" id="search-form-news" method="get" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <input type="hidden" name="post_type" value="post" />
+                        <p><label for="search-box-news">Search News</label><br>
                         <input type="text" id="search-box-news" name="s">
+                        <button type="submit" class="submit" id="search-btn-news" onclick="document.getElementById('search-form-news').submit();"><img alt="Search" src="<?php echo get_template_directory_uri(); ?>/_/img/search-news-input.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/search-news-input.png';this.onerror=null;"></button>
                     </form>
                 </div>
             </div>
