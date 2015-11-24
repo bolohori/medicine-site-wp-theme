@@ -137,11 +137,10 @@ if( defined( 'WP_DEBUG') ) { ?>
 				$internal_only = get_field('internal_only');
 				if ( $internal_only && !WASHU_IP ) {
 					continue;
-				}
-				$link = get_field('url');
+				} 
 				
-				if( $link['url'] != '' ) {
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+				if( get_field('url') ) {
+					$url = get_field('url');
 				} else {
 					$url = get_permalink();
 				}
