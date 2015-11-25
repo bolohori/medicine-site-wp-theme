@@ -37,6 +37,18 @@
 				if(function_exists( 'sharing_display')) {
 				    sharing_display( '', true );
 				}
+
+				if( get_field('audio') !== '') { ?>
+					<div id="article-audio" class="audio-container">
+					<div class="audio-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri() . '/_/img/audio/biomedradio.jpg'; ?>">
+					</div>
+					<div class="audio-player">
+						<?php echo wp_audio_shortcode( array( 'src' => get_field('audio') ) ); ?>
+					</div>
+					</div>
+				<?php }
+
 				the_post_thumbnail();
 				the_post_thumbnail_caption();
 			?>

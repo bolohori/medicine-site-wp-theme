@@ -2620,7 +2620,7 @@ a.news-title {
 .news-filters .search-news input {
 	margin: 0;
 	padding: 8px 30px 8px 8px;
-	width: 230px;
+	width: 387px;
 	height: 21px;
 	border-radius: 3px;
 	outline: 0;
@@ -2656,7 +2656,7 @@ a.news-title {
 #search-btn-news img {
 	display: block;
 }
-@media screen and (max-width: 970px) {
+@media screen and (max-width: 1000px) {
 	.news-filters .search-btn {
 		display: block;
 	}
@@ -2863,7 +2863,7 @@ a.news-title {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
 }
 .news-cards li img {
-	width: auto;
+	width: 100%;
 	height: auto;
 	display: block;
 }
@@ -2871,6 +2871,7 @@ a.news-title {
 	height: 200px;
 	padding: 21px 0 0 20px;
 	z-index: 2;
+	width: auto;
 	position: relative;
 }
 .news-cards li h2 {
@@ -3027,6 +3028,119 @@ a.news-title {
 }
 .meta-separator {
 	padding: 0 12px;
+}
+.audio-container {
+	width: 100%;
+	background: #f4f4f4;
+	position: relative;
+}
+.audio-thumbnail {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 64px;
+	height: 64px;
+}
+.audio-player {
+	margin-left: 66px;
+}
+.single .mejs-container {
+	outline: none;
+	background: none;
+	height: 64px!important;
+}
+.single .mejs-container .mejs-controls {
+	background: #f4f4f4;
+	height: 64px;
+}
+#article-audio .mejs-playpause-button {
+	width: 65px;
+	height: 64px;
+}
+#article-audio .mejs-playpause-button button {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-position: center left 12px;
+	background-size: 22px;
+	background-repeat: no-repeat;
+	margin: 12px;
+	outline: none;
+	opacity: 0.6;
+}
+#article-audio .mejs-playpause-button button:focus {
+	outline: none;
+}
+#article-audio .mejs-play button {
+	background-image: url(_/img/audio/play.svg);
+}
+#article-audio .mejs-pause button {
+	background-image: url(_/img/audio/pause.svg);
+}
+#article-audio .mejs-playpause-button button:hover {
+	opacity: 1;
+}
+#article-audio .mejs-time {
+	padding-top: 26px;
+}
+#article-audio .mejs-time span {
+	font-family: 'Open Sans', sans-serif;
+}
+#article-audio .mejs-time-total {
+	background: #fff;
+	outline: none;
+}
+#article-audio div.mejs-time-rail {
+	padding-top: 23px;
+}
+#article-audio .mejs-time-rail span {
+	height: 8px;
+}
+#article-audio .mejs-time-float-current {
+	height: 10px;
+}
+#article-audio .mejs-time-float {
+	height: 14px;
+	width: 34px;
+	font-family: 'Open Sans', sans-serif;
+	background: #fff;
+	border: solid 1px #c2c2c2;
+	color: #8f8f8f;
+	border-radius: 2px;
+	top: -24px;
+}
+#article-audio .mejs-time-float-corner {
+	border-color: #c2c2c2 transparent transparent;
+	top: 14px;
+}
+#article-audio .mejs-time-current {
+	background: #b3b3b3;
+}
+#article-audio .mejs-time {
+	color: #b3b3b3;
+}
+#article-audio .mejs-volume-button {
+	padding-top: 18px;
+	width: 40px;
+	text-align: right;
+}
+#article-audio .mejs-volume-button button {
+	background: url(_/img/audio/speaker.svg) no-repeat;
+	width: 20px;
+	margin-left: 10px;
+}
+#article-audio a.mejs-horizontal-volume-slider {
+	width: 66px;
+}
+#article-audio .mejs-horizontal-volume-total,
+#article-audio .mejs-horizontal-volume-current {
+	top: 28px;
+}
+#article-audio .mejs-horizontal-volume-total {
+	background: #fff;
+}
+#article-audio .mejs-horizontal-volume-current {
+	background: #b3b3b3;
 }
 .single article > ul,
 .single article > ol {
