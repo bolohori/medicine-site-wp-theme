@@ -10,8 +10,8 @@ get_header(); ?>
 
             <ul class="news-subnav clearfix">
                 <li><a href="<?php echo get_page_link( 7224 ) ?>">Publications</a></li>
-                <li><a href="">For Media</a></li>
-                <li><a href="">About Public Affairs</a></li>
+                <li><a href="/news/releases/">For Media</a></li>
+                <li><a href="/news/announcements/">Announcements</a></li>
             </ul>
 
             <div class="news-filters clearfix">
@@ -48,6 +48,8 @@ get_header(); ?>
         <article>
 
             <div class="news-cards">
+
+            <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); if($term) { echo '<div class="news-type-title"><p>' . $term->name . '</p></div>'; } ?>
 
             <?php if (have_posts()) { ?>
                 <ul class="clearfix">

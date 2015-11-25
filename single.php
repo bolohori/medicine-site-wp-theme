@@ -38,7 +38,7 @@
 				    sharing_display( '', true );
 				}
 
-				if( get_field('audio') !== '') { ?>
+				if( get_field('audio') ) { ?>
 					<div id="article-audio" class="audio-container">
 					<div class="audio-thumbnail">
 						<img src="<?php echo get_stylesheet_directory_uri() . '/_/img/audio/biomedradio.jpg'; ?>">

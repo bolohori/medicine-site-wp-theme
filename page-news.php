@@ -14,8 +14,8 @@ if (have_posts()) :
 
             <ul class="news-subnav clearfix">
                 <li><a href="<?php echo get_page_link( 7224 ) ?>">Publications</a></li>
-                <li><a href="">For Media</a></li>
-                <li><a href="">About Public Affairs</a></li>
+                <li><a href="/news/releases/">For Media</a></li>
+                <li><a href="/news/announcements/">Announcements</a></li>
             </ul>
             <div class="news-filters clearfix">
                 <div class="collapse">Filter</div>
