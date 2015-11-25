@@ -11,7 +11,7 @@
 
 			
 
-			if ( get_the_post_thumbnail() != '' && !has_term( 'campus-life', 'news' )  && !has_term( 'washington-people', 'news' ) && !has_term( 'national-leader', 'news' ) ) {
+			if ( get_the_post_thumbnail() != '' && !has_term( 'campus-life', 'news' )  && !has_term( 'washington-people', 'news' ) && !has_term( 'national-leader', 'news' ) && !has_term( 'other-news', 'news' ) ) {
 
 				$class .= ' notch';
 				$margin = ' landing-page';
@@ -86,6 +86,16 @@
 					}
 
 					echo "</p>";
+
+					if( has_term( 'other-news', 'news' ) && has_post_thumbnail() ) {
+						the_post_thumbnail();
+						$get_description = get_post(get_post_thumbnail_id())->post_excerpt;
+						if(!empty($get_description)){
+							echo '<p class="featured-image-caption">' . $get_description . '</p>';
+						}
+					}
+
+
 					if( get_the_content() ) {
 					
 						the_content();
