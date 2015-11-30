@@ -322,45 +322,16 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 						'wrapper'	=> false
 					),
 					array(
-						'title'	   => 'Main content callout',
+						'title'	   => 'Callout',
 						'block'	   => 'div',
 						'classes'  => 'callout',
-						'wrapper'  => 'true'
-					),
-					array(
-						'title'	   => 'Normal width (for full width pages)',
-						'block'    => 'p',
-						'selector' => 'p',
-						'classes'  => 'normal-width',
+						'wrapper'  => true
 					),
 					array(
 						'title'    => 'Disclaimer',
 						'block'    => 'div',
 						'classes'  => 'disclaimer',
-						'wrapper'  => 'true'
-					),
-					array(
-						'title'	   => 'Signature block',
-						'inline'   => 'span',
-						'classes'  => 'signature-block'
-					),
-					array(
-						'title'	   => 'Line height 16',
-						'block'    => 'p',
-						'selector' => 'p',
-						'classes'  => 'line-height-16'
-					),
-					array(
-						'title'	   => 'Line height 12',
-						'block'    => 'p',
-						'selector' => 'p',
-						'classes'  => 'line-height-12'
-					),
-					array(
-						'title'	   => 'Bulleted List (inside Main content callout)',
-						'block'    => 'ul',
-						'selector' => 'div > ul',
-						'classes'  => 'bulleted-ul'
+						'wrapper'  => true
 					),
 				),
 			),
