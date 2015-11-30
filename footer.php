@@ -24,7 +24,7 @@
             <div id="col1">
                 <strong>Washington University School of Medicine</strong>
                 <p>660 S. Euclid Ave., St. Louis, MO 63110</p>
-                <p>Our 2,100 employed and volunteer faculty — the <a href="http://wuphysicians.wustl.edu" onclick="__gaTracker('send','event','outbound-footer','http://wuphysicians.wustl.edu');">Washington University Physicians</a> — also are the medical staff of <a href="http://www.barnesjewish.org/" onclick="__gaTracker('send','event','outbound-footer','http://www.barnesjewish.org');">Barnes-Jewish</a> and <a href="http://www.stlouischildrens.org/" onclick="__gaTracker('send','event','outbound-footer','http://www.stlouischildrens.org');">St. Louis Children's</a> hospitals. Through its hospital affiliations, the School is linked to BJC HealthCare.</p>
+                <p>Our 2,100 employed and volunteer faculty — the <a href="http://wuphysicians.wustl.edu" onclick="__gaTracker('send','event','outbound-footer','http://wuphysicians.wustl.edu');">Washington University Physicians</a> — also are the medical staff of <a href="http://www.barnesjewish.org/" onclick="__gaTracker('send','event','outbound-footer','http://www.barnesjewish.org');">Barnes-Jewish</a> and <a href="http://www.stlouischildrens.org/" onclick="__gaTracker('send','event','outbound-footer','http://www.stlouischildrens.org');">St. Louis Children's</a> hospitals. Through its hospital affiliations, the school is linked to BJC HealthCare.</p>
             </div>
             <div id="lists">
                 <div id="col2">
