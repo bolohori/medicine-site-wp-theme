@@ -270,7 +270,7 @@ function wusm_change_post_object() {
     $labels = &$wp_post_types['post']->labels;
     $labels->name = 'News';
     $labels->singular_name = 'News';
-    $labels->add_new = 'Add News';
+    $labels->add_new = 'Add Article';
     $labels->add_new_item = 'Add Article';
     $labels->edit_item = 'Edit Article';
     $labels->new_item = 'News';

@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2015.11.20.0
+Version:	 2015.12.01.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -3032,6 +3032,7 @@ a.news-title {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	margin: 10px auto 35px;
+	line-height: 1.5;
 }
 .single p.meta-header a {
 	font-weight: 700;
@@ -3044,6 +3045,7 @@ a.news-title {
 	width: 100%;
 	background: #f4f4f4;
 	position: relative;
+	margin: 30px 0 35px;
 }
 .audio-thumbnail {
 	position: absolute;
@@ -3078,7 +3080,6 @@ a.news-title {
 	background-repeat: no-repeat;
 	margin: 12px;
 	outline: none;
-	opacity: 0.6;
 }
 #article-audio .mejs-playpause-button button:focus {
 	outline: none;
@@ -3090,7 +3091,7 @@ a.news-title {
 	background-image: url(_/img/audio/pause.svg);
 }
 #article-audio .mejs-playpause-button button:hover {
-	opacity: 1;
+	opacity: 0.7;
 }
 #article-audio .mejs-time {
 	padding-top: 26px;
@@ -3108,10 +3109,10 @@ a.news-title {
 #article-audio .mejs-time-rail span {
 	height: 8px;
 }
-#article-audio .mejs-time-float-current {
-	height: 10px;
+#article-audio span.mejs-time-float-current {
+	height: 14px;
 }
-#article-audio .mejs-time-float {
+#article-audio span.mejs-time-float {
 	height: 14px;
 	width: 34px;
 	font-family: 'Open Sans', sans-serif;
@@ -3150,18 +3151,15 @@ a.news-title {
 #article-audio .mejs-horizontal-volume-current {
 	background: #b3b3b3;
 }
-.single article > ul,
-.single article > ol {
+.single article > div > ul,
+.single article > div > ol {
 	font-family: Georgia, serif;
 	font-size: 22px;
 	max-width: 680px;
 	margin: 0 0 35px 20px;
 }
-.single article > ol {
+.single article ol {
 	margin-left: 40px;
-}
-.single article > li {
-	line-height: 36px;
 }
 .single article img {
 	display: block;
@@ -3304,7 +3302,7 @@ a.news-title {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	line-height: 21px;
-	margin: 0 15px 20px 0;
+	margin: 0 15px 15px 0;
 }
 .boilerplate {
 	margin-bottom: 30px;
@@ -3326,7 +3324,7 @@ a.news-title {
 	vertical-align: top;
 }
 .footer-author p.name,
-.footer-media-contact p.name {
+.footer-media-contact p.mc-heading {
 	font-weight: 700;
 	font-size: 14px;
 	margin-bottom: 10px;
@@ -3337,6 +3335,12 @@ a.news-title {
 	margin: 0 1.5% 40px 0;
 	display: inline-block;
 	vertical-align: top;
+}
+.footer-media-contact p.name {
+	margin: 0 0 5px;
+}
+.footer-media-contact p.title {
+	font-size: 14px;
 }
 .single .article-footer .phone-number,
 .single .article-footer .email-address {
