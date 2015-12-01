@@ -33,13 +33,6 @@
                 "operator": "==",
                 "value": "billboard"
             }
-        ],
-        [
-            {
-                "param": "post_taxonomy",
-                "operator": "==",
-                "value": "news:billboard"
-            }
         ]
     ],
     "menu_order": 1,
