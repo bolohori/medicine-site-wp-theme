@@ -78,7 +78,9 @@ get_header(); ?>
                             <?php if(get_field('source')):
                                 echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
                             endif; ?>
-                            <?php the_excerpt(); ?>
+                            <?php if(has_excerpt()) {
+                                the_excerpt();
+                            } ?>
                         </div>
                     </li>
                 <?php } ?>

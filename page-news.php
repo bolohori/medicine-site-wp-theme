@@ -82,7 +82,9 @@ if (have_posts()) :
                             <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                                 <?php the_title('<h2>', '</h2>'); ?>
                             </a>
-                            <?php the_excerpt(); ?>
+                            <?php if(has_excerpt()) {
+                                the_excerpt();
+                            } ?>
                         </div>
                     </div>
                 <?php } ?>
@@ -126,7 +128,9 @@ if (have_posts()) :
                             <?php if(get_field('source')):
                                 echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
                             endif; ?>
-                            <?php the_excerpt(); ?>
+                            <?php if(has_excerpt()) {
+                                the_excerpt();
+                            } ?>
                         </div>
                     </li>
                 <?php } ?>

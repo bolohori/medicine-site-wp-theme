@@ -18,8 +18,8 @@
 				
 				the_title('<h1>', '</h1>');
 				
-				if(get_field('subhead')):
-					echo "<p class='subhead'>" . get_field('subhead') . "</p>";
+				if(has_excerpt()):
+					echo "<p class='subhead'>" . get_the_excerpt() . "</p>";
 				endif;
 
 				echo "<p class='meta-header'>";
