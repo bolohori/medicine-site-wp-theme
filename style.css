@@ -173,13 +173,24 @@ article .wp-caption.alignnone {
 	max-width: 645px;
 }
 
-article p.wp-caption-text {
+.single article .wp-post-image {
+	margin-bottom: 20px;
+}
+
+article p.wp-caption-text,
+article p.featured-image-caption {
 	font-size: 14px;
 	line-height: 20px;
 	color: #6a6a6a;
 	padding: 15px 0 20px 0;
 	border-bottom: 1px solid #e0e0e0;
 }
+
+.single article .wp-post-image + p.featured-image-caption {
+	padding-top: 0;
+	margin-top: -5px;
+}
+
 
 
 /* Header
@@ -1154,6 +1165,10 @@ article ul ul {
 
 .callout .alignleft {
 	margin: 2px 20px 20px 0;
+}
+
+.callout p:last-child {
+	margin-bottom: 0;
 }
 
 .facts-glance {
