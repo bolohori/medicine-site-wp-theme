@@ -3016,17 +3016,17 @@ a.news-title {
 	color: #787878;
 	line-height: 28px;
 }
-.single article h2 {
+.single article > div > h2 {
 	font-size: 24px;
 	margin: 55px 0 25px;
 	font-weight: 700;
 	line-height: 1.5;
 }
-.single article h3 {
+.single article > div > h3 {
 	margin: 55px 0 25px;
 	line-height: 1.5;
 }
-.single article p {
+.single article > div > p {
 	margin: 0 0 35px;
 	font-size: 22px;
 	font-family: Georgia, serif;
@@ -3173,7 +3173,7 @@ a.news-title {
 	max-width: 680px;
 	margin: 0 0 35px 20px;
 }
-.single article ol {
+.single article > div > ol {
 	margin-left: 40px;
 }
 .single article img {
@@ -3204,13 +3204,13 @@ a.news-title {
 }
 .single article .wp-caption.alignleft,
 .single article img.alignleft {
-	margin-right: 25px;
+	margin: 0 25px 20px 0;
 	max-width: 40%;
 	width: auto;
 }
 .single article .wp-caption.alignright,
 .single article img.alignright {
-	margin-left: 25px;
+	margin: 0 0 20px 25px;
 	max-width: 40%;
 	width: auto;
 }
@@ -3291,6 +3291,7 @@ a.news-title {
 	text-align: center;
 	font-weight: bold;
 	font-size: 18px;
+	line-height: 26px;
 }
 @media screen and (max-width: 750px) {
 	.single-post blockquote p {

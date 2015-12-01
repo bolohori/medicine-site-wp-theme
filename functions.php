@@ -816,3 +816,9 @@ function ic_wrap_image( $content ) {
 	return $content;
 }
 add_filter( 'the_content' , 'ic_wrap_image' );
+
+// Remove Yoast SEO from posts
+function wusm_remove_metabox() {
+	remove_meta_box( 'wpseo_meta', 'post', 'normal' );
+}
+add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
