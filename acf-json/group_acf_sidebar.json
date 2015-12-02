@@ -622,48 +622,6 @@
                 "operator": "==",
                 "value": "page"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "announcement"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "news_releases"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "research_news"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "profile"
-            }
-        ],
-        [
-            {
-                "param": "post_taxonomy",
-                "operator": "==",
-                "value": "news:news-release"
-            }
-        ],
-        [
-            {
-                "param": "post_taxonomy",
-                "operator": "==",
-                "value": "news:research-news"
-            }
         ]
     ],
     "menu_order": 14,
