@@ -2829,11 +2829,12 @@ a.news-title {
 	background: #f5f5f5;
 }
 .news-type-title {
-	max-width: 940px;
+	max-width: 960px;
 	margin: 0 auto 15px;
 }
 .news-type-title p {
 	border-radius: 2px;
+	padding: 0 10px; 
 	font-weight: 600;
 	font-size: 18px;
 	display: inline-block;

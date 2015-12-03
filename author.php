@@ -49,12 +49,33 @@ get_header(); ?>
 
             <div class="news-cards">
 
-            <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); if($term) { echo '<div class="news-type-title"><p>Source: ' . $term->name . '</p></div>'; } ?>
+            <?php
+            function my_posts_where( $where ) {
+                $where = str_replace("meta_key = 'article_author_%", "meta_key LIKE 'article_author_%", $where);
+                return $where;
+            }
+            add_filter('posts_where', 'my_posts_where');
 
-            <?php if (have_posts()) { ?>
+            $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+            $curauthID = $curauth->ID;
+            echo '<div class="news-type-title"><p>Author: ' . $curauth->display_name . '</p></div>';
+
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 24,
+                'meta_query'    => array(
+                    array(
+                        'key'       => 'article_author_%_author',
+                        'compare'   => '=',
+                        'value'     => $curauthID,
+                    )
+                )
+            );
+            $the_query = new WP_Query( $args );
+            if ($the_query->have_posts()) { ?>
                 <ul class="clearfix">
-                <?php while (have_posts()) {
-                    the_post(); ?>
+                <?php while ($the_query->have_posts()) {
+                    $the_query->the_post(); ?>
                     <?php $cardClass = '';
                     if(has_term('national-leader','news')) {
                         $cardClass = ' class="headshot"';
