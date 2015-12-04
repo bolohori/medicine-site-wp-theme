@@ -181,7 +181,6 @@ article p.wp-caption-text,
 article p.featured-image-caption {
 	font-size: 14px;
 	line-height: 20px;
-	color: #6a6a6a;
 	padding: 15px 0 20px 0;
 	border-bottom: 1px solid #e0e0e0;
 }
@@ -3002,6 +3001,7 @@ a.news-title {
 .news-types a {
 	color: #6e6e6e;
 	font-weight: 600;
+	letter-spacing: 1px;
 }
 .article-header h1 {
 	margin: 0 0 12px;
@@ -3016,6 +3016,12 @@ a.news-title {
 	font-family: 'Open Sans', sans-serif;
 	color: #787878;
 	line-height: 28px;
+}
+.sharedaddy.sd-sharing-enabled {
+	margin: 50px 0 0;
+}
+.article-header .sharedaddy.sd-sharing-enabled {
+	margin: 0 0 30px;
 }
 .single article > div > h2 {
 	font-size: 24px;
@@ -3166,6 +3172,26 @@ a.news-title {
 }
 #article-audio .mejs-horizontal-volume-current {
 	background: #b3b3b3;
+}
+.article-related-posts {
+	margin: 0 -150px 25px 40px;
+	max-width: 50%;
+	float: right;
+	border-top: 2px solid #999;
+	border-bottom: 2px solid #999;
+}
+@media screen and (max-width: 970px) {
+	.article-related-posts {
+		display: none;
+	}
+}
+.article-related-posts > p {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin: 9px 0 0;
+	font-weight: 600;
+	color: #6e6e6e;
 }
 .single article > div > ul,
 .single article > div > ol {
@@ -3319,7 +3345,7 @@ a.news-title {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
 	line-height: 21px;
-	margin: 0 15px 15px 0;
+	margin: 0 15px 12px 0;
 }
 .boilerplate {
 	margin-bottom: 30px;
@@ -3335,29 +3361,27 @@ a.news-title {
 	padding-top: 30px;
 }
 .footer-author {
-	width: 48.5%;
-	margin: 0 1.5% 40px 0;
-	display: inline-block;
-	vertical-align: top;
+	margin: 0 0 40px;
 }
-.footer-author p.name,
-.footer-media-contact p.mc-heading {
+.footer-author p.name {
 	font-weight: 700;
 	font-size: 14px;
 	margin-bottom: 10px;
 	display: inline-block;
 }
 .footer-media-contact {
-	width: 48.5%;
-	margin: 0 1.5% 40px 0;
-	display: inline-block;
-	vertical-align: top;
+	margin: 0 0 40px;
 }
-.footer-media-contact p.name {
+.footer-media-contact p.mc-heading {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #6e6e6e;
+	font-weight: 600;
+	letter-spacing: 1px;
 	margin: 0 0 5px;
 }
-.footer-media-contact p.title {
-	font-size: 14px;
+.footer-media-contact p.name {
+	margin: 0 0 12px;
 }
 .single .article-footer .phone-number,
 .single .article-footer .email-address {
@@ -3370,19 +3394,6 @@ a.news-title {
 .footer-bullet {
 	margin: 0 10px;
 }
-@media screen and (max-width: 777px) {
-	.footer-author,
-	.footer-media-contact {
-		width: 100%;
-		float: none;
-	}
-	.footer-author {
-		margin-bottom: 25px;
-	}
-	.article-footer p {
-		margin: 0 0 12px;
-	}
-}
 .footer-related {
 	background: #f5f5f5;
 	padding: 45px 0;
@@ -3393,45 +3404,43 @@ a.news-title {
 	font-size: 21px;
 	font-weight: 600;
 }
-.footer-related ul {
-	list-style: none;
+.single #jp-relatedposts {
 	margin: 0 auto;
+}
+.jp-relatedposts {
+	list-style: none;
 	max-width: 960px;
 	width: 92%;
 }
-.footer-related li {
-	width: 33.3333%;
+.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post {
+	width: 31.3333%;
 	float: left;
-}
-.footer-related div {
-	margin: 10px;
-	padding-bottom: 24px;
+	margin: 1%;
 	border-radius: 3px;
 	background: #fff;
 	overflow: hidden;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
 	transition: box-shadow 0.2s;
 }
-.footer-related div:hover {
+.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post:hover .jp-relatedposts-post-title a {
+	text-decoration: none;
+}
+.footer-related .jp-relatedposts-post:hover {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
 }
-.footer-related li img {
-	height: auto;
+.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post span {
+	max-width: 100%;
 }
-.footer-related p.article-date {
-	font-size: 12px;
-	text-transform: uppercase;
-	margin: 20px 24px 0;
-	letter-spacing: 0.9px;
-}
-.footer-related h4 {
-	margin: 0 24px;
+.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-title a {
 	font-size: 18px;
+	margin: 24px;
+	line-height: 23px;
 	font-weight: 600;
+	display: block;
 }
-.footer-related p {
-	margin: 24px 24px 0;
-	line-height: 23px
+.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-context,
+.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-date {
+	display: none;
 }
 @media screen and (max-width: 1050px) {
 	.footer-related li {

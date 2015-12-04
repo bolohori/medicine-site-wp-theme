@@ -59,8 +59,13 @@
 				    sharing_display( '', true );
 				}
 
-				the_post_thumbnail();
-				the_post_thumbnail_caption();
+				if(has_post_thumbnail()) {
+					the_post_thumbnail();
+					$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+					if(!empty($post_thumbnail_caption)) {
+						echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';
+					}
+				}
 
 				if( get_field('audio') ) { ?>
 					<div id="article-audio" class="audio-container">
@@ -126,8 +131,7 @@
 							$user_id = $author['ID'];
 						?><div class="footer-media-contact">
 							<p class="mc-heading">Media Contact</p>
-							<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
-							<p class="title"><?php the_author_meta( 'title', $user_id ); ?></p>
+							<p class="name"><?php the_author_meta( 'display_name', $user_id); ?>, <?php the_author_meta( 'title', $user_id ); ?></p>
 							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
 						</div><?php } endwhile; endif; ?>
@@ -139,20 +143,25 @@
 	<div class="footer-related clearfix">
 		<h3>Related Articles</h3>
 		<?php
-		$the_query = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 6, 'orderby' => 'rand') );
-		if ( $the_query->have_posts() ) {
-			echo '<ul>';
-			while ( $the_query->have_posts() ) {
-				$the_query->the_post();
-				echo '<li><div class="card">';
-				echo '<p class="article-date">' . get_the_time('M d, Y') . '</p>';
-				echo '<a href="' . get_the_permalink() . '">';
-				the_title('<h4>', '</h4>');
-				echo '</a>';
-				echo '</div></li>';
-			}
-			echo '</ul>';
-		} ?>
+		if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+		    echo do_shortcode( '[jetpack-related-posts]' );
+		}
+		?>
+		<?php
+		// $the_query = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 6, 'orderby' => 'rand') );
+		// if ( $the_query->have_posts() ) {
+		// 	echo '<ul>';
+		// 	while ( $the_query->have_posts() ) {
+		// 		$the_query->the_post();
+		// 		echo '<li><div class="card">';
+		// 		echo '<p class="article-date">' . get_the_time('M d, Y') . '</p>';
+		// 		echo '<a href="' . get_the_permalink() . '">';
+		// 		the_title('<h4>', '</h4>');
+		// 		echo '</a>';
+		// 		echo '</div></li>';
+		// 	}
+		// 	echo '</ul>';
+		// } ?>
 	</div>
 </div>
 

@@ -730,18 +730,6 @@ function number_of_posts_on_archive($query){
 }
 add_filter('pre_get_posts', 'number_of_posts_on_archive');
 
-// Display featured image caption by using the_post_thumbnail_caption();
-function the_post_thumbnail_caption() {
-  global $post;
-
-  $thumbnail_id    = get_post_thumbnail_id($post->ID);
-  $thumbnail_image = get_posts(array('p' => $thumbnail_id, 'post_type' => 'attachment', 'post_status' => null, 'post_parent' => $post->ID, 'include' => $thumbnail_id));
-
-  if ($thumbnail_image && isset($thumbnail_image[0])) {
-    echo '<p class="featured-image-caption">'.$thumbnail_image[0]->post_excerpt.'</p>';
-  }
-}
-
 // Add field for photo credits
 function add_image_credit( $form_fields, $post ) {
 	$form_fields['credit'] = array(
@@ -828,3 +816,14 @@ function wusm_remove_share() {
     remove_filter( 'the_excerpt', 'sharing_display', 19 );
 }
 add_action( 'loop_start', 'wusm_remove_share' );
+
+function jetpackme_remove_rp() {
+    if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+        $jprp = Jetpack_RelatedPosts::init();
+        $callback = array( $jprp, 'filter_add_target_to_dom' );
+        remove_filter( 'the_content', $callback, 40 );
+    }
+}
+add_filter( 'wp', 'jetpackme_remove_rp', 20 );
+
+
