@@ -147,21 +147,6 @@
 		    echo do_shortcode( '[jetpack-related-posts]' );
 		}
 		?>
-		<?php
-		// $the_query = new WP_Query( array('post_type' => 'post', 'posts_per_page' => 6, 'orderby' => 'rand') );
-		// if ( $the_query->have_posts() ) {
-		// 	echo '<ul>';
-		// 	while ( $the_query->have_posts() ) {
-		// 		$the_query->the_post();
-		// 		echo '<li><div class="card">';
-		// 		echo '<p class="article-date">' . get_the_time('M d, Y') . '</p>';
-		// 		echo '<a href="' . get_the_permalink() . '">';
-		// 		the_title('<h4>', '</h4>');
-		// 		echo '</a>';
-		// 		echo '</div></li>';
-		// 	}
-		// 	echo '</ul>';
-		// } ?>
 	</div>
 </div>
 
