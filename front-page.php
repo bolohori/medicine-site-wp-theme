@@ -114,8 +114,6 @@
 					$link = (strpos($url, "http") !== false) ? $url : "http://" . $url;
  					
 					echo "<li><a class='news-title' href=\"$link\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">$title</a><p>";
-					if( ( $video = get_field('video') ) !== '')
-						echo "<a rel=\"prettyPhoto\" href=\"$video\">Watch</a> | ";
 					if( get_field('audio') !== '') {
 						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
 						echo "<a data-id=\"mep_$j\" href=\"javascript:return false;\" onclick=\"__gaTracker('send','event','news-release-audio','$title');\" class=\"audio-file\">Listen</a> | ";
