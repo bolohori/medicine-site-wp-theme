@@ -826,4 +826,12 @@ function jetpackme_remove_rp() {
 }
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 
+function admin_css(){ ?>
+    <style>
+    .acf-field-56393793048a5 iframe {
+		height: 200px!important;
+	}
+    </style>
+<?php }
+add_action( 'admin_head', 'admin_css' );
 

@@ -3,27 +3,6 @@
     "title": "Footer",
     "fields": [
         {
-            "key": "field_56393793048a5",
-            "label": "Boilerplate",
-            "name": "boilerplate",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "<a href=\"http:\/\/medicine.wustl.edu\">Washington University School of Medicine<\/a>\u2019s 2,100 employed and volunteer faculty physicians also are the medical staff of <a href=\"http:\/\/www.barnesjewish.org\">Barnes-Jewish<\/a> and <a href=\"http:\/\/www.stlouischildrens.org\">St. Louis Children\u2019s<\/a> hospitals. The School of Medicine is one of the leading medical research, teaching and patient-care institutions in the nation, currently ranked sixth in the nation by U.S. News & World Report. Through its affiliations with Barnes-Jewish and St. Louis Children\u2019s hospitals, the School of Medicine is linked to <a href=\"http:\/\/www.bjc.org\">BJC HealthCare<\/a>.",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 5,
-            "new_lines": "wpautop",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_563916c12ed29",
             "label": "Author",
             "name": "article_author",
@@ -376,6 +355,24 @@
                     "append": ""
                 }
             ]
+        },
+        {
+            "key": "field_56393793048a5",
+            "label": "Boilerplate",
+            "name": "boilerplate",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "<a href=\"http:\/\/medicine.wustl.edu\">Washington University School of Medicine<\/a>\u2019s 2,100 employed and volunteer faculty physicians also are the medical staff of <a href=\"http:\/\/www.barnesjewish.org\">Barnes-Jewish<\/a> and <a href=\"http:\/\/www.stlouischildrens.org\">St. Louis Children\u2019s<\/a> hospitals. The School of Medicine is one of the leading medical research, teaching and patient-care institutions in the nation, currently ranked sixth in the nation by U.S. News & World Report. Through its affiliations with Barnes-Jewish and St. Louis Children\u2019s hospitals, the School of Medicine is linked to <a href=\"http:\/\/www.bjc.org\">BJC HealthCare<\/a>.",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0
         }
     ],
     "location": [
@@ -402,5 +399,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1448988325
+    "modified": 1449502259
 }

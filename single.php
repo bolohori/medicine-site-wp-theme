@@ -13,6 +13,12 @@
 		<div>
 			<header class="article-header">
 				<a href="/news" class="visit-news-hub"><div class="arrow-left"></div>Visit the News Hub</a>
+
+				<?php if (isset($_GET['_ppp'])) {
+					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
+					$embargo_lift = date('F j, Y \a\t g:i A', strtotime($date_time . '+ 1 hour'));
+				    echo '<p class="embargo-notice">This article is embargoed until ' . $embargo_lift . ' EST.</p>';
+				} ?>
 				
 				<?php echo get_the_term_list( $post->ID, 'news', '<ul class="news-types"><li>', '</li><li>', '</li></ul>' );
 				

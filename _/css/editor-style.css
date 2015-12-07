@@ -300,31 +300,35 @@ body.post-type-post {
 	max-width: 700px;
 	margin: 20px 15px;
 }
-body.post-type-post h2 {
+body.post-type-post.content h2 {
 	font-size: 24px;
 	margin: 20px 0 0;
 	font-weight: 700;
 	line-height: 1.5;
 }
-body.post-type-post h3 {
+body.post-type-post.content h3 {
 	margin: 55px 0 25px;
 	line-height: 1.5;
 }
-body.post-type-post p {
+body.post-type-post.content p {
 	font-family: Georgia;
 	font-size: 22px;
 	line-height: 36px;
 	margin: 0 0 35px;
 }
-body.post-type-post ul,
-body.post-type-post ol {
+body.post-type-post.acf_content p {
+	font-size: 14px;
+	line-height: 1.5;
+}
+body.post-type-post.content ul,
+body.post-type-post.content ol {
 	font-family: Georgia;
 	font-size: 22px;
 	line-height: 36px;
 	margin: 0 0 35px 20px;
 	padding: 0;
 }
-body.post-type-post blockquote {
+body.post-type-post.content blockquote {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
 	font-style: italic;
@@ -334,12 +338,12 @@ body.post-type-post blockquote {
 	line-height: 40px;
 	margin: 0;
 }
-body.post-type-post blockquote p {
+body.post-type-post.content blockquote p {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 32px;
 	line-height: 40px;
 }
-body.post-type-post blockquote .name {
+body.post-type-post.content blockquote .name {
 	display: block;
 	font-family: 'Open Sans', sans-serif;
 	margin: -20px auto 45px;
@@ -347,6 +351,4 @@ body.post-type-post blockquote .name {
 	font-weight: bold;
 	font-size: 18px;
 }
-
-
 
