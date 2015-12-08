@@ -134,11 +134,12 @@ add_theme_support( 'post-thumbnails' );
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 145, 200, true );
+add_image_size( 'news', 600, 441, true );
 
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);
 update_option('medium_size_h', NULL);
-update_option('large_size_w', 645);
+update_option('large_size_w', 700);
 update_option('large_size_h', NULL);
 update_option('embed_size_w', 645);
 
@@ -655,3 +656,19 @@ function get_top_parent_page_id() {
 		return $post->ID;
 	}
 }
+
+// Remove Yoast SEO from posts
+function wusm_remove_metabox() {
+	remove_meta_box( 'wpseo_meta', 'post', 'normal' );
+}
+add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
+
+// Set height of boilerplate field on news stories
+function admin_css(){ ?>
+    <style>
+    .acf-field-56393793048a5 iframe {
+		height: 200px!important;
+	}
+    </style>
+<?php }
+add_action( 'admin_head', 'admin_css' );
