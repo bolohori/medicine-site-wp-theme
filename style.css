@@ -169,6 +169,7 @@ article .wp-caption.alignnone {
 
 .single article .wp-post-image {
 	margin-bottom: 20px;
+	height: auto;
 }
 
 article p.wp-caption-text,
