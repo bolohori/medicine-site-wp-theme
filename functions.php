@@ -134,7 +134,7 @@ add_theme_support( 'post-thumbnails' );
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 145, 200, true );
-add_image_size( 'news', 620, 456, true );
+add_image_size( 'news', 600, 441, true );
 
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);
@@ -593,14 +593,14 @@ add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 )
 add_filter( 'news-release_link_field', function() { return 'url'; } );
 
 // SO meta!
-add_filter( 'profile_excerpt_text', function() {
+add_filter( 'profiles_excerpt_text', function() {
 		add_filter( 'excerpt_more', function() { return '&hellip;'; }, 999 );
 		add_filter( 'excerpt_length', function() { return 30; }, 999 );
 		return get_the_excerpt();
 });
-add_filter( 'profile_template_file', function() { return get_stylesheet_directory() . "/_/php/profile-template.php"; } );
-add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
-add_filter( 'profile_thumbnail_size', function() { return 'large'; }, 999 );
+add_filter( 'profiles_template_file', function() { return get_stylesheet_directory() . "/_/php/profiles-template.php"; } );
+add_filter( 'profiles_num_per_page', function() { return -1; }, 999 );
+add_filter( 'profiles_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'in-the-media_link_field', function() { return 'url'; } );
 add_filter( 'in-the-media_show_thumbnail', function() { return false; } );
@@ -826,6 +826,7 @@ function jetpackme_remove_rp() {
 }
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 
+// Set height of boilerplate field on news stories
 function admin_css(){ ?>
     <style>
     .acf-field-56393793048a5 iframe {
@@ -834,4 +835,3 @@ function admin_css(){ ?>
     </style>
 <?php }
 add_action( 'admin_head', 'admin_css' );
-

@@ -70,6 +70,7 @@ jQuery(document).ready(function($) {
         if($('#mobile-search-icon').hasClass('search-active')) {
             $('#mobile-search-form').css('top', '-62px');
             $('#mobile-search-icon').removeClass('search-active');
+            $('#mobile-search-form').removeClass('active');
         }
     }); 
 

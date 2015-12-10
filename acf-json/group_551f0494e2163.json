@@ -52,6 +52,13 @@
                 "operator": "==",
                 "value": "profile"
             }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "news:profiles"
+            }
         ]
     ],
     "menu_order": 0,
