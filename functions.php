@@ -817,6 +817,7 @@ function wusm_remove_share() {
 }
 add_action( 'loop_start', 'wusm_remove_share' );
 
+// Remove title from Jetpack Related Posts
 function jetpackme_remove_rp() {
     if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
         $jprp = Jetpack_RelatedPosts::init();
@@ -835,3 +836,9 @@ function admin_css(){ ?>
     </style>
 <?php }
 add_action( 'admin_head', 'admin_css' );
+
+// Preview URLs for embargoed articles will expire after 24 days
+function wusm_preview_nonce_life() {
+    return 60 * 60 * 24 * 24; // 24 days
+}
+add_filter( 'ppp_nonce_life', 'wusm_preview_nonce_life' );

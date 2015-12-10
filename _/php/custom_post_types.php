@@ -200,7 +200,7 @@ function create_custom_post_types() {
 		'show_tagcloud'     => true,
 		'show_ui'           => true,
 		'query_var'         => true,
-		'rewrite'           => true,
+		'rewrite'           => array( 'slug' => 'type' ),
 		'query_var'         => true,
 		'capabilities'      => array(),
 	);

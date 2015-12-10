@@ -61,12 +61,12 @@
 				
 				echo "</p>";
 
-				if(function_exists( 'sharing_display')) {
+				if(function_exists( 'sharing_display') && !isset($_GET['_ppp'])) {
 				    sharing_display( '', true );
 				}
 
 				if(has_post_thumbnail()) {
-					the_post_thumbnail();
+					the_post_thumbnail('large');
 					$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
 					if(!empty($post_thumbnail_caption)) {
 						echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';

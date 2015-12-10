@@ -2881,7 +2881,7 @@ a.news-title {
 		width: 50%;
 	}
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 660px) {
 	.news-cards li {
 		width: 100%;
 	}
@@ -3244,10 +3244,7 @@ a.news-title {
 	max-width: 700px;
 }
 .article-header .wp-post-image {
-	max-width: 700px;
-	max-height: 600px;
 	height: auto;
-	width: auto;
 }
 .single article .wp-caption.alignleft,
 .single article img.alignleft {
@@ -3462,18 +3459,10 @@ a.news-title {
 .single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-date {
 	display: none;
 }
-@media screen and (max-width: 1050px) {
-	.footer-related li {
-		width: 50%;
-		text-align: center;
-	}
-	.footer-related li div {
-		text-align: left;
-	}
-}
-@media screen and (max-width: 745px) {
-	.footer-related li {
+@media screen and (max-width: 850px) {
+	.single #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post {
 		width: 100%;
+		margin: 0 0 4%;
 	}
 }
 

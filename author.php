@@ -23,14 +23,16 @@ get_header(); ?>
                         <ul><?php echo wp_list_categories( 'title_li=' ); ?></ul>
                     </li>
                     <li class="parent"><a href="">Source</a>
-                        <?php  $terms = get_terms( 'news', 'orderby=count&order=DESC' );
-                        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-                            echo '<ul>';
-                            foreach ( $terms as $term ) {
-                                echo '<li>' . '<a href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>'; 
-                            }
-                            echo '</ul>';
-                        } ?>
+                        <ul>
+                            <li><a href="/news/type/news-release">News Releases</a></li>
+                            <li><a href="/news/type/outlook-magazine">Outlook Magazine</a></li>
+                            <li><a href="/news/type/national-leader">Profiles</a></li>
+                            <li><a href="/news/type/washington-people">Notables</a></li>
+                            <li><a href="/news/type/in-the-media">In the Media</a></li>
+                            <li><a href="/news/type/audio">Audio</a></li>
+                            <li><a href="/news/type/campus-life">Photos &amp; Video</a></li>
+                            <li><a href="/news/type/other-news">More News</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <div class="search"><div class="search-btn"><img src="<?php echo get_template_directory_uri() . '/_/img/search-news.svg'; ?>" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/search-news.png';this.onerror=null;"></div>
