@@ -3671,17 +3671,21 @@ a.sidebar-outlook-link {
 	margin-bottom: 20px;
 }
 
-.profile-custom-archive-entry {
+.profiles-custom-archive-entry {
 	margin-top: 25px;
 }
 
-.profile-custom-archive-entry h3 {
+.profiles-custom-archive-entry h3 {
 	padding-top: 10px;
 	font-size: 21px;
 }
 
-.profile-custom-archive-link {
+.profiles-custom-archive-link {
 	padding-bottom: 0;
+}
+
+.profiles-custom-archive-thumb {
+	height: auto;
 }
 
 .in_focus-custom-archive-entry h3 {
