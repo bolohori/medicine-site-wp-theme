@@ -27,11 +27,9 @@ get_header(); ?>
                             <li><a href="/news/type/news-release">News Releases</a></li>
                             <li><a href="/news/type/outlook-magazine">Outlook Magazine</a></li>
                             <li><a href="/news/type/national-leader">Profiles</a></li>
-                            <li><a href="/news/type/washington-people">Notables</a></li>
                             <li><a href="/news/type/in-the-media">In the Media</a></li>
                             <li><a href="/news/type/audio">Audio</a></li>
                             <li><a href="/news/type/campus-life">Photos &amp; Video</a></li>
-                            <li><a href="/news/type/other-news">More News</a></li>
                         </ul>
                     </li>
                 </ul>
