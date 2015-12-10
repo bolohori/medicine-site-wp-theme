@@ -35,46 +35,6 @@ function create_custom_post_types() {
 	register_post_type( 'billboard', $args );
 
 	$labels = array(
-		'name'               => 'Profiles',
-		'singular_name'      => 'Profile',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Profile',
-		'edit_item'          => 'Edit Profile',
-		'new_item'           => 'New Profile',
-		'all_items'          => 'All Profiles',
-		'view_item'          => 'View Profile',
-		'search_items'       => 'Search Profiles',
-		'not_found'          =>	'No Profiles found',
-		'not_found_in_trash' => 'No Profiles found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Profiles'
-	);
-	$args = array(
-		'labels'              => $labels,
-		'exclude_from_search' => true,
-		'show_in_nav_menus'   => false,
-		'menu_icon'           => 'dashicons-nametag',
-		'public'              => true,
-		'publicly_queryable'  => true,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
-		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'about/people' ),
-		'capability_type'     => 'post',
-		'hierarchical'        => false,
-		'menu_position'       => null,
-		'supports'            => array(
-			'title',
-			'editor',
-			'thumbnail',
-			'revisions',
-			'page-attributes',
-			'excerpt'
-		)
-	);
-	register_post_type( 'profile', $args );
-
-	$labels = array(
 		'name'               => 'In The News',
 		'singular_name'      => 'In The News',
 		'add_new'            => 'Add New',
@@ -209,46 +169,6 @@ function create_custom_post_types() {
 		)
 	); 
 	register_post_type( 'faculty_profile', $args );
-
-	$labels = array(
-		'name'               => 'Faculty Member',
-		'singular_name'      => 'Faculty Members',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Faculty Member',
-		'edit_item'          => 'Edit Faculty Member',
-		'new_item'           => 'New Faculty Member',
-		'all_items'          => 'All Faculty Members',
-		'view_item'          => 'View Faculty Member',
-		'search_items'       => 'Search Faculty Members',
-		'not_found'          =>	'No Faculty Members found',
-		'not_found_in_trash' => 'No Faculty Members found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Faculty Members'
-	);
-	$args = array(
-		'labels'             => $labels,
-		'show_in_nav_menus'  => false,
-		'menu_icon'          => 'dashicons-groups',
-		'public'             => false,
-		'publicly_queryable' => false,
-		'show_ui'            => true, 
-		'show_in_menu'       => true, 
-		'query_var'          => true,
-		'capability_type'    => 'post',
-		'hierarchical'       => false,
-		'menu_position'      => null,
-		'supports'           => array(
-			'title',
-			'editor',
-			'thumbnail',
-			'revisions',
-			'page-attributes',
-		)
-	);
-	/*
-	 * Hold on this until v2.0
-	 */
-	//register_post_type( 'faculty', $args );
 
 
 	/**

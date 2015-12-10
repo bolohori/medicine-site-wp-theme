@@ -540,14 +540,14 @@ add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 )
 add_filter( 'news-release_link_field', function() { return 'url'; } );
 
 // SO meta!
-add_filter( 'profile_excerpt_text', function() {
+add_filter( 'profiles_excerpt_text', function() {
 		add_filter( 'excerpt_more', function() { return '&hellip;'; }, 999 );
 		add_filter( 'excerpt_length', function() { return 30; }, 999 );
 		return get_the_excerpt();
 });
-add_filter( 'profile_template_file', function() { return get_stylesheet_directory() . "/_/php/profile-template.php"; } );
-add_filter( 'profile_num_per_page', function() { return -1; }, 999 );
-add_filter( 'profile_thumbnail_size', function() { return 'large'; }, 999 );
+add_filter( 'profiles_template_file', function() { return get_stylesheet_directory() . "/_/php/profiles-template.php"; } );
+add_filter( 'profiles_num_per_page', function() { return -1; }, 999 );
+add_filter( 'profiles_thumbnail_size', function() { return 'large'; }, 999 );
 
 add_filter( 'in-the-media_link_field', function() { return 'url'; } );
 add_filter( 'in-the-media_show_thumbnail', function() { return false; } );
