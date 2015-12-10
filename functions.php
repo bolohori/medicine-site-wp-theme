@@ -3,15 +3,6 @@
 // Google Analytics template
 // onclick="__gaTracker('send','event','outbound-<LABEL>','http://<URL OR LABEL>');"
 // ***************************************
-if( file_exists( get_stylesheet_directory() . '/_/php/acf_fields.php' ) ) {
-	unlink( get_stylesheet_directory() . '/_/php/acf_fields.php' );
-}
-if( file_exists( get_stylesheet_directory() . '/_/php/post2news.php' ) ) {
-	unlink( get_stylesheet_directory() . '/_/php/post2news.php' );
-}
-if( file_exists( get_stylesheet_directory() . '/_/img/sidebars.jpg' ) ) {
-	unlink( get_stylesheet_directory() . '/_/img/sidebars.jpg' );
-}
 
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
