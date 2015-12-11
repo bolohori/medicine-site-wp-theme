@@ -112,17 +112,21 @@ if (have_posts()) :
                     } ?>
                     <li<?php echo $cardClass; ?>>
                         <div class="card">
-                           <?php if(has_post_thumbnail()) { ?>
-                                <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                    <?php the_post_thumbnail('news'); ?>
-                                </a>
-                            <?php } elseif(has_term('national-leader','news')) { ?>
+                            <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                            <?php if(has_post_thumbnail()) {
+                                the_post_thumbnail('news');
+                            } elseif(has_term('national-leader','news')) { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/spotlight-default.png' ?>">
                             <?php } else { ?>
                                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
                             <?php } ?>
+                            </a>
+                            <div class="card-text">
+                            <?php if(get_field('audio')) { ?>
+                                <img class="has-audio" src="<?php echo get_template_directory_uri() . '/_/img/audio/audio.png' ?>">
+                            <?php } ?>
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
-                            <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                            <a class="article-link" href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                                 <?php the_title('<h2>', '</h2>'); ?>
                             </a>
                             <?php if(get_field('source')):
@@ -131,6 +135,7 @@ if (have_posts()) :
                             <?php if(has_excerpt()) {
                                 the_excerpt();
                             } ?>
+                            </div>
                         </div>
                     </li>
                 <?php } ?>

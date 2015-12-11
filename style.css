@@ -2769,10 +2769,12 @@ a.news-title {
 	background: #fff;
 	overflow: hidden;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
-	transition: box-shadow 0.2s;
+	-webkit-transition: box-shadow 0.2s, transform 0.2s;
+	transition: box-shadow 0.2s, transform 0.2s;
 }
 .editors-pick > div:hover {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
+	transform: translateY(-2px);
 }
 .editors-pick img {
 	display: block;
@@ -2857,17 +2859,18 @@ a.news-title {
 	float: left;
 	margin: 0 0 5px;
 }
-.news-cards li div {
+.news-cards li > div {
 	position: relative;
 	margin: 10px;
-	padding-bottom: 24px;
 	border-radius: 3px;
 	background: #fff;
 	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
-	transition: box-shadow 0.2s;
+	-webkit-transition: box-shadow 0.2s, transform 0.2s;
+	transition: box-shadow 0.2s, transform 0.2s;
 }
-.news-cards li.headshot div:before {
+.news-cards li.headshot > div:before {
 	content: '';
 	height: 195px;
 	width: 100%;
@@ -2893,8 +2896,9 @@ a.news-title {
 		width: 100%;
 	}
 }
-.news-cards li div:hover {
+.news-cards li > div:hover {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
+	transform: translateY(-2px);
 }
 .news-cards li img {
 	width: 100%;
@@ -2908,16 +2912,29 @@ a.news-title {
 	width: auto;
 	position: relative;
 }
+.news-cards .card-text {
+	position: relative;
+	padding: 10px 23px 24px; 
+}
+.news-cards .has-audio {
+	width: 19px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+.news-cards .article-link {
+	display: block;
+	margin-bottom: 10px;
+}
 .news-cards li h2 {
 	font-size: 18px;
 	font-weight: 600;
-	margin: 0 23px 10px;
+	margin: 0;
 }
 .news-cards p {
-	margin: 0 23px;
+	margin: 0;
 }
 .news-cards .article-date {
-	margin: 10px 23px 0;
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
@@ -2946,6 +2963,7 @@ a.news-title {
     border-radius: 3px;
     letter-spacing: 1px;
     font-weight: 600;
+    -webkit-transition: background 0.1s ease;
     transition: background 0.1s ease;
 }
 .page-news .next-posts:hover {
@@ -3427,6 +3445,7 @@ a.news-title {
 	background: #fff;
 	overflow: hidden;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
+	-webkit-transition: box-shadow 0.2s;
 	transition: box-shadow 0.2s;
 }
 .single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post:hover .jp-relatedposts-post-title a {
