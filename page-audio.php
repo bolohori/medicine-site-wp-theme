@@ -49,12 +49,24 @@ get_header(); ?>
 
             <div class="news-cards">
 
-            <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); if($term) { echo '<div class="news-type-title"><p>Source: ' . $term->name . '</p></div>'; } ?>
+            <div class="news-type-title"><p>Source: Audio</p></div>
 
-            <?php if (have_posts()) { ?>
+            <?php $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 24,
+                'meta_query'    => array(
+                    array(
+                        'key'       => 'audio',
+                        'compare'   => '!=',
+                        'value'     => '',
+                    )
+                )
+            );
+            $the_query = new WP_Query( $args );
+            if ($the_query->have_posts()) { ?>
                 <ul class="clearfix">
-                <?php while (have_posts()) {
-                    the_post(); ?>
+                <?php while ($the_query->have_posts()) {
+                    $the_query->the_post(); ?>
                     <?php $cardClass = '';
                     if(has_term('national-leader','news')) {
                         $cardClass = ' class="headshot"';

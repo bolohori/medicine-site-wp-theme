@@ -2465,6 +2465,7 @@ a.news-title {
 .page-news header {
 	max-width: 940px;
 	margin: 0 auto;
+	width: 88%;
 }
 .page-news h1 {
 	display: inline-block;
@@ -2750,14 +2751,6 @@ a.news-title {
 	#main.page-news {
 		background: none;
 	}
-	.page-news header {
-		margin: 0 30px;
-		width: auto;
-	}
-	.page-news article {
-		padding: 30px 20px;
-		width: auto;
-	}
 }
 .editors-pick {
 	max-width: 960px;
@@ -2836,6 +2829,9 @@ a.news-title {
 }
 .news-cards {
 	background: #f5f5f5;
+	width: 88%;
+	max-width: 940px;
+	margin: 0 auto;
 }
 .news-type-title {
 	max-width: 960px;
@@ -2843,7 +2839,6 @@ a.news-title {
 }
 .news-type-title p {
 	border-radius: 2px;
-	padding: 0 10px; 
 	font-weight: 600;
 	font-size: 18px;
 	display: inline-block;
@@ -2851,8 +2846,7 @@ a.news-title {
 }
 .news-cards ul {
 	list-style: none;
-	max-width: 960px;
-	margin: 0 auto;
+	margin: 0 -10px;
 }
 .news-cards li {
 	width: 33.3333%;
@@ -2860,8 +2854,10 @@ a.news-title {
 	margin: 0 0 5px;
 }
 .news-cards li > div {
-	position: relative;
 	margin: 10px;
+}
+.news-cards li div.card {
+	position: relative;
 	border-radius: 3px;
 	background: #fff;
 	overflow: hidden;
@@ -2870,7 +2866,10 @@ a.news-title {
 	-webkit-transition: box-shadow 0.2s, transform 0.2s;
 	transition: box-shadow 0.2s, transform 0.2s;
 }
-.news-cards li.headshot > div:before {
+.news-cards li > div > a {
+	display: block;
+}
+.news-cards li.headshot div.card:before {
 	content: '';
 	height: 195px;
 	width: 100%;
@@ -2882,10 +2881,6 @@ a.news-title {
 	border-top-left-radius: 3px;
 	background: #f6f6f6;
 }
-.news-cards li.headshot a:first-child {
-	min-height: 221px;
-	display: block;
-}
 @media screen and (max-width: 1000px) {
 	.news-cards li {
 		width: 50%;
@@ -2896,8 +2891,8 @@ a.news-title {
 		width: 100%;
 	}
 }
-.news-cards li > div:hover {
-	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
+.news-cards li div.card:hover {
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.20);
 	transform: translateY(-2px);
 }
 .news-cards li img {
@@ -2922,7 +2917,7 @@ a.news-title {
 	top: 8px;
 	right: 8px;
 }
-.news-cards .article-link {
+.news-cards .article-title {
 	display: block;
 	margin-bottom: 10px;
 }
@@ -2933,6 +2928,7 @@ a.news-title {
 }
 .news-cards p {
 	margin: 0;
+	color: #333;
 }
 .news-cards .article-date {
 	text-transform: uppercase;
