@@ -112,9 +112,13 @@
 				$has_author = '';
 				$has_media_contact = '';
 				$rows = get_field( 'article_author' );
-				$has_author = $rows[0]['author'];
+				if($rows[0]['author']) {
+					$has_author = $rows[0]['author'];
+				}
 				$rows_mc = get_field( 'media_contact' );
-				$has_media_contact = $rows_mc[0]['media_contact'];
+				if($rows_mc[0]['media_contact']) {
+					$has_media_contact = $rows_mc[0]['media_contact'];
+				}
 
 				if( $has_author || $has_media_contact ): ?>				
 				<div class="bio-wrapper">
