@@ -126,6 +126,7 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 145, 200, true );
 add_image_size( 'news', 600, 441, true );
+add_image_size( 'news-email', 600, 9999 );
 
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);
@@ -822,12 +823,15 @@ function wusm_preview_nonce_life() {
 }
 add_filter( 'ppp_nonce_life', 'wusm_preview_nonce_life' );
 
+// NEWS RELEASE EMAIL
+// Add query var for email template
 function wusm_register_query_var( $vars ) {
     $vars[] = 'template';
     return $vars;
 }
 add_filter( 'query_vars', 'wusm_register_query_var' );
 
+// Switch to email template if query var is present in URL
 function wusm_url_rewrite_template() {
     if ( get_query_var( 'template' ) == 'email' ) {
         add_filter( 'template_include', function() {

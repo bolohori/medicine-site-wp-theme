@@ -1,18 +1,41 @@
 <?php
-//header("Content-Type: text/plain");
+header("Content-Type: text/plain");
 	if (have_posts()) :
 		while (have_posts()) :
 			the_post();
 
-	$content = get_the_content();
-    // This is where wordpress filters the content text and adds paragraphs
-    $content = apply_filters('the_content', $content);
-    $replace_p = '<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">';
-    $replace_h2 = '<h2 style="display:block;font-family:Georgia;font-size:20px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
-    $replace_h3 = '<h3 style="display:block;font-family:Georgia;font-size:16px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
-    $replace_h4 = '<h4 style="display:block;font-family:Georgia;font-size:14px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
+// Remove embeds from emails
+function wusm_remove_oembed( $html ) {
+	if ( get_query_var( 'template' ) == 'email' ) {
+		$video_available = '<p><strong>Video available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . get_the_permalink() . '">' . get_the_permalink() . '</a></p>';
+		return $video_available;
+	}
+	return $html;
+}
+add_filter('embed_oembed_html', 'wusm_remove_oembed', 99, 4);
 
-    $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p, $replace_h2, $replace_h3, $replace_h4), $content);
+// Remove audio from emails
+function wusm_remove_audio( $html ) {
+    if ( get_query_var( 'template' ) == 'email' ) {
+    	$audio_available = '<p><strong>Audio available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . get_the_permalink() . '">' . get_the_permalink() . '</a></p>';
+		return $audio_available;
+    }
+    return $html;
+}
+add_filter( 'wp_audio_shortcode', 'wusm_remove_audio', 10, 5 );
+
+// Do not use responsive images
+add_filter( 'max_srcset_image_width', create_function( '', 'return 1;' ) );
+
+// Add inline styles to paragraphs and headings
+$content = get_the_content();
+$content = apply_filters('the_content', $content);
+$replace_p = '<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">';
+$replace_h2 = '<h2 style="display:block;font-family:Georgia;font-size:20px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
+$replace_h3 = '<h3 style="display:block;font-family:Georgia;font-size:16px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
+$replace_h4 = '<h4 style="display:block;font-family:Georgia;font-size:14px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
+
+$email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p, $replace_h2, $replace_h3, $replace_h4), $content);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -95,11 +118,6 @@
 			}
 			.headerContent{
 				padding-bottom:15px;
-			}
-			.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
-				color:#EB4102;
-				font-weight:normal;
-				text-decoration:underline;
 			}
 			#headerImage{
 				height:auto;
@@ -204,32 +222,34 @@
 			}
 		</style>
     </head>
-    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="height:100% !important; margin:0; padding:0; width:100% !important;">
     	<center>
-        	<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+        	<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="height:100% !important; margin:0; padding:0; width:100% !important;border-collapse:collapse !important;">
             	<tr>
-                	<td align="center" valign="top" id="bodyCell">
+                	<td align="center" valign="top" id="bodyCell" style="height:100% !important; margin:0; padding:20px; width:100% !important;">
                     	<!-- BEGIN TEMPLATE // -->
-                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
+                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer" style="width:600px;border-collapse:collapse !important;">
                         	<tr>
                             	<td align="center" valign="top">
                                 	<!-- BEGIN HEADER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader" style="border-collapse:collapse !important;">
                                         <tr>
-                                            <td valign="top" class="headerContent">
-                                            	<img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" />
+                                            <td valign="top" class="headerContent" style="padding-bottom:15px;">
+                                            	<img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" style="height:auto;max-width:600px;" />
                                             </td>
                                         </tr>
                                         <tr>
                                         <td align="center" valign="top">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse !important;"> 
 	                                        <tr>
 	                                        	<td align="left" valign="middle" style="width:280px;" id="news-release" class="templateColumnContainer">
 	                                            	<img src="<?php echo get_template_directory_uri() . '/_/img/news-release.jpg'; ?>" />
 	                                            </td><?php
 $has_media_contact = '';
-$rows = get_field( 'media_contact' );
-$has_media_contact = $rows[0]['media_contact'];
+$rows_mc = get_field( 'media_contact' );
+if($rows_mc[0]['media_contact']) {
+	$has_media_contact = $rows_mc[0]['media_contact'];
+}
 if( $has_media_contact ):
 if( have_rows('media_contact') ):
     while ( have_rows('media_contact') ) : the_row();
@@ -245,7 +265,7 @@ if( have_rows('media_contact') ):
 			$media_contact_email = get_the_author_meta( 'user_email', $user_id );
     	}
     endwhile;
-?><td align="left" valign="top" style="width:220px;" id="media-contact" class="templateColumnContainer">
+?><td align="left" valign="top" style="width:220px;line-height:1;" id="media-contact" class="templateColumnContainer">
 <p style="font-family:Georgia,serif;font-size:11px;padding:0;margin:0;line-height:100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;"><strong>Media Assistance:</strong><br>
 <?php echo $media_contact_name; ?><br><?php echo $media_contact_phone; if($media_contact_phone && $media_contact_email) { echo ' | '; } ?><a href="mailto:<?php echo $media_contact_email; ?>" style="color:#990000;text-decoration:none;"><?php echo $media_contact_email; ?></a></p></td>
 <?php endif; endif; ?>
@@ -260,18 +280,18 @@ if( have_rows('media_contact') ):
                         	<tr>
                             	<td align="center" valign="top">
                                 	<!-- BEGIN BODY // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody" style="border-collapse:collapse !important;">
                                         <tr>
-                                            <td valign="top" class="bodyContent">
+                                            <td valign="top" class="bodyContent" style="color:#333;font-family:Georgia;font-size:14px;line-height:150%;padding-top:30px;padding-bottom:20px;text-align:left;">
 				<?php
 
 				if ( get_post_status() == 'future' ) {
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 					$embargo_lift = date('F j, Y \a\t g:i A', strtotime($date_time . '+ 1 hour'));
-				    echo '<p class="embargo-notice">This article is embargoed until ' . $embargo_lift . ' EST.</p>';
+				    echo '<p style="background: #FFFF52;padding: 10px 15px;font-weight: 600;text-align: center;font-size: 16px;">This article is embargoed until ' . $embargo_lift . ' EST.</p>';
 				}
 				
-				the_title('<h1 style="display:block;font-family:Georgia;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">', '</h1>');
+				?><h1 style="display:block;font-family:Georgia;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1><?php
 				
 				if(has_excerpt()):
 					echo '<p style="font-size:16px;color:#787878;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . get_the_excerpt() . '</p>';
@@ -311,11 +331,11 @@ if( have_rows('media_contact') ):
 				echo '<p style="margin-bottom:15px;margin-top:0;">' . get_the_date() . '</p>';
 
 				if( get_field('audio') ) { ?>
-					<p><strong>Article audio:</strong> <a href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
+					<p><strong>Article audio:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
 				<?php }
 
 				if(has_post_thumbnail()) {
-					the_post_thumbnail('large');
+					the_post_thumbnail('news-email');
 					$creditID = get_post_thumbnail_id();
 					$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
 					$credit = '';
@@ -329,13 +349,9 @@ if( have_rows('media_contact') ):
 					}
 				} ?>
 
-			<?php echo $email_content; ?>
+												<?php echo $email_content; ?>
 
-			<?php if(get_field('boilerplate')) { ?>
-				<div class="boilerplate">
-					<?php the_field('boilerplate'); ?>
-				</div>
-			<?php } ?>
+												<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin-top:40px;">URL: <a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
                                             </td>
                                         </tr>
                                     </table>
@@ -345,10 +361,10 @@ if( have_rows('media_contact') ):
                         	<tr>
                             	<td align="center" valign="top">
                                 	<!-- BEGIN FOOTER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="border-top:#990000 2px solid;border-collapse:collapse !important;">
                                         <tr>
-                                            <td valign="top" class="footerContent">
-                                                Washington University School of Medicine in St. Louis<br>Office of Medical Public Affairs (314) 286-0100 <a href="https://medicine.wustl.edu">medicine.wustl.edu</a><br>Affiliated with Barnes-Jewish Hospital and St. Louis Children's Hospital, which are members of BJC HealthCare.
+                                            <td valign="top" class="footerContent" style="color:#787878;font-family:Georgia;font-size:10px;line-height:150%;padding-top:20px;padding-bottom:20px;text-align:left;">
+                                                <p style="margin:0 0 6px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;"><a href="https://medicine.wustl.edu" style="color:#990000;font-weight:normal;text-decoration:none;font-family:Georgia,serif;font-size:13px;">Washington University School of Medicine in St. Louis</a></p><p style="margin:0 0 4px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#666666;font-size:12px;"><span style="margin-right:10px;">Office of Medical Public Affairs</span><span style="display:inline-block;margin-right:10px;">(314) 286-0100</span><a href="https://medicine.wustl.edu" style="color:#990000;font-weight:normal;text-decoration:none;">medicine.wustl.edu</a></p><p style="margin:0 0 5px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">Affiliated with Barnes-Jewish Hospital and St. Louis Children's Hospital, which are members of BJC HealthCare.</p>
                                             </td>
                                         </tr>
                                     </table>
