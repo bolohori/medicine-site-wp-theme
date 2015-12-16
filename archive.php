@@ -27,7 +27,7 @@ get_header(); ?>
                             <li><a href="/news/type/news-release">News Releases</a></li>
                             <li><a href="/news/type/outlook-magazine">Outlook Magazine</a></li>
                             <li><a href="/news/type/national-leader">Profiles</a></li>
-                            <li><a href="/news/type/in-the-media">In the Media</a></li>
+                            <li><a href="/news/type/in-the-media">In the News</a></li>
                             <li><a href="/news/audio">Audio</a></li>
                             <li><a href="/news/type/campus-life">Photos &amp; Video</a></li>
                         </ul>
@@ -54,12 +54,11 @@ get_header(); ?>
             <?php if (have_posts()) { ?>
                 <ul class="clearfix">
                 <?php while (have_posts()) {
-                    the_post(); ?>
-                    <?php $cardClass = '';
+                    the_post();
+                    $cardClass = '';
                     if(has_term('national-leader','news')) {
                         $cardClass = ' class="headshot"';
-                    } ?>
-                    <li<?php echo $cardClass; ?>>
+                    } ?><li<?php echo $cardClass; ?>>
                         <div><a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                             <div class="card">
                             <?php if(has_post_thumbnail()) {
@@ -74,18 +73,20 @@ get_header(); ?>
                                 <img class="has-audio" src="<?php echo get_template_directory_uri() . '/_/img/audio/audio.png' ?>">
                             <?php } ?>
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
-                            <?php the_title('<h2 class="article-title">', '</h2>'); ?>
-                            <?php if(get_field('source')):
-                                echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
-                            endif; ?>
-                            <?php if(has_excerpt()) {
+                            <?php the_title('<h2 class="article-title">', '</h2>');
+                            if(has_excerpt()) {
                                 the_excerpt();
+                            }
+                            if(get_field('source')) {
+                                echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
+                            } else {
+                                $terms = get_the_term_list( $post->ID, 'news', '', ', ', '' ) ;
+                                echo '<p class="news-source">' . strip_tags($terms) . '</p>';
                             } ?>
                             </div>
                             </div>
                         </a></div>
-                    </li>
-                <?php } ?>
+                    </li><?php } ?>
                 </ul>
             </div>
                 <?php if ($wp_query->max_num_pages > 1) { ?>

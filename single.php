@@ -10,13 +10,16 @@
 
 <div id="main">
 	<article>
+		<?php if( current_user_can('editor') || current_user_can('administrator') && has_term('news-release','news') ) {  ?> 
+	    	<a class="email-template-link" href="<?php echo get_the_permalink() . '?template=email'; ?>">Email</a>
+		<?php } ?>
 		<div>
 			<header class="article-header">
 				<a href="/news" class="visit-news-hub"><div class="arrow-left"></div>Visit the News Hub</a>
 
 				<?php
 
-				if (isset($_GET['_ppp'])) {
+				if (isset($_GET['_ppp']) || get_post_status() == 'future' ) {
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 					$embargo_lift = date('F j, Y \a\t g:i A', strtotime($date_time . '+ 1 hour'));
 				    echo '<p class="embargo-notice">This article is embargoed until ' . $embargo_lift . ' EST.</p>';
@@ -139,8 +142,7 @@
 				    	if(get_sub_field('custom_media_contact')) {
 				        ?><div class="footer-media-contact">
 				       		<p class="mc-heading">Media Contact</p>
-				        	<p class="name"><?php the_sub_field('name'); ?></p>
-							<p class="title"><?php the_sub_field('title'); ?></p>
+				        	<p class="name"><?php the_sub_field('name'); ?><?php if(get_sub_field('title')) { echo ', '; } the_sub_field('title'); ?></p>
 							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
 							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
 						</div><?php
@@ -149,7 +151,7 @@
 							$user_id = $author['ID'];
 						?><div class="footer-media-contact">
 							<p class="mc-heading">Media Contact</p>
-							<p class="name"><?php the_author_meta( 'display_name', $user_id); ?>, <?php the_author_meta( 'title', $user_id ); ?></p>
+							<p class="name"><?php the_author_meta( 'display_name', $user_id); ?><?php if(get_the_author_meta( 'title', $user_id )) { echo ', '; } the_author_meta( 'title', $user_id ); ?></p>
 							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
 						</div><?php } endwhile; endif; ?>

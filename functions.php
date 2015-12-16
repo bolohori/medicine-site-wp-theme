@@ -790,6 +790,9 @@ add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
 // Remove Jetpack Sharing from excerpt
 function wusm_remove_share() {
     remove_filter( 'the_excerpt', 'sharing_display', 19 );
+    if ( get_query_var( 'template' ) == 'email' ) {
+    	remove_filter( 'the_content', 'sharing_display', 19 );
+    }
 }
 add_action( 'loop_start', 'wusm_remove_share' );
 
@@ -818,3 +821,19 @@ function wusm_preview_nonce_life() {
     return 60 * 60 * 24 * 24; // 24 days
 }
 add_filter( 'ppp_nonce_life', 'wusm_preview_nonce_life' );
+
+function wusm_register_query_var( $vars ) {
+    $vars[] = 'template';
+    return $vars;
+}
+add_filter( 'query_vars', 'wusm_register_query_var' );
+
+function wusm_url_rewrite_template() {
+    if ( get_query_var( 'template' ) == 'email' ) {
+        add_filter( 'template_include', function() {
+            return get_template_directory() . '/_/php/single-email.php';
+        });
+    }
+}
+add_action( 'template_redirect', 'wusm_url_rewrite_template' );
+
