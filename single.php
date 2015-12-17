@@ -24,7 +24,7 @@
 					$embargo_lift_pre = date('g:i a l, M j, Y', strtotime($date_time . '+ 1 hour'));
 					$embargo_lift = str_replace(array('am','pm'),array('a.m. ET','p.m. ET'),$embargo_lift_pre);
 				    echo '<p class="embargo-notice">Embargoed until ' . $embargo_lift . '</p>';
-				} 
+				}
 
 				if(has_term('news-release','news')) {
 					$term_link = get_term_link('news-release', 'news');

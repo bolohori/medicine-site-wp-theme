@@ -287,8 +287,9 @@ if( have_rows('media_contact') ):
 
 				if ( get_post_status() == 'future' ) {
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
-					$embargo_lift = date('F j, Y \a\t g:i A', strtotime($date_time . '+ 1 hour'));
-				    echo '<p style="background: #FFFF52;padding: 10px 15px;font-weight: 600;text-align: center;font-size: 16px;">This article is embargoed until ' . $embargo_lift . ' EST.</p>';
+					$embargo_lift_pre = date('g:i a l, M j, Y', strtotime($date_time . '+ 1 hour'));
+					$embargo_lift = str_replace(array('am','pm'),array('a.m. ET','p.m. ET'),$embargo_lift_pre);
+				    echo '<p style="background: #FFFF52;padding: 10px 15px;font-weight: 600;text-align: center;font-size: 16px;">Embargoed until ' . $embargo_lift . '</p>';
 				}
 				
 				?><h1 style="display:block;font-family:Georgia;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1><?php
