@@ -21,8 +21,9 @@
 
 				if (isset($_GET['_ppp']) || get_post_status() == 'future' ) {
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
-					$embargo_lift = date('F j, Y \a\t g:i A', strtotime($date_time . '+ 1 hour'));
-				    echo '<p class="embargo-notice">This article is embargoed until ' . $embargo_lift . ' EST.</p>';
+					$embargo_lift_pre = date('g:i a l, M j, Y', strtotime($date_time . '+ 1 hour'));
+					$embargo_lift = str_replace(array('am','pm'),array('a.m. ET','p.m. ET'),$embargo_lift_pre);
+				    echo '<p class="embargo-notice">Embargoed until ' . $embargo_lift . '</p>';
 				} 
 
 				if(has_term('news-release','news')) {
