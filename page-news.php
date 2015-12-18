@@ -3,232 +3,89 @@
 get_header();
 
 if (have_posts()) :
-	while (have_posts()) :
-		the_post();
-		$class = 'full-width';
-		$classes = '';
-		$margin = ' non-landing-page';
+    while (have_posts()) :
+        the_post(); ?>
 
-		if ( get_the_post_thumbnail() != '' ) {
-		
-			$class .= ' notch';
-			$margin = ' landing-page';
-			$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
-			echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
-			the_post_thumbnail('landing-page');
-			echo '</div>';
-		}
+    <div id="main" class="page-news clearfix">
 
-		if ( get_field( 'special_header' ) ) {
+        <?php get_template_part( '_/php/news/header' ); ?>
 
-			$class .= ' special-head';
+        <article>
 
-		}
+            <?php $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 1,
+                'category_name' => 'editors-picks',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'news',
+                        'field'    => 'term_id',
+                        'terms'    => array( 37 ),
+                        'operator' => 'NOT IN',
+                    ),
+                ),
+            );
+            $the_query = new WP_Query( $args );
 
-		if ( $class !== '' ) {
-			
-			$classes = " class='$class'";
+            // If there is an editor's pick, store the post ID to exclude it from the main query
+            $exclude = array();
 
-		}
-		?>
+            if ( $the_query->have_posts() ) { ?>
+            <div class="editors-pick">
+                <?php while ( $the_query->have_posts() ) {
+                    $the_query->the_post(); 
+                    $exclude[] = $post->ID; ?>
+                    <div>
+                        <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                                <?php the_post_thumbnail('news'); ?>
+                        </a>
+                        <div class="editors-pick-text">
+                            <p class="article-date"><?php the_time('M j, Y'); ?></p>
+                            <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                                <?php the_title('<h2>', '</h2>'); ?>
+                            </a>
+                            <?php if(has_excerpt()) {
+                                the_excerpt();
+                            } ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+            <?php } ?>
 
-		<div id="main" class="clearfix<?php echo $margin; ?>">
+            <?php $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 24,
+                'paged' => $paged,
+                'post__not_in' => $exclude
+            );
+            $the_query = new WP_Query( $args );
 
-		<div id="page-background"></div>
+            if ( $the_query->have_posts() ) { ?>
+            <div class="news-cards">
+                <ul class="clearfix">
+                <?php while ( $the_query->have_posts() ) {
+                    $the_query->the_post();
+                    
+                    get_template_part( '_/php/news/card' );
 
-		<div class="wrapper clearfix">
+                    } ?>
+                </ul>
+            </div>
+            <?php if ($the_query->max_num_pages > 1) { ?>
+                <div class="pagination">
+                    <div class="next-posts"><?php next_posts_link( 'Load More', $the_query->max_num_pages ); ?></div>
+                </div>
+            <?php }
+            }
+            wp_reset_postdata(); ?>
 
-		<div id="page-background-inner"></div>
+        </article>
 
-		<?php get_sidebar(); ?>
+    </div>
 
-		<article<?php echo $classes; ?>>
-		<?php
-		if(get_field('special_header')) {
-			$special_header = get_field('special_header');
-			echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
-		}
-		the_title('<h1>', '</h1>');
-		the_content();
-	endwhile;
-endif;
-
-
-// Queries to retrieve the data for the cards on the News page
-$args = array(
-	'news'           => 'news-release',
-	'posts_per_page' => 3
-);
-$news_releases = new WP_Query ( $args );
-
-$args = array(
-	'news'           => 'in-the-media',
-	'posts_per_page' => 3
-);
-$in_the_media = new WP_Query ( $args );
-
-$args = array(
-	'news'           => 'other-news',
-	'posts_per_page' => 3
-);
-$research_highlights = new WP_Query ( $args );
-
-$args = array(
-	'news'           => 'outlook',
-	'posts_per_page' => 3
-);
-$outlook = new WP_Query ( $args );
-
-$args = array(
-	'news'           => 'national-leader',
-	'posts_per_page' => 3
-);
-$national_leaders = new WP_Query ( $args );
-
-$args = array(
-	'news'           => 'campus-life',
-	'posts_per_page' => 1
-);
-$campus_life = new WP_Query ( $args );
-
-$args = array(
-	'news'           => 'washington-people',
-	'posts_per_page' => 1
-);
-$washington_people = new WP_Query ( $args );
-
-?>
-
-			<div class="card">
-				<h2><a href="/news/releases/">News Releases</a></h2>
-				<?php if ( $news_releases->have_posts() ) : ?>
-					<ul>
-						<?php while ( $news_releases->have_posts() ) : $news_releases->the_post(); ?>
-							<li>
-								<div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-								<a href="<?php $url = get_field('url'); echo $url; ?>"><?php the_title(); ?></a>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
-
-			<div class="card">
-				<h2><a href="/news/in-the-media/">In the Media</a></h2>
-				<?php if ( $in_the_media->have_posts() ) : ?>
-				<ul>
-					<?php while ( $in_the_media->have_posts() ) : $in_the_media->the_post(); ?>
-					<li>
-						<div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span> &middot; <?php the_field('source'); ?></div>
-						<a href="<?php the_field('url'); ?>"><?php the_title(); ?></a>
-					</li>
-					<?php endwhile; ?>
-				</ul>
-				<?php endif; ?>
-			</div>
-
-			<div class="card">
-				<h2><a href="/news/headlines/">Research Highlights</a></h2>
-				<?php if ( $research_highlights->have_posts() ) : ?>
-					<ul>
-						<?php while ( $research_highlights->have_posts() ) : $research_highlights->the_post(); ?>
-							<li>
-								<div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
-
-			<div class="card">
-				<h2><a href="/news/outlook/">Outlook Magazine</a></h2>
-				<?php if ( $outlook->have_posts() ) : ?>
-					<ul>
-						<?php while ( $outlook->have_posts() ) : $outlook->the_post(); ?>
-							<li>
-								<div class="dateline"><span class="date"><?php the_time('M Y'); ?></span></div>
-								<a href="<?php echo get_field('url'); ?>"><?php the_title(); ?></a>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
-
-			<div class="card full-width">
-				<h2><a href="/news/leaders/">National Leaders</a></h2>
-				<?php if ( $national_leaders->have_posts() ) : ?>
-					<ul>
-						<?php while ( $national_leaders->have_posts() ) : $national_leaders->the_post(); ?>
-							<li>
-								<a href="<?php $url = get_field('url'); echo $url; ?>"><?php the_title(); ?></a>
-								<?php the_excerpt(); ?>
-							</li>
-						<?php endwhile; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
-
-			<div class="card">
-				<h2><a href="/news/multimedia/">Campus Life</a></h2>
-				<?php if ( $campus_life->have_posts() ) : ?>
-					<?php while ( $campus_life->have_posts() ) : $campus_life->the_post();
-						$url = get_field('url') ? get_field('url') : get_permalink();
-						$link_text = 'See photos';
-					?>
-
-						<a href="<?php echo $url; ?>"><?php the_post_thumbnail( array(325, 218) ); ?></a>
-
-						<ul>
-							<li>
-								<div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-								<a href="<?php echo $url; ?>"><?php the_title(); ?></a>
-								<p><?php echo get_the_excerpt(); ?> <a class="more" href="<?php echo $url; ?>"><?php echo $link_text; ?></a></p>
-							</li>
-						</ul>
-					<?php endwhile; ?>
-				<?php endif; ?>
-			</div>
-
-			<div class="card">
-				<h2><a href="/news/washington-people/">Washington People</a></h2>
-				<?php if ( $washington_people->have_posts() ) : ?>
-					<?php while ( $washington_people->have_posts() ) : $washington_people->the_post(); ?>
-						<a href="<?php echo get_field('url'); ?>"><?php the_post_thumbnail( array(325, 218) ); ?></a>
-		
-						<ul>
-							<li>
-								<div class="dateline"><span class="date"><?php the_time('M j, Y'); ?></span></div>
-								<a href="<?php echo get_field('url'); ?>"><?php the_title(); ?></a>
-								<p><?php echo get_the_excerpt(); ?> <a class="more" href="<?php echo get_field('url'); ?>">Read more</a></p>
-							</li>
-						</ul>
-					<?php endwhile; ?>
-				<?php endif; ?>
-			</div>
-
-			<div class="card">
-				<h2><a href="/news/announcements/">Announcements</a></h2>
-				<ul>
-					<li><p>Updates on campus events, policy changes, road and building construction, calls for papers and more. <a class="more" href="/news/announcements">See announcements</a></p></li>
-				</ul>
-			</div>
-
-			<div class="card">
-				<h2><a href="http://news.wustl.edu/run/Pages/Record.aspx">The Record</a></h2>
-				<ul>
-					<li><p>University-wide information including research, achievements and campus events. <a class="more" href="http://news.wustl.edu/run/Pages/Record.aspx">Go to The Record</a></p></li>
-				</ul>
-			</div>
-
-			<p class="feature-photo-credit disclaimer">Feature Photo: Jay Fram</p>
-
-		</article>
-
-	</div>
-
-</div>
-
-
+<?php endwhile;
+endif; ?>
 
 <?php get_footer(); ?>

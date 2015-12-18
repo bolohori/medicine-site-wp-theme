@@ -139,9 +139,13 @@ jQuery(document).ready(function($) {
 
 
     $("#search-form label").inFieldLabels({ fadeDuration: 0 });
+    $(".search-news label").inFieldLabels({ fadeDuration: 0 });
     $('#search-btn').attr('disabled', 'disabled');
+    $('#search-btn-news').attr('disabled', 'disabled');
     $searchBox = $('#search-box');
     $searchBtn = $('#search-btn');
+    $searchBoxNews = $('#search-box-news');
+    $searchBtnNews = $('#search-btn-news');
     $searchBox.keyup(function() {
         var empty = false;
         if ($searchBox.val() == '') {
@@ -153,4 +157,88 @@ jQuery(document).ready(function($) {
             $searchBtn.removeAttr('disabled');
         }
     });
+    $searchBoxNews.keyup(function() {
+        var emptyNews = false;
+        if ($searchBoxNews.val() == '') {
+            emptyNews = true;
+        }
+        if (emptyNews) {
+            $searchBtnNews.attr('disabled', 'disabled');
+        } else {
+            $searchBtnNews.removeAttr('disabled');
+        }
+    });
 });
+
+function next_posts() {
+    var counter = 2;
+    jQuery(".next-posts a").click(function(a) {
+        jQuery.get(jQuery(this).attr("href"), function(a) {
+            jQuery(".pagination .next-posts a", a).length > 0 ? jQuery(".next-posts a").attr("href", jQuery(".pagination .next-posts a", a).attr("href")) : jQuery(".pagination").remove(), jQuery(".news-cards").append(jQuery(".news-cards ul", a).addClass('page' + counter))
+        }).done(function() { 
+            jQuery('.page' + counter).imagesLoaded().then(function(){
+                jQuery('.page' + counter + ' .card').matchHeight(); counter++;
+            });
+        } ), a.preventDefault()
+    })
+}
+
+jQuery(document).ready(function($) {
+    $('.news-filters ul > li.parent > a').click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $('.news-filters .open').not($(this)).removeClass('open');
+        $(this).toggleClass('open');
+    });
+    $('.news-filters > .search > .search-btn').click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $('.news-filters .open').not($('.search-news')).removeClass('open');
+        $('.news-filters .visible').removeClass('visible');
+        $('.news-filters').toggleClass('search-open');
+        $('.search-news').toggleClass('open');
+        if($('.search-news').hasClass('open')) {
+            $('#search-box-news').focus();
+        }
+    });
+    $('.news-filters .collapse').click(function(e) {
+        e.stopPropagation();
+        $('.news-filters .collapse').toggleClass('visible');
+        jQuery('.news-filters .open').removeClass('open');
+    });
+    $('.next-posts').length > 0 && next_posts()
+});
+
+jQuery(document).click( function(e) {
+    if( !jQuery(e.target).closest(".open").length > 0 ) {
+        jQuery('.news-filters .open').removeClass('open');
+    }
+});
+
+
+
+jQuery.fn.imagesLoaded = function () {
+
+    // Edit: in strict mode, the var keyword is needed
+    var $imgs = this.find('img[src!=""]');
+    // if there's no images, just return an already resolved promise
+    if (!$imgs.length) {return jQuery.Deferred().resolve().promise();}
+
+    // for each image, add a deferred object to the array which resolves when the image is loaded (or if loading fails)
+    var dfds = [];  
+    $imgs.each(function(){
+
+        var dfd = jQuery.Deferred();
+        dfds.push(dfd);
+        var img = new Image();
+        img.onload = function(){dfd.resolve();}
+        img.onerror = function(){dfd.resolve();}
+        img.src = this.src;
+
+    });
+
+    // return a master promise object which will resolve when all the deferred objects have resolved
+    // IE - when all the images are loaded
+    return jQuery.when.apply(jQuery,dfds);
+
+}

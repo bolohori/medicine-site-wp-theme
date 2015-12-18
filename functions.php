@@ -126,6 +126,7 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 145, 200, true );
 add_image_size( 'news', 600, 441, true );
+add_image_size( 'news-email', 600, 9999 );
 
 // Image sizes (Settings / Media)
 update_option('medium_size_w', 300);
@@ -233,7 +234,7 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * them if they aren't logged in
 		 */
 		wp_deregister_style( 'open-sans' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600' );
+		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600|Open+Sans+Condensed:700' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 
@@ -244,6 +245,38 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
+
+
+/*
+ * Switch "Posts" to "News"
+ */
+function wusm_change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'News';
+    $submenu['edit.php'][5][0] = 'News';
+    echo '';
+}
+function wusm_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'News';
+    $labels->singular_name = 'News';
+    $labels->add_new = 'Add Article';
+    $labels->add_new_item = 'Add Article';
+    $labels->edit_item = 'Edit Article';
+    $labels->new_item = 'News';
+    $labels->view_item = 'View Article';
+    $labels->search_items = 'Search Articles';
+    $labels->not_found = 'No articles found';
+    $labels->not_found_in_trash = 'No articles found in Trash';
+    $labels->all_items = 'All Articles';
+    $labels->menu_name = 'News';
+    $labels->name_admin_bar = 'Article';
+}
+add_action( 'admin_menu', 'wusm_change_post_label' );
+add_action( 'init', 'wusm_change_post_object' );
+
 
 /*
  * Add "Clear" button to ACF Location fields
@@ -318,6 +351,12 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 						'block'	   => 'div',
 						'classes'  => 'callout',
 						'wrapper'  => true
+					),
+					array(
+						'title'	   => 'Name',  
+						'block'    => 'p',  
+						'classes'  => 'name',
+						'wrapper'  => false,
 					),
 					array(
 						'title'    => 'Disclaimer',
@@ -648,11 +687,139 @@ function get_top_parent_page_id() {
 	}
 }
 
+
+// NEWS
+// Add Phone Number to User Profiles
+function new_contactmethods( $contactmethods ) {
+   $contactmethods['phone'] = 'Phone Number'; // Add Phone Number
+   $contactmethods['title'] = 'Title'; // Add Phone Number
+
+   return $contactmethods;
+}
+add_filter('user_contactmethods','new_contactmethods',10,1);
+
+// Show 24 posts per page on archive pages
+function number_of_posts_on_archive($query){
+    if (is_category() || is_tax('news') || is_author()) {
+		$query->set('posts_per_page', 24);
+   }
+    return $query;
+}
+add_filter('pre_get_posts', 'number_of_posts_on_archive');
+
+// Add field for photo credits
+function add_image_credit( $form_fields, $post ) {
+	$form_fields['credit'] = array(
+		'label' => 'Credit',
+		'input' => 'text',
+		'value' => get_post_meta( $post->ID, 'image_credit', true ),
+	);
+
+	return $form_fields;
+}
+add_filter( 'attachment_fields_to_edit', 'add_image_credit', 10, 2 );
+
+// Save field for photo credits
+function image_credit_save( $post, $attachment ) {
+	if( isset( $attachment['credit'] ) )
+		update_post_meta( $post['ID'], 'image_credit', $attachment['credit'] );
+
+	return $post;
+}
+add_filter( 'attachment_fields_to_save', 'image_credit_save', 10, 2 );
+
+// Add image credits to images without captions
+function ic_wrap_image( $content ) {
+	if (is_single()) {
+		global $post;
+		// Regex to find all <img ... > tags
+		$ic_url_regex = "/\<img [^>]*src=\"([^\"]+)\"[^>]*>/";
+
+		// If we get any hits then put the code before and after the img tags
+		if ( preg_match_all( $ic_url_regex , $content, $ic_matches ) ) {;
+		    for ( $ic_count = 0; $ic_count < count( $ic_matches[0] ); $ic_count++ ) {
+				// Old img tag
+	            $ic_old = $ic_matches[0][$ic_count];
+		        if( strpos($ic_old, 'align')) {
+
+		            if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
+		            	$creditID = $found[1];
+					}
+
+					if (preg_match("/align(\w+)/", $ic_old, $found)) {
+		            	$alignment = $found[0];
+					}
+
+					$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+					if (!empty($creditName)) {
+						$credit = '<span class="image-credit">' . $creditName . '</span>';
+					}
+
+		            // Get the img URL, it's needed for the button code
+		            $ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
+		            $ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
+
+		            // Put together the image credit code to place before the img tag
+		            $ic_credit_code = '<span class="credit-container ' . $alignment . '">';
+
+		            if (!empty($creditName)) {
+						// Replace before the img tag in the new string
+		            	$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
+		            	// After the img tag
+		            	$ic_new = preg_replace( '/$/' , $credit . '</span>' , $ic_new );
+					} 
+					else {
+						$ic_new = $ic_old;
+					}
+
+		            // make the substitution
+		            $content = str_replace( $ic_old, $ic_new , $content );
+		        }
+	        }
+	    }	
+	}
+	return $content;
+}
+add_filter( 'the_content' , 'ic_wrap_image' );
+
+// Customize the_archive_title used in archive.php
+add_filter( 'get_the_archive_title', function ($title) {
+    if ( is_category( 'editors-picks' ) ) {
+    	$title = single_cat_title( '', false );
+    } elseif ( is_category() ) {
+    	$title = single_cat_title( 'Topic: ', false );
+    } elseif ( is_tag() ) {
+    	$title = single_tag_title( 'Tag: ', false );
+    } elseif ( is_tax('news') ) {
+    	$title = single_tag_title( 'Source: ', false );
+    }
+    return $title;
+});
+
 // Remove Yoast SEO from posts
 function wusm_remove_metabox() {
 	remove_meta_box( 'wpseo_meta', 'post', 'normal' );
 }
 add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
+
+// Remove Jetpack Sharing from excerpt
+function wusm_remove_share() {
+    remove_filter( 'the_excerpt', 'sharing_display', 19 );
+    if ( get_query_var( 'template' ) == 'email' ) {
+    	remove_filter( 'the_content', 'sharing_display', 19 );
+    }
+}
+add_action( 'loop_start', 'wusm_remove_share' );
+
+// Remove title from Jetpack Related Posts
+function jetpackme_remove_rp() {
+    if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+        $jprp = Jetpack_RelatedPosts::init();
+        $callback = array( $jprp, 'filter_add_target_to_dom' );
+        remove_filter( 'the_content', $callback, 40 );
+    }
+}
+add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 
 // Set height of boilerplate field on news stories
 function admin_css(){ ?>
@@ -663,3 +830,28 @@ function admin_css(){ ?>
     </style>
 <?php }
 add_action( 'admin_head', 'admin_css' );
+
+// Preview URLs for embargoed articles will expire after 24 days
+function wusm_preview_nonce_life() {
+    return 60 * 60 * 24 * 24; // 24 days
+}
+add_filter( 'ppp_nonce_life', 'wusm_preview_nonce_life' );
+
+// NEWS RELEASE EMAIL
+// Add query var for email template
+function wusm_register_query_var( $vars ) {
+    $vars[] = 'template';
+    return $vars;
+}
+add_filter( 'query_vars', 'wusm_register_query_var' );
+
+// Switch to email template if query var is present in URL
+function wusm_url_rewrite_template() {
+    if ( get_query_var( 'template' ) == 'email' ) {
+        add_filter( 'template_include', function() {
+            return get_template_directory() . '/_/php/news/email.php';
+        });
+    }
+}
+add_action( 'template_redirect', 'wusm_url_rewrite_template' );
+

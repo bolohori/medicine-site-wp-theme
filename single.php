@@ -5,130 +5,185 @@
 	if (have_posts()) :
 		while (have_posts()) :
 			the_post();
-			$class = '';
-			$classes = '';
-			$margin = ' non-landing-page';
 
-			
-
-			if ( get_the_post_thumbnail() != '' && !has_term( 'campus-life', 'news' )  && !has_term( 'washington-people', 'news' ) && !has_term( 'national-leader', 'news' ) && !has_term( 'other-news', 'news' ) && !has_term( 'profiles', 'news' ) ) {
-
-				$class .= ' notch';
-				$margin = ' landing-page';
-				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
-				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
-				the_post_thumbnail('landing-page');
-				echo '</div>';
-
-			}
-
-			if ( get_field( 'special_header' ) ) {
-
-				$class .= ' special-head';
-
-			}
-
-			if ( $class !== '' ) {
-
-				$classes = " class ='$class'";
-
-			}
 ?>
 
-<div id="main" class="clearfix<?php echo $margin; ?>">
+<div id="main">
+	<article>
+		<?php if( current_user_can('editor') || current_user_can('administrator') && has_term('news-release','news') ) {  ?> 
+	    	<a class="email-template-link" href="<?php echo get_the_permalink() . '?template=email'; ?>">Email</a>
+		<?php } ?>
+		<div>
+			<header class="article-header">
+				<a href="/news" class="visit-news-hub"><div class="arrow-left"></div>Visit the News Hub</a>
 
-	<div id="page-background"></div>
+				<?php
 
-	<div class="wrapper clearfix">
-
-		<div id="page-background-inner"></div>
-
-		<nav id="left-col">
-			<?php if( ! get_field( 'hide_nav' ) ) { ?>
-			<ul id="left-nav">
-				<li class="top_level_page"><a href="/news">News</a></li>
-				<li class="page_item<?php if( has_term( 'news-release', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/releases/">News Releases</a></li>
-				<li class="page_item<?php if( has_term( 'in-the-media', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/press/">In the Media</a></li>
-				<li class="page_item<?php if( has_term( 'other-news', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/headlines/">Research Highlights</a></li>
-				<li class="page_item"><a href="/news/biomed-radio/">BioMed Radio Podcast</a></li>
-				<li class="page_item<?php if( has_term( 'national-leader', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/leaders/">National Leaders</a></li>
-				<li class="page_item<?php if( has_term( 'washington-people', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/washington-people/">Washington People</a></li>
-				<li class="page_item<?php if( has_term( 'campus-life', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/multimedia/">Campus Life</a></li>
-				<li class="page_item<?php if( has_term( 'outlook', 'news' ) ) { echo " current_page_item"; } ?>"><a href="/news/outlook-magazine/">Outlook Magazine</a></li>
-				<li class="page_item"><a href="/news/publications/">Publications</a></li>
-				<li class="page_item<?php if( $post->post_type == 'announcements' ) { echo " current_page_item"; } ?>"><a href="/news/announcements/">Announcements</a></li>
-			</ul>
-			<?php } ?>
-		</nav>
-
-		<article<?php echo $classes; ?>>
-			<?php
-				if(get_field('special_header')) {
-					$special_header = get_field('special_header');
-					echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
+				if (isset($_GET['_ppp']) || get_post_status() == 'future' ) {
+					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
+					$embargo_lift_pre = date('g:i a l, M j, Y', strtotime($date_time . '+ 1 hour'));
+					$embargo_lift = str_replace(array('am','pm'),array('a.m. ET','p.m. ET'),$embargo_lift_pre);
+				    echo '<p class="embargo-notice">Embargoed until ' . $embargo_lift . '</p>';
 				}
-					the_title('<h1>', '</h1>');
-					add_filter( 'excerpt_more', function() { return ''; } );
-					
-					if( !has_term( 'campus-life', 'news' ) && !has_term( 'national-leader', 'news' ) && !has_term( 'washington-people', 'news' ) && !has_term( 'outlook', 'news' ) ) {
 
-						echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+				if(has_term('news-release','news')) {
+					$term_link = get_term_link('news-release', 'news');
+					echo '<div class="news-type"><a href="' . esc_url( $term_link ) . '">News Release</a></div>';
+				} 
+				
+				the_title('<h1>', '</h1>');
+				
+				if(has_excerpt()):
+					echo "<p class='subhead'>" . get_the_excerpt() . "</p>";
+				endif;
 
-					}
-					
-					echo "<p class='custom-byline'>";
-					the_date();
-					
-					if( get_field( 'author' ) ) {
-					
-						echo " | " . get_field('author');
+				echo "<p class='meta-header'>";
 
-					}
-
-					echo "</p>";
-
-					if( has_term( 'other-news', 'news' ) || has_term( 'profiles', 'news' ) && has_post_thumbnail() ) {
-						the_post_thumbnail();
-						$get_description = get_post(get_post_thumbnail_id())->post_excerpt;
-						if(!empty($get_description)){
-							echo '<p class="featured-image-caption">' . $get_description . '</p>';
+				if( have_rows('article_author') ):
+				$author = array();
+					while ( have_rows('article_author') ) : the_row();
+						if(get_sub_field('custom_author')) {
+							$author[] = get_sub_field('name');
+						} elseif(get_sub_field('author')) {
+				        	$wp_author = get_sub_field('author');
+							$user_id = $wp_author['ID'];
+							$author[] = '<a href="' . get_author_posts_url($user_id) . '">' . get_the_author_meta( 'display_name', $user_id) . '</a>';
 						}
+					endwhile;
+
+					switch (count($author)) {
+					    case 0:
+					        $result = '';
+					        break;
+					    case 1:
+					        $result = 'by ' . reset($author) . '<span class="meta-separator">&bull;</span>';
+					        break;
+					    default:
+					        $last = array_pop($author);
+					        $result = 'by ' . implode(', ', $author) . ' & ' . $last . '<span class="meta-separator">&bull;</span>';
+					        break;
 					}
+        			echo $result;
+        		endif;
 
+        		the_date();
+				
+				echo "</p>";
 
-					if( get_the_content() ) {
-					
-						the_content();
-					
-					} else {
-                    	
-                        $url = get_field( 'url' );
+				if(function_exists( 'sharing_display') && !isset($_GET['_ppp'])) {
+				    sharing_display( '', true );
+				}
 
-						if( has_term( 'news-release', 'news' ) ) {
-
-                            $button_text = "See News Release";
-
-                        } elseif($post->post_type == 'announcement') {
-
-							$button_text = "View Announcement";
-
-						} else {
-
-							$button_text = "View Article";
-
+				if(has_post_thumbnail()) {
+					if(has_term('national-leader','news')) { ?>
+						<div class="featured-image-headshot">
+					<?php }
+						the_post_thumbnail('large');
+						$creditID = get_post_thumbnail_id();
+						$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+						$credit = '';
+						if (!empty($creditName)) {
+							$credit = '<span class="image-credit">' . $creditName . '</span>';
 						}
-						the_excerpt();
-						echo "<br><a href=\"$url\"><button class=\"single-link\">$button_text</button></a>";
-					}
-				endwhile;
-			endif;
-			?>
-		</article>
+						echo $credit;
+						$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+						if(!empty($post_thumbnail_caption)) {
+							echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';
+						}
+					if(has_term('national-leader','news')) { ?>
+						</div>
+					<?php }
+				}
 
-		<?php if( !has_term( 'campus-life', 'news' ) && !has_term( 'national-leader', 'news' ) ) { get_sidebar( 'right' ); } ?>
+				if( get_field('audio') ) { ?>
+					<div id="article-audio" class="audio-container">
+					<div class="audio-thumbnail">
+						<img src="<?php echo get_stylesheet_directory_uri() . '/_/img/audio/biomedradio.jpg'; ?>">
+					</div>
+					<div class="audio-player">
+						<?php echo wp_audio_shortcode( array( 'src' => get_field('audio') ) ); ?>
+					</div>
+					</div>
+				<?php } ?>
+			</header>
 
+			<?php the_content(); ?>
+			
+			<footer class="article-footer clearfix">
+				<?php if(get_field('boilerplate')) { ?>
+				<div class="boilerplate">
+					<?php the_field('boilerplate'); ?>
+				</div>
+				<?php }
+
+				$has_author = '';
+				$has_media_contact = '';
+				$rows = get_field( 'article_author' );
+				if($rows[0]['author']) {
+					$has_author = $rows[0]['author'];
+				}
+				$rows_mc = get_field( 'media_contact' );
+				if($rows_mc[0]['media_contact']) {
+					$has_media_contact = $rows_mc[0]['media_contact'];
+				}
+
+				if( $has_author || $has_media_contact ): ?>				
+				<div class="bio-wrapper">
+				<?php if( have_rows('article_author') ):
+				    while ( have_rows('article_author') ) : the_row();
+				    	if(get_sub_field('custom_author')) {
+				        ?><div class="footer-author">
+				        	<p class="name"><?php the_sub_field('name'); ?></p>
+							<p><?php the_sub_field('bio'); ?></p>
+							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
+							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
+						</div><?php
+						} elseif(get_sub_field('author')) {
+				        	$author = get_sub_field('author');
+							$user_id = $author['ID'];
+						?><div class="footer-author">
+							<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
+							<p><?php the_author_meta( 'description', $user_id ); ?></p>
+							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
+							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
+						</div><?php } endwhile; endif;
+
+				if( have_rows('media_contact') ):
+				    while ( have_rows('media_contact') ) : the_row();
+				    	if(get_sub_field('custom_media_contact')) {
+				        ?><div class="footer-media-contact">
+				       		<p class="mc-heading">Media Contact</p>
+				        	<p class="name"><?php the_sub_field('name'); ?><?php if(get_sub_field('title')) { echo ', '; } the_sub_field('title'); ?></p>
+							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
+							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
+						</div><?php
+						} elseif(get_sub_field('media_contact')) {
+				        	$author = get_sub_field('media_contact');
+							$user_id = $author['ID'];
+						?><div class="footer-media-contact">
+							<p class="mc-heading">Media Contact</p>
+							<p class="name"><?php the_author_meta( 'display_name', $user_id); ?><?php if(get_the_author_meta( 'title', $user_id )) { echo ', '; } the_author_meta( 'title', $user_id ); ?></p>
+							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
+							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
+						</div><?php } endwhile; endif; ?>
+				</div>
+				<?php endif; ?>
+			</footer>
+		</div>
+	</article>
+	<div class="footer-related clearfix">
+		<h3>Related Articles</h3>
+		<?php
+		if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+		    echo do_shortcode( '[jetpack-related-posts]' );
+		}
+		?>
 	</div>
-
 </div>
+
+<?php
+		endwhile;
+	endif;
+?>
 
 <?php get_footer(); ?>

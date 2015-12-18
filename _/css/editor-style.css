@@ -20,19 +20,6 @@ a:hover {
 	color: #555;
 }
 
-/* Custom text-selection colors (remove any text shadows:  http://twitter.com/miketaylr/status/12228805301) */
-::-moz-selection {
-	background: #fcd700;
-	color: #fff;
-	text-shadow: none;
-}
-
-::selection {
-	background: #fcd700;
-	color: #fff;
-	text-shadow: none;
-}
-
 /*  j.mp/webkit-tap-highlight-color */
 a:link {
 	-webkit-tap-highlight-color: #fcd700;
@@ -304,3 +291,64 @@ a.wusm-button:hover {
 .rss:hover { background:url(../img/rss_on.png);}
 .reader { background:url(../img/reader.png);}
 .reader:hover { background:url(../img/reader_on.png);}
+
+
+
+
+body.post-type-post {
+	width: auto;
+	max-width: 700px;
+	margin: 20px 15px;
+}
+body.post-type-post.content h2 {
+	font-size: 24px;
+	margin: 20px 0 0;
+	font-weight: 700;
+	line-height: 1.5;
+}
+body.post-type-post.content h3 {
+	margin: 55px 0 25px;
+	line-height: 1.5;
+}
+body.post-type-post.content p {
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 36px;
+	margin: 0 0 35px;
+}
+body.post-type-post.acf_content p {
+	font-size: 14px;
+	line-height: 1.5;
+}
+body.post-type-post.content ul,
+body.post-type-post.content ol {
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 36px;
+	margin: 0 0 35px 20px;
+	padding: 0;
+}
+body.post-type-post.content blockquote {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-style: italic;
+	font-size: 32px;
+	max-width: 700px;
+	text-align: center;
+	line-height: 40px;
+	margin: 0;
+}
+body.post-type-post.content blockquote p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 32px;
+	line-height: 40px;
+}
+body.post-type-post.content blockquote .name {
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	margin: -20px auto 45px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+}
+
