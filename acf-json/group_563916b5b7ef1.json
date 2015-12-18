@@ -42,7 +42,8 @@
                         "id": ""
                     },
                     "role": [
-                        "editor"
+                        "editor",
+                        "administrator"
                     ],
                     "allow_null": 1,
                     "multiple": 0
@@ -220,7 +221,8 @@
                         "id": ""
                     },
                     "role": [
-                        "editor"
+                        "editor",
+                        "administrator"
                     ],
                     "allow_null": 1,
                     "multiple": 0
@@ -396,5 +398,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1449606492
+    "modified": 1450476924
 }

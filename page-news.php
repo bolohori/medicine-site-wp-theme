@@ -27,7 +27,7 @@ if (have_posts()) :
             );
             $the_query = new WP_Query( $args );
 
-            // If there is an editor's pick, store the post ID to exclude it from the main query
+            // If there is an editors' pick, store the post ID to exclude it from the main query
             $exclude = array();
 
             if ( $the_query->have_posts() ) { ?>
