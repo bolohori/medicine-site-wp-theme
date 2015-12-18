@@ -1,4 +1,4 @@
-<header>
+<header class="clearfix">
             
     <h1>News</h1>
 
@@ -8,7 +8,7 @@
         <li><a href="/news/announcements/">Announcements</a></li>
     </ul>
 
-    <div class="news-filters clearfix">
+<!--     <div class="news-filters clearfix">
         <div class="collapse">Filter</div>
         <ul>
             <li<?php if(is_page('news')) { echo ' class="active"'; } ?>><a href="/news">All</a></li>
@@ -35,6 +35,6 @@
                 <button type="submit" class="submit" id="search-btn-news" onclick="document.getElementById('search-form-news').submit();"><img alt="Search" src="<?php echo get_template_directory_uri(); ?>/_/img/search-news-input.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/search-news-input.png';this.onerror=null;"></button>
             </form>
         </div>
-    </div>
+    </div> -->
 
 </header>

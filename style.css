@@ -2309,7 +2309,6 @@ a.news-title {
 	margin: 15px;
 	padding: 20px;
 	border-radius: 3px;
-	height: 350px;
 	position: relative;
 	text-align: left;
 	background: #fff;
@@ -2920,6 +2919,7 @@ a.news-title {
 .news-cards .article-title {
 	display: block;
 	margin-bottom: 10px;
+	line-height: 1.5;
 }
 .news-cards li h2 {
 	font-size: 18px;
@@ -2929,6 +2929,7 @@ a.news-title {
 .news-cards p {
 	margin: 0;
 	color: #333;
+	line-height: 1.7;
 }
 .news-cards .article-date {
 	text-transform: uppercase;

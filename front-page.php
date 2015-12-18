@@ -183,7 +183,7 @@
 					$title = get_the_title();
 					$excerpt = get_the_excerpt( );
 
-					$slider .= "<li class='clearfix'><div class='spotlight-individual clearfix'>";
+					$slider .= "<li class='clearfix'><div class='spotlight-individual card clearfix'>";
 					$slider .= ( $url ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
 					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'headshot', array('class' => 'headshot') ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='headshot'>";
 					$slider .= ( $url ) ? "</a>" : "";
