@@ -45,7 +45,7 @@
             {
                 "param": "post_taxonomy",
                 "operator": "==",
-                "value": "news:national-leader"
+                "value": "news:national-leaders"
             }
         ],
         [

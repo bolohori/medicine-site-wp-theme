@@ -155,7 +155,7 @@
 				$slider = "";
 				$captions = "";
 				$args = array( 
-					'news'           => 'national-leader',
+					'news'           => 'national-leaders',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);
