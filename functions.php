@@ -835,7 +835,7 @@ add_filter( 'query_vars', 'wusm_register_query_var' );
 function wusm_url_rewrite_template() {
     if ( get_query_var( 'template' ) == 'email' ) {
         add_filter( 'template_include', function() {
-            return get_template_directory() . '/_/php/single-email.php';
+            return get_template_directory() . '/_/php/news/email.php';
         });
     }
 }

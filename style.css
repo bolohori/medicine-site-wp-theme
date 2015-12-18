@@ -2011,8 +2011,6 @@ a.news-title {
 
 	.billboard-slider li img {
 		display: block;
-		max-width: 125%;
-		margin-left: -12.5%;
 		height: auto;
 	}
 
@@ -2834,7 +2832,8 @@ a.news-title {
 	margin: 0 auto;
 }
 .news-type-title {
-	max-width: 960px;
+	max-width: 940px;
+	width: 88%;
 	margin: 0 auto 15px;
 }
 .news-type-title p {
