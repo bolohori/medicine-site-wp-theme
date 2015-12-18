@@ -782,6 +782,20 @@ function ic_wrap_image( $content ) {
 }
 add_filter( 'the_content' , 'ic_wrap_image' );
 
+// Customize the_archive_title used in archive.php
+add_filter( 'get_the_archive_title', function ($title) {
+    if ( is_category( 'editors-picks' ) ) {
+    	$title = single_cat_title( '', false );
+    } elseif ( is_category() ) {
+    	$title = single_cat_title( 'Topic: ', false );
+    } elseif ( is_tag() ) {
+    	$title = single_tag_title( 'Tag: ', false );
+    } elseif ( is_tax('news') ) {
+    	$title = single_tag_title( 'Source: ', false );
+    }
+    return $title;
+});
+
 // Remove Yoast SEO from posts
 function wusm_remove_metabox() {
 	remove_meta_box( 'wpseo_meta', 'post', 'normal' );
