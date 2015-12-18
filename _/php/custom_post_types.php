@@ -60,7 +60,7 @@ function create_custom_post_types() {
 		'show_ui'             => true, 
 		'show_in_menu'        => true, 
 		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'in-the-news' ),
+		'rewrite'             => array( 'slug' => 'inthenews' ),
 		'capability_type'     => 'post',
 		'hierarchical'        => false,
 		'menu_position'       => 5,

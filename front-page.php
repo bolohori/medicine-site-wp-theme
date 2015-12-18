@@ -73,12 +73,12 @@
 <section class="news">
 	<div class="news-wrap">
 		<div class="news-left slider-wrapper theme-default">
-			<div class="all-news"><a href="news/in-the-media">SEE ALL</a></a></div>
-			<h1 class="news-header">In the Media</h1>
+			<div class="all-news"><a href="news/in-the-news">SEE ALL</a></a></div>
+			<h1 class="news-header">In the News</h1>
 			<ul class="news-list">
 <?php
 				$args = array(
-					'news'           => 'in-the-media',
+					'news'           => 'in-the-news',
 					'posts_per_page' => 3,
 					'orderby'        => 'date'
 				);

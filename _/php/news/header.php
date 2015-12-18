@@ -20,8 +20,8 @@
                 <ul>
                     <li><a href="/news/type/news-release">News Releases</a></li>
                     <li><a href="/news/type/outlook-magazine">Outlook Magazine</a></li>
-                    <li><a href="/news/type/national-leader">Profiles</a></li>
-                    <li><a href="/news/type/in-the-media">In the News</a></li>
+                    <li><a href="/news/type/profiles">Profiles</a></li>
+                    <li><a href="/news/type/in-the-news">In the News</a></li>
                     <li><a href="/news/audio">Audio</a></li>
                     <li><a href="/news/type/campus-life">Photos &amp; Video</a></li>
                 </ul>

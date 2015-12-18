@@ -30,7 +30,7 @@
             {
                 "param": "post_taxonomy",
                 "operator": "==",
-                "value": "news:in-the-media"
+                "value": "news:in-the-news"
             }
         ]
     ],
