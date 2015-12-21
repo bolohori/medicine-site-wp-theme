@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2015.12.17.0
+Version:	 2015.12.21.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -2632,7 +2632,7 @@ a.news-title {
 .news-filters .search-news input {
 	margin: 0;
 	padding: 8px 30px 8px 8px;
-	width: 387px;
+	width: 300px; /* Switch back to 387px when topics get added back in */
 	height: 21px;
 	border-radius: 3px;
 	outline: 0;
@@ -2728,9 +2728,9 @@ a.news-title {
 	.news-filters > ul {
 		margin-right: 0;
 	}
-	.news-filters .parent:last-child ul {
+	/*.news-filters .parent:last-child ul {
 		right: 0;
-	}
+	} Uncomment when adding topics filter back in */
 }
 @media screen and (max-width: 360px) {
 	.news-filters .parent {
@@ -2740,7 +2740,7 @@ a.news-title {
 }
 .page-news article {
 	float: none;
-	padding: 30px 0;
+	padding: 35px 0;
 	width: 100%;
 	max-width: 100%;
 }
@@ -2749,20 +2749,27 @@ a.news-title {
 		background: none;
 	}
 }
+@media screen and (max-width: 700px) {
+	.page-news article {
+		padding: 6% 0;
+	}
+}
 .editors-pick {
-	max-width: 960px;
+	max-width: 940px;
+	width: 88%;
 	margin: 0 auto;
 }
-.editors-pick > div {
-	margin: 10px 10px 15px;
+.editors-pick div.ep-card {
+	margin: 0 0 15px;
 	border-radius: 3px;
 	background: #fff;
 	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
 	-webkit-transition: box-shadow 0.2s, transform 0.2s;
 	transition: box-shadow 0.2s, transform 0.2s;
 }
-.editors-pick > div:hover {
+.editors-pick div.ep-card:hover {
 	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
 	transform: translateY(-2px);
 }
@@ -2789,9 +2796,12 @@ a.news-title {
 	font-size: 18px;
 	font-weight: 600;
 	margin: 0 0 10px;
+	line-height: 1.5;
 }
 .editors-pick-text p {
 	margin: 0;
+	color: #333;
+	line-height: 1.7;
 }
 @media screen and (max-width: 900px) {
 	.editors-pick img {
@@ -2811,7 +2821,7 @@ a.news-title {
 	}
 	.editors-pick-text {
 		width: auto;
-		padding: 0;
+		padding: 0 0 24px;
 		float: none;
 	}
 	.editors-pick-text h2 {

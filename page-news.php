@@ -35,20 +35,18 @@ if (have_posts()) :
                 <?php while ( $the_query->have_posts() ) {
                     $the_query->the_post(); 
                     $exclude[] = $post->ID; ?>
-                    <div>
-                        <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                <?php the_post_thumbnail('news'); ?>
-                        </a>
+                    <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+                    <div class="ep-card">
+                        <?php the_post_thumbnail('news'); ?>
                         <div class="editors-pick-text">
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
-                            <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-                                <?php the_title('<h2>', '</h2>'); ?>
-                            </a>
+                            <?php the_title('<h2>', '</h2>'); ?>
                             <?php if(has_excerpt()) {
                                 the_excerpt();
                             } ?>
                         </div>
                     </div>
+                    </a>
                 <?php } ?>
             </div>
             <?php } ?>
