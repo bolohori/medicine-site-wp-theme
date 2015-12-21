@@ -70,7 +70,7 @@
 				
 				echo "</p>";
 
-				if(function_exists( 'sharing_display') && !isset($_GET['_ppp'])) {
+				if(function_exists( 'sharing_display') && !isset($_GET['_ppp']) && !has_term('in-the-news','news')) {
 				    sharing_display( '', true );
 				}
 
@@ -106,6 +106,11 @@
 					</div>
 				<?php } ?>
 			</header>
+
+			<?php if(has_term('in-the-news','news')) {
+				?><p class="news-source">Source: <?php the_field('source'); ?></p>
+				<a href="<?php the_field('url') ?>" class="wusm-button">View Article</a><?php
+			} ?>
 
 			<?php the_content(); ?>
 			

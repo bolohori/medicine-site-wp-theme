@@ -17,5 +17,5 @@ jQuery(document).ready(function($) {
     $('.card').matchHeight();
 });
 jQuery(document).ajaxComplete(function( event, request, settings ) {
-	jQuery('.jp-relatedposts-post').matchHeight();
+	jQuery('.jp-relatedposts-post-a').matchHeight();
 });

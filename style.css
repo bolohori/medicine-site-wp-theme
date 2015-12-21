@@ -3125,6 +3125,9 @@ a.news-title {
 	position: relative;
 	margin: 30px 0 35px;
 }
+.featured-image-caption + .audio-container {
+	margin-top: -15px;
+}
 .audio-thumbnail {
 	position: absolute;
 	top: 0;
@@ -3157,7 +3160,7 @@ a.news-title {
 	background-repeat: no-repeat;
 	margin: 20px 0 19px 24px;
 	outline: none;
-	background: url(_/img/audio/play.png);
+	background: url(_/img/audio/play.png) no-repeat;
 	background-image: url(_/img/audio/play.svg), none;
 }
 #article-audio .mejs-playpause-button button:focus {
@@ -3218,7 +3221,7 @@ a.news-title {
 #article-audio .mejs-volume-button button {
 	background-position: 0 0;
 	background-repeat: no-repeat;
-	background: url(_/img/audio/speaker.png);
+	background: url(_/img/audio/speaker.png) no-repeat;
 	background-image: url(_/img/audio/speaker.svg), none;
 	width: 20px;
 	height: 15px;
@@ -3259,7 +3262,7 @@ a.news-title {
 .single-post .featured-image-caption {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 16px;
-	margin-top: 15px;
+	margin: 15px 0 45px;
 	line-height: 1.5;
 	padding-right: 40px;
 }
@@ -3299,15 +3302,17 @@ a.news-title {
 	max-width: 700px;
 }
 .single-post article .wp-caption.alignleft,
-.single-post article img.alignleft {
-	margin: 0 25px 20px 0;
-	max-width: 40%;
+.single-post article img.alignleft,
+.single-post article .credit-container.alignleft {
+	margin: 5px 25px 20px 0;
+	max-width: 43%;
 	width: auto;
 }
 .single-post article .wp-caption.alignright,
-.single-post article img.alignright {
-	margin: 0 0 20px 25px;
-	max-width: 40%;
+.single-post article img.alignright,
+.single-post article .credit-container.alignright {
+	margin: 5px 0 20px 25px;
+	max-width: 43%;
 	width: auto;
 }
 @media screen and (max-width: 600px) {
@@ -3348,7 +3353,7 @@ a.news-title {
 .alignright .credit-container {
 	margin-bottom: 20px;
 }
-.single-post .credit-container img {
+.single-post article .credit-container img {
 	max-width: 100%;
 	margin: 0;
 }
@@ -3362,6 +3367,7 @@ a.news-title {
 	display: block;
 	color: #909090;
 	float: right;
+	clear: both;
 }
 .single-post blockquote {
 	margin: 0;
@@ -3404,6 +3410,13 @@ a.news-title {
 	.single-post .name {
 		font-size: 14px;
 	}
+}
+.single-post .news-source {
+	text-transform: uppercase;
+	font-family: 'Open Sans', sans-serif;
+	color: #838383;
+	font-weight: 600;
+	font-size: 14px;
 }
 .article-footer {
 	max-width: 700px;
@@ -3503,7 +3516,7 @@ a.news-title {
 }
 .single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-title a {
 	font-size: 18px;
-	margin: 24px;
+	padding: 24px;
 	line-height: 23px;
 	font-weight: 600;
 	display: block;
