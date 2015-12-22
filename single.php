@@ -107,9 +107,12 @@
 				<?php } ?>
 			</header>
 
-			<?php if(has_term('in-the-news','news')) {
-				?><p class="news-source">Source: <?php the_field('source'); ?></p>
-				<a href="<?php the_field('url') ?>" class="wusm-button">View Article</a><?php
+			<?php $the_content = get_the_content();
+			if(get_field('url') && empty($the_content)) {
+				if(get_field('source')) {
+					?><p class="news-source">Source: <?php the_field('source'); ?></p><?php
+				} ?>
+				<p><a href="<?php the_field('url') ?>" class="wusm-button">View Article</a></p><?php
 			} ?>
 
 			<?php the_content(); ?>

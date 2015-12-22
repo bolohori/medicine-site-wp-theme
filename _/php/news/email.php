@@ -27,6 +27,113 @@ add_filter( 'wp_audio_shortcode', 'wusm_remove_audio', 10, 5 );
 // Do not use responsive images
 add_filter( 'max_srcset_image_width', create_function( '', 'return 1;' ) );
 
+// Add image credits to images without captions
+function medicine_wrap_image( $content ) {
+	global $post;
+	// Regex to find all <img ... > tags
+	$ic_url_regex = "/\<img [^>]*src=\"([^\"]+)\"[^>]*>/";
+
+	// If we get any hits then put the code before and after the img tags
+	if ( preg_match_all( $ic_url_regex , $content, $ic_matches ) ) {;
+	    for ( $ic_count = 0; $ic_count < count( $ic_matches[0] ); $ic_count++ ) {
+			// Old img tag
+            $ic_old = $ic_matches[0][$ic_count];
+	        if( strpos($ic_old, 'align')) {
+	        	$dom = new DOMDocument();
+				$dom->loadHTML($ic_old);
+	        	$img = $dom->getElementsByTagName('img');
+				$width = $img->item(0)->getAttribute('width');
+				$width_table = $width + 20 . 'px';
+				$width_img = $width . 'px';
+
+	            if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
+	            	$creditID = $found[1];
+				}
+
+				if (preg_match("/align(\w+)/", $ic_old, $found)) {
+	            	$alignment = $found[0];
+				}
+
+				$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+				if (!empty($creditName)) {
+					$credit = '<span style="font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:1;text-align:right;margin:4px 4px 3px 15px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
+				}
+
+	            // Get the img URL, it's needed for the button code
+	            $ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
+	            $ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
+
+	            // Put together the image credit code to place before the img tag
+	            $ic_credit_code = '<div class="credit-container ' . $alignment . '" style="width:' . $width_img . '">';
+
+	            if (!empty($creditName)) {
+					// Replace before the img tag in the new string
+	            	$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
+	            	// After the img tag
+	            	$ic_new = preg_replace( '/$/' , $credit . '</div>' , $ic_new );
+				} 
+				else {
+					$ic_new = $ic_old;
+				}
+				$ic_new_table = '<table width="' . $width_table . '" align="left" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="left" cellpadding="0" cellspacing="0">' . $ic_new . '</table>';
+
+	            // make the substitution
+	            $content = str_replace( $ic_old, $ic_new_table , $content );
+	        }
+        }
+    }	
+	return $content;
+}
+add_filter( 'the_content' , 'medicine_wrap_image' );
+
+// Remove height from [caption] shortcode
+function medicine_email_caption_shortcode_filter($val, $attr, $content)
+{
+	extract(shortcode_atts(array(
+		'id'	=> '',
+		'align'	=> '',
+		'width'	=> '',
+		'caption' => ''
+	), $attr));
+	
+	if ( 1 > (int) $width || empty($caption) )
+		return $val;
+
+	$imageID = $int = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+	$creditName = esc_html( get_post_meta( $imageID, 'image_credit', true ) );
+	if (!empty($creditName)) {
+		$credit = '<span style="font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:1;text-align:right;margin:4px 4px 3px 15px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;float:right;">' . $creditName . '</span>';
+	}
+
+	$capid = '';
+	if ( $id ) {
+		$id = esc_attr($id);
+		$capid = 'id="figcaption_'. $id . '" ';
+		$id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
+	}
+
+	$maxWidth = '';
+	$captionAlign = esc_attr($align);
+	if ($captionAlign == 'alignleft' || $captionAlign == 'alignright') {
+		$maxWidth = 'style="max-width: ' . (0 + (int) $width) . 'px;"';
+	}
+
+	$captionOutput = '<table width="' . (0 + (int) $width + 20) . '" align="left" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . (0 + (int) $width) . '" align="left" cellpadding="0" cellspacing="0">';
+	$captionOutput .= '<div class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
+	if (!empty($creditName)) {
+		$captionOutput .= '<div class="credit-container">';
+	}
+	$captionOutput .= do_shortcode( $content );
+	if (!empty($creditName)) {
+		$captionOutput .= $credit . '</div>';
+	}
+
+	$captionOutput .= '<div ' . $capid . ' style="background:#F5F5F5;margin:0;padding:10px;line-height:140%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . $caption . '</div></div></td></tr></tbody></table>';
+
+	return $captionOutput;
+}
+add_filter('img_caption_shortcode', 'medicine_email_caption_shortcode_filter', 10, 3 );
+
 // Add inline styles to paragraphs and headings
 $content = get_the_content();
 $content = apply_filters('the_content', $content);
@@ -118,6 +225,11 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p
 			}
 			.headerContent{
 				padding-bottom:15px;
+			}
+			.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
+				color:#990000;
+				font-weight:normal;
+				text-decoration:none;
 			}
 			#headerImage{
 				height:auto;
@@ -211,6 +323,9 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p
 				}
 				#news-release img {
 					max-width: 150px;
+				}
+				.wp-caption {
+					margin-bottom: 5px;
 				}
 				#media-contact {
 					padding-top: 15px;

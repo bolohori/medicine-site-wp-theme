@@ -1044,6 +1044,7 @@ a.wusm-button {
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
+    font-family: 'Open Sans', sans-serif;
     background: #990000;
     padding: 15px 50px;
     border-radius: 3px;

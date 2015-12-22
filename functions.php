@@ -749,7 +749,7 @@ add_filter( 'attachment_fields_to_save', 'image_credit_save', 10, 2 );
 
 // Add image credits to images without captions
 function ic_wrap_image( $content ) {
-	if (is_single()) {
+	if (is_single() && !get_query_var( 'template' ) == 'email') {
 		global $post;
 		// Regex to find all <img ... > tags
 		$ic_url_regex = "/\<img [^>]*src=\"([^\"]+)\"[^>]*>/";
@@ -852,7 +852,7 @@ add_action( 'admin_head', 'admin_css' );
 
 // Preview URLs for embargoed articles will expire after 24 days
 function wusm_preview_nonce_life() {
-    return 60 * 60 * 24 * 24; // 24 days
+    return 60 * 60 * 24 * 30; // 30 days
 }
 add_filter( 'ppp_nonce_life', 'wusm_preview_nonce_life' );
 
