@@ -73,7 +73,7 @@
 <section class="news">
 	<div class="news-wrap">
 		<div class="news-left slider-wrapper theme-default">
-			<div class="all-news"><a href="news/in-the-news">SEE ALL</a></a></div>
+			<div class="all-news"><a href="/news/type/in-the-news/">SEE ALL</a></a></div>
 			<h1 class="news-header">In the News</h1>
 			<ul class="news-list">
 <?php
@@ -95,7 +95,7 @@
 		</div>
 			
 		<div class="news-right">
-			<div class="all-news"><a href="news/releases">SEE ALL</a></a></div>
+			<div class="all-news"><a href="/news/type/news-release/">SEE ALL</a></a></div>
 			<h1 class="news-header">News Releases</h1>
 			<ul class="news-list">
 <?php
@@ -206,7 +206,7 @@
 		<ul class="spotlight-featured">
 			<?php echo $slider; ?>
 		</ul>
-		<a class="spotlight-archive" href="/news/leaders">SEE ALL</a>
+		<a class="spotlight-archive" href="/news/type/national-leaders/">SEE ALL</a>
 	</div>
 </section>
 
