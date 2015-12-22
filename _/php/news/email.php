@@ -127,7 +127,7 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	}
 
 	$captionOutput = '<table width="' . (0 + (int) $width + 20) . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . (0 + (int) $width) . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">';
-	$captionOutput .= '<div style="text-align:left;" class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
+	$captionOutput .= '<div class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
 	if (!empty($creditName)) {
 		$captionOutput .= '<div class="credit-container">';
 	}
