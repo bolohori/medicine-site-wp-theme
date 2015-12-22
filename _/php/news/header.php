@@ -16,7 +16,7 @@
             <!-- <li class="parent"><a href="">Topics</a>
                 <ul><?php echo wp_list_categories( 'title_li=' ); ?></ul>
             </li> -->
-            <li class="parent"><a href="">Source</a>
+            <li class="parent"><a href="">News Source</a>
                 <ul>
                     <li><a href="/news/type/news-release">News Releases</a></li>
                     <li><a href="/news/type/outlook">Outlook Magazine</a></li>

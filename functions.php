@@ -263,8 +263,8 @@ function wusm_change_post_object() {
     $labels->name = 'News';
     $labels->singular_name = 'News';
     $labels->add_new = 'Add Article';
-    $labels->add_new_item = 'Add Article';
-    $labels->edit_item = 'Edit Article';
+    $labels->add_new_item = 'Add News Article';
+    $labels->edit_item = 'Edit News Article';
     $labels->new_item = 'News';
     $labels->view_item = 'View Article';
     $labels->search_items = 'Search Articles';
@@ -810,7 +810,7 @@ add_filter( 'get_the_archive_title', function ($title) {
     } elseif ( is_tag() ) {
     	$title = single_tag_title( 'Tag: ', false );
     } elseif ( is_tax('news') ) {
-    	$title = single_tag_title( 'Source: ', false );
+    	$title = single_tag_title( 'News Source: ', false );
     }
     return $title;
 });

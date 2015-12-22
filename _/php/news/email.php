@@ -4,10 +4,16 @@ header("Content-Type: text/plain");
 		while (have_posts()) :
 			the_post();
 
+if(get_field('embargoed_url')) {
+	$permalink = get_field('embargoed_url');
+} else {
+	$permalink = get_the_permalink();
+}
+
 // Remove embeds from emails
 function wusm_remove_oembed( $html ) {
 	if ( get_query_var( 'template' ) == 'email' ) {
-		$video_available = '<p><strong>Video available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . get_the_permalink() . '">' . get_the_permalink() . '</a></p>';
+		$video_available = '<p><strong>Video available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . $permalink . '">' . $permalink . '</a></p>';
 		return $video_available;
 	}
 	return $html;
@@ -17,7 +23,7 @@ add_filter('embed_oembed_html', 'wusm_remove_oembed', 99, 4);
 // Remove audio from emails
 function wusm_remove_audio( $html ) {
     if ( get_query_var( 'template' ) == 'email' ) {
-    	$audio_available = '<p><strong>Audio available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . get_the_permalink() . '">' . get_the_permalink() . '</a></p>';
+    	$audio_available = '<p><strong>Audio available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . $permalink . '">' . $permalink . '</a></p>';
 		return $audio_available;
     }
     return $html;
@@ -52,6 +58,7 @@ function medicine_wrap_image( $content ) {
 
 				if (preg_match("/align(\w+)/", $ic_old, $found)) {
 	            	$alignment = $found[0];
+	            	$align_value = str_replace("align","",$alignment);
 				}
 
 				$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
@@ -75,7 +82,7 @@ function medicine_wrap_image( $content ) {
 				else {
 					$ic_new = $ic_old;
 				}
-				$ic_new_table = '<table width="' . $width_table . '" align="left" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="left" cellpadding="0" cellspacing="0">' . $ic_new . '</table>';
+				$ic_new_table = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">' . $ic_new . '</table>';
 
 	            // make the substitution
 	            $content = str_replace( $ic_old, $ic_new_table , $content );
@@ -114,12 +121,13 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 
 	$maxWidth = '';
 	$captionAlign = esc_attr($align);
+	$align_value = str_replace("align","",$captionAlign);
 	if ($captionAlign == 'alignleft' || $captionAlign == 'alignright') {
 		$maxWidth = 'style="max-width: ' . (0 + (int) $width) . 'px;"';
 	}
 
-	$captionOutput = '<table width="' . (0 + (int) $width + 20) . '" align="left" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . (0 + (int) $width) . '" align="left" cellpadding="0" cellspacing="0">';
-	$captionOutput .= '<div class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
+	$captionOutput = '<table width="' . (0 + (int) $width + 20) . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . (0 + (int) $width) . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">';
+	$captionOutput .= '<div style="text-align:left;" class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
 	if (!empty($creditName)) {
 		$captionOutput .= '<div class="credit-container">';
 	}
@@ -128,7 +136,7 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 		$captionOutput .= $credit . '</div>';
 	}
 
-	$captionOutput .= '<div ' . $capid . ' style="background:#F5F5F5;margin:0;padding:10px;line-height:140%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . $caption . '</div></div></td></tr></tbody></table>';
+	$captionOutput .= '<div ' . $capid . ' style="background:#F5F5F5;margin:0;padding:10px;line-height:140%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $caption . '</div></div></td></tr></tbody></table>';
 
 	return $captionOutput;
 }
@@ -404,10 +412,10 @@ if( have_rows('media_contact') ):
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 					$embargo_lift_pre = date('g:i a l, M j, Y', strtotime($date_time . '+ 1 hour'));
 					$embargo_lift = str_replace(array('am','pm'),array('a.m. ET','p.m. ET'),$embargo_lift_pre);
-				    echo '<p style="background: #FFFF52;padding: 10px 15px;font-weight: 600;text-align: center;font-size: 16px;">Embargoed until ' . $embargo_lift . '</p>';
+				    echo '<p style="background:#FFFF52;padding:10px 15px;font-weight:normal;text-align:center;font-size:16px;">Embargoed until ' . $embargo_lift . '</p>';
 				}
 				
-				?><h1 style="display:block;font-family:Georgia;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1><?php
+				?><h1 style="display:block;font-family:Georgia;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php the_title(); ?></a></h1><?php
 				
 				if(has_excerpt()):
 					echo '<p style="font-size:16px;color:#787878;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . get_the_excerpt() . '</p>';
@@ -447,7 +455,7 @@ if( have_rows('media_contact') ):
 				echo '<p style="margin-bottom:15px;margin-top:0;">' . get_the_date() . '</p>';
 
 				if( get_field('audio') ) { ?>
-					<p><strong>Article audio:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
+					<p><strong>Article audio:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
 				<?php }
 
 				if(has_post_thumbnail()) {
@@ -467,7 +475,7 @@ if( have_rows('media_contact') ):
 
 												<?php echo $email_content; ?>
 
-												<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin-top:40px;">URL: <a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php the_permalink(); ?>"><?php the_permalink(); ?></a></p>
+												<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin-top:40px;">URL: <a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
                                             </td>
                                         </tr>
                                     </table>
