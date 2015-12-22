@@ -141,6 +141,7 @@
 				    while ( have_rows('article_author') ) : the_row();
 				    	if(get_sub_field('custom_author')) {
 				        ?><div class="footer-author">
+				        	<p class="footer-heading"><?php the_sub_field('title'); ?></p>
 				        	<p class="name"><?php the_sub_field('name'); ?></p>
 							<p><?php the_sub_field('bio'); ?></p>
 							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
@@ -150,8 +151,9 @@
 				        	$author = get_sub_field('author');
 							$user_id = $author['ID'];
 						?><div class="footer-author">
+							<?php if(get_the_author_meta( 'title', $user_id )) { echo '<p class="footer-heading">' . get_the_author_meta( 'title', $user_id ) . '</p>'; } ?>
 							<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
-							<p><?php the_author_meta( 'description', $user_id ); ?></p>
+							<?php if(get_the_author_meta( 'description', $user_id )) { echo '<p>' . get_the_author_meta( 'description', $user_id ) . '</p>'; } ?>
 							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
 						</div><?php } endwhile; endif;
@@ -160,7 +162,7 @@
 				    while ( have_rows('media_contact') ) : the_row();
 				    	if(get_sub_field('custom_media_contact')) {
 				        ?><div class="footer-media-contact">
-				       		<p class="mc-heading">Media Contact</p>
+				       		<p class="footer-heading">Media Contact</p>
 				        	<p class="name"><?php the_sub_field('name'); ?><?php if(get_sub_field('title')) { echo ', '; } the_sub_field('title'); ?></p>
 							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
 							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
@@ -169,7 +171,7 @@
 				        	$author = get_sub_field('media_contact');
 							$user_id = $author['ID'];
 						?><div class="footer-media-contact">
-							<p class="mc-heading">Media Contact</p>
+							<p class="footer-heading">Media Contact</p>
 							<p class="name"><?php the_author_meta( 'display_name', $user_id); ?><?php if(get_the_author_meta( 'title', $user_id )) { echo ', '; } the_author_meta( 'title', $user_id ); ?></p>
 							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
