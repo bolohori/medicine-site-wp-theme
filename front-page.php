@@ -109,10 +109,14 @@
 				);
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post();
-					$url = get_field('url');
+					if (get_field('url')) {
+						$url = get_field('url');
+						$link = (strpos($url, "http") !== false) ? $url : "http://" . $url;
+					} else {
+						$link = get_the_permalink();
+					}
 					$title = get_the_title();
-					$link = (strpos($url, "http") !== false) ? $url : "http://" . $url;
- 					
+
 					echo "<li><a class='news-title' href=\"$link\" onclick=\"__gaTracker('send','event','outbound-news_release','$title');\">$title</a><p>";
 					if( get_field('audio') !== '') {
 						$audio_out .= wp_audio_shortcode( array( 'src' => get_field('audio') ) );
