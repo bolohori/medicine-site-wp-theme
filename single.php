@@ -47,7 +47,7 @@
 						} elseif(get_sub_field('author')) {
 				        	$wp_author = get_sub_field('author');
 							$user_id = $wp_author['ID'];
-							$author[] = '<a href="' . get_author_posts_url($user_id) . '">' . get_the_author_meta( 'display_name', $user_id) . '</a>';
+							$author[] = '<a href="mailto:' . get_the_author_meta( 'user_email', $user_id ) . '">' . get_the_author_meta( 'display_name', $user_id) . '</a>';
 						}
 					endwhile;
 
