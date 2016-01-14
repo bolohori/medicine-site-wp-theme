@@ -73,10 +73,6 @@ function medicine_wrap_image( $content ) {
 					$credit = '<span style="font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:1;text-align:right;margin:4px 4px 3px 15px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
 				}
 
-	            // Get the img URL, it's needed for the button code
-	            $ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
-	            $ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
-
 				//img element
 				if ($img->item(0)->getAttribute('width') > 600) {
 					$ic_new = wp_get_attachment_image($creditID, 'news-email');
