@@ -48,17 +48,24 @@ function medicine_wrap_image( $content ) {
 	        	$dom = new DOMDocument();
 				$dom->loadHTML($ic_old);
 	        	$img = $dom->getElementsByTagName('img');
-				$width = $img->item(0)->getAttribute('width');
-				$width_table = $width + 20 . 'px';
-				$width_img = $width . 'px';
 
-	            if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
-	            	$creditID = $found[1];
+				//The email template is 600px wide, so set the widths of the containers for the image accordingly
+				$width = min($img->item(0)->getAttribute('width'),600);
+
+				if ($width > 580) {
+					$width_table = '600px';
+				} else {
+					$width_table = $width + 20 . 'px';
 				}
+				$width_img = $width . 'px';
 
 				if (preg_match("/align(\w+)/", $ic_old, $found)) {
 	            	$alignment = $found[0];
 	            	$align_value = str_replace("align","",$alignment);
+				}
+
+				if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
+					$creditID = $found[1];
 				}
 
 				$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
@@ -70,18 +77,23 @@ function medicine_wrap_image( $content ) {
 	            $ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
 	            $ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
 
-	            // Put together the image credit code to place before the img tag
-	            $ic_credit_code = '<div class="credit-container ' . $alignment . '" style="width:' . $width_img . '">';
-
-	            if (!empty($creditName)) {
-					// Replace before the img tag in the new string
-	            	$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
-	            	// After the img tag
-	            	$ic_new = preg_replace( '/$/' , $credit . '</div>' , $ic_new );
-				} 
-				else {
+				//img element
+				if ($img->item(0)->getAttribute('width') > 600) {
+					$ic_new = wp_get_attachment_image($creditID, 'news-email');
+				} else {
 					$ic_new = $ic_old;
 				}
+
+				// Put together the image credit code to place before the img tag
+				$ic_credit_code = '<div class="credit-container ' . $alignment . '" style="width:' . $width_img . '">';
+
+				if (!empty($creditName)) {
+					// Replace before the img tag in the new string
+					$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_new );
+					// After the img tag
+					$ic_new = preg_replace( '/$/' , $credit . '</div>' , $ic_new );
+				}
+
 				$ic_new_table = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">' . $ic_new . '</table>';
 
 	            // make the substitution
