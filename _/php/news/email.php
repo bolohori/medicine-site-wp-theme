@@ -114,6 +114,14 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	if ( 1 > (int) $width || empty($caption) )
 		return $val;
 
+	//Containers in the email message can't be more than 600px wide
+	$width_img = min((int) $width,600);
+	if ($width_img  > 580) {
+		$width_table = '600px';
+	} else {
+		$width_table = $width_img + 20 . 'px';
+	}
+
 	$imageID = $int = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 	$creditName = esc_html( get_post_meta( $imageID, 'image_credit', true ) );
 	if (!empty($creditName)) {
@@ -131,15 +139,21 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	$captionAlign = esc_attr($align);
 	$align_value = str_replace("align","",$captionAlign);
 	if ($captionAlign == 'alignleft' || $captionAlign == 'alignright') {
-		$maxWidth = 'style="max-width: ' . (0 + (int) $width) . 'px;"';
+		$maxWidth = 'style="max-width: ' . $width_img . 'px;"';
 	}
 
-	$captionOutput = '<table width="' . (0 + (int) $width + 20) . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . (0 + (int) $width) . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">';
+	$captionOutput = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">';
 	$captionOutput .= '<div class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
 	if (!empty($creditName)) {
 		$captionOutput .= '<div class="credit-container">';
 	}
 	$captionOutput .= do_shortcode( $content );
+
+	//Replace large (700px-wide) images with news-email size (600px-wide)
+	if ((int) $width > 600) {
+		$captionOutput = preg_replace("/\<img [^>]*src=\"([^\"]+)\"[^>]*>/", wp_get_attachment_image($imageID, 'news-email'), $captionOutput);
+	}
+
 	if (!empty($creditName)) {
 		$captionOutput .= $credit . '</div>';
 	}
