@@ -10,8 +10,12 @@
 
 <div id="main">
 	<article>
-		<?php if( current_user_can('editor') || current_user_can('administrator') && has_term('news-release','news') ) {  ?> 
-	    	<a class="email-template-link" href="<?php echo get_the_permalink() . '?template=email'; ?>">Email</a>
+		<?php if( current_user_can('editor') || current_user_can('administrator') && has_term('news-release','news') ) {  ?>
+			<?php if (strpos(get_the_permalink(),'?') === false) { ?>
+				<a class="email-template-link" href="<?php echo get_the_permalink() . '?template=email'; ?>">Email</a>
+			<?php } else { //embargoed releases already have a query string ?>
+				<a class="email-template-link" href="<?php echo get_the_permalink() . '&template=email'; ?>">Email</a>
+			<?php } ?>
 		<?php } ?>
 		<div>
 			<header class="article-header">
