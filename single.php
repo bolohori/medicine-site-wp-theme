@@ -185,14 +185,22 @@
 			</footer>
 		</div>
 	</article>
+
+	<?php
+		if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
+			$related = Jetpack_RelatedPosts::init_raw()
+				->get_for_post_id(
+					get_the_ID(),
+					array( 'size' => 3 )
+				);
+			if ( $related ) {
+			?>
 	<div class="footer-related clearfix">
 		<h3>Related Articles</h3>
-		<?php
-		if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
-		    echo do_shortcode( '[jetpack-related-posts]' );
-		}
-		?>
+		<?php echo do_shortcode( '[jetpack-related-posts]' ); ?>
 	</div>
+			<?php } ?>
+	<?php } ?>
 </div>
 
 <?php
