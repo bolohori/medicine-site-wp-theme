@@ -173,16 +173,6 @@ $replace_h4 = '<h4 style="display:block;font-family:Georgia;font-size:14px;font-
 
 $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p, $replace_h2, $replace_h3, $replace_h4), $content);
 
-//Indent the HTML for the email content so it's easier to read
-$config = array(
-	'indent'     => true,
-	'output-xml' => true,
-	'input-xml'  => true,
-	'wrap'       => '1000');
-$tidy = new tidy();
-$tidy->parseString($email_content, $config, 'utf8');
-$tidy->cleanRepair();
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -504,7 +494,7 @@ if( have_rows('media_contact') ):
 					}
 				} ?>
 
-												<?php echo tidy_get_output($tidy); ?>
+												<?php echo $email_content; ?>
 
 												<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin-top:40px;">URL: <a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
                                             </td>
