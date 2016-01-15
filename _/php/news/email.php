@@ -132,7 +132,6 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	if ( $id ) {
 		$id = esc_attr($id);
 		$capid = 'id="figcaption_'. $id . '" ';
-		$id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
 	}
 
 	$maxWidth = '';
