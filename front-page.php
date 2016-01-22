@@ -170,8 +170,7 @@
 					$loop->the_post();
 					
 					$read_more_link = "";
-					$url = get_field('url') ? the_field('url') : the_permalink();
-
+					$url = get_field('url') ? get_field('url') : get_the_permalink();
 					$slidetitle = "#spotlightcaption$i";
 					
 					if ( get_field( 'faculty_member' ) ) {
