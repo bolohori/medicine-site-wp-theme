@@ -92,12 +92,15 @@ add_filter('admin_footer_text', 'medicine_footer_admin');
 if( !defined( 'WP_DEBUG' ) ) {
 	//check for Wash U IP
 	$verifiedWashU = false;
-	if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
-		$IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	} else {
-		$IP = $_SERVER['REMOTE_ADDR'];
-	}
 
+	if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
+	    $IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	    $IP_array = explode( ',', $IP );
+	    $IP = $IP_array[0];
+	} else {
+	    $IP = $_SERVER['REMOTE_ADDR'];
+	}
+	
 	list($ip1, $ip2) = explode( '.', $IP );
 
 	if ( $ip1 == "128" && $ip2 == "252" ) {
