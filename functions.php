@@ -89,7 +89,7 @@ if ( ! function_exists( 'medicine_footer_admin' ) ) {
 }
 add_filter('admin_footer_text', 'medicine_footer_admin');
 
-if( !defined( 'WP_DEBUG' ) ) {
+if( !defined( 'WP_DEBUG' ) || WP_DEBUG == false ) {
 	//check for Wash U IP
 	$verifiedWashU = false;
 
