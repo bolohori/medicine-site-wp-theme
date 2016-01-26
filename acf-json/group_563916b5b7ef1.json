@@ -42,6 +42,7 @@
                         "id": ""
                     },
                     "role": [
+                        "contributor",
                         "editor",
                         "administrator"
                     ],
@@ -250,6 +251,7 @@
                         "id": ""
                     },
                     "role": [
+                        "contributor",
                         "editor",
                         "administrator"
                     ],
