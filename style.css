@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2016.01.22.1
+Version:16.01.26.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -68,19 +68,20 @@ h1 {
 
 h2 {
 	font-size: 21px;
-	margin-top: 45px;
-	margin-bottom: 15px;
 	font-weight: 600;
+	margin-top: 30px;
+	margin-bottom: 15px;
 }
 
 h3 {
-	font-size: 19px;
+	font-size: 18px;
+	font-weight: 600;
 	margin-top: 36px;
 	margin-bottom: 15px;
 }
 
 h4 {
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 16px;
 	margin-top: 30px;
 	margin-bottom: 15px;
@@ -154,25 +155,16 @@ article .alignnone {
 	margin: 0 0 20px;
 }
 
-article .wp-caption.alignright, article img.alignright {
-	margin: 7px 0 0 20px;
-}
-
-article .wp-caption.alignleft, article img.alignleft {
-	margin: 7px 20px 0 0;
-}
-
 article .wp-caption.aligncenter,
 article .wp-caption.alignnone {
 	max-width: 645px;
 }
 
-article p.wp-caption-text {
+article .wp-caption-text {
 	font-size: 14px;
 	line-height: 20px;
-	color: #6a6a6a;
-	padding: 15px 0 20px 0;
-	border-bottom: 1px solid #e0e0e0;
+	color: #333;
+	padding: 20px 0 0;
 }
 
 
@@ -1101,12 +1093,12 @@ article h1 + h2 {
 
 article p {
 	line-height: 28px;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 	font-size: 16px;
 }
 
 p + ul {
-	margin-top: -10px;
+	margin-bottom: 20px;
 }
 
 article ul {
@@ -1116,11 +1108,12 @@ article ul {
 }
 
 article ol {
+	font-size: 16px;
 	margin-left: 40px;
 }
 
 article ul li, article ol li {
-	line-height: 28px;
+	line-height: 25px;
 	margin-bottom: 10px;
 }
 
@@ -4556,6 +4549,7 @@ a.sidebar-outlook-link {
 
 #right-col aside.links {
 	padding: 5px 20px 25px 20px;
+	width: 100%;
 }
 
 #right-col aside.links h2 {

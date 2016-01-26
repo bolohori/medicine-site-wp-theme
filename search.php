@@ -76,7 +76,7 @@ get_header(); ?>
 		</nav>
 
 		<article>
-			<h1>Search Results</h1>
+			<h1>Your Search: <em><?php echo $search_terms; ?></em></h1>
 			<?php
 			
 			// If there are no matching results, display appropriate message
