@@ -15,15 +15,7 @@ if (have_posts()) :
             <?php $args = array(
                 'post_type' => 'post',
                 'posts_per_page' => 1,
-                'category_name' => 'editors-picks',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'news',
-                        'field'    => 'term_id',
-                        'terms'    => array( 37 ),
-                        'operator' => 'NOT IN',
-                    ),
-                ),
+                'category_name' => 'editors-picks'
             );
             $the_query = new WP_Query( $args );
 
@@ -42,7 +34,7 @@ if (have_posts()) :
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
                             <?php the_title('<h2>', '</h2>'); ?>
                             <?php if(has_excerpt()) {
-                                the_excerpt();
+                                echo '<p>' . get_the_excerpt() . '.</p>';
                             } ?>
                         </div>
                     </div>
