@@ -42,7 +42,7 @@ if (have_posts()) :
                             <p class="article-date"><?php the_time('M j, Y'); ?></p>
                             <?php the_title('<h2>', '</h2>'); ?>
                             <?php if(has_excerpt()) {
-                                the_excerpt();
+                                echo '<p>' . get_the_excerpt() . '.</p>';
                             } ?>
                         </div>
                     </div>
