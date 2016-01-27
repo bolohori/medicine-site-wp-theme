@@ -15,15 +15,7 @@ if (have_posts()) :
             <?php $args = array(
                 'post_type' => 'post',
                 'posts_per_page' => 1,
-                'category_name' => 'editors-picks',
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'news',
-                        'field'    => 'term_id',
-                        'terms'    => array( 37 ),
-                        'operator' => 'NOT IN',
-                    ),
-                ),
+                'category_name' => 'editors-picks'
             );
             $the_query = new WP_Query( $args );
 
