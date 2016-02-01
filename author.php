@@ -42,9 +42,9 @@ get_header(); ?>
                     } ?>
                 </ul>
             </div>
-            <?php if ($wp_query->max_num_pages > 1) { ?>
+            <?php if ($the_query->max_num_pages > 1) { ?>
                 <div class="pagination">
-                    <div class="next-posts"><?php next_posts_link( 'Load More', $wp_query->max_num_pages ); ?></div>
+                    <div class="next-posts"><?php next_posts_link( 'Load More', $the_query->max_num_pages ); ?></div>
                 </div>
             <?php }
             }
