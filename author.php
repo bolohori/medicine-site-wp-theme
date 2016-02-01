@@ -31,7 +31,6 @@ get_header(); ?>
             );
             $the_query = new WP_Query( $args );
             if ($the_query->have_posts()) { ?>
-                <?php echo '<!-- Found posts: ' . $the_query->found_posts . ', Max pages: ' . $the_query->max_num_pages . ' -->'; ?>
             <div class="news-cards">
                 <ul class="clearfix">
                 <?php while ($the_query->have_posts()) {
