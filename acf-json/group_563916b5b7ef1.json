@@ -403,7 +403,10 @@
                 "id": ""
             },
             "default_value": "",
-            "tabs": "visual",
+            "tabs": [
+                "visual",
+                "text"
+            ],
             "toolbar": "basic",
             "media_upload": 0
         }
