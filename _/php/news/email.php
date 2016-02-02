@@ -441,38 +441,7 @@ if( have_rows('media_contact') ):
 				if(has_excerpt()):
 					echo '<p style="font-size:16px;color:#787878;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . get_the_excerpt() . '</p>';
 				endif;
-
-				echo '<p style="margin:0px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">';
-
-				if( have_rows('article_author') ):
-				$author = array();
-					while ( have_rows('article_author') ) : the_row();
-						if(get_sub_field('custom_author')) {
-							$author[] = get_sub_field('name');
-						} elseif(get_sub_field('author')) {
-				        	$wp_author = get_sub_field('author');
-							$user_id = $wp_author['ID'];
-							$author[] = get_the_author_meta( 'display_name', $user_id);
-						}
-					endwhile;
-
-					switch (count($author)) {
-					    case 0:
-					        $result = '';
-					        break;
-					    case 1:
-					        $result = 'by ' . reset($author);
-					        break;
-					    default:
-					        $last = array_pop($author);
-					        $result = 'by ' . implode(', ', $author) . ' & ' . $last;
-					        break;
-					}
-        			echo $result;
-        		endif;
-				
-				echo '</p>';
-
+												
 				echo '<p style="margin-bottom:15px;margin-top:0;">' . get_the_date() . '</p>';
 
 				if( get_field('audio') ) { ?>
