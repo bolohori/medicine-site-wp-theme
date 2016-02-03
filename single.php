@@ -130,6 +130,21 @@
 
 				if( have_rows('article_author') || have_rows('media_contact') ): ?>
 				<div class="bio-wrapper">
+
+				<?php
+					//Get list of Media Contact user IDs to check against before displaying authors to prevent duplicates
+					$media_contacts = array();
+					if( have_rows('media_contact') ):
+						while ( have_rows('media_contact') ) : the_row();
+							if(get_sub_field('media_contact')) :
+								$contact = get_sub_field('media_contact');
+								$contact_id = $contact['ID'];
+								$media_contacts[] = $contact_id;
+							endif;
+						endwhile;
+					endif;
+				?>
+
 				<?php if( have_rows('article_author') ):
 				    while ( have_rows('article_author') ) : the_row();
 				    	if(get_sub_field('custom_author')) {
@@ -143,13 +158,15 @@
 						} elseif(get_sub_field('author')) {
 				        	$author = get_sub_field('author');
 							$user_id = $author['ID'];
+							//Display author only if he's not also a media contact for the news release
+							if ( !in_array($user_id,$media_contacts) ) {
 						?><div class="footer-author">
 							<?php if(get_the_author_meta( 'title', $user_id )) { echo '<p class="footer-heading">' . get_the_author_meta( 'title', $user_id ) . '</p>'; } ?>
 							<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
 							<?php if(get_the_author_meta( 'description', $user_id )) { echo '<p>' . get_the_author_meta( 'description', $user_id ) . '</p>'; } ?>
 							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
-						</div><?php } endwhile; endif;
+						</div><?php } } endwhile; endif;
 
 				if( have_rows('media_contact') ):
 				    while ( have_rows('media_contact') ) : the_row();
