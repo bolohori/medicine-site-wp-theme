@@ -472,7 +472,7 @@ if( have_rows('media_contact') ):
                                     <!-- // END BODY -->
                                 </td>
                             </tr>
-							<? if (get_field('boilerplate')) : ?>
+							<?php if (get_field('boilerplate')) : ?>
 								<?php $email_boilerplate = str_replace('<p>', '<p style="margin:0 0 6px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">', get_field('boilerplate')); ?>
                         	<tr>
                             	<td align="center" valign="top">
