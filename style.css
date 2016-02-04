@@ -5012,16 +5012,27 @@ a.sidebar-outlook-link {
 -------------------------------------------------------------------------------*/
 
 @media print {
-	header,
-	#search-form,
-	footer, 
-	nav,
+	header .header-wrap,
+	a.visit-news-hub,
+	a.email-template-link,
+	.sharedaddy,
+	footer a .campaign,
+	#site-footer,
+	#wusm-footer,
+	#page-background,
+	#page-background-inner,
+	#left-col,
+	#right-col,
 	.sidebar {
 		display: none !important;
 	}
 
 	#print-logo {
 		display: inline-block;
+	}
+
+	article {
+		background-color: #fff;
 	}
 }
 
