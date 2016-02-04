@@ -3256,9 +3256,8 @@ a.news-title {
 .single-post .featured-image-caption {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 16px;
-	margin: 15px 0 45px;
+	margin: 17px 0 45px;
 	line-height: 1.5;
-	padding-right: 40px;
 }
 @media screen and (max-width: 650px) {
 	.single-post .featured-image-caption {
