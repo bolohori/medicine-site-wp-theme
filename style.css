@@ -5034,6 +5034,10 @@ a.sidebar-outlook-link {
 	article {
 		background-color: #fff;
 	}
+
+	.single-post article > div > p {
+		font-size: 14px;
+	}
 }
 
 
