@@ -26,7 +26,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 img[class*="align"],
-img[class*="wp-image-"] {
+img[class*="wp-image-"],
+img[class*="wp-post-"] {
 	height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
 }
 
@@ -1012,6 +1013,11 @@ article.giving-bottom {
 		border-top: none;
 		overflow: hidden;
 	}
+	
+	.section-nav ul.children {
+		border-radius: none;
+		border: none;
+	}
 
 	.section-nav li {
 		margin: 0;
@@ -1419,7 +1425,6 @@ a#site-rss {
 #site-footer-bottom #col2 {
     float: left;
     width: 154px;
-    min-height: 192px;
     border-left: 1px solid #bcbcbc;
     padding: 0 10px 0 15px;
 }
