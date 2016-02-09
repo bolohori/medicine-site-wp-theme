@@ -48,10 +48,12 @@ if (have_posts()) :
 
         the_title('<h1>', '</h1>');
 
-        add_filter( 'excerpt_more', function() { return ''; } );
-        echo "<p class='custom-intro'>" . get_the_excerpt() . "</p>";
+        if ( has_excerpt() ) {
+            add_filter( 'excerpt_more', function() { return ''; } );
+            echo "<p class='announcement-excerpt'>" . get_the_excerpt() . "</p>";
+        }
 
-        echo "<p class='custom-byline'>";
+        echo "<p class='announcement-date'>";
         the_date();
         echo "</p>";
         if( get_the_content() ) {
