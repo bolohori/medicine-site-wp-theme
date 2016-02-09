@@ -441,38 +441,7 @@ if( have_rows('media_contact') ):
 				if(has_excerpt()):
 					echo '<p style="font-size:16px;color:#787878;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . get_the_excerpt() . '</p>';
 				endif;
-
-				echo '<p style="margin:0px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">';
-
-				if( have_rows('article_author') ):
-				$author = array();
-					while ( have_rows('article_author') ) : the_row();
-						if(get_sub_field('custom_author')) {
-							$author[] = get_sub_field('name');
-						} elseif(get_sub_field('author')) {
-				        	$wp_author = get_sub_field('author');
-							$user_id = $wp_author['ID'];
-							$author[] = get_the_author_meta( 'display_name', $user_id);
-						}
-					endwhile;
-
-					switch (count($author)) {
-					    case 0:
-					        $result = '';
-					        break;
-					    case 1:
-					        $result = 'by ' . reset($author);
-					        break;
-					    default:
-					        $last = array_pop($author);
-					        $result = 'by ' . implode(', ', $author) . ' & ' . $last;
-					        break;
-					}
-        			echo $result;
-        		endif;
-				
-				echo '</p>';
-
+												
 				echo '<p style="margin-bottom:15px;margin-top:0;">' . get_the_date() . '</p>';
 
 				if( get_field('audio') ) { ?>
@@ -503,19 +472,22 @@ if( have_rows('media_contact') ):
                                     <!-- // END BODY -->
                                 </td>
                             </tr>
+							<?php if (get_field('boilerplate')) : ?>
+								<?php $email_boilerplate = str_replace('<p>', '<p style="margin:0 0 6px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">', get_field('boilerplate')); ?>
                         	<tr>
                             	<td align="center" valign="top">
                                 	<!-- BEGIN FOOTER // -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="border-top:#990000 2px solid;border-collapse:collapse !important;">
                                         <tr>
                                             <td valign="top" class="footerContent" style="color:#787878;font-family:Georgia;font-size:10px;line-height:150%;padding-top:20px;padding-bottom:20px;text-align:left;">
-                                                <p style="margin:0 0 6px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;"><a href="https://medicine.wustl.edu" style="color:#990000;font-weight:normal;text-decoration:none;font-family:Georgia,serif;font-size:13px;">Washington University School of Medicine in St. Louis</a></p><p style="margin:0 0 4px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#666666;font-size:12px;"><span style="margin-right:10px;">Office of Medical Public Affairs</span><span style="display:inline-block;margin-right:10px;">(314) 286-0100</span><a href="https://medicine.wustl.edu" style="color:#990000;font-weight:normal;text-decoration:none;">medicine.wustl.edu</a></p><p style="margin:0 0 5px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">Affiliated with Barnes-Jewish Hospital and St. Louis Children's Hospital, which are members of BJC HealthCare.</p>
+                                                <?php echo $email_boilerplate; ?>
                                             </td>
                                         </tr>
                                     </table>
                                     <!-- // END FOOTER -->
                                 </td>
                             </tr>
+							<?php endif; ?>
                         </table>
                         <!-- // END TEMPLATE -->
                     </td>

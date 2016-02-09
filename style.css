@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2016.02.08.0
+Version:     2016.02.09.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -3261,9 +3261,8 @@ a.news-title {
 .single-post .featured-image-caption {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 16px;
-	margin: 15px 0 45px;
+	margin: 17px 0 45px;
 	line-height: 1.5;
-	padding-right: 40px;
 }
 @media screen and (max-width: 650px) {
 	.single-post .featured-image-caption {
@@ -4673,17 +4672,19 @@ a.sidebar-outlook-link {
 	border-top-left-radius: 3px;
 }
 
-.custom-intro {
+.announcement-excerpt {
 	color: #787878;
 	font-size: 18px;
 	line-height: 30px;
 	margin-top: 20px;
+	margin-bottom: 0;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d5d2d2;
 }
 
-.custom-byline {
+.announcement-date {
 	font-size: 11px;
 	padding: 15px 0;
-	border-top: 1px solid #d5d2d2;
 	border-bottom: 1px solid #d5d2d2;
 }
 
@@ -5017,16 +5018,54 @@ a.sidebar-outlook-link {
 -------------------------------------------------------------------------------*/
 
 @media print {
-	header,
-	#search-form,
-	footer, 
-	nav,
+	header .header-wrap,
+	a.visit-news-hub,
+	a.email-template-link,
+	.sharedaddy,
+	.footer-related,
+	footer a .campaign,
+	#site-footer,
+	#wusm-footer,
+	#page-background,
+	#page-background-inner,
+	#left-col,
+	#right-col,
 	.sidebar {
 		display: none !important;
 	}
 
+	@page {
+		margin: 3cm;
+	}
+
 	#print-logo {
 		display: inline-block;
+	}
+
+	article {
+		background-color: #fff;
+	}
+
+	.single-post .article-header h1 {
+		font-size: 28px;
+		line-height: 35px;
+	}
+
+	.single-post article > div > p {
+		font-size: 14px;
+		margin-bottom: 24px;
+	}
+
+	.single-post .wp-caption-text, .single-post .featured-image-caption {
+		font-size: 12px;
+	}
+
+	.single-post .article-footer {
+		border-top: 2px solid #ccc;
+	}
+
+	.single-post .boilerplate {
+		margin-bottom: 20px;
 	}
 }
 

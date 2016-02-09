@@ -42,6 +42,7 @@
                         "id": ""
                     },
                     "role": [
+                        "author",
                         "editor",
                         "administrator"
                     ],
@@ -250,6 +251,7 @@
                         "id": ""
                     },
                     "role": [
+                        "author",
                         "editor",
                         "administrator"
                     ],
@@ -400,8 +402,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "tabs": "visual",
+            "default_value": "<a href=\"http://medicine.wustl.edu/\">Washington University School of Medicine</a>'s 2,100 employed and volunteer faculty physicians also are the medical staff of <a href=\"http://www.barnesjewish.org/\">Barnes-Jewish</a> and <a href=\"http://www.stlouischildrens.org/\">St. Louis Children's</a> hospitals. The School of Medicine is one of the leading medical research, teaching and patient-care institutions in the nation, currently ranked sixth in the nation by U.S. News &amp; World Report. Through its affiliations with Barnes-Jewish and St. Louis Children's hospitals, the School of Medicine is linked to <a href=\"http://www.bjc.org/\">BJC HealthCare</a>.",
+            "tabs": [
+                "visual",
+                "text"
+            ],
             "toolbar": "basic",
             "media_upload": 0
         }

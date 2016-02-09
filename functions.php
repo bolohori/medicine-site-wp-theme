@@ -89,10 +89,18 @@ if ( ! function_exists( 'medicine_footer_admin' ) ) {
 }
 add_filter('admin_footer_text', 'medicine_footer_admin');
 
-if( !defined( 'WP_DEBUG' ) ) {
+if( !defined( 'WP_DEBUG' ) || WP_DEBUG == false ) {
 	//check for Wash U IP
 	$verifiedWashU = false;
-	$IP = $_SERVER['REMOTE_ADDR'];
+
+	if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
+	    $IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	    $IP_array = explode( ',', $IP );
+	    $IP = $IP_array[0];
+	} else {
+	    $IP = $_SERVER['REMOTE_ADDR'];
+	}
+	
 	list($ip1, $ip2) = explode( '.', $IP );
 
 	if ( $ip1 == "128" && $ip2 == "252" ) {
@@ -137,10 +145,10 @@ update_option('embed_size_w', 645);
 
 // Add headshot to image size dropdown
 function wusm_image_size_choose( $sizes ) {
-    $custom_sizes = array(
-        'headshot' => 'Headshot',
-    );
-    return array_merge( $sizes, $custom_sizes );
+	$custom_sizes = array(
+		'headshot' => 'Headshot',
+	);
+	return array_merge( $sizes, $custom_sizes );
 }
 add_filter( 'image_size_names_choose', 'wusm_image_size_choose' );
 
@@ -251,28 +259,28 @@ add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
  * Switch "Posts" to "News"
  */
 function wusm_change_post_label() {
-    global $menu;
-    global $submenu;
-    $menu[5][0] = 'News';
-    $submenu['edit.php'][5][0] = 'News';
-    echo '';
+	global $menu;
+	global $submenu;
+	$menu[5][0] = 'News';
+	$submenu['edit.php'][5][0] = 'News';
+	echo '';
 }
 function wusm_change_post_object() {
-    global $wp_post_types;
-    $labels = &$wp_post_types['post']->labels;
-    $labels->name = 'News';
-    $labels->singular_name = 'News';
-    $labels->add_new = 'Add Article';
-    $labels->add_new_item = 'Add News Article';
-    $labels->edit_item = 'Edit News Article';
-    $labels->new_item = 'News';
-    $labels->view_item = 'View Article';
-    $labels->search_items = 'Search Articles';
-    $labels->not_found = 'No articles found';
-    $labels->not_found_in_trash = 'No articles found in Trash';
-    $labels->all_items = 'All Articles';
-    $labels->menu_name = 'News';
-    $labels->name_admin_bar = 'Article';
+	global $wp_post_types;
+	$labels = &$wp_post_types['post']->labels;
+	$labels->name = 'News';
+	$labels->singular_name = 'News';
+	$labels->add_new = 'Add Article';
+	$labels->add_new_item = 'Add News Article';
+	$labels->edit_item = 'Edit News Article';
+	$labels->new_item = 'News';
+	$labels->view_item = 'View Article';
+	$labels->search_items = 'Search Articles';
+	$labels->not_found = 'No articles found';
+	$labels->not_found_in_trash = 'No articles found in Trash';
+	$labels->all_items = 'All Articles';
+	$labels->menu_name = 'News';
+	$labels->name_admin_bar = 'Article';
 }
 add_action( 'admin_menu', 'wusm_change_post_label' );
 add_action( 'init', 'wusm_change_post_object' );
@@ -719,10 +727,10 @@ add_filter('user_contactmethods','new_contactmethods',10,1);
 
 // Show 24 posts per page on archive pages
 function number_of_posts_on_archive($query){
-    if (is_category() || is_tax('news') || is_author()) {
+	if (is_category() || is_tax('news') || is_author()) {
 		$query->set('posts_per_page', 24);
    }
-    return $query;
+	return $query;
 }
 add_filter('pre_get_posts', 'number_of_posts_on_archive');
 
@@ -756,17 +764,17 @@ function ic_wrap_image( $content ) {
 
 		// If we get any hits then put the code before and after the img tags
 		if ( preg_match_all( $ic_url_regex , $content, $ic_matches ) ) {;
-		    for ( $ic_count = 0; $ic_count < count( $ic_matches[0] ); $ic_count++ ) {
+			for ( $ic_count = 0; $ic_count < count( $ic_matches[0] ); $ic_count++ ) {
 				// Old img tag
-	            $ic_old = $ic_matches[0][$ic_count];
-		        if( strpos($ic_old, 'align')) {
+				$ic_old = $ic_matches[0][$ic_count];
+				if( strpos($ic_old, 'align')) {
 
-		            if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
-		            	$creditID = $found[1];
+					if (preg_match("/wp-image-([0-9]+)/", $ic_old, $found)) {
+						$creditID = $found[1];
 					}
 
 					if (preg_match("/align(\w+)/", $ic_old, $found)) {
-		            	$alignment = $found[0];
+						$alignment = $found[0];
 					}
 
 					$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
@@ -774,28 +782,28 @@ function ic_wrap_image( $content ) {
 						$credit = '<span class="image-credit">' . $creditName . '</span>';
 					}
 
-		            // Get the img URL, it's needed for the button code
-		            $ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
-		            $ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
+					// Get the img URL, it's needed for the button code
+					$ic_img_url = preg_replace( '/^.*src="/' , '' , $ic_old );
+					$ic_img_url = preg_replace( '/".*$/' , '' , $ic_img_url );
 
-		            // Put together the image credit code to place before the img tag
-		            $ic_credit_code = '<span class="credit-container ' . $alignment . '">';
+					// Put together the image credit code to place before the img tag
+					$ic_credit_code = '<span class="credit-container ' . $alignment . '">';
 
-		            if (!empty($creditName)) {
+					if (!empty($creditName)) {
 						// Replace before the img tag in the new string
-		            	$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
-		            	// After the img tag
-		            	$ic_new = preg_replace( '/$/' , $credit . '</span>' , $ic_new );
+						$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
+						// After the img tag
+						$ic_new = preg_replace( '/$/' , $credit . '</span>' , $ic_new );
 					} 
 					else {
 						$ic_new = $ic_old;
 					}
 
-		            // make the substitution
-		            $content = str_replace( $ic_old, $ic_new , $content );
-		        }
-	        }
-	    }	
+					// make the substitution
+					$content = str_replace( $ic_old, $ic_new , $content );
+				}
+			}
+		}	
 	}
 	return $content;
 }
@@ -803,16 +811,16 @@ add_filter( 'the_content' , 'ic_wrap_image' );
 
 // Customize the_archive_title used in archive.php
 add_filter( 'get_the_archive_title', function ($title) {
-    if ( is_category( 'editors-picks' ) ) {
-    	$title = single_cat_title( '', false );
-    } elseif ( is_category() ) {
-    	$title = single_cat_title( 'Topic: ', false );
-    } elseif ( is_tag() ) {
-    	$title = single_tag_title( 'Tag: ', false );
-    } elseif ( is_tax('news') ) {
-    	$title = single_tag_title( 'News Source: ', false );
-    }
-    return $title;
+	if ( is_category( 'editors-picks' ) ) {
+		$title = single_cat_title( '', false );
+	} elseif ( is_category() ) {
+		$title = single_cat_title( 'Topic: ', false );
+	} elseif ( is_tag() ) {
+		$title = single_tag_title( 'Tag: ', false );
+	} elseif ( is_tax('news') ) {
+		$title = single_tag_title( 'News Source: ', false );
+	}
+	return $title;
 });
 
 // Remove Yoast SEO from posts
@@ -823,54 +831,54 @@ add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
 
 // Remove Jetpack Sharing from excerpt
 function wusm_remove_share() {
-    remove_filter( 'the_excerpt', 'sharing_display', 19 );
-    if ( get_query_var( 'template' ) == 'email' ) {
-    	remove_filter( 'the_content', 'sharing_display', 19 );
-    }
+	remove_filter( 'the_excerpt', 'sharing_display', 19 );
+	if ( get_query_var( 'template' ) == 'email' ) {
+		remove_filter( 'the_content', 'sharing_display', 19 );
+	}
 }
 add_action( 'loop_start', 'wusm_remove_share' );
 
 // Remove title from Jetpack Related Posts
 function jetpackme_remove_rp() {
-    if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
-        $jprp = Jetpack_RelatedPosts::init();
-        $callback = array( $jprp, 'filter_add_target_to_dom' );
-        remove_filter( 'the_content', $callback, 40 );
-    }
+	if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+		$jprp = Jetpack_RelatedPosts::init();
+		$callback = array( $jprp, 'filter_add_target_to_dom' );
+		remove_filter( 'the_content', $callback, 40 );
+	}
 }
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 
 // Set height of boilerplate field on news stories
 function admin_css(){ ?>
-    <style>
-    .acf-field-56393793048a5 iframe {
+	<style>
+	.acf-field-56393793048a5 iframe {
 		height: 200px!important;
 	}
-    </style>
+	</style>
 <?php }
 add_action( 'admin_head', 'admin_css' );
 
 // Preview URLs for embargoed articles will expire after 24 days
 function wusm_preview_nonce_life() {
-    return 60 * 60 * 24 * 30; // 30 days
+	return 60 * 60 * 24 * 30; // 30 days
 }
 add_filter( 'ppp_nonce_life', 'wusm_preview_nonce_life' );
 
 // NEWS RELEASE EMAIL
 // Add query var for email template
 function wusm_register_query_var( $vars ) {
-    $vars[] = 'template';
-    return $vars;
+	$vars[] = 'template';
+	return $vars;
 }
 add_filter( 'query_vars', 'wusm_register_query_var' );
 
 // Switch to email template if query var is present in URL
 function wusm_url_rewrite_template() {
-    if ( get_query_var( 'template' ) == 'email' ) {
-        add_filter( 'template_include', function() {
-            return get_template_directory() . '/_/php/news/email.php';
-        });
-    }
+	if ( get_query_var( 'template' ) == 'email' ) {
+		add_filter( 'template_include', function() {
+			return get_template_directory() . '/_/php/news/email.php';
+		});
+	}
 }
 add_action( 'template_redirect', 'wusm_url_rewrite_template' );
 
