@@ -5027,6 +5027,10 @@ a.sidebar-outlook-link {
 		display: none !important;
 	}
 
+	@page {
+		margin: 3cm;
+	}
+
 	#print-logo {
 		display: inline-block;
 	}
