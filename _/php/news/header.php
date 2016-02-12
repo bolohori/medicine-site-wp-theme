@@ -24,7 +24,6 @@
                     <li><a href="/news/type/in-the-news">In the News</a></li>
                     <li><a href="/news/audio">Audio</a></li>
                     <li><a href="/news/type/photos">Photos &amp; Video</a></li>
-                    <li><a href="/news/type/class-acts">Class Acts</a></li>
                 </ul>
             </li>
         </ul>
