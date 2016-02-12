@@ -3,6 +3,23 @@
     "title": "Sidebar",
     "fields": [
         {
+            "key": "field_56be0149fb2be",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<strong>PLEASE NOTE:<\/strong> This sidebar area is being deprecated and will no longer be displayed on the website. It is slated for removal for March 2016 but may be removed sooner.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_526ad52c059e3",
             "label": "Right Sidebars",
             "name": "sidebars",
@@ -88,6 +105,7 @@
                             "button_label": "Add Row",
                             "min": 0,
                             "max": 0,
+                            "collapsed": "",
                             "sub_fields": [
                                 {
                                     "key": "field_526ad67d26cdb",
@@ -504,6 +522,7 @@
                             "button_label": "Add Row",
                             "min": 0,
                             "max": 0,
+                            "collapsed": "",
                             "sub_fields": [
                                 {
                                     "key": "field_526ad88acbe7f",
@@ -624,13 +643,13 @@
             }
         ]
     ],
-    "menu_order": 14,
+    "menu_order": 16,
     "position": "normal",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1444408317
+    "modified": 1455292844
 }
