@@ -36,7 +36,7 @@ if ( $the_query->have_posts() ) {
 						echo '<div class="card-text">';
 							echo '<p class="article-date">', the_time('M j, Y'), '</p>';
 							the_title('<h2 class="article-title">', '</h2>');
-							the_excerpt();
+	                        echo '<p>' . get_the_excerpt() . '.</p>';
 						echo '</div>';
 						?>
 					</div>
