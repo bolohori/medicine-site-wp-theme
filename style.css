@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     2016.02.12.0
+Version:     2016.02.12.2
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -4415,24 +4415,20 @@ ul.program-list li.last-child {
 	display: inline-block;
 	margin: 0!important;
 }
+.generic-cards {
+	margin: 0 auto;
+	width: 100%;
+}
 .generic-cards ul {
+	font-size: 0;
 	list-style: none;
 	margin: 0;
 }
 .generic-cards li {
-	width: 49.5%;
+	width: 50%;
 	display: inline-block;
 	vertical-align: top;
 	margin: 0 0 5px;
-}
-.generic-cards .card.odd {
-	margin-right: 10px;
-}
-.generic-cards .card.even {
-	margin-left: 10px;
-}
-.generic-cards li > div {
-	margin: 10px 0;
 }
 .generic-cards li div.card {
 	position: relative;
@@ -4444,22 +4440,19 @@ ul.program-list li.last-child {
 	-webkit-transition: box-shadow 0.2s, transform 0.2s;
 	transition: box-shadow 0.2s, transform 0.2s;
 }
+.generic-cards li > div {
+	margin: 10px 0;
+}
 .generic-cards li > div > a {
 	display: block;
 }
-.generic-cards li.headshot div.card:before {
-	content: '';
-	height: 195px;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	border-top-right-radius: 3px;
-	border-top-left-radius: 3px;
-	background: #f6f6f6;
+.generic-cards li .card.odd {
+	margin-right: 10px;
 }
-@media screen and (max-width: 1000px) {
+.generic-cards li .card.even {
+	margin-left: 10px;
+}
+/* @media screen and (max-width: 1000px) {
 	.generic-cards li {
 		width: 49%;
 	}
@@ -4469,13 +4462,13 @@ ul.program-list li.last-child {
 	.generic-cards .card.even {
 		margin-left: 2%;
 	}
-}
+} */
 @media screen and (max-width: 660px) {
 	.generic-cards li {
 		width: 100%;
 	}
-	.generic-cards .card.odd,
-	.generic-cards .card.even {
+	.generic-cards li .card.odd,
+	.generic-cards li .card.even {
 		margin-left: 0;
 		margin-right: 0;
 	}
