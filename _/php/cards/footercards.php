@@ -36,35 +36,37 @@ if( get_field('stories_check') == 1 ) {
             <?php while ( $the_query->have_posts() ) {
             $the_query->the_post(); ?>
 			<li>
-				<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
-					<?php if( $i % 2 == 1 ) {
-						$cardtype = "odd";
-					} else {
-						$cardtype = "even";
-					}; ?>
-					<div class="card <?php echo $cardtype; ?>">
-                        <?php 
-	                    if( has_post_thumbnail() ) {
-			                the_post_thumbnail('news');
-			            } else {
-			                echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
-			            }    
-	                    ?>
-                        <div class="card-text">
-							<p class="article-date"><?php the_time('M j, Y'); ?></p>
-                            <?php the_title('<h2>', '</h2>'); ?>
-                            <?php if(has_excerpt()) {
-                                echo '<p>' . get_the_excerpt() . '.</p>';
-			                if(get_field('source')) {
-			                    echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
-			                } else {
-			                    $terms = get_the_term_list( $post->ID, 'news', '', ', ', '' ) ;
-			                    echo '<p class="news-source">' . strip_tags($terms) . '</p>';
-			                }
-                            } ?>
-                        </div>
-					</div>
-				</a>
+				<div>
+					<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+						<?php if( $i % 2 == 1 ) {
+							$cardtype = "odd";
+						} else {
+							$cardtype = "even";
+						}; ?>
+						<div class="card <?php echo $cardtype; ?>">
+	                        <?php 
+		                    if( has_post_thumbnail() ) {
+				                the_post_thumbnail('news');
+				            } else {
+				                echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+				            }    
+		                    ?>
+	                        <div class="card-text">
+								<p class="article-date"><?php the_time('M j, Y'); ?></p>
+	                            <?php the_title('<h2>', '</h2>'); ?>
+	                            <?php if(has_excerpt()) {
+	                                echo '<p>' . get_the_excerpt() . '.</p>';
+				                if(get_field('source')) {
+				                    echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
+				                } else {
+				                    $terms = get_the_term_list( $post->ID, 'news', '', ', ', '' ) ;
+				                    echo '<p class="news-source">' . strip_tags($terms) . '</p>';
+				                }
+	                            } ?>
+	                        </div>
+						</div>
+					</a>
+				</div>
 			</li>
 			<?php $i++; } /* end while */?>
 		</ul>
