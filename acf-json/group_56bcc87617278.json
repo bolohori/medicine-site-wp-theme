@@ -1,6 +1,6 @@
 {
     "key": "group_56bcc87617278",
-    "title": "Footer - Categories",
+    "title": "News Cards",
     "fields": [
         {
             "key": "field_56bcc91bb3d27",
@@ -101,5 +101,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1455226892
+    "modified": 1455663177
 }

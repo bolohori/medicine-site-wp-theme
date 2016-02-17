@@ -128,7 +128,11 @@
 					</div>
 				<?php }
 
-				if( get_post_meta( get_the_ID(), 'article_author_0_author', true) || get_post_meta( get_the_ID(), 'media_contact_0_media_contact', true) ): ?>
+				if( get_post_meta( get_the_ID(), 'article_author_0_author', true ) ||
+					get_post_meta( get_the_ID(), 'media_contact_0_media_contact', true ) || 
+					get_post_meta( get_the_ID(), 'article_author_0_custom_author', true ) || 
+					get_post_meta( get_the_ID(), 'media_contact_0_custom_media_contact', true ) 
+				): ?>
 					
 					<div class="bio-wrapper">
 	
