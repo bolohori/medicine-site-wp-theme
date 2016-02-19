@@ -148,70 +148,35 @@
 </div>
 
 
-<section class="spotlight">
-	<div class="spotlight-wrap">
-		<div class="spotlight-intro">
-			<h1>National Leadership</h1>
-			<p class="spotlight-desc">Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
-		</div>
-<?php
-				$i = 0;
-				$slider = "";
-				$captions = "";
-				$args = array( 
-					'news'           => 'national-leaders',
-					'posts_per_page' => 3,
-					'orderby'        => 'date'
-				);
-
-				$loop = new WP_Query( $args );
-				while ( $loop->have_posts() ) {
-					
-					$loop->the_post();
-					
-					$read_more_link = "";
-					$url = get_field('url') ? get_field('url') : get_the_permalink();
-					$slidetitle = "#spotlightcaption$i";
-					
-					if ( get_field( 'faculty_member' ) ) {
-
-						$faculty_member = get_field( 'faculty_member' );
-						$img_to_get = $faculty_member->ID;
-
-					} else {
-
-						$img_to_get = $post->ID;
-
-					}
-
-					$title = get_the_title();
-					$excerpt = get_the_excerpt( );
-
-					$slider .= "<li class='clearfix'><div class='spotlight-individual card clearfix'>";
-					$slider .= ( $url ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
-					$slider .= ( get_the_post_thumbnail( $img_to_get ) ) ? get_the_post_thumbnail( $img_to_get, 'headshot', array('class' => 'headshot') ) : "<img src='" . get_stylesheet_directory_uri() . "/_/img/spotlight-default.png' class='headshot'>";
-					$slider .= ( $url ) ? "</a>" : "";
-
-					$read_more_link = ( $url ) ? "<a class='spotlight-more' href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">Read More</a>" : "";
-
-					$slider .= "<h2>";
-					$slider .= ( $url ) ? "<a href=\"$url\" onclick=\"__gaTracker('send','event','national-leader','$title');\">" : "";
-					$slider .= "$title";
-					$slider .= ( $url ) ? "</a>" : "";
-					$slider .= "</h2><p>$excerpt&nbsp;&nbsp;$read_more_link</p>";
-					$slider .= "</div></li>";
-					
-					$i++;
-				
-				}
-				wp_reset_postdata();
-				remove_filter( 'post_thumbnail_html', 'remove_billboard_dimensions', 10 );
-?>
-		<ul class="spotlight-featured">
-			<?php echo $slider; ?>
-		</ul>
-		<a class="spotlight-archive" href="/news/type/national-leaders/">SEE ALL</a>
+<section class="national-leaders">
+	<div class="national-leaders-intro">
+		<h1>National Leadership</h1>
+		<p>Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
 	</div>
+
+	<?php
+	$args = array(
+		'post_type'      => 'post',
+		'news'           => 'national-leaders',
+		'posts_per_page' => 3,
+		'orderby'        => 'date'
+	);
+	$the_query = new WP_Query( $args );
+
+	if ( $the_query->have_posts() ) { ?>
+		<div class="news-cards">
+			<ul class="clearfix">
+				<?php while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					get_template_part( '_/php/news/card' );
+				} ?>
+			</ul>
+		</div>
+	<?php
+	}
+	wp_reset_postdata(); ?>
+
+	<a class="national-leaders-see-all" href="/news/type/national-leaders/">SEE ALL</a>
 </section>
 
 <?php get_footer(); ?>
