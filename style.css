@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:16.02.19.1
+Version:     2016.02.19.2
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -2268,94 +2268,34 @@ a.news-title {
 	color: #fff;
 }
 
-.spotlight {
+.national-leaders {
 	padding: 50px 0;
 	width: 100%;
 	border-top: 1px solid #d8d8d8;
-	background: #eaeaea;
+	background-color: #eaeaea;
 }
 
-.spotlight-wrap {
-	max-width: 990px;
-	margin: 0 auto;
-	width: 90%;
+.national-leaders-intro {
+	max-width: 500px;
+	margin: 0 auto 30px;
 	text-align: center;
 }
 
-.spotlight-intro {
-	max-width: 500px;
-	margin: 0 auto 30px;
-}
-
-.spotlight-intro h1 {
+.national-leaders-intro h1 {
 	margin-bottom: 15px;
 }
 
-.spotlight p {
+.national-leaders p {
 	line-height: 26px;
 	font-size: 16px;
 	color: #525252;
 }
 
-.spotlight-featured li {
-	width: 33.3333%;
-	display: inline-block;
-	vertical-align: top;
+.national-leaders .news-cards {
+	background-color: #eaeaea;
 }
 
-.spotlight-individual {
-	margin: 15px;
-	padding: 20px;
-	border-radius: 3px;
-	position: relative;
-	text-align: left;
-	background: #fff;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
-	transition: box-shadow 0.2s;
-}
-
-.spotlight-individual:hover {
-	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
-}
-
-.spotlight-individual:before {
-	content: '';
-	height: 195px;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
-	background: #f6f6f6;
-}
-
-.spotlight-individual img {
-	display: inline-block;
-	margin-bottom: 20px;
-	z-index: 2;
-	position: relative;
-}
-
-.spotlight-individual h2 {
-	font-size: 18px;
-	margin: 0 0 12px;
-	font-weight: 600;
-}
-
-.spotlight-individual p {
-	font-size: 14px;
-	line-height: 1.6;
-}
-
-.spotlight-more {
-	text-transform: uppercase;
-	font-weight: 600;
-	display: inline-block;
-}
-
-.spotlight-archive {
+.national-leaders-see-all {
 	clear: both;
 	letter-spacing: 1px;
 	font-weight: bold;
@@ -2364,55 +2304,7 @@ a.news-title {
 	text-align: center;
 	margin: 20px auto 5px;
 	padding: 5px 15px;
-	display: inline-block;
-}
-
-@media screen and (max-width: 950px) {
-	.spotlight-featured li {
-		display: block;
-		width: 100%;
-		max-width: 550px;
-		margin: 0 auto;
-	}
-
-	.spotlight-individual {
-		height: auto;
-		margin: 15px 25px;
-	}
-
-	.spotlight-individual:before {
-		display: none;
-	}
-
-	.spotlight-individual img {
-		width: 100px;
-		float: left;
-		display: block;
-		margin: 0 25px 0 0;
-	}
-}
-
-@media screen and (max-width: 500px) {
-	.spotlight-individual:before {
-		display: block;
-	}
-
-	.spotlight-individual img {
-		width: auto;
-		float: none;
-		display: inline-block;
-		margin: 0 0 25px 0;
-	}
-
-	.spotlight-individual p {
-		margin-bottom: 10px;
-	}
-}
-
-@media screen and (max-width: 370px) {
-	.spotlight-individual {
-		margin: 10px;
-	}
+	display: block;
 }
 
 .audio-player-container {
@@ -5052,15 +4944,5 @@ p.sidebar-small {
 
 	.single-post .boilerplate {
 		margin-bottom: 20px;
-	}
-}
-
-
-/* Firefox "hack"
--------------------------------------------------------------------------------*/
-
-@-moz-document url-prefix() { 
-	.spotlight-slider-wrapper {
-		height: 235px;
 	}
 }

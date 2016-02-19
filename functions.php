@@ -610,7 +610,6 @@ add_filter( 'in-the-media_link_field', function() { return 'url'; } );
 add_filter( 'in-the-media_show_thumbnail', function() { return false; } );
 add_filter( 'in-the-media_date_text', function() { return get_the_date("m/d/y") . " | " . get_field('source'); } );
 
-//add_filter( 'spotlight_excerpt_text', function() { return ''; } );
 add_filter( 'national-leader_show_thumbnail', function() { return false; } );
 add_filter( 'national-leader_link_field', 'spotlight_link_url_function', 10, 1 );
 
