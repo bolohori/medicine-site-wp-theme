@@ -123,64 +123,75 @@
 			
 			<footer class="article-footer clearfix">
 				<?php if(get_field('boilerplate')) { ?>
-				<div class="boilerplate">
-					<?php the_field('boilerplate'); ?>
-				</div>
+					<div class="boilerplate">
+						<?php the_field('boilerplate'); ?>
+					</div>
 				<?php }
 
-				$has_author = '';
-				$has_media_contact = '';
-				$rows = get_field( 'article_author' );
-				if($rows[0]['author']) {
-					$has_author = $rows[0]['author'];
-				}
-				$rows_mc = get_field( 'media_contact' );
-				if($rows_mc[0]['media_contact']) {
-					$has_media_contact = $rows_mc[0]['media_contact'];
-				}
-
-				if( $has_author || $has_media_contact ): ?>				
-				<div class="bio-wrapper">
-				<?php if( have_rows('article_author') ):
-				    while ( have_rows('article_author') ) : the_row();
-				    	if(get_sub_field('custom_author')) {
-				        ?><div class="footer-author">
-				        	<p class="footer-heading"><?php the_sub_field('title'); ?></p>
-				        	<p class="name"><?php the_sub_field('name'); ?></p>
-							<p><?php the_sub_field('bio'); ?></p>
-							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
-							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
-						</div><?php
-						} elseif(get_sub_field('author')) {
-				        	$author = get_sub_field('author');
-							$user_id = $author['ID'];
-						?><div class="footer-author">
-							<?php if(get_the_author_meta( 'title', $user_id )) { echo '<p class="footer-heading">' . get_the_author_meta( 'title', $user_id ) . '</p>'; } ?>
-							<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
-							<?php if(get_the_author_meta( 'description', $user_id )) { echo '<p>' . get_the_author_meta( 'description', $user_id ) . '</p>'; } ?>
-							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
-							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
-						</div><?php } endwhile; endif;
-
-				if( have_rows('media_contact') ):
-				    while ( have_rows('media_contact') ) : the_row();
-				    	if(get_sub_field('custom_media_contact')) {
-				        ?><div class="footer-media-contact">
-				       		<p class="footer-heading">Media Contact</p>
-				        	<p class="name"><?php the_sub_field('name'); ?><?php if(get_sub_field('title')) { echo ', '; } the_sub_field('title'); ?></p>
-							<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
-							<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
-						</div><?php
-						} elseif(get_sub_field('media_contact')) {
-				        	$author = get_sub_field('media_contact');
-							$user_id = $author['ID'];
-						?><div class="footer-media-contact">
-							<p class="footer-heading">Media Contact</p>
-							<p class="name"><?php the_author_meta( 'display_name', $user_id); ?><?php if(get_the_author_meta( 'title', $user_id )) { echo ', '; } the_author_meta( 'title', $user_id ); ?></p>
-							<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
-							<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
-						</div><?php } endwhile; endif; ?>
-				</div>
+				if( get_post_meta( get_the_ID(), 'article_author_0_author', true ) ||
+					get_post_meta( get_the_ID(), 'media_contact_0_media_contact', true ) || 
+					get_post_meta( get_the_ID(), 'article_author_0_custom_author', true ) || 
+					get_post_meta( get_the_ID(), 'media_contact_0_custom_media_contact', true ) 
+				): ?>
+					
+					<div class="bio-wrapper">
+	
+					<?php
+						//Get list of Media Contact user IDs to check against before displaying authors to prevent duplicates
+						$media_contacts = array();
+						if( have_rows('media_contact') ):
+							while ( have_rows('media_contact') ) : the_row();
+								if(get_sub_field('media_contact')) :
+									$contact = get_sub_field('media_contact');
+									$contact_id = $contact['ID'];
+									$media_contacts[] = $contact_id;
+								endif;
+							endwhile;
+						endif;
+					?>
+	
+					<?php if( have_rows('article_author') ):
+					    while ( have_rows('article_author') ) : the_row();
+					    	if(get_sub_field('custom_author')) {
+					        ?><div class="footer-author">
+					        	<p class="footer-heading"><?php the_sub_field('title'); ?></p>
+					        	<p class="name"><?php the_sub_field('name'); ?></p>
+								<p><?php the_sub_field('bio'); ?></p>
+								<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
+								<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
+							</div><?php
+							} elseif(get_sub_field('author')) {
+					        	$author = get_sub_field('author');
+								$user_id = $author['ID'];
+								//Display author only if he's not also a media contact for the news release
+								if ( !in_array($user_id,$media_contacts) ) {
+							?><div class="footer-author">
+								<?php if(get_the_author_meta( 'title', $user_id )) { echo '<p class="footer-heading">' . get_the_author_meta( 'title', $user_id ) . '</p>'; } ?>
+								<p class="name"><a href="<?php echo get_author_posts_url($user_id); ?>"><?php the_author_meta( 'display_name', $user_id); ?></a></p>
+								<?php if(get_the_author_meta( 'description', $user_id )) { echo '<p>' . get_the_author_meta( 'description', $user_id ) . '</p>'; } ?>
+								<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
+								<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
+							</div><?php } } endwhile; endif;
+	
+					if( have_rows('media_contact') ):
+					    while ( have_rows('media_contact') ) : the_row();
+					    	if(get_sub_field('custom_media_contact')) {
+					        ?><div class="footer-media-contact">
+					       		<p class="footer-heading">Media Contact</p>
+					        	<p class="name"><?php the_sub_field('name'); ?><?php if(get_sub_field('title')) { echo ', '; } the_sub_field('title'); ?></p>
+								<p class="phone-number"><?php the_sub_field('phone_number'); ?></p>
+								<p class="email-address"><a href="mailto:<?php the_sub_field('email_address'); ?>"><?php the_sub_field('email_address'); ?></a></p>
+							</div><?php
+							} elseif(get_sub_field('media_contact')) {
+					        	$author = get_sub_field('media_contact');
+								$user_id = $author['ID'];
+							?><div class="footer-media-contact">
+								<p class="footer-heading">Media Contact</p>
+								<p class="name"><?php the_author_meta( 'display_name', $user_id); ?><?php if(get_the_author_meta( 'title', $user_id )) { echo ', '; } the_author_meta( 'title', $user_id ); ?></p>
+								<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
+								<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
+							</div><?php } endwhile; endif; ?>
+					</div>
 				<?php endif; ?>
 			</footer>
 		</div>

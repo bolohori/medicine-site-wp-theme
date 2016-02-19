@@ -21,7 +21,7 @@
                 <p class="article-date"><?php the_time('M j, Y'); ?></p>
                 <?php the_title('<h2 class="article-title">', '</h2>');
                 if(has_excerpt()) {
-                    the_excerpt();
+                    echo '<p>' . get_the_excerpt() . '.</p>';
                 }
                 if(get_field('source')) {
                     echo '<p class="news-source">Source: ' . get_field('source') . '</p>';

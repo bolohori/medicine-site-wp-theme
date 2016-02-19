@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:16.01.26.0
+Version:16.02.19.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -26,7 +26,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 }
 
 img[class*="align"],
-img[class*="wp-image-"] {
+img[class*="wp-image-"],
+img[class*="wp-post-"] {
 	height: auto; /* Make sure images with WordPress-added height and width >attributes are scaled correctly */
 }
 
@@ -833,7 +834,6 @@ button.single-link:hover {
 	#featured-image img {
 		display: block;
 		max-width: 150%;
-		margin-left: -25%;
 		height: auto;
 	}
 
@@ -1011,6 +1011,11 @@ article.giving-bottom {
 		border: 1px solid #e0e0e0;
 		border-top: none;
 		overflow: hidden;
+	}
+	
+	.section-nav ul.children {
+		border-radius: 0;
+		border: none;
 	}
 
 	.section-nav li {
@@ -1419,7 +1424,6 @@ a#site-rss {
 #site-footer-bottom #col2 {
     float: left;
     width: 154px;
-    min-height: 192px;
     border-left: 1px solid #bcbcbc;
     padding: 0 10px 0 15px;
 }
@@ -2935,6 +2939,7 @@ a.news-title {
 	color: #333;
 	line-height: 1.7;
 }
+.generic-cards .article-date,
 .news-cards .article-date {
 	text-transform: uppercase;
 	color: #838383;
@@ -2942,6 +2947,7 @@ a.news-title {
 	font-size: 12px;
 	letter-spacing: 0.9px;
 }
+.generic-cards .news-source,
 .news-cards .news-source {
 	text-transform: uppercase;
 	color: #838383;
@@ -3256,9 +3262,8 @@ a.news-title {
 .single-post .featured-image-caption {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 16px;
-	margin: 15px 0 45px;
+	margin: 17px 0 45px;
 	line-height: 1.5;
-	padding-right: 40px;
 }
 @media screen and (max-width: 650px) {
 	.single-post .featured-image-caption {
@@ -4390,6 +4395,147 @@ ul.program-list li.last-child {
 }
 
 
+/* Card Styles (Half-Width)
+-------------------------------------------------------------------------------*/
+
+.patient-cards {
+	background: #f5f5f5;
+	width: 100%;
+	margin: 0 auto;
+}
+.patient-type-title {
+	max-width: 940px;
+	width: 88%;
+	margin: 0 auto 15px;
+}
+.patient-type-title p {
+	border-radius: 2px;
+	font-weight: 600;
+	font-size: 18px;
+	display: inline-block;
+	margin: 0!important;
+}
+.generic-cards {
+	border-top: 1px solid #ccc;
+	margin: 0 auto;
+	padding-top: 25px;
+	width: 100%;
+}
+.generic-cards ul {
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+}
+.generic-cards li {
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0 5px;
+}
+.generic-cards li div.card {
+	position: relative;
+	border-radius: 3px;
+	background: #fff;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
+	-webkit-transition: box-shadow 0.2s, transform 0.2s;
+	transition: box-shadow 0.2s, transform 0.2s;
+}
+.generic-cards li > div {
+	margin: 10px 0;
+}
+.generic-cards li > div > a {
+	display: block;
+}
+.generic-cards li .card.odd {
+	margin-right: 10px;
+}
+.generic-cards li .card.even {
+	margin-left: 10px;
+}
+/* @media screen and (max-width: 1000px) {
+	.generic-cards li {
+		width: 49%;
+	}
+	.generic-cards .card.odd {
+		margin-right: 2%;
+	}
+	.generic-cards .card.even {
+		margin-left: 2%;
+	}
+} */
+@media screen and (max-width: 660px) {
+	.generic-cards li {
+		width: 100%;
+	}
+	.generic-cards li .card.odd,
+	.generic-cards li .card.even {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+.generic-cards li div.card:hover {
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.20);
+	transform: translateY(-2px);
+}
+.generic-cards li img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+.generic-cards li.headshot img {
+	height: 200px;
+	padding: 21px 0 0 20px;
+	z-index: 2;
+	width: auto;
+	position: relative;
+}
+.generic-cards .card-text {
+	position: relative;
+	padding: 10px 23px 24px; 
+}
+.generic-cards .has-audio {
+	width: 19px;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+.generic-cards .article-title {
+	display: block;
+	margin-bottom: 10px;
+	line-height: 1.5;
+}
+.generic-cards li h2 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0 0 10px;
+}
+.generic-cards p {
+	margin: 0 0 0px;
+	color: #333;
+	line-height: 1.7;
+}
+.generic-cards p a {
+	margin-bottom: -20px;
+}
+.generic-cards .article-date {
+	text-transform: uppercase;
+	color: #838383;
+	font-weight: 600;
+	font-size: 12px;
+	letter-spacing: 0.9px;
+}
+.generic-cards .patient-source {
+	text-transform: uppercase;
+	color: #838383;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 1.3;
+	margin-top: 15px;
+}
+
+
 /* Sidebars
 -------------------------------------------------------------------------------*/
 
@@ -4443,160 +4589,9 @@ ul.program-list li.last-child {
 	margin-top: 10px;
 }
 
-.sidebar-outlook {
-	padding: 0;
-	width: 240px;
-}
-
-.sidebar-outlook a {
-	display: block;
-}
-
-.sidebar-outlook p {
-	margin: 16px 20px 12px;
-}
-
-.sidebar-outlook a p {
-	color: #333;
-}
-
 p.sidebar-small {
 	font-size: 14px;
 	font-weight: normal;
-}
-
-.sidebar-outlook p.sidebar-small {
-	margin: 12px 20px 20px;
-}
-
-.sidebar-outlook-header {
-	margin-bottom: 160px;
-}
-
-a.sidebar-outlook-link {
-	border-radius: 0 0 3px 3px;
-	padding: 10px 0;
-	background: #f1f0f0;
-	background: -moz-linear-gradient(top,  #f1f0f0 0%, #e5e5e5 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f0f0), color-stop(100%,#e5e5e5));
-	background: -webkit-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
-	background: -o-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
-	background: -ms-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
-	background: linear-gradient(to bottom,  #f1f0f0 0%,#e5e5e5 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f0f0', endColorstr='#e5e5e5',GradientType=0 );
-	font-size: 12px;
-	font-weight: bold;
-	width: 100%;
-	display: inline-block;
-	text-align: center;
-}
-
-#right-col {
-	float: left;
-    padding-right: 10px;
-    margin-top: 30px;
-}
-
-#right-col aside {
-    float: left;
-	width: 238px;
-	margin: 0 20px 20px 0;
-	background-color: #fff;
-	border: 1px solid #e5e5e5;
-	border-radius: 5px;
-	box-sizing: border-box;
-	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
-}
-
-#right-col aside h2 {
-	margin-top: 0;
-	width: 100%;
-	font-size: 17px;
-	border-bottom: 1px solid #d5d2d2;
-	padding-bottom: 12px;
-}
-
-#right-col aside.links ul {
-	list-style: none;
-	margin: 0;
-}
-
-#right-col aside.links li {
-	margin-top: 20px;
-}
-
-#right-col aside a {
-	color: #990000;
-}
-
-#right-col aside a:hover {
-	color: #717171;
-}
-
-#right-col aside .secondary {
-	font-size: 12px;
-	color: #a0a0a0;
-	line-height: 17px;
-}
-
-#right-col aside p.secondary {
-	margin: 18px 0 35px 0;
-}
-
-#right-col aside.single-link {
-	padding: 20px;
-}
-
-#right-col aside.links {
-	padding: 5px 20px 25px 20px;
-	width: 100%;
-}
-
-#right-col aside.links h2 {
-	padding-top: 20px;
-}
-
-#right-col aside img {
-	border-radius: 5px 5px 0 0;
-}
-
-#right-col aside .sidebar-body {
-	padding: 20px 20px 0 20px;
-}
-
-#right-col aside.image-and-text h2 {
-	margin-bottom: 20px;
-}
-
-#right-col aside.image-and-text p {
-	margin-bottom: 20px;
-	line-height: 23px;
-}
-
-#right-col aside.image-and-text ul {
-	list-style: disc;
-	margin-left: 40px;
-	margin-bottom: 20px;
-}
-
-#right-col aside.image-and-text ol {
-	margin-left:   40px;
-	margin-bottom: 20px;
-}
-
-#right-col aside a.opt-link {
-	display: block;
-	text-align: center;
-	padding: 12px 0;
-	text-transform: uppercase;
-	font-weight: bold;
-	background-color: #f1f0f0;
-	border-radius: 0 0 5px 5px;
-}
-
-#right-col aside a.opt-link:hover {
-	color: #990000;
-	background-color: #dadada;
 }
 
 
@@ -4668,17 +4663,19 @@ a.sidebar-outlook-link {
 	border-top-left-radius: 3px;
 }
 
-.custom-intro {
+.announcement-excerpt {
 	color: #787878;
 	font-size: 18px;
 	line-height: 30px;
 	margin-top: 20px;
+	margin-bottom: 0;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d5d2d2;
 }
 
-.custom-byline {
+.announcement-date {
 	font-size: 11px;
 	padding: 15px 0;
-	border-top: 1px solid #d5d2d2;
 	border-bottom: 1px solid #d5d2d2;
 }
 
@@ -4927,11 +4924,6 @@ a.sidebar-outlook-link {
 		display: none;
 	}
 
-    #right-col {
-        float: none;
-        padding-right: 0;
-    }
-
     .sidebar {
     	margin-top: 0;
     }
@@ -5012,16 +5004,54 @@ a.sidebar-outlook-link {
 -------------------------------------------------------------------------------*/
 
 @media print {
-	header,
-	#search-form,
-	footer, 
-	nav,
+	header .header-wrap,
+	a.visit-news-hub,
+	a.email-template-link,
+	.sharedaddy,
+	.footer-related,
+	footer a .campaign,
+	#site-footer,
+	#wusm-footer,
+	#page-background,
+	#page-background-inner,
+	#left-col,
+	#right-col,
 	.sidebar {
 		display: none !important;
 	}
 
+	@page {
+		margin: 3cm;
+	}
+
 	#print-logo {
 		display: inline-block;
+	}
+
+	article {
+		background-color: #fff;
+	}
+
+	.single-post .article-header h1 {
+		font-size: 28px;
+		line-height: 35px;
+	}
+
+	.single-post article > div > p {
+		font-size: 14px;
+		margin-bottom: 24px;
+	}
+
+	.single-post .wp-caption-text, .single-post .featured-image-caption {
+		font-size: 12px;
+	}
+
+	.single-post .article-footer {
+		border-top: 2px solid #ccc;
+	}
+
+	.single-post .boilerplate {
+		margin-bottom: 20px;
 	}
 }
 

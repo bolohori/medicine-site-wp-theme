@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<meta name="description" content="As National Leaders in Medicine, we are frequently featured in the media both locally and nationally. Here are highlights from the April 1 to April 12" />
+<meta name="description" content="As National Leaders in Medicine, we are frequently featured in the media both locally and nationally. Here are highlights." />
 <meta name="author" content="Washington University School of Medicine in St. Louis" />
 <meta name="googlebot" content="noodp" />
 <meta http-equiv="cache-control" content="no-cache">
@@ -22,7 +22,7 @@ p > strong { font-size: 16px; }
 <body>
 <div style="width: 660px; margin: 0 auto;">
 	<div style="text-align: center;">
-		<span style="color: #707070; font-size: 10px; line-height: 20px; padding-bottom: 20px; display: inline-block;">A bi-weekly review of Barnes-Jewish Hospital, St Louis Children's Hospital and Washington University School of Medicine media appearances</span>
+		<span style="color: #707070; font-size: 10px; line-height: 20px; padding-bottom: 20px; display: inline-block;">A bi-weekly review of Barnes-Jewish Hospital, St. Louis Children's Hospital and Washington University School of Medicine media appearances.</span>
 		<a href="http://www.barnesjewish.org"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/itn_BJH.png" style="border: 0px"></a>
 		<a href="http://medicine.wustl.edu"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/itn_WUSM.png" style="border: 0px"></a>
 		<a href="http://www.stlouischildrens.org/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/itn_SLC.png" style="border: 0px"></a>

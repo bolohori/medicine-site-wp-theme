@@ -47,7 +47,8 @@
 
 				the_title('<h1>', '</h1>');
 				the_content();
-                get_sidebar( 'right' );
+				
+				get_template_part( '_/php/cards/footercards' );
 
 			endwhile;
 		endif; ?>

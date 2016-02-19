@@ -170,7 +170,6 @@ function create_custom_post_types() {
 	); 
 	register_post_type( 'faculty_profile', $args );
 
-
 	/**
 	 * Custom Taxonomies associated with news stories
 	 */
@@ -235,6 +234,39 @@ function create_custom_post_types() {
 	/**
 	 * End custom taxonomies associated with news stories
 	 */
+	 
+	 $labels = array(
+		'name'                       => _x( 'Class Years', 'Taxonomy General Name', 'text_domain' ),
+		'singular_name'              => _x( 'Class Year', 'Taxonomy Singular Name', 'text_domain' ),
+		'menu_name'                  => __( 'Class Years', 'text_domain' ),
+		'all_items'                  => __( 'All Years', 'text_domain' ),
+		'parent_item'                => __( 'Parent Year', 'text_domain' ),
+		'parent_item_colon'          => __( 'Parent Year:', 'text_domain' ),
+		'new_item_name'              => __( 'New Year', 'text_domain' ),
+		'add_new_item'               => __( 'Add New Year', 'text_domain' ),
+		'edit_item'                  => __( 'Edit Year', 'text_domain' ),
+		'update_item'                => __( 'Update Year', 'text_domain' ),
+		'view_item'                  => __( 'View Year', 'text_domain' ),
+		'separate_items_with_commas' => __( 'Separate years with commas', 'text_domain' ),
+		'add_or_remove_items'        => __( 'Add or remove years', 'text_domain' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'text_domain' ),
+		'popular_items'              => __( 'Popular Years', 'text_domain' ),
+		'search_items'               => __( 'Search Years', 'text_domain' ),
+		'not_found'                  => __( 'Not Found', 'text_domain' ),
+		'no_terms'                   => __( 'No years', 'text_domain' ),
+		'items_list'                 => __( 'Years list', 'text_domain' ),
+		'items_list_navigation'      => __( 'Years list navigation', 'text_domain' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+	);
+	register_taxonomy( 'class_year', array( 'post' ), $args );
 
 }	
 add_action( 'init', 'create_custom_post_types' );

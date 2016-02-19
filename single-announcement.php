@@ -19,7 +19,7 @@ if (have_posts()) :
             $class .= ' special-head';
         if ( $class !== '' )
             $classes = " class ='$class'";
-        ?>
+?>
 
         <div id="main" class="clearfix<?php echo $margin; ?>">
 
@@ -35,10 +35,6 @@ if (have_posts()) :
                 <li class="page_item page-item-7224 page_item_has_children"><a href="/news/publications/">Publications</a></li>
                 <li class="page_item page-item-4713 page_item_has_children"><a href="/news/media-releases/">For Media</a></li>
                 <li class="page_item page-item-4719 current_page_item"><a href="/news/announcements/">Announcements</a></li>
-                <li class="page_item page-item-4721"><a href="/news/in-the-news/">In the News</a></li>
-                <li class="page_item page-item-10851"><a href="/news/outlook-magazine/">Outlook Magazine</a></li>
-                <li class="page_item page-item-10853"><a href="/news/washington-people/">Washington People</a></li>
-                <li class="page_item page-item-4723 page_item_has_children"><a href="/news/leaders/">National Leaders</a></li>
             </ul>
         </nav>
 
@@ -50,17 +46,27 @@ if (have_posts()) :
             echo "<a class='special-header' href='" . get_permalink( $special_header->ID ) . "'>" . get_the_title( $special_header->ID ) . "</a>";
         }
 
-        $parent_page = get_top_parent_page_id($post->ID);
-        if(get_field('section_nav', $parent_page)) {
-            ?><div class="section-nav"><div class="current-page-title"><?php echo get_the_title($parent_page); ?></div><ul><li><a href="<?php echo get_permalink($parent_page); ?>"><?php echo get_the_title($parent_page); ?></a></li><?php
-                wp_list_pages("title_li=&child_of=$parent_page"); ?></ul></div><?php
+        the_title('<h1>', '</h1>');
+
+        if ( has_excerpt() ) {
+            add_filter( 'excerpt_more', function() { return ''; } );
+            echo "<p class='announcement-excerpt'>" . get_the_excerpt() . "</p>";
         }
 
-        the_title('<h1>', '</h1>');
-        the_content();
-
+        echo "<p class='announcement-date'>";
+        the_date();
+        echo "</p>";
+        if( get_the_content() ) {
+            the_content();
+        } else {
+            $link = get_field( 'url' );
+            $button_text = "View Announcement";
+            the_excerpt();
+            echo "<br><a href=\"$link\"><button class=\"single-link\">$button_text</button></a>";
+        }
     endwhile;
-endif; ?>
+endif;
+?>
     </article>
 
     </div>
