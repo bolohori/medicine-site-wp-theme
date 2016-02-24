@@ -33,6 +33,8 @@
 
 		// Restore original Post Data
 		wp_reset_postdata();
+
+        get_sidebar( 'right' );
 		?>
 		</article>
 

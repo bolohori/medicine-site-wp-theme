@@ -4481,9 +4481,160 @@ ul.program-list li.last-child {
 	margin-top: 10px;
 }
 
+.sidebar-outlook {
+	padding: 0;
+	width: 240px;
+}
+
+.sidebar-outlook a {
+	display: block;
+}
+
+.sidebar-outlook p {
+	margin: 16px 20px 12px;
+}
+
+.sidebar-outlook a p {
+	color: #333;
+}
+
 p.sidebar-small {
 	font-size: 14px;
 	font-weight: normal;
+}
+
+.sidebar-outlook p.sidebar-small {
+	margin: 12px 20px 20px;
+}
+
+.sidebar-outlook-header {
+	margin-bottom: 160px;
+}
+
+a.sidebar-outlook-link {
+	border-radius: 0 0 3px 3px;
+	padding: 10px 0;
+	background: #f1f0f0;
+	background: -moz-linear-gradient(top,  #f1f0f0 0%, #e5e5e5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f0f0), color-stop(100%,#e5e5e5));
+	background: -webkit-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
+	background: -o-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
+	background: -ms-linear-gradient(top,  #f1f0f0 0%,#e5e5e5 100%);
+	background: linear-gradient(to bottom,  #f1f0f0 0%,#e5e5e5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f0f0', endColorstr='#e5e5e5',GradientType=0 );
+	font-size: 12px;
+	font-weight: bold;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+#right-col {
+	float: left;
+    padding-right: 10px;
+    margin-top: 30px;
+}
+
+#right-col aside {
+    float: left;
+	width: 238px;
+	margin: 0 20px 20px 0;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	box-sizing: border-box;
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+}
+
+#right-col aside h2 {
+	margin-top: 0;
+	width: 100%;
+	font-size: 17px;
+	border-bottom: 1px solid #d5d2d2;
+	padding-bottom: 12px;
+}
+
+#right-col aside.links ul {
+	list-style: none;
+	margin: 0;
+}
+
+#right-col aside.links li {
+	margin-top: 20px;
+}
+
+#right-col aside a {
+	color: #990000;
+}
+
+#right-col aside a:hover {
+	color: #717171;
+}
+
+#right-col aside .secondary {
+	font-size: 12px;
+	color: #a0a0a0;
+	line-height: 17px;
+}
+
+#right-col aside p.secondary {
+	margin: 18px 0 35px 0;
+}
+
+#right-col aside.single-link {
+	padding: 20px;
+}
+
+#right-col aside.links {
+	padding: 5px 20px 25px 20px;
+	width: 100%;
+}
+
+#right-col aside.links h2 {
+	padding-top: 20px;
+}
+
+#right-col aside img {
+	border-radius: 5px 5px 0 0;
+}
+
+#right-col aside .sidebar-body {
+	padding: 20px 20px 0 20px;
+}
+
+#right-col aside.image-and-text h2 {
+	margin-bottom: 20px;
+}
+
+#right-col aside.image-and-text p {
+	margin-bottom: 20px;
+	line-height: 23px;
+}
+
+#right-col aside.image-and-text ul {
+	list-style: disc;
+	margin-left: 40px;
+	margin-bottom: 20px;
+}
+
+#right-col aside.image-and-text ol {
+	margin-left:   40px;
+	margin-bottom: 20px;
+}
+
+#right-col aside a.opt-link {
+	display: block;
+	text-align: center;
+	padding: 12px 0;
+	text-transform: uppercase;
+	font-weight: bold;
+	background-color: #f1f0f0;
+	border-radius: 0 0 5px 5px;
+}
+
+#right-col aside a.opt-link:hover {
+	color: #990000;
+	background-color: #dadada;
 }
 
 
@@ -4815,6 +4966,11 @@ p.sidebar-small {
     .special-header {
 		display: none;
 	}
+
+    #right-col {
+        float: none;
+        padding-right: 0;
+    }
 
     .sidebar {
     	margin-top: 0;
