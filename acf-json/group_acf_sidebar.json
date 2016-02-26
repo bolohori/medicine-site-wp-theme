@@ -3,23 +3,6 @@
     "title": "Sidebar",
     "fields": [
         {
-            "key": "field_56be0149fb2be",
-            "label": "",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "<strong>PLEASE NOTE:<\/strong> This sidebar area is being deprecated and will no longer be displayed on the website. It is slated for removal for March 2016 but may be removed sooner.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
-        {
             "key": "field_526ad52c059e3",
             "label": "Right Sidebars",
             "name": "sidebars",
@@ -227,7 +210,7 @@
                             "key": "field_534c11d3fbb9c",
                             "label": "Link",
                             "name": "link",
-                            "type": "website",
+                            "type": "text",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -236,10 +219,13 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "website_title": 1,
-                            "output_format": 1,
                             "default_value": "",
-                            "internal_link": 0
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "readonly": 0,
+                            "disabled": 0
                         }
                     ],
                     "min": "",
@@ -275,106 +261,6 @@
                             "name": "single_link_style",
                             "type": "text",
                             "instructions": "Styles to be applied to the link",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "formatting": "html",
-                            "maxlength": "",
-                            "readonly": 0,
-                            "disabled": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                {
-                    "key": "54bfe347240c0",
-                    "name": "outlook",
-                    "label": "Outlook Option",
-                    "display": "row",
-                    "sub_fields": [
-                        {
-                            "key": "field_526ad764494dc",
-                            "label": "Outlook Issue URL",
-                            "name": "outlook_issue_url",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "http:\/\/outlook.wustl.edu",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "formatting": "none",
-                            "maxlength": "",
-                            "readonly": 0,
-                            "disabled": 0
-                        },
-                        {
-                            "key": "field_526ad77b494dd",
-                            "label": "Outlook Thumbnail",
-                            "name": "outlook_thumbnail",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "preview_size": "outlook-thumb",
-                            "library": "all",
-                            "return_format": "url",
-                            "min_width": 0,
-                            "min_height": 0,
-                            "min_size": 0,
-                            "max_width": 0,
-                            "max_height": 0,
-                            "max_size": 0,
-                            "mime_types": ""
-                        },
-                        {
-                            "key": "field_526ad793494de",
-                            "label": "Outlook Title",
-                            "name": "outlook_title",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "formatting": "html",
-                            "maxlength": "",
-                            "readonly": 0,
-                            "disabled": 0
-                        },
-                        {
-                            "key": "field_526ad79f494df",
-                            "label": "Outlook Tease",
-                            "name": "outlook_tease",
-                            "type": "text",
-                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -651,5 +537,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1455292844
+    "modified": 1456330723
 }
