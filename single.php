@@ -26,7 +26,7 @@
 				if (isset($_GET['_ppp']) || get_post_status() == 'future' ) {
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 					$embargo_lift_pre = date('g:i a l, M. j, Y', strtotime($date_time . '+ 1 hour'));
-					$embargo_lift = str_replace(array('am','pm',':00','May.'),array('a.m. ET','p.m. ET','','May'),$embargo_lift_pre);
+					$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.'),array('a.m. ET','p.m. ET','','March','April','May','June','July'),$embargo_lift_pre);
 				    echo '<p class="embargo-notice">Embargoed until ' . $embargo_lift . '</p>';
 				}
 
