@@ -111,6 +111,7 @@ jQuery(document).ready(function($) {
             $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
         } else {
             $('#mobile-search-form').animate({top:'0'}, {duration:300});
+			$('input#mobile-search-box').focus();
         }
         $('#mobile-search-form').toggleClass('active');
         $('#mobile-search-icon').toggleClass('search-active');
