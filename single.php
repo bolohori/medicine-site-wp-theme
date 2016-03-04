@@ -197,20 +197,26 @@
 		</div>
 	</article>
 
-	<?php
-		if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
-			$related = Jetpack_RelatedPosts::init_raw()
-				->get_for_post_id(
-					get_the_ID(),
-					array( 'size' => 3 )
-				);
-			if ( $related ) {
-			?>
-	<div class="footer-related clearfix">
-		<h3>Related Articles</h3>
-		<?php echo do_shortcode( '[jetpack-related-posts]' ); ?>
-	</div>
-			<?php } ?>
+	<?php $args = array(
+		'post_type'      => 'post',
+		'posts_per_page' => 3,
+		'category_name'  => 'editors-picks',
+		'post__not_in'   => array(get_the_ID())
+	);
+	$the_query = new WP_Query( $args );
+
+	if ( $the_query->have_posts() ) { ?>
+		<div class="footer-editors-picks">
+			<h3>Editors' Picks</h3>
+			<div class="news-cards">
+				<ul class="clearfix">
+				<?php while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					get_template_part( '_/php/news/card' );
+				} ?>
+				</ul>
+			</div>
+		</div>
 	<?php } ?>
 </div>
 
