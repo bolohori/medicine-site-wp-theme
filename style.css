@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     2016.02.29.0
+Version:     2016.03.04.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -3361,60 +3361,14 @@ a.news-title {
 .single-post .article-footer .email-address {
 	margin: 0;
 }
-.footer-related {
+.footer-editors-picks {
 	background: #f5f5f5;
 	padding: 45px 0;
 }
-.footer-related h3 {
+.footer-editors-picks h3 {
 	text-align: center;
 	margin: 0 0 20px;
 	font-size: 21px;
-	font-weight: 600;
-}
-.single-post #jp-relatedposts {
-	margin: 0 auto;
-}
-.jp-relatedposts {
-	list-style: none;
-	max-width: 960px;
-	width: 92%;
-}
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post {
-	width: 31.3333%;
-	float: left;
-	margin: 1%;
-	border-radius: 3px;
-	background: #fff;
-	overflow: hidden;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.13);
-	-webkit-transition: box-shadow 0.2s;
-	transition: box-shadow 0.2s;
-}
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post:hover .jp-relatedposts-post-title a {
-	text-decoration: none;
-}
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post:hover {
-	box-shadow: 0 3px 8px 0 rgba(0,0,0,0.23);
-}
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post span {
-	max-width: 100%;
-}
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-title a {
-	font-size: 18px;
-	padding: 24px;
-	line-height: 23px;
-	font-weight: 600;
-	display: block;
-}
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-context,
-.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-date {
-	display: none;
-}
-@media screen and (max-width: 850px) {
-	.single-post #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post {
-		width: 100%;
-		margin: 0 0 4%;
-	}
 }
 
 .feature-photo-credit {
@@ -5056,7 +5010,7 @@ a.sidebar-outlook-link {
 	a.visit-news-hub,
 	a.email-template-link,
 	.sharedaddy,
-	.footer-related,
+	.footer-editors-picks,
 	footer a .campaign,
 	#site-footer,
 	#wusm-footer,
