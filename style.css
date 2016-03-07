@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     2016.03.04.1
+Version:     2016.03.07.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -2983,17 +2983,6 @@ a.news-title {
 	font-family: Georgia, serif;
 	line-height: 1.5;
 }
-@media screen and (max-width: 500px) {
-	.article-header h1 {
-		font-size: 30px;
-	}
-	.article-header .subhead {
-		font-size: 20px;
-	}
-	.single-post article > div > p {
-		font-size: 20px;
-	}
-}
 .single-post p.meta-header {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
@@ -3294,14 +3283,6 @@ a.news-title {
 		font-size: 16px;
 	}
 }
-@media screen and (max-width: 500px) {
-	.single-post blockquote p {
-		font-size: 22px;
-	}
-	.single-post .name {
-		font-size: 14px;
-	}
-}
 .single-post .news-source {
 	text-transform: uppercase;
 	font-family: 'Open Sans', sans-serif;
@@ -3381,6 +3362,47 @@ a.news-title {
 	}
 	.single-post p {
 		padding-right: 0;
+	}
+}
+@media screen and (max-width: 500px) {
+	.article-header {
+		margin-bottom: 20px;
+	}
+	.article-header h1 {
+		font-size: 26px;
+		line-height: 34px;
+	}
+	.article-header .subhead {
+		font-size: 18px;
+		line-height: 25px;
+		margin-bottom: 16px;
+	}
+	.single-post p.meta-header {
+		margin-bottom: 25px;
+	}
+	.single-post .featured-image-caption {
+		font-size: 15px;
+		margin-bottom: 20px;
+	}
+	.single-post article > div > p {
+		font-size: 16px;
+		margin-bottom: 16px;
+		line-height: 23px;
+	}
+	.single-post blockquote p {
+		font-size: 22px;
+	}
+	.single-post .aligncenter, .single-post .alignnone {
+		margin-bottom: 10px;
+	}
+	.wp-caption .credit-container {
+		margin-bottom: 18px;
+	}
+	.sharedaddy.sd-sharing-enabled {
+		margin-top: 10px;
+	}
+	.single-post .name {
+		font-size: 14px;
 	}
 }
 
