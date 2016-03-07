@@ -50,9 +50,9 @@
 
             <div id="wusm-footer-right">
                 <nav>
-                    <a class="first-child" onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://emergency.wustl.edu', 'Emergency');" href="http://emergency.wustl.edu">Emergency</a>
-                    <a onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://medicine.wustl.edu/policies', 'Policies');" href="http://medicine.wustl.edu/policies">Policies</a>
-                    <a class="last-child" onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://news.wustl.edu/mh/Pages/MedicineHealthcare.aspx', 'News');" href="http://news.wustl.edu/mh/Pages/MedicineHealthcare.aspx">News</a>
+                    <a class="first-child" onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://emergency.wustl.edu', 'Emergency');" href="https://emergency.wustl.edu/">Emergency</a>
+                    <a onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://medicine.wustl.edu/policies', 'Policies');" href="/policies/">Policies</a>
+                    <a class="last-child" onclick="__gaTracker('send', 'event', 'wusm-footer', 'https://medicine.wustl.edu/news/', 'News');" href="/news/">News</a>
                 </nav>
             </div>
 
