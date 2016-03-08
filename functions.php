@@ -871,3 +871,15 @@ function wusm_url_rewrite_template() {
 }
 add_action( 'template_redirect', 'wusm_url_rewrite_template' );
 
+// Add am/pm and timezone when displaying times in Publish box on backend. This is important for embargoed news posts.
+function format_publish_box_date( $translated_text, $untranslated_text, $domain ) {
+
+	$date_format = 'M j, Y @ H:i'; // From wp-admin/includes/meta-boxes.php
+
+	if ( is_admin() && $untranslated_text === $date_format ) {
+		return 'M j, Y @ g:i a T';
+	}
+
+	return $translated_text;
+}
+add_filter('gettext', 'format_publish_box_date', 20, 3);
