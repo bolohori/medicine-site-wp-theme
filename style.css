@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:     2016.03.07.0
+Version:     2016.03.08.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -2969,7 +2969,7 @@ a.news-title {
 }
 .single-post article > div > h2 {
 	font-size: 24px;
-	margin: 55px 0 25px;
+	margin: 35px 0 19px;
 	font-weight: 700;
 	line-height: 1.5;
 }
@@ -3129,10 +3129,11 @@ a.news-title {
 	font-family: Georgia, serif;
 	font-size: 22px;
 	max-width: 680px;
-	margin: 0 0 35px 20px;
+	margin: 0 0 35px 40px;
 }
-.single-post article > div > ol {
-	margin-left: 40px;
+.single-post article > div > ul li,
+.single-post article > div > ol li {
+	line-height: 33px;
 }
 .single-post article img {
 	display: block;
@@ -3384,6 +3385,11 @@ a.news-title {
 		font-size: 15px;
 		margin-bottom: 20px;
 	}
+	.single-post article > div > h2 {
+		font-size: 18px;
+		margin-top: 18px;
+		margin-bottom: 7px;
+	}
 	.single-post article > div > p {
 		font-size: 16px;
 		margin-bottom: 16px;
@@ -3392,14 +3398,27 @@ a.news-title {
 	.single-post blockquote p {
 		font-size: 22px;
 	}
-	.single-post .aligncenter, .single-post .alignnone {
+	.single-post article > div > ul, .single-post article > div > ol {
+		font-size: 16px;
+		margin-bottom: 19px;
+	}
+	.single-post article > div > ul li, .single-post article > div > ol li {
+		line-height: 23px;
+	}
+	.single-post .aligncenter, .single-post .alignnone, .single-post article .wp-caption.alignleft, .single-post article img.alignleft, .single-post article .wp-caption.alignright, .single-post article img.alignright {
 		margin-bottom: 10px;
 	}
-	.wp-caption .credit-container {
-		margin-bottom: 18px;
+	.single-post .wp-caption .credit-container {
+		margin-bottom: 17px;
 	}
-	.sharedaddy.sd-sharing-enabled {
+	.single-post .alignleft .wp-caption-text, .single-post .alignright .wp-caption-text {
+		border-bottom: none;
+	}
+	.single-post .sharedaddy.sd-sharing-enabled {
 		margin-top: 10px;
+	}
+	.single-post .sharedaddy.sd-sharing-enabled .sd-content ul li {
+		padding-right: 10px;
 	}
 	.single-post .name {
 		font-size: 14px;
