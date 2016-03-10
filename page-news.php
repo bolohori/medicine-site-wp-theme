@@ -48,7 +48,14 @@ if (have_posts()) :
                 'post_type' => 'post',
                 'posts_per_page' => 24,
                 'paged' => $paged,
-                'post__not_in' => $exclude
+                'post__not_in' => $exclude,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'news',
+                        'field'    => 'slug',
+                        'operator' => 'EXISTS'
+                    )
+                )
             );
             $the_query = new WP_Query( $args );
 
