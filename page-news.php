@@ -35,6 +35,24 @@ if (have_posts()) :
                             <?php the_title('<h2>', '</h2>'); ?>
                             <?php if(has_excerpt()) {
                                 echo '<p>' . get_the_excerpt() . '.</p>';
+                            }
+                            if(get_field('source')) {
+                                echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
+                            } else {
+                                $terms = get_the_terms($post->ID, 'news');
+                                if ($terms) {
+                                    $term_list = array();
+
+                                    foreach ($terms as $term) {
+                                        // Don't include More News in the list of terms.
+                                        if ($term->name != 'More News') {
+                                            $term_list[] = $term->name;
+                                        }
+                                    }
+                                }
+                                if ($term_list) {
+                                    echo '<p class="news-source">' . implode(', ', $term_list) . '</p>';
+                                }
                             } ?>
                         </div>
                     </div>

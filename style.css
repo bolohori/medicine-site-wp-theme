@@ -2840,7 +2840,7 @@ a.news-title {
 	letter-spacing: 0.9px;
 }
 .generic-cards .news-source,
-.news-cards .news-source {
+.news-cards .news-source, .ep-card .news-source {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
