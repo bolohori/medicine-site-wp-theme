@@ -1,9 +1,4 @@
 <?php
-// ***************************************
-// Google Analytics template
-// onclick="__gaTracker('send','event','outbound-<LABEL>','http://<URL OR LABEL>');"
-// ***************************************
-
 // Used on the front page to remove dimensions from billboard images
 function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
 	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
@@ -132,8 +127,8 @@ add_theme_support( 'post-thumbnails' );
 
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
-add_image_size( 'headshot', 145, 200, true );
-add_image_size( 'news', 600, 441, true );
+add_image_size( 'headshot', 250, 345, true );
+add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
 
 // Image sizes (Settings / Media)
@@ -145,10 +140,12 @@ update_option('embed_size_w', 645);
 
 // Add headshot to image size dropdown
 function wusm_image_size_choose( $sizes ) {
+	$new_list = array_diff( $sizes, array('thumbnail' => 'Thumbnail') );
 	$custom_sizes = array(
 		'headshot' => 'Headshot',
 	);
-	return array_merge( $sizes, $custom_sizes );
+	$new_list = array_merge( $new_list, $custom_sizes );
+	return $new_list;
 }
 add_filter( 'image_size_names_choose', 'wusm_image_size_choose' );
 
@@ -514,8 +511,6 @@ if ( ! function_exists( 'medicine_remove_dimensions' ) ) {
 	}
 }
 add_filter( 'post_thumbnail_html', 'medicine_remove_dimensions', 10, 5 );
-// Don't need it in the content (?)
-// add_filter( 'the_content', 'medicine_remove_dimensions', 10 );
 
 /*
  * Remove extra 10px from width of wp-caption div
@@ -654,8 +649,6 @@ add_filter( 'manage_billboard_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_billboard_posts_custom_column', 'column_content', 11, 2 );
 add_filter( 'manage_announcement_posts_columns', 'column_heading', 11, 1 );
 add_action( 'manage_announcement_posts_custom_column', 'column_content', 11, 2 );
-//add_filter( 'manage_in-the-media_posts_columns', 'column_heading', 11, 1 );
-//add_action( 'manage_in-the-media_posts_custom_column', 'column_content', 11, 2 );
 function column_heading($columns) {
 	unset($columns['wpseo-score']);
 	unset($columns['wpseo-title']);
