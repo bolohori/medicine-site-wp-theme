@@ -140,10 +140,12 @@ update_option('embed_size_w', 645);
 
 // Add headshot to image size dropdown
 function wusm_image_size_choose( $sizes ) {
+	$new_list = array_diff( $sizes, array('thumbnail' => 'Thumbnail') );
 	$custom_sizes = array(
 		'headshot' => 'Headshot',
 	);
-	return array_merge( $sizes, $custom_sizes );
+	$new_list = array_merge( $new_list, $custom_sizes );
+	return $new_list;
 }
 add_filter( 'image_size_names_choose', 'wusm_image_size_choose' );
 
