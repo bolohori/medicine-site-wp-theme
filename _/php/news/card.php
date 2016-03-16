@@ -7,7 +7,9 @@
     <div>
         <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
             <div class="card">
-            <?php if(has_post_thumbnail()) {
+            <?php if(has_post_thumbnail() && has_term('national-leaders','news')) {
+                the_post_thumbnail( 'headshot' );
+            } elseif(has_post_thumbnail()) {
                 the_post_thumbnail('news');
             } elseif(has_term('national-leaders','news')) { ?>
                 <img src="<?php echo get_template_directory_uri() . '/_/img/spotlight-default.png' ?>">
