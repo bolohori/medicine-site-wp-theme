@@ -127,8 +127,8 @@ add_theme_support( 'post-thumbnails' );
 
 // Thumbnails
 add_image_size( 'landing-page', 1440, 9999, true );
-add_image_size( 'headshot', 145, 200, true );
-add_image_size( 'news', 600, 441, true );
+add_image_size( 'headshot', 250, 345, true );
+add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
 
 // Image sizes (Settings / Media)
