@@ -14,7 +14,7 @@ if(get_field('embargoed_url')) {
 function wusm_remove_oembed( $html ) {
 	if ( get_query_var( 'template' ) == 'email' ) {
 		global $permalink;
-		$video_available = '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size: 14px;color: #333;padding:0;margin-bottom:35px;"><strong>Video available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . $permalink . '">' . $permalink . '</a></p>';
+		$video_available = '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size: 14px;color: #333;padding:0;margin-bottom:35px;"><strong>Video available:</strong> <a href="' . $permalink . '">' . $permalink . '</a></p>';
 		return $video_available;
 	}
 	return $html;
@@ -167,8 +167,9 @@ $replace_h3 = '<h3 style="display:block;color:#333;font-family:\'Open Sans\', Ar
 $replace_ul = '<ul style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;list-style-type: disc;">';
 $replace_ol = '<ol style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;">';
 $replace_li = '<li style="margin-bottom:10px;line-height:33px;">';
+$replace_a  = '<a style="color:#990000;font-weight:normal;text-decoration:none;" '; // Required for Gmail
 
-$email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>'), array($replace_p, $replace_h2, $replace_h3, $replace_ul, $replace_ol,$replace_li), $content);
+$email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a '), array($replace_p, $replace_h2, $replace_h3, $replace_ul, $replace_ol,$replace_li,$replace_a), $content);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -435,8 +436,11 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>'), ar
 									<!-- // END BODY -->
 								</td>
 							</tr>
-							<?php if (get_field('boilerplate')) : ?>
-								<?php $email_boilerplate = str_replace('<p>', '<p style="font-size: 14px;font-family: \'Open Sans\', Arial, sans-serif;color:#333;line-height: 21px;margin: 0 0 16px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">', get_field('boilerplate')); ?>
+							<?php if (get_field('boilerplate')) :
+								$replace_p = '<p style="font-size: 14px;font-family: \'Open Sans\', Arial, sans-serif;color:#333;line-height: 21px;margin: 0 0 16px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">';
+								$replace_a = '<a style="color:#990000;font-weight:normal;text-decoration:none;" '; // Required for Gmail
+								$email_boilerplate = str_replace(array('<p>','<a '), array($replace_p,$replace_a), get_field('boilerplate'));
+							?>
 							<tr>
 								<td align="center" valign="top">
 									<!-- BEGIN FOOTER // -->
