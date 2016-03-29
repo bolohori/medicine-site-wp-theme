@@ -589,7 +589,7 @@ add_filter( 'billboard_num_per_page', function() { return 9999; } );
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
 
-add_filter( 'news-release_link_field', function() { return 'url'; } );
+add_filter( 'news-release_link_field', 'news_release_link_url_function', 10, 1 );
 
 // SO meta!
 add_filter( 'profiles_excerpt_text', function() {
@@ -634,6 +634,12 @@ if ( ! function_exists( 'campus_life_link_url_function' ) ) {
 
 if ( ! function_exists( 'announcement_link_url_function' ) ) {
 	function announcement_link_url_function( $id ) {
+		return ( $external_link = get_field( 'url' ) ) ? 'url' : '';
+	}
+}
+
+if ( ! function_exists( 'news_release_link_url_function' ) ) {
+	function news_release_link_url_function( $id ) {
 		return ( $external_link = get_field( 'url' ) ) ? 'url' : '';
 	}
 }
