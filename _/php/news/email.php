@@ -347,7 +347,7 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader" style="border-collapse:collapse !important;">
                                         <tr>
                                             <td valign="top" class="headerContent" style="font-family:'Open Sans',Arial,sans-serif;font-size:16px;font-weight:bold;color:#6e6e6e;padding-bottom:5px;letter-spacing:0.6px;text-align:left;">
-                                            	<img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" style="height:auto;max-width:600px;padding-bottom:20px;border-bottom:1px solid #e1e1e1;margin-bottom:30px;" alt="Washington University School of Medicine in St. Louis" />
+                                            	<a href="https://medicine.wustl.edu/"><img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" style="height:auto;max-width:600px;padding-bottom:20px;border-bottom:1px solid #e1e1e1;margin-bottom:30px;" alt="Washington University School of Medicine in St. Louis" /></a>
 												NEWS RELEASE
                                             </td>
                                         </tr>
