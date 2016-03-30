@@ -14,7 +14,7 @@ if(get_field('embargoed_url')) {
 function wusm_remove_oembed( $html ) {
 	if ( get_query_var( 'template' ) == 'email' ) {
 		global $permalink;
-		$video_available = '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size: 14px;color: #333;padding:0;margin-bottom:35px;"><strong>Video available:</strong> <a href="' . $permalink . '">' . $permalink . '</a></p>';
+		$video_available = '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size: 14px;color: #333;padding:0;margin-bottom:35px;text-align:left;"><strong>Video available:</strong> <a href="' . $permalink . '">' . $permalink . '</a></p>';
 		return $video_available;
 	}
 	return $html;
@@ -161,12 +161,12 @@ add_filter('img_caption_shortcode', 'medicine_email_caption_shortcode_filter', 1
 // Add inline styles to paragraphs and headings
 $content = get_the_content();
 $content = apply_filters('the_content', $content);
-$replace_p = '<p style="font-family: Georgia, serif;font-size: 22px;line-height: 1.5;margin: 0 0 35px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">';
+$replace_p = '<p style="font-family: Georgia, serif;font-size: 22px;line-height: 1.5;margin: 0 0 35px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">';
 $replace_h2 = '<h2 style="display:block;color:#333;font-family:\'Open Sans\', Arial, sans-serif;font-size:24px;font-style:normal;font-weight:bold;line-height:1.5;letter-spacing:normal;margin: 35px 0 19px;text-align:left;">';
 $replace_h3 = '<h3 style="display:block;color:#333;font-family:\'Open Sans\', Arial, sans-serif;font-size:20px;font-style:normal;font-weight:600;line-height:1.5;letter-spacing:normal;margin:19px 0 10px;text-align:left;">';
-$replace_ul = '<ul style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;list-style-type: disc;">';
-$replace_ol = '<ol style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;">';
-$replace_li = '<li style="margin-bottom:10px;line-height:33px;">';
+$replace_ul = '<ul style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;list-style-type: disc;text-align:left;">';
+$replace_ol = '<ol style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;text-align:left;">';
+$replace_li = '<li style="margin-bottom:10px;line-height:33px;text-align:left;">';
 $replace_a  = '<a style="color:#990000;font-weight:normal;text-decoration:none;" '; // Required for Gmail
 
 $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a '), array($replace_p, $replace_h2, $replace_h3, $replace_ul, $replace_ol,$replace_li,$replace_a), $content);
@@ -236,7 +236,7 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 				font-weight: bold;
 				color: #333;
 				text-transform: uppercase;
-				padding-bottom:30px;
+				padding-bottom:5px;
 			}
 			#headerImage{
 				height:auto;
@@ -301,9 +301,6 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 					max-width:600px !important;
 					width:100% !important;
 				}
-				.headerContent{
-					padding-bottom: 15px !important;
-				}
 				.bodyContent p, .bodyContent li{
 					font-size:16px !important;
 					line-height:23px !important;
@@ -349,9 +346,9 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
                                 	<!-- BEGIN HEADER // -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader" style="border-collapse:collapse !important;">
                                         <tr>
-                                            <td valign="top" class="headerContent" style="font-family:'Open Sans', Arial, sans-serif;font-size: 16px;font-weight: bold;color: #333;text-transform: uppercase;padding-bottom:30px;">
+                                            <td valign="top" class="headerContent" style="font-family:'Open Sans',Arial,sans-serif;font-size:16px;font-weight:bold;color:#6e6e6e;padding-bottom:5px;letter-spacing:0.6px;text-align:left;">
                                             	<img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" style="height:auto;max-width:600px;padding-bottom:20px;border-bottom:1px solid #e1e1e1;margin-bottom:30px;" alt="Washington University School of Medicine in St. Louis" />
-												News Release
+												NEWS RELEASE
                                             </td>
                                         </tr>
 									</table>
@@ -369,15 +366,15 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 													$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 													$embargo_lift_pre = date('g:i a l, M. j, Y', strtotime($date_time . '+ 1 hour'));
 													$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.'),array('a.m. ET','p.m. ET','','March','April','May','June','July'),$embargo_lift_pre);
-													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: bold;color: #333;margin-bottom:25px;margin-top:0;background:#f2eb29;padding:10px 20px;">Embargoed until ' . $embargo_lift . '</p>';
+													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: bold;color: #333;margin-bottom:25px;margin-top:0;background:#f2eb29;padding:10px 20px;text-align:left;">Embargoed until ' . $embargo_lift . '</p>';
 												} else {
-													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: normal;color: #333;margin-bottom:25px;margin-top:0;">' . get_the_date() . '</p>';
+													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: normal;color: #333;margin-bottom:25px;margin-top:0;text-align:left;">' . get_the_date() . '</p>';
 												}
 												?>
 												<h1 style="display:block;font-family:Georgia,serif;font-size:35px;font-style:normal;font-weight:normal;line-height:43px;letter-spacing:normal;margin: 0 0 12px;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php the_title(); ?></a></h1>
 												<?php
 												if(has_excerpt()):
-													echo '<p class="subhead" style="margin: 0 0 25px;font-size: 22px;font-family: \'Open Sans\', Arial, sans-serif;color: #787878;line-height: 28px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . get_the_excerpt() . '</p>';
+													echo '<p class="subhead" style="margin: 0 0 25px;font-size: 22px;font-family: \'Open Sans\', Arial, sans-serif;color: #787878;line-height: 28px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . get_the_excerpt() . '</p>';
 												endif;
 
 												$has_media_contact = '';
@@ -402,14 +399,14 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 														endwhile;
 														?>
 
-														<p class="contact" style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: bold;color: #333;text-transform: uppercase;padding:0;margin:0;">Media Contact</p>
-														<p class="contact" style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: normal;color: #333;padding:0;margin:0;"><?php echo $media_contact_name; ?> &middot; <a href="mailto:<?php echo $media_contact_email; ?>" style="color:#990000;text-decoration:none;"><?php echo $media_contact_email; ?></a> &middot; <?php echo $media_contact_phone; ?></p>
+														<p class="contact" style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: bold;color: #333;padding:0;margin:0;text-align:left;">MEDIA CONTACT</p>
+														<p class="contact" style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: normal;color: #333;padding:0;margin:0;text-align:left;"><?php echo $media_contact_name; ?> &middot; <a href="mailto:<?php echo $media_contact_email; ?>" style="color:#990000;text-decoration:none;"><?php echo $media_contact_email; ?></a> &middot; <?php echo $media_contact_phone; ?></p>
 													<?php
 													endif;
 												endif;
 
 												if( get_field('audio') ) { ?>
-													<p style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: normal;color: #333;padding:0;margin-top:15px;"><strong>Article audio:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
+													<p style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: normal;color: #333;padding:0;margin-top:15px;text-align:left;"><strong>AUDIO</strong><br> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
 												<?php }
 
 												if(has_post_thumbnail()) {
@@ -437,7 +434,7 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 								</td>
 							</tr>
 							<?php if (get_field('boilerplate')) :
-								$replace_p = '<p style="font-size: 14px;font-family: \'Open Sans\', Arial, sans-serif;color:#333;line-height: 21px;margin: 0 0 16px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">';
+								$replace_p = '<p style="font-size: 14px;font-family: \'Open Sans\', Arial, sans-serif;color:#333;line-height: 21px;margin: 0 0 16px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-align:left;">';
 								$replace_a = '<a style="color:#990000;font-weight:normal;text-decoration:none;" '; // Required for Gmail
 								$email_boilerplate = str_replace(array('<p>','<a '), array($replace_p,$replace_a), get_field('boilerplate'));
 							?>
@@ -446,13 +443,8 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 									<!-- BEGIN FOOTER // -->
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="border-collapse:collapse !important;">
 										<tr>
-											<td valign="top" class="footerContent" style="border-top:#ccc 2px solid;border-bottom:#ccc 2px solid;padding:25px 0 9px 0;">
+											<td valign="top" class="footerContent" style="border-top:#ccc 2px solid;padding:25px 0 9px 0;">
 												<?php echo $email_boilerplate; ?>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<p style="font-family: 'Open Sans', Arial, sans-serif;line-height: 21px;margin: 25px 0 12px 0;margin-bottom: 10px;font-size: 16px;font-weight: 600;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;"><a href="https://medicine.wustl.edu/news/" style="color:#990000;font-weight:600;text-decoration:none;">Visit the News Hub</a></p>
 											</td>
 										</tr>
 									</table>
