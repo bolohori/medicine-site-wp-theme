@@ -1,8 +1,8 @@
 <?php
 header("Content-Type: text/plain");
-	if (have_posts()) :
-		while (have_posts()) :
-			the_post();
+
+if (have_posts()) :
+	while (have_posts()) : the_post();
 
 if(get_field('embargoed_url')) {
 	$permalink = get_field('embargoed_url');
@@ -13,7 +13,8 @@ if(get_field('embargoed_url')) {
 // Remove embeds from emails
 function wusm_remove_oembed( $html ) {
 	if ( get_query_var( 'template' ) == 'email' ) {
-		$video_available = '<p><strong>Video available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . $permalink . '">' . $permalink . '</a></p>';
+		global $permalink;
+		$video_available = '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size: 14px;color: #333;padding:0;margin-bottom:35px;text-align:left;"><strong>Video available:</strong> <a href="' . $permalink . '">' . $permalink . '</a></p>';
 		return $video_available;
 	}
 	return $html;
@@ -23,7 +24,8 @@ add_filter('embed_oembed_html', 'wusm_remove_oembed', 99, 4);
 // Remove audio from emails
 function wusm_remove_audio( $html ) {
     if ( get_query_var( 'template' ) == 'email' ) {
-    	$audio_available = '<p><strong>Audio available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . $permalink . '">' . $permalink . '</a></p>';
+		global $permalink;
+    	$audio_available = '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size: 14px;color: #333;padding:0;margin:0;"><strong>Audio available:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="' . $permalink . '">' . $permalink . '</a></p>';
 		return $audio_available;
     }
     return $html;
@@ -70,7 +72,7 @@ function medicine_wrap_image( $content ) {
 
 				$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
 				if (!empty($creditName)) {
-					$credit = '<span style="font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:1;text-align:right;margin:4px 4px 3px 15px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
+					$credit = '<span style="font-family:\'Open Sans\',Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:11px;text-align:right;margin:3px 0 3px 10px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
 				}
 
 				//img element
@@ -81,7 +83,7 @@ function medicine_wrap_image( $content ) {
 				}
 
 				// Put together the image credit code to place before the img tag
-				$ic_credit_code = '<div class="credit-container ' . $alignment . '" style="width:' . $width_img . '">';
+				$ic_credit_code = '<div style="width:' . $width_img . '">';
 
 				if (!empty($creditName)) {
 					// Replace before the img tag in the new string
@@ -90,7 +92,7 @@ function medicine_wrap_image( $content ) {
 					$ic_new = preg_replace( '/$/' , $credit . '</div>' , $ic_new );
 				}
 
-				$ic_new_table = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">' . $ic_new . '</table>';
+				$ic_new_table = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:20px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">' . $ic_new . '</td></tr></tbody></table>';
 
 	            // make the substitution
 	            $content = str_replace( $ic_old, $ic_new_table , $content );
@@ -125,13 +127,7 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	$imageID = $int = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 	$creditName = esc_html( get_post_meta( $imageID, 'image_credit', true ) );
 	if (!empty($creditName)) {
-		$credit = '<span style="font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:1;text-align:right;margin:4px 4px 3px 15px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;float:right;">' . $creditName . '</span>';
-	}
-
-	$capid = '';
-	if ( $id ) {
-		$id = esc_attr($id);
-		$capid = 'id="figcaption_'. $id . '" ';
+		$credit = '<span style="font-family:\'Open Sans\',Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:11px;text-align:right;margin:3px 0 3px 10px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
 	}
 
 	$maxWidth = '';
@@ -141,10 +137,10 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 		$maxWidth = 'style="max-width: ' . $width_img . 'px;"';
 	}
 
-	$captionOutput = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:15px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">';
+	$captionOutput = '<table width="' . $width_table . '" align="' . $align_value . '" cellpadding="0" cellspacing="0" class="templateColumnContainer" style="margin-bottom:20px;"><tbody><tr cellpadding="0" cellspacing="0"><td width="' . $width_img . '" align="' . $align_value . '" cellpadding="0" cellspacing="0">';
 	$captionOutput .= '<div class="wp-caption ' . $captionAlign . '"' . $maxWidth . '>';
 	if (!empty($creditName)) {
-		$captionOutput .= '<div class="credit-container">';
+		$captionOutput .= '<div>';
 	}
 	$captionOutput .= do_shortcode( $content );
 
@@ -156,8 +152,7 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	if (!empty($creditName)) {
 		$captionOutput .= $credit . '</div>';
 	}
-
-	$captionOutput .= '<div ' . $capid . ' style="background:#F5F5F5;margin:0;padding:10px;line-height:140%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $caption . '</div></div></td></tr></tbody></table>';
+	$captionOutput .= '<div style="font-family: \'Open Sans Condensed\', Arial, sans-serif;font-size: 16px;color:#333;margin:0;padding: 0 0 10px;line-height: 1.3;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $caption . '</div></div></td></tr></tbody></table>';
 
 	return $captionOutput;
 }
@@ -166,12 +161,15 @@ add_filter('img_caption_shortcode', 'medicine_email_caption_shortcode_filter', 1
 // Add inline styles to paragraphs and headings
 $content = get_the_content();
 $content = apply_filters('the_content', $content);
-$replace_p = '<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">';
-$replace_h2 = '<h2 style="display:block;font-family:Georgia;font-size:20px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
-$replace_h3 = '<h3 style="display:block;font-family:Georgia;font-size:16px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
-$replace_h4 = '<h4 style="display:block;font-family:Georgia;font-size:14px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;">';
+$replace_p = '<p style="font-family: Georgia, serif;font-size: 22px;line-height: 1.5;margin: 0 0 35px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">';
+$replace_h2 = '<h2 style="display:block;color:#333;font-family:\'Open Sans\', Arial, sans-serif;font-size:24px;font-style:normal;font-weight:bold;line-height:1.5;letter-spacing:normal;margin: 35px 0 19px;text-align:left;">';
+$replace_h3 = '<h3 style="display:block;color:#333;font-family:\'Open Sans\', Arial, sans-serif;font-size:20px;font-style:normal;font-weight:600;line-height:1.5;letter-spacing:normal;margin:19px 0 10px;text-align:left;">';
+$replace_ul = '<ul style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;list-style-type: disc;text-align:left;">';
+$replace_ol = '<ol style="font-family: Georgia, serif;font-size: 22px;margin: 0 0 35px 40px;text-align:left;">';
+$replace_li = '<li style="margin-bottom:10px;line-height:33px;text-align:left;">';
+$replace_a  = '<a style="color:#990000;font-weight:normal;text-decoration:none;" '; // Required for Gmail
 
-$email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p, $replace_h2, $replace_h3, $replace_h4), $content);
+$email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a '), array($replace_p, $replace_h2, $replace_h3, $replace_ul, $replace_ol,$replace_li,$replace_a), $content);
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -198,80 +196,63 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p
 			#templateContainer{width:600px;}
 			h1{
 				display:block;
-				font-family:Georgia;
-				font-size:26px;
+				color:#333;
+				font-family: Georgia, serif;
+				font-size: 35px;
 				font-style:normal;
 				font-weight:normal;
-				line-height:100%;
+				line-height: 43px;
 				letter-spacing:normal;
-				margin-top:0;
-				margin-right:0;
-				margin-bottom:10px;
-				margin-left:0;
+				margin: 0 0 12px;
 				text-align:left;
 			}
 			h2{
 				display:block;
-				font-family:Georgia;
-				font-size:20px;
+				color:#333;
+				font-family:'Open Sans', Arial, sans-serif;
+				font-size:24px;
 				font-style:normal;
-				font-weight:normal;
-				line-height:100%;
+				font-weight:bold;
+				line-height:1.5;
 				letter-spacing:normal;
-				margin-top:0;
-				margin-right:0;
-				margin-bottom:10px;
-				margin-left:0;
+				margin: 35px 0 19px;
 				text-align:left;
 			}
 			h3{
 				display:block;
-				font-family:Georgia;
-				font-size:16px;
+				color:#333;
+				font-family:'Open Sans', Arial, sans-serif;
+				font-size:20px;
 				font-style:normal;
-				font-weight:normal;
-				line-height:100%;
+				font-weight:600;
+				line-height:1.5;
 				letter-spacing:normal;
-				margin-top:0;
-				margin-right:0;
-				margin-bottom:10px;
-				margin-left:0;
-				text-align:left;
-			}
-			h4{
-				display:block;
-				font-family:Georgia;
-				font-size:14px;
-				font-style:normal;
-				font-weight:normal;
-				line-height:100%;
-				letter-spacing:normal;
-				margin-top:0;
-				margin-right:0;
-				margin-bottom:10px;
-				margin-left:0;
+				margin:19px 0 10px;
 				text-align:left;
 			}
 			.headerContent{
-				padding-bottom:15px;
-			}
-			.headerContent a:link, .headerContent a:visited, /* Yahoo! Mail Override */ .headerContent a .yshortcuts /* Yahoo! Mail Override */{
-				color:#990000;
-				font-weight:normal;
-				text-decoration:none;
+				font-family:'Open Sans', Arial, sans-serif;
+				font-size: 16px;
+				font-weight: bold;
+				color: #333;
+				text-transform: uppercase;
+				padding-bottom:5px;
 			}
 			#headerImage{
 				height:auto;
 				max-width:600px;
 			}
-			.bodyContent{
-				color:#333;
-				font-family:Georgia;
-				font-size:14px;
-				line-height:150%;
-				padding-top:30px;
-				padding-bottom:20px;
-				text-align:left;
+			.bodyContent p{
+				font-size: 22px;
+				line-height: 1.5;
+				margin: 0 0 35px;
+			}
+			.bodyContent p.subhead {
+				margin: 0 0 25px;
+				font-size: 22px;
+				font-family: 'Open Sans', Arial, sans-serif;
+				color: #787878;
+				line-height: 28px;
 			}
 			.bodyContent a:link, .bodyContent a:visited, /* Yahoo! Mail Override */ .bodyContent a .yshortcuts /* Yahoo! Mail Override */{
 				color:#990000;
@@ -283,25 +264,13 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p
 				height:auto;
 				max-width:600px;
 			}
-			#templateFooter{
-				border-top:#990000 2px solid;
-			}
-			.footerContent{
-				color:#787878;
-				font-family:Georgia;
-				font-size:10px;
-				line-height:150%;
-				padding-top:20px;
-				padding-bottom:20px;
-				text-align:left;
-			}
 			.footerContent a:link, .footerContent a:visited, /* Yahoo! Mail Override */ .footerContent a .yshortcuts, .footerContent a span /* Yahoo! Mail Override */{
 				color:#990000;
 				font-weight:normal;
 				text-decoration:none;
 			}
 
-            @media only screen and (max-width: 480px){
+            @media only screen and (max-width: 500px){
 				/* Client-specific mobile styles */
 				body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important;} /* Prevent Webkit platforms from changing default text sizes */
                 body{width:100% !important; min-width:100% !important;} /* Prevent iOS Mail from adding padding to the body */
@@ -314,54 +283,53 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p
 					width:100% !important;
 				}
 				h1{
-					font-size:24px !important;
-					line-height:100% !important;
+					font-size: 26px !important;
+					line-height: 34px !important;
 				}
 				h2{
-					font-size:20px !important;
-					line-height:100% !important;
+					font-size:18px !important;
+					line-height:18px !important;
+					margin-bottom:7px !important;
 				}
 				h3{
-					font-size:18px !important;
-					line-height:100% !important;
-				}
-				h4{
-					font-size:16px !important;
-					line-height:100% !important;
+					font-size:17px !important;
+					line-height:17px !important;
+					margin-bottom:7px; !important;
 				}
 				#headerImage{
 					height:auto !important;
 					max-width:600px !important;
 					width:100% !important;
 				}
-				.headerContent{
-					padding-bottom: 12px !important;
-				}
-				.bodyContent{
+				.bodyContent p, .bodyContent li{
 					font-size:16px !important;
-					line-height:140% !important;
+					line-height:23px !important;
+					margin-bottom:16px !important;
 				}
-				.bodyContent img {
+				.bodyContent p.subhead{
+					font-size:18px !important;
+				}
+				.bodyContent p.featured-caption{
+					padding-bottom: 9px !important;
+				}
+				.bodyContent p.contact{
+					font-size:14px !important;
+					margin: 0 !important;
+				}
+				.bodyContent ul, .bodyContent ol{
+					margin: 0 0 19px 15px !important;
+				}
+				.bodyContent img{
 					height:auto !important;
 					max-width:600px !important;
 					width:100% !important;
 				}
-				.templateColumnContainer {
+				.templateColumnContainer{
 					display: block !important;
 					width: 100% !important;
 				}
-				#news-release img {
-					max-width: 150px;
-				}
-				.wp-caption {
-					margin-bottom: 5px;
-				}
-				#media-contact {
-					padding-top: 15px;
-				}
-				.footerContent{
-					font-size:14px !important;
-					line-height:115% !important;
+				.wp-caption{
+					margin-bottom: 10px !important;
 				}
 			}
 		</style>
@@ -378,125 +346,121 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<h4>'), array($replace_p
                                 	<!-- BEGIN HEADER // -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader" style="border-collapse:collapse !important;">
                                         <tr>
-                                            <td valign="top" class="headerContent" style="padding-bottom:15px;">
-                                            	<img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" style="height:auto;max-width:600px;" />
+                                            <td valign="top" class="headerContent" style="font-family:'Open Sans',Arial,sans-serif;font-size:16px;font-weight:bold;color:#6e6e6e;padding-bottom:5px;letter-spacing:0.6px;text-align:left;">
+                                            	<a href="https://medicine.wustl.edu/"><img src="<?php echo get_template_directory_uri() . '/_/img/wusm-logo.jpg'; ?>" id="headerImage" style="height:auto;max-width:600px;padding-bottom:20px;border-bottom:1px solid #e1e1e1;margin-bottom:30px;" alt="Washington University School of Medicine in St. Louis" /></a>
+												NEWS RELEASE
                                             </td>
                                         </tr>
-                                        <tr>
-                                        <td align="center" valign="top">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse !important;"> 
-	                                        <tr>
-	                                        	<td align="left" valign="middle" style="width:280px;" id="news-release" class="templateColumnContainer">
-	                                            	<img src="<?php echo get_template_directory_uri() . '/_/img/news-release.jpg'; ?>" />
-	                                            </td><?php
-$has_media_contact = '';
-$rows_mc = get_field( 'media_contact' );
-if($rows_mc[0]['media_contact']) {
-	$has_media_contact = $rows_mc[0]['media_contact'];
-}
-if( $has_media_contact ):
-if( have_rows('media_contact') ):
-    while ( have_rows('media_contact') ) : the_row();
-    	if(get_sub_field('custom_media_contact')) {
-    		$media_contact_name = get_sub_field('name');
-    		$media_contact_phone = get_sub_field('phone_number');
-    		$media_contact_email = get_sub_field('email_address');
-    	} elseif(get_sub_field('media_contact')) {
-    		$author = get_sub_field('media_contact');
-			$user_id = $author['ID'];
-			$media_contact_name = get_the_author_meta( 'display_name', $user_id);
-			$media_contact_phone = get_user_meta( $user_id, 'phone', true);
-			$media_contact_email = get_the_author_meta( 'user_email', $user_id );
-    	}
-    endwhile;
-?><td align="left" valign="top" style="width:220px;line-height:1;" id="media-contact" class="templateColumnContainer">
-<p style="font-family:Georgia,serif;font-size:11px;padding:0;margin:0;line-height:100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;"><strong>Media Assistance:</strong><br>
-<?php echo $media_contact_name; ?><br><?php echo $media_contact_phone; if($media_contact_phone && $media_contact_email) { echo ' | '; } ?><a href="mailto:<?php echo $media_contact_email; ?>" style="color:#990000;text-decoration:none;"><?php echo $media_contact_email; ?></a></p></td>
-<?php endif; endif; ?>
-	                                        </tr>
-	                                    </table>
-	                                    </td>
-	                                    </tr>
-                                    </table>
-                                    <!-- // END HEADER -->
-                                </td>
-                            </tr>
-                        	<tr>
-                            	<td align="center" valign="top">
-                                	<!-- BEGIN BODY // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody" style="border-collapse:collapse !important;">
-                                        <tr>
-                                            <td valign="top" class="bodyContent" style="color:#333;font-family:Georgia;font-size:14px;line-height:150%;padding-top:30px;padding-bottom:20px;text-align:left;">
-				<?php
+									</table>
+									<!-- // END HEADER -->
+								</td>
+							</tr>
+							<tr>
+								<td align="center" valign="top">
+									<!-- BEGIN BODY // -->
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody" style="border-collapse:collapse !important;">
+										<tr>
+											<td valign="top" class="bodyContent">
+												<?php
+												if ( get_post_status() == 'future' ) {
+													$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
+													$embargo_lift_pre = date('g:i a l, M. j, Y', strtotime($date_time . '+ 1 hour'));
+													$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.'),array('a.m. ET','p.m. ET','','March','April','May','June','July'),$embargo_lift_pre);
+													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: bold;color: #333;margin-bottom:25px;margin-top:0;background:#f2eb29;padding:10px 20px;text-align:center;">Embargoed until ' . $embargo_lift . '</p>';
+												} else {
+													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: normal;color: #333;margin-bottom:25px;margin-top:0;text-align:left;">' . get_the_date() . '</p>';
+												}
+												?>
+												<h1 style="display:block;font-family:Georgia,serif;font-size:35px;font-style:normal;font-weight:normal;line-height:43px;letter-spacing:normal;margin: 0 0 12px;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php the_title(); ?></a></h1>
+												<?php
+												if(has_excerpt()):
+													echo '<p class="subhead" style="margin: 0 0 25px;font-size: 22px;font-family: \'Open Sans\', Arial, sans-serif;color: #787878;line-height: 28px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . get_the_excerpt() . '</p>';
+												endif;
 
-				if ( get_post_status() == 'future' ) {
-					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
-					$embargo_lift_pre = date('g:i a l, M. j, Y', strtotime($date_time . '+ 1 hour'));
-					$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.'),array('a.m. ET','p.m. ET','','March','April','May','June','July'),$embargo_lift_pre);
-				    echo '<p style="background:#FFFF52;padding:10px 15px;font-weight:normal;text-align:center;font-size:16px;">Embargoed until ' . $embargo_lift . '</p>';
-				}
-				
-				?><h1 style="display:block;font-family:Georgia;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;text-align:left;"><a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php the_title(); ?></a></h1><?php
-				
-				if(has_excerpt()):
-					echo '<p style="font-size:16px;color:#787878;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . get_the_excerpt() . '</p>';
-				endif;
-												
-				echo '<p style="margin-bottom:15px;margin-top:0;">' . get_the_date() . '</p>';
+												$has_media_contact = '';
+												$rows_mc = get_field( 'media_contact' );
+												if($rows_mc[0]['media_contact']) {
+													$has_media_contact = $rows_mc[0]['media_contact'];
+												}
+												if( $has_media_contact ):
+													if( have_rows('media_contact') ):
+														while ( have_rows('media_contact') ) : the_row();
+															if(get_sub_field('custom_media_contact')) {
+																$media_contact_name = get_sub_field('name');
+																$media_contact_email = get_sub_field('email_address');
+																$media_contact_phone = get_sub_field('phone_number');
+															} elseif(get_sub_field('media_contact')) {
+																$author = get_sub_field('media_contact');
+																$user_id = $author['ID'];
+																$media_contact_name = get_the_author_meta( 'display_name', $user_id);
+																$media_contact_email = get_the_author_meta( 'user_email', $user_id );
+																$media_contact_phone = get_user_meta( $user_id, 'phone', true);
+															}
+														endwhile;
+														?>
 
-				if( get_field('audio') ) { ?>
-					<p><strong>Article audio:</strong> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
-				<?php }
+														<p class="contact" style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: bold;color: #333;padding:0;margin:0;text-align:left;">MEDIA CONTACT</p>
+														<p class="contact" style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: normal;color: #333;padding:0;margin:0;text-align:left;"><?php echo $media_contact_name; ?> &middot; <a href="mailto:<?php echo $media_contact_email; ?>" style="color:#990000;text-decoration:none;"><?php echo $media_contact_email; ?></a> &middot; <?php echo $media_contact_phone; ?></p>
+													<?php
+													endif;
+												endif;
 
-				if(has_post_thumbnail()) {
-					the_post_thumbnail('news-email');
-					$creditID = get_post_thumbnail_id();
-					$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
-					$credit = '';
-					if (!empty($creditName)) {
-						$credit = '<span style="font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;text-align:right;margin:0 4px 3px 15px;color:#909090;float:right;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
-					}
-					echo $credit;
-					$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
-					if(!empty($post_thumbnail_caption)) {
-						echo '<p style="background:#F5F5F5;margin:0;padding:10px;line-height:140%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;">' . $post_thumbnail_caption . '</p>';
-					}
-				} ?>
+												if( get_field('audio') ) { ?>
+													<p style="font-family:'Open Sans', Arial, sans-serif;font-size: 14px;font-weight: normal;color: #333;padding:0;margin-top:15px;text-align:left;"><strong>AUDIO</strong><br> <a style="color:#990000;font-weight:normal;text-decoration:none;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
+												<?php }
 
-												<?php echo $email_content; ?>
+												if(has_post_thumbnail()) {
+													echo '<div style="margin-top:25px;">';
+													the_post_thumbnail('news-email');
+													$creditID = get_post_thumbnail_id();
+													$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+													$credit = '';
+													if (!empty($creditName)) {
+														$credit = '<span style="font-family:\'Open Sans\',Arial,sans-serif;font-size:11px;text-transform:uppercase;line-height:11px;text-align:right;margin:3px 0 3px 10px;color:#909090;display:block;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">' . $creditName . '</span>';
+													}
+													echo $credit;
+													echo '</div>';
+													$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+													if(!empty($post_thumbnail_caption)) {
+														echo '<p class="featured-caption" style="font-family: \'Open Sans Condensed\', Arial, sans-serif;font-size: 16px;color:#333;margin:0;padding: 0 0 45px;line-height: 1.3;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $post_thumbnail_caption . '</p>';
+													}
+												}
 
-												<p style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin-top:40px;">URL: <a style="color:#990000;text-decoration:none;font-weight:normal;" href="<?php echo $permalink; ?>"><?php echo $permalink; ?></a></p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // END BODY -->
-                                </td>
-                            </tr>
-							<?php if (get_field('boilerplate')) : ?>
-								<?php $email_boilerplate = str_replace('<p>', '<p style="margin:0 0 6px 0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">', get_field('boilerplate')); ?>
-                        	<tr>
-                            	<td align="center" valign="top">
-                                	<!-- BEGIN FOOTER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="border-top:#990000 2px solid;border-collapse:collapse !important;">
-                                        <tr>
-                                            <td valign="top" class="footerContent" style="color:#787878;font-family:Georgia;font-size:10px;line-height:150%;padding-top:20px;padding-bottom:20px;text-align:left;">
-                                                <?php echo $email_boilerplate; ?>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // END FOOTER -->
-                                </td>
-                            </tr>
+												echo $email_content; ?>
+											</td>
+										</tr>
+									</table>
+									<!-- // END BODY -->
+								</td>
+							</tr>
+							<?php if (get_field('boilerplate')) :
+								$replace_p = '<p style="font-size: 14px;font-family: \'Open Sans\', Arial, sans-serif;color:#333;line-height: 21px;margin: 0 0 16px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-align:left;">';
+								$replace_a = '<a style="color:#990000;font-weight:normal;text-decoration:none;" '; // Required for Gmail
+								$email_boilerplate = str_replace(array('<p>','<a '), array($replace_p,$replace_a), get_field('boilerplate'));
+							?>
+							<tr>
+								<td align="center" valign="top">
+									<!-- BEGIN FOOTER // -->
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateFooter" style="border-collapse:collapse !important;">
+										<tr>
+											<td valign="top" class="footerContent" style="border-top:#ccc 2px solid;padding:25px 0 9px 0;">
+												<?php echo $email_boilerplate; ?>
+											</td>
+										</tr>
+									</table>
+									<!-- // END FOOTER -->
+								</td>
+							</tr>
 							<?php endif; ?>
-                        </table>
-                        <!-- // END TEMPLATE -->
-                    </td>
-                </tr>
-            </table>
+						</table>
+						<!-- // END TEMPLATE -->
+					</td>
+				</tr>
+			</table>
         </center>
     </body>
 </html>
 <?php
-		endwhile;
-	endif;
+	endwhile;
+endif;
 ?>
