@@ -1,5 +1,5 @@
 <?php
-//header("Content-Type: text/plain");
+header("Content-Type: text/plain");
 
 if (have_posts()) :
 	while (have_posts()) : the_post();
