@@ -2830,6 +2830,7 @@ a.news-title {
 	margin: 0;
 	color: #333;
 	line-height: 1.7;
+	font-size: 16px;
 }
 .generic-cards .article-date,
 .news-cards .article-date {
