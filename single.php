@@ -90,7 +90,9 @@
 							$credit = '<span class="image-credit">' . $creditName . '</span>';
 						}
 						echo $credit;
-						$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+						if (get_post( get_post_thumbnail_id() )) {
+							$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+						}
 						if(!empty($post_thumbnail_caption)) {
 							echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';
 						}
