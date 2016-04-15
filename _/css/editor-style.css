@@ -180,6 +180,21 @@ p {
 	margin-bottom: 0;
 }
 
+.related-content {
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+	box-sizing: border-box;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 20px;
+	width: 100%;
+	clear: both;
+	padding: 20px 0;
+}
+
+.related-content p:last-child {
+	margin-bottom: 0;
+}
+
 .facts-numbers {
 	float: right;
 	font-weight: bold;
@@ -352,3 +367,6 @@ body.post-type-post.content blockquote .name {
 	font-size: 18px;
 }
 
+body.post-type-post.content .related-content p:last-child {
+	margin-bottom: 0;
+}
