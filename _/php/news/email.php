@@ -152,7 +152,7 @@ function medicine_email_caption_shortcode_filter($val, $attr, $content)
 	if (!empty($creditName)) {
 		$captionOutput .= $credit . '</div>';
 	}
-	$captionOutput .= '<div style="font-family: \'Open Sans Condensed\', Arial, sans-serif;font-size: 16px;color:#333;margin:0;padding: 0 0 10px;line-height: 1.3;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $caption . '</div></div></td></tr></tbody></table>';
+	$captionOutput .= '<div style="font-family: \'Open Sans Condensed\', Arial, sans-serif;font-size: 16px;font-weight:bold;color:#333;margin:0;padding: 0 0 10px;line-height: 1.3;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $caption . '</div></div></td></tr></tbody></table>';
 
 	return $captionOutput;
 }
@@ -422,7 +422,7 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 													echo '</div>';
 													$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
 													if(!empty($post_thumbnail_caption)) {
-														echo '<p class="featured-caption" style="font-family: \'Open Sans Condensed\', Arial, sans-serif;font-size: 16px;color:#333;margin:0;padding: 0 0 45px;line-height: 1.3;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $post_thumbnail_caption . '</p>';
+														echo '<p class="featured-caption" style="font-family: \'Open Sans Condensed\', Arial, sans-serif;font-size: 16px;font-weight:bold;color:#333;margin:0;padding: 0 0 45px;line-height: 1.3;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;text-align:left;">' . $post_thumbnail_caption . '</p>';
 													}
 												}
 
