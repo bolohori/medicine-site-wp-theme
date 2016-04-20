@@ -358,6 +358,12 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 						'wrapper'  => true
 					),
 					array(
+						'title'	   => 'Related Content',
+						'block'	   => 'div',
+						'classes'  => 'related-content',
+						'wrapper'  => true
+					),
+					array(
 						'title'	   => 'Name',  
 						'block'    => 'p',  
 						'classes'  => 'name',

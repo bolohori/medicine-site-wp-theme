@@ -1159,6 +1159,21 @@ article ul ul {
 	margin-bottom: 0;
 }
 
+.related-content {
+	*behavior: url(/wp-content/themes/medicine/_/js/boxsizing.htc);
+	box-sizing: border-box;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 20px;
+	width: 100%;
+	clear: both;
+	padding: 20px 0;
+}
+
+.related-content p:last-child {
+	margin-bottom: 0;
+}
+
 .facts-glance {
 	width: 100%;
 	box-sizing: border-box;
@@ -2980,11 +2995,14 @@ a.news-title {
 	line-height: 1.5;
 	font-size: 20px;
 }
-.single-post article > div > p {
+.single-post article > div > p, .single-post article > div > div.related-content > p {
 	margin: 0 0 35px;
 	font-size: 22px;
 	font-family: Georgia, serif;
 	line-height: 1.5;
+}
+.single-post article > div > div.related-content > p:last-child {
+	margin-bottom: 0;
 }
 .single-post p.meta-header {
 	font-family: 'Open Sans', sans-serif;
@@ -5089,7 +5107,7 @@ a.sidebar-outlook-link {
 		line-height: 35px;
 	}
 
-	.single-post article > div > p {
+	.single-post article > div > p, .single-post article > div > div.related-content p {
 		font-size: 14px;
 		margin-bottom: 24px;
 	}
