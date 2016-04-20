@@ -61,13 +61,9 @@
 </div>
 
 <?php
-    if (function_exists('wusm_emergency_ribbon')) {
-        echo wusm_emergency_ribbon();
-    }
-
-    if (function_exists('wusm_yellow_ribbon')) {
-        echo wusm_yellow_ribbon();
-    }
+    if ( function_exists( 'wusm_alert_display' ) ) {
+		wusm_alert_display();
+	}
 ?>
 
 <section class="news">
