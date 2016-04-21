@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:2016.04.21.0
+Version:2016.04.21.1
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -156,10 +156,11 @@ article .wp-caption.alignnone {
 }
 
 article .wp-caption-text {
-	font-size: 14px;
-	line-height: 20px;
-	color: #333;
-	padding: 20px 0 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6a6a6a;
+    padding: 7px 0 13px 0;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 
@@ -3949,6 +3950,12 @@ a.sidebar-outlook-link {
 	display: none;
 }
 
+
+/**
+* #.# Media Queries
+*
+* All of the media queries are here. please try to avoid adding anymore, if you're within 10px round it!
+*/
 
 @media screen and ( max-width: 1000px ) {
 	#main.page-news {
