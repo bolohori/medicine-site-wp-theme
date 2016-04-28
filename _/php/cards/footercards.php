@@ -1,5 +1,5 @@
 <?php 
-if( get_field('stories_check') == 1 ) {
+if( get_field( 'stories_check' ) ) {
 	$newstype = get_field( 'news_type_selection' );
 	$newscategory = get_field( 'categories_selection' );
 	if( $newscategory != '' ) {
