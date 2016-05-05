@@ -1,5 +1,5 @@
 <?php
-header("Content-Type: text/plain");
+//header("Content-Type: text/plain");
 
 if (have_posts()) :
 	while (have_posts()) : the_post();
@@ -31,6 +31,16 @@ function wusm_remove_audio( $html ) {
     return $html;
 }
 add_filter( 'wp_audio_shortcode', 'wusm_remove_audio', 10, 5 );
+
+// Remove image galleries from emails
+function wusm_remove_gallery( $html ) {
+	if ( get_query_var( 'template' ) == 'email' ) {
+		return ' ';
+	}
+	return $html;
+}
+add_filter( 'post_gallery', 'wusm_remove_gallery', 10, 3);
+
 
 // Do not use responsive images
 add_filter( 'max_srcset_image_width', create_function( '', 'return 1;' ) );
