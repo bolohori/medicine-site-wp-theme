@@ -30,7 +30,7 @@ if (have_posts()) :
 						<li>Doctor of Medicine and <a href="http://crtc.wustl.edu/degrees/msci.html">Master of Science in Clinical Investigation</a> (MD/MSCI)</li>
 						<li><a href="http://www.mphs.wustl.edu/en/Academics/MD-MPHS">Doctor of Medicine and Master of Population Health Sciences (MD/MPHS)</a></li>
 						<li><a href="http://mstp.wustl.edu/admissions/Pages/Admissions.aspx">Medical Scientist Training Program (MD/PhD)</a></li>
-						<li><a href="http://bme.wustl.edu/graduateprograms/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
+						<li><a href="https://bme.wustl.edu/graduate/phd/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
 					</ul>
 					<ul id="DBBS" class="hero-list left-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/dbbs.jpg" alt=""></li>

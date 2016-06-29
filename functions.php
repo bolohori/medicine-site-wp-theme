@@ -888,3 +888,23 @@ function format_publish_box_date( $translated_text, $untranslated_text, $domain 
 	return $translated_text;
 }
 add_filter('gettext', 'format_publish_box_date', 20, 3);
+
+/*
+ * Podcast Section!
+ */
+
+// Change number of episodes in feed to 50.
+add_filter( 'ssp_feed_number_of_posts', 'ssp_modify_number_of_posts_in_feed' );
+function ssp_modify_number_of_posts_in_feed ( $n ) {
+	return 50;
+}
+
+// Remove size of episode.
+add_filter( 'ssp_episode_meta_details', 'ssp_remove_download_link', 10, 3 );
+function ssp_remove_download_link ( $meta, $episode_id, $context ) {
+	unset( $meta['size'] );
+	return $meta;
+}
+
+// Remove default player.
+add_filter( 'ssp_show_media_player', '__return_false' );
