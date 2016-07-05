@@ -827,12 +827,6 @@ add_filter( 'get_the_archive_title', function ($title) {
 	return $title;
 });
 
-// Remove Yoast SEO from posts
-function wusm_remove_metabox() {
-	remove_meta_box( 'wpseo_meta', 'post', 'normal' );
-}
-add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
-
 // Remove Jetpack Sharing from excerpt
 function wusm_remove_share() {
 	remove_filter( 'the_excerpt', 'sharing_display', 19 );
