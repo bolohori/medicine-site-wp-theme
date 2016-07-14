@@ -47,12 +47,13 @@
 
 				the_title('<h1>', '</h1>');
 				the_content();
-				get_template_part( '_/php/footercards' );
-                get_sidebar( 'right' );
+				get_template_part( '_/php/cards/footercards' );
+                get_sidebar( 'right' ); ?>
 
-			endwhile;
+        </article>
+			<?php endwhile;
 		endif; ?>
-		</article>
+		
 
     </div>
 

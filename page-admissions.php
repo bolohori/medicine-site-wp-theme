@@ -30,7 +30,7 @@ if (have_posts()) :
 						<li>Doctor of Medicine and <a href="http://crtc.wustl.edu/degrees/msci.html">Master of Science in Clinical Investigation</a> (MD/MSCI)</li>
 						<li><a href="http://www.mphs.wustl.edu/en/Academics/MD-MPHS">Doctor of Medicine and Master of Population Health Sciences (MD/MPHS)</a></li>
 						<li><a href="http://mstp.wustl.edu/admissions/Pages/Admissions.aspx">Medical Scientist Training Program (MD/PhD)</a></li>
-						<li><a href="http://bme.wustl.edu/graduateprograms/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
+						<li><a href="https://bme.wustl.edu/graduate/phd/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
 					</ul>
 					<ul id="DBBS" class="hero-list left-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/dbbs.jpg" alt=""></li>
@@ -88,12 +88,12 @@ if (have_posts()) :
 				<ul class="clearfix">
 					<li class="list-title">Admissions Resources</li>
 					<li><a href="http://medicine.wustl.edu/directory/academic-departments">Academic Departments &amp; Programs</a></li>
-					<li><a href="http://bulletinoftheschoolofmedicine.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
+					<li><a href="https://bulletin.med.wustl.edu/">Bulletin: Courses, Programs, Policies</a></li>
 					<li><a href="https://cme.wustl.edu/">Continuing Medical Education</a></li>
 					<li><a href="http://finaid.med.wustl.edu/">Financial Aid</a></li>
 					<li><a href="http://gme.wustl.edu/">Graduate Medical Education</a></li>
 					<li><a href="http://postdoc.wustl.edu/">Postdoctoral Affairs</a></li>
-					<li><a href="http://wusmregistrar.wustl.edu/">Registrar</a></li>
+					<li><a href="http://registrar.med.wustl.edu/">Registrar</a></li>
 					<li><a href="http://wustl.edu/admissions/">WUSTL Admissions - Danforth Campus</a></li>
 				</ul>
 			</div>
