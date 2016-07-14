@@ -26,7 +26,7 @@ function move_news_type_rewrites( $rules ){
 	foreach ($rules as $rule => $rewrite) {
 
 		if ( preg_match('/^news.*/',$rule) ) {
-			
+
 			$news_rules[ $rule ] = $rules[$rule];
 			unset($rules[$rule]);
 		}
@@ -95,7 +95,7 @@ if( !defined( 'WP_DEBUG' ) || WP_DEBUG == false ) {
 	} else {
 	    $IP = $_SERVER['REMOTE_ADDR'];
 	}
-	
+
 	list($ip1, $ip2) = explode( '.', $IP );
 
 	if ( $ip1 == "128" && $ip2 == "252" ) {
@@ -156,14 +156,14 @@ add_post_type_support( 'page', 'excerpt' );
  * Intialize all the theme options
  */
 if ( ! function_exists( 'medicine_theme_setup' ) ) {
-	
+
 	function medicine_theme_setup() {
 
 		// Let WordPress manage the document title.
 		add_theme_support( 'title-tag' );
 
 		// Create Header Menu theme location
-		register_nav_menus( array( 
+		register_nav_menus( array(
 			'header-menu' => 'Header Menu',
 			'mobile-menu' => 'Mobile Menu',
 			'footer-menu' => 'Footer Menu'
@@ -187,7 +187,7 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 			$locations = get_theme_mod('nav_menu_locations');
 			$locations['header-menu'] = $menu_id;
 			set_theme_mod('nav_menu_locations', $locations);
-			
+
 		}
 
 		/*
@@ -210,13 +210,13 @@ add_action( 'after_setup_theme', 'medicine_theme_setup' );
 if ( ! function_exists( 'medicine_hide_admin_bar' ) ) {
 
 	function medicine_hide_admin_bar() {
-	
+
 		if (!current_user_can('edit_posts')) {
-	
+
 			show_admin_bar(false);
-	
+
 		}
-	
+
 	}
 
 }
@@ -233,7 +233,7 @@ add_filter( 'excerpt_length', function() { return 20; }, 999 );
 if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 	function medicine_enqueue_styles() {
-	
+
 		/**
 		 * The admin bar enqueues these two when a user is logged in, we need manually include
 		 * them if they aren't logged in
@@ -245,7 +245,7 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
 		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
-	
+
 	}
 
 }
@@ -288,7 +288,7 @@ add_action( 'init', 'wusm_change_post_object' );
  */
 if ( is_admin() && !function_exists( 'medicine_acf_location_clear_button' )) {
 	function medicine_acf_location_clear_button() {
-?>	
+?>
 <script type="text/javascript">
 jQuery(document).ready(function() {
 	jQuery('div.field_type-location-field').each(function(index) {
@@ -364,8 +364,8 @@ if ( ! function_exists( 'medicine_styles_dropdown' ) ) {
 						'wrapper'  => true
 					),
 					array(
-						'title'	   => 'Name',  
-						'block'    => 'p',  
+						'title'	   => 'Name',
+						'block'    => 'p',
 						'classes'  => 'name',
 						'wrapper'  => false,
 					),
@@ -452,7 +452,7 @@ add_action('init', function() { register_taxonomy_for_object_type('post_tag', 'p
 /*
  * ensure all tags are included in queries
  * THIS NEEDS SOME TESTING BEFORE GOING LIVE
- */ 
+ */
 if ( ! function_exists( 'medicine_tags_support_query' ) ) {
 	function medicine_tags_support_query($wp_query) {
 		if ($wp_query->get('tag')) $wp_query->set('post_type', 'any');
@@ -495,7 +495,7 @@ if ( !function_exists( 'medicine_add_tinymce_buttons' ) ) {
 }
 add_filter( 'mce_buttons_3', 'medicine_add_tinymce_buttons' );
 
-/* 
+/*
  * Customize mce editor font sizes
  */
 if ( !function_exists( 'medicine_mce_text_sizes' ) ) {
@@ -531,7 +531,7 @@ function medicine_caption_shortcode_filter($val, $attr, $content)
 		'width'	=> '',
 		'caption' => ''
 	), $attr));
-	
+
 	if ( 1 > (int) $width || empty($caption) )
 		return $val;
 
@@ -700,7 +700,7 @@ add_action( 'admin_enqueue_scripts', 'medicine_load_admin_style' );
 function medicine_search_filter( $query ) {
 	$id = get_page_by_title( 'A to Z Index' );
 	if ( $query->is_search && $query->is_main_query() ) {
-		$query->set( 'post__not_in', array( $id->ID ) ); 
+		$query->set( 'post__not_in', array( $id->ID ) );
 	}
 }
 add_filter( 'pre_get_posts', 'medicine_search_filter' );
@@ -798,7 +798,7 @@ function ic_wrap_image( $content ) {
 						$ic_new = preg_replace( '/^/' , $ic_credit_code , $ic_old );
 						// After the img tag
 						$ic_new = preg_replace( '/$/' , $credit . '</span>' , $ic_new );
-					} 
+					}
 					else {
 						$ic_new = $ic_old;
 					}
@@ -807,7 +807,7 @@ function ic_wrap_image( $content ) {
 					$content = str_replace( $ic_old, $ic_new , $content );
 				}
 			}
-		}	
+		}
 	}
 	return $content;
 }
@@ -826,12 +826,6 @@ add_filter( 'get_the_archive_title', function ($title) {
 	}
 	return $title;
 });
-
-// Remove Yoast SEO from posts
-function wusm_remove_metabox() {
-	remove_meta_box( 'wpseo_meta', 'post', 'normal' );
-}
-add_action( 'add_meta_boxes', 'wusm_remove_metabox', 11 );
 
 // Remove Jetpack Sharing from excerpt
 function wusm_remove_share() {
