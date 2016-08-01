@@ -180,30 +180,6 @@ if ( ! function_exists( 'medicine_theme_setup' ) ) {
 }
 add_action( 'after_setup_theme', 'medicine_theme_setup' );
 
-function medicine_menu_setup() {
-	if ( !is_nav_menu( 'Header' )) {
-
-		// Create Header menu, if it doesn't already exist
-		$menu_id = wp_create_nav_menu( 'Header', array( 'slug' => 'header' ) );
-
-		// Add Home to the Header menu
-		$menu_item = array(
-			'menu-item-type' => 'custom',
-			'menu-item-url' => get_home_url('/'),
-			'menu-item-title' => 'Home',
-			'menu-item-status' => 'publish',
-		);
-		wp_update_nav_menu_item( $menu_id, 0, $menu_item );
-
-		// Assign Header menu to the Header Menu theme location
-		$locations = get_theme_mod('nav_menu_locations');
-		$locations['header-menu'] = $menu_id;
-		set_theme_mod('nav_menu_locations', $locations);
-
-	}
-}
-add_action( 'after_switch_theme', 'medicine_theme_setup' );
-
 /*
  * Hide admin bar for subscribers. This enables us to keep the site
  * hidden behind a WUSTL key login, but keeps the appearance consistant
