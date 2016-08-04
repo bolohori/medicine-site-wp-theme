@@ -129,8 +129,8 @@
 	</div>
 </section>
 
-<div id="featured-image" style="background-image:url(<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg);">
-	<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/hero/home.jpg" alt="">
+<div id="featured-image" style="background-image:url(<?php the_post_thumbnail_url('full'); ?>)">
+	<?php the_post_thumbnail('full'); ?>
 </div>
 
 <div class="hero-text">
