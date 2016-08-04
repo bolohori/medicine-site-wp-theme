@@ -5083,6 +5083,10 @@ a.sidebar-outlook-link {
 		margin-bottom: 24px;
 	}
 
+	.single-post article > div > ul > li, .single-post article > div > ol > li {
+		font-size: 14px;
+	}
+
 	.single-post .wp-caption-text, .single-post .featured-image-caption {
 		font-size: 12px;
 	}
