@@ -4,7 +4,7 @@
 
     <ul class="news-subnav clearfix">
         <li><a href="<?php echo get_page_link( 7224 ) ?>">Publications</a></li>
-        <li><a href="/news/media-releases/">For Media</a></li>
+        <li><a href="/news/for-media/">For Media</a></li>
         <li><a href="/news/announcements/">Announcements</a></li>
     </ul>
 

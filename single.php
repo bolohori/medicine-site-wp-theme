@@ -79,7 +79,7 @@
 				}
 
 				if(has_post_thumbnail()) {
-					if(has_term('national-leaders','news')) { ?>
+					if(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
 						<div class="featured-image-headshot">
 					<?php }
 						the_post_thumbnail('large');
@@ -96,7 +96,7 @@
 						if(!empty($post_thumbnail_caption)) {
 							echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';
 						}
-					if(has_term('national-leaders','news')) { ?>
+					if(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
 						</div>
 					<?php }
 				}
