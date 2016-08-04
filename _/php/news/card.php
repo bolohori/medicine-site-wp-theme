@@ -1,17 +1,17 @@
 <?php
     $cardClass = '';
-    if(has_term('national-leaders','news')) {
+    if(has_term('national-leaders','news') OR has_term('obituaries','news')) {
         $cardClass = ' class="headshot"';
     }
 ?><li<?php echo $cardClass; ?>>
     <div>
         <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
             <div class="card">
-            <?php if(has_post_thumbnail() && has_term('national-leaders','news')) {
+            <?php if(has_post_thumbnail() && (has_term('national-leaders','news') OR has_term('obituaries','news'))) {
                 the_post_thumbnail( 'headshot' );
             } elseif(has_post_thumbnail()) {
                 the_post_thumbnail('news');
-            } elseif(has_term('national-leaders','news')) { ?>
+            } elseif(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
                 <img src="<?php echo get_template_directory_uri() . '/_/img/spotlight-default.png' ?>">
             <?php } else { ?>
                 <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
