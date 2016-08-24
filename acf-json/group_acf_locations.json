@@ -27,6 +27,24 @@
             "mime_types": ""
         },
         {
+            "key": "field_524f29fd79223",
+            "label": "Location",
+            "name": "location",
+            "type": "google_map",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
+        },
+        {
             "key": "field_52a0fb7a8b392",
             "label": "Location Number",
             "name": "num",
