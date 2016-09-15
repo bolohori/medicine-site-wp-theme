@@ -78,7 +78,10 @@
 				    sharing_display( '', true );
 				}
 
-				if(has_post_thumbnail()) {
+				if (get_field('featured_video_url')) {
+					wp_enqueue_script( 'wusm-fitvids' );
+					echo apply_filters('embed_handler_html',wp_oembed_get(get_field('featured_video_url')));
+				} elseif (has_post_thumbnail()) {
 					if(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
 						<div class="featured-image-headshot">
 					<?php }
