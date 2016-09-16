@@ -81,6 +81,21 @@
 				if (get_field('featured_video_url')) {
 					wp_enqueue_script( 'wusm-fitvids' );
 					echo apply_filters('embed_handler_html',wp_oembed_get(get_field('featured_video_url')));
+					if (has_post_thumbnail()) {
+						$creditID = get_post_thumbnail_id();
+						$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+						$credit = '';
+						if (!empty($creditName)) {
+							$credit = '<span class="image-credit">' . $creditName . '</span>';
+						}
+						echo $credit;
+						if (get_post( get_post_thumbnail_id() )) {
+							$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+						}
+						if(!empty($post_thumbnail_caption)) {
+							echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';
+						}
+					}
 				} elseif (has_post_thumbnail()) {
 					if(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
 						<div class="featured-image-headshot">
