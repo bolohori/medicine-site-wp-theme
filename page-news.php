@@ -31,7 +31,7 @@ if (have_posts()) :
                     <div class="ep-card">
                         <?php the_post_thumbnail('news'); ?>
                         <div class="editors-pick-text">
-                            <p class="article-date"><?php the_date(); ?></p>
+                            <p class="article-date"><?php the_time( get_option( 'date_format' ) ); ?></p>
                             <?php the_title('<h2>', '</h2>'); ?>
                             <?php if(has_excerpt()) {
                                 echo '<p>' . get_the_excerpt() . '.</p>';
