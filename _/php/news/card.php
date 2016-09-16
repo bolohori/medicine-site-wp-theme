@@ -25,7 +25,7 @@
                 <?php if(get_field('audio')) { ?>
                 <img class="has-audio" src="<?php echo get_template_directory_uri() . '/_/img/audio/audio.png' ?>">
                 <?php } ?>
-                <p class="article-date"><?php the_time('M j, Y'); ?></p>
+                <p class="article-date"><?php the_date(); ?></p>
                 <?php the_title('<h2 class="article-title">', '</h2>');
                 if(has_excerpt()) {
                     echo '<p>' . get_the_excerpt() . '.</p>';
