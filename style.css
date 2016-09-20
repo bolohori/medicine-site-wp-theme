@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2016.09.16.0
+Version:	 2016.09.20.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -730,10 +730,9 @@ button.single-link:hover {
 }
 
 .home #featured-image {
-	height: auto;
 	z-index: 1;
 	height: 553px;
-	bacgkground-repeat: no-repeat;
+	background-repeat: no-repeat;
 	background-position: top center;
 	background-size: cover;
 }
@@ -2090,6 +2089,10 @@ a.news-title {
 	width: 66%;
 	height: auto;
 }
+.editors-pick .video-card-image img {
+	width: 100%;
+	float: none;
+}
 .editors-pick-text {
 	float: right;
 	width: 29%;
@@ -2114,7 +2117,6 @@ a.news-title {
 	color: #333;
 	line-height: 1.7;
 }
-
 .news-cards {
 	background: #f5f5f5;
 	width: 88%;
@@ -2175,8 +2177,12 @@ a.news-title {
 	box-shadow: 0 3px 6px 0 rgba( 0,0,0,0.20 );
 	transform: translateY( -2px );
 }
-.news-cards .video-card-image {
+.news-cards .video-card-image, .editors-pick .video-card-image {
 	position: relative;
+}
+.editors-pick .video-card-image {
+	float:left;
+	width: 66%;
 }
 .news-cards li img {
 	width: 100%;
@@ -2190,7 +2196,7 @@ a.news-title {
 	width: auto;
 	position: relative;
 }
-.news-cards li img.video-play-icon {
+.news-cards li img.video-play-icon, .editors-pick img.video-play-icon {
 	width: auto;
 	display: inline-block;
 	position: absolute;
@@ -4541,10 +4547,12 @@ a.sidebar-outlook-link {
 
 	.home #featured-image img {
 		display: block;
+		margin-left: -25%;
+		max-width: 150%;
 	}
 }
 @media screen and ( max-width: 900px ) {
-	.editors-pick img {
+	.editors-pick img, .editors-pick .video-card-image {
 		width: 50%;
 	}
 	.editors-pick-text {
@@ -4627,7 +4635,7 @@ a.sidebar-outlook-link {
 	.editors-pick > div {
 		padding-bottom: 24px;
 	}
-	.editors-pick img {
+	.editors-pick img, .editors-pick .video-card-image {
 		width: 100%;
 		float: none;
 	}
