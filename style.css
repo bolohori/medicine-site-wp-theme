@@ -730,10 +730,9 @@ button.single-link:hover {
 }
 
 .home #featured-image {
-	height: auto;
 	z-index: 1;
 	height: 553px;
-	bacgkground-repeat: no-repeat;
+	background-repeat: no-repeat;
 	background-position: top center;
 	background-size: cover;
 }
@@ -4548,6 +4547,8 @@ a.sidebar-outlook-link {
 
 	.home #featured-image img {
 		display: block;
+		margin-left: -25%;
+		max-width: 150%;
 	}
 }
 @media screen and ( max-width: 900px ) {

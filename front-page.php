@@ -129,8 +129,12 @@
 	</div>
 </section>
 
+<?php
+	$thumbnail_id = get_post_thumbnail_id();
+	$alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+?>
 <div id="featured-image" style="background-image:url(<?php the_post_thumbnail_url('full'); ?>)">
-	<?php the_post_thumbnail('full'); ?>
+	<img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php echo $alt; ?>">
 </div>
 
 <div class="hero-text">
