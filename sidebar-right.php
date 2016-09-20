@@ -171,8 +171,8 @@ while( has_sub_field( 'sidebars' ) ):
 				}
 				$link = get_field('url');
 				
-				if( $link['url'] != '' ) {
-					$url = (strpos($link['url'], "http") !== false) ? $link['url'] : "http://" . $link['url'];
+				if( $link != '' ) {
+					$url = (strpos($link, "http") !== false) ? $link : "http://" . $link;
 				} else {
 					$url = get_permalink();
 				}
