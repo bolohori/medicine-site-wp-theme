@@ -26,17 +26,17 @@
 				if (isset($_GET['_ppp']) || get_post_status() == 'future' ) {
 					$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 					$embargo_lift_pre = date('g:i a l, M. j, Y', strtotime($date_time . '+ 1 hour'));
-					$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.'),array('a.m. ET','p.m. ET','','March','April','May','June','July'),$embargo_lift_pre);
+					$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.','Sep.'),array('a.m. ET','p.m. ET','','March','April','May','June','July','Sept.'),$embargo_lift_pre);
 				    echo '<p class="embargo-notice">Embargoed until ' . $embargo_lift . '</p>';
 				}
 
 				if(has_term('news-release','news')) {
 					$term_link = get_term_link('news-release', 'news');
 					echo '<div class="news-type"><a href="' . esc_url( $term_link ) . '">News Release</a></div>';
-				} 
-				
+				}
+
 				the_title('<h1>', '</h1>');
-				
+
 				if(has_excerpt()):
 					echo "<p class='subhead'>" . get_the_excerpt() . "</p>";
 				endif;
@@ -71,14 +71,32 @@
         		endif;
 
         		the_date();
-				
+
 				echo "</p>";
 
 				if(function_exists( 'sharing_display') && !isset($_GET['_ppp']) && !has_term('in-the-news','news')) {
 				    sharing_display( '', true );
 				}
 
-				if(has_post_thumbnail()) {
+				if (get_field('featured_video_url')) {
+					wp_enqueue_script( 'wusm-fitvids' );
+					echo apply_filters('embed_handler_html',wp_oembed_get(get_field('featured_video_url')));
+					if (has_post_thumbnail()) {
+						$creditID = get_post_thumbnail_id();
+						$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
+						$credit = '';
+						if (!empty($creditName)) {
+							$credit = '<span class="image-credit">' . $creditName . '</span>';
+						}
+						echo $credit;
+						if (get_post( get_post_thumbnail_id() )) {
+							$post_thumbnail_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+						}
+						if(!empty($post_thumbnail_caption)) {
+							echo '<p class="featured-image-caption">' . $post_thumbnail_caption . '</p>';
+						}
+					}
+				} elseif (has_post_thumbnail()) {
 					if(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
 						<div class="featured-image-headshot">
 					<?php }
@@ -122,7 +140,7 @@
 			} ?>
 
 			<?php the_content(); ?>
-			
+
 			<footer class="article-footer clearfix">
 				<?php if(get_field('boilerplate')) { ?>
 					<div class="boilerplate">
@@ -131,13 +149,13 @@
 				<?php }
 
 				if( get_post_meta( get_the_ID(), 'article_author_0_author', true ) ||
-					get_post_meta( get_the_ID(), 'media_contact_0_media_contact', true ) || 
-					get_post_meta( get_the_ID(), 'article_author_0_custom_author', true ) || 
-					get_post_meta( get_the_ID(), 'media_contact_0_custom_media_contact', true ) 
+					get_post_meta( get_the_ID(), 'media_contact_0_media_contact', true ) ||
+					get_post_meta( get_the_ID(), 'article_author_0_custom_author', true ) ||
+					get_post_meta( get_the_ID(), 'media_contact_0_custom_media_contact', true )
 				): ?>
-					
+
 					<div class="bio-wrapper">
-	
+
 					<?php
 						//Get list of Media Contact user IDs to check against before displaying authors to prevent duplicates
 						$media_contacts = array();
@@ -151,7 +169,7 @@
 							endwhile;
 						endif;
 					?>
-	
+
 					<?php if( have_rows('article_author') ):
 					    while ( have_rows('article_author') ) : the_row();
 					    	if(get_sub_field('custom_author')) {
@@ -174,7 +192,7 @@
 								<p class="phone-number"><?php $user_phone = get_user_meta( $user_id, 'phone', true); echo $user_phone; ?></p>
 								<p class="email-address"><a href="mailto:<?php echo get_the_author_meta( 'user_email', $user_id ); ?>"><?php the_author_meta( 'user_email', $user_id ); ?></a></p>
 							</div><?php } } endwhile; endif;
-	
+
 					if( have_rows('media_contact') ):
 					    while ( have_rows('media_contact') ) : the_row();
 					    	if(get_sub_field('custom_media_contact')) {

@@ -2171,10 +2171,12 @@ a.news-title {
 	border-top-left-radius: 3px;
 	background: #f6f6f6;
 }
-
 .news-cards li div.card:hover {
 	box-shadow: 0 3px 6px 0 rgba( 0,0,0,0.20 );
 	transform: translateY( -2px );
+}
+.news-cards .video-card-image {
+	position: relative;
 }
 .news-cards li img {
 	width: 100%;
@@ -2187,6 +2189,14 @@ a.news-title {
 	z-index: 2;
 	width: auto;
 	position: relative;
+}
+.news-cards li img.video-play-icon {
+	width: auto;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -40px 0 0 -40px;
 }
 .news-cards .card-text {
 	position: relative;

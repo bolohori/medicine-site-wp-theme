@@ -5,6 +5,9 @@
 <meta name="author" content="Washington University School of Medicine in St. Louis" />
 <meta name="googlebot" content="noodp" />
 <meta http-equiv="cache-control" content="no-cache">
+<?php if ( extension_loaded('newrelic') ) {
+	newrelic_disable_autorum();
+} ?>
 
 <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
 <!--[if IE]>
@@ -30,7 +33,7 @@ p > strong { font-size: 16px; }
 	<div style="color: #fff; background: #4a824c; padding: 10px 12px; margin: 23px 0 0 0;">
 		<span style="font-size: 23px; font-weight: bold;">IN THE NEWS</span>
 		<span style="font-size: 23px; font-weight: bold; float: right;"><?php
-	
+
 	// The Loop
 	if ( have_posts() ) {
 		while ( have_posts() ) {
@@ -43,7 +46,7 @@ p > strong { font-size: 16px; }
 
 			<?php
 					the_content();
-			
+
 		}
 	} else {
 		// no posts found
@@ -103,7 +106,7 @@ p > strong { font-size: 16px; }
 					<a href="https://www.facebook.com/stlchildrens"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/facebook.png" style="height: 24px; width: 24px;" alt="Facebook"></a>
 				<p><a style="color: #fff; text-decoration: none;" href="http://stlouischildrens.org/media-center">stlouischildrens.org/media-center</a></p>
 			</div>
-		
+
 	</div>
 </div>
 

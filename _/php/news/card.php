@@ -7,20 +7,25 @@
     <div>
         <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
             <div class="card">
-            <?php if(has_post_thumbnail() && (has_term('national-leaders','news') OR has_term('obituaries','news'))) {
-                the_post_thumbnail( 'headshot' );
-            } elseif(has_post_thumbnail()) {
-                the_post_thumbnail('news');
-            } elseif(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
-                <img src="<?php echo get_template_directory_uri() . '/_/img/spotlight-default.png' ?>">
-            <?php } else { ?>
-                <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
-            <?php } ?>
+                    <?php if(has_post_thumbnail() && (has_term('national-leaders','news') OR has_term('obituaries','news'))) {
+                        the_post_thumbnail( 'headshot' );
+                    } elseif(has_post_thumbnail() && get_field('featured_video_url')) { ?>
+                        <div class="video-card-image">
+                            <?php the_post_thumbnail('news'); ?>
+                            <img src="<?php echo get_template_directory_uri() . '/_/img/play.png' ?>" class="video-play-icon">
+                        </div>
+                    <?php } elseif(has_post_thumbnail()) {
+                        the_post_thumbnail('news');
+                    } elseif(has_term('national-leaders','news') OR has_term('obituaries','news')) { ?>
+                        <img src="<?php echo get_template_directory_uri() . '/_/img/spotlight-default.png' ?>">
+                    <?php } else { ?>
+                        <img src="<?php echo get_template_directory_uri() . '/_/img/default.jpg' ?>">
+                    <?php } ?>
                 <div class="card-text">
                 <?php if(get_field('audio')) { ?>
                 <img class="has-audio" src="<?php echo get_template_directory_uri() . '/_/img/audio/audio.png' ?>">
                 <?php } ?>
-                <p class="article-date"><?php the_time('M j, Y'); ?></p>
+                <p class="article-date"><?php the_time( get_option( 'date_format' ) ); ?></p>
                 <?php the_title('<h2 class="article-title">', '</h2>');
                 if(has_excerpt()) {
                     echo '<p>' . get_the_excerpt() . '.</p>';

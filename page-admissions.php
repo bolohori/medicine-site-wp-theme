@@ -67,9 +67,9 @@ if (have_posts()) :
 					<ul id="CPR" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/cpr.jpg" alt=""></li>
 						<li class="hero-list-title">Clinical &amp; Population Research</li>
-						<li><a href="http://crtc.wustl.edu/degrees/ahbr.html">Applied Health Behavior Research (MS)</a></li>
+						<li><a href="https://crtc.wustl.edu/programs/degrees/ahbr/">Applied Health Behavior Research (MS)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/MS/Pages/default.aspx">Biostatistics (MS)</a></li>
-						<li><a href="http://crtc.wustl.edu/degrees/msci.html">Clinical Investigation (MSCI)</a></li>
+						<li><a href="https://crtc.wustl.edu/programs/degrees/msci/ ">Clinical Investigation (MSCI)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/GEMS/Pages/default.aspx">Genetic Epidemiology (MS)</a></li>
 						<li><a href="http://www.mphs.wustl.edu/en">Population Health (MPHS)</a></li>
 						<li><a href="http://mph.wustl.edu/">Public Health (MPH)</a></li>
@@ -77,8 +77,8 @@ if (have_posts()) :
 					<ul id="PT" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/pt.jpg" alt=""></li>
 						<li class="hero-list-title">Physical Therapy</li>
-						<li><a href="https://pt.wustl.edu/Education/DoctoralEducation/PhDinMovementScience/Pages/PhDinMovementScience.aspx">Movement Science (PhD)</a></li>
-						<li><a href="https://pt.wustl.edu/Education/DoctoralEducation/DoctorofPhysicalTherapy/Pages/DoctorofPhysicalTherapy.aspx">Physical Therapy (DPT)</a></li>
+						<li><a href="https://pt.wustl.edu/education/phd-in-movement-science/">Movement Science (PhD)</a></li>
+						<li><a href="https://pt.wustl.edu/education/doctor-of-physical-therapy/">Physical Therapy (DPT)</a></li>
 					</ul>
 				</div>
 			</div>
