@@ -1,8 +1,8 @@
 <?php
-// Used on the front page to remove dimensions from billboard images
-function remove_billboard_dimensions( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-	return preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
-}
+
+/*
+ * Feedburner Redirect.
+ */
 
 if ( ! function_exists( 'feedburner_rss_redirect' ) ) {
 	function feedburner_rss_redirect( $output, $feed ) {
@@ -13,6 +13,12 @@ if ( ! function_exists( 'feedburner_rss_redirect' ) ) {
 	}
 }
 add_action( 'feed_link', 'feedburner_rss_redirect', 10, 2 );
+
+/*
+ * Billboard Space.
+ */
+
+add_action('acf/include_field_types', function() { include_once( get_template_directory() . '/_/php/acf_fields.php' ); }, 20);
 
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
@@ -221,7 +227,6 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600|Open+Sans+Condensed:700' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
-
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri(). '/_/css/reset.css' );
 		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
 
@@ -566,10 +571,6 @@ add_filter( 'campus-life_link_field', 'campus_life_link_url_function', 10, 1 );
 add_filter( 'campus-life_thumbnail_size', function() { return array(320, 9999); } );
 add_filter( 'campus-life_date_text', function() { return ''; } );
 add_filter( 'campus-life_template_file', function() { return get_stylesheet_directory() . "/_/php/campus-life-template.php"; } );
-
-add_filter( 'billboard_thumbnail_size', function() { return array( 700, 9999 ); } );
-add_filter( 'billboard_link_field', function() { return 'link'; } );
-add_filter( 'billboard_num_per_page', function() { return 9999; } );
 
 add_filter( 'announcement_excerpt_text', function() { return ''; } );
 add_filter( 'announcement_link_field', 'announcement_link_url_function', 10, 1 );
