@@ -1,11 +1,11 @@
 {
     "key": "group_57e981428b1c3",
-    "title": "Home - Billboard Space",
+    "title": "Home Banner",
     "fields": [
         {
             "key": "field_57e9814b34a10",
-            "label": "Billboards",
-            "name": "billboards",
+            "label": "Banners",
+            "name": "banners",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -19,12 +19,12 @@
             "min": "",
             "max": "",
             "layout": "table",
-            "button_label": "Add Billboard",
+            "button_label": "Add Banner",
             "sub_fields": [
                 {
                     "key": "field_57e9816134a11",
-                    "label": "Billboard Photo",
-                    "name": "billboard_photo",
+                    "label": "Banner Photo",
+                    "name": "banner_photo",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -47,8 +47,8 @@
                 },
                 {
                     "key": "field_57e9818034a12",
-                    "label": "Billboard Text",
-                    "name": "billboard_text",
+                    "label": "Banner Text",
+                    "name": "banner_text",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -84,5 +84,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1474920881
+    "modified": 1475008963
 }

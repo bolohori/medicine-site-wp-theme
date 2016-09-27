@@ -1,22 +1,22 @@
 <?php get_header(); ?>
 
-<div class="billboard">
-	<ul class="billboard-slider">
+<section class="banner">
+	<ul class="banner-slider">
 		<?php
-			if ( have_rows( 'billboards', 'option'  ) ) {
-				while ( have_rows( 'billboards', 'option'  ) ) : the_row();
-					echo '<li class="billboard-single">';
+			if ( have_rows( 'banners', 'option'  ) ) {
+				while ( have_rows( 'banners', 'option'  ) ) : the_row();
+					echo '<li class="banner-single">';
 						echo '<div>';
-						$billboard = get_sub_field( 'billboard_photo', 'option' );
-						echo '<img src="' . $billboard['url'] . '">';
-						echo '<h1>' . get_sub_field( 'billboard_text', 'option' ) . '</h1>';
+							$banner = get_sub_field( 'banner_photo', 'option' );
+							echo '<div class="banneroverlay"><img src="' . $banner['url'] . '" class="bannerimg"></div>';
+							echo '<h1>' . get_sub_field( 'banner_text', 'option' ) . '</h1>';
 						echo '</div>';
 					echo '</li>';
 				endwhile;
 			}
 		?>
 	</ul>
-</div>
+</section>
 
 <?php
     if ( function_exists( 'wusm_alert_display' ) ) {
@@ -44,9 +44,9 @@
 				</div>
 			</li>
 			<?php
-				if ( have_rows( 'home_featured_posts', 'option' ) ) {
-						while ( have_rows( 'home_featured_posts', 'option' ) ) : the_row();
-							$newscards = get_sub_field( 'selected_post', 'option' );
+				if ( have_rows( 'home_stories', 'option' ) ) {
+						while ( have_rows( 'home_stories', 'option' ) ) : the_row();
+							$newscards = get_sub_field( 'selected_stories', 'option' );
 							if ( $newscards ) {
 								$post = $newscards;
 								setup_postdata( $post );
