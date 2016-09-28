@@ -34,7 +34,7 @@
 	<section class="news">
 		<div class="news-cards">
 			<ul class="clearfix">
-				<li>
+				<li class="news-block">
 					<div>
 						<a href="/news">
 							<div class="card latest-news-block">
