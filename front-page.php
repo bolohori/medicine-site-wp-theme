@@ -33,18 +33,19 @@
 	</div>
 	<section class="news">
 		<div class="news-cards">
-			<li>
-				<div>
-					<a href="/news">
-						<div class="card latest-news-block">
-							<p>Explore the scientific discovery, medical innovation and commitment to care that inspire us.</p>
-							<span class="link">See our latest news</span>
-						</div>
-					</a>
-				</div>
-			</li>
-			<?php
-				if ( have_rows( 'home_stories', 'option' ) ) {
+			<ul class="clearfix">
+				<li>
+					<div>
+						<a href="/news">
+							<div class="card latest-news-block">
+								<p>Explore the scientific discovery, medical innovation and commitment to care that inspire us.</p>
+								<span class="link">See our latest news</span>
+							</div>
+						</a>
+					</div>
+				</li>
+				<?php
+					if ( have_rows( 'home_stories', 'option' ) ) {
 						while ( have_rows( 'home_stories', 'option' ) ) : the_row();
 							$newscards = get_sub_field( 'selected_stories', 'option' );
 							if ( $newscards ) {
@@ -53,8 +54,9 @@
 								get_template_part( '_/php/news/card' );
 							}
 						endwhile;
-				}
-			?>
+					}
+				?>
+			</ul>
 		</div>
 	</section>
 </section>
@@ -88,6 +90,7 @@
 		<?php
 		}
 		wp_reset_postdata(); ?>
+		<a class="national-leaders-see-all" href="/news/type/national-leaders/">SEE ALL</a>
 	</section>
 </section>
 
