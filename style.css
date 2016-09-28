@@ -1595,10 +1595,10 @@ ul.home-banner-slider .slick-list {
 li.home-banner-single {
 	float: left;
 	width: 100%;
+	margin-bottom: -4px;
 }
 
 .home-banner-single img {
-	display: block;
 	position: relative;
 	z-index: -1;
 	width: 100%;
@@ -1631,7 +1631,6 @@ li.home-banner-single {
 	float: right;
 	margin: 0 auto;
 	position: absolute;
-	vertical-align: top;
 	width: 100%;
 	bottom: 5%;
 	left: 0;
@@ -1680,10 +1679,6 @@ li.home-banner-single {
 
 	.news-home .news {
 		padding: 0;
-	}
-
-	.news-home .news-cards {
-		margin-top: -20px
 	}
 
 	.news-home .news-cards li,
