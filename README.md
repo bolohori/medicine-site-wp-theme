@@ -10,6 +10,14 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2016.09.28.0
+
+* Finalized homepage redesign
+    * New billboard
+    * Redesigned news area
+    * Redesigned leaders area
+    * Redesigned intro text
+
 ### 2016.09.27.0
 
 * Removed bxslider, CSS, and old billboard.
