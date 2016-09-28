@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
 	$( 'ul.home-banner-slider' ).slick({
 		arrows: false,
-		autoplay: false,
+		autoplay: true,
 		autoplaySpeed: 3000,
 		dots: false,
 		fade: true,
