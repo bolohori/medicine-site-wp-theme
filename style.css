@@ -1558,6 +1558,7 @@ article.search-results {
 	color: #fff;
 	font-size: 21px;
 	font-style: italic;
+	line-height: 1.4;
 	padding-bottom: 30px;
 }
 
@@ -1612,7 +1613,7 @@ li.home-banner-single {
 	background: -o-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
 	background: -ms-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
 	background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000', GradientType=0 );
 	width: 100%;
 }
 
