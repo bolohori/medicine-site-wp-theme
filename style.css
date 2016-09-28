@@ -1679,7 +1679,8 @@ li.home-banner-single {
 }
 
 @media screen and (max-width: 768px) {
-	.home-banner-single h1 {
+	.home-banner-single h1,
+	.text-intro h1 {
 		font-size: 28px;
 	}
 
@@ -1695,10 +1696,6 @@ li.home-banner-single {
 @media screen and (max-width: 600px) {
 	.home-banner-single h1 {
 		font-size: 21px;
-	}
-
-	.text-intro h1 {
-		font-size: 28px;
 	}
 
 	.text-intro .wrap {
