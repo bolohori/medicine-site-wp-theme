@@ -1580,6 +1580,8 @@ article.search-results {
 
 .home-banner {
 	font-size: 0;
+	position: relative;
+	z-index: 0;
 }
 
 ul.home-banner-slider {
