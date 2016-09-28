@@ -1,14 +1,14 @@
 <?php get_header(); ?>
 
-<section class="banner">
-	<ul class="banner-slider">
+<section class="home-banner">
+	<ul class="home-banner-slider">
 		<?php
 			if ( have_rows( 'banners', 'option'  ) ) {
 				while ( have_rows( 'banners', 'option'  ) ) : the_row();
-					echo '<li class="banner-single">';
+					echo '<li class="home-banner-single">';
 						echo '<div>';
 							$banner = get_sub_field( 'banner_photo', 'option' );
-							echo '<div class="banneroverlay"><img src="' . $banner['url'] . '" class="bannerimg"></div>';
+							echo '<div class="home-banneroverlay"><img src="' . $banner['url'] . '" class="home-bannerimg"></div>';
 							echo '<h1>' . get_sub_field( 'banner_text', 'option' ) . '</h1>';
 						echo '</div>';
 					echo '</li>';

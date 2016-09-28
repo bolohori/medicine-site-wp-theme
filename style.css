@@ -1577,33 +1577,33 @@ article.search-results {
 	width: 100%;
 }
 
-.banner {
+.home-banner {
 	font-size: 0;
 }
 
-ul.banner-slider {
+ul.home-banner-slider {
 	display: block;
 	position: relative;
 	margin: 0;
 }
 
-ul.banner-slider .slick-list {
+ul.home-banner-slider .slick-list {
 	overflow: hidden;
 }
 
-li.banner-single {
+li.home-banner-single {
 	float: left;
 	width: 100%;
 }
 
-.banner-single img {
+.home-banner-single img {
 	display: block;
 	position: relative;
 	z-index: -1;
 	width: 100%;
 }
 
-.banner-single .banneroverlay {
+.home-banner-single .home-banneroverlay {
 	display: inline-block;
 	background: rgba(255,255,255,0);
 	background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
@@ -1616,11 +1616,11 @@ li.banner-single {
 	width: 100%;
 }
 
-.banner-single .bannerimg {
+.home-banner-single .home-bannerimg {
 	width: 100%;
 }
 
-.banner-single h1 {
+.home-banner-single h1 {
 	clear: both;
 	display: inline-block;
 	max-width: 940px;
@@ -1666,13 +1666,13 @@ li.banner-single {
 }
 
 @media screen and (max-width: 960px) {
-	.banner-single h1 {
+	.home-banner-single h1 {
 		margin-left: -3%;
 	}
 }
 
 @media screen and (max-width: 768px) {
-	.banner-single h1,
+	.home-banner-single h1,
 	.text-intro h1 {
 		font-size: 21px;
 	}
@@ -1707,7 +1707,7 @@ li.banner-single {
 		padding: 40px 20px 40px;
 	}
 
-	.banner-single h1 {
+	.home-banner-single h1 {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing:    border-box;
 		box-sizing:         border-box;

@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-	$( 'ul.banner-slider' ).slick({
+	$( 'ul.home-banner-slider' ).slick({
 		arrows: false,
 		autoplay: false,
 		autoplaySpeed: 3000,
