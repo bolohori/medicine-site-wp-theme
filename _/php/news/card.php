@@ -33,10 +33,9 @@
                 if(get_field('source')) {
                     echo '<p class="news-source">Source: ' . get_field('source') . '</p>';
                 } else {
-                    $terms = get_the_terms($post->ID, 'news');
+                    $terms = get_the_terms($post, 'news');
                     if ($terms) {
                         $term_list = array();
-
                         foreach ($terms as $term) {
                             // Don't include More News in the list of terms.
                             if ($term->name != 'More News') {

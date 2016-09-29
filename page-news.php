@@ -25,7 +25,7 @@ if (have_posts()) :
             if ( $the_query->have_posts() ) { ?>
             <div class="editors-pick">
                 <?php while ( $the_query->have_posts() ) {
-                    $the_query->the_post(); 
+                    $the_query->the_post();
                     $exclude[] = $post->ID; ?>
                     <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
                     <div class="ep-card">
@@ -89,7 +89,7 @@ if (have_posts()) :
                 <ul class="clearfix">
                 <?php while ( $the_query->have_posts() ) {
                     $the_query->the_post();
-                    
+
                     get_template_part( '_/php/news/card' );
 
                     } ?>

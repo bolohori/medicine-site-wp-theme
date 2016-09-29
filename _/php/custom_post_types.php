@@ -2,39 +2,6 @@
 function create_custom_post_types() {
 
 	$labels = array(
-		'name'               => 'Billboards',
-		'singular_name'      => 'Billboard',
-		'add_new'            => 'Add New',
-		'add_new_item'       => 'Add New Billboard',
-		'edit_item'          => 'Edit Billboard',
-		'new_item'           => 'New Billboard',
-		'all_items'          => 'All Billboards',
-		'view_item'          => 'View Billboard',
-		'search_items'       => 'Search Billboards',
-		'not_found'          =>	'No billboards found',
-		'not_found_in_trash' => 'No billboards found in Trash', 
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Billboards'
-	);
-	$args = array(
-		'labels'              => $labels,
-		'exclude_from_search' => true,
-		'show_in_nav_menus'   => false,
-		'menu_icon'           => 'dashicons-welcome-view-site',
-		'public'              => false,
-		'publicly_queryable'  => false,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
-		'query_var'           => true,
-		'rewrite'             => array( 'slug' => 'features' ),
-		'capability_type'     => 'post',
-		'hierarchical'        => true,
-		'menu_position'       => null,
-		'supports'            => array('title', 'page-attributes', 'thumbnail' )
-	); 
-	register_post_type( 'billboard', $args );
-
-	$labels = array(
 		'name'               => 'In The News',
 		'singular_name'      => 'In The News',
 		'add_new'            => 'Add New',
@@ -45,7 +12,7 @@ function create_custom_post_types() {
 		'view_item'          => 'View In The News',
 		'search_items'       => 'Search In The News',
 		'not_found'          =>	'No In The News found',
-		'not_found_in_trash' => 'No In The News found in Trash', 
+		'not_found_in_trash' => 'No In The News found in Trash',
 		'parent_item_colon'  => '',
 		'menu_name'          => 'In The News'
 	);
@@ -57,8 +24,8 @@ function create_custom_post_types() {
 		'menu_icon'           => 'dashicons-feedback',
 		'public'              => true,
 		'publicly_queryable'  => true,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
+		'show_ui'             => true,
+		'show_in_menu'        => true,
 		'query_var'           => true,
 		'rewrite'             => array( 'slug' => 'inthenews' ),
 		'capability_type'     => 'post',
@@ -78,7 +45,7 @@ function create_custom_post_types() {
 		'view_item'          => 'View Announcement',
 		'search_items'       => 'Search Announcements',
 		'not_found'          =>	'No announcements found',
-		'not_found_in_trash' => 'No announcements found in Trash', 
+		'not_found_in_trash' => 'No announcements found in Trash',
 		'parent_item_colon'  => '',
 		'menu_name'          => 'Announcements'
 	);
@@ -89,8 +56,8 @@ function create_custom_post_types() {
 		'menu_icon'           => 'dashicons-video-alt2',
 		'public'              => true,
 		'publicly_queryable'  => true,
-		'show_ui'             => true, 
-		'show_in_menu'        => true, 
+		'show_ui'             => true,
+		'show_in_menu'        => true,
 		'query_var'           => true,
 		'rewrite'             => array( 'slug' => 'announcements' ),
 		'capability_type'     => 'post',
@@ -111,7 +78,7 @@ function create_custom_post_types() {
 		'view_item'          => 'View Search Results',
 		'search_items'       => 'Search Search Results',
 		'not_found'          =>	'No Search Results found',
-		'not_found_in_trash' => 'No Search Results found in Trash', 
+		'not_found_in_trash' => 'No Search Results found in Trash',
 		'parent_item_colon'  => '',
 		'menu_name'          => 'Search Results'
 	);
@@ -121,13 +88,13 @@ function create_custom_post_types() {
 		'menu_icon'          => 'dashicons-search',
 		'public'             => false,
 		'publicly_queryable' => false,
-		'show_ui'            => true, 
-		'show_in_menu'       => true, 
+		'show_ui'            => true,
+		'show_in_menu'       => true,
 		'query_var'          => true,
 		'capability_type'    => 'post',
 		'hierarchical'       => false,
 		'menu_position'      => null,
-	); 
+	);
 	register_post_type( 'promoted_results', $args );
 
 	$labels = array(
@@ -141,7 +108,7 @@ function create_custom_post_types() {
 		'view_item'          => 'View Faculty Recognition',
 		'search_items'       => 'Search Faculty Recognitions',
 		'not_found'          =>	'No Faculty Recognitions found',
-		'not_found_in_trash' => 'No Faculty Recognitions found in Trash', 
+		'not_found_in_trash' => 'No Faculty Recognitions found in Trash',
 		'parent_item_colon'  => '',
 		'menu_name'          => 'Faculty Recognition'
 	);
@@ -151,8 +118,8 @@ function create_custom_post_types() {
 		'menu_icon'          => 'dashicons-awards',
 		'public'             => true,
 		'publicly_queryable' => true,
-		'show_ui'            => true, 
-		'show_in_menu'       => true, 
+		'show_ui'            => true,
+		'show_in_menu'       => true,
 		'query_var'          => true,
 		'rewrite'            => array( 'slug' => 'about/faculty-recognition' ),
 		'capability_type'    => 'post',
@@ -167,7 +134,7 @@ function create_custom_post_types() {
 			'revisions',
 			'page-attributes',
 		)
-	); 
+	);
 	register_post_type( 'faculty_profile', $args );
 
 	/**
@@ -203,12 +170,12 @@ function create_custom_post_types() {
 		'query_var'         => true,
 		'capabilities'      => array(),
 	);
-	
+
 	register_taxonomy( 'news', array( 'post' ), $args );
 	/**
 	 * End custom taxonomy associated with news stories
 	 */
-	 
+
 	 $labels = array(
 		'name'                       => _x( 'Class Years', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Class Year', 'Taxonomy Singular Name', 'text_domain' ),
@@ -242,7 +209,7 @@ function create_custom_post_types() {
 	);
 	register_taxonomy( 'class_year', array( 'post' ), $args );
 
-}	
+}
 add_action( 'init', 'create_custom_post_types' );
 
 /*
