@@ -1984,7 +1984,7 @@ li.home-banner-single {
 	position: relative;
 }
 .news-cards li img.video-play-icon {
-	width: auto;
+	width: 80px;
 	display: inline-block;
 	position: absolute;
 	top: 50%;
