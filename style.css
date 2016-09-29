@@ -706,6 +706,41 @@ button.single-link:hover {
 	background: #c40000;
 }
 
+
+
+/* Featured image
+-------------------------------------------------------------------------------*/
+
+#featured-image {
+	position: relative;
+	text-align: center;
+	width: 100%;
+	z-index: 50;
+	background-color: #ccc;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 400px;
+	overflow: hidden;
+}
+
+#featured-image img {
+	display: none;
+	margin: 0 auto;
+}
+
+.home #featured-image {
+	z-index: 1;
+	height: 553px;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+}
+
+.home #featured-image img {
+	display: none;
+}
+
 /* Main
 -------------------------------------------------------------------------------*/
 
@@ -1884,6 +1919,10 @@ li.home-banner-single {
 	width: 66%;
 	height: auto;
 }
+.editors-pick .video-card-image img {
+	width: 100%;
+	float: none;
+}
 .editors-pick-text {
 	float: right;
 	width: 29%;
@@ -1970,9 +2009,12 @@ li.home-banner-single {
 	box-shadow: 0 3px 6px 0 rgba( 0,0,0,0.20 );
 	transform: translateY( -2px );
 }
-.news-cards .video-card-image,
-.editors-pick .video-card-image {
+.news-cards .video-card-image {
 	position: relative;
+}
+.editors-pick .video-card-image {
+	float:left;
+	width: 66%;
 }
 .news-cards li img {
 	width: 100%;
@@ -4338,7 +4380,7 @@ a.sidebar-outlook-link {
 	}
 }
 @media screen and ( max-width: 900px ) {
-	.editors-pick img {
+	.editors-pick img, .editors-pick .video-card-image {
 		width: 50%;
 	}
 	.editors-pick-text {

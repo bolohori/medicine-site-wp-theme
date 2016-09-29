@@ -375,7 +375,7 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 												if ( get_post_status() == 'future' ) {
 													$date_time = get_the_date('F j, Y') . ' ' . get_the_time('H:i:s');
 													$embargo_lift_pre = date('g:i a l, M. j, Y', strtotime($date_time . '+ 1 hour'));
-													$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.'),array('a.m. ET','p.m. ET','','March','April','May','June','July'),$embargo_lift_pre);
+													$embargo_lift = str_replace(array('am','pm',':00','Mar.','Apr.','May.','Jun.','Jul.','Sep.'),array('a.m. ET','p.m. ET','','March','April','May','June','July','Sept.'),$embargo_lift_pre);
 													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: bold;color: #333;margin-bottom:25px;margin-top:0;background:#f2eb29;padding:10px 20px;text-align:center;">Embargoed until ' . $embargo_lift . '</p>';
 												} else {
 													echo '<p style="font-family:\'Open Sans\', Arial, sans-serif;font-size:14px;font-weight: normal;color: #333;margin-bottom:25px;margin-top:0;text-align:left;">' . get_the_date() . '</p>';
