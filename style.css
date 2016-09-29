@@ -1529,9 +1529,11 @@ article.search-results {
 }
 
 .text-intro p {
-	color: #3c3c3d;
-	font-size: 18px;
-	line-height: 1.625;
+	font-family: 'Open Sans', Arial, sans-serif;
+	color: #787878;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 30px;
 }
 
 .news-home .news-cards .latest-news-block {

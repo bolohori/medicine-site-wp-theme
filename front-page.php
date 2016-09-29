@@ -65,7 +65,7 @@
 	<div class="text-intro">
 		<div class="wrap">
 			<h1>We are a community of leaders.</h1>
-			<p>Engaged in their fields at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
+			<p>Engaged in our fields at home and around the world, we are defining the future of health and medicine.</p>
 		</div>
 	</div>
 	<section class="leaders">
