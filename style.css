@@ -1968,7 +1968,8 @@ li.home-banner-single {
 	box-shadow: 0 3px 6px 0 rgba( 0,0,0,0.20 );
 	transform: translateY( -2px );
 }
-.news-cards .video-card-image {
+.news-cards .video-card-image,
+.editors-pick .video-card-image {
 	position: relative;
 }
 .news-cards li img {
@@ -1983,7 +1984,16 @@ li.home-banner-single {
 	width: auto;
 	position: relative;
 }
-.news-cards li img.video-play-icon {
+.editors-pick .video-card-image img {
+	width: 100%;
+	float: none;
+}
+.editors-pick .video-card-image {
+	float: left;
+	width: 66%;
+}
+.news-cards li img.video-play-icon,
+.editors-pick img.video-play-icon {
 	width: 80px;
 	display: inline-block;
 	position: absolute;
