@@ -4428,7 +4428,8 @@ a.sidebar-outlook-link {
 	.editors-pick > div {
 		padding-bottom: 24px;
 	}
-	.editors-pick img {
+	.editors-pick img,
+	.editors-pick .video-card-image {
 		width: 100%;
 		float: none;
 	}
