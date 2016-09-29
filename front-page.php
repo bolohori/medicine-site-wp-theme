@@ -28,7 +28,7 @@
 	<div class="text-intro">
 		<div class="wrap">
 			<h1>The future of medicine starts with you.</h1>
-			<p>In a supportive environment fueled by collaboration, our teachers, scholars, caregivers and innovators apply passion and determination to solve medicine's toughest challenges.</p>
+			<p>With passion and determination, our teachers, scholars, caregivers and innovators come together to tackle medicine's toughest challenges.</p>
 		</div>
 	</div>
 	<section class="news">
@@ -64,8 +64,8 @@
 <section class="leaders-home">
 	<div class="text-intro">
 		<div class="wrap">
-			<h1>Join a community of leaders in medicine.</h1>
-			<p>Engaged in their fields and communities at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
+			<h1>We are a community of leaders.</h1>
+			<p>Engaged in their fields at home and around the world, the people of Washington University School of Medicine are defining the future of health and medicine.</p>
 		</div>
 	</div>
 	<section class="leaders">
