@@ -1523,14 +1523,14 @@ article.search-results {
 
 .text-intro h1 {
 	-webkit-font-smoothing: antialiased;
-	color: #6c7373;
+	color: #3c3c3d;
 	font-size: 35px;
 	margin-bottom: 15px;
 }
 
 .text-intro p {
 	color: #3c3c3d;
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 1.625;
 }
 
@@ -1647,82 +1647,6 @@ li.home-banner-single {
 	margin: 20px auto 35px;
 	padding: 5px 15px;
 	display: block;
-}
-
-@media screen and (max-width: 1000px) {
-
-	.news-home .news-cards li.news-block,
-	.news-home .news-cards .latest-news-block {
-		width: 100%;
-	}
-
-	.news-home .news-cards .latest-news-block {
-		padding: 30px 40px;
-	}
-
-	.news-home .news-cards,
-	.leaders-home .news-cards {
-		width: 88%;
-	}
-
-	.news-home .news-cards li,
-	.leaders-home .news-cards li {
-		text-align: left;
-	}
-
-	li.headshot:last-child {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 960px) {
-	.home-banner-single h1 {
-		margin-left: -3%;
-	}
-}
-
-@media screen and (max-width: 768px) {
-	.home-banner-single h1,
-	.text-intro h1 {
-		font-size: 28px;
-	}
-
-	.news-home .news {
-		padding: 0;
-	}
-
-	.national-leaders-see-all {
-		margin-bottom: 40px;
-	}
-}
-
-@media screen and (max-width: 600px) {
-	.home-banner-single h1,
-	.text-intro h1 {
-		font-size: 21px;
-	}
-
-	.text-intro .wrap {
-		padding: 40px 20px 50px;
-	}
-
-	.home-banner-single h1 {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing:    border-box;
-		box-sizing:         border-box;
-		margin-left: 0;
-		padding: 1% 4%;
-	}
-
-	.news-home .news-cards ul,
-	.leaders-home .news-cards ul  {
-		margin: 0 10px;
-	}
-
-	.news-home .news-cards,
-	.leaders-home .news-cards {
-		width: 100%;
-	}
 }
 
 /* News page
@@ -3858,6 +3782,28 @@ a.sidebar-outlook-link {
 */
 
 @media screen and ( max-width: 1000px ) {
+	.news-home .news-cards li.news-block,
+	.news-home .news-cards .latest-news-block {
+		width: 100%;
+	}
+
+	.news-home .news-cards .latest-news-block {
+		padding: 30px 40px;
+	}
+
+	.news-home .news-cards,
+	.leaders-home .news-cards {
+		width: 88%;
+	}
+
+	.news-home .news-cards li,
+	.leaders-home .news-cards li {
+		text-align: left;
+	}
+
+	li.headshot:last-child {
+		display: none;
+	}
 	#main.page-news {
 		background: none;
 	}
@@ -4375,6 +4321,9 @@ a.sidebar-outlook-link {
 	.footer-menu-block {
 		border-left: none;
 	}
+	.home-banner-single h1 {
+		margin-left: -3%;
+	}
 }
 @media screen and ( max-width: 900px ) {
 	.editors-pick img {
@@ -4440,6 +4389,20 @@ a.sidebar-outlook-link {
 
 	.faculty-individual div {
 		margin-left: 130px;
+	}
+}
+@media screen and ( max-width: 768px ) {
+	.home-banner-single h1,
+	.text-intro h1 {
+		font-size: 28px;
+	}
+
+	.news-home .news {
+		padding: 0;
+	}
+
+	.national-leaders-see-all {
+		margin-bottom: 40px;
 	}
 }
 @media screen and ( max-width: 750px ) {
@@ -4623,6 +4586,39 @@ a.sidebar-outlook-link {
 
 	.admission-footer li {
 		width: 96%;
+	}
+	.home-banner-single h1 {
+		font-size: 21px;
+	}
+
+	.text-intro h1 {
+		font-size: 24px;
+	}
+
+	.text-intro p {
+		font-size: 16px;
+	}
+
+	.text-intro .wrap {
+		padding: 40px 20px 50px;
+	}
+
+	.home-banner-single h1 {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing:    border-box;
+		box-sizing:         border-box;
+		margin-left: 0;
+		padding: 1% 4%;
+	}
+
+	.news-home .news-cards ul,
+	.leaders-home .news-cards ul  {
+		margin: 0 10px;
+	}
+
+	.news-home .news-cards,
+	.leaders-home .news-cards {
+		width: 100%;
 	}
 }
 @media screen and ( max-width: 570px ) {

@@ -10,6 +10,10 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2016.09.29.0
+
+* Intro-text color changes.
+
 ### 2016.09.28.0
 
 * Finalized homepage redesign
