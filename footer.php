@@ -17,7 +17,6 @@
 				<a title="LinkedIn" id="site-linkedin" onclick="__gaTracker('send','event','outbound-footer-social','linkedin');" href="https://www.linkedin.com/company/washington-university-school-of-medicine"><img src="<?php echo get_template_directory_uri(); ?>/_/img/linkedin.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/linkedin.png';this.onerror=null;"></a>
 				<a title="Flickr" id="site-flickr" onclick="__gaTracker('send','event','outbound-footer-social','flickr');" href="https://www.flickr.com/photos/wustlmedicine/"><img src="<?php echo get_template_directory_uri(); ?>/_/img/flickr.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/flickr.png';this.onerror=null;"></a>
 				<a title="RSS feed" id="site-rss" onclick="__gaTracker('send','event','outbound-footer-social','rss');" href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/_/img/rss.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/rss.png';this.onerror=null;"></a>
-				<a title="WUSTL Reader mobile app" id="site-reader" onclick="__gaTracker('send','event','outbound-footer-social','WUSTL reader');" href="http://reader.wustl.edu/"><img src="<?php echo get_template_directory_uri(); ?>/_/img/reader.png"></a>
 	        </div>
         </div>
         <div id="site-footer-bottom" class="clearfix">

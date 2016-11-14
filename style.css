@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	2016.09.28.0
+Version:	 2016.11.10.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -706,6 +706,41 @@ button.single-link:hover {
 	background: #c40000;
 }
 
+
+
+/* Featured image
+-------------------------------------------------------------------------------*/
+
+#featured-image {
+	position: relative;
+	text-align: center;
+	width: 100%;
+	z-index: 50;
+	background-color: #ccc;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 400px;
+	overflow: hidden;
+}
+
+#featured-image img {
+	display: none;
+	margin: 0 auto;
+}
+
+.home #featured-image {
+	z-index: 1;
+	height: 553px;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+}
+
+.home #featured-image img {
+	display: none;
+}
+
 /* Main
 -------------------------------------------------------------------------------*/
 
@@ -1125,7 +1160,7 @@ td p:last-child {
 	display: block;
 }
 
-a#site-facebook, a#site-twitter, a#site-linkedin, a#site-flickr, a#site-youtube, a#site-rss, a#site-reader {
+a#site-facebook, a#site-twitter, a#site-linkedin, a#site-flickr, a#site-youtube, a#site-rss {
 	display: inline-block;
 	width: 23px;
 	height: 23px;
@@ -1884,6 +1919,10 @@ li.home-banner-single {
 	width: 66%;
 	height: auto;
 }
+.editors-pick .video-card-image img {
+	width: 100%;
+	float: none;
+}
 .editors-pick-text {
 	float: right;
 	width: 29%;
@@ -1974,6 +2013,10 @@ li.home-banner-single {
 .editors-pick .video-card-image {
 	position: relative;
 }
+.editors-pick .video-card-image {
+	float:left;
+	width: 66%;
+}
 .news-cards li img {
 	width: 100%;
 	height: auto;
@@ -1985,10 +2028,6 @@ li.home-banner-single {
 	z-index: 2;
 	width: auto;
 	position: relative;
-}
-.editors-pick .video-card-image img {
-	width: 100%;
-	float: none;
 }
 .editors-pick .video-card-image {
 	float: left;
@@ -3786,6 +3825,18 @@ a.sidebar-outlook-link {
 	padding: 30px 0 20px;
 }
 
+/* Emergency Styles
+-------------------------------------------------------------------------------*/
+
+.emergency-container {
+	width: 100%;
+	max-width: 940px;
+}
+
+.emergency-alert {
+	padding: 15px 20px;
+}
+
 
 /**
 * #.# Media Queries
@@ -4029,7 +4080,7 @@ a.sidebar-outlook-link {
 		padding: 0;
 	}
 
-	a#site-facebook, a#site-twitter, a#site-linkedin, a#site-flickr, a#site-youtube, a#site-rss, a#site-reader {
+	a#site-facebook, a#site-twitter, a#site-linkedin, a#site-flickr, a#site-youtube, a#site-rss {
 	    display: inline-block;
 	    width: 30px;
 	    height: 30px;
@@ -4338,7 +4389,7 @@ a.sidebar-outlook-link {
 	}
 }
 @media screen and ( max-width: 900px ) {
-	.editors-pick img {
+	.editors-pick img, .editors-pick .video-card-image {
 		width: 50%;
 	}
 	.editors-pick-text {

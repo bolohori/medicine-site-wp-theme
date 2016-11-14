@@ -51,7 +51,7 @@ function create_custom_post_types() {
 	);
 	$args = array(
 		'labels'              => $labels,
-		'exclude_from_search' => true,
+		'exclude_from_search' => false,
 		'show_in_nav_menus'   => false,
 		'menu_icon'           => 'dashicons-video-alt2',
 		'public'              => true,
