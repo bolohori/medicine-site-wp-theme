@@ -1686,6 +1686,100 @@ li.home-banner-single {
 	display: block;
 }
 
+.icons-home {
+	background-color: #fff;
+}
+
+.icons-home .wrap {
+	color: #333;
+	font-size: 14px;
+	font-weight: 700;
+	margin: 0 auto;
+	max-width: 940px;
+	padding: 20px 0 30px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.icons-home .icon {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+	display: inline-block;
+	padding: 0 10px;
+	width: 24.7%;
+	vertical-align: top;
+}
+
+.icons-home .icon object {
+	display: block;
+	height: 135px;
+	margin: 0 auto;
+	padding-bottom: 5px;
+	width: 120px;
+}
+
+.icons-home .icon.nobel object {
+	width: 135px;
+}
+
+.icons-home .icon .context {
+	width: 100%;
+}
+
+.cta-home {
+	-webkit-font-smoothing: antialiased;
+	background: url( '_/img/cta-bg.jpg') center #990000;
+	color: #fff;
+	padding: 35px 20px;
+}
+
+.cta-home a {
+	color: #fff;
+}
+
+.cta-home .wrap {
+	margin: 0 auto;
+	max-width: 940px;
+}
+
+.cta-home .cta-text {
+	display: inline-block;
+	width: 540px;
+}
+
+.cta-home .cta-text h2 {
+	font-family: Georgia, serif;
+	font-size: 28px;
+	font-style: italic;
+	font-weight: 400;
+	margin: 0 0 10px;
+}
+
+.cta-home .cta-text p {
+	font-size: 18px;
+	line-height: 36px;
+}
+
+.cta-home .cta-button {
+	border: 1px solid #fff;
+	border-radius: 3px;
+	clear: both;
+	display: inline-block;
+	float: right;
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;;
+	padding: 40px 0;
+	width: 380px;
+}
+
+.cta-home .cta-button:hover {
+	background: rgba(153, 0, 0, .85);
+}
+
+
 /* News page
 -------------------------------------------------------------------------------*/
 
@@ -4387,6 +4481,31 @@ a.sidebar-outlook-link {
 	.home-banner-single h1 {
 		margin-left: -3%;
 	}
+
+	.icons-home .wrap {
+		max-width: 600px;
+	}
+
+	.icons-home .icon {
+		margin-bottom: 20px;
+		width: 49%;
+	}
+
+	.cta-home .cta-text,
+	.cta-home .cta-button {
+		display: block;
+		float: none;
+		margin: 0 auto;
+		max-width: 750px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.cta-home .cta-button {
+		margin: 15px auto 0;
+		max-width: 320px;
+	}
+
 }
 @media screen and ( max-width: 900px ) {
 	.editors-pick img, .editors-pick .video-card-image {
@@ -4684,6 +4803,20 @@ a.sidebar-outlook-link {
 	.leaders-home .news-cards {
 		width: 100%;
 	}
+
+	.cta-home .cta-text h2 {
+		font-size: 24px;
+	}
+
+	.cta-home .cta-text p {
+		font-size: 16px;
+		line-height: 30px;
+	}
+
+	.cta-home .cta-button {
+		font-size: 16px;
+	}
+
 }
 @media screen and ( max-width: 570px ) {
 	#dirform .dir-group label {
@@ -4835,6 +4968,15 @@ a.sidebar-outlook-link {
 	.news-filters > ul {
 		margin-right: 0;
 	}
+
+	.icons-home .wrap {
+		max-width: 230px;
+	}
+
+	.icons-home .icon {
+		width: 100%;
+	}
+
 	/*.news-filters .parent:last-child ul {
 		right: 0;
 	} Uncomment when adding topics filter back in */
@@ -4877,6 +5019,14 @@ a.sidebar-outlook-link {
 
 	.special-head {
 		padding-top: 31px;
+	}
+}
+
+/* Retina styles
+-------------------------------------------------------------------------------*/
+@media all and (-webkit-min-device-pixel-ratio: 2) {
+	.news-home .news-cards .latest-news-block {
+		background: url('_/img/latest-news-block-2x.jpg');
 	}
 }
 
