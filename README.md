@@ -10,6 +10,10 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2016.11.15.0
+
+* Added icons and the CTA to the home page.
+
 ### 2016.10.12.0
 
 * Removed WUSTL Reader button in footer (discontinued).
