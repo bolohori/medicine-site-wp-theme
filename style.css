@@ -1688,6 +1688,8 @@ li.home-banner-single {
 
 .icons-home {
 	background-color: #fff;
+	position: relative;
+	z-index: 1
 }
 
 .icons-home .wrap {
@@ -1707,7 +1709,6 @@ li.home-banner-single {
 	box-sizing:         border-box;
 	display: inline-block;
 	padding: 0 10px;
-	width: 25%;
 	vertical-align: top;
 }
 
@@ -1716,11 +1717,29 @@ li.home-banner-single {
 	height: 135px;
 	margin: 0 auto;
 	padding-bottom: 5px;
+	position: relative;
 	width: 120px;
+	z-index: -1;
 }
 
 .icons-home .icon.nobel object {
 	width: 135px;
+}
+
+.icons-home a.iconlink {
+	display: inline-block;
+	color: #333;
+	position: relative;
+	width: 25%;
+}
+
+.icons-home a.iconlink:after {
+	bottom: 0;
+	content: "";
+	left: 0;
+	position: relative;
+	right: 0;
+	top: 0;
 }
 
 .icons-home .icon .context {

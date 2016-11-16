@@ -63,34 +63,42 @@
 
 <section class="icons-home">
 	<div class="wrap">
-		<div class="icon first">
-			<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/lightbulb.svg">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb-2x.png 2x" alt="lightbulb icon">
-				<span class="visuallyhidden">lightbulb icon</span>
-			</object>
-			<div class="context">209 patents filed by faculty and students in FY2016</div>
-		</div>
-		<div class="icon">
-			<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/76.svg">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76-2x.png 2x" alt="76">
-				<span class="visuallyhidden">76</span>
-			</object>
-			<div class="context">clinical specialties and subspecialties in medicine and allied health</div>
-		</div>
-		<div class="icon nobel">
-			<object>
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
-				<span class="visuallyhidden">nobel laureates</span>
-			</object>
-			<div class="context">18 nobel laureates associated with the school</div>
-		</div>
-		<div class="icon">
-			<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
-				<span class="visuallyhidden">stethoscope icon</span>
-			</object>
-			<div class="context">67% of faculty members also treat patients</div>
-		</div>
+		<a href="https://otm.wustl.edu/facts-figures/" class="iconlink">
+			<div class="icon">
+				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/lightbulb.svg">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb-2x.png 2x" alt="lightbulb icon">
+					<span class="visuallyhidden">lightbulb icon</span>
+				</object>
+				<div class="context">209 patents filed by faculty and students in FY2016</div>
+			</div>
+		</a>
+		<a href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
+			<div class="icon">
+				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/76.svg">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76-2x.png 2x" alt="76">
+					<span class="visuallyhidden">76</span>
+				</object>
+				<div class="context">clinical specialties and subspecialties</div>
+			</div>
+		</a>
+		<a href="/research/nobel-prize-winners/" class="iconlink">
+			<div class="icon nobel">
+				<object>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
+					<span class="visuallyhidden">nobel laureates</span>
+				</object>
+				<div class="context">18 nobel laureates associated with the school</div>
+			</div>
+		</a>
+		<a href="/patient-care/" class="iconlink">
+			<div class="icon">
+				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
+					<span class="visuallyhidden">stethoscope icon</span>
+				</object>
+				<div class="context">67% of faculty members also treat patients</div>
+			</div>
+		</a>
 	</div>
 </section>
 
