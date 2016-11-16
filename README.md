@@ -10,6 +10,10 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2016.11.16.0
+
+* Corrected icon links and mobile styles.
+
 ### 2016.11.15.0
 
 * Added icons and the CTA to the home page.
