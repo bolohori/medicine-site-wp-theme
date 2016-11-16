@@ -4506,9 +4506,9 @@ a.sidebar-outlook-link {
 		max-width: 600px;
 	}
 
-	.icons-home .icon {
+	.icons-home a.iconlink {
 		margin-bottom: 20px;
-		width: 49%;
+		width: 50%;
 	}
 
 	.cta-home .cta-text,
@@ -4994,7 +4994,7 @@ a.sidebar-outlook-link {
 		max-width: 230px;
 	}
 
-	.icons-home .icon {
+	.icons-home a.iconlink {
 		width: 100%;
 	}
 
