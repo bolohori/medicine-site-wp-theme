@@ -27,7 +27,7 @@
 <section class="news-home">
 	<div class="text-intro">
 		<div class="wrap">
-			<h1>The future of medicine starts with you.</h1>
+			<h1>The future of medicine starts here.</h1>
 			<p>With passion and determination, our teachers, scholars, caregivers and innovators come together to tackle medicine's toughest challenges.</p>
 		</div>
 	</div>
