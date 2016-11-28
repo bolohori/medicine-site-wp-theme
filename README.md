@@ -10,6 +10,11 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2016.11.23.0
+
+* Optimized images on homepage.
+* Changed wording on homepage (from Catherine).
+
 ### 2016.11.16.0
 
 * Corrected icon links and mobile styles.
