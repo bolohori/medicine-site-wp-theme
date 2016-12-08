@@ -11,7 +11,7 @@
 			if (get_the_post_thumbnail() != '') {
 				$margin = ' landing-page';
 				$image = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'landing-page' );
-				echo '<div id="featured-image" style="background-image:url(' . $image . ');">';
+				echo '<div id="featured-image">';
 				the_post_thumbnail('landing-page');
 				echo '</div>';
 			}
@@ -19,18 +19,18 @@
 				$class .= ' special-head';
 			if ( $class !== '' )
 				$classes = " class ='$class'";
-?>	
+?>
+
+<div id="page-background"></div>
 
 <div id="main" class="clearfix<?php echo $margin; ?>">
-
-	<div id="page-background"></div>
 
 	<div class="wrapper clearfix">
 
 		<div id="page-background-inner"></div>
 
 		<?php get_sidebar(); ?>
-		
+
 		<article<?php echo $classes; ?>>
 
             <?php
@@ -53,7 +53,7 @@
         </article>
 			<?php endwhile;
 		endif; ?>
-		
+
 
     </div>
 
