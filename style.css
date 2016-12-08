@@ -712,21 +712,18 @@ button.single-link:hover {
 -------------------------------------------------------------------------------*/
 
 #featured-image {
+	font-size: 0;
 	position: relative;
 	text-align: center;
-	width: 100%;
 	z-index: 50;
-	background-color: #ccc;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: 400px;
+	height: auto;
 	overflow: hidden;
 }
 
 #featured-image img {
-	display: none;
+	display: inline;
 	margin: 0 auto;
+	max-width: 1440px;
 }
 
 .home #featured-image {
@@ -755,7 +752,7 @@ button.single-link:hover {
 	right: 0;
 	top: 0;
 	height: 100%;
-	z-index: -1;
+	z-index: -100;
 	background-color: #f4f4f4;
 }
 
