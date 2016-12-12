@@ -36,7 +36,7 @@
 			<ul class="clearfix">
 				<li class="news-block">
 					<div>
-						<a href="/news">
+						<a onclick="__gaTracker('send','event','Front page','CTA - See our latest news');"  href="/news">
 							<div class="card latest-news-block">
 								<p>Explore the scientific discovery, medical innovation and commitment to care that inspire us.</p>
 								<span class="link">See our latest news</span>
@@ -63,7 +63,7 @@
 
 <section class="icons-home">
 	<div class="wrap">
-		<a href="https://otm.wustl.edu/facts-figures/" class="iconlink">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Facts and figures');" href="https://otm.wustl.edu/facts-figures/" class="iconlink">
 			<div class="icon">
 				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/lightbulb.svg">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb-2x.png 2x" alt="lightbulb icon">
@@ -72,7 +72,7 @@
 				<div class="context">209 patents filed by faculty and students in FY2016</div>
 			</div>
 		</a>
-		<a href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Specialties');" href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
 			<div class="icon">
 				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/76.svg">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76-2x.png 2x" alt="76">
@@ -81,7 +81,7 @@
 				<div class="context">clinical specialties and subspecialties</div>
 			</div>
 		</a>
-		<a href="/research/nobel-prize-winners/" class="iconlink">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Nobel Laureates');" href="/research/nobel-prize-winners/" class="iconlink">
 			<div class="icon nobel">
 				<object>
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
@@ -90,7 +90,7 @@
 				<div class="context">18 nobel laureates associated with the school</div>
 			</div>
 		</a>
-		<a href="/patient-care/" class="iconlink">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Patient care');" href="/patient-care/" class="iconlink">
 			<div class="icon">
 				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
@@ -108,7 +108,7 @@
 			<h2>The future of medicine starts here.</h2>
 			<p>Our top-ranked, student-centered programs will prepare you to join the next generation of leaders.</p>
 		</div>
-		<a href="/education/admissions/" class="cta-button">Explore our programs</a>
+		<a onclick="__gaTracker('send','event','Front page','CTA - Admissions button');" href="/education/admissions/" class="cta-button">Explore our programs</a>
 	</div>
 </section>
 
