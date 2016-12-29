@@ -10,6 +10,10 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2016.12.29.1
+
+* z-index fix for "Information for..." dropdown
+
 ### 2016.12.29.0
 
 * Added z-index to fix a bunch of page-background issues.
