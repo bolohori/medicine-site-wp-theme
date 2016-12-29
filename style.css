@@ -1379,9 +1379,7 @@ a#wusm-google-plus:hover img {
 .information-for-div {
 	background: #f1f1f1;
 	display: none;
-	position: relative;
 	width: 100%;
-	z-index: 1000;
 }
 
 .information-for-div div {
