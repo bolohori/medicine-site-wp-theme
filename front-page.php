@@ -72,7 +72,7 @@
 				<div class="context">209 patents filed by faculty and students in FY2016</div>
 			</div>
 		</a>
-		<a onclick="__gaTracker('send','event','Front page','Icon - Specialties');" href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Diversity and Inclusion');" href="/about/diversity-inclusion/" class="iconlink">
 			<div class="icon">
 				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/bubbles.svg">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/bubbles.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/bubbles-2x.png 2x" alt="76">
@@ -90,13 +90,13 @@
 				<div class="context">18 nobel laureates associated with the school</div>
 			</div>
 		</a>
-		<a onclick="__gaTracker('send','event','Front page','Icon - Patient care');" href="/patient-care/" class="iconlink">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Specialties');" href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
 			<div class="icon">
 				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
 					<span class="visuallyhidden">stethoscope icon</span>
 				</object>
-				<div class="context">67% of faculty members also treat patients</div>
+				<div class="context">76 clinical specialties and subspecialties</div>
 			</div>
 		</a>
 	</div>
