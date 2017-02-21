@@ -1,11 +1,17 @@
 <?php
-    $cardClass = '';
-    if(has_term('national-leaders','news') OR has_term('obituaries','news')) {
-        $cardClass = ' class="headshot"';
-    }
+
+$cardClass = '';
+if(has_term('national-leaders','news') OR has_term('obituaries','news')) {
+    $cardClass = ' class="headshot"';
+}
 ?><li<?php echo $cardClass; ?>>
     <div>
-        <a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+        <?php if ( has_term( 'national-leaders', 'news' ) && is_front_page() ) {
+            $home_analytics_title = 'onclick="__gaTracker(\'send\',\'event\',\'Front page\',\'Cards - National Leaders\');"';
+        } else if ( is_front_page() ) {
+            $home_analytics_title = 'onclick="__gaTracker(\'send\',\'event\',\'Front page\',\'Cards - News\');"';
+        } ?>
+        <a <?php echo $home_analytics_title; ?> href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
             <div class="card">
                     <?php if(has_post_thumbnail() && (has_term('national-leaders','news') OR has_term('obituaries','news'))) {
                         the_post_thumbnail( 'headshot' );
