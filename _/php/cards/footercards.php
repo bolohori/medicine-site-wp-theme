@@ -1,4 +1,5 @@
-<?php 
+<?php
+$pagetitle = get_the_title();
 if( get_field( 'stories_check' ) ) {
 	$newstype = get_field( 'news_type_selection' );
 	$newscategory = get_field( 'categories_selection' );
@@ -37,19 +38,19 @@ if( get_field( 'stories_check' ) ) {
             $the_query->the_post(); ?>
 			<li>
 				<div>
-					<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+					<a onclick="__gaTracker('send','event','Page - Internal','Cards - <?php echo $pagetitle ?>');" href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
 						<?php if( $i % 2 == 1 ) {
 							$cardtype = "odd";
 						} else {
 							$cardtype = "even";
 						}; ?>
 						<div class="card <?php echo $cardtype; ?>">
-	                        <?php 
+	                        <?php
 		                    if( has_post_thumbnail() ) {
 				                the_post_thumbnail('news');
 				            } else {
 				                echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
-				            }    
+				            }
 		                    ?>
 	                        <div class="card-text">
 								<p class="article-date"><?php the_time('M j, Y'); ?></p>
