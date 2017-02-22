@@ -78,7 +78,7 @@
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/bubbles.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/bubbles-2x.png 2x" alt="76">
 					<span class="visuallyhidden">speech bubbles</span>
 				</object>
-				<div class="context">4 offices support diversity and inclusion campus-wide</div>
+				<div class="context">4 Diversity and Inclusion offices on campus</div>
 			</div>
 		</a>
 		<a onclick="__gaTracker('send','event','Front page','Icon - Nobel Laureates');" href="/research/nobel-prize-winners/" class="iconlink">
