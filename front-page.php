@@ -112,6 +112,8 @@
 	</div>
 </section>
 
+<?php do_action( 'wusm_front_page_additional_sections' );?>
+
 <section class="leaders-home">
 	<div class="text-intro">
 		<div class="wrap">
