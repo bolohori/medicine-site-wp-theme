@@ -423,7 +423,7 @@ $email_content = str_replace(array('<p>','<h2>','<h3>','<ul>','<ol>','<li>','<a 
 													echo '<div style="margin-top:25px;position:relative;">';
 													the_post_thumbnail('news-email');
 													if (get_field('featured_video_url')) {
-														echo '<img src="' . get_template_directory_uri() . '/_/img/play.png" style="display: inline-block;position: absolute;top: 50%;left: 50%;margin: -40px 0 0 -40px;">';
+														echo '<img src="' . get_template_directory_uri() . '/_/img/play.png" style="display: inline-block;position: absolute;top: 50%;left: 50%;margin: -40px 0 0 -40px;width:80px;">';
 													}
 													$creditID = get_post_thumbnail_id();
 													$creditName = esc_html( get_post_meta( $creditID, 'image_credit', true ) );
