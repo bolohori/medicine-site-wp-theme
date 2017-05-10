@@ -9,7 +9,7 @@
 						echo '<div>';
 							$banner = get_sub_field( 'banner_photo', 'option' );
 							echo '<div class="home-banneroverlay"><img src="' . $banner['url'] . '" class="home-bannerimg"></div>';
-							echo '<h1>' . get_sub_field( 'banner_text', 'option' ) . '</h1>';
+							echo '<h2>' . get_sub_field( 'banner_text', 'option' ) . '</h2>';
 						echo '</div>';
 					echo '</li>';
 				endwhile;
@@ -27,7 +27,7 @@
 <section class="news-home">
 	<div class="text-intro">
 		<div class="wrap">
-			<h1>We connect the brightest minds in medicine.</h1>
+			<h2>We connect the brightest minds in medicine.</h2>
 			<p>With passion and determination, our teachers, scholars, caregivers and innovators come together to tackle medicine's toughest challenges.</p>
 		</div>
 	</div>
@@ -117,7 +117,7 @@
 <section class="leaders-home">
 	<div class="text-intro">
 		<div class="wrap">
-			<h1>We are a community of leaders.</h1>
+			<h2>We are a community of leaders.</h2>
 			<p>Engaged in our fields at home and around the world, we are defining the future of health and medicine.</p>
 		</div>
 	</div>

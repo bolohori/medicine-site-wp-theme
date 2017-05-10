@@ -30,7 +30,7 @@
                             if( e.data.newwindow == true ) {
                                 var openin = 'target="_blank"';
                             }
-                            editor.insertContent( 
+                            editor.insertContent(
                                 '<a class="wusm-button"' + openin + '" href="' + e.data.link + '">' + e.data.text + '</a>'
                              );
                         }
@@ -70,7 +70,7 @@
                                     if( e.data.newwindow == true ) {
                                         var openin = 'target="_blank"';
                                     }
-                                    editor.insertContent( 
+                                    editor.insertContent(
                                         '<a class="wusm-button"' + openin + '" href="' + e.data.link + '">' + e.data.text + '</a>'
                                      );
                                 }
@@ -123,7 +123,7 @@
 		createControl : function( n, cm ) {
 			return null;
 		},
- 
+
 		getInfo : function( ) {
 			return {
 				longname  : 'Medicine Button',
