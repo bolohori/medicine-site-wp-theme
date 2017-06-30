@@ -26,7 +26,7 @@ get_header();
 				$id = ( $parents ) ? $parents[ count( $parents ) - 1 ] : $post->ID;
 				echo get_the_title( $id ) . ", " .  get_the_title( $post->post_parent );
 				echo "</span></div>";
-				the_post_thumbnail( 'full', array('class' => 'faculty-profile-headshot' ) );
+				the_post_thumbnail( 'headshot', array('class' => 'faculty-profile-headshot' ) );
 				the_content();
 				echo "<div class='faculty-profile-date'><strong>Published:</strong> " . get_the_date('m/d/Y') . "</div>";
 			?>
