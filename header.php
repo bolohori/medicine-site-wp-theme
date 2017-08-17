@@ -51,7 +51,7 @@ if( defined( 'WP_DEBUG') ) { ?>
 	<nav id="utility-bar" class="clearfix">
 		<div class="wrapper top-nav">
 			<ul id="action-nav">
-				<li><a href="http://wuphysicians.wustl.edu/directory.aspx" onclick="__gaTracker('send','event','utility-nav','WU Physicians');">Find a Doctor</a></li>
+				<li><a href="https://wuphysicians.wustl.edu/for-patients/find-a-physician" onclick="__gaTracker('send','event','utility-nav','WU Physicians');">Find a Doctor</a></li>
 				<li><a onclick="__gaTracker('send','event','utility-nav','Admissions');" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
 				<li><a onclick="__gaTracker('send','event','utility-nav','Giving');" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
 			</ul>
@@ -75,15 +75,15 @@ if( defined( 'WP_DEBUG') ) { ?>
 		<?php
 			$num_to_show = get_option( 'announcements_to_show', 6 );
 			$i = 0;
-			
+
 			// Using this to order down instead of across
 			$num_per_column = floor( $num_to_show / 2 );
 
 			// First off, lets get all the 'sticky' announcements,
 			// ordered by their drag-n-drop position
 			$args = array(
-				'post_type'      => 'announcement', 
-				'posts_per_page' => $num_to_show, 
+				'post_type'      => 'announcement',
+				'posts_per_page' => $num_to_show,
 				'orderby'        => 'menu_order',
 				'order'          => 'ASC',
 				'fields'         => 'ids',
@@ -92,16 +92,16 @@ if( defined( 'WP_DEBUG') ) { ?>
 			);
 			$loop = new WP_Query( $args );
 			$ids = $loop->posts;
-			
-			// Just decrement the number to show by the 
+
+			// Just decrement the number to show by the
 			// number of 'sticky's found
 			$num_to_show = $num_to_show - sizeof( $ids );
 
 			// We have more to show than just 'sticky's
 			if( $num_to_show > 0 ) {
 				$args = array(
-					'post_type'      => 'announcement', 
-					'posts_per_page' => $num_to_show, 
+					'post_type'      => 'announcement',
+					'posts_per_page' => $num_to_show,
 					'orderby'        => 'date',
 					'fields'         => 'ids',
 					'post__not_in'   => $ids
@@ -132,7 +132,7 @@ if( defined( 'WP_DEBUG') ) { ?>
 					)
 				)
 			);
-			
+
 			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) {
 				$loop->the_post();
@@ -143,8 +143,8 @@ if( defined( 'WP_DEBUG') ) { ?>
 				$internal_only = get_field('internal_only');
 				if ( $internal_only && !WASHU_IP ) {
 					continue;
-				} 
-				
+				}
+
 				if( get_field('url') ) {
 					$url = get_field('url');
 				} else {
