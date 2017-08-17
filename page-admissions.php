@@ -35,8 +35,7 @@ if (have_posts()) :
 					<ul id="DBBS" class="hero-list left-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/dbbs.jpg" alt=""></li>
 						<li class="hero-list-title">Biology &amp; Biomedical Sciences</li>
-						<li><a href="http://www.dbbs.wustl.edu/divprograms/biochemistry/Pages/Biochemistry.aspx">Biochemistry (PhD)</a></li>
-						<li><a href="http://www.dbbs.wustl.edu/divprograms/biophysics/Pages/ComputationalAndMolecularBiophysics.aspx">Computational and Molecular Biophysics (PhD)</a></li>
+						<li><a href="http://www.dbbs.wustl.edu/divprograms/biophysics/Pages/BBSB.aspx">Biochemistry, Biophysics & Structural Biology (PhD)</a></li>
 						<li><a href="http://www.dbbs.wustl.edu/divprograms/compbio/Pages/default.aspx">Computational and Systems Biology (PhD)</a></li>
 						<li><a href="http://www.dbbs.wustl.edu/divprograms/devbio/Pages/default.aspx">Developmental, Regenerative and Stem Cell Biology (PhD)</a></li>
 						<li><a href="http://www.dbbs.wustl.edu/divprograms/eepb/Pages/default.aspx">Evolution, Ecology and Population Biology (PhD)</a></li>
@@ -70,7 +69,7 @@ if (have_posts()) :
 						<li><a href="https://crtc.wustl.edu/programs/degrees/ahbr/">Applied Health Behavior Research (MS)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/MS/Pages/default.aspx">Biostatistics (MS)</a></li>
 						<li><a href="https://crtc.wustl.edu/programs/degrees/msci/ ">Clinical Investigation (MSCI)</a></li>
-						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/GEMS/Pages/default.aspx">Genetic Epidemiology (MS)</a></li>
+						<li><a href="https://biostatistics.wustl.edu/education/masters-of-science-in-genetic-epidemiology-gems/">Genetic Epidemiology (MS)</a></li>
 						<li><a href="http://www.mphs.wustl.edu/en">Population Health (MPHS)</a></li>
 						<li><a href="http://mph.wustl.edu/">Public Health (MPH)</a></li>
 					</ul>
