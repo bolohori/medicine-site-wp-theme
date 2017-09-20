@@ -61,54 +61,13 @@
 	</section>
 </section>
 
-<section class="icons-home">
-	<div class="wrap">
-		<a onclick="__gaTracker('send','event','Front page','Icon - Facts and figures');" href="https://otm.wustl.edu/facts-figures/" class="iconlink">
-			<div class="icon">
-				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/lightbulb.svg">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb-2x.png 2x" alt="lightbulb icon">
-					<span class="visuallyhidden">lightbulb icon</span>
-				</object>
-				<div class="context">209 patents filed by faculty and students in FY2016</div>
-			</div>
-		</a>
-		<a onclick="__gaTracker('send','event','Front page','Icon - Diversity and Inclusion');" href="/about/diversity-inclusion/" class="iconlink">
-			<div class="icon">
-				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/bubbles.svg">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/bubbles.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/bubbles-2x.png 2x" alt="76">
-					<span class="visuallyhidden">speech bubbles</span>
-				</object>
-				<div class="context">A culture supporting diversity and inclusion</div>
-			</div>
-		</a>
-		<a onclick="__gaTracker('send','event','Front page','Icon - Nobel Laureates');" href="/research/nobel-prize-winners/" class="iconlink">
-			<div class="icon nobel">
-				<object>
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
-					<span class="visuallyhidden">nobel laureates</span>
-				</object>
-				<div class="context">18 nobel laureates associated with the school</div>
-			</div>
-		</a>
-		<a onclick="__gaTracker('send','event','Front page','Icon - Specialties');" href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
-			<div class="icon">
-				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
-					<span class="visuallyhidden">stethoscope icon</span>
-				</object>
-				<div class="context">76 clinical specialties and subspecialties</div>
-			</div>
-		</a>
-	</div>
-</section>
-
-<section class="cta-home">
+<section class="cta-home turquoise">
 	<div class="wrap">
 		<div class="cta-text">
-			<h2>The future of medicine starts here.</h2>
-			<p>Our top-ranked, student-centered programs will prepare you to join the next generation of leaders.</p>
+			<h2>We strive for diversity.</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus leo non orci congue vitae sollicitudin nisl feugiat. Nam luctus rutrum aliquet.</p>
 		</div>
-		<a onclick="__gaTracker('send','event','Front page','CTA - Admissions button');" href="/education/admissions/" class="cta-button">Explore our programs</a>
+		<a onclick="__gaTracker('send','event','Front page','CTA - Diversity');" href="/education/admissions/" class="cta-button">Learn about our efforts</a>
 	</div>
 </section>
 
@@ -145,6 +104,57 @@
 		wp_reset_postdata(); ?>
 		<a class="national-leaders-see-all" href="/news/type/national-leaders/">SEE ALL</a>
 	</section>
+</section>
+
+<section class="cta-home">
+	<div class="wrap">
+		<div class="cta-text">
+			<h2>The future of medicine starts here.</h2>
+			<p>Our top-ranked, student-centered programs will prepare you to join the next generation of leaders.</p>
+		</div>
+		<a onclick="__gaTracker('send','event','Front page','CTA - Admissions button');" href="/education/admissions/" class="cta-button">Explore our programs</a>
+	</div>
+</section>
+
+<section class="icons-home">
+	<div class="wrap">
+		<a onclick="__gaTracker('send','event','Front page','Icon - Facts and figures');" href="https://otm.wustl.edu/facts-figures/" class="iconlink">
+			<div class="icon">
+				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/lightbulb.svg">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb-2x.png 2x" alt="lightbulb icon">
+					<span class="visuallyhidden">lightbulb icon</span>
+				</object>
+				<div class="context">209 patents filed by faculty and students in FY2016</div>
+			</div>
+		</a>
+		<a onclick="__gaTracker('send','event','Front page','Icon - Specialties');" href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
+			<div class="icon">
+				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/76.svg">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76-2x.png 2x" alt="76">
+					<span class="visuallyhidden">76</span>
+				</object>
+				<div class="context">clinical specialties and subspecialties</div>
+			</div>
+		</a>
+		<a onclick="__gaTracker('send','event','Front page','Icon - Nobel Laureates');" href="/research/nobel-prize-winners/" class="iconlink">
+			<div class="icon nobel">
+				<object>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
+					<span class="visuallyhidden">nobel laureates</span>
+				</object>
+				<div class="context">18 nobel laureates associated with the school</div>
+			</div>
+		</a>
+		<a onclick="__gaTracker('send','event','Front page','Icon - Patient care');" href="/patient-care/" class="iconlink">
+			<div class="icon">
+				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
+					<span class="visuallyhidden">stethoscope icon</span>
+				</object>
+				<div class="context">67% of faculty members also treat patients</div>
+			</div>
+		</a>
+	</div>
 </section>
 
 <?php get_footer(); ?>
