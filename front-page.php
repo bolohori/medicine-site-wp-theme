@@ -64,10 +64,10 @@
 <section class="cta-home turquoise">
 	<div class="wrap">
 		<div class="cta-text">
-			<h2>We strive for diversity.</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempus leo non orci congue vitae sollicitudin nisl feugiat. Nam luctus rutrum aliquet.</p>
+			<h2>We're turning ideals into action.</h2>
+			<p>The School of Medicine is taking meaningful action to increase diversity on campus and in medical professions.</p>
 		</div>
-		<a onclick="__gaTracker('send','event','Front page','CTA - Diversity');" href="/education/admissions/" class="cta-button">Learn about our efforts</a>
+		<a onclick="__gaTracker('send','event','Front page','CTA - Diversity');" href="/diversity/" class="cta-button">See what we're doing</a>
 	</div>
 </section>
 
