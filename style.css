@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2017.05.05.0
+Version:	 2017.10.10.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -1058,6 +1058,84 @@ article ul ul {
 	display: inline-block;
 }
 
+table.social td.column-1 {
+	width: 50%;
+	vertical-align: middle;
+}
+
+table.social td.column-2,
+table.social td.column-3,
+table.social td.column-4,
+table.social td.column-5,
+table.social td.column-6 {
+	float: left;
+	text-align: center;
+}
+
+a.table-facebook,
+a.table-instagram,
+a.table-home,
+a.table-twitter,
+a.table-youtube {
+	color: #a51417;
+	display: block;
+	font-size: 24px;
+	height: 32px;
+	margin: 0 auto;
+	width: 32px;
+}
+
+a.table-facebook {
+	background: url('_/img/facebook.svg');
+	background-size: 100%;
+	background-color: #3b5d98;
+	border-radius: 3px;
+}
+
+a.table-instagram {
+	background: url('_/img/ig-white.svg');
+	background-size: 100%;
+	background-color: #833ab4;
+	border-radius: 3px;
+}
+
+a.table-home {
+	background: url('_/img/home.svg');
+	background-size: 100%;
+	background-color: #a51417;
+	border-radius: 3px;
+}
+
+a.table-twitter {
+	background: url('_/img/twitter.svg');
+	background-size: 100%;
+	background-color: #55acee;
+	border-radius: 3px;
+}
+
+a.table-youtube {
+	background: url('_/img/youtube.svg');
+	background-size: 100%;
+	background-color: #cd201f;
+	border-radius: 3px;
+}
+
+a.table-facebook:hover,
+a.table-instagram:hover,
+a.table-home:hover,
+a.table-twitter:hover,
+a.table-youtube:hover {
+	opacity: .8;
+}
+
+.social-text {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    top: -10px;
+    clip: rect(1px, 1px, 1px, 1px);
+}
 
 /* Tables
 -------------------------------------------------------------------------------*/
@@ -1165,30 +1243,40 @@ footer {
 	display: block;
 }
 
-a#site-facebook, a#site-twitter, a#site-linkedin, a#site-flickr, a#site-youtube, a#site-rss {
+#site-footer a#site-facebook,
+#site-footer a#site-twitter,
+#site-footer a#site-ig,
+#site-footer a#site-youtube,
+#site-footer a#site-flickr,
+#site-footer a#site-youtube,
+#site-footer a#site-rss {
 	display: inline-block;
 	width: 23px;
 	height: 23px;
 	margin-left: 6px;
 }
 
-a#site-facebook {
+#site-footer a#site-facebook {
 	background: #3b5d98;
 }
 
-a#site-twitter {
+#site-footer a#site-twitter {
 	background: #55acee;
 }
 
-a#site-linkedin {
-	background: #007db5;
+#site-footer a#site-ig {
+	background: #833ab4;
 }
 
-a#site-flickr {
+#site-footer a#site-youtube {
+	background: #cd201f;
+}
+
+#site-footer a#site-flickr {
 	background: #0063dc;
 }
 
-a#site-rss {
+#site-footer a#site-rss {
 	background: #f2861d;
 }
 
@@ -1545,9 +1633,10 @@ article.search-results {
 /* Front Page styles
 -------------------------------------------------------------------------------*/
 
-.home h1 {
+.home h2 {
 	-webkit-font-smoothing: antialiased;
 	font-size: 30px;
+	font-weight: normal;
 }
 
 .text-intro {
@@ -1562,11 +1651,12 @@ article.search-results {
 	text-align: center;
 }
 
-.text-intro h1 {
+.text-intro h2 {
 	-webkit-font-smoothing: antialiased;
 	color: #3c3c3d;
 	font-size: 35px;
 	margin-bottom: 15px;
+	margin-top: 0;
 }
 
 .text-intro p {
@@ -1618,6 +1708,10 @@ article.search-results {
 	width: 100%;
 }
 
+.news-home .news-cards {
+	margin-bottom: 60px;
+}
+
 .home-banner {
 	font-size: 0;
 	position: relative;
@@ -1663,13 +1757,14 @@ li.home-banner-single {
 	width: 100%;
 }
 
-.home-banner-single h1 {
+.home-banner-single h2 {
 	-webkit-font-smoothing: antialiased;
 	clear: both;
 	display: inline-block;
 	max-width: 940px;
 	text-align: right;
 	color: #fff;
+	font-family: Georgia, serif;
 	font-size: 44px;
 	float: right;
 	margin: 0 auto;
@@ -1764,6 +1859,15 @@ li.home-banner-single {
 	padding: 35px 20px;
 }
 
+.cta-home.turquoise,
+section.cta-home.turquoise {
+	-webkit-font-smoothing: antialiased;
+	background-color: #339999;
+	background-position: center;
+	background-image: url( '_/img/cta-diversity/diversity-wallpaper@1x.jpg' );
+	background-image: -webkit-image-set( url( '_/img/cta-diversity/diversity-wallpaper@1x.jpg' ) 1x, url( '_/img/cta-diversity/diversity-wallpaper@2x.jpg' ) 2x );
+}
+
 .cta-home a {
 	color: #fff;
 }
@@ -1805,8 +1909,15 @@ li.home-banner-single {
 	width: 380px;
 }
 
+.cta-home.turquoise .cta-button {
+}
+
 .cta-home .cta-button:hover {
 	background: rgba(153, 0, 0, .85);
+}
+
+.cta-home.turquoise .cta-button:hover {
+	background: rgba(38, 115, 115, .85);
 }
 
 
@@ -4195,16 +4306,18 @@ a.sidebar-outlook-link {
 		padding: 0;
 	}
 
-	a#site-facebook {
-		margin-left: 0;
-	}
-
 	#site-footer-bottom {
 		margin: 20px 10px 0 10px;
 		padding: 0;
 	}
 
-	a#site-facebook, a#site-twitter, a#site-linkedin, a#site-flickr, a#site-youtube, a#site-rss {
+	#site-footer a#site-facebook,
+	#site-footer a#site-twitter,
+	#site-footer a#site-ig,
+	#site-footer a#site-youtube,
+	#site-footer a#site-flickr,
+	#site-footer a#site-youtube,
+	#site-footer a#site-rss {
 	    display: inline-block;
 	    width: 30px;
 	    height: 30px;
@@ -4508,7 +4621,7 @@ a.sidebar-outlook-link {
 	.footer-menu-block {
 		border-left: none;
 	}
-	.home-banner-single h1 {
+	.home-banner-single h2 {
 		margin-left: -3%;
 	}
 
@@ -4604,8 +4717,8 @@ a.sidebar-outlook-link {
 	}
 }
 @media screen and ( max-width: 768px ) {
-	.home-banner-single h1,
-	.text-intro h1 {
+	.home-banner-single h2,
+	.text-intro h2 {
 		font-size: 28px;
 	}
 
@@ -4800,11 +4913,11 @@ a.sidebar-outlook-link {
 	.admission-footer li {
 		width: 96%;
 	}
-	.home-banner-single h1 {
+	.home-banner-single h2 {
 		font-size: 21px;
 	}
 
-	.text-intro h1 {
+	.text-intro h2 {
 		font-size: 24px;
 	}
 
@@ -4816,7 +4929,7 @@ a.sidebar-outlook-link {
 		padding: 40px 20px 50px;
 	}
 
-	.home-banner-single h1 {
+	.home-banner-single h2 {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing:    border-box;
 		box-sizing:         border-box;
@@ -4832,6 +4945,10 @@ a.sidebar-outlook-link {
 	.news-home .news-cards,
 	.leaders-home .news-cards {
 		width: 100%;
+	}
+
+	.news-home .news-cards {
+		margin-bottom: 30px;
 	}
 
 	.cta-home .cta-text h2 {
@@ -4979,6 +5096,11 @@ a.sidebar-outlook-link {
 
 	.announcement {
 		padding-right: 0;
+	}
+
+	.cta-home.turquoise {
+		background-image: url( '_/img/cta-diversity/diversity-wallpaper-mobile@1x.jpg' );
+		background-image: -webkit-image-set( url( '_/img/cta-diversity/diversity-wallpaper-mobile@1x.jpg' ) 1x, url( '_/img/cta-diversity/diversity-wallpaper-mobile@2x.jpg' ) 2x );
 	}
 }
 @media screen and ( max-width: 470px ) {
