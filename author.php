@@ -9,7 +9,9 @@ get_header(); ?>
         <article>
 
             <?php function my_posts_where( $where ) {
-                $where = str_replace("meta_key = 'article_author_%", "meta_key LIKE 'article_author_%", $where);
+                $search = "wp_postmeta.meta_key = 'article_author_%_author'";
+                $replace = "wp_postmeta.meta_key LIKE 'article_author_%_author' OR wp_postmeta.meta_key LIKE 'multimedia_producer_%_producer'";
+                $where = str_replace($search, $replace, $where);
                 return $where;
             }
             add_filter('posts_where', 'my_posts_where');
