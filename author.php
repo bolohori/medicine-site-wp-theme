@@ -8,11 +8,11 @@ get_header(); ?>
 
         <article>
 
-            <?php function my_posts_where( $where ) {
-                $search = "wp_postmeta.meta_key = 'article_author_%_author'";
-                $replace = "(wp_postmeta.meta_key LIKE 'article_author_%_author' OR wp_postmeta.meta_key LIKE 'multimedia_producer_%_producer')";
-                $where = str_replace($search, $replace, $where);
-                echo $where;
+            <?php
+            function my_posts_where( $where ) {
+                $where = str_replace("meta_key = 'article_author_", "meta_key LIKE 'article_author_", $where);
+                $where = str_replace("meta_key = 'multimedia_producer_", "meta_key LIKE 'multimedia_producer_", $where);
+
                 return $where;
             }
             add_filter('posts_where', 'my_posts_where');
@@ -25,14 +25,21 @@ get_header(); ?>
                 'post_type' => 'post',
                 'posts_per_page' => 24,
                 'meta_query'    => array(
+                    'relation'      => 'OR',
                     array(
                         'key'       => 'article_author_%_author',
+                        'compare'   => '=',
+                        'value'     => $curauthID,
+                    ),
+                    array(
+                        'key'       => 'multimedia_producer_%_producer',
                         'compare'   => '=',
                         'value'     => $curauthID,
                     )
                 )
             );
             $the_query = new WP_Query( $args );
+
             if ($the_query->have_posts()) { ?>
             <div class="news-cards">
                 <ul class="clearfix">
