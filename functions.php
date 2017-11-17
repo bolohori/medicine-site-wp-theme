@@ -709,14 +709,43 @@ function new_contactmethods( $contactmethods ) {
 }
 add_filter('user_contactmethods','new_contactmethods',10,1);
 
-// Show 24 posts per page on archive pages
-function number_of_posts_on_archive($query){
+function modify_archive_query($query){
 	if (is_category() || is_tax('news') || is_author()) {
-		$query->set('posts_per_page', 24);
-   }
-	return $query;
+		$query->set('posts_per_page', 24); // Show 24 posts per page on archive pages
+    }
+
+    if ( $query->is_main_query() && is_author() ) {
+            // Author archive pages
+            $author = get_user_by('slug', $query->get('author_name'));
+
+            $query->set('post_type', 'post');
+            $query->set('meta_query', array(
+                'relation'      => 'OR',
+                array(
+                    'key'       => 'article_author_%_author',
+                    'compare'   => '=',
+                    'value'     => $author->ID,
+                ),
+                array(
+                    'key'       => 'multimedia_producer_%_producer',
+                    'compare'   => '=',
+                    'value'     => $author->ID,
+                )
+            ));
+
+            // Without this, "AND ([db_prefix]_posts.post_author = [$author->ID])" is included in the WHERE clause of the query
+            unset($query->query_vars['author_name']);
+    }
 }
-add_filter('pre_get_posts', 'number_of_posts_on_archive');
+add_action('pre_get_posts', 'modify_archive_query');
+
+function author_archive_where( $where ) {
+    $where = str_replace("meta_key = 'article_author_", "meta_key LIKE 'article_author_", $where);
+    $where = str_replace("meta_key = 'multimedia_producer_", "meta_key LIKE 'multimedia_producer_", $where);
+
+    return $where;
+}
+add_filter('posts_where', 'author_archive_where');
 
 // Add field for photo credits
 function add_image_credit( $form_fields, $post ) {
