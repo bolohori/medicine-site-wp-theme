@@ -747,6 +747,16 @@ function author_archive_where( $where ) {
 }
 add_filter('posts_where', 'author_archive_where');
 
+function author_archive_title() {
+    global $wp_query;
+    if ( $wp_query->is_main_query() && is_author() ) {
+        // Author archive pages
+        $curauth = get_user_by('slug', $wp_query->query['author_name']);
+        return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
+    }
+}
+add_filter( 'pre_get_document_title', 'author_archive_title', 100, 0 );
+
 // Add field for photo credits
 function add_image_credit( $form_fields, $post ) {
 	$form_fields['credit'] = array(
