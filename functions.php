@@ -755,7 +755,7 @@ function author_archive_title() {
         return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
     }
 }
-add_filter( 'pre_get_document_title', 'author_archive_title', 10, 2 );
+add_filter( 'pre_get_document_title', 'author_archive_title', 100, 0 );
 
 // Add field for photo credits
 function add_image_credit( $form_fields, $post ) {
