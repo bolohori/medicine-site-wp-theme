@@ -67,9 +67,9 @@ if (have_posts()) :
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/cpr.jpg" alt=""></li>
 						<li class="hero-list-title">Clinical &amp; Population Research</li>
 						<li><a href="https://crtc.wustl.edu/programs/degrees/ahbr/">Applied Health Behavior Research (MS)</a></li>
-						<li><a href="https://biostatistics.wustl.edu/training/msibs/prospectivestudents/MS/Pages/default.aspx">Biostatistics (MS)</a></li>
+						<li><a href="https://biostatistics.wustl.edu/education/master-of-science-in-biostatistics-msibs/">Biostatistics (MS)</a></li>
 						<li><a href="https://crtc.wustl.edu/programs/degrees/msci/ ">Clinical Investigation (MSCI)</a></li>
-						<li><a href="https://biostatistics.wustl.edu/education/masters-of-science-in-genetic-epidemiology-gems/">Genetic Epidemiology (MS)</a></li>
+						<li><a href="https://biostatistics.wustl.edu/education/master-of-science-in-genetic-epidemiology-gems/">Genetic Epidemiology (MS)</a></li>
 						<li><a href="http://www.mphs.wustl.edu/en">Population Health (MPHS)</a></li>
 						<li><a href="http://mph.wustl.edu/">Public Health (MPH)</a></li>
 					</ul>
