@@ -67,7 +67,7 @@
 			<h2>We're turning ideals into action.</h2>
 			<p>The School of Medicine is taking meaningful action to increase diversity on campus and in medical professions.</p>
 		</div>
-		<a onclick="__gaTracker('send','event','Front page','CTA - Diversity');" href="/about/diversity-inclusion/" class="cta-button">See what we're doing</a>
+		<a onclick="__gaTracker('send','event','Front page','CTA - Diversity');" href="/about/diversity-inclusion/" class="cta-button">SEE DIVERSITY INITIATIVES</a>
 	</div>
 </section>
 
