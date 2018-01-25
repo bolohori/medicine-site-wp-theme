@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php 
+
+// Added expires header for front page
+header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + (12 * 60 * 60)));
+
+get_header(); ?>
 
 <section class="home-banner">
 	<ul class="home-banner-slider">
