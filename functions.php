@@ -6,7 +6,10 @@
 function wusm_exclude_post_13590( $exclude_post_ids, $post_id ) {
 	// $post_id is the post we are currently getting related posts for
 	if ( 54260 == $post_id ) {
-		$exclude_post_ids[] = 13590; // Exclude post_id 13590
+		$exclude_post_ids[] = 13590;
+		$exclude_post_ids[] = 11747;
+		$exclude_post_ids[] = 20712;
+		$exclude_post_ids[] = 5215;
 	}
 	return $exclude_post_ids;
 }
