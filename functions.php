@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * https://jetpack.com/support/related-posts/customize-related-posts/#exclude
+ */
+function wusm_exclude_post_13590( $exclude_post_ids, $post_id ) {
+	// $post_id is the post we are currently getting related posts for
+	if ( 54260 == $post_id ) {
+		$exclude_post_ids[] = 13590; // Exclude post_id 13590
+	}
+	return $exclude_post_ids;
+}
+add_filter( 'jetpack_relatedposts_filter_exclude_post_ids', 'wusm_exclude_post_13590', 20, 2 );
+
+
 /*
  * Feedburner Redirect.
  */
@@ -95,11 +108,11 @@ if( !defined( 'WP_DEBUG' ) || WP_DEBUG == false ) {
 	$verifiedWashU = false;
 
 	if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
-	    $IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	    $IP_array = explode( ',', $IP );
-	    $IP = $IP_array[0];
+		$IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		$IP_array = explode( ',', $IP );
+		$IP = $IP_array[0];
 	} else {
-	    $IP = $_SERVER['REMOTE_ADDR'];
+		$IP = $_SERVER['REMOTE_ADDR'];
 	}
 
 	list($ip1, $ip2) = explode( '.', $IP );
@@ -712,48 +725,48 @@ add_filter('user_contactmethods','new_contactmethods',10,1);
 function modify_archive_query($query){
 	if (is_category() || is_tax('news') || is_author()) {
 		$query->set('posts_per_page', 24); // Show 24 posts per page on archive pages
-    }
+	}
 
-    if ( $query->is_main_query() && is_author() ) {
-            // Author archive pages
-            $author = get_user_by('slug', $query->get('author_name'));
+	if ( $query->is_main_query() && is_author() ) {
+			// Author archive pages
+			$author = get_user_by('slug', $query->get('author_name'));
 
-            $query->set('post_type', 'post');
-            $query->set('meta_query', array(
-                'relation'      => 'OR',
-                array(
-                    'key'       => 'article_author_%_author',
-                    'compare'   => '=',
-                    'value'     => $author->ID,
-                ),
-                array(
-                    'key'       => 'multimedia_producer_%_producer',
-                    'compare'   => '=',
-                    'value'     => $author->ID,
-                )
-            ));
+			$query->set('post_type', 'post');
+			$query->set('meta_query', array(
+				'relation'      => 'OR',
+				array(
+					'key'       => 'article_author_%_author',
+					'compare'   => '=',
+					'value'     => $author->ID,
+				),
+				array(
+					'key'       => 'multimedia_producer_%_producer',
+					'compare'   => '=',
+					'value'     => $author->ID,
+				)
+			));
 
-            // Without this, "AND ([db_prefix]_posts.post_author = [$author->ID])" is included in the WHERE clause of the query
-            unset($query->query_vars['author_name']);
-    }
+			// Without this, "AND ([db_prefix]_posts.post_author = [$author->ID])" is included in the WHERE clause of the query
+			unset($query->query_vars['author_name']);
+	}
 }
 add_action('pre_get_posts', 'modify_archive_query');
 
 function author_archive_where( $where ) {
-    $where = str_replace("meta_key = 'article_author_", "meta_key LIKE 'article_author_", $where);
-    $where = str_replace("meta_key = 'multimedia_producer_", "meta_key LIKE 'multimedia_producer_", $where);
+	$where = str_replace("meta_key = 'article_author_", "meta_key LIKE 'article_author_", $where);
+	$where = str_replace("meta_key = 'multimedia_producer_", "meta_key LIKE 'multimedia_producer_", $where);
 
-    return $where;
+	return $where;
 }
 add_filter('posts_where', 'author_archive_where');
 
 function author_archive_title() {
-    global $wp_query;
-    if ( $wp_query->is_main_query() && is_author() ) {
-        // Author archive pages
-        $curauth = get_user_by('slug', $wp_query->query['author_name']);
-        return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
-    }
+	global $wp_query;
+	if ( $wp_query->is_main_query() && is_author() ) {
+		// Author archive pages
+		$curauth = get_user_by('slug', $wp_query->query['author_name']);
+		return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
+	}
 }
 add_filter( 'pre_get_document_title', 'author_archive_title', 100, 0 );
 
