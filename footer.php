@@ -44,7 +44,7 @@
         <div class="wrapper clearfix">
 
             <div id="wusm-footer-left">
-                <a onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://medicine.wustl.edu', 'School of Medicine');" href="http://medicine.wustl.edu/"><img width="147" height="31" src="<?php echo get_template_directory_uri(); ?>/_/img/wusm-logo-footer.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/wusm-logo-footer.png';this.onerror=null;" alt="Washington University School of Medicine in St. Louis"></a>
+                <a onclick="__gaTracker('send', 'event', 'Home Link', 'Footer');" href="http://medicine.wustl.edu/"><img width="147" height="31" src="<?php echo get_template_directory_uri(); ?>/_/img/wusm-logo-footer.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/wusm-logo-footer.png';this.onerror=null;" alt="Washington University School of Medicine in St. Louis"></a>
                 <div id="copyright"><a onclick="__gaTracker('send', 'event', 'wusm-footer', 'http://www.wustl.edu/policies/copyright.html', 'Copyright');" href="http://www.wustl.edu/policies/copyright.html">&copy; <?php echo date("Y") ?> Washington University in St. Louis</a></div>
             </div>
 

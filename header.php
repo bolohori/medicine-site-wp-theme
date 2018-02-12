@@ -197,12 +197,12 @@ if( defined( 'WP_DEBUG') ) { ?>
             	<img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
             </div>
 			<div id="site-title">
-				<a onclick="__gaTracker('send','event','Header','Home - Logo');" href="<?php echo home_url(); ?>">
+				<a onclick="__gaTracker('send', 'event', 'Home Link', 'Desktop - Header');" href="<?php echo home_url(); ?>">
 					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.svg" alt="Washington University School of Medicine in St. Louis" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/header-logo.png';this.onerror=null;"/>
 				</a>
 			</div>
 			<div id="site-title-text">
-				<a onclick="__gaTracker('send','event','Header','Home - Logo (Mobile)');" href="<?php echo home_url(); ?>">
+				<a onclick="__gaTracker('send', 'event', 'Home Link', 'Mobile - Header');" href="<?php echo home_url(); ?>">
 					<div class="university">Washington University</div>
 					<div class="school">School of Medicine</div>
 				</a>
