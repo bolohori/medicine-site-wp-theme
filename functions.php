@@ -1,21 +1,5 @@
 <?php
 
-/**
- * https://jetpack.com/support/related-posts/customize-related-posts/#exclude
- */
-function wusm_exclude_post_13590( $exclude_post_ids, $post_id ) {
-	// $post_id is the post we are currently getting related posts for
-	if ( 54260 == $post_id ) {
-		$exclude_post_ids[] = 13590;
-		$exclude_post_ids[] = 11747;
-		$exclude_post_ids[] = 20712;
-		$exclude_post_ids[] = 5215;
-	}
-	return $exclude_post_ids;
-}
-add_filter( 'jetpack_relatedposts_filter_exclude_post_ids', 'wusm_exclude_post_13590', 20, 2 );
-
-
 /*
  * Feedburner Redirect.
  */
