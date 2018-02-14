@@ -239,7 +239,7 @@
 		</div>
 
         <?php
-            if ( class_exists( 'Jetpack_RelatedPosts' ) && get_field('display_related_posts') !== 0 ) {
+            if ( class_exists( 'Jetpack_RelatedPosts' ) && ( get_field('display_related_posts') || is_null(get_field('display_related_posts')) ) ) {
                 echo do_shortcode( '[jetpack-related-posts]' );
             }
         ?>
