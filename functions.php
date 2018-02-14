@@ -871,6 +871,17 @@ function wusm_remove_share() {
 }
 add_action( 'loop_start', 'wusm_remove_share' );
 
+// Remove Jetpack Related Posts from bottom of the_content.
+// They're displayed farther down on the page using a shortcode.
+function jetpackme_remove_rp() {
+    if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+        $jprp = Jetpack_RelatedPosts::init();
+        $callback = array( $jprp, 'filter_add_target_to_dom' );
+        remove_filter( 'the_content', $callback, 40 );
+    }
+}
+add_filter( 'wp', 'jetpackme_remove_rp', 20 );
+
 // Set height of boilerplate field on news stories
 function admin_css(){ ?>
 	<style>

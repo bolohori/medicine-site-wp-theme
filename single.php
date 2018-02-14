@@ -237,6 +237,12 @@
 				<?php endif; ?>
 			</footer>
 		</div>
+
+        <?php
+            if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+                echo do_shortcode( '[jetpack-related-posts]' );
+            }
+        ?>
 	</article>
 
 	<?php $args = array(
