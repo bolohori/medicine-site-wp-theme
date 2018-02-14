@@ -1,6 +1,6 @@
 // remap jQuery to $
 jQuery(document).ready(function($) {
-	var $window = $(window);
+    var $window = $(window);
 
 	$(".announcements").click(function(e){
 		e.preventDefault();
@@ -20,7 +20,15 @@ jQuery(document).ready(function($) {
 			$(".announcements-div").slideToggle();
 		}
 		$(".information-for-div").slideToggle();
-	});
+    });
+    
+    $(".home-menu-item").click(function () {
+        __gaTracker('send', 'event', 'Home Link', 'Desktop - Menu');
+    });
+
+    $(".home-mobile-menu-item").click(function () {
+        __gaTracker('send', 'event', 'Home Link', 'Mobile - Menu');
+    });
 
     var mobilenav = $('.mobile-nav'),
         siteHeader = $('header');
