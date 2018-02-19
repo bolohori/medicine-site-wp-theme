@@ -107,17 +107,23 @@ get_header(); ?>
 
 			// Only display "promoted results" on the first page
 			if ( $paged == 1 ) {
-				$querystr = "SELECT $wpdb->posts.* FROM $wpdb->posts WHERE ID IN (SELECT post_id FROM $wpdb->postmeta WHERE $wpdb->postmeta.meta_key LIKE '%promoted_result%' AND $wpdb->postmeta.meta_value = '" . $search_terms . "') AND $wpdb->posts.post_status = 'publish';";
+				$querystr = "SELECT $wpdb->posts.* 
+							FROM $wpdb->posts 
+							WHERE ID IN (
+								SELECT post_id 
+								FROM $wpdb->postmeta 
+								WHERE $wpdb->postmeta.meta_key 
+								LIKE '%promoted_result%' 
+								AND $wpdb->postmeta.meta_value = '$search_terms'
+							) AND $wpdb->posts.post_status = 'publish';";
 
-				$pageposts = $wpdb->get_results( $querystr, OBJECT );
+				$promoted_results = $wpdb->get_results( $querystr, OBJECT );
 
-				if ( $pageposts ) {
+				if ( $promoted_results ) {
 
 					echo '<h2>Top search results</h2>';
 
-					global $post;
-
-					foreach ( $pageposts as $post ) {
+					foreach ( $promoted_results as $post ) {
 
 						setup_postdata( $post );
 
@@ -143,7 +149,7 @@ get_header(); ?>
 						}
 
 						echo "<p class='search-results'>";
-						echo "<span style='font-size: 16px;'><a onclick=\"__gaTracker('send','event','top-search-result-$search_terms','$link');\" href='$link'><b>" . get_the_title() . '</b></a></span><br>';
+						echo "<span style='font-size: 16px;'><a onclick='__gaTracker('send','event','top-search-result-$search_terms','$link');'' href='$link'><b>" . get_the_title() . '</b></a></span><br>';
 
 						if ( ( $post_excerpt = get_the_excerpt() ) !== '' ) {
 
@@ -212,9 +218,9 @@ get_header(); ?>
 				//$xml = new SimpleXMLElement(file_get_contents($search_url));
 				//$start_num = $xml->RES['SN'];
 
-				if ( $start > $start_num ) {
+				if ( $start > $start_rank ) {
 
-					$start = $start_num - 1;
+					$start = $start_rank - 1;
 
 				}
 
@@ -249,7 +255,7 @@ get_header(); ?>
 						$truncate_pagination = $paged;
 					}
 				}
-				echo "<p style='font-size: 12px;'>Powered by Google Search Appliance</p>";
+				
 			}
 
 			// If there are more than one page of results, show pager navigation
