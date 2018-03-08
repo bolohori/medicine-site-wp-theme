@@ -49,12 +49,6 @@ $num_of_wp_result_pages = ceil( $num_of_wordpress_results / 10 );
 // Spaces are BAD in search terms
 $terms = str_replace( ' ', '+', $search_terms );
 
-// Total hack, just get the 1st result of the Google search, but it brings along with it...
-$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=1&num=1&as_eq=medschool.wustl.edu+medicine.wustl.edu";
-$xml = new SimpleXMLElement( file_get_contents( $search_url ) );
-// ...the total number of results
-$total_google_results = (int) $xml->RES->M;
-
 /**
  * NEW FUNNELBACK STUFF!!!
  */
@@ -62,7 +56,7 @@ $total_google_results = (int) $xml->RES->M;
 $collection = 'wustl-gsa-meta';
 $profile = '_default';
 $start_rank = 11;
-$search_url = "https://stage-15-12-search.clients.funnelback.com/s/search.json?collection=$collection&profile=$profile&query=$terms&start_rank=$start_rank";
+$search_url = "https://search.wustl.edu/s/search.json?collection=$collection&profile=$profile&query=$terms&start_rank=$start_rank";
 $json = file_get_contents( $search_url );
 $search_results = json_decode( $json );
 $total_funnelback_results = $search_results->response->resultPacket->resultsSummary->totalMatching;
@@ -100,80 +94,12 @@ get_header(); ?>
 
 			// If there are no matching results, display appropriate message
 			if ( ! ( $num_of_wordpress_results + $total_funnelback_results ) ) {
-
 				echo '<p>No pages were found containing: <strong>' . $search_terms . "</strong>.</p>\n";
-
 			}
 
 			// Only display "promoted results" on the first page
-			if ( $paged == 1 ) {
-				$querystr = "SELECT $wpdb->posts.* 
-							FROM $wpdb->posts 
-							WHERE ID IN (
-								SELECT post_id 
-								FROM $wpdb->postmeta 
-								WHERE $wpdb->postmeta.meta_key 
-								LIKE '%promoted_result%' 
-								AND $wpdb->postmeta.meta_value = '$search_terms'
-							) AND $wpdb->posts.post_status = 'publish';";
-
-				$promoted_results = $wpdb->get_results( $querystr, OBJECT );
-
-				if ( $promoted_results ) {
-
-					echo '<h2>Top search results</h2>';
-
-					foreach ( $promoted_results as $post ) {
-
-						setup_postdata( $post );
-
-						if ( $post->post_type == 'promoted_results' ) {
-
-							//result_url
-							add_filter(
-								'excerpt_more', function() {
-									return '... <a class="read-more" href="' . get_field( 'result_url', get_the_ID() ) . '">MORE»</a>';
-								}
-							);
-							$link = get_field( 'result_url', $post->ID );
-
-						} else {
-
-							add_filter(
-								'excerpt_more', function() {
-									return '... <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">MORE»</a>';
-								}
-							);
-							$link = get_permalink();
-
-						}
-
-						echo "<p class='search-results'>";
-						echo "<span style='font-size: 16px;'><a onclick='__gaTracker('send','event','top-search-result-$search_terms','$link');'' href='$link'><b>" . get_the_title() . '</b></a></span><br>';
-
-						if ( ( $post_excerpt = get_the_excerpt() ) !== '' ) {
-
-							echo "$post_excerpt<br>";
-
-						}
-
-						echo "<a href='$link' class='result-url'>$link</a>
-						</p>";
-
-					}
-
-					echo '<hr>';
-
-				}
-
-				add_filter(
-					'excerpt_more', function() {
-						return '... <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">MORE»</a>';
-					}
-				);
-
-				// Restore original Post Data
-				wp_reset_postdata();
+			if ( 1 === $paged ) {
+				get_template_part( 'promoted-result' );
 			}
 
 			// These are WordPress' search results
@@ -191,10 +117,8 @@ get_header(); ?>
 					echo "<p class='search-results'>";
 					echo "<span style='font-size: 16px;'><a href='$link'><b>" . get_the_title() . '</b></a></span><br>';
 
-					if ( ( $post_excerpt = get_the_excerpt() ) !== '' ) {
-
+					if ( '' !== ( $post_excerpt = get_the_excerpt() ) ) {
 						echo "$post_excerpt<br>";
-
 					}
 
 					echo "<a href='$link' class='result-url'>$link</a>";
@@ -205,9 +129,7 @@ get_header(); ?>
 
 			// Visual separator to mark end of WP search and start of Google search
 			if ( $num_of_wp_result_pages == $paged ) {
-
 				echo '<hr>';
-
 			}
 
 			if ( ( $num_of_wp_result_pages <= $paged ) || ( $num_of_wp_result_pages < 2 ) ) {
@@ -219,9 +141,7 @@ get_header(); ?>
 				//$start_num = $xml->RES['SN'];
 
 				if ( $start > $start_rank ) {
-
 					$start = $start_rank - 1;
-
 				}
 
 				// Adjust the end count if it is less than the total count per page. For example, if there are only
@@ -229,31 +149,31 @@ get_header(); ?>
 				$end_cnt = 10;
 
 				if ( ( $total_funnelback_results - $start ) < 10 ) {
-
 					$end_cnt = $total_funnelback_results - $start;
-
 				}
 
+				//var_dump($search_results->response->resultPacket->results);
+
 				// Display page of search results
-				if ( $xml->RES->R ) {
+				if ( $search_results->response->resultPacket->results ) {
 					echo '<h2>More WUSTL results</h2>';
-					foreach ( $xml->RES->R as $result ) {
+					foreach ( $search_results->response->resultPacket->results as $result ) {
 					?>
 						<p class='search-result'>
-						<span style="font-size: 16px;"><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>');" href="<?php echo $result->U; ?>"><?php echo $result->T; ?></a></span>
-						<?php if ( $result->S != '' ) { ?>
-							<br><?php echo $result->S; ?>
+						<span style="font-size: 16px;"><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->liveUrl; ?>');" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
+						<?php if ( $result->summary != '' ) { ?>
+							<br><?php echo $result->summary; ?>
 						<?php } ?>
-						<br/><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->U; ?>');" href="<?php echo $result->U; ?>" class="result-url"><?php echo $result->U; ?></a>
+						<br/><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->liveUrl; ?>');" href="<?php echo $result->liveUrl; ?>" class="result-url"><?php echo $result->liveUrl; ?></a>
 						</p>
 				<?php
 					}
 					// If there are duplicate results, Google won't tell you until you hit the last page of
 					// "real" results, this checks that and adds the standard Google message
-					if ( ( (int) $xml->RES->M !== $total_funnelback_results ) && ( sizeof( $xml->RES->R ) < 10 ) ) {
+					/*if ( ( (int) $xml->RES->M !== $total_funnelback_results ) && ( sizeof( $xml->RES->R ) < 10 ) ) {
 						echo "<p style='font-size: 16px;'><i>In order to show you the most relevant results, we have omitted some entries very similar to the " . $xml->RES->M . ' already displayed.</i></p>';
 						$truncate_pagination = $paged;
-					}
+					}*/
 				}
 				
 			}
