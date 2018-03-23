@@ -1,34 +1,12 @@
 {
     "key": "group_563916b5b7ef1",
     "title": "Footer",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": [
-        "custom_fields",
-        "slug",
-        "author"
-    ],
-    "active": 1,
-    "description": "",
     "fields": [
         {
             "key": "field_56560cb531cc6",
             "label": "Media Contact",
             "name": "media_contact",
             "type": "repeater",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -48,7 +26,6 @@
                     "label": "Media Contact",
                     "name": "media_contact",
                     "type": "user",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -78,7 +55,6 @@
                     "label": "Custom Media Contact",
                     "name": "custom_media_contact",
                     "type": "true_false",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -98,7 +74,6 @@
                     "label": "Name",
                     "name": "name",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -128,7 +103,6 @@
                     "label": "Title",
                     "name": "title",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -158,7 +132,6 @@
                     "label": "Phone Number",
                     "name": "phone_number",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -188,7 +161,6 @@
                     "label": "Email Address",
                     "name": "email_address",
                     "type": "email",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -217,7 +189,6 @@
             "label": "Writer",
             "name": "article_author",
             "type": "repeater",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -237,7 +208,6 @@
                     "label": "Writer",
                     "name": "author",
                     "type": "user",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -267,7 +237,6 @@
                     "label": "Custom Writer",
                     "name": "custom_author",
                     "type": "true_false",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -287,7 +256,6 @@
                     "label": "Name",
                     "name": "name",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -317,7 +285,6 @@
                     "label": "Title",
                     "name": "title",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -347,7 +314,6 @@
                     "label": "Bio",
                     "name": "bio",
                     "type": "textarea",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -377,7 +343,6 @@
                     "label": "Phone Number",
                     "name": "phone_number",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -407,7 +372,6 @@
                     "label": "Email Address",
                     "name": "email_address",
                     "type": "email",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -436,7 +400,6 @@
             "label": "Multimedia Producer",
             "name": "multimedia_producer",
             "type": "repeater",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -456,7 +419,6 @@
                     "label": "Producer",
                     "name": "producer",
                     "type": "user",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -486,7 +448,6 @@
                     "label": "Custom Producer",
                     "name": "custom_producer",
                     "type": "true_false",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -506,7 +467,6 @@
                     "label": "Name",
                     "name": "name",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -534,7 +494,6 @@
                     "label": "Title",
                     "name": "title",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -562,7 +521,6 @@
                     "label": "Bio",
                     "name": "bio",
                     "type": "textarea",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -590,7 +548,6 @@
                     "label": "Phone Number",
                     "name": "phone_number",
                     "type": "text",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -618,7 +575,6 @@
                     "label": "Email Address",
                     "name": "email_address",
                     "type": "email",
-                    "value": null,
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": [
@@ -647,7 +603,6 @@
             "label": "Boilerplate",
             "name": "boilerplate",
             "type": "wysiwyg",
-            "value": null,
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -656,15 +611,33 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "<a href=\"http:\/\/medicine.wustl.edu\/\">Washington University School of Medicine<\/a>'s 2,100 employed and volunteer faculty physicians also are the medical staff of <a href=\"http:\/\/www.barnesjewish.org\/\">Barnes-Jewish<\/a> and <a href=\"http:\/\/www.stlouischildrens.org\/\">St. Louis Children's<\/a> hospitals. The School of Medicine is one of the leading medical research, teaching and patient-care institutions in the nation, currently ranked seventh in the nation by U.S. News &amp; World Report. Through its affiliations with Barnes-Jewish and St. Louis Children's hospitals, the School of Medicine is linked to <a href=\"http:\/\/www.bjc.org\/\">BJC HealthCare<\/a>.",
-            "tabs": [
-                "visual",
-                "text"
-            ],
+            "default_value": "<a href=\"http:\/\/medicine.wustl.edu\/\">Washington University School of Medicine<\/a>'s 1,300 faculty physicians also are the medical staff of <a href=\"http:\/\/www.barnesjewish.org\/\">Barnes-Jewish<\/a> and <a href=\"http:\/\/www.stlouischildrens.org\/\">St. Louis Children's<\/a> hospitals. The School of Medicine is a leader in medical research, teaching and patient care, ranking among the top ten medical schools in the nation by U.S. News & World Report. Through its affiliations with Barnes-Jewish and St. Louis Children’s hospitals, the School of Medicine is linked to <a href=\"http:\/\/www.bjc.org\/\">BJC HealthCare<\/a>.",
+            "tabs": "all",
             "toolbar": "basic",
             "media_upload": 0,
             "delay": 0
         }
     ],
-    "modified": 1509398588
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "custom_fields",
+        "slug",
+        "author"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1521825710
 }
