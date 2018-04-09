@@ -55,7 +55,7 @@ $terms = str_replace( ' ', '+', $search_terms );
 
 $collection = 'wustl-gsa-meta';
 $profile = '_default';
-$start_rank = 11;
+$start_rank = 1;
 $search_url = "https://search.wustl.edu/s/search.json?collection=$collection&profile=$profile&query=$terms&start_rank=$start_rank";
 $json = file_get_contents( $search_url );
 $search_results = json_decode( $json );
