@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.03.26.0
+Version:	 2018.04.23.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -52,7 +52,7 @@ body {
 }
 
 a {
-	color: #990000;
+	color: #A51417;
 	text-decoration: none;
 }
 
@@ -195,7 +195,7 @@ header h2 {
 #utility-bar,
 .top-nav {
 	position: relative;
-	background-color: #680101;
+	background-color: #A51417;
 	height: 43px;
 	z-index: 1000;
 }
@@ -238,7 +238,7 @@ header h2 {
 
 #utility-nav li a,
 #action-nav li a {
-	color: #cbb8b8;
+	color: #fff;
 	letter-spacing: .5px;
 	font-weight: bold;
 	font-size: 13px;
@@ -257,14 +257,7 @@ header h2 {
 #header-site-row {
 	position: relative;
 	z-index: 200;
-	background: #990000;
-	background: -moz-linear-gradient( top, #990000 0%, #720000 72% );
-	background: -webkit-gradient( linear, left top, left bottom, color-stop( 0%,#990000 ), color-stop( 72%,#720000 ) );
-	background: -webkit-linear-gradient( top, #990000 0%,#720000 72% );
-	background: -o-linear-gradient( top, #990000 0%,#720000 72% );
-	background: -ms-linear-gradient( top, #990000 0%,#720000 72% );
-	background: linear-gradient( to bottom, #990000 0%,#720000 72% );
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#990000', endColorstr='#720000',GradientType=0  );
+	background: #fff;
 }
 
 .ie-lt8 #header-site-row {
@@ -299,10 +292,10 @@ header h2 {
 	top: 10px;
 	left: 10px;
 	cursor: text;
-	color: #fff;
+	color: #6c7373;
+	font-size: 14px;
 	font-style: italic;
-	letter-spacing: 1px;
-	font-size:12px;
+	font-weight: 600;
 }
 
 #dirform input[type=text] {
@@ -326,14 +319,14 @@ textarea {
 	width: 200px;
 	height: 17px;
 	padding: 10px 30px 10px 10px;
-	border: none;
+	border: 1px solid #c8c8c8;
 	outline: 0;
 	border-radius: 5px;
-	background: #a70000;
-	color: #fff;
-	letter-spacing: 1px;
-	font-size: 12px;
+	background: #fff;
+	color: #3d3d3d;
+	font-size: 14px;
 	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 }
 
 #search-btn {
@@ -356,7 +349,7 @@ textarea {
 }
 
 #site-title img {
-	max-width: auto;
+	width: 607px;
 }
 
 #site-title a {
@@ -397,7 +390,7 @@ textarea {
 #main-nav li a {
 	font-size: 14px;
 	font-weight: 600;
-	color: #990000;
+	color: #A51417;
 	text-transform: uppercase;
 }
 
@@ -485,7 +478,7 @@ textarea {
 .mobile-nav .current_page_item > div a:before {
 	content: '';
 	width: 4px;
-	background: #990000;
+	background: #A51417;
 	position: absolute;
 	left: 0;
 	top: 4px;
@@ -496,7 +489,7 @@ textarea {
 	font-size: 22px;
 	display: inline-block;
 	padding: 14px 65px 14px 18px;
-	color: #990000;
+	color: #A51417;
 	width: 100%;
 	box-sizing: border-box;
 	position: relative;
@@ -594,7 +587,7 @@ textarea {
 	padding: 10px 20px;
 	display: block;
 	font-size: 15px;
-	color: #990000;
+	color: #A51417;
 	background: #fff;
 	position: relative;
 	border-bottom: 1px solid #e3e3e3;
@@ -682,7 +675,7 @@ button.single-link {
 	cursor: pointer;
 	position: relative;
 	height: 38px;
-	background: #990000;
+	background: #A51417;
 	text-transform: uppercase;
 	margin: 0 auto;
 }
@@ -860,7 +853,7 @@ a.wusm-button {
 	text-transform: uppercase;
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
-	background: #990000;
+	background: #A51417;
 	padding: 15px 25px;
 	border-radius: 3px;
 	letter-spacing: 1px;
@@ -1191,7 +1184,7 @@ footer {
 }
 
 .campaign {
-	background-color: #990000;
+	background-color: #A51417;
 	background-image: url( _/img/campaign-wide.png );
 	background-image: -webkit-linear-gradient( transparent, transparent ), url( _/img/campaign-wide.svg );
 	background-image: linear-gradient( transparent, transparent ), url( _/img/campaign-wide.svg );
@@ -1218,7 +1211,7 @@ footer {
 }
 
 #site-footer a {
-	color: #990000;
+	color: #A51417;
 }
 
 #site-footer a:hover {
@@ -1626,7 +1619,7 @@ article.search-results {
 }
 
 #paginate-results a {
-	color: #990000;
+	color: #A51417;
 }
 
 
@@ -1712,67 +1705,65 @@ article.search-results {
 	margin-bottom: 60px;
 }
 
-.home-banner {
+.hero-banner {
+	display: block;
 	font-size: 0;
 	position: relative;
+	margin: 0;
 	z-index: 0;
 }
 
-ul.home-banner-slider {
-	display: block;
-	position: relative;
-	margin: 0;
-}
-
-ul.home-banner-slider .slick-list {
-	overflow: hidden;
-}
-
-li.home-banner-single {
-	float: left;
-	width: 100%;
-	margin-bottom: -4px;
-}
-
-.home-banner-single img {
-	position: relative;
-	z-index: -1;
+.hero-banner img {
 	width: 100%;
 }
 
-.home-banner-single .home-banneroverlay {
-	display: inline-block;
-	background: rgba(255,255,255,0);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
-	background: -webkit-gradient(left top, left bottom, color-stop(50%, rgba(255,255,255,0)), color-stop(100%, rgba(0,0,0,0.5)));
-	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
-	background: -o-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.5) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000', GradientType=0 );
-	width: 100%;
-}
-
-.home-banner-single .home-bannerimg {
-	width: 100%;
-}
-
-.home-banner-single h2 {
-	-webkit-font-smoothing: antialiased;
-	clear: both;
-	display: inline-block;
-	max-width: 940px;
-	text-align: right;
-	color: #fff;
-	font-family: Georgia, serif;
-	font-size: 44px;
-	float: right;
-	margin: 0 auto;
+.hero-banner .hero-container {
 	position: absolute;
+	left: 50%;
+	max-width: 1280px;
+	top: 0;
+	transform: translate(-50%, -50%);
 	width: 100%;
-	bottom: 5%;
-	left: 0;
-	right: 0;
+}
+
+.hero-banner .hero-text {
+	color: #fff;
+	font-size: 16px;
+	left: 3%;
+	margin: 3% 0 0 0;
+	max-width: 800px;
+	position: absolute;
+	text-shadow: 0 2px 3px #333;
+	top: 10%;
+}
+
+.hero-text .hero-headline {
+	font-size: 64px;
+	font-weight: 800;
+	line-height: 1.1;
+}
+
+.hero-text p {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 10px 0 30px;
+	max-width: 450px;
+}
+
+.hero-text .hero-button {
+	background: rgba(0, 0, 0, .6);
+	border: 3px solid #fff;
+	color: #fff;
+	display: inline-block;
+	font-weight: 600;
+	padding: 15px 12px;
+	text-transform: uppercase;
+}
+
+.hero-text .hero-button:hover {
+	background: rgba(0, 0, 0, .8);
+	transition: fade-in 1s;
 }
 
 .national-leaders-see-all {
@@ -1844,7 +1835,7 @@ li.home-banner-single {
 }
 
 .icons-home a.iconlink:hover {
-	color: #990000;
+	color: #A51417;
 }
 
 .icons-home .icon .context {
@@ -1854,7 +1845,7 @@ li.home-banner-single {
 
 .cta-home {
 	-webkit-font-smoothing: antialiased;
-	background: url( '_/img/cta-bg.jpg') center #990000;
+	background: url( '_/img/cta-bg.jpg') center #A51417;
 	color: #fff;
 	padding: 35px 20px;
 }
@@ -1991,7 +1982,7 @@ section.cta-home.turquoise {
 }
 .news-filters .active a,
 .news-filters .active a:hover {
-	background: #990000;
+	background: #A51417;
 	color: #fff;
 }
 .news-filters .parent {
@@ -2010,11 +2001,11 @@ section.cta-home.turquoise {
 	height: 0;
 	border-left: 4px solid transparent;
 	border-right: 4px solid transparent;
-	border-top: 4px solid #990000;
+	border-top: 4px solid #A51417;
 	position: absolute;
 	right: 15px;
 	top: 17px;
-	color: #990000;
+	color: #A51417;
 }
 .news-filters ul ul {
 	display: none;
@@ -2036,7 +2027,7 @@ section.cta-home.turquoise {
 .news-filters .parent .open:after,
 .news-filters .visible:after {
 	border-top: none;
-	border-bottom: 4px solid #990000;
+	border-bottom: 4px solid #A51417;
 }
 .news-filters ul ul li {
 	margin-bottom: 5px;
@@ -2332,7 +2323,7 @@ section.cta-home.turquoise {
 	color: #fff;
 	padding: 15px 50px;
 	display: block;
-	background: #990000;
+	background: #A51417;
 	border-radius: 3px;
 	font-weight: 600;
 	letter-spacing: 1px;
@@ -2394,7 +2385,7 @@ section.cta-home.turquoise {
 	height: 0;
 	border-top: 5px solid transparent;
 	border-bottom: 5px solid transparent;
-	border-right: 6px solid #990000;
+	border-right: 6px solid #A51417;
 	position: absolute;
 	left: 0;
 	top: 5px;
@@ -3231,7 +3222,7 @@ ul.program-list li.last-child {
 	z-index: 99;
 	width: 35px;
 	border-radius: 9px;
-	color: #990000;
+	color: #A51417;
 	text-transform: uppercase;
 	letter-spacing: .05em;
 	padding: 8px 35px 8px 14px;
@@ -3825,7 +3816,7 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside a {
-	color: #990000;
+	color: #A51417;
 }
 
 #right-col aside a:hover {
@@ -3894,7 +3885,7 @@ a.sidebar-outlook-link {
 }
 
 #right-col aside a.opt-link:hover {
-	color: #990000;
+	color: #A51417;
 	background-color: #dadada;
 }
 
@@ -4080,6 +4071,10 @@ a.sidebar-outlook-link {
 */
 
 @media screen and ( max-width: 1000px ) {
+	#header-site-row {
+		background: #a51417;
+	}
+
 	.news-home .news-cards li.news-block,
 	.news-home .news-cards .latest-news-block {
 		width: 100%;
@@ -4143,6 +4138,29 @@ a.sidebar-outlook-link {
 	#search-btn-news {
 		display: none;
 	}
+
+	.hero-banner .hero-container {
+		position: absolute;
+		width: 100%;
+	}
+
+	.hero-banner .hero-text {
+		color: #fff;
+		left: 3%;
+		margin: 3% 0 0 0;
+		max-width: 800px;
+		position: absolute;
+		text-shadow: 0 2px 3px #333;
+		top: 10%;
+	}
+
+	.hero-text .hero-headline {
+		font-size: 48px;
+	}
+
+	.hero-text p {
+		margin: 15px 0 25px;
+	}
 }
 @media screen and ( max-width: 970px ) {
 	.award-set {
@@ -4172,7 +4190,7 @@ a.sidebar-outlook-link {
 		display: block;
 		z-index: 99;
 		border-radius: 9px;
-		color: #990000;
+		color: #A51417;
 		text-transform: uppercase;
 		letter-spacing: .05em;
 		padding: 10px 35px 10px 14px;

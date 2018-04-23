@@ -5,22 +5,32 @@ header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + (12 * 60 * 60)));
 
 get_header(); ?>
 
-<section class="home-banner">
-	<ul class="home-banner-slider">
-		<?php
-			if ( have_rows( 'banners', 'option'  ) ) {
-				while ( have_rows( 'banners', 'option'  ) ) : the_row();
-					echo '<li class="home-banner-single">';
-						echo '<div>';
-							$banner = get_sub_field( 'banner_photo', 'option' );
-							echo '<div class="home-banneroverlay"><img src="' . $banner['url'] . '" class="home-bannerimg"></div>';
-							echo '<h2>' . get_sub_field( 'banner_text', 'option' ) . '</h2>';
-						echo '</div>';
-					echo '</li>';
-				endwhile;
+<section class="hero-banner">
+	<?php
+		if ( get_field( 'hero_image', 'option' ) ) {
+			$heroimg = get_field( 'hero_image', 'option' );
+			if ( $heroimg['sizes']['hero-img-2x-width'] < 2880 ) {
+				$heroimg2x = $heroimg['sizes']['hero-img-1_5x'];
+			} else {
+				$heroimg2x = $heroimg['sizes']['hero-img-2x'];
 			}
-		?>
-	</ul>
+			$heroalign = get_field( 'text_alignment', 'option' );
+			$heroheadline = get_field( 'headline', 'option' );
+			$herodesc = get_field( 'descriptive_text', 'option' );
+			$herobuttontext = get_field( 'button_text', 'option' );
+			$herobuttonlink = get_field( 'button_link', 'option' );
+
+			// generate the markup for the responsive image
+			echo '<img src="' . $heroimg['sizes']['hero-img'] . '" srcset="' . $heroimg2x . ' 2x, ' . $heroimg['sizes']['hero-img-sm'] . ' ' . $heroimg['sizes']['hero-img-sm-width'] . 'w' . '" alt="' . $heroimg['title'] . '">';
+			echo '<div class="hero-container">';
+				echo '<div class="hero-text">';
+					echo '<span class="hero-headline">' . $heroheadline . '</span>';
+					echo '<p>' . $herodesc . '</p>';
+					echo '<a class="hero-button" href="' . $herobuttonlink . '">' . $herobuttontext . '</a>';
+				echo '</div>';
+			echo '</div>';
+		}
+	?>
 </section>
 
 <?php

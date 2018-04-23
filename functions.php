@@ -146,6 +146,12 @@ add_image_size( 'headshot', 250, 345, true );
 add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
 
+// Adds featured image size for pages.
+add_image_size( 'hero-img-sm', 720, 275, true );
+add_image_size( 'hero-img', 1440, 550, true );
+add_image_size( 'hero-img-1_5x', 2160, 825, true );
+add_image_size( 'hero-img-2x', 2880, 1100, true );
+
 // Image sizes (Settings / Media)
 update_option( 'medium_size_w', 300 );
 update_option( 'medium_size_h', null );
