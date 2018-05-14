@@ -51,15 +51,15 @@ if( defined( 'WP_DEBUG') ) { ?>
 	<nav id="utility-bar" class="clearfix">
 		<div class="wrapper top-nav">
 			<ul id="action-nav">
-				<li><a href="https://wuphysicians.wustl.edu/for-patients/find-a-physician" onclick="__gaTracker('send','event','utility-nav','WU Physicians');">Find a Doctor</a></li>
-				<li><a onclick="__gaTracker('send','event','utility-nav','Admissions');" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
-				<li><a onclick="__gaTracker('send','event','utility-nav','Giving');" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
+				<li><a href="https://wuphysicians.wustl.edu/for-patients/find-a-physician" data-category="utility-nav" data-action="WU Physicians">Find a Doctor</a></li>
+				<li><a href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>" data-category="utility-nav" data-action="Admissions">Admissions</a></li>
+				<li><a href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>" data-category="utility-nav" data-action="Giving">Giving</a></li>
 			</ul>
 			<ul id="utility-nav" class="clearfix">
-				<li><a class="information-for" onclick="__gaTracker('send','event','utility-nav','information-for-open');" href="">Information for <span class="arrow arrow-down">&nbsp;</span></a></li>
-				<li><a class="announcements" onclick="__gaTracker('send','event','utility-nav','announcements-open');" href="">Announcements <span class="arrow arrow-down">&nbsp;</span></a></li>
-				<li class="utility-wustl"><a onclick="__gaTracker('send','event','utility-nav','WUSTL');" href="http://www.wustl.edu">WUSTL</a></li>
-				<li class="utility-directories last-child"><a onclick="__gaTracker('send','event','utility-nav','Directories');" href="/directory">Directories</a></li>
+				<li><a class="information-for" href="" data-category="utility-nav" data-action="information-for-open">Information for <span class="arrow arrow-down">&nbsp;</span></a></li>
+				<li><a class="announcements" href="" data-category="utility-nav" data-action="announcements-open">Announcements <span class="arrow arrow-down">&nbsp;</span></a></li>
+				<li class="utility-wustl"><a data-category="utility-nav" data-action="WUSTL" href="http://www.wustl.edu">WUSTL</a></li>
+				<li class="utility-directories last-child"><a data-category="utility-nav" data-action="Directories" href="/directory">Directories</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -151,7 +151,7 @@ if( defined( 'WP_DEBUG') ) { ?>
 					$url = get_permalink();
 				}
 				$title = get_the_title();
-				echo "\t\t\t\t\t<li class='announcement'><a href='$url' onclick=\"__gaTracker('send','event','header-announcement','$title');\">$title</a></li>\n";
+				echo "\t\t\t\t\t<li class='announcement'><a href='$url' data-category=\"header-announcement\" data-action=\"$title\">$title</a></li>\n";
 				$i++;
 			}
 			wp_reset_query();
@@ -170,16 +170,16 @@ if( defined( 'WP_DEBUG') ) { ?>
 			</div>
 			<div class="information-for-right">
 				<ul class="information-for-list">
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="/info/prospective-students/">Prospective Students</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Current Students');" href="/info/current-students/">Current Students</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Faculty');" href="/info/faculty/">Faculty</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Staff');" href="/info/staff/">Staff</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Prospective Students" href="/info/prospective-students/">Prospective Students</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Current Students" href="/info/current-students/">Current Students</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Faculty" href="/info/faculty/">Faculty</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Staff" href="/info/staff/">Staff</a></li>
 				</ul>
 				<ul class="information-for-list">
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Alumni');" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Administrators');" href="/info/administrators/">Administrators</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','facebook');" href="/info/researchers/">Researchers</a></li>
-					<li class="information-for-li"><a onclick="__gaTracker('send','event','information-for','Researchers');" href="/info/job-seekers/">Job Seekers</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Alumni" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Administrators" href="/info/administrators/">Administrators</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Researchers" href="/info/researchers/">Researchers</a></li>
+					<li class="information-for-li"><a data-category="information-for" data-action="Job Seekers" href="/info/job-seekers/">Job Seekers</a></li>
 				</ul>
 			</div>
 			<p class="information-for">close <span class="arrow arrow-down">&nbsp;</span></p>
@@ -197,12 +197,12 @@ if( defined( 'WP_DEBUG') ) { ?>
             	<img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
             </div>
 			<div id="site-title">
-				<a onclick="__gaTracker('send', 'event', 'Home Link', 'Desktop - Header');" href="<?php echo home_url(); ?>">
+				<a data-category="Home Link" data-action="Desktop - Header" href="<?php echo home_url(); ?>">
 					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.svg" alt="Washington University School of Medicine in St. Louis" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/header-logo.png';this.onerror=null;"/>
 				</a>
 			</div>
 			<div id="site-title-text">
-				<a onclick="__gaTracker('send', 'event', 'Home Link', 'Mobile - Header');" href="<?php echo home_url(); ?>">
+				<a data-category="Home Link" data-action="Mobile - Header" href="<?php echo home_url(); ?>">
 					<div class="university">Washington University</div>
 					<div class="school">School of Medicine</div>
 				</a>
@@ -235,14 +235,14 @@ if( defined( 'WP_DEBUG') ) { ?>
                 ?>
             </ul>
             <ul class="mobile-secondary">
-				<li><a onclick="__gaTracker('send','event','information-for','Prospective Students');" href="/info/prospective-students/">Prospective Students</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','Current Students');" href="/info/current-students/">Current Students</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','Faculty');" href="/info/faculty/">Faculty</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','Staff');" href="/info/staff/">Staff</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','Alumni');" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','Administrators');" href="/info/administrators/">Administrators</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','facebook');" href="/info/researchers/">Researchers</a></li>
-				<li><a onclick="__gaTracker('send','event','information-for','Researchers');" href="/info/job-seekers/">Job Seekers</a></li>
+				<li><a data-category="information-for" data-action="Prospective Students" href="/info/prospective-students/">Prospective Students</a></li>
+				<li><a data-category="information-for" data-action="Current Students" href="/info/current-students/">Current Students</a></li>
+				<li><a odata-category="information-for" data-action="Faculty" href="/info/faculty/">Faculty</a></li>
+				<li><a data-category="information-for" data-action="Staff" href="/info/staff/">Staff</a></li>
+				<li><a data-category="information-for" data-action="Alumni" href="/info/alumni-friends/">Alumni &amp; Friends</a></li>
+				<li><a data-category="information-for" data-action="Administrators" href="/info/administrators/">Administrators</a></li>
+				<li><a data-category="information-for" data-action="Researchers" href="/info/researchers/">Researchers</a></li>
+				<li><a data-category="information-for" data-action="Job Seekers" href="/info/job-seekers/">Job Seekers</a></li>
             </ul>
             <ul class="mobile-secondary">
 				<li class="menu-item-has-children<?php if(is_page('directory')){ echo ' current_page_item'; } ?>"><a href="/directory/">Directories</a>

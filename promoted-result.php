@@ -42,7 +42,7 @@ if ( $promoted_results ) {
 		}
 
 		echo "<p class='search-results'>";
-		echo "<span style='font-size: 16px;'><a onclick='__gaTracker('send','event','top-search-result-$search_terms','$link');'' href='$link'><b>" . get_the_title() . '</b></a></span><br>';
+		echo "<span style='font-size: 16px;'><a data-category=\"top-search-result-" . esc_html( $search_terms ) . "\" data-action=\"$link\" href='$link'><b>" . get_the_title() . '</b></a></span><br>';
 
 		if ( ( $post_excerpt = get_the_excerpt() ) !== '' ) {
 
