@@ -4672,8 +4672,13 @@ a.sidebar-outlook-link {
 	.editors-pick img, .editors-pick .video-card-image {
 		width: 50%;
 	}
+
 	.editors-pick-text {
 		width: 45%;
+	}
+
+	.hero-text .hero-headline {
+		font-size: 36px;
 	}
 }
 @media screen and ( max-width: 780px ) {
@@ -4864,6 +4869,10 @@ a.sidebar-outlook-link {
 	}
 	.news-filters .collapse {
 		display: block;
+	}
+
+	.hero-banner .hero-container {
+		position: relative;
 	}
 }
 @media screen and ( max-width: 660px ) {
