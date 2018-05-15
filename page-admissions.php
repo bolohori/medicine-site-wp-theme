@@ -52,7 +52,7 @@ if (have_posts()) :
 						<li class="hero-list-title">Occupational Therapy</li>
 						<li><a href="http://www.ot.wustl.edu/education/phd-in-rehabilitation-and-participation-science-142">Rehabilitation and Participation Science (PhD)</a></li>
 						<li><a href="http://www.ot.wustl.edu/education/masters-msot-131">Occupational Therapy (MS)</a></li>
-						<li><a href="http://www.ot.wustl.edu/education/doctorate-otd-140">Occupational Therapy (OTD)</a></li>
+						<li><a href="https://www.ot.wustl.edu/education/doctorate-otd-587">Occupational Therapy (OTD)</a></li>
 					</ul>
 				</div>
 				<div class="admissions-right-col">
