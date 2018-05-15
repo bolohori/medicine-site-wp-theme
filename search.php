@@ -160,11 +160,11 @@ get_header(); ?>
 					foreach ( $search_results->response->resultPacket->results as $result ) {
 					?>
 						<p class='search-result'>
-						<span style="font-size: 16px;"><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->liveUrl; ?>');" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
+						<span style="font-size: 16px;"><a data-category="search-result-<?php echo filter_var($search_terms, FILTER_SANITIZE_STRING); ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
 						<?php if ( $result->summary != '' ) { ?>
 							<br><?php echo $result->summary; ?>
 						<?php } ?>
-						<br/><a onclick="__gaTracker('send','event','search-result-<?php echo $search_terms; ?>','<?php echo $result->liveUrl; ?>');" href="<?php echo $result->liveUrl; ?>" class="result-url"><?php echo $result->liveUrl; ?></a>
+						<br/><a data-category="search-result-<?php echo $search_terms; ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>" class="result-url"><?php echo $result->liveUrl; ?></a>
 						</p>
 				<?php
 					}

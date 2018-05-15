@@ -38,7 +38,7 @@ if( get_field( 'stories_check' ) ) {
             $the_query->the_post(); ?>
 			<li>
 				<div>
-					<a onclick="__gaTracker('send','event','Page - Internal','Cards - <?php echo $pagetitle ?>');" href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
+					<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>" data-category="Page - Internal" data-action="Cards - <?php echo $pagetitle ?>">
 						<?php if( $i % 2 == 1 ) {
 							$cardtype = "odd";
 						} else {
