@@ -7,9 +7,9 @@ if(has_term('national-leaders','news') OR has_term('obituaries','news')) {
 ?><li<?php echo $cardClass; ?>>
     <div>
         <?php if ( has_term( 'national-leaders', 'news' ) && is_front_page() ) {
-            $home_analytics_title = 'onclick="__gaTracker(\'send\',\'event\',\'Front page\',\'Cards - National Leaders\');"';
+            $home_analytics_title = 'data-category="Front page" data-action="Cards - National Leaders"';
         } else if ( is_front_page() ) {
-            $home_analytics_title = 'onclick="__gaTracker(\'send\',\'event\',\'Front page\',\'Cards - News\');"';
+            $home_analytics_title = 'data-category="Front page" data-action="Cards - News"';
         } ?>
         <a <?php echo $home_analytics_title; ?> href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>">
             <div class="card">
