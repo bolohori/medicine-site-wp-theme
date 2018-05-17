@@ -3,7 +3,7 @@
     <h1>News</h1>
 
     <ul class="news-subnav clearfix">
-        <li><a href="<?php echo get_page_link( 7224 ) ?>">Publications</a></li>
+        <li><a href="https://publicaffairs.med.wustl.edu/expertise/publications/">Publications</a></li>
         <li><a href="/news/for-media/">For Media</a></li>
         <li><a href="/news/announcements/">Announcements</a></li>
     </ul>
