@@ -3,17 +3,38 @@
 // Added expires header for front page
 header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + (12 * 60 * 60)));
 
-get_header(); ?>
-
-<section class="hero-banner">
+get_header(); 
+if ( get_field( 'hero_image', 'option' ) ) {
+	$heroimg = get_field( 'hero_image', 'option' );
+	if ( $heroimg['sizes']['hero-img-2x-width'] < 2880 ) {
+		$heroimg2x = $heroimg['sizes']['hero-img-1_5x'];
+	} else {
+		$heroimg2x = $heroimg['sizes']['hero-img-2x'];
+	}
+} ?>
+<style>
+	.hero-banner,
+	.hero-banner .mobile {
+		background-image: url(<?php echo $heroimg['sizes']['hero-img-sm']; ?>);
+	}
+	@media screen and (min-width: 639px), 
+		screen and (-webkit-min-device-pixel-ratio: 1.5),
+		screen and (min-resolution: 144dpi) {
+		.hero-banner {
+			background-image: url(<?php echo $heroimg['sizes']['hero-img']; ?>);
+		}
+	}
+	@media screen and (min-resolution: 144dpi) and (min-width: 639px), 
+		screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 639px) {
+		.hero-banner {
+			background-image: url(<?php if ( $image2x[1] >= 2880 ) { echo $heroimg['sizes']['hero-img-2x']; } else { echo $heroimg['sizes']['hero-img-1_5x']; } ?>);
+		}
+	}
+</style>
+<section class="hero-banner desktop">
 	<?php
 		if ( get_field( 'hero_image', 'option' ) ) {
-			$heroimg = get_field( 'hero_image', 'option' );
-			if ( $heroimg['sizes']['hero-img-2x-width'] < 2880 ) {
-				$heroimg2x = $heroimg['sizes']['hero-img-1_5x'];
-			} else {
-				$heroimg2x = $heroimg['sizes']['hero-img-2x'];
-			}
+			// Adds featured image size for pages.
 			$heroalign = get_field( 'text_alignment', 'option' );
 			$heroheadline = get_field( 'headline', 'option' );
 			$herodesc = get_field( 'descriptive_text', 'option' );
@@ -21,12 +42,12 @@ get_header(); ?>
 			$herobuttonlink = get_field( 'button_link', 'option' );
 
 			// generate the markup for the responsive image
-			echo '<img src="' . $heroimg['sizes']['hero-img'] . '" srcset="' . $heroimg2x . ' 2x, ' . $heroimg['sizes']['hero-img-sm'] . ' ' . $heroimg['sizes']['hero-img-sm-width'] . 'w' . '" alt="' . $heroimg['title'] . '">';
+			echo '<div class="hero-banner mobile"></div>';
 			echo '<div class="hero-container">';
 				echo '<div class="hero-text">';
 					echo '<span class="hero-headline">' . $heroheadline . '</span>';
 					echo '<p>' . $herodesc . '</p>';
-					echo '<a class="hero-button" href="' . $herobuttonlink . '">' . $herobuttontext . '</a>';
+					echo '<a class="hero-button" href="' . $herobuttonlink . '">' . $herobuttontext . ' &gt;</a>';
 				echo '</div>';
 			echo '</div>';
 		}
