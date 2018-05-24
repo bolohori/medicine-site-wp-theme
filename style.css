@@ -170,7 +170,7 @@ article .wp-caption-text {
 header {
 	position: relative;
 	width: 100%;
-	z-index: 1000;
+	z-index: 10000;
 }
 
 header h2 {
@@ -358,14 +358,8 @@ textarea {
 	color: #fff;
 }
 
-#site-title-text .university {
-	font-size: 11px;
-	text-transform: uppercase;
-	font-weight: 600;
-}
-
-#site-title-text .school {
-	font-size: 22px;
+#site-title-mobile {
+	display: none;
 }
 
 #main-nav {
@@ -406,14 +400,14 @@ textarea {
 
 .mobile-container {
 	position: relative;
-	z-index: 197;
+	z-index: 10000; /* I'm sorry -Z */
 	width: 100%;
 	display: block;
 }
 
 #mobile-search-form {
 	position: absolute;
-	z-index: 198;
+	z-index: 1000;
 	top: -62px;
 	left: 0;
 	height: 62px;
@@ -460,6 +454,7 @@ textarea {
 }
 
 .mobile-nav {
+	border-top: 1px solid #e3e3e3;
 	width: 100%;
 	display: none;
 	padding-bottom: 25px;
@@ -4075,10 +4070,6 @@ a.sidebar-outlook-link {
 }
 
 @media screen and ( max-width: 1000px ) {
-	#header-site-row {
-		background: #a51417;
-	}
-
 	.news-home .news-cards li.news-block,
 	.news-home .news-cards .latest-news-block {
 		width: 100%;
@@ -4162,6 +4153,15 @@ a.sidebar-outlook-link {
 	}
 }
 @media screen and ( max-width: 970px ) {
+	#header-site-row {
+		background: #fff;
+	}
+
+	#header-site-row .wrapper {
+		width: 100%;
+		max-width: 970px;
+	}
+
 	.award-set {
 		width: 100%;
 	}
@@ -4434,30 +4434,75 @@ a.sidebar-outlook-link {
 		padding-right: 12px;
 	}
 
-
 	#site-title {
 		display: none;
 	}
 
-	#site-title-text {
-		display: inline-block;
-	    font-size: 24px;
-	    color: #fff;
-		padding: 18px 120px 18px 20px;
-		-webkit-font-smoothing: subpixel-antialiased;
+	#site-title-mobile {
+		background: #a51417;
+		display: block;
+    	float: left;
+		height: 100%;
+		text-align: center;
+    	width: 100%;
 	}
 
-	#site-title-text a {
-	    color: #fff;
+	#site-title-mobile a {
+		box-sizing: border-box;
+		color: #fff;
+		float: left;
+		padding: 3% 2% 2%;
+		width: 100%;
+	}
+
+	#site-title-mobile img {
+		width: 100%;
+		max-width: 600px;
 	}
 
 	#utility-bar,
 	.announcements-left p,
 	.information-for-left p,
 	#main-nav,
-	#search-form,
 	#left-col {
 		display: none;
+	}
+	
+	.utility-wrapper {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+		max-width: 600px;
+		padding: 2% 2%;
+		width: 100%;
+	}
+
+	#search-form {
+		border: 1px solid #c8c8c8;
+		box-sizing: border-box;
+		display: inline;
+		float: none;
+		margin: 0;
+		padding: 8px 10px;
+		position: relative;
+		top: 0%;
+		width: 100%;
+	}
+
+	#search-form label {
+		top: 0;
+		left: 0;
+	}
+
+	#search-box {
+		border: none;
+		border-radius: 0;
+		padding: 0;
+		width: 90%;
+	}
+
+	#search-btn {
+		right: 0px;
 	}
 
 	.announcements-left,
@@ -4495,20 +4540,14 @@ a.sidebar-outlook-link {
 	}
 
 	#mobile-menu-icon {
-		right: 15px;
-		width: 50px;
-		height: 50px;
-	}
-
-	#mobile-menu-icon img {
-		top: 13px;
-		left: 12px;
-		position: relative;
+		padding: 4px 0 0 10px;
+		right: 0;
+		width: 32px;
 	}
 
 	#mobile-menu-icon .mobile-close {
 		display: none;
-		padding: 3px 0 0 5px;
+		padding: 4px 0 0 10px;
 	}
 
 	#mobile-search-icon .search-close {
@@ -4546,11 +4585,11 @@ a.sidebar-outlook-link {
 
 	#mobile-menu-icon,
 	#mobile-search-icon {
-		display: block;
-		position: absolute;
-		top: 50%;
+		display: inline;
+		position: relative;
+		top: 0;
 		cursor: pointer;
-		margin-top: -25px;
+		margin-top: 0;
 	}
 
 	#mobile-menu-icon .dashicons,
@@ -4972,6 +5011,10 @@ a.sidebar-outlook-link {
 }
 
 @media screen and ( max-width: 625px ) {
+	.utility-wrapper {
+		box-sizing: border-box;
+	}
+
 	.award-set-title {
 		width: auto;
 		float: none;
@@ -5231,19 +5274,6 @@ a.sidebar-outlook-link {
 @media screen and ( max-width: 360px ) {
 	.news-filters .parent {
 		width: 110px;
-	}
-}
-@media screen and ( max-width: 350px ) {
-	#site-title-text {
-		padding: 18px 110px 18px 12px;
-	}
-
-	#mobile-search-icon {
-		right: 50px;
-	}
-
-	#mobile-menu-icon {
-		right: 5px;
 	}
 }
 @media screen and ( max-width: 310px ) {

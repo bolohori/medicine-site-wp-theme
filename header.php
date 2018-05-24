@@ -188,26 +188,23 @@ if( defined( 'WP_DEBUG') ) { ?>
 
 	<div id="header-site-row" class="clearfix">
 		<div class="wrapper clearfix">
-			<div id="mobile-search-icon">
-				<img class="search-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/mobile-search.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/mobile-search.png';this.onerror=null;">
-				<img class="search-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
-			</div>
-            <div id="mobile-menu-icon">
-            	<img class="mobile-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/menu.png';this.onerror=null;">
-            	<img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
-            </div>
 			<div id="site-title">
 				<a onclick="__gaTracker('send', 'event', 'Home Link', 'Desktop - Header');" href="<?php echo home_url(); ?>">
 					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/header-logo.svg" alt="Washington University School of Medicine in St. Louis" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/header-logo.png';this.onerror=null;"/>
 				</a>
 			</div>
-			<div id="site-title-text">
+			<div id="site-title-mobile">
 				<a onclick="__gaTracker('send', 'event', 'Home Link', 'Mobile - Header');" href="<?php echo home_url(); ?>">
-					<div class="university">Washington University</div>
-					<div class="school">School of Medicine</div>
+					<img id="screen-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-reverse-logo.svg" alt="Washington University School of Medicine in St. Louis" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/wusm-reverse-logo.png';this.onerror=null;"/>
 				</a>
 			</div>
-			<?php get_search_form(); ?>
+			<div class="utility-wrapper">
+				<?php get_search_form(); ?>
+				<div id="mobile-menu-icon">
+					<img class="mobile-open" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/menu.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/menu.png';this.onerror=null;">
+					<img class="mobile-close" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/close.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/close.png';this.onerror=null;">
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -220,9 +217,6 @@ if( defined( 'WP_DEBUG') ) { ?>
 	) ); ?>
 
 	<div class="mobile-container">
-		<form method="get" id="mobile-search-form" autocapitalize="none" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-            <input type="text" name="s" id="mobile-search-box" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" placeholder="<?php esc_attr_e( 'Search' ); ?>">
-        </form>
         <nav class="mobile-nav">
             <ul class="mobile-primary">
                 <?php
