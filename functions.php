@@ -25,6 +25,13 @@ add_action(
 	}, 20
 );
 
+add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
+function wusm_acf_json_load_point( $paths ) {
+	unset($paths[0]);
+	$paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+}
+
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
