@@ -24,7 +24,7 @@
             <div id="col1">
                 <strong>Washington University School of Medicine</strong>
                 <p>660 S. Euclid Ave., St. Louis, MO 63110</p>
-				<p>Consistently ranked a top medical school for research, Washington University School of Medicine is also a catalyst in the St. Louis biotech and startup scene. Our community includes recognized innovators in science, medical education, health care policy and global health. We treat our patients and train new leaders in medicine at <a href="https//www.barnesjewish.org/" data-category="outbound-footer" data-action="https://www.barnesjewish.org">Barnes-Jewish</a> and <a href="https://www.stlouischildrens.org/" data-category="outbound-footer" data-action="https://www.stlouischildrens.org/">St. Louis Children's</a> hospitals, both ranked among the nation’s best hospitals and recognized for excellence in care.</p>
+				<p>Consistently ranked a top medical school for research, Washington University School of Medicine is also a catalyst in the St. Louis biotech and startup scene. Our community includes recognized innovators in science, medical education, health care policy and global health. We treat our patients and train new leaders in medicine at <a href="https://www.barnesjewish.org/" data-category="outbound-footer" data-action="https://www.barnesjewish.org">Barnes-Jewish</a> and <a href="https://www.stlouischildrens.org/" data-category="outbound-footer" data-action="https://www.stlouischildrens.org/">St. Louis Children's</a> hospitals, both ranked among the nation’s best hospitals and recognized for excellence in care.</p>
             </div>
             <div id="lists">
                 <div id="col2">
