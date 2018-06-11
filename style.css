@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.06.07.1
+Version:	 2018.06.11.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -63,12 +63,12 @@ a:hover {
 h1 {
 	font-family: "Libre Baskerville", "Times New Roman", serif;
 	font-weight: normal;
-	font-size: 35px;
+	font-size: 32px;
 	margin-bottom: 30px;
 }
 
 h2 {
-	font-size: 21px;
+	font-size: 22px;
 	font-weight: 600;
 	margin-top: 30px;
 	margin-bottom: 15px;
@@ -241,7 +241,7 @@ header h2 {
 	color: #cbb8b8;
 	letter-spacing: .5px;
 	font-weight: bold;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 #action-nav li a:hover {
@@ -395,10 +395,11 @@ textarea {
 }
 
 #main-nav li a {
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 600;
 	color: #990000;
 	text-transform: uppercase;
+	letter-spacing: .5px;
 }
 
 #main-nav li > a:hover,
@@ -798,8 +799,9 @@ button.single-link:hover {
 #left-nav li a {
 	font-weight: 600;
 	margin-left: 10px;
-	font-size: 14px;
+	font-size: 15px;
 	display: block;
+	letter-spacing: .5px;
 }
 
 #left-nav li a:hover {
@@ -874,7 +876,7 @@ a.wusm-button:hover {
 }
 
 article .intro-text {
-	font-size: 22px;
+	font-size: 24px;
 	font-weight: 300;
 	color: #787878;
 	line-height: 30px;
@@ -917,7 +919,7 @@ article h1 + h2 {
 article p {
 	line-height: 28px;
 	margin-bottom: 25px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 p + ul {
@@ -1203,7 +1205,7 @@ footer {
 
 #site-footer {
 	background-color: #dedede;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 #site-footer-top {
@@ -1428,7 +1430,7 @@ a#wusm-google-plus:hover img {
 
 #wusm-footer-right nav a {
 	text-transform: uppercase;
-	font-size: 11px;
+	font-size: 12px;
 	display: inline-block;
 	padding: 9px 12px;
 	border-left: 1px solid #191919;
@@ -1503,7 +1505,7 @@ a#wusm-google-plus:hover img {
 	margin: 22px 0;
 	padding: 0 55px;
 	width: 220px;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .information-for-left h2 {
@@ -1540,13 +1542,13 @@ a#wusm-google-plus:hover img {
 
 .information-for-li {
 	padding-right: 16%;
-	font-size: 14px;
+	font-size: 15px;
 	margin-bottom: 20px;
 }
 
 .announcement {
 	padding-right: 16%;
-	font-size: 14px;
+	font-size: 15px;
 	margin-bottom: 20px;
 }
 
@@ -1562,7 +1564,7 @@ p.information-for {
 	float: right;
 	margin: -30px 16px 0 0;
 	font-weight: bold;
-	font-size: 11px;
+	font-size: 13px;
 	cursor: pointer;
 }
 
@@ -1635,7 +1637,7 @@ article.search-results {
 
 .home h2 {
 	-webkit-font-smoothing: antialiased;
-	font-size: 30px;
+	font-size: 32px;
 	font-weight: normal;
 }
 
@@ -1654,7 +1656,7 @@ article.search-results {
 .text-intro h2 {
 	-webkit-font-smoothing: antialiased;
 	color: #3c3c3d;
-	font-size: 35px;
+	font-size: 32px;
 	margin-bottom: 15px;
 	margin-top: 0;
 }
@@ -1662,7 +1664,7 @@ article.search-results {
 .text-intro p {
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #787878;
-	font-size: 22px;
+	font-size: 24px;
 	font-weight: 300;
 	line-height: 30px;
 }
@@ -1848,8 +1850,9 @@ li.home-banner-single {
 }
 
 .icons-home .icon .context {
-	font-size: 14px;
+	font-size: 15px;
 	width: 100%;
+	letter-spacing: .5px;
 }
 
 .cta-home {
@@ -1891,7 +1894,7 @@ section.cta-home.turquoise {
 }
 
 .cta-home .cta-text p {
-	font-size: 18px;
+	font-size: 20px;
 	line-height: 30px;
 }
 
@@ -1901,7 +1904,7 @@ section.cta-home.turquoise {
 	clear: both;
 	display: inline-block;
 	float: right;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 700;
 	text-align: center;
 	text-transform: uppercase;;
@@ -2293,7 +2296,7 @@ section.cta-home.turquoise {
 	line-height: 1.5;
 }
 .news-cards li h2 {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 600;
 	margin: 0;
 }
@@ -2452,9 +2455,9 @@ section.cta-home.turquoise {
 }
 .single-post article > div > p, .single-post article > div > div.related-content > p {
 	margin: 0 0 35px;
-	font-size: 22px;
+	font-size: 20px;
 	font-family: "Libre Baskerville", "Times New Roman", serif;
-	line-height: 1.5;
+	line-height: 1.8;
 }
 .single-post article > div > div.related-content > p:last-child {
 	margin-bottom: 0;
@@ -2751,7 +2754,7 @@ section.cta-home.turquoise {
 }
 .single-post .article-footer p {
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 21px;
 	margin: 0 0 12px 0;
 }
@@ -2759,7 +2762,7 @@ section.cta-home.turquoise {
 	margin-bottom: 30px;
 }
 .single-post .boilerplate p {
-	font-size: 14px;
+	font-size: 15px;
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 21px;
 	margin: 0 0 16px;
@@ -2773,7 +2776,7 @@ section.cta-home.turquoise {
 }
 .footer-author p.name {
 	margin-bottom: 10px;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 600;
 }
 .footer-media-contact {
