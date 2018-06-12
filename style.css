@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.06.11.0
+Version:	 2018.06.12.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -75,7 +75,7 @@ h2 {
 }
 
 h3 {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 600;
 	margin-top: 36px;
 	margin-bottom: 15px;
@@ -156,7 +156,7 @@ article .wp-caption.alignnone {
 }
 
 article .wp-caption-text {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     color: #6a6a6a;
     padding: 7px 0 13px 0;
@@ -366,13 +366,13 @@ textarea {
 }
 
 #site-title-text .university {
-	font-size: 11px;
+	font-size: 13px;
 	text-transform: uppercase;
 	font-weight: 600;
 }
 
 #site-title-text .school {
-	font-size: 22px;
+	font-size: 24px;
 }
 
 #main-nav {
@@ -535,7 +535,7 @@ textarea {
 }
 
 .mobile-primary .menu-item .sub-menu .menu-item a {
-	font-size: 15px;
+	font-size: 16px;
 	background: #f0f0f0;
 }
 
@@ -594,7 +594,7 @@ textarea {
 .mobile-secondary li a {
 	padding: 10px 20px;
 	display: block;
-	font-size: 15px;
+	font-size: 16px;
 	color: #990000;
 	background: #fff;
 	position: relative;
@@ -858,7 +858,7 @@ a.wusm-button {
 	display: inline-block;
 	line-height: 14px;
 	margin: 0 20px 0 0;
-	font-size: 14px;
+	font-size: 16px;
 	text-transform: uppercase;
 	color: #fff;
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -889,7 +889,7 @@ article .disclaimer {
 }
 
 article .disclaimer p {
-	font-size: 14px;
+	font-size: 15px;
 	color: #333;
 	line-height: 24px;
 }
@@ -1698,7 +1698,7 @@ article.search-results {
 	color: #fff;
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 700;
-    font-size: 14px;
+    font-size: 16px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
@@ -1781,7 +1781,7 @@ li.home-banner-single {
 	clear: both;
 	letter-spacing: 1px;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	bottom: 0;
 	text-align: center;
 	margin: 20px auto 35px;
@@ -2022,7 +2022,7 @@ section.cta-home.turquoise {
 .news-filters ul ul {
 	display: none;
 	position: absolute;
-	z-index: 5;
+	z-index: 5; 
 	background: #fff;
 	width: 160px;
 	margin-top: 5px;
@@ -2304,14 +2304,14 @@ section.cta-home.turquoise {
 	margin: 0;
 	color: #333;
 	line-height: 1.7;
-	font-size: 16px;
+	font-size: 18px;
 }
 .generic-cards .article-date,
 .news-cards .article-date {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	letter-spacing: 0.9px;
 }
 .generic-cards .news-source,
@@ -2319,7 +2319,7 @@ section.cta-home.turquoise {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	line-height: 1.3;
 	margin-top: 15px;
 }
@@ -2425,7 +2425,7 @@ section.cta-home.turquoise {
 .article-header h1 {
 	margin: 0 0 12px;
 	padding: 0;
-	font-size: 35px;
+	font-size: 32px;
 	line-height: 43px;
 	border: none;
 }
@@ -2906,7 +2906,7 @@ ul.program-list li.last-child {
 }
 
 .page-template-admissions-php .hero-list-title {
-	font-size: 18px;
+	font-size: 20px;
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border-bottom: 1px solid #d5d2d2;
 	line-height: 25px;
@@ -3679,14 +3679,14 @@ ul.program-list li.last-child {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	letter-spacing: 0.9px;
 }
 .generic-cards .patient-source {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	line-height: 1.3;
 	margin-top: 15px;
 }
@@ -4722,7 +4722,7 @@ a.sidebar-outlook-link {
 @media screen and ( max-width: 768px ) {
 	.home-banner-single h2,
 	.text-intro h2 {
-		font-size: 28px;
+		font-size: 24px;
 	}
 
 	.news-home .news {
@@ -4921,11 +4921,11 @@ a.sidebar-outlook-link {
 	}
 
 	.text-intro h2 {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.text-intro p {
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.text-intro .wrap {
@@ -4955,16 +4955,16 @@ a.sidebar-outlook-link {
 	}
 
 	.cta-home .cta-text h2 {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.cta-home .cta-text p {
-		font-size: 16px;
+		font-size: 18px;
 		line-height: 30px;
 	}
 
 	.cta-home .cta-button {
-		font-size: 16px;
+		font-size: 18px;
 		padding: 35px 0;
 	}
 
