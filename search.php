@@ -134,12 +134,6 @@ get_header(); ?>
 
 			if ( ( $num_of_wp_result_pages <= $paged ) || ( $num_of_wp_result_pages < 2 ) ) {
 
-				// and finally the results from Google...
-				//$terms = str_replace(' ', '+', $search_terms);
-				//$search_url = "http://googlesearch.wulib.wustl.edu/search?q=$terms&output=xml_no_dtd&filter=1&start=$start&num=$num_of_funnelback_results&as_eq=medschool.wustl.edu+medicine.wustl.edu";
-				//$xml = new SimpleXMLElement(file_get_contents($search_url));
-				//$start_num = $xml->RES['SN'];
-
 				if ( $start > $start_rank ) {
 					$start = $start_rank - 1;
 				}
@@ -151,8 +145,6 @@ get_header(); ?>
 				if ( ( $total_funnelback_results - $start ) < 10 ) {
 					$end_cnt = $total_funnelback_results - $start;
 				}
-
-				//var_dump($search_results->response->resultPacket->results);
 
 				// Display page of search results
 				if ( $search_results->response->resultPacket->results ) {
@@ -168,88 +160,53 @@ get_header(); ?>
 						</p>
 				<?php
 					}
-					// If there are duplicate results, Google won't tell you until you hit the last page of
-					// "real" results, this checks that and adds the standard Google message
-					/*if ( ( (int) $xml->RES->M !== $total_funnelback_results ) && ( sizeof( $xml->RES->R ) < 10 ) ) {
-						echo "<p style='font-size: 16px;'><i>In order to show you the most relevant results, we have omitted some entries very similar to the " . $xml->RES->M . ' already displayed.</i></p>';
-						$truncate_pagination = $paged;
-					}*/
 				}
 				
 			}
 
 			// If there are more than one page of results, show pager navigation
 			if ( $pages_of_results > 1 ) {
-
 				// For first 10 pages, keep pager navigation static
 				if ( $paged < 10 ) {
-
 					$p_start = 1;
-
 					if ( $pages_of_results < 15 ) {
-
 						$p_end = $pages_of_results;
-
 					} else {
-
 						$p_end = 15;
-
 					}
-
 					// Otherwise, starting on page 11, pull one page from beginning of pager navigation
 					// and add it to the end, thus maintaining 15 items in navigation
 				} else {
-
 					$p_start = $paged - 10;
 					$p_end = $paged + 4;
-
 				}
 
 				if ( $p_end > $pages_of_results ) {
-
 					$p_end = $pages_of_results;
-
 				}
 
 				if ( isset( $truncate_pagination ) ) {
-
 					$p_end = $truncate_pagination;
-
 				}
-
-				echo "<p style='max-width: 750px;word-wrap: break-word;'>Page: ";
-
+				
 				if ( $p_start != 1 ) {
-
 					$back = $paged - 1;
 					echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
-
 				}
 
 				for ( $i = $p_start; $i <= $p_end; $i++ ) {
-
 					if ( $paged != $i ) {
-
 						echo "<a href='/?s=$search_terms&paged=$i'>$i</a>";
-
 					} else {
-
 						echo "$i";
-
 					}
-
 					echo '&nbsp;&nbsp;&nbsp;';
-
 				}
-
 				$adv = $paged + 1;
 
 				if ( ( $p_end != $pages_of_results ) && ! isset( $truncate_pagination ) ) {
-
 					echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
-
 				}
-
 				echo '</p>';
 			}
 			?>
