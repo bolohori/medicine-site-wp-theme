@@ -33,13 +33,18 @@ get_header(); ?>
                     } ?>
                 </ul>
             </div>
-            <?php if ($the_query->max_num_pages > 1) { ?>
-                <div class="pagination">
-                    <div class="next-posts"><?php next_posts_link( 'Load More', $the_query->max_num_pages ); ?></div>
-                </div>
-            <?php }
+           <nav id="paginate-results">
+			<?php
+				$big = 999999999; // need an unlikely integer
+
+				echo paginate_links( array(
+					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'current' => max( 1, get_query_var('paged') ),
+					'total' => $the_query->max_num_pages
+				) );
             }
-            wp_reset_postdata(); ?>
+               ?>
+	    	</nav>
 
         </article>
 
