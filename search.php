@@ -162,55 +162,18 @@ get_header(); ?>
 					}
 				}
 				
-			}
+			} ?>
+			<nav id="paginate-results">
+			<?php
+	            $big = 999999999; // need an unlikely integer
 
-			// If there are more than one page of results, show pager navigation
-			if ( $pages_of_results > 1 ) {
-				// For first 10 pages, keep pager navigation static
-				if ( $paged < 10 ) {
-					$p_start = 1;
-					if ( $pages_of_results < 15 ) {
-						$p_end = $pages_of_results;
-					} else {
-						$p_end = 15;
-					}
-					// Otherwise, starting on page 11, pull one page from beginning of pager navigation
-					// and add it to the end, thus maintaining 15 items in navigation
-				} else {
-					$p_start = $paged - 10;
-					$p_end = $paged + 4;
-				}
-
-				if ( $p_end > $pages_of_results ) {
-					$p_end = $pages_of_results;
-				}
-
-				if ( isset( $truncate_pagination ) ) {
-					$p_end = $truncate_pagination;
-				}
-				
-				if ( $p_start != 1 ) {
-					$back = $paged - 1;
-					echo "<a href='/?s=$search_terms&paged=$back'>&lt;&lt;</a>&nbsp;&nbsp;&nbsp;";
-				}
-
-				for ( $i = $p_start; $i <= $p_end; $i++ ) {
-					if ( $paged != $i ) {
-						echo "<a href='/?s=$search_terms&paged=$i'>$i</a>";
-					} else {
-						echo "$i";
-					}
-					echo '&nbsp;&nbsp;&nbsp;';
-				}
-				$adv = $paged + 1;
-
-				if ( ( $p_end != $pages_of_results ) && ! isset( $truncate_pagination ) ) {
-					echo "<a href='/?s=$search_terms&paged=$adv'>&gt;&gt;</a>";
-				}
-				echo '</p>';
-			}
+				echo paginate_links( array(
+					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+					'current' => $paged,
+					'total' => $pages_of_results,
+				) );
 			?>
-
+			</nav>
 		</article>
 
 	</div>
