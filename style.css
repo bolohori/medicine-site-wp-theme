@@ -626,6 +626,50 @@ textarea {
 	background: #f0f0f0;
 }
 
+/* Pagination
+-------------------------------------------------------------------------------*/
+#paginate-results {
+	max-width: 100%;
+	padding: 35px 0 0;
+}
+
+#paginate-results span,
+#paginate-results a {
+	margin-right: 5px;
+}
+
+#paginate-results .next {
+	margin: 0 0 0 5px;
+}
+
+#paginate-results .prev {
+	margin-right: 10px;
+}
+
+.page-numbers {
+	padding: 5px 11px 6px;
+	display: inline-block;
+	font-weight: 700;
+	background-color: #E3E3E3;
+	border-radius: 3px;
+	color: #3C3C3D;
+}
+
+a.page-numbers:hover {
+	background-color: #EEE;
+}
+
+.current {
+	color: #FFF;
+	background-color: #990000;
+}
+
+.pagination .dots {
+	border: 1px solid #e3e3e3;
+    background: transparent;
+    padding: 4px 8px 5px;
+}
+
 
 /* Forms
 -------------------------------------------------------------------------------*/
@@ -1618,18 +1662,6 @@ article.search-results {
 	word-wrap: break-word;
 }
 
-#paginate-results {
-	clear: left;
-	float: left;
-	width: 450px;
-	padding: 0 35px 70px 35px;
-}
-
-#paginate-results a {
-	color: #990000;
-}
-
-
 /* Front Page styles
 -------------------------------------------------------------------------------*/
 
@@ -2184,7 +2216,7 @@ section.cta-home.turquoise {
 }
 .news-cards {
 	background: transparent;
-	font-size: 0;
+ 
 	width: 88%;
 	max-width: 940px;
 	margin: 0 auto;
