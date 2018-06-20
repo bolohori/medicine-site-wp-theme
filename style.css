@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.05.24.0
+Version:	 2018.06.18.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -46,7 +46,7 @@ html {
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	color: #333;
 }
@@ -61,21 +61,21 @@ a:hover {
 }
 
 h1 {
-	font-family: Georgia, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	font-weight: normal;
-	font-size: 35px;
+	font-size: 32px;
 	margin-bottom: 30px;
 }
 
 h2 {
-	font-size: 21px;
+	font-size: 22px;
 	font-weight: 600;
 	margin-top: 30px;
 	margin-bottom: 15px;
 }
 
 h3 {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 600;
 	margin-top: 36px;
 	margin-bottom: 15px;
@@ -93,13 +93,13 @@ h5 {
 	color: #900;
 	font-weight: normal;
 	font-size: 18px;
-	font-family: Georgia, Times, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	line-height: 26px;
 }
 
 h6 {
 	font-weight: bold;
-	font-family: Georgia, Times, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 }
 
 .alignleft {
@@ -156,7 +156,7 @@ article .wp-caption.alignnone {
 }
 
 article .wp-caption-text {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
     color: #6a6a6a;
     padding: 7px 0 13px 0;
@@ -241,7 +241,7 @@ header h2 {
 	color: #fff;
 	letter-spacing: .5px;
 	font-weight: bold;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 #action-nav li a:hover {
@@ -296,6 +296,7 @@ header h2 {
 	font-size: 14px;
 	font-style: italic;
 	font-weight: 600;
+	letter-spacing: 1px;
 }
 
 #dirform input[type=text] {
@@ -324,9 +325,9 @@ textarea {
 	border-radius: 5px;
 	background: #fff;
 	color: #3d3d3d;
-	font-size: 14px;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: 12px;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #search-btn {
@@ -359,8 +360,14 @@ textarea {
 	color: #fff;
 }
 
-#site-title-mobile {
-	display: none;
+#site-title-text .university {
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+#site-title-text .school {
+	font-size: 24px;
 }
 
 #main-nav {
@@ -383,10 +390,11 @@ textarea {
 }
 
 #main-nav li a {
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 600;
 	color: #A51417;
 	text-transform: uppercase;
+	letter-spacing: .5px;
 }
 
 #main-nav li > a:hover,
@@ -429,7 +437,7 @@ textarea {
 
 #mobile-search-box {
 	width: 100%;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: italic;
 	font-size: 16px;
 	border: 0;
@@ -523,7 +531,7 @@ textarea {
 }
 
 .mobile-primary .menu-item .sub-menu .menu-item a {
-	font-size: 15px;
+	font-size: 16px;
 	background: #f0f0f0;
 }
 
@@ -582,7 +590,7 @@ textarea {
 .mobile-secondary li a {
 	padding: 10px 20px;
 	display: block;
-	font-size: 15px;
+	font-size: 16px;
 	color: #A51417;
 	background: #fff;
 	position: relative;
@@ -634,7 +642,7 @@ input {
 	margin-bottom: 10px;
 	padding: 0;
 	clear: right;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #dirform input {
@@ -654,7 +662,7 @@ input {
 	padding: 0 18px;
 	margin-right: 15px;
 	cursor: pointer;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
 }
 
@@ -684,7 +692,7 @@ button.single-link:hover {
 
 button.single-link {
 	padding: 0 34px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 14px;
 	font-size: 14px;
 	padding: 15px 50px;
@@ -787,8 +795,9 @@ button.single-link:hover {
 #left-nav li a {
 	font-weight: 600;
 	margin-left: 10px;
-	font-size: 14px;
+	font-size: 15px;
 	display: block;
+	letter-spacing: .5px;
 }
 
 #left-nav li a:hover {
@@ -845,10 +854,10 @@ a.wusm-button {
 	display: inline-block;
 	line-height: 14px;
 	margin: 0 20px 0 0;
-	font-size: 14px;
+	font-size: 16px;
 	text-transform: uppercase;
 	color: #fff;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #A51417;
 	padding: 15px 25px;
 	border-radius: 3px;
@@ -863,7 +872,7 @@ a.wusm-button:hover {
 }
 
 article .intro-text {
-	font-size: 22px;
+	font-size: 24px;
 	font-weight: 300;
 	color: #787878;
 	line-height: 30px;
@@ -876,7 +885,7 @@ article .disclaimer {
 }
 
 article .disclaimer p {
-	font-size: 14px;
+	font-size: 15px;
 	color: #333;
 	line-height: 24px;
 }
@@ -906,7 +915,7 @@ article h1 + h2 {
 article p {
 	line-height: 28px;
 	margin-bottom: 25px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 p + ul {
@@ -916,7 +925,7 @@ p + ul {
 article ul {
 	list-style-type: disc;
 	margin-left: 40px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 article ol {
@@ -1192,7 +1201,7 @@ footer {
 
 #site-footer {
 	background-color: #dedede;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 #site-footer-top {
@@ -1417,7 +1426,7 @@ a#wusm-google-plus:hover img {
 
 #wusm-footer-right nav a {
 	text-transform: uppercase;
-	font-size: 11px;
+	font-size: 12px;
 	display: inline-block;
 	padding: 9px 12px;
 	border-left: 1px solid #191919;
@@ -1492,7 +1501,7 @@ a#wusm-google-plus:hover img {
 	margin: 22px 0;
 	padding: 0 55px;
 	width: 220px;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .information-for-left h2 {
@@ -1529,13 +1538,13 @@ a#wusm-google-plus:hover img {
 
 .information-for-li {
 	padding-right: 16%;
-	font-size: 14px;
+	font-size: 15px;
 	margin-bottom: 20px;
 }
 
 .announcement {
 	padding-right: 16%;
-	font-size: 14px;
+	font-size: 15px;
 	margin-bottom: 20px;
 }
 
@@ -1551,7 +1560,7 @@ p.information-for {
 	float: right;
 	margin: -30px 16px 0 0;
 	font-weight: bold;
-	font-size: 11px;
+	font-size: 13px;
 	cursor: pointer;
 }
 
@@ -1624,7 +1633,7 @@ article.search-results {
 
 .home h2 {
 	-webkit-font-smoothing: antialiased;
-	font-size: 30px;
+	font-size: 32px;
 	font-weight: normal;
 }
 
@@ -1633,7 +1642,7 @@ article.search-results {
 }
 
 .text-intro .wrap {
-	font-family: Georgia, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	margin: 0 auto;
 	max-width: 750px;
 	padding: 60px 40px 70px;
@@ -1643,15 +1652,15 @@ article.search-results {
 .text-intro h2 {
 	-webkit-font-smoothing: antialiased;
 	color: #3c3c3d;
-	font-size: 35px;
+	font-size: 32px;
 	margin-bottom: 15px;
 	margin-top: 0;
 }
 
 .text-intro p {
-	font-family: 'Open Sans', Arial, sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #787878;
-	font-size: 22px;
+	font-size: 24px;
 	font-weight: 300;
 	line-height: 30px;
 }
@@ -1666,7 +1675,7 @@ article.search-results {
 	background-repeat: no-repeat;
 	background-position: center;
 	display: block;
-	font-family: Georgia, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	padding: 35% 40px 50%;
 	text-align: center;
 	vertical-align: middle;
@@ -1683,9 +1692,9 @@ article.search-results {
 
 .news-home .news-cards .latest-news-block .link {
 	color: #fff;
-	font-family: 'Open Sans', Arial, sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: 700;
-    font-size: 14px;
+    font-size: 16px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 }
@@ -1760,7 +1769,7 @@ article.search-results {
 	clear: both;
 	letter-spacing: 1px;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 16px;
 	bottom: 0;
 	text-align: center;
 	margin: 20px auto 35px;
@@ -1829,8 +1838,9 @@ article.search-results {
 }
 
 .icons-home .icon .context {
-	font-size: 14px;
+	font-size: 15px;
 	width: 100%;
+	letter-spacing: .5px;
 }
 
 .cta-home {
@@ -1864,7 +1874,7 @@ section.cta-home.turquoise {
 }
 
 .cta-home .cta-text h2 {
-	font-family: Georgia, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	font-size: 28px;
 	font-style: italic;
 	font-weight: 400;
@@ -1872,7 +1882,7 @@ section.cta-home.turquoise {
 }
 
 .cta-home .cta-text p {
-	font-size: 18px;
+	font-size: 20px;
 	line-height: 30px;
 }
 
@@ -1882,7 +1892,7 @@ section.cta-home.turquoise {
 	clear: both;
 	display: inline-block;
 	float: right;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 700;
 	text-align: center;
 	text-transform: uppercase;;
@@ -2000,7 +2010,7 @@ section.cta-home.turquoise {
 .news-filters ul ul {
 	display: none;
 	position: absolute;
-	z-index: 5;
+	z-index: 5; 
 	background: #fff;
 	width: 160px;
 	margin-top: 5px;
@@ -2068,7 +2078,7 @@ section.cta-home.turquoise {
 	height: 21px;
 	border-radius: 3px;
 	outline: 0;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border: 1px solid #ccc;
 	-webkit-appearance: none;
 }
@@ -2274,7 +2284,7 @@ section.cta-home.turquoise {
 	line-height: 1.5;
 }
 .news-cards li h2 {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 600;
 	margin: 0;
 }
@@ -2282,14 +2292,14 @@ section.cta-home.turquoise {
 	margin: 0;
 	color: #333;
 	line-height: 1.7;
-	font-size: 16px;
+	font-size: 18px;
 }
 .generic-cards .article-date,
 .news-cards .article-date {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	letter-spacing: 0.9px;
 }
 .generic-cards .news-source,
@@ -2297,7 +2307,7 @@ section.cta-home.turquoise {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	line-height: 1.3;
 	margin-top: 15px;
 }
@@ -2403,14 +2413,14 @@ section.cta-home.turquoise {
 .article-header h1 {
 	margin: 0 0 12px;
 	padding: 0;
-	font-size: 35px;
+	font-size: 32px;
 	line-height: 43px;
 	border: none;
 }
 .article-header .subhead {
 	margin: 0 0 25px;
 	font-size: 22px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #787878;
 	line-height: 28px;
 }
@@ -2433,15 +2443,15 @@ section.cta-home.turquoise {
 }
 .single-post article > div > p, .single-post article > div > div.related-content > p {
 	margin: 0 0 35px;
-	font-size: 22px;
-	font-family: Georgia, serif;
-	line-height: 1.5;
+	font-size: 20px;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
+	line-height: 1.8;
 }
 .single-post article > div > div.related-content > p:last-child {
 	margin-bottom: 0;
 }
 .single-post p.meta-header {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	letter-spacing: 0.3px;
 	margin: 10px auto 35px;
@@ -2520,7 +2530,7 @@ section.cta-home.turquoise {
 	padding-top: 26px;
 }
 #article-audio .mejs-time span {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #article-audio .mejs-time-total {
 	background: #fff;
@@ -2538,7 +2548,7 @@ section.cta-home.turquoise {
 #article-audio span.mejs-time-float {
 	height: 14px;
 	width: 34px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fff;
 	border: solid 1px #c2c2c2;
 	color: #8f8f8f;
@@ -2586,7 +2596,7 @@ section.cta-home.turquoise {
 }
 .single-post article > div > ul,
 .single-post article > div > ol {
-	font-family: Georgia, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	font-size: 22px;
 	max-width: 680px;
 	margin: 0 0 35px 40px;
@@ -2606,7 +2616,7 @@ section.cta-home.turquoise {
 	height: auto;
 }
 .single-post .featured-image-caption {
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	margin: 17px 0 45px;
 	line-height: 1.5;
@@ -2652,7 +2662,7 @@ section.cta-home.turquoise {
 }
 .single-post .wp-caption-text {
 	font-size: 16px;
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 0;
 	padding: 0 0 10px;
 	line-height: 1.3;
@@ -2684,7 +2694,7 @@ section.cta-home.turquoise {
 	text-transform: uppercase;
 	line-height: 11px;
 	text-align: right;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 3px 0 3px 10px;
 	display: block;
 	color: #909090;
@@ -2697,20 +2707,20 @@ section.cta-home.turquoise {
 	border: none;
 	font-weight: 700;
 	font-style: italic;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 32px;
 	text-align: center;
 	line-height: 40px;
 }
 .single-post blockquote p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 32px;
 	line-height: 40px;
 	margin: 45px 0;
 }
 .single-post blockquote .name {
 	display: block;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: -20px auto 45px;
 	text-align: center;
 	font-weight: bold;
@@ -2720,7 +2730,7 @@ section.cta-home.turquoise {
 
 .single-post .news-source {
 	text-transform: uppercase;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #838383;
 	font-weight: 600;
 	font-size: 14px;
@@ -2731,8 +2741,8 @@ section.cta-home.turquoise {
 	clear: both;
 }
 .single-post .article-footer p {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px;
 	line-height: 21px;
 	margin: 0 0 12px 0;
 }
@@ -2740,8 +2750,8 @@ section.cta-home.turquoise {
 	margin-bottom: 30px;
 }
 .single-post .boilerplate p {
-	font-size: 14px;
-	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 21px;
 	margin: 0 0 16px;
 }
@@ -2754,7 +2764,7 @@ section.cta-home.turquoise {
 }
 .footer-author p.name {
 	margin-bottom: 10px;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 600;
 }
 .footer-media-contact {
@@ -2819,7 +2829,7 @@ section.cta-home.turquoise {
 	line-height: 28px;
 	max-width: 520px;
 	margin: 0 auto;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .page-template-admissions-php img {
@@ -2830,7 +2840,7 @@ section.cta-home.turquoise {
 .page-template-admissions-php .hero-list {
 	font-weight: 600;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 20px;
 	max-width: 720px;
 	position: relative;
@@ -2884,8 +2894,8 @@ ul.program-list li.last-child {
 }
 
 .page-template-admissions-php .hero-list-title {
-	font-size: 18px;
-	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	border-bottom: 1px solid #d5d2d2;
 	line-height: 25px;
 	padding: 10px 0;
@@ -2912,7 +2922,7 @@ ul.program-list li.last-child {
 
 .admission-footer .list-title {
 	font-size: 18px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 25px;
 	border-bottom: 1px solid #d5d2d2;
 	width: 98%;
@@ -2977,7 +2987,7 @@ ul.program-list li.last-child {
 	border-bottom: solid 1px #dedccd;
 	font-weight: normal;
 	font-size: 23px;
-	font-family: Georgia, Times, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 	line-height: 23px;
 }
 
@@ -3657,14 +3667,14 @@ ul.program-list li.last-child {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	letter-spacing: 0.9px;
 }
 .generic-cards .patient-source {
 	text-transform: uppercase;
 	color: #838383;
 	font-weight: 600;
-	font-size: 12px;
+	font-size: 13px;
 	line-height: 1.3;
 	margin-top: 15px;
 }
@@ -4021,7 +4031,7 @@ a.sidebar-outlook-link {
 }
 
 .georgia {
-	font-family: Georgia, Times, serif;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
 }
 
 #site-title-text {
@@ -4799,7 +4809,7 @@ a.sidebar-outlook-link {
 @media screen and ( max-width: 768px ) {
 	.home-banner-single h2,
 	.text-intro h2 {
-		font-size: 28px;
+		font-size: 24px;
 	}
 
 	.news-home .news {
@@ -5066,11 +5076,11 @@ a.sidebar-outlook-link {
 	}
 
 	.text-intro h2 {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.text-intro p {
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.text-intro .wrap {
@@ -5100,16 +5110,16 @@ a.sidebar-outlook-link {
 	}
 
 	.cta-home .cta-text h2 {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.cta-home .cta-text p {
-		font-size: 16px;
+		font-size: 18px;
 		line-height: 30px;
 	}
 
 	.cta-home .cta-button {
-		font-size: 16px;
+		font-size: 18px;
 		padding: 35px 0;
 	}
 }
