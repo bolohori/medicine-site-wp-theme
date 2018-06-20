@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<div id="page-background"></div>
 	<div id="main" class="clearfix">
 	<div class="wrapper clearfix">
 		<div id="page-background-inner"></div>
