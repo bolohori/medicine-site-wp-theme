@@ -163,8 +163,10 @@ get_header(); ?>
 				}
 				
 			} ?>
-			<nav id="paginate-results">
-			<?php
+			<nav class="navigation pagination" role="navigation">
+				<h2 class="screen-reader-text">Posts navigation</h2>
+				<div class="nav-links">
+				<?php
 	            $big = 999999999; // need an unlikely integer
 
 				echo paginate_links( array(
@@ -172,7 +174,8 @@ get_header(); ?>
 					'current' => $paged,
 					'total' => $pages_of_results,
 				) );
-			?>
+				?>
+				</div>
 			</nav>
 		</article>
 

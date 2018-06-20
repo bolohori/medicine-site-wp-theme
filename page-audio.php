@@ -33,8 +33,10 @@ get_header(); ?>
                     } ?>
                 </ul>
             </div>
-           <nav id="paginate-results">
-			<?php
+            <nav class="navigation pagination" role="navigation">
+				<h2 class="screen-reader-text">Posts navigation</h2>
+				<div class="nav-links">
+			    <?php
 				$big = 999999999; // need an unlikely integer
 
 				echo paginate_links( array(
@@ -42,9 +44,10 @@ get_header(); ?>
 					'current' => max( 1, get_query_var('paged') ),
 					'total' => $the_query->max_num_pages
 				) );
-            }
-               ?>
+                ?>
+               </div>
 	    	</nav>
+            <?php } ?>
 
         </article>
 

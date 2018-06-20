@@ -94,7 +94,9 @@ if (have_posts()) :
 
 					} ?>
 				</ul>
-				<nav id="paginate-results">
+				<nav class="navigation pagination" role="navigation">
+					<h2 class="screen-reader-text">Posts navigation</h2>
+					<div class="nav-links">
 					<?php
 						$big = 999999999; // need an unlikely integer
 
@@ -104,6 +106,7 @@ if (have_posts()) :
 							'total' => $the_query->max_num_pages
 						) );
 					?>
+					</div>
 				</nav>
 			</div>
 			<?php 
