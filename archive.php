@@ -1,20 +1,35 @@
-<?php get_header(); ?>
+<?php
+if ( is_category() || is_tax() ) {
+	$type_type = 'news';
+	$post_type = get_query_var( 'news' );
+} else {
+	$type_type = 'post_type';
+	$post_type = get_post_type();
+}
+
+$num_to_fetch = apply_filters( "{$post_type}_num_per_page", 30 );
+
+get_header(); ?>
 <div id="page-background"></div>
 	<div id="main" class="clearfix">
 	<div class="wrapper clearfix">
 		<div id="page-background-inner"></div>
 		<?php get_sidebar(); ?>
-		
+
 		<article>
 			<h1><?php the_archive_title(); ?></h1>
+			<?php
+				$template = locate_template( "_/php/headers/$post_type.php" );
+				if ( '' !== $template ) {
+					get_template_part( "_/php/headers/$post_type" );
+				}
+			?>
 			<?php if ( have_posts() ) { ?>
 				<?php
-				$post_type = get_post_type();
-				$num_to_fetch = apply_filters( "{$post_type}_num_per_page", 30 );
 				if ( 0 === $paged ) {
 					// WP_Query arguments
 					$args = array(
-						'post_type'      => $post_type,
+						$type_type       => $post_type,
 						'posts_per_page' => $num_to_fetch,
 						'orderby'        => 'menu_order',
 						'order'          => 'ASC',
@@ -29,13 +44,12 @@
 						while ( $query->have_posts() ) {
 
 							$query->the_post();
-							$template = locate_template( "_/php/news/card-$post_type.php" );
+							$template = locate_template( "_/php/cards/$post_type.php" );
 							if ( '' === $template ) {
 								get_template_part( '_/php/news/card' );
 							} else {
-								get_template_part( "_/php/news/card-$post_type" );
+								get_template_part( "_/php/cards/$post_type" );
 							}
-
 						}
 						echo '<hr>';
 						wp_reset_postdata();
@@ -44,11 +58,11 @@
 				while ( have_posts() ) {
 					the_post();
 
-					$template = locate_template( "_/php/news/card-$post_type.php" );
+					$template = locate_template( "_/php/cards/$post_type.php" );
 					if ( '' === $template ) {
 						get_template_part( '_/php/news/card' );
 					} else {
-						get_template_part( "_/php/news/card-$post_type" );
+						get_template_part( "_/php/cards/$post_type" );
 					}
 				}
 ?>
