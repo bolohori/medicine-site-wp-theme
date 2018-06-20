@@ -4068,6 +4068,10 @@ a.sidebar-outlook-link {
 		margin: 0 auto;
 		max-width: 940px;
 	}
+	.hero-text .hero-headline {
+		display: inline-block;
+		max-width: 700px;
+	}
 }
 
 @media screen and ( max-width: 1000px ) {
@@ -4135,13 +4139,18 @@ a.sidebar-outlook-link {
 		display: none;
 	}
 
+	.hero-banner {
+		height: 300px;
+	}
+
 	.hero-banner .hero-container {
 		width: 100%;
 	}
 
 	.hero-banner .hero-text {
 		color: #fff;
-		max-width: 800px;
+		max-width: 600px;
+		padding: 0 75px;
 		text-shadow: 0 2px 3px #333;
 	}
 
