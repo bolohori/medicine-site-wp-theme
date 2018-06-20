@@ -59,6 +59,7 @@ function create_custom_post_types() {
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'query_var'           => true,
+		'has_archive'         => true,
 		'rewrite'             => array( 'slug' => 'announcements' ),
 		'capability_type'     => 'post',
 		'hierarchical'        => true,
