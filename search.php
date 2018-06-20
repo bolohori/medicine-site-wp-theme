@@ -161,7 +161,7 @@ get_header(); ?>
 				<?php
 					}
 				}
-				
+
 			} ?>
 			<nav class="navigation pagination" role="navigation">
 				<h2 class="screen-reader-text">Posts navigation</h2>
