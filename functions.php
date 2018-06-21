@@ -1058,3 +1058,7 @@ function ssp_remove_download_link( $meta, $episode_id, $context ) {
 
 // Remove default player.
 add_filter( 'ssp_show_media_player', '__return_false' );
+
+if ( ! class_exists( 'wusm_archives_plugin' ) ) {
+	add_shortcode( 'wusm_archive', function() { return false; } );
+}
