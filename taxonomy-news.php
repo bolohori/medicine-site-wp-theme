@@ -5,6 +5,9 @@ get_header();
 	<div id="main" class="page-news clearfix">
 		<?php get_template_part( '_/php/news/header' ); ?>
 		<article>
+			<div class="news-type-title">
+				<p><?php the_archive_title(); ?></p>
+			</div>
 			<?php
 			if ( have_posts() ) {
 			?>
