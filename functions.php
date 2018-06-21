@@ -250,7 +250,7 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * them if they aren't logged in
 		 */
 		wp_deregister_style( 'open-sans' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600|Open+Sans+Condensed:700' );
+		wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Source+Sans+Pro:300,400,400i,600,700,700i' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );

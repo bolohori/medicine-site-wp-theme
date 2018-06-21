@@ -47,7 +47,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				echo '<div class="hero-text">';
 					echo '<span class="hero-headline">' . $heroheadline . '</span>';
 					echo '<p>' . $herodesc . '</p>';
-					echo '<a class="hero-button" href="' . $herobuttonlink . '">' . $herobuttontext . ' &gt;</a>';
+					echo '<a class="hero-button" href="' . $herobuttonlink . '">' . $herobuttontext . '</a>';
 				echo '</div>';
 			echo '</div>';
 		}
