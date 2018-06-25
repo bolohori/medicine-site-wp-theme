@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.06.21.1
+Version:	 2018.06.25.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -1726,7 +1726,7 @@ article.search-results {
 .hero-banner .hero-text {
 	color: #fff;
 	font-size: 16px;
-	max-width: 940px;
+	max-width: 640px;
 	padding: 0 5%;
 	text-shadow: 0 2px 3px #000;
 }
@@ -1740,9 +1740,10 @@ article.search-results {
 }
 
 .hero-text p {
-	font-size: 32px;
-	font-weight: 400;
-	line-height: 1.1;
+	font-size: 28px;
+	font-weight: 300;
+	letter-spacing: 0.5px;
+	line-height: 1.2;
 	margin: 10px 0 30px;
 	max-width: 600px;
 }
@@ -1753,8 +1754,8 @@ article.search-results {
 	color: #fff;
 	display: inline-block;
 	font-size: 24px;
-	font-weight: 700;
-	padding: 7px 12px;
+	font-weight: 600;
+	padding: 8px 30px;
 	text-transform: uppercase;
 }
 
@@ -1769,7 +1770,7 @@ article.search-results {
 	content: '';
 	display: inline-block;
 	height: 19px;
-	margin: 0 0 -3px 4px;
+	margin: 0 0 -3px 14px;
 	width: 14px;
 }
 
@@ -4095,8 +4096,8 @@ a.sidebar-outlook-link {
 
 	.hero-banner .hero-text {
 		color: #fff;
-		font-size: 16px;
-		max-width: 940px;
+		font-size: 24px;
+		max-width: 540px;
 		text-shadow: 0 2px 3px #000;
 	}
 
@@ -4111,6 +4112,7 @@ a.sidebar-outlook-link {
 
 	.hero-text .hero-button {
 		font-size: 24px;
+		padding: 8px 25px;
 	}
 }
 
@@ -4189,9 +4191,9 @@ a.sidebar-outlook-link {
 
 	.hero-banner .hero-text {
 		color: #fff;
-		max-width: 600px;
+		max-width: 400px;
 		padding: 0 7%;
-		text-shadow: 0 2px 3px #333;
+		text-shadow: 1px 4px 4px #000;
 	}
 
 	.hero-text .hero-headline {
@@ -5032,7 +5034,7 @@ a.sidebar-outlook-link {
 	}
 
 	.hero-banner.mobile {
-		height: 150px;
+		height: 200px;
 	}
 
 	.hero-banner .hero-text {
@@ -5040,14 +5042,15 @@ a.sidebar-outlook-link {
 		background-size: 100px 100px;
 		left: 0;
 		margin: 0;
+		max-width: 100%;
 		padding: 6% 5% 7%;
 		position: relative;
 	}
 
 	.hero-text .hero-headline {
-		font-size: 42px;
+		font-size: 32px;
 		display: block;
-		margin-bottom: 10px;
+		margin-bottom: 20px;
 	}
 
 	.hero-text p {
@@ -5055,17 +5058,11 @@ a.sidebar-outlook-link {
 	}
 
 	.hero-text .hero-button {
-		font-size: 28px;
+		font-size: 24px;
 	}
 
 	.hero-text .hero-button::after {
-		background: url('_/img/arrow-white.svg');
-		background-repeat: no-repeat;
-		content: '';
-		display: inline-block;
-		height: 22px;
-		margin: 0 0 -3px 6px;
-		width: 16px;
+		margin: 0 0 -4px 14px;
 	}
 
 	#mobile-menu-icon {
@@ -5305,11 +5302,11 @@ a.sidebar-outlook-link {
 }
 @media screen and (max-width: 480px) {
 	.hero-text .hero-headline {
-		font-size: 36px;
+		font-size: 28px;
 	}
 
 	.hero-text .hero-button {
-		font-size: 24px;
+		font-size: 20px;
 	}
 }
 @media screen and ( max-width: 470px ) {
@@ -5348,6 +5345,27 @@ a.sidebar-outlook-link {
 		width: 110px;
 	}
 }
+
+@media screen and (max-width: 320px) {
+	.hero-text .hero-button {
+		font-size: 16px;
+		padding: 10px 15px;
+	}
+
+	.hero-text .hero-button::after {
+		height: 16px;
+		margin: 0 0 -4px 4px;
+	}
+
+	.hero-banner.mobile {
+		height: 150px;
+	}
+
+	.hero-text .hero-headline {
+		font-size: 24px;
+	}
+}
+
 @media screen and ( max-width: 310px ) {
 	#dirform .dir-group input[type=text],
 	#dirform .dir-group input[type=email] {
