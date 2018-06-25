@@ -1,8 +1,9 @@
 <?php get_header(); ?>
-	<div id="main" class="clearfix">
+	<div id="main" class="page-news clearfix">
 	<?php get_template_part( '_/php/news/header' ); ?>
 
 	<article>
+		<div class="news-type-title"><p>Editors’ Picks</p></div>
 	<?php
 	if ( have_posts() ) { ?>
 		<div class="news-cards">
