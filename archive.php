@@ -19,10 +19,10 @@ get_header(); ?>
 		<article>
 			<h1><?php the_archive_title(); ?></h1>
 			<?php
-				$template = locate_template( "_/php/headers/$post_type.php" );
-				if ( '' !== $template ) {
-					get_template_part( "_/php/headers/$post_type" );
-				}
+			$template = locate_template( "_/php/headers/$post_type.php" );
+			if ( '' !== $template ) {
+				get_template_part( "_/php/headers/$post_type" );
+			}
 			?>
 			<?php if ( have_posts() ) { ?>
 				<?php
@@ -37,7 +37,7 @@ get_header(); ?>
 						'meta_value'     => 1,
 					);
 
-					// The Query
+					// The Query.
 					$query = new WP_Query( $args );
 
 					if ( $query->have_posts() ) {

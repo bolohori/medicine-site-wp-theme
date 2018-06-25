@@ -625,6 +625,7 @@ textarea {
 	padding: 35px 0 0;
 }
 
+.page-news #editors-picks-results,
 .page-news #paginate-results {
 	text-align: center;
 }
@@ -1972,6 +1973,7 @@ section.cta-home.turquoise {
 /* News page
 -------------------------------------------------------------------------------*/
 
+.editors-picks-news,
 .page-news {
 	width: 100%;
 	background: none;
@@ -1980,11 +1982,13 @@ section.cta-home.turquoise {
 	float: none;
 }
 
+.category-editors-picks header,
 .page-news header {
 	max-width: 940px;
 	margin: 0 auto;
 	width: 88%;
-}
+
+.page-news editors-picks,}
 .page-news h1 {
 	display: inline-block;
 	float: left;
@@ -2170,6 +2174,7 @@ section.cta-home.turquoise {
 	display: block;
 }
 
+.category-editors-picks article,
 .page-news article {
 	float: none;
 	padding: 35px 0;
@@ -2367,15 +2372,18 @@ section.cta-home.turquoise {
 	font-size: 13px;
 	line-height: 1.3;
 	margin-top: 15px;
-}
+
+.page-news .editors-picks,}
 .page-news .pagination {
 	padding: 30px 0;
 	text-align: center;
-}
+
+.page-news .next-editors-picks,}
 .page-news .next-posts {
 	display: inline-block;
 	margin: 0;
-}
+
+.page-news .next-posts editors-picks,}
 .page-news .next-posts a {
 	color: #fff;
 	padding: 15px 50px;
@@ -2389,7 +2397,8 @@ section.cta-home.turquoise {
 	text-transform: uppercase;
 	-webkit-transition: background 0.1s ease;
 	transition: background 0.1s ease;
-}
+
+.page-news .next-posts a:editors-picks,}
 .page-news .next-posts a:hover {
 	background: #c40000;
 }
@@ -4223,7 +4232,8 @@ a.sidebar-outlook-link {
 
 	li.headshot:last-child {
 		display: none;
-	}
+	
+	.category-editors-picks,}
 	#main.page-news {
 		background: none;
 	}
@@ -4995,11 +5005,13 @@ a.sidebar-outlook-link {
 		float: none;
 	}
 }
-@media screen and ( max-width: 700px ) {
+@med
+.editors-picks-news,ia screen and ( max-width: 700px ) {
 	.page-news {
 		padding-top: 30px;
 	}
 
+	.category-editors-picks h1,
 	.page-news h1 {
 		margin-bottom: 20px;
 		float: none;
@@ -5016,6 +5028,7 @@ a.sidebar-outlook-link {
 		margin-right: 0;
 	}
 
+	.category-editors-picks article,
 	.page-news article {
 		padding: 6% 0;
 	}
