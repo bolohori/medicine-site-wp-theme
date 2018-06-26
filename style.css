@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.06.25.3
+Version:	 2018.06.25.4
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -1809,12 +1809,16 @@ article.search-results {
 	text-transform: uppercase;
 }
 
+.hero-text .hero-button .homebuttonwrap {
+	display: inline-block;
+}
+
 .hero-text .hero-button:hover {
 	background: rgba(0, 0, 0, .8);
 	transition: fade-in 1s;
 }
 
-.hero-text .hero-button::after {
+.hero-text .hero-button .homebuttonwrap::after {
 	background: url('_/img/arrow-white.svg');
 	background-repeat: no-repeat;
 	content: '';
@@ -4296,6 +4300,10 @@ a.sidebar-outlook-link {
 	.hero-text .hero-button {
 		font-size: 20px;
 	}
+	
+	.hero-text .hero-button .homebuttonwrap::after {
+		height: 18px;
+	}
 }
 @media screen and ( max-width: 970px ) {
 	#header-site-row {
@@ -5150,7 +5158,8 @@ a.sidebar-outlook-link {
 		font-size: 24px;
 	}
 
-	.hero-text .hero-button::after {
+	.hero-text .hero-button .homebuttonwrap::after {
+		height: 20px;
 		margin: 0 0 -4px 14px;
 	}
 
@@ -5397,6 +5406,11 @@ a.sidebar-outlook-link {
 	.hero-text .hero-button {
 		font-size: 20px;
 	}
+
+	.hero-text .hero-button .homebuttonwrap::after {
+		height: 19px;
+		margin: 0 0 -4px 10px;
+	}
 }
 @media screen and ( max-width: 470px ) {
 	.faculty-individual:before {
@@ -5441,17 +5455,17 @@ a.sidebar-outlook-link {
 		padding: 10px 15px;
 	}
 
-	.hero-text .hero-button::after {
-		height: 16px;
-		margin: 0 0 -4px 4px;
-	}
-
 	.hero-banner.mobile {
 		height: 150px;
 	}
 
 	.hero-text .hero-headline {
 		font-size: 24px;
+	}
+
+	.hero-text .hero-button .homebuttonwrap::after {
+		height: 16px;
+		margin: 0 0 -4px 4px;
 	}
 }
 

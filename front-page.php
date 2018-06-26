@@ -1,7 +1,8 @@
-<?php 
-
-// Added expires header for front page
-header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + (12 * 60 * 60)));
+<?php
+/**
+ * Added expires header for front page
+ */
+header( 'Expires: ' .gmdate( 'D, d M Y H:i:s \G\M\T', time() + ( 12 * 60 * 60 ) ) );
 
 get_header(); 
 if ( get_field( 'hero_image', 'option' ) ) {
@@ -31,27 +32,34 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		}
 	}
 </style>
-<section class="hero-banner desktop">
-	<?php
-		if ( get_field( 'hero_image', 'option' ) ) {
-			// Adds featured image size for pages.
-			$heroalign = get_field( 'text_alignment', 'option' );
-			$heroheadline = get_field( 'headline', 'option' );
-			$herodesc = get_field( 'descriptive_text', 'option' );
-			$herobuttontext = get_field( 'button_text', 'option' );
-			$herobuttonlink = get_field( 'button_link', 'option' );
 
-			// generate the markup for the responsive image
-			echo '<div class="hero-banner mobile"></div>';
-			echo '<div class="hero-container">';
-				echo '<div class="hero-text">';
-					echo '<span class="hero-headline">' . $heroheadline . '</span>';
-					echo '<p>' . $herodesc . '</p>';
-					echo '<a class="hero-button" href="' . $herobuttonlink . '">' . $herobuttontext . '</a>';
-				echo '</div>';
-			echo '</div>';
-		}
-	?>
+<section class="hero-banner desktop">
+<?php
+if ( get_field( 'hero_image', 'option' ) ) {
+	// Adds featured image size for pages.
+	$heroalign = get_field( 'text_alignment', 'option' );
+	$heroheadline = get_field( 'headline', 'option' );
+	$herodesc = get_field( 'descriptive_text', 'option' );
+	$herobuttontext = get_field( 'button_text', 'option' );
+	$herobuttonlink = get_field( 'button_link', 'option' );
+
+	/*
+	 * Making the string able to have the arrow wrap
+	 * with the last word.
+	*/
+	$explodedbutton = explode( ' ', $herobuttontext );
+	$herobuttonlast = array_pop( $explodedbutton );
+
+	echo '<div class="hero-banner mobile"></div>';
+	echo '<div class="hero-container">';
+		echo '<div class="hero-text">';
+			echo '<span class="hero-headline">' . esc_html( $heroheadline ) . '</span>';
+			echo '<p>' . esc_html( $herodesc ) . '</p>';
+			echo '<a class="hero-button" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="homebuttonwrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
+		echo '</div>';
+	echo '</div>';
+}
+?>
 </section>
 
 <?php
