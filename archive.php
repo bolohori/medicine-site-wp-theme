@@ -15,9 +15,14 @@
 				<?php
 				while ( have_posts() ) {
 					the_post();
-
-					get_template_part( '_/php/news/card' );
-
+					// is_post_type_archive( 'in_the_news' );
+					$post_type = get_post_type();
+					$template  = locate_template( "_/php/cards/$post_type.php" );
+					if ( '' !== $template ) {
+						get_template_part( "_/php/cards/$post_type" );
+					} else {
+						get_template_part( '_/php/news/card' );
+					}
 				}
 				?>
 				</ul>
