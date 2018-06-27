@@ -10,14 +10,13 @@ $search_query = array();
 
 // and this is how we stuff those arguments into the array
 foreach ( $query_args as $key => $string ) {
-	$query_split = explode( '=', $string );
+	$query_split                     = explode( '=', $string );
 	$search_query[ $query_split[0] ] = urldecode( $query_split[1] );
 } // foreach
 
 // We've got our "hacked" query ready to run, so run it
 // uh...don't need this
-//$search = new WP_Query($search_query);
-
+// $search = new WP_Query($search_query);
 // Now that our hacked query has been run, we can treat it like it wasn't hacked
 $search_terms = get_search_query();
 
@@ -38,7 +37,7 @@ $num_of_funnelback_results = ( $last_wp_page_results_cnt == 0 ) ? 10 : 10 - $las
 if ( ( $num_of_wordpress_results == 0 ) && ( $paged != 1 ) ) {
 	// We've got our twice-hacked "hacked" query ready to run, so run it
 	$search_query['paged'] = 1;
-	$hacked_query = new WP_Query( $search_query );
+	$hacked_query          = new WP_Query( $search_query );
 
 	$num_of_wordpress_results = $hacked_query->found_posts;
 }
@@ -53,12 +52,12 @@ $terms = str_replace( ' ', '+', $search_terms );
  * NEW FUNNELBACK STUFF!!!
  */
 
-$collection = 'wustl-gsa-meta';
-$profile = '_default';
-$start_rank = 1;
-$search_url = "https://search.wustl.edu/s/search.json?collection=$collection&profile=$profile&query=$terms&start_rank=$start_rank";
-$json = file_get_contents( $search_url );
-$search_results = json_decode( $json );
+$collection               = 'wustl-gsa-meta';
+$profile                  = '_default';
+$start_rank               = 1;
+$search_url               = "https://search.wustl.edu/s/search.json?collection=$collection&profile=$profile&query=$terms&start_rank=$start_rank";
+$json                     = file_get_contents( $search_url );
+$search_results           = json_decode( $json );
 $total_funnelback_results = $search_results->response->resultPacket->resultsSummary->totalMatching;
 
 /**
@@ -73,7 +72,7 @@ if ( ! isset( $paged ) || $paged == 0 ) {
 $start = ( $num_of_wp_result_pages + 1 == $paged ) ? 0 : ( ( $paged - $num_of_wp_result_pages - 1 ) * 10 );
 
 // Total pages of results, displaying 10 items per page
-//$pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
+// $pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
 $pages_of_results = ceil( ( $num_of_wordpress_results + $total_funnelback_results ) / 10 );
 
 get_header(); ?>
@@ -152,7 +151,7 @@ get_header(); ?>
 					foreach ( $search_results->response->resultPacket->results as $result ) {
 					?>
 						<p class='search-result'>
-						<span style="font-size: 16px;"><a data-category="search-result-<?php echo filter_var($search_terms, FILTER_SANITIZE_STRING); ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
+						<span style="font-size: 16px;"><a data-category="search-result-<?php echo filter_var( $search_terms, FILTER_SANITIZE_STRING ); ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
 						<?php if ( $result->summary != '' ) { ?>
 							<br><?php echo $result->summary; ?>
 						<?php } ?>
@@ -161,19 +160,23 @@ get_header(); ?>
 				<?php
 					}
 				}
-
-			} ?>
+			}
+			?>
 			<nav class="navigation pagination" role="navigation">
 				<h2 class="screen-reader-text">Posts navigation</h2>
 				<div class="nav-links">
 				<?php
-	            $big = 999999999; // need an unlikely integer
+				$big = 999999999; // need an unlikely integer
 
-				echo paginate_links( array(
-					'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-					'current' => $paged,
-					'total' => $pages_of_results,
-				) );
+				echo paginate_links(
+					array(
+						'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+						'current'   => $paged,
+						'total'     => $pages_of_results,
+						'prev_text' => __( '‹ Prev' ),
+						'next_text' => __( 'Next ›' ),
+					)
+				);
 				?>
 				</div>
 			</nav>

@@ -66,9 +66,11 @@ get_header(); ?>
 
 						echo paginate_links(
 							array(
-								'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-								'current' => max( 1, get_query_var( 'paged' ) ),
-								'total'   => $query->max_num_pages,
+								'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+								'current'   => max( 1, get_query_var( 'paged' ) ),
+								'total'     => $query->max_num_pages,
+								'prev_text' => __( '‹ Prev' ),
+								'next_text' => __( 'Next ›' ),
 							)
 						);
 					?>

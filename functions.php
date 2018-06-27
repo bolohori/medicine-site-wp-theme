@@ -882,7 +882,7 @@ add_filter( 'posts_where', 'author_archive_where' );
 function author_archive_title() {
 	global $wp_query;
 	if ( $wp_query->is_main_query() && is_author() ) {
-		// Author archive pages
+		// Author archive pages.
 		$curauth = get_user_by( 'slug', $wp_query->query['author_name'] );
 		return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
 	}

@@ -38,9 +38,9 @@ if ( have_posts() ) :
 								<img src="<?php echo get_template_directory_uri() . '/_/img/play.png'; ?>" class="video-play-icon">
 							</div>
 						<?php
-						} else {
-							the_post_thumbnail( 'news' );
-						}
+} else {
+	the_post_thumbnail( 'news' );
+}
 						?>
 						<div class="editors-pick-text">
 							<p class="article-date"><?php the_time( get_option( 'date_format' ) ); ?></p>
@@ -113,9 +113,11 @@ if ( have_posts() ) :
 
 						echo paginate_links(
 							array(
-								'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-								'current' => max( 1, get_query_var( 'paged' ) ),
-								'total'   => $the_query->max_num_pages,
+								'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+								'current'   => max( 1, get_query_var( 'paged' ) ),
+								'total'     => $the_query->max_num_pages,
+								'prev_text' => __( '‹ Prev' ),
+								'next_text' => __( 'Next ›' ),
 							)
 						);
 					?>
