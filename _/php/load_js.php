@@ -3,11 +3,6 @@ function queue_wusm_scripts() {
 	wp_deregister_script('modernizr'); // deregister
 	wp_enqueue_script('modernizr', get_stylesheet_directory_uri() . '/_/js/modernizr.js', false, '2.6.2');
 
-	if(is_front_page()) {
-		wp_enqueue_script( 'slick', get_stylesheet_directory_uri() . '/_/js/slick.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'slick-settings', get_stylesheet_directory_uri() . '/_/js/medicine-slick.js', array( 'slick' ) );
-	}
-
 	wp_register_script('wusm-fitvids', get_template_directory_uri() . '/_/js/jquery.fitvids.min.js', array( 'jquery' ), '1.1', true );
 
 	wp_enqueue_script('custom_functions', get_stylesheet_directory_uri() . '/_/js/functions.js', array( 'jquery' ) );

@@ -25,6 +25,13 @@ add_action(
 	}, 20
 );
 
+add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
+function wusm_acf_json_load_point( $paths ) {
+	unset($paths[0]);
+	$paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+}
+
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
@@ -146,6 +153,12 @@ add_image_size( 'headshot', 250, 345, true );
 add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
 
+// Adds featured image size for pages.
+add_image_size( 'hero-img-sm', 720, 275, true );
+add_image_size( 'hero-img', 1440, 550, true );
+add_image_size( 'hero-img-1_5x', 2160, 825, true );
+add_image_size( 'hero-img-2x', 2880, 1100, true );
+
 // Image sizes (Settings / Media)
 update_option( 'medium_size_w', 300 );
 update_option( 'medium_size_h', null );
@@ -237,7 +250,7 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * them if they aren't logged in
 		 */
 		wp_deregister_style( 'open-sans' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600|Open+Sans+Condensed:700' );
+		wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Source+Sans+Pro:300,400,400i,600,700,700i' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );
@@ -869,7 +882,7 @@ add_filter( 'posts_where', 'author_archive_where' );
 function author_archive_title() {
 	global $wp_query;
 	if ( $wp_query->is_main_query() && is_author() ) {
-		// Author archive pages
+		// Author archive pages.
 		$curauth = get_user_by( 'slug', $wp_query->query['author_name'] );
 		return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
 	}
@@ -1058,3 +1071,6 @@ function ssp_remove_download_link( $meta, $episode_id, $context ) {
 
 // Remove default player.
 add_filter( 'ssp_show_media_player', '__return_false' );
+
+remove_shortcode( 'wusm_archive' );
+add_shortcode( 'wusm_archive', function() { return false; } );
