@@ -27,9 +27,20 @@ add_action(
 
 add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
 function wusm_acf_json_load_point( $paths ) {
-	unset($paths[0]);
 	$paths[] = get_stylesheet_directory() . '/acf-json';
     return $paths;
+}
+
+/*
+ * This is so we can save ACF JSON files on our local
+ * environments but not on the servers.
+ */
+if ( WP_DEBUG === true ) {
+	add_filter('acf/settings/save_json', 'wusm_acf_json_save_point'); 
+	function wusm_acf_json_save_point( $path ) {
+		$path = get_stylesheet_directory() . '/acf-json';
+		return $path;
+	}
 }
 
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
@@ -72,20 +83,6 @@ if ( ! function_exists( 'medicine_head_cleanup' ) ) {
 	}
 }
 add_action( 'init', 'medicine_head_cleanup' );
-
-/*
- * Remove WP version from scripts
- */
-if ( ! function_exists( 'medicine_remove_wp_ver_css_js' ) ) {
-	function medicine_remove_wp_ver_css_js( $src ) {
-		if ( strpos( $src, 'ver=' ) ) {
-			$src = remove_query_arg( 'ver', $src );
-		}
-		return $src;
-	}
-}
-add_filter( 'style_loader_src', 'medicine_remove_wp_ver_css_js' );
-add_filter( 'script_loader_src', 'medicine_remove_wp_ver_css_js' );
 
 /*
  * remove WP version from RSS
@@ -254,8 +251,11 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );
-		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
-
+		
+		// Save same data about the theme into a variable
+		$medicine_theme_data = wp_get_theme();
+		// Enqueue a CSS style file
+		wp_enqueue_style( 'medicine-style', get_stylesheet_directory_uri() . '/style.css', array(), $medicine_theme_data->Version );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
