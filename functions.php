@@ -85,20 +85,6 @@ if ( ! function_exists( 'medicine_head_cleanup' ) ) {
 add_action( 'init', 'medicine_head_cleanup' );
 
 /*
- * Remove WP version from scripts
- */
-if ( ! function_exists( 'medicine_remove_wp_ver_css_js' ) ) {
-	function medicine_remove_wp_ver_css_js( $src ) {
-		if ( strpos( $src, 'ver=' ) ) {
-			$src = remove_query_arg( 'ver', $src );
-		}
-		return $src;
-	}
-}
-add_filter( 'style_loader_src', 'medicine_remove_wp_ver_css_js' );
-add_filter( 'script_loader_src', 'medicine_remove_wp_ver_css_js' );
-
-/*
  * remove WP version from RSS
  */
 add_filter(
@@ -265,8 +251,11 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );
-		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
-
+		
+		// Save same data about the theme into a variable
+		$medicine_theme_data = wp_get_theme();
+		// Enqueue a CSS style file
+		wp_enqueue_style( 'medicine-style', get_stylesheet_directory_uri() . '/style.css', array(), $medicine_theme_data->Version );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
