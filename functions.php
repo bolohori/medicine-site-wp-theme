@@ -31,6 +31,18 @@ function wusm_acf_json_load_point( $paths ) {
     return $paths;
 }
 
+/*
+ * This is so we can save ACF JSON files on our local
+ * environments but not on the servers.
+ */
+if ( WP_DEBUG === true ) {
+	add_filter('acf/settings/save_json', 'wusm_acf_json_save_point'); 
+	function wusm_acf_json_save_point( $path ) {
+		$path = get_stylesheet_directory() . '/acf-json';
+		return $path;
+	}
+}
+
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
