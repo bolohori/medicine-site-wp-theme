@@ -75,11 +75,6 @@ jQuery(document).ready(function($) {
             setTimeout(delayAnimate, 200)
             $('#mobile-menu-icon').addClass('open');
         }
-        if($('#mobile-search-icon').hasClass('search-active')) {
-            $('#mobile-search-form').css('top', '-62px');
-            $('#mobile-search-icon').removeClass('search-active');
-            $('#mobile-search-form').removeClass('active');
-        }
     }); 
 
     $('.expand').click( function() {
@@ -105,24 +100,6 @@ jQuery(document).ready(function($) {
                 $(this).find('.animate').removeClass('animate');
             });
         }
-    });
-
-    $('#mobile-search-icon').click(function() {
-        if($('#mobile-menu-icon').hasClass('open')) {
-            siteHeader.height('auto');
-            $('.header-wrap').toggleClass('pull');
-            $('html').removeClass('stick');
-            $('#mobile-menu-icon').removeClass('open');
-            mobilenav.find('.active').removeClass('active');
-        }
-        if($('#mobile-search-icon').hasClass('search-active')) {
-            $('#mobile-search-form').animate({top:'-62px'}, {duration:300});
-        } else {
-            $('#mobile-search-form').animate({top:'0'}, {duration:300});
-			$('input#mobile-search-box').focus();
-        }
-        $('#mobile-search-form').toggleClass('active');
-        $('#mobile-search-icon').toggleClass('search-active');
     });
 
     selectedyear = $('.selected-year').text();
