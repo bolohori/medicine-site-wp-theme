@@ -27,7 +27,6 @@ add_action(
 
 add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
 function wusm_acf_json_load_point( $paths ) {
-	unset($paths[0]);
 	$paths[] = get_stylesheet_directory() . '/acf-json';
     return $paths;
 }
