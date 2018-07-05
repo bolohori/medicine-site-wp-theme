@@ -28,6 +28,7 @@ if (have_posts()) :
 						<li><a href="http://mdadmissions.wustl.edu">Doctor of Medicine (MD)</a></li>
 						<li><a href="http://dbbs.wustl.edu/divprograms/mamd/Pages/mamd.aspx">Doctor of Medicine and Master of Arts (MD/MA)</a></li>
 						<li>Doctor of Medicine and <a href="https://crtc.wustl.edu/programs/degrees/msci/">Master of Science in Clinical Investigation</a> (MD/MSCI)</li>
+						<li><a href="https://brownschool.wustl.edu/academics/joint-and-dual-degrees/pages/MPH-doctor-of-medicine.aspx">Doctor of Medicine and Master of Public Health (MD/MPH)</a></li>
 						<li><a href="http://www.mphs.wustl.edu/en/Academics/MD-MPHS">Doctor of Medicine and Master of Population Health Sciences (MD/MPHS)</a></li>
 						<li><a href="http://mstp.wustl.edu/admissions/Pages/Admissions.aspx">Medical Scientist Training Program (MD/PhD)</a></li>
 						<li><a href="https://bme.wustl.edu/graduate/phd/Pages/default.aspx">Biomedical Engineering (MD/PhD)</a></li>
