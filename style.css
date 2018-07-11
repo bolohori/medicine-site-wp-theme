@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.07.06.1
+Version:	 2018.07.10.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -84,7 +84,7 @@ h3 {
 
 h4 {
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 18px;
 	margin-top: 30px;
 	margin-bottom: 15px;
 }
@@ -2813,25 +2813,24 @@ section.cta-home.turquoise {
 	margin-bottom: 30px;
 }
 .single-post .boilerplate p {
-	font-size: 15px;
+	font-size: 16px;
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	line-height: 21px;
+	line-height: 23px;
 	margin: 0 0 16px;
 }
 .bio-wrapper {
 	border-top: 2px solid #ccc;
 	padding-top: 30px;
 }
-.footer-author {
+.footer-author,
+.footer-media-contact {
 	margin: 0 0 40px;
 }
-.footer-author p.name {
+.footer-author p.name,
+.footer-media-contact p.name {
 	margin-bottom: 10px;
 	font-size: 18px;
 	font-weight: 600;
-}
-.footer-media-contact {
-	margin: 0 0 40px;
 }
 .single-post p.footer-heading {
 	font-size: 12px;
@@ -2840,11 +2839,6 @@ section.cta-home.turquoise {
 	font-weight: 600;
 	letter-spacing: 0.6px;
 	margin: 0 0 5px;
-}
-.footer-media-contact p.name {
-	margin: 0 0 10px;
-	font-size: 16px;
-	font-weight: 600;
 }
 .single-post .article-footer .phone-number,
 .single-post .article-footer .email-address {
