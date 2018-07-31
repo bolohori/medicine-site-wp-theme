@@ -25,6 +25,24 @@ add_action(
 	}, 20
 );
 
+add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
+function wusm_acf_json_load_point( $paths ) {
+	$paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+}
+
+/*
+ * This is so we can save ACF JSON files on our local
+ * environments but not on the servers.
+ */
+if ( WP_DEBUG === true ) {
+	add_filter('acf/settings/save_json', 'wusm_acf_json_save_point'); 
+	function wusm_acf_json_save_point( $path ) {
+		$path = get_stylesheet_directory() . '/acf-json';
+		return $path;
+	}
+}
+
 require_once( get_template_directory() . '/_/php/faculty_profiles.php' );
 require_once( get_template_directory() . '/_/php/custom_post_types.php' );
 require_once( get_template_directory() . '/_/php/load_js.php' );
@@ -65,20 +83,6 @@ if ( ! function_exists( 'medicine_head_cleanup' ) ) {
 	}
 }
 add_action( 'init', 'medicine_head_cleanup' );
-
-/*
- * Remove WP version from scripts
- */
-if ( ! function_exists( 'medicine_remove_wp_ver_css_js' ) ) {
-	function medicine_remove_wp_ver_css_js( $src ) {
-		if ( strpos( $src, 'ver=' ) ) {
-			$src = remove_query_arg( 'ver', $src );
-		}
-		return $src;
-	}
-}
-add_filter( 'style_loader_src', 'medicine_remove_wp_ver_css_js' );
-add_filter( 'script_loader_src', 'medicine_remove_wp_ver_css_js' );
 
 /*
  * remove WP version from RSS
@@ -145,6 +149,12 @@ add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 250, 345, true );
 add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
+
+// Adds featured image size for pages.
+add_image_size( 'hero-img-sm', 720, 275, true );
+add_image_size( 'hero-img', 1440, 550, true );
+add_image_size( 'hero-img-1_5x', 2160, 825, true );
+add_image_size( 'hero-img-2x', 2880, 1100, true );
 
 // Image sizes (Settings / Media)
 update_option( 'medium_size_w', 300 );
@@ -237,12 +247,15 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		 * them if they aren't logged in
 		 */
 		wp_deregister_style( 'open-sans' );
-		wp_enqueue_style( 'open-sans', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,700,800,600|Open+Sans+Condensed:700' );
+		wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Source+Sans+Pro:300,400,400i,600,700,700i' );
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );
-		wp_enqueue_style( 'medicine-style', get_stylesheet_uri() );
-
+		
+		// Save same data about the theme into a variable
+		$medicine_theme_data = wp_get_theme();
+		// Enqueue a CSS style file
+		wp_enqueue_style( 'medicine-style', get_stylesheet_directory_uri() . '/style.css', array(), $medicine_theme_data->Version );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
@@ -869,7 +882,7 @@ add_filter( 'posts_where', 'author_archive_where' );
 function author_archive_title() {
 	global $wp_query;
 	if ( $wp_query->is_main_query() && is_author() ) {
-		// Author archive pages
+		// Author archive pages.
 		$curauth = get_user_by( 'slug', $wp_query->query['author_name'] );
 		return $curauth->display_name . ' | ' . get_bloginfo( 'name' );
 	}
@@ -1058,3 +1071,6 @@ function ssp_remove_download_link( $meta, $episode_id, $context ) {
 
 // Remove default player.
 add_filter( 'ssp_show_media_player', '__return_false' );
+
+remove_shortcode( 'wusm_archive' );
+add_shortcode( 'wusm_archive', function() { return false; } );
