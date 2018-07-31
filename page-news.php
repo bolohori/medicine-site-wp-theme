@@ -79,7 +79,7 @@ if ( have_posts() ) :
 			$paged     = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 			$args      = array(
 				'post_type'      => 'post',
-				'posts_per_page' => 24,
+				'posts_per_page' => 36,
 				'paged'          => $paged,
 				'post__not_in'   => $exclude,
 				'tax_query'      => array(
