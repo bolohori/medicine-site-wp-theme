@@ -201,4 +201,18 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	</div>
 </section>
 
+<section class="stlouis-home">
+	<div class="wrap">
+		<div class="text-intro">
+			<div class="wrap">
+				<h2>Our city will surprise you.</h2>
+				<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes and plenty of fun for nature-lovers and urbanites alike, all packed into an incredibly affordable city.</p>
+				<a data-category="Front page" data-action="CTA - St. Louis" class="home-cta-button" href="/about/st-louis/"><span class="home-cta-button-wrap">Why we love St. Louis</span></a>;
+				<a href="#">Why we love St. Louis</a>
+			</div>
+		</div>
+		<div class="stlouis-outline"></div>
+	</div>
+</section>
+
 <?php get_footer(); ?>
