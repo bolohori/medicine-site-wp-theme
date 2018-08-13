@@ -183,7 +183,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		<a data-category="Front page" data-action="Icon - Nobel Laureates" href="/research/nobel-prize-winners/" class="iconlink">
 			<div class="icon nobel">
 				<object>
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-transparent.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-transparent-2x.png 2x" alt="nobel laureates">
 					<span class="visuallyhidden">nobel laureates</span>
 				</object>
 				<div class="context">18 nobel laureates associated with the school</div>
