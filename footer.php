@@ -1,5 +1,5 @@
 <footer class="clearfix">
-	<a href="http://together.wustl.edu" data-category="outbound-campaign" data-action="http://together.wustl.edu"><div class="campaign"></div></a>
+	<div class="footer-divider"></div>
 	<div id="site-footer">
     <div class="wrapper">
     <?php $footer_menu = wp_nav_menu( array(
