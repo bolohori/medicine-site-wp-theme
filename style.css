@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2018.07.31.0
+Version:	 2018.08.30.0
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -1232,15 +1232,9 @@ footer {
 	z-index: 1000;
 }
 
-.campaign {
+.footer-divider {
 	background-color: #A51417;
-	background-image: url( _/img/campaign-wide.png );
-	background-image: -webkit-linear-gradient( transparent, transparent ), url( _/img/campaign-wide.svg );
-	background-image: linear-gradient( transparent, transparent ), url( _/img/campaign-wide.svg );
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 414px;
-	height: 38px;
+	height: 10px;
 }
 
 #site-footer {
@@ -1675,6 +1669,41 @@ article.search-results {
 /* Front Page styles
 -------------------------------------------------------------------------------*/
 
+.home-cta-button {
+	border: 3px solid #a51417;
+	color: #a51417;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 600;
+	margin: 0 auto;
+	padding: 7px 27px;
+	text-transform: uppercase;
+}
+
+.home-cta-button {
+	display: inline-block;
+}
+
+.home-cta-button:hover {
+	background: #a51417;
+	color: #fff;
+	transition: fade-in 1s;
+}
+
+.home-cta-button-wrap::after {
+	background: url('_/img/arrow-red.svg');
+	background-repeat: no-repeat;
+	content: '';
+	display: inline-block;
+	height: 19px;
+	margin: 0 0 -2px 13px;
+	width: 14px;
+}
+
+.home-cta-button:hover .home-cta-button-wrap::after {
+	background: url('_/img/arrow-white-noshadow.svg');
+}
+
 .home h2 {
 	-webkit-font-smoothing: antialiased;
 	font-size: 32px;
@@ -1757,6 +1786,7 @@ article.search-results {
 .hero-banner {
 	align-content: center;
 	align-items: center;
+	background-color: #3d3d3d;
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: flex;
@@ -1841,7 +1871,6 @@ article.search-results {
 }
 
 .icons-home {
-	background-color: #fff;
 	position: relative;
 	z-index: 1
 }
@@ -1974,6 +2003,102 @@ section.cta-home.turquoise {
 	background: rgba(38, 115, 115, .85);
 }
 
+/* this should be changed back to .stlouis-text later */
+.stlouis-home {
+	background: #fff;
+	font-size: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.stlouis-home .text-intro .wrap {
+	padding-bottom: 0;
+	padding-top: 70px;
+}
+
+.stlouis-home a,
+.home-cta-button-wrap {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.stlouis-home p {
+	box-sizing: border-box;
+	padding: 15px 0 50px;
+}
+
+.stlouis-home .stlouis-outline {
+	background-image: url( '_/img/home/stlouis-skyline.png' );
+	background-size: auto 100%;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 540px;
+	width: 100%;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+	.stlouis-home .stlouis-outline {
+		background-image: url( '_/img/home/stlouis-skyline@2x.png' );
+	}
+}
+
+/* @media only screen and (max-width: 1600px) {
+	.stlouis-home h2 {
+		font-size: 48px;
+	}
+} */
+
+@media only screen and (max-width: 1280px) {
+	/* .stlouis-home h2 {
+		font-size: 42px;
+		margin-bottom: 15px;
+	} */
+
+	.home-cta-button {
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.icons-home .wrap {
+		padding-bottom: 40px;
+	}
+
+	.stlouis-home p,
+	.stlouis-home .text-intro p {
+		padding: 0 0 30px;
+	}
+
+	.stlouis-home .stlouis-outline {
+		height: 480px;
+		background-position: -490px 0;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.home-cta-button {
+		font-size: 20px;
+		padding: 8px 25px;
+	}
+
+	.stlouis-home .stlouis-outline {
+		height: 340px;
+		background-position: -390px 0;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.home-cta-button {
+		font-size: 16px;
+		padding: 10px 15px;
+	}
+}
 
 /* News page
 -------------------------------------------------------------------------------*/
@@ -5089,14 +5214,6 @@ a.sidebar-outlook-link {
 	}
 }
 @media screen and ( max-width: 650px ) {
-	.campaign {
-		background-image: url( _/img/campaign.png );
-		background-image: -webkit-linear-gradient( transparent, transparent ), url( _/img/campaign.svg );
-		background-image: linear-gradient( transparent, transparent ), url( _/img/campaign.svg );
-		background-size: 207px;
-		height: 60px;
-	}
-
 	.single-post .featured-image-caption {
 		padding-right: 0;
 		margin-top: 18px;
@@ -5502,7 +5619,7 @@ a.sidebar-outlook-link {
 	a.email-template-link,
 	.sharedaddy,
 	.footer-editors-picks,
-	footer a .campaign,
+	.footer-divider,
 	#site-footer,
 	#wusm-footer,
 	#page-background,
