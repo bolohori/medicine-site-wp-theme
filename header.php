@@ -52,7 +52,7 @@ if( defined( 'WP_DEBUG') ) { ?>
 		<div class="wrapper top-nav">
 			<ul id="action-nav">
 				<li><a href="https://wuphysicians.wustl.edu/for-patients/find-a-physician" onclick="__gaTracker('send','event','utility-nav','WU Physicians');">Find a Doctor</a></li>
-				<li><a onclick="__gaTracker('send','event','utility-nav','Admissions');" href="<?php echo get_permalink( get_page_by_title( 'Admissions' ) );?>">Admissions</a></li>
+				<li><a onclick="__gaTracker('send','event','utility-nav','Admissions');" href="/education/admissions/">Admissions</a></li>
 				<li><a onclick="__gaTracker('send','event','utility-nav','Giving');" href="<?php echo get_permalink( get_page_by_title( 'Giving' ) );?>">Giving</a></li>
 			</ul>
 			<ul id="utility-nav" class="clearfix">
