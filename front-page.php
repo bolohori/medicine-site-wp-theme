@@ -183,7 +183,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		<a data-category="Front page" data-action="Icon - Nobel Laureates" href="/research/nobel-prize-winners/" class="iconlink">
 			<div class="icon nobel">
 				<object>
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-2x.png 2x" alt="nobel laureates">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-transparent.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-transparent-2x.png 2x" alt="nobel laureates">
 					<span class="visuallyhidden">nobel laureates</span>
 				</object>
 				<div class="context">18 nobel laureates associated with the school</div>
@@ -198,6 +198,20 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				<div class="context">67% of faculty members also treat patients</div>
 			</div>
 		</a>
+	</div>
+</section>
+
+<section class="stlouis-home">
+	<div class="wrap">
+		<div class="text-intro">
+			<div class="wrap">
+				<h2>Our city will surprise you.</h2>
+				<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes, and plenty of fun for nature-lovers and urbanites alike &ndash; all packed into an incredibly affordable city.</p>
+				<a data-category="Front page" data-action="CTA - St. Louis" class="home-cta-button" href="https://medicine.wustl.edu/about/st-louis/"><span class="home-cta-button-wrap">Why we love St. Louis</span></a>;
+				<a href="#">Why we love St. Louis</a>
+			</div>
+		</div>
+		<div class="stlouis-outline"></div>
 	</div>
 </section>
 
