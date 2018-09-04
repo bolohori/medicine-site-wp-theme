@@ -1,0 +1,256 @@
+.home {
+	font-family: $font-sans;
+
+	h2 {
+		font-size: 56px;
+		font-weight: 700;
+	}
+
+	.tagline {
+		font-size: 24px;
+	}
+
+	.cta-button {
+		background: rgba(0, 0, 0, .3);
+		border: 3px solid #fff;
+		color: #fff;
+		display: inline-block;
+		font-size: 24px;
+		font-weight: 600;
+		padding: 8px 30px;
+		text-transform: uppercase;
+
+		&:hover {
+			background: rgba(0, 0, 0, .8);
+			transition: fade-in 1s;
+		}
+
+		&.red {
+			background: #fff;
+			border-color: $red;
+			color: $red;
+
+			&:hover {
+				background: $red;
+				color: #fff;
+			}
+		}
+
+		.cta-button-wrap {
+			display: inline-block;
+
+			&::after {
+				background: url('_/img/arrow-white.svg');
+				background-repeat: no-repeat;
+				content: '';
+				display: inline-block;
+				height: 19px;
+				margin: 0 0 -3px 14px;
+				width: 14px;
+			}
+		}
+	}
+}
+
+/*
+ * Hero banner
+ */
+
+.hero-banner {
+	align-content: center;
+	align-items: center;
+	background-color: $gray-dark;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	font-size: 0;
+	height: 550px;
+	position: relative;
+	margin: 0;
+	z-index: 0;
+
+	.hero-container {
+		margin: 0 auto 60px;
+		max-width: 1280px;
+		width: 100%;
+	}
+
+	.hero-text {
+		color: #fff;
+		font-size: 16px;
+		max-width: 640px;
+		padding: 0 5%;
+		text-shadow: 0 2px 3px #000;
+
+		.hero-headline {
+			display: inline-block;
+			font-family: $font-serif;
+			font-size: 48px;
+			font-weight: 700;
+			line-height: 1.1;
+		}
+
+		p {
+			font-size: 28px;
+			font-weight: 300;
+			letter-spacing: 0.5px;
+			line-height: 1.2;
+			margin: 10px 0 30px;
+			max-width: 600px;
+		}
+	}
+}
+
+.bythenumbers {
+	align-items: flex-start;
+	background: #fff url('_/img/home/outline-shield-transparent.svg') no-repeat center center;
+	background-size: auto 110%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 165px 0;
+	text-align: center;
+	
+	h2 {
+		margin: 0;
+		width: 100%;
+	}
+
+	.tagline {
+		font-family: $font-serif;
+		font-size: 36px;
+		font-style: italic;
+		width: 100%;
+	}
+
+	.icon {
+		margin: 20px;
+		max-width: 250px;
+		transition-duration: 0.3s;
+		transition-property: transform;
+
+		img {
+			padding-bottom: 20px;
+			width: 250px;
+		}
+
+		&:hover {
+			// transform: scale(1.05);
+		}
+
+		.desctext {
+			font-family: $font-serif;
+			font-size: 28px;
+			font-weight: 700;
+		}
+	}
+}
+
+.half-callout {
+	display: inline-block;
+	float: left;
+	width: 50%;
+}
+
+.news-section {
+	display: inline-block;
+	float: left;
+	width: 50%;
+}
+
+/* this should be changed back to .stlouis-text later */
+.stlouis-home {
+	background: #fff;
+	font-size: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.stlouis-home .text-intro .wrap {
+	padding-bottom: 0;
+	padding-top: 70px;
+}
+
+.stlouis-home a,
+.home {
+	font-family: $font-sans;
+}
+
+.stlouis-home p {
+	box-sizing: border-box;
+	padding: 15px 0 50px;
+}
+
+.stlouis-home .stlouis-outline {
+	background-image: url( '_/img/home/stlouis-skyline.png' );
+	background-size: auto 100%;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 540px;
+	width: 100%;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+	.stlouis-home .stlouis-outline {
+		background-image: url( '_/img/home/stlouis-skyline@2x.png' );
+	}
+}
+
+/* @media only screen and (max-width: 1600px) {
+	.stlouis-home h2 {
+		font-size: 48px;
+	}
+} */
+
+@media only screen and (max-width: 1280px) {
+	/* .stlouis-home h2 {
+		font-size: 42px;
+		margin-bottom: 15px;
+	} */
+
+	.home-cta-button {
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.icons-home .wrap {
+		padding-bottom: 40px;
+	}
+
+	.stlouis-home p,
+	.stlouis-home .text-intro p {
+		padding: 0 0 30px;
+	}
+
+	.stlouis-home .stlouis-outline {
+		height: 480px;
+		background-position: -490px 0;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.home-cta-button {
+		font-size: 20px;
+		padding: 8px 25px;
+	}
+
+	.stlouis-home .stlouis-outline {
+		height: 340px;
+		background-position: -390px 0;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.home-cta-button {
+		font-size: 16px;
+		padding: 10px 15px;
+	}
+}
