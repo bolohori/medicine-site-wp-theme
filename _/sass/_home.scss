@@ -1,9 +1,37 @@
-.home {
+.home #page {
 	font-family: $font-sans;
+	font-size: 0;
 
 	h2 {
-		font-size: 56px;
+		@include font-size($size-6);
 		font-weight: 700;
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-3);
+		}
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-4);
+		}
+	}
+
+	h2.white,
+	h3.white {
+		color: #fff;
+		font-family: $font-serif;
+		@include font-size($size-7);
+		font-weight: 700;
+		letter-spacing: 0.29px;
+		margin-top: 0;
+		@include text-shadow();
+		width: 350px;
+	}
+
+	p {
+		font-family: $font-sans;
+		@include font-size($size-2);
+		letter-spacing: 0.33px;
+		padding-bottom: 40px;
 	}
 
 	.tagline {
@@ -20,20 +48,13 @@
 		padding: 8px 30px;
 		text-transform: uppercase;
 
+		@media only screen and (max-width: $break-md) {
+			font-size: 20px;
+		}
+
 		&:hover {
 			background: rgba(0, 0, 0, .8);
 			transition: fade-in 1s;
-		}
-
-		&.red {
-			background: #fff;
-			border-color: $red;
-			color: $red;
-
-			&:hover {
-				background: $red;
-				color: #fff;
-			}
 		}
 
 		.cta-button-wrap {
@@ -47,210 +68,903 @@
 				height: 19px;
 				margin: 0 0 -3px 14px;
 				width: 14px;
+
+				@media only screen and (max-width: $break-xs) {
+					height: 17px;
+					width: 12px;
+				}
+			}
+		}
+
+		&.red {
+			background: none;
+			border-color: $red;
+			color: $red;
+
+			&:hover {
+				background: $red;
+				color: #fff;
+
+				.cta-button-wrap {
+					&::after {
+						background: url('_/img/arrow-white-noshadow.svg');
+					}
+				}
+			}
+
+			.cta-button-wrap {
+				display: inline-block;
+
+				&::after {
+					background: url('_/img/arrow-red.svg');
+					background-repeat: no-repeat;
+					content: '';
+					display: inline-block;
+					height: 19px;
+					margin: 0 0 -2px 13px;
+					width: 14px;
+
+					@media only screen and (max-width: $break-xs) {
+						height: 17px;
+						width: 12px;
+					}
+				}
 			}
 		}
 	}
-}
 
-/*
- * Hero banner
- */
+	.hero-banner {
+		align-content: center;
+		align-items: center;
+		background-color: $gray-dark;
+		background-size: cover;
+		background-repeat: no-repeat;
+		display: flex;
+		font-size: 0;
+		height: 550px;
+		position: relative;
+		margin: 0;
+		z-index: 0;
 
-.hero-banner {
-	align-content: center;
-	align-items: center;
-	background-color: $gray-dark;
-	background-size: cover;
-	background-repeat: no-repeat;
-	display: flex;
-	font-size: 0;
-	height: 550px;
-	position: relative;
-	margin: 0;
-	z-index: 0;
+		@media only screen and (max-width: $break-sm) {
+			height: 300px;
+		}
 
-	.hero-container {
-		margin: 0 auto 60px;
-		max-width: 1280px;
-		width: 100%;
+		@media only screen and (max-width: $break-zoom) {
+			align-content: stretch;
+			flex-wrap: wrap;
+			height: 100%;
+
+			&.desktop {
+				background: none;
+			}
+
+			&.mobile {
+				display: block;
+				padding: 0;
+				width: 100%;
+				background-position: center;
+				height: 200px;
+			}
+		}
+
+		.hero-container {
+			margin: 0 auto;
+			max-width: 1280px;
+			width: 100%;
+
+			@media only screen and (max-width: $break-sm-max) {
+				max-width: 100%;
+			}
+
+			@media only screen and (max-width: $break-zoom) {
+				display: block;
+				padding: 0;
+				width: 100%;
+			}
+		}
+
+		.hero-text {
+			color: #fff;
+			font-size: 16px;
+			max-width: 640px;
+			padding: 0 5%;
+			@include text-shadow();
+
+			@media only screen and (max-width: $break-md) {
+				color: #fff;
+				max-width: 400px;
+				padding: 0 7%;
+				text-shadow: 1px 1px 4px #000;
+			}
+
+			@media only screen and (max-width: $break-zoom) {
+				background: #4c4c4c url('_/img/home-pattern-gray.jpg');
+				background-size: 100px 100px;
+				left: 0;
+				margin: 0;
+				max-width: 100%;
+				padding: 6% 5% 7%;
+				position: relative;
+			}
+
+			.hero-headline {
+				display: inline-block;
+				font-family: $font-serif;
+				font-size: 48px;
+				font-weight: 700;
+				line-height: 1.1;
+
+				@media only screen and (max-width: $break-sm) {
+					font-size: 32px;
+				}
+
+				@media only screen and (max-width: $break-zoom) {
+					font-size: 32px;
+					display: block;
+					margin-bottom: 20px;
+				}
+			}
+
+			p {
+				font-size: 28px;
+				font-weight: 300;
+				letter-spacing: 0.5px;
+				line-height: 1.2;
+				margin: 10px 0 30px;
+				max-width: 600px;
+				padding-bottom: 0;
+
+				@media only screen and (max-width: $break-md) {
+					margin: 15px 0 25px;
+				}
+
+				@media only screen and (max-width: $break-sm) {
+					font-size: 20px;
+				}
+
+				@media only screen and (max-width: $break-zoom) {
+					display: none;
+				}
+			}
+		}
 	}
 
-	.hero-text {
-		color: #fff;
-		font-size: 16px;
-		max-width: 640px;
-		padding: 0 5%;
-		text-shadow: 0 2px 3px #000;
+	.bythenumbers {
+		align-items: flex-start;
+		background: #fff url('_/img/home/outline-shield-transparent.svg') no-repeat center center;
+		background-size: auto 110%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 65px 0;
+		text-align: center;
 
-		.hero-headline {
+		@media only screen and (min-width: $break-xs) {
+			padding: 85px 0;
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			align-items: baseline;
 			display: inline-block;
+			flex-wrap: nowrap;
+		}
+
+		@media only screen and (min-width: $break-lg) {
+			padding: 125px 0;
+		}
+
+		@media only screen and (min-width: $break-xl) {
+			padding: 150px 0;
+		}
+
+		@media only screen and (min-width: $break-xxl) {
+			padding: 165px 0;
+		}
+		
+		h2 {
+			margin: 0;
+			width: 100%;
+		}
+
+		.tagline {
 			font-family: $font-serif;
-			font-size: 48px;
+			font-size: 36px;
+			font-style: italic;
+			width: 100%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				display: block;
+			}
+		}
+
+		.icon {
+			@include border-box();
+			margin: 20px;
+			max-width: 250px;
+			@include transition(all, 0.2s, ease-in-out);
+
+			@media only screen and (max-width: $break-sm-mid) {
+				display: inline-block;
+				margin: 0;
+				padding: 20px;
+				width: 50%;
+				vertical-align: top;
+			}
+
+			&:hover {
+				transform: scale(1.02);
+			}
+
+			img {
+				padding-bottom: 20px;
+				width: 250px;
+			}
+
+			.desctext {
+				font-family: $font-serif;
+				font-size: 28px;
+				font-weight: 700;
+			}
+		}
+	}
+
+	h2.fancy-heading,
+	h3.fancy-heading {
+		font-family: $font-serif;
+		@include font-size($size-4);
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: 0.5px;
+		margin-top: 0;
+		text-transform: none;
+
+		.sanstext {
+			display: block;
+			font-family: $font-sans;
+			@include font-size($size-7);
+			font-style: normal;
 			font-weight: 700;
-			line-height: 1.1;
+			letter-spacing: 0.3px;
+			line-height: 1;
+			text-transform: uppercase;
+		}
+
+		&:after {
+			content: "";
+			display: block;
+			margin: 0;
+			width: 40%;
+			padding-top: 20px;
+			border-bottom: 7px solid $red;
+		}
+	}
+
+	.callout-news {
+		font-size: 0;
+		display: inline-block;
+		width: 100%;
+
+		.half-callout {
+			align-items: center;
+			background: #fff;
+			display: flex;
+			flex-direction: column;
+			float: left;
+			position: relative;
+			width: 57%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			.half-intro {
+				background: $gray-dark;
+				display: inline-block;
+				font-size: 0;
+				position: relative;
+				text-align: right;
+				width: 100%;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					width: 100%;
+				}
+
+				img {
+					height: auto;
+					width: 100%;
+				}
+
+				h2 {
+					bottom: 5%;
+					color: #fff;
+					font-family: $font-serif;
+					letter-spacing: 0.29px;
+					margin-top: 0;
+					position: absolute;
+					right: 5%;
+					@include text-shadow();
+					width: 350px;
+				}
+			}
+
+			.half-info {
+				display: inline-block;
+				padding: 80px 13% 120px;
+			}
+		}
+
+		.news-section {
+			@include border-box;
+			display: inline-block;
+			float: left;
+			padding: 80px 10% 100px 4%;
+			width: 43%;
+
+			h2.fancy-heading {
+				display: block;
+				font-family: $font-sans;
+				@include font-size($size-7);
+				font-style: normal;
+				font-weight: 700;
+				letter-spacing: 0.3px;
+				line-height: 1;
+				text-transform: uppercase;
+
+				&::after {
+					width: 15%;
+				}
+			}
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+		}
+	}
+
+	.showcase-section {
+		display: block;
+		font-size: 0;
+		position: relative;
+		height: 100%;
+		width: 100%;
+
+		.background {
+			img {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		.textoverlay {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			padding-left: 10%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 50%;
+
+			h2 {
+				@include font-size($size-6);
+				@include text-shadow();
+				width: 100%;
+			}
+
+			p {
+				font-family: $font-sans;
+				font-size: 24px;
+				color: #FFFFFF;
+				letter-spacing: 0.29px;
+				line-height: 30px;
+				padding-bottom: 0;
+				@include text-shadow();	
+			}
+
+			.play {
+				box-sizing: border-box;
+				text-align: left;
+				padding-right: 10%;
+				max-height: 240px;
+				width: 30%;
+				
+				img {
+					@include transition(all, 0.2s, ease-in-out);
+
+					&:hover {
+						transform: scale(1.02);
+					}
+				}
+			}
+
+			.textwrap {
+				max-width: 500px;
+			}
+		}
+	}
+
+	.voices-section {
+		background: #fff;
+		display: flex;
+		font-size: 0;
+		justify-content: center;
+		padding-top: 65px;
+
+		@media only screen and (min-width: $break-xs) {
+			padding-top: 85px;
+		}
+
+		@media only screen and (min-width: $break-lg) {
+			padding-top: 125px;
+		}
+
+		@media only screen and (min-width: $break-xl) {
+			padding-top: 150px;
+		}
+
+		@media only screen and (min-width: $break-xxl) {
+			padding-top: 165px;
+		}
+
+		.voices-image,
+		.voices-quote {
+			width: 50%;
+		}
+
+		.voices-image {
+			padding-right: 3%;
+			text-align: right;
+
+			img {
+				height: auto;
+			}
+		}
+
+		.voices-quote {
+			padding-left: 3%;
+			
+			p {
+				max-width: 500px;
+			}
+
+			.quote-attribution {
+				display: block;
+				font-family: $font-sans;
+				@include font-size($size-3);
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+
+			.attributor-description {
+				display: block;
+				font-family: $font-serif;
+				@include font-size($size-2);
+				font-style: italic;
+			}
+
+			.cta-button {
+				margin-top: 20px;
+			}
+		}
+	}
+
+	.leaders-section {
+		@media only screen and (min-width: $break-xxl) {
+			margin: 165px auto;
+		}
+
+		.leaders-intro,
+		.leaders-outro {
+			display: none;
+			background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
+			
+			@media only screen and (min-width: $break-xxl) {
+				display: block;
+				margin: 0 auto;
+				height: 130px;
+				width: 988px;
+			}
+
+			h2 {
+				text-align: center;
+				width: auto;
+			}
+
+			@media only screen and (min-width: $break-xxl) {
+				h2 {
+					padding-top: 30px;
+				}
+
+				p {
+					display: none;
+				}
+			}
+		}
+
+		.leaders-outro {
+			background-position: center bottom;
+
+			p {
+				display: block;
+				color: #fff;
+				font-family: $font-serif;
+				font-style: italic;
+				@include font-size($size-3);
+				padding: 30px 50px;
+				text-align: center;
+				@include text-shadow();
+			}
+		}
+
+		.leader-lineup {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+
+			@media only screen and (min-width: $break-xxl) {
+				margin: 0 auto;
+				width: 1760px;
+			}
+
+			.leaders-intro {
+				background: none;
+				@include border-box();
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+				position: relative;
+				text-align: left;
+				width: 100%;
+
+				.leaders-text-wrap {
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					margin: auto;
+					padding: 0 10%;
+					position: absolute;
+					text-align: left;
+					height: 70%;
+					@include text-shadow();
+				}
+
+				img {
+					height: auto;
+				}
+
+				h2 {
+					text-align: left;
+					@include font-size($size-4);
+
+					@media only screen and (min-width: $break-lg) {
+						@include font-size($size-5);
+					}
+
+					@media only screen and (min-width: $break-xl) {
+						@include font-size($size-6);
+					}
+				}
+
+				p {
+					color: #fff;
+					padding-bottom: 0;
+					@include font-size($size-3);
+					@include text-shadow();
+
+					@media only screen and (min-width: $break-sm-mid) {
+						@include font-size($size-2);
+					}
+
+					@media only screen and (min-width: $break-sm-max) {
+						@include font-size($size-3);
+					}
+
+					@media only screen and (min-width: $break-xl) {
+						@include font-size($size-4);
+					}
+				}
+
+				@media only screen and (min-width: $break-sm) {
+					width: 50%;
+				}
+
+				@media only screen and (min-width: $break-sm-mid) {
+					width: 33.33%;
+				}
+
+				@media only screen and (min-width: $break-xxl) {
+					display: none;
+				}
+			}
+
+			.leader {
+				display: block;
+				font-size: 0;
+				position: relative;
+				@include transition(all, 0.2s, ease-in-out);
+				width: 100%;
+
+				@media only screen and (min-width: $break-zoom) {
+					width: 100%;
+				}
+
+				@media only screen and (min-width: $break-sm) {
+					width: 50%;
+				}
+
+				@media only screen and (min-width: $break-sm-mid) {
+					width: 33.33%;
+				}
+
+				@media only screen and (min-width: $break-xxl) {
+					width: 20%;
+				}
+
+				&:hover {
+					transform: scale(1.02);
+				}
+
+				.leadertext {
+					background: rgba(0, 0, 0, .5);
+					bottom: 0;
+					color: #fff;
+					@include font-size($size-0);
+					left: 0;
+					margin: auto;
+					min-height: 100px;
+					padding: 10px 20px;
+					position: absolute;
+					text-align: left;
+					@include text-shadow();
+					right: 0;
+
+					.leadername {
+						display: block;
+						font-weight: 700;
+						@include font-size($size-1);
+						padding-bottom: 3px;
+						text-transform: uppercase;
+					}
+				}
+			}
+			
+			img {
+				height: auto;
+			}
+		}
+
+		@media 
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) { 
+			background-image: url('_/img/home/leaders-bg@2x.jpg');
+		}
+
+	}
+
+	.connect-section {
+		@include border-box();
+		background-image: url('_/img/home/connect-bg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 100%;
+		padding: 65px 5%;
+		text-align: center;
+
+		@media only screen and (min-width: $break-xs) {
+			padding: 85px 0;
+		}
+
+		@media only screen and (min-width: $break-lg) {
+			padding: 125px 0;
+		}
+
+		@media only screen and (min-width: $break-xl) {
+			padding: 150px 0;
+		}
+
+		@media only screen and (min-width: $break-xxl) {
+			padding: 165px 0;
+		}
+
+		h2 {
+			font-family: $font-serif;
+			font-style: italic;
+			margin-top: 0;
+			margin-bottom: 40px;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				@include font-size($size-5);
+			}
+
+			@media only screen and (max-width: $break-xs) {
+				@include font-size($size-4);
+			}
+
+			@media only screen and (max-width: $break-xxs) {
+				@include font-size($size-3);
+			}
 		}
 
 		p {
-			font-size: 28px;
-			font-weight: 300;
-			letter-spacing: 0.5px;
-			line-height: 1.2;
-			margin: 10px 0 30px;
-			max-width: 600px;
+			margin: 0 auto;
+			max-width: 850px;
+			padding-bottom: 50px;
 		}
 	}
-}
 
-.bythenumbers {
-	align-items: flex-start;
-	background: #fff url('_/img/home/outline-shield-transparent.svg') no-repeat center center;
-	background-size: auto 110%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding: 165px 0;
-	text-align: center;
-	
-	h2 {
-		margin: 0;
-		width: 100%;
-	}
+	.full-section {
+		align-items: flex-start;
+		background: #fff;
+		display: flex;
+		align-items: stretch;
 
-	.tagline {
-		font-family: $font-serif;
-		font-size: 36px;
-		font-style: italic;
-		width: 100%;
-	}
-
-	.icon {
-		margin: 20px;
-		max-width: 250px;
-		transition-duration: 0.3s;
-		transition-property: transform;
-
-		img {
-			padding-bottom: 20px;
-			width: 250px;
+		@media only screen and (max-width: $break-sm-mid) {
+			flex-direction: column;
 		}
 
-		&:hover {
-			// transform: scale(1.05);
+		.full-split-left {
+			box-sizing: border-box;
+			display: inline-block;
+			padding: 80px 5% 0 10%;
+			width: 37%;
+
+			@media only screen and (max-width: $break-lg) {
+				padding: 50px 5%;
+			}
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			@media only screen and (max-width: $break-xxs) {
+				padding: 35px 5%;
+			}
+
+			p {
+				padding-bottom: 40px;
+			}
 		}
 
-		.desctext {
+		.full-split-right {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			text-align: right;
+			width: 63%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			.split-image {
+				  
+				img {
+					align-self: stretch;
+					width: 100%;
+					object-fit: cover;
+
+					@media only screen and (max-width: $break-sm-mid) {
+						height: 100%;
+					}
+				}
+
+			}
+
+			h3 {
+				bottom: 5%;
+				color: #fff;
+				font-family: $font-serif;
+				letter-spacing: 0.29px;
+				margin-top: 0;
+				position: absolute;
+				right: 5%;
+				@include text-shadow();
+				width: 350px;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					@include font-size($size-5);
+				}
+
+				@media only screen and (max-width: $break-xs) {
+					@include font-size($size-4);
+				}
+
+				@media only screen and (max-width: $break-xxs) {
+					@include font-size($size-3);
+				}
+			}
+		}
+	}
+
+	/* this should be changed back to .stlouis-text later */
+	.stlouis-home {
+		background: #fff;
+		font-size: 0;
+		padding: 0;
+		text-align: center;
+
+		h2 {
 			font-family: $font-serif;
-			font-size: 28px;
-			font-weight: 700;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				@include font-size($size-5);
+			}
+
+			@media only screen and (max-width: $break-xs) {
+				@include font-size($size-4);
+			}
+
+			@media only screen and (max-width: $break-xxs) {
+				@include font-size($size-3);
+			}
 		}
-	}
-}
 
-.half-callout {
-	display: inline-block;
-	float: left;
-	width: 50%;
-}
+		a {
+			font-family: $font-sans;
+		}
 
-.news-section {
-	display: inline-block;
-	float: left;
-	width: 50%;
-}
+		p {
+			box-sizing: border-box;
+			margin: 0 auto;
+			max-width: 850px;
+			padding: 10px 0 40px;
 
-/* this should be changed back to .stlouis-text later */
-.stlouis-home {
-	background: #fff;
-	font-size: 0;
-	padding: 0;
-	text-align: center;
-}
+			@media only screen and (min-width: $break-sm) {
+				padding: 0 0 30px;
+			}
+		}
 
-.stlouis-home .text-intro .wrap {
-	padding-bottom: 0;
-	padding-top: 70px;
-}
+		.text-intro .wrap {
+			padding-bottom: 0;
+			padding-top: 70px;
 
-.stlouis-home a,
-.home {
-	font-family: $font-sans;
-}
+			@media only screen and (max-width: $break-sm) {
+				padding-top: 35px;
+			}
+		}
 
-.stlouis-home p {
-	box-sizing: border-box;
-	padding: 15px 0 50px;
-}
+		.stlouis-outline {
+			background-image: url( '_/img/home/stlouis-skyline.png' );
+			background-size: auto 100%;
+			background-position: bottom center;
+			background-repeat: no-repeat;
+			display: inline-block;
+			height: 540px;
+			width: 100%;
 
-.stlouis-home .stlouis-outline {
-	background-image: url( '_/img/home/stlouis-skyline.png' );
-	background-size: auto 100%;
-	background-position: bottom center;
-	background-repeat: no-repeat;
-	display: inline-block;
-	height: 540px;
-	width: 100%;
-}
+			@media only screen and (max-width: $break-xs) {
+				height: 340px;
+				background-position: -390px 0;
+			}
+		}
+		
+		@media only screen and (min-width: $break-sm) {
+			.text-intro p {
+				padding: 0 0 30px;
+			}
+		}
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) { 
-	.stlouis-home .stlouis-outline {
-		background-image: url( '_/img/home/stlouis-skyline@2x.png' );
-	}
-}
-
-/* @media only screen and (max-width: 1600px) {
-	.stlouis-home h2 {
-		font-size: 48px;
-	}
-} */
-
-@media only screen and (max-width: 1280px) {
-	/* .stlouis-home h2 {
-		font-size: 42px;
-		margin-bottom: 15px;
-	} */
-
-	.home-cta-button {
-		font-size: 20px;
-	}
-}
-
-@media only screen and (max-width: 768px) {
-	.icons-home .wrap {
-		padding-bottom: 40px;
-	}
-
-	.stlouis-home p,
-	.stlouis-home .text-intro p {
-		padding: 0 0 30px;
-	}
-
-	.stlouis-home .stlouis-outline {
-		height: 480px;
-		background-position: -490px 0;
-	}
-}
-
-@media only screen and (max-width: 480px) {
-	.home-cta-button {
-		font-size: 20px;
-		padding: 8px 25px;
-	}
-
-	.stlouis-home .stlouis-outline {
-		height: 340px;
-		background-position: -390px 0;
-	}
-}
-
-@media only screen and (max-width: 320px) {
-	.home-cta-button {
-		font-size: 16px;
-		padding: 10px 15px;
+		@media
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) { 
+			.stlouis-outline {
+				background-image: url( '_/img/home/stlouis-skyline@2x.png' );
+			}
+		}
 	}
 }

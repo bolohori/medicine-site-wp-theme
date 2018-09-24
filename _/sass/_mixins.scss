@@ -1,0 +1,158 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+/* CSS Transition
+	Usage: @include transition(width,0.3s,ease-out);
+ */
+@mixin transition($transition-property, $transition-time, $method) {
+	-webkit-transition: $transition-property $transition-time $method;
+	-moz-transition: $transition-property $transition-time $method;
+	-ms-transition: $transition-property $transition-time $method;
+	-o-transition: $transition-property $transition-time $method;
+	transition: $transition-property $transition-time $method;
+}
+
+/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback
+	Usage: @include font-size(1, large);
+*/
+@mixin font-size( $decimal-size, $keyword: null ) {
+  @if $keyword{ font-size: $keyword; }
+  @else { font-size: $decimal-size * $base-font-multiplier * 16px;}
+  font-size: $decimal-size * 1rem;
+}
+
+@mixin text-shadow() {
+	text-shadow: rgba(0, 0, 0, .5) 0 2px 4px;
+}
+
+@mixin border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+// Clearfix
+@mixin clearfix() {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin slug-styles() {
+	@include font-size($size-sm, 'small');
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}
+
+// Styles for secondary links
+@mixin links-muted() {
+	color: $color-text;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: $color-primary;
+		text-decoration: underline;
+	}
+
+}
+
+// Gradients mix-in
+@mixin gradient($from, $to, $percent) {
+	/* fallback/image non-cover color */
+	background: $from;
+	background: -moz-linear-gradient(top, $from 0%, $from $percent, $to 100%);
+	/* below is for Safari 4+, Chrome 1+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop($percent,$from), color-stop(100%,$to));
+	/* below is for Safari 5.1+, Chrome 10+ */
+	background: -webkit-linear-gradient(top, $from 0%,$from $percent,$to 100%);
+	background: -o-linear-gradient(top, $from 0%,$from $percent,$to 100%);
+	/* below is for IE10+ */
+	background: -ms-linear-gradient(top, $from 0%,$from $percent,$to 100%);
+	background: linear-gradient(to bottom, $from 0%,$from $percent,$to 100%);
+}
+
+@mixin MQ($canvas) {
+	@if $canvas == S {
+	 @media only screen and (min-width: $break-sm) { @content; }
+	}
+	@else if $canvas == M {
+	 @media only screen and (min-width: $break-md) { @content; }
+	}
+	@else if $canvas == L {
+	 @media only screen and (min-width: $break-lg) { @content; }
+	}
+}
+
+@mixin font-smoothing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-smoothing-off {
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+@mixin center($xy:xy) {
+	@if $xy == xy {
+		left: 50%;
+		top: 50%;
+		bottom: auto;
+		right: auto;
+		transform: translateX(-50%) translateY(-50%);
+	}
+	@else if $xy == x {
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+	@else if $xy == y {
+		top: 50%;
+		bottom: auto;
+		transform: translateY(-50%);
+	}
+}
+
+@mixin link-block-target() {
+	&::after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	&:hover::after,
+	&:focus::after  {
+		background-color: $gray-dark;
+		opacity: 0.3;
+		// Legacy IE opacity hack.
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	}
+}
+
+@mixin scrollbars {
+	&::-webkit-scrollbar {
+		width: 2px;
+		margin-left: .5em;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $gray-light;
+	}
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}

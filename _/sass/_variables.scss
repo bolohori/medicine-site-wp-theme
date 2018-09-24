@@ -1,0 +1,54 @@
+// *** Variables and Mix-Ins ***
+
+// Type Scale
+// Minor third modular scale http://www.modularscale.com/?1&em&1.2&web&text
+$rem-base: 1rem;
+$rem-pixel: 0.0625em; // single pixel
+$rem-scale: 1.2;
+$base-font-multiplier: 1;
+
+$size-7: 3.5;
+$size-6: 2.986;
+$size-5: 2.488;
+$size-4: 2.074;
+$size-3: 1.728;
+$size-2: 1.44;
+$size-1: 1.2;
+$size-0: 1;
+$size-sm: 0.833;
+$size-xs: 0.694;
+
+// Other size variables
+$line-height: 1.44; // WUSM: Not used anywhere at the moment
+$line-height-md: 1.333;
+$line-height-sm: 1.2;
+$border-radius: 4px;
+
+// Colors
+$color-primary:    $red; // red
+$color-text:       #555;
+$color-text-muted: lighten($gray-dark, 15%);
+$color-text-dark:  #3d3d3d;
+
+// Breakpoints
+$break-xxs:    20em;   //  320px, tiny phones
+$break-xs:     30em;   //  480px, small columns
+$break-zoom:   40em;   //  640px, when we increase font size
+$break-sm:     43.8em; //  700px, max-text length
+$break-sm-mid: 56.3em; //  900px, love legacy
+$break-sm-max: 60.3em; //  970px, max-content size
+$break-md:     62.5em; //  1000px, break into columns
+$break-lg:     80em;   //  1280px, widen columns
+$break-xl:     100em;  //  1600px, crazy wide
+$break-xxl:    120em;  //  1920px, super crazy wide
+
+// Grid
+$grid-columns: 12;
+$grid-gutter: 2%;
+
+$grid-breakpoints: (
+	zm: $break-zoom,
+	sm: $break-sm-max,
+	md: $break-md,
+	lg: $break-lg
+);
