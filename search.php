@@ -88,8 +88,7 @@ $total_funnelback_results = $search_results->response->resultPacket->resultsSumm
 
 
 // Total pages of results, displaying 10 items per page
-// $pages_of_results = ceil(($num_of_wordpress_results + $total_google_results) / 10);
-$pages_of_results = ceil( ( $num_of_wordpress_results + $total_funnelback_results ) / 10 );
+$pages_of_results = ceil( $num_of_wordpress_results / 10 );
 
 get_header(); ?>
  <div id="main" class="clearfix non-landing-page">
@@ -142,28 +141,31 @@ get_header(); ?>
 				}
 			}
 
-			// Visual separator to mark end of WP search and start of Google search
-			if ( $num_of_wp_result_pages == $paged ) {
-				echo '<hr>';
-			}
+			if ( 'post' !== get_query_var( 'post_type' ) ) {
+				// Visual separator to mark end of WP search and start of Google search
+				if ( $num_of_wp_result_pages == $paged ) {
+					echo '<hr>';
+				}
 
-			if ( ( $num_of_wp_result_pages <= $paged ) || ( $num_of_wp_result_pages < 2 ) ) {
+				if ( ( $num_of_wp_result_pages <= $paged ) || ( $num_of_wp_result_pages < 2 ) ) {
 
-				// Display page of search results
-				if ( $search_results->response->resultPacket->results ) {
-					echo '<h2>Results from more wustl.edu sites</h2>';
-					foreach ( $search_results->response->resultPacket->results as $result ) {
-					?>
-						<p class='search-result'>
-						<span style="font-size: 16px;"><a data-category="search-result-<?php echo filter_var( $search_terms, FILTER_SANITIZE_STRING ); ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
-						<?php if ( $result->summary != '' ) { ?>
-							<br><?php echo $result->summary; ?>
-						<?php } ?>
-						<br/><a data-category="search-result-<?php echo $search_terms; ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>" class="result-url"><?php echo $result->liveUrl; ?></a>
-						</p>
-				<?php
+					// Display page of search results
+					if ( $search_results->response->resultPacket->results ) {
+						echo '<h2>Results from more wustl.edu sites</h2>';
+						foreach ( $search_results->response->resultPacket->results as $result ) {
+						?>
+							<p class='search-result'>
+							<span style="font-size: 16px;"><a data-category="search-result-<?php echo filter_var( $search_terms, FILTER_SANITIZE_STRING ); ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>"><?php echo $result->title; ?></a></span>
+							<?php if ( $result->summary != '' ) { ?>
+								<br><?php echo $result->summary; ?>
+							<?php } ?>
+							<br/><a data-category="search-result-<?php echo $search_terms; ?>" data-action="<?php echo $result->liveUrl; ?>" href="<?php echo $result->liveUrl; ?>" class="result-url"><?php echo $result->liveUrl; ?></a>
+							</p>
+					<?php
+						}
 					}
 				}
+				$pages_of_results = ceil( ( $num_of_wordpress_results + $total_funnelback_results ) / 10 );
 			}
 			?>
 			<nav class="navigation pagination" role="navigation">
