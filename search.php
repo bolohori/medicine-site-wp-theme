@@ -113,7 +113,7 @@ get_header(); ?>
 			}
 
 			// Only display "promoted results" on the first page
-			if ( 1 === $paged ) {
+			if ( 1 === $paged && 'post' !== get_query_var( 'post_type' ) ) {
 				get_template_part( 'promoted-result' );
 			}
 
@@ -151,7 +151,7 @@ get_header(); ?>
 
 				// Display page of search results
 				if ( $search_results->response->resultPacket->results ) {
-					echo '<h2>More WUSTL results</h2>';
+					echo '<h2>Results from more wustl.edu sites</h2>';
 					foreach ( $search_results->response->resultPacket->results as $result ) {
 					?>
 						<p class='search-result'>
