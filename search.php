@@ -103,8 +103,12 @@ get_header(); ?>
 		</nav>
 
 		<article>
+		<?php if ( 'post' === get_query_var( 'post_type' ) ) { ?>
+			<h1>News results for <em><?php echo $search_terms; ?></em></h1>
+		<?php } else {?>
 			<h1>Your Search: <em><?php echo $search_terms; ?></em></h1>
-			<?php
+		<?php
+		}
 
 			// If there are no matching results, display appropriate message
 			if ( ! ( $num_of_wordpress_results + $total_funnelback_results ) ) {
