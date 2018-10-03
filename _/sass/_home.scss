@@ -1,6 +1,38 @@
 .home #page {
+	$g: &;
 	font-family: $font-sans;
 	font-size: 0;
+
+	.sanstext {
+		display: block;
+		font-family: $font-sans;
+		@include font-size($size-7);
+		font-style: normal;
+		font-weight: 700;
+		letter-spacing: 0.3px;
+		line-height: 1;
+		text-transform: uppercase;
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-6);
+		}
+
+		@media only screen and (max-width: $break-md) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-sm) {
+			@include font-size($size-7);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-6);
+		}
+
+		@media only screen and (max-width: $break-xxs) {
+			@include font-size($size-4);
+		}
+	}
 
 	h2 {
 		@include font-size($size-6);
@@ -13,13 +45,16 @@
 		@media only screen and (max-width: $break-lg) {
 			@include font-size($size-4);
 		}
+
+		&.sanstext {
+			@extend .sanstext
+		}
 	}
 
 	h2.white,
 	h3.white {
 		color: #fff;
 		font-family: $font-serif;
-		@include font-size($size-7);
 		font-weight: 700;
 		letter-spacing: 0.29px;
 		margin-top: 0;
@@ -27,11 +62,69 @@
 		width: 350px;
 	}
 
+	h2.fancy-heading,
+	h3.fancy-heading {
+		font-family: $font-serif;
+		@include font-size($size-5);
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: 0.5px;
+		margin-bottom: 30px;
+		margin-top: 0;
+		text-transform: none;
+
+		&:after {
+			@extend .redline;
+		}
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-md) {
+			@include font-size($size-3);
+		}
+
+		@media only screen and (max-width: $break-sm) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-xxs) {
+			@include font-size($size-2);
+		}
+	}
+
+	.redline {
+		content: "";
+		display: block;
+		margin: 0;
+		max-width: 300px;
+		width: 100%;
+		padding-top: 20px;
+		border-bottom: 7px solid $red;
+	}
+
 	p {
 		font-family: $font-sans;
 		@include font-size($size-2);
 		letter-spacing: 0.33px;
 		padding-bottom: 40px;
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-2);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-2);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-1);
+		}
 	}
 
 	.tagline {
@@ -45,11 +138,15 @@
 		display: inline-block;
 		font-size: 24px;
 		font-weight: 600;
-		padding: 8px 30px;
+		padding: 8px 27px;
 		text-transform: uppercase;
 
-		@media only screen and (max-width: $break-md) {
-			font-size: 20px;
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-1);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			padding: 8px 15px;
 		}
 
 		&:hover {
@@ -239,6 +336,7 @@
 		justify-content: center;
 		padding: 65px 0;
 		text-align: center;
+		width: 100%;
 
 		@media only screen and (min-width: $break-xs) {
 			padding: 85px 0;
@@ -251,7 +349,7 @@
 		}
 
 		@media only screen and (min-width: $break-lg) {
-			padding: 125px 0;
+			padding: 120px 0;
 		}
 
 		@media only screen and (min-width: $break-xl) {
@@ -263,8 +361,33 @@
 		}
 		
 		h2 {
+			@include font-size($size-7);
 			margin: 0;
 			width: 100%;
+
+			@media only screen and (max-width: $break-xl) {
+				@include font-size($size-6);
+			}
+
+			@media only screen and (max-width: $break-md) {
+				@include font-size($size-5);
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				@include font-size($size-6);
+			}
+
+			@media only screen and (max-width: $break-zoom) {
+				@include font-size($size-7);
+			}
+
+			@media only screen and (max-width: $break-xs) {
+				@include font-size($size-6);
+			}
+
+			@media only screen and (max-width: $break-xxs) {
+				@include font-size($size-4);
+			}
 		}
 
 		.tagline {
@@ -272,6 +395,14 @@
 			font-size: 36px;
 			font-style: italic;
 			width: 100%;
+
+			@media only screen and (max-width: $break-xl) {
+				@include font-size($size-4);
+			}
+
+			@media only screen and (max-width: $break-md) {
+				@include font-size($size-3);
+			}
 
 			@media only screen and (max-width: $break-sm-mid) {
 				display: block;
@@ -283,6 +414,7 @@
 			margin: 20px;
 			max-width: 250px;
 			@include transition(all, 0.2s, ease-in-out);
+			width: 100%;
 
 			@media only screen and (max-width: $break-sm-mid) {
 				display: inline-block;
@@ -292,133 +424,255 @@
 				vertical-align: top;
 			}
 
+			@media only screen and (max-width: $break-xl) {
+				max-width: 230px;
+			}
+
+			@media only screen and (max-width: $break-lg) {
+				max-width: 20%;
+				margin: 5px 15px;
+			}
+
+			@media only screen and (max-width: $break-sm-mid) {
+				margin: 5px 0;
+				max-width: 35%;
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				max-width: 50%;
+			}
+
 			&:hover {
 				transform: scale(1.02);
+
+				.desctext {
+					color: $red;
+					text-decoration: underline;
+				}
 			}
 
 			img {
+				display: block;
+				margin: 0 auto;
 				padding-bottom: 20px;
-				width: 250px;
+				max-width: 250px;
 			}
 
 			.desctext {
 				font-family: $font-serif;
-				font-size: 28px;
+				@include font-size($size-3);
 				font-weight: 700;
+
+				&:hover {
+					color: $red;
+					text-decoration: underline;
+				}
+
+				@media only screen and (max-width: $break-xl) {
+					@include font-size($size-2);
+				}
+
+				@media only screen and (max-width: $break-lg) {
+					@include font-size($size-1);
+				}
+
+				@media only screen and (max-width: $break-xs) {
+					@include font-size($size-0);
+				}
 			}
 		}
 	}
 
-	h2.fancy-heading,
-	h3.fancy-heading {
-		font-family: $font-serif;
-		@include font-size($size-4);
-		font-style: italic;
-		font-weight: 400;
-		letter-spacing: 0.5px;
-		margin-top: 0;
-		text-transform: none;
-
-		.sanstext {
-			display: block;
-			font-family: $font-sans;
-			@include font-size($size-7);
-			font-style: normal;
-			font-weight: 700;
-			letter-spacing: 0.3px;
-			line-height: 1;
-			text-transform: uppercase;
-		}
-
-		&:after {
-			content: "";
-			display: block;
-			margin: 0;
-			width: 40%;
-			padding-top: 20px;
-			border-bottom: 7px solid $red;
-		}
-	}
-
-	.callout-news {
+	.half-callout {
+		justify-content: center;
+		background: #fff;
+		display: flex;
+		flex-wrap: wrap;
 		font-size: 0;
-		display: inline-block;
+		margin: 0 auto;
+		position: relative;
 		width: 100%;
 
-		.half-callout {
-			align-items: center;
-			background: #fff;
-			display: flex;
-			flex-direction: column;
-			float: left;
+		@media only screen and (max-width: $break-sm-mid) {
+			width: 100%;
+		}
+
+		.half-intro {
+			@include border-box;
+			background: $gray-dark;
+			display: inline-block;
+			font-size: 0;
 			position: relative;
-			width: 57%;
+			text-align: right;
+			width: 60%;
 
 			@media only screen and (max-width: $break-sm-mid) {
 				width: 100%;
 			}
 
-			.half-intro {
-				background: $gray-dark;
-				display: inline-block;
-				font-size: 0;
-				position: relative;
-				text-align: right;
+			img {
+				height: 100%;
+				object-fit: cover;
 				width: 100%;
-
-				@media only screen and (max-width: $break-sm-mid) {
-					width: 100%;
-				}
-
-				img {
-					height: auto;
-					width: 100%;
-				}
-
-				h2 {
-					bottom: 5%;
-					color: #fff;
-					font-family: $font-serif;
-					letter-spacing: 0.29px;
-					margin-top: 0;
-					position: absolute;
-					right: 5%;
-					@include text-shadow();
-					width: 350px;
-				}
 			}
 
-			.half-info {
-				display: inline-block;
-				padding: 80px 13% 120px;
+			h2 {
+				bottom: 5%;
+				color: #fff;
+				font-family: $font-serif;
+				letter-spacing: 0.29px;
+				margin-top: 0;
+				position: absolute;
+				right: 5%;
+				@include text-shadow();
+				width: 350px;
 			}
 		}
 
-		.news-section {
+		.half-info {
 			@include border-box;
 			display: inline-block;
-			float: left;
-			padding: 80px 10% 100px 4%;
-			width: 43%;
+			padding: 80px 9% 120px 3%;
+			width: 40%;
 
-			h2.fancy-heading {
-				display: block;
-				font-family: $font-sans;
-				@include font-size($size-7);
-				font-style: normal;
-				font-weight: 700;
-				letter-spacing: 0.3px;
-				line-height: 1;
-				text-transform: uppercase;
-
-				&::after {
-					width: 15%;
-				}
+			@media only screen and (max-width: $break-xl) {
+				padding: 50px 5% 80px;
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
 				width: 100%;
 			}
+
+			@media only screen and (max-width: $break-xs) {
+				padding: 35px 5% 35px;
+			}
+		}
+	}
+
+	.news-section {
+		@include border-box;
+		margin: 0 auto;
+		padding: 80px 5% 120px;
+		width: 100%;
+
+		@media only screen and (max-width: $break-zoom) {
+			padding: 60px 5% 85px;
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			padding: 35px 5% 65px;
+		}
+
+		h2 {
+			display: block;
+
+			&:after {
+				@extend .redline;
+			}
+
+			@media only screen and (max-width: $break-xs) {
+				margin-top: 0;
+			}
+		}
+
+		.home-stories {
+			display: flex;
+			justify-content: center;
+			
+			@media only screen and (max-width: $break-sm-mid) {
+				flex-wrap: wrap;
+			}
+
+			a {
+				@include border-box();
+				display: block;
+				width: 25%;
+				padding: 0 1%;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					padding: 0;
+					width: 50%;
+				}
+
+				@media only screen and (max-width: $break-xs) {
+					padding: 0;
+					width: 100%;
+				}
+
+				&:nth-of-type(odd) {
+					@media only screen and (max-width: $break-sm-mid) {
+						padding: 0 2% 0 0;
+					}
+					@media only screen and (max-width: $break-xs) {
+						padding: 0;
+					}
+				}
+
+				&:nth-of-type(even) {
+					@media only screen and (max-width: $break-sm-mid) {
+						padding: 0 0 0 2%;
+					}
+
+					@media only screen and (max-width: $break-xs) {
+						padding: 0;
+					}
+				}
+
+				.home-story {
+					padding: 20px 0 50px;
+
+					img {
+						padding-bottom: 20px;
+					}
+
+					.home-news-info {
+
+						.home-news-date {
+							@include font-size($size-1);
+							color: $gray-dark;
+							display: block;
+							font-weight: 700;
+							line-height: 1;
+							padding-bottom: 10px;
+							text-transform: uppercase;
+							width: 100%;
+
+							&:hover {
+								color: $gray-dark;
+							}
+						}
+
+						.home-news-title {
+							@include font-size($size-2);
+							color: $red;
+							display: block;
+							font-weight: 600;
+							width: 100%;
+
+							&:hover {
+								color: $red;
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.more-link {
+			@include font-size($size-2);
+			color: $gray-dark;
+			display: block;
+			font-weight: 700;
+			line-height: 1;
+			padding-bottom: 10px;
+			text-align: center;
+			text-transform: uppercase;
+			width: 100%;
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			width: 100%;
 		}
 	}
 
@@ -433,6 +687,11 @@
 			img {
 				height: 100%;
 				width: 100%;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					height: auto;
+					object-fit: cover;
+				}
 			}
 		}
 
@@ -456,13 +715,8 @@
 			}
 
 			p {
-				font-family: $font-sans;
-				font-size: 24px;
-				color: #FFFFFF;
-				letter-spacing: 0.29px;
-				line-height: 30px;
-				padding-bottom: 0;
 				@include text-shadow();	
+				color: #fff;
 			}
 
 			.play {
@@ -553,16 +807,27 @@
 	}
 
 	.leaders-section {
-		@media only screen and (min-width: $break-xxl) {
-			margin: 165px auto;
+		background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
+
+		@media only screen and (min-width: $break-xl) {
+			padding: 80px 0 120px;
+		}
+
+		@media 
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) { 
+			background-image: url('_/img/home/leaders-bg@2x.jpg');
 		}
 
 		.leaders-intro,
 		.leaders-outro {
 			display: none;
-			background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
 			
-			@media only screen and (min-width: $break-xxl) {
+			@media only screen and (min-width: $break-xl) {
 				display: block;
 				margin: 0 auto;
 				height: 130px;
@@ -574,7 +839,7 @@
 				width: auto;
 			}
 
-			@media only screen and (min-width: $break-xxl) {
+			@media only screen and (min-width: $break-xl) {
 				h2 {
 					padding-top: 30px;
 				}
@@ -606,9 +871,10 @@
 			align-items: center;
 			justify-content: center;
 
-			@media only screen and (min-width: $break-xxl) {
+			@media only screen and (min-width: $break-xl) {
 				margin: 0 auto;
-				width: 1760px;
+				max-width: 1760px;
+				padding: 0 20px;
 			}
 
 			.leaders-intro {
@@ -643,11 +909,11 @@
 					text-align: left;
 					@include font-size($size-4);
 
-					@media only screen and (min-width: $break-lg) {
+					@media only screen and (min-width: $break-md) {
 						@include font-size($size-5);
 					}
 
-					@media only screen and (min-width: $break-xl) {
+					@media only screen and (min-width: $break-lg) {
 						@include font-size($size-6);
 					}
 				}
@@ -666,7 +932,7 @@
 						@include font-size($size-3);
 					}
 
-					@media only screen and (min-width: $break-xl) {
+					@media only screen and (min-width: $break-lg) {
 						@include font-size($size-4);
 					}
 				}
@@ -679,7 +945,7 @@
 					width: 33.33%;
 				}
 
-				@media only screen and (min-width: $break-xxl) {
+				@media only screen and (min-width: $break-xl) {
 					display: none;
 				}
 			}
@@ -703,7 +969,7 @@
 					width: 33.33%;
 				}
 
-				@media only screen and (min-width: $break-xxl) {
+				@media only screen and (min-width: $break-xl) {
 					width: 20%;
 				}
 
@@ -740,16 +1006,6 @@
 			}
 		}
 
-		@media 
-		only screen and (-webkit-min-device-pixel-ratio: 2),
-		only screen and (   min--moz-device-pixel-ratio: 2),
-		only screen and (     -o-min-device-pixel-ratio: 2/1),
-		only screen and (        min-device-pixel-ratio: 2),
-		only screen and (                min-resolution: 192dpi),
-		only screen and (                min-resolution: 2dppx) { 
-			background-image: url('_/img/home/leaders-bg@2x.jpg');
-		}
-
 	}
 
 	.connect-section {
@@ -762,19 +1018,19 @@
 		text-align: center;
 
 		@media only screen and (min-width: $break-xs) {
-			padding: 85px 0;
+			padding: 85px 5%;
 		}
 
 		@media only screen and (min-width: $break-lg) {
-			padding: 125px 0;
+			padding: 125px 5%;
 		}
 
 		@media only screen and (min-width: $break-xl) {
-			padding: 150px 0;
+			padding: 150px 5%;
 		}
 
 		@media only screen and (min-width: $break-xxl) {
-			padding: 165px 0;
+			padding: 165px 5%;
 		}
 
 		h2 {
@@ -799,7 +1055,6 @@
 		p {
 			margin: 0 auto;
 			max-width: 850px;
-			padding-bottom: 50px;
 		}
 	}
 
@@ -829,10 +1084,6 @@
 
 			@media only screen and (max-width: $break-xxs) {
 				padding: 35px 5%;
-			}
-
-			p {
-				padding-bottom: 40px;
 			}
 		}
 
@@ -871,17 +1122,14 @@
 				right: 5%;
 				@include text-shadow();
 				width: 350px;
-
-				@media only screen and (max-width: $break-sm-mid) {
-					@include font-size($size-5);
-				}
+				@include font-size($size-6);
 
 				@media only screen and (max-width: $break-xs) {
-					@include font-size($size-4);
+					@include font-size($size-3);
 				}
 
-				@media only screen and (max-width: $break-xxs) {
-					@include font-size($size-3);
+				@media only screen and (max-width: $break-lg) {
+					@include font-size($size-4);
 				}
 			}
 		}
@@ -915,14 +1163,8 @@
 		}
 
 		p {
-			box-sizing: border-box;
 			margin: 0 auto;
 			max-width: 850px;
-			padding: 10px 0 40px;
-
-			@media only screen and (min-width: $break-sm) {
-				padding: 0 0 30px;
-			}
 		}
 
 		.text-intro .wrap {
@@ -930,7 +1172,7 @@
 			padding-top: 70px;
 
 			@media only screen and (max-width: $break-sm) {
-				padding-top: 35px;
+				padding: 35px 5% 0;
 			}
 		}
 

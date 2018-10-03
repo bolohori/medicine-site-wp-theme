@@ -93,38 +93,57 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		</div>
 	</section>
 
-	<div class="callout-news">
-		<section class="half-callout">
-			<div class="half-intro">
-				<?php
-					$hc_image = get_field( 'half_callout_image', 'option' );
-					$size = 'half-callout';
+	<section class="half-callout">
+		<div class="half-intro">
+			<?php
+				$hc_image = get_field( 'half_callout_image', 'option' );
+				$size = 'half-callout';
 
-					if ( $hc_image ) {
-						echo wp_get_attachment_image ( $hc_image, $size );
+				if ( $hc_image ) {
+					echo wp_get_attachment_image ( $hc_image, $size );
+				}
+			?>
+			<h2 class="white"><?php the_field( 'half_callout_title', 'option' ); ?></h2>
+		</div>
+		<div class="half-info">
+			<h3 class="fancy-heading"><?php 
+				$halfsubhead = get_field( 'half_callout_subhead', 'option' );
+				$halfpieces = explode(' ', $halfsubhead );
+				$halflastword = array_pop( $halfpieces );
+				$halfstr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $halfsubhead);
+				echo $halfstr . ' <span class="sanstext">' . $halflastword . '</span>';
+			?></h3>
+			<p><?php the_field( 'half_callout_description', 'option' ); ?></p>
+			<a class="cta-button red" href="<?php the_field( 'half_callout_link', 'option' ); ?>"><span class="cta-button-wrap"><?php the_field( 'half_callout_link_text', 'option' ); ?></span></a>
+		</div>
+	</section>
+
+	<section class="news-section">
+		<h2 class="sanstext">Latest News</h2>
+			<?php if ( have_rows( 'news_items', 'option' ) ) {
+				echo '<div class="home-stories">';
+					while ( have_rows( 'news_items', 'option' ) ) {
+						the_row();
+						$post_id = get_sub_field( 'news_item', false, false );
+						$date = get_the_date( '', $post_id );
+						$title = get_the_title( $post_id );
+						$link = get_permalink( $post_id );
+						?>
+						<a href="<?php echo $link; ?>">
+							<div class="home-story">
+								<?php echo get_the_post_thumbnail( $post_id, 'news' ); ?>
+								<div class="home-news-info">
+									<span class="home-news-date"><?php echo $date; ?></span>
+									<span class="home-news-title"><?php echo $title; ?></span>
+								</div>
+							</div>
+						</a>
+						<?php
 					}
-				?>
-				<h2 class="white"><?php the_field( 'half_callout_title', 'option' ); ?></h2>
-			</div>
-			<div class="half-info">
-				<h3 class="fancy-heading"><?php 
-					$halfsubhead = get_field( 'half_callout_subhead', 'option' );
-					$halfpieces = explode(' ', $halfsubhead );
-					$halflastword = array_pop( $halfpieces );
-					$halfstr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $halfsubhead);
-					echo $halfstr . ' <span class="sanstext">' . $halflastword . '</span>';
-				?></h3>
-				<p><?php the_field( 'half_callout_description', 'option' ); ?></p>
-				<a class="cta-button red" href="<?php the_field( 'half_callout_link', 'option' ); ?>"><span class="cta-button-wrap"><?php the_field( 'half_callout_link_text', 'option' ); ?></span></a>
-			</div>
-		</section>
-
-		<section class="news-section">
-			<h2 class="fancy-heading">Latest News</h2>
-
-			<span class="more-link">Read all news</span>
-		</section>
-	</div>
+				echo '</div>';
+			} ?>
+		<span class="more-link"><a href="/news">Read all news</a></span>
+	</section>
 
 	<section class="showcase-section">
 		<div class="background">
@@ -142,7 +161,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			<div class="textwrap">
 				<h2 class="white"><?php the_field( 'showcase_headline', 'option' ); ?></h2>
 				<p><?php the_field( 'showcase_caption', 'option' ); ?></p>
-			
+			</div>
 		</div>
 	</section>
 
