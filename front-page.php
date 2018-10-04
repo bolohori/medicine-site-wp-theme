@@ -95,6 +95,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 
 	<section class="half-callout">
 		<div class="half-intro">
+			<div class="triangle"></div>
 			<?php
 				$hc_image = get_field( 'half_callout_image', 'option' );
 				$size = 'half-callout';
@@ -252,6 +253,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			<a class="cta-button red" href="<?php the_field( 'full_split_link', 'option' ); ?>"><span class="cta-button-wrap"><?php the_field( 'full_split_link_text', 'option' ); ?></span></a>
 		</div>
 		<div class="full-split-right">
+			<div class="triangle"></div>
 			<div class="split-image">
 				<?php
 					$fs_image = get_field( 'full_split_image', 'option' );

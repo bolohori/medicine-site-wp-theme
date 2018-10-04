@@ -210,6 +210,15 @@
 		}
 	}
 
+	.triangle {
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 30px 30px 0 30px;
+		border-color: #ffffff transparent transparent transparent;
+	}
+
 	.hero-banner {
 		align-content: center;
 		align-items: center;
@@ -510,6 +519,23 @@
 				width: 100%;
 			}
 
+			.triangle {
+				top: 20%;
+				right: -15px;
+				margin-left: 15%;
+				transform: rotate(90deg);
+				-webkit-transform: rotate(90deg);
+
+				@media only screen and (max-width: $break-sm-mid) {
+					bottom: 0;
+					right: auto;
+					left: 0;
+					top: auto;
+					transform: rotate(180deg);
+					-webkit-transform: rotate(180deg);
+				}
+			}
+
 			img {
 				height: 100%;
 				object-fit: cover;
@@ -555,23 +581,20 @@
 		padding: 80px 5% 120px;
 		width: 100%;
 
-		@media only screen and (max-width: $break-zoom) {
-			padding: 60px 5% 85px;
+		@media only screen and (max-width: $break-xl) {
+			padding: 50px 5% 80px;
 		}
 
 		@media only screen and (max-width: $break-xs) {
-			padding: 35px 5% 65px;
+			padding: 35px 5% 35px;
 		}
 
 		h2 {
 			display: block;
+			margin-top: 0;
 
 			&:after {
 				@extend .redline;
-			}
-
-			@media only screen and (max-width: $break-xs) {
-				margin-top: 0;
 			}
 		}
 
@@ -663,7 +686,7 @@
 			@include font-size($size-2);
 			color: $gray-dark;
 			display: block;
-			font-weight: 700;
+			font-weight: 600;
 			line-height: 1;
 			padding-bottom: 10px;
 			text-align: center;
@@ -677,46 +700,73 @@
 	}
 
 	.showcase-section {
-		display: block;
+		display: flex;
 		font-size: 0;
 		position: relative;
 		height: 100%;
 		width: 100%;
 
 		.background {
+			width: 100%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				min-height: 500px;
+			}
+
 			img {
 				height: 100%;
 				width: 100%;
-
-				@media only screen and (max-width: $break-sm-mid) {
-					height: auto;
-					object-fit: cover;
-				}
+				object-fit: cover;
 			}
 		}
 
 		.textoverlay {
+			@include border-box;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			bottom: 0;
-			left: 0;
+			left: 50%;
 			margin: auto;
-			padding-left: 10%;
+			padding: 0 5%;
 			position: absolute;
-			top: 0;
-			right: 0;
-			height: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			max-width: 850px;
+			width: 100%;
+				
+			@media only screen and (max-width: $break-zoom) {
+				flex-wrap: wrap-reverse;
+			}
 
 			h2 {
-				@include font-size($size-6);
 				@include text-shadow();
 				width: 100%;
+				@include font-size($size-6);
+
+				@media only screen and (max-width: $break-xs) {
+					@include font-size($size-3);
+				}
+
+				@media only screen and (max-width: $break-lg) {
+					@include font-size($size-4);
+				}
+				
+				@media only screen and (max-width: $break-zoom) {
+					text-align: center;
+				}
 			}
 
 			p {
 				@include text-shadow();	
 				color: #fff;
+
+				&:last-of-type {
+					padding-bottom: 0;
+				}
+				
+				@media only screen and (max-width: $break-zoom) {
+					display: none;
+				}
 			}
 
 			.play {
@@ -726,8 +776,19 @@
 				max-height: 240px;
 				width: 30%;
 				
+				@media only screen and (max-width: $break-zoom) {
+					padding-right: 0;
+					text-align: center;
+					max-height: 175px;
+					width: 100%
+				}
+
 				img {
 					@include transition(all, 0.2s, ease-in-out);
+
+					@media only screen and (max-width: $break-zoom) {
+						max-height: 175px;
+					}
 
 					&:hover {
 						transform: scale(1.02);
@@ -737,6 +798,10 @@
 
 			.textwrap {
 				max-width: 500px;
+				
+				@media only screen and (max-width: $break-zoom) {
+					width: 100%;
+				}
 			}
 		}
 	}
@@ -746,41 +811,70 @@
 		display: flex;
 		font-size: 0;
 		justify-content: center;
-		padding-top: 65px;
+		padding: 65px 5%;
 
 		@media only screen and (min-width: $break-xs) {
-			padding-top: 85px;
+			padding: 85px 5%;
 		}
 
 		@media only screen and (min-width: $break-lg) {
-			padding-top: 125px;
+			padding: 125px 0 0;
 		}
 
 		@media only screen and (min-width: $break-xl) {
-			padding-top: 150px;
+			padding: 150px 0 0;
 		}
 
 		@media only screen and (min-width: $break-xxl) {
-			padding-top: 165px;
+			padding: 165px 0 0;
 		}
 
 		.voices-image,
 		.voices-quote {
 			width: 50%;
+
+			@media only screen and (max-width: $break-sm) {
+				width: 100%;
+			}
 		}
 
 		.voices-image {
-			padding-right: 3%;
+			align-self: flex-end;
 			text-align: right;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				margin-left: -40%;
+				width: 100%;
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				display: none;
+			}
 
 			img {
 				height: auto;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					height: 100%;
+					object-fit: cover;
+				}
 			}
 		}
 
 		.voices-quote {
 			padding-left: 3%;
-			
+
+			@media only screen and (max-width: $break-sm-mid) {
+				@include border-box;
+				margin-left: -12%;
+				padding: 0 5%;
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				margin-left: 0;
+				padding: 0;
+			}
+
 			p {
 				max-width: 500px;
 			}
@@ -937,7 +1031,7 @@
 					}
 				}
 
-				@media only screen and (min-width: $break-sm) {
+				@media only screen and (min-width: $break-zoom) {
 					width: 50%;
 				}
 
@@ -957,11 +1051,11 @@
 				@include transition(all, 0.2s, ease-in-out);
 				width: 100%;
 
-				@media only screen and (min-width: $break-zoom) {
+				@media only screen and (min-width: $break-xs) {
 					width: 100%;
 				}
 
-				@media only screen and (min-width: $break-sm) {
+				@media only screen and (min-width: $break-zoom) {
 					width: 50%;
 				}
 
@@ -1098,8 +1192,24 @@
 				width: 100%;
 			}
 
-			.split-image {
-				  
+			.triangle {
+				top: 20%;
+				left: -15px;
+				margin-left: 0%;
+
+				transform: rotate(270deg);
+				-webkit-transform: rotate(270deg);
+
+				@media only screen and (max-width: $break-sm-mid) {
+					margin-left: 15%;
+					left: 0;
+					top: 0;
+					transform: rotate(0deg);
+					-webkit-transform: rotate(0deg);
+				}
+			}
+
+			.split-image { 
 				img {
 					align-self: stretch;
 					width: 100%;
@@ -1109,7 +1219,6 @@
 						height: 100%;
 					}
 				}
-
 			}
 
 			h3 {
