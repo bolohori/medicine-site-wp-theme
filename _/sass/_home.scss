@@ -1,5 +1,5 @@
 .home #page {
-	$g: &;
+	background: #fff;
 	font-family: $font-sans;
 	font-size: 0;
 
@@ -232,6 +232,10 @@
 		margin: 0;
 		z-index: 0;
 
+		@media only screen and (max-width: $break-lg) {
+			height: 400px;
+		}
+
 		@media only screen and (max-width: $break-sm) {
 			height: 300px;
 		}
@@ -277,7 +281,7 @@
 			padding: 0 5%;
 			@include text-shadow();
 
-			@media only screen and (max-width: $break-md) {
+			@media only screen and (max-width: $break-sm-max) {
 				color: #fff;
 				max-width: 400px;
 				padding: 0 7%;
@@ -297,17 +301,18 @@
 			.hero-headline {
 				display: inline-block;
 				font-family: $font-serif;
-				font-size: 48px;
+				@include font-size($size-6);
 				font-weight: 700;
+				margin: 0 0 5px;
 				line-height: 1.1;
 
-				@media only screen and (max-width: $break-sm) {
-					font-size: 32px;
+				@media only screen and (max-width: $break-lg) {
+					@include font-size($size-5);
 				}
 
-				@media only screen and (max-width: $break-zoom) {
-					font-size: 32px;
+				@media only screen and (max-width: $break-sm-max) {
 					display: block;
+					@include font-size($size-4);
 					margin-bottom: 20px;
 				}
 			}
@@ -374,20 +379,16 @@
 			margin: 0;
 			width: 100%;
 
-			@media only screen and (max-width: $break-xl) {
+			@media only screen and (max-width: $break-lg) {
 				@include font-size($size-6);
 			}
 
-			@media only screen and (max-width: $break-md) {
+			@media only screen and (max-width: $break-sm-max) {
 				@include font-size($size-5);
 			}
 
-			@media only screen and (max-width: $break-sm) {
-				@include font-size($size-6);
-			}
-
 			@media only screen and (max-width: $break-zoom) {
-				@include font-size($size-7);
+				@include font-size($size-4);
 			}
 
 			@media only screen and (max-width: $break-xs) {
@@ -401,7 +402,7 @@
 
 		.tagline {
 			font-family: $font-serif;
-			font-size: 36px;
+			@include font-size($size-4);
 			font-style: italic;
 			width: 100%;
 
@@ -438,8 +439,8 @@
 			}
 
 			@media only screen and (max-width: $break-lg) {
-				max-width: 20%;
-				margin: 5px 15px;
+				max-width: 200px;
+				margin: 30px 20px 15px;
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -500,6 +501,7 @@
 		font-size: 0;
 		margin: 0 auto;
 		position: relative;
+		max-width: 1920px;
 		width: 100%;
 
 		@media only screen and (max-width: $break-sm-mid) {
@@ -577,9 +579,14 @@
 
 	.news-section {
 		@include border-box;
+		padding: 80px 0 120px;
 		margin: 0 auto;
-		padding: 80px 5% 120px;
+		max-width: 1920px;
 		width: 100%;
+
+		@media only screen and (max-width: $break-xxl) {
+			padding: 80px 5% 120px;
+		}
 
 		@media only screen and (max-width: $break-xl) {
 			padding: 50px 5% 80px;
@@ -600,7 +607,7 @@
 
 		.home-stories {
 			display: flex;
-			justify-content: center;
+			justify-content: space-between;
 			
 			@media only screen and (max-width: $break-sm-mid) {
 				flex-wrap: wrap;
@@ -609,36 +616,17 @@
 			a {
 				@include border-box();
 				display: block;
-				width: 25%;
-				padding: 0 1%;
+				width: 24%;
+				padding: 0;
 
 				@media only screen and (max-width: $break-sm-mid) {
 					padding: 0;
-					width: 50%;
+					width: 49%;
 				}
 
 				@media only screen and (max-width: $break-xs) {
 					padding: 0;
 					width: 100%;
-				}
-
-				&:nth-of-type(odd) {
-					@media only screen and (max-width: $break-sm-mid) {
-						padding: 0 2% 0 0;
-					}
-					@media only screen and (max-width: $break-xs) {
-						padding: 0;
-					}
-				}
-
-				&:nth-of-type(even) {
-					@media only screen and (max-width: $break-sm-mid) {
-						padding: 0 0 0 2%;
-					}
-
-					@media only screen and (max-width: $break-xs) {
-						padding: 0;
-					}
 				}
 
 				.home-story {
@@ -663,6 +651,10 @@
 							&:hover {
 								color: $gray-dark;
 							}
+
+							@media only screen and (max-width: $break-sm-max) {
+								@include font-size($size-0);
+							}
 						}
 
 						.home-news-title {
@@ -670,11 +662,15 @@
 							color: $red;
 							display: block;
 							font-weight: 600;
-							width: 100%;
+							width: 90%;
 
 							&:hover {
 								color: $red;
 								text-decoration: underline;
+							}
+
+							@media only screen and (max-width: $break-sm-max) {
+								@include font-size($size-1);
 							}
 						}
 					}
@@ -731,7 +727,6 @@
 			position: absolute;
 			top: 50%;
 			transform: translate(-50%, -50%);
-			max-width: 850px;
 			width: 100%;
 				
 			@media only screen and (max-width: $break-zoom) {
@@ -772,15 +767,16 @@
 			.play {
 				box-sizing: border-box;
 				text-align: left;
-				padding-right: 10%;
-				max-height: 240px;
-				width: 30%;
+				padding: 7px 3% 0 0;
+				max-width: 240px;
+
+				@media only screen and (max-width: $break-lg) {
+					max-width: 175px;
+				}
 				
 				@media only screen and (max-width: $break-zoom) {
 					padding-right: 0;
 					text-align: center;
-					max-height: 175px;
-					width: 100%
 				}
 
 				img {
@@ -811,22 +807,22 @@
 		display: flex;
 		font-size: 0;
 		justify-content: center;
-		padding: 65px 5%;
-
-		@media only screen and (min-width: $break-xs) {
-			padding: 85px 5%;
-		}
-
-		@media only screen and (min-width: $break-lg) {
-			padding: 125px 0 0;
-		}
+		padding: 165px 0 0;
 
 		@media only screen and (min-width: $break-xl) {
 			padding: 150px 0 0;
 		}
 
-		@media only screen and (min-width: $break-xxl) {
-			padding: 165px 0 0;
+		@media only screen and (max-width: $break-lg) {
+			padding: 125px 0 0;
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			padding: 85px 0 0;
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			padding: 65px 5%;
 		}
 
 		.voices-image,
@@ -902,6 +898,7 @@
 
 	.leaders-section {
 		background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
+		background-size: 100%;
 
 		@media only screen and (min-width: $break-xl) {
 			padding: 80px 0 120px;
@@ -983,16 +980,21 @@
 				width: 100%;
 
 				.leaders-text-wrap {
-					top: 0;
-					bottom: 0;
+					@include border-box();
+					top: 50%;
+					bottom: 50%;
 					left: 0;
 					right: 0;
 					margin: auto;
-					padding: 0 10%;
+					padding: 0 15%;
 					position: absolute;
 					text-align: left;
-					height: 70%;
+					height: 50%;
 					@include text-shadow();
+
+					@media only screen and (max-width: $break-lg) {
+						padding: 0 10%;
+					}
 				}
 
 				img {
@@ -1001,32 +1003,23 @@
 
 				h2 {
 					text-align: left;
-					@include font-size($size-4);
+					@include font-size($size-6);
 
-					@media only screen and (min-width: $break-md) {
+					@media only screen and (max-width: $break-xl) {
 						@include font-size($size-5);
 					}
 
-					@media only screen and (min-width: $break-lg) {
-						@include font-size($size-6);
+					@media only screen and (max-width: $break-md) {
+						@include font-size($size-4);
 					}
 				}
 
 				p {
 					color: #fff;
 					padding-bottom: 0;
-					@include font-size($size-3);
 					@include text-shadow();
-
-					@media only screen and (min-width: $break-sm-mid) {
-						@include font-size($size-2);
-					}
-
-					@media only screen and (min-width: $break-sm-max) {
-						@include font-size($size-3);
-					}
-
-					@media only screen and (min-width: $break-lg) {
+					
+					@media only screen and (min-width: $break-xl) {
 						@include font-size($size-4);
 					}
 				}
@@ -1157,6 +1150,9 @@
 		background: #fff;
 		display: flex;
 		align-items: stretch;
+		margin: 0 auto;
+		max-width: 1920px;
+		width: 100%;
 
 		@media only screen and (max-width: $break-sm-mid) {
 			flex-direction: column;

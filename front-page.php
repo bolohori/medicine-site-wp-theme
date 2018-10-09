@@ -57,7 +57,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		echo '<div class="hero-banner mobile"></div>';
 		echo '<div class="hero-container">';
 			echo '<div class="hero-text">';
-				echo '<span class="hero-headline">' . esc_html( $heroheadline ) . '</span>';
+				echo '<h2 class="hero-headline">' . esc_html( $heroheadline ) . '</h2>';
 				echo '<p>' . esc_html( $herodesc ) . '</p>';
 				echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
 			echo '</div>';
