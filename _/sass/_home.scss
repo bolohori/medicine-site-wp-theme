@@ -127,6 +127,10 @@
 		}
 	}
 
+	.alert-text:last-child {
+		padding-bottom: 0;
+	}
+
 	.tagline {
 		font-size: 24px;
 	}
