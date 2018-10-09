@@ -114,6 +114,10 @@
 		letter-spacing: 0.33px;
 		padding-bottom: 40px;
 
+		&.alert-text:last-child {
+			padding-bottom: 0;
+		}
+
 		@media only screen and (max-width: $break-lg) {
 			@include font-size($size-2);
 		}
@@ -125,10 +129,6 @@
 		@media only screen and (max-width: $break-xs) {
 			@include font-size($size-1);
 		}
-	}
-
-	.alert-text:last-child {
-		padding-bottom: 0;
 	}
 
 	.tagline {
