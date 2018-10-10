@@ -38,12 +38,12 @@
 		@include font-size($size-6);
 		font-weight: 700;
 
-		@media only screen and (max-width: $break-xs) {
-			@include font-size($size-3);
-		}
-
 		@media only screen and (max-width: $break-lg) {
 			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-3);
 		}
 
 		&.sanstext {
@@ -236,18 +236,22 @@
 		margin: 0;
 		z-index: 0;
 
-		@media only screen and (max-width: $break-lg) {
-			height: 400px;
+		@media only screen and (max-width: $break-xl) {
+			min-height: 400px;
+			height: 100%;
+			padding: 10px 0;
 		}
 
-		@media only screen and (max-width: $break-sm) {
-			height: 300px;
+		@media only screen and (max-width: $break-lg) {
+			min-height: 300px;
+			height: 100%;
 		}
 
 		@media only screen and (max-width: $break-zoom) {
 			align-content: stretch;
 			flex-wrap: wrap;
 			height: 100%;
+			padding: 0;
 
 			&.desktop {
 				background: none;
@@ -285,6 +289,10 @@
 			padding: 0 5%;
 			@include text-shadow();
 
+			@media only screen and (max-width: $break-lg) {
+				max-width: 500px;
+			}
+
 			@media only screen and (max-width: $break-sm-max) {
 				color: #fff;
 				max-width: 400px;
@@ -314,16 +322,19 @@
 					@include font-size($size-5);
 				}
 
-				@media only screen and (max-width: $break-sm-max) {
+				@media only screen and (max-width: $break-lg) {
 					display: block;
 					@include font-size($size-4);
 					margin-bottom: 20px;
 				}
+
+				@media only screen and (max-width: $break-xs) {
+					@include font-size($size-3);
+				}
 			}
 
 			p {
-				font-size: 28px;
-				font-weight: 300;
+				@include font-size($size-2);
 				letter-spacing: 0.5px;
 				line-height: 1.2;
 				margin: 10px 0 30px;
@@ -332,10 +343,6 @@
 
 				@media only screen and (max-width: $break-md) {
 					margin: 15px 0 25px;
-				}
-
-				@media only screen and (max-width: $break-sm) {
-					font-size: 20px;
 				}
 
 				@media only screen and (max-width: $break-zoom) {
@@ -383,23 +390,15 @@
 			margin: 0;
 			width: 100%;
 
-			@media only screen and (max-width: $break-lg) {
+			@media only screen and (max-width: $break-xl) {
 				@include font-size($size-6);
 			}
 
-			@media only screen and (max-width: $break-sm-max) {
+			@media only screen and (max-width: $break-lg) {
 				@include font-size($size-5);
 			}
 
-			@media only screen and (max-width: $break-zoom) {
-				@include font-size($size-4);
-			}
-
-			@media only screen and (max-width: $break-xs) {
-				@include font-size($size-6);
-			}
-
-			@media only screen and (max-width: $break-xxs) {
+			@media only screen and (max-width: $break-sm-max) {
 				@include font-size($size-4);
 			}
 		}
@@ -443,7 +442,7 @@
 			}
 
 			@media only screen and (max-width: $break-lg) {
-				max-width: 200px;
+				max-width: 35%;
 				margin: 30px 20px 15px;
 			}
 
@@ -486,11 +485,11 @@
 					@include font-size($size-2);
 				}
 
-				@media only screen and (max-width: $break-lg) {
+				@media only screen and (max-width: $break-xs) {
 					@include font-size($size-1);
 				}
 
-				@media only screen and (max-width: $break-xs) {
+				@media only screen and (max-width: $break-xxs) {
 					@include font-size($size-0);
 				}
 			}
@@ -655,10 +654,6 @@
 							&:hover {
 								color: $gray-dark;
 							}
-
-							@media only screen and (max-width: $break-sm-max) {
-								@include font-size($size-0);
-							}
 						}
 
 						.home-news-title {
@@ -671,10 +666,6 @@
 							&:hover {
 								color: $red;
 								text-decoration: underline;
-							}
-
-							@media only screen and (max-width: $break-sm-max) {
-								@include font-size($size-1);
 							}
 						}
 					}
@@ -822,7 +813,11 @@
 		}
 
 		@media only screen and (max-width: $break-sm-max) {
-			padding: 85px 0 0;
+			padding: 85px 5% 0;
+		}
+
+		@media only screen and (max-width: $break-sm) {
+			padding: 85px 5%;
 		}
 
 		@media only screen and (max-width: $break-zoom) {
@@ -901,21 +896,21 @@
 	}
 
 	.leaders-section {
-		background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
-		background-size: 100%;
 
 		@media only screen and (min-width: $break-xl) {
+			background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
+			background-size: 100%;
 			padding: 80px 0 120px;
-		}
 
-		@media 
-		only screen and (-webkit-min-device-pixel-ratio: 2),
-		only screen and (   min--moz-device-pixel-ratio: 2),
-		only screen and (     -o-min-device-pixel-ratio: 2/1),
-		only screen and (        min-device-pixel-ratio: 2),
-		only screen and (                min-resolution: 192dpi),
-		only screen and (                min-resolution: 2dppx) { 
-			background-image: url('_/img/home/leaders-bg@2x.jpg');
+			@media 
+			only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (   min--moz-device-pixel-ratio: 2),
+			only screen and (     -o-min-device-pixel-ratio: 2/1),
+			only screen and (        min-device-pixel-ratio: 2),
+			only screen and (                min-resolution: 192dpi),
+			only screen and (                min-resolution: 2dppx) { 
+				background-image: url('_/img/home/leaders-bg@2x.jpg');
+			}
 		}
 
 		.leaders-intro,
@@ -985,19 +980,19 @@
 
 				.leaders-text-wrap {
 					@include border-box();
-					top: 50%;
-					bottom: 50%;
-					left: 0;
-					right: 0;
-					margin: auto;
 					padding: 0 15%;
 					position: absolute;
 					text-align: left;
-					height: 50%;
 					@include text-shadow();
+					justify-content: center; /* align horizontal */
+					align-items: center; /* align vertical */
 
-					@media only screen and (max-width: $break-lg) {
-						padding: 0 10%;
+					p {
+						@include font-size($size-3);
+
+						@media only screen and (max-width: $break-lg) {
+							@include font-size($size-2);
+						}
 					}
 				}
 
@@ -1013,7 +1008,7 @@
 						@include font-size($size-5);
 					}
 
-					@media only screen and (max-width: $break-md) {
+					@media only screen and (max-width: $break-lg) {
 						@include font-size($size-4);
 					}
 				}
@@ -1244,7 +1239,6 @@
 		}
 	}
 
-	/* this should be changed back to .stlouis-text later */
 	.stlouis-home {
 		background: #fff;
 		font-size: 0;
@@ -1254,17 +1248,6 @@
 		h2 {
 			font-family: $font-serif;
 
-			@media only screen and (max-width: $break-sm-mid) {
-				@include font-size($size-5);
-			}
-
-			@media only screen and (max-width: $break-xs) {
-				@include font-size($size-4);
-			}
-
-			@media only screen and (max-width: $break-xxs) {
-				@include font-size($size-3);
-			}
 		}
 
 		a {
@@ -1277,8 +1260,7 @@
 		}
 
 		.text-intro .wrap {
-			padding-bottom: 0;
-			padding-top: 70px;
+			padding: 70px 5% 0;
 
 			@media only screen and (max-width: $break-sm) {
 				padding: 35px 5% 0;
