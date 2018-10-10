@@ -2036,6 +2036,32 @@ section.cta-home.turquoise {
 	width: 100%;
 }
 
+.featured-news-story {
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	font-size: 18px;
+	padding: 30px 0;
+	margin-bottom: 35px;
+	vertical-align: text-top;
+	float: left;
+}
+
+.featured-news-story a {
+	font-family: "Libre Baskerville", "Times New Roman", serif;
+}
+
+.featured-news-story img.size-featured-news {
+	float: left;
+	vertical-align: text-top;
+	padding-right: 30px;
+}
+
+.featured-news-story-excerpt {
+	margin-bottom: 0;
+	margin-top: 20px;
+	font-size: 16px;
+}
+
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (   min--moz-device-pixel-ratio: 2),
