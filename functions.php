@@ -28,7 +28,7 @@ add_action(
 add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
 function wusm_acf_json_load_point( $paths ) {
 	$paths[] = get_stylesheet_directory() . '/acf-json';
-    return $paths;
+	return $paths;
 }
 
 /*
@@ -1107,3 +1107,64 @@ function medicine_featured_story() {
 	<?php return ob_get_clean();
 }
 add_shortcode( 'featured_story', 'medicine_featured_story' );
+
+/**
+ * Related (News) Stories functionality
+ *
+ * @return string The HTML for the Related Stories block
+ */
+function medicine_related_stories() {
+	ob_start(); ?>
+	<div class="related-stories">
+		<?php
+		if ( get_field( 'related_stories_header' ) ) {
+			?>
+			<strong><?php the_field( 'related_stories_header' ); ?></strong>
+			<?php
+			$newstype     = get_field( 'related_stories_news_type_selection' );
+			$newscategory = get_field( 'related_stories_categories_selection' );
+			$args         = array(
+				'post_type'      => 'post',
+				'posts_per_page' => 3,
+				'tax_query'      => array (
+					array (
+						'taxonomy' => 'news',
+						'field'    => 'term_id',
+						'terms'    => $newstype
+					),
+				),
+			);
+			if ( $newscategory !== '' ) {
+				$args['category__in'] = $newscategory;
+			}
+		}
+		$the_query = new WP_Query( $args );
+		$i = 1; ?>
+		<ul class="clearfix">
+			<?php while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				?>
+				<li>
+					<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>" data-category="Page - Internal" data-action="Cards - <?php echo $pagetitle ?>">
+						<div>
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail( 'featured-news' );
+							} else {
+								echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+							}
+							?>
+							<?php the_title(); ?>
+						</div>
+					</a>
+				</li>
+				<?php
+				$i++;
+			} /* end while */
+			?>
+		</ul>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'related_stories', 'medicine_related_stories' );
