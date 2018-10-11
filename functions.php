@@ -1100,6 +1100,7 @@ add_shortcode( 'featured_story', 'medicine_featured_story' );
  * @return string The HTML for the Related Stories block
  */
 function medicine_related_stories() {
+	$pagetitle = get_the_title();
 	ob_start(); ?>
 	<div class="related-stories">
 		<?php
