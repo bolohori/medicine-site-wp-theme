@@ -2139,6 +2139,15 @@ only screen and (                min-resolution: 2dppx) {
 		height: 104px;
 	}
 
+	.related-stories li {
+		max-width: 130px;
+	}
+
+	.related-stories img.size-featured-news {
+		width: 130px;
+		height: 87px;
+	}
+
 	.featured-news-story a {
 		font-size: 14px;
 		display: block;
@@ -2160,11 +2169,22 @@ only screen and (                min-resolution: 2dppx) {
 		background-position: -390px 0;
 	}
 	
-		.related-stories,
-		.featured-news-story {
-			width: 100%;
+	.related-stories,
+	.featured-news-story {
+		width: 100%;
 		padding: 25px 0;
+	}
+	
+	.featured-news-story {
 		font-size: 16px;
+	}
+
+	.related-stories {
+		font-size: 18px;
+	}
+
+	.related-stories li:last-child {
+		display: none;
 	}
 
 	.featured-news-story img.size-featured-news {
