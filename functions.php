@@ -149,6 +149,7 @@ add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 250, 345, true );
 add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
+add_image_size( 'author-headshot', 220, 162 );
 
 // Adds featured image size for pages.
 add_image_size( 'hero-img-sm', 720, 275, true );
