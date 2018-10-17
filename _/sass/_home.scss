@@ -17,37 +17,63 @@
 			@include font-size($size-6);
 		}
 
-		@media only screen and (max-width: $break-md) {
+		@media only screen and (max-width: $break-sm-max) {
 			@include font-size($size-5);
 		}
 
-		@media only screen and (max-width: $break-sm) {
-			@include font-size($size-7);
-		}
-
-		@media only screen and (max-width: $break-xs) {
+		@media only screen and (max-width: $break-sm-mid) {
 			@include font-size($size-6);
 		}
 
-		@media only screen and (max-width: $break-xxs) {
-			@include font-size($size-4);
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-5);
 		}
 	}
 
-	h2 {
+	h2,
+	h3.large-headline {
 		@include font-size($size-6);
 		font-weight: 700;
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-4);
+		}
+
+		&.sanstext {
+			@extend .sanstext
+		}
+	}
+
+	h2.fancy-heading,
+	h3 {
+		@include font-size($size-5);
 
 		@media only screen and (max-width: $break-lg) {
 			@include font-size($size-4);
 		}
 
-		@media only screen and (max-width: $break-xs) {
+		@media only screen and (max-width: $break-sm-max) {
 			@include font-size($size-3);
 		}
 
-		&.sanstext {
-			@extend .sanstext
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-3);
 		}
 	}
 
@@ -60,12 +86,29 @@
 		margin-top: 0;
 		@include text-shadow();
 		width: 350px;
+		@include font-size($size-5);
+		
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			@include font-size($size-3);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-3);
+		}
 	}
 
 	h2.fancy-heading,
 	h3.fancy-heading {
 		font-family: $font-serif;
-		@include font-size($size-5);
+		// @include font-size($size-5);
 		font-style: italic;
 		font-weight: 400;
 		letter-spacing: 0.5px;
@@ -77,7 +120,7 @@
 			@extend .redline;
 		}
 
-		@media only screen and (max-width: $break-lg) {
+		/* @media only screen and (max-width: $break-lg) {
 			@include font-size($size-4);
 		}
 
@@ -95,7 +138,7 @@
 
 		@media only screen and (max-width: $break-xxs) {
 			@include font-size($size-2);
-		}
+		} */
 	}
 
 	.redline {
@@ -116,14 +159,6 @@
 
 		&.alert-text:last-child {
 			padding-bottom: 0;
-		}
-
-		@media only screen and (max-width: $break-lg) {
-			@include font-size($size-2);
-		}
-
-		@media only screen and (max-width: $break-sm-mid) {
-			@include font-size($size-2);
 		}
 
 		@media only screen and (max-width: $break-xs) {
@@ -267,6 +302,7 @@
 		}
 
 		.hero-container {
+			display: flex;
 			margin: 0 auto;
 			max-width: 1280px;
 			width: 100%;
@@ -280,73 +316,92 @@
 				padding: 0;
 				width: 100%;
 			}
-		}
 
-		.hero-text {
-			color: #fff;
-			font-size: 16px;
-			max-width: 640px;
-			padding: 0 5%;
-			@include text-shadow();
+			&.right {
+				justify-content: flex-end;
+				text-align: right;
 
-			@media only screen and (max-width: $break-lg) {
-				max-width: 500px;
+				.hero-text {
+					@include border-box;
+					padding: 0 5% 0 0;
+					max-width: 660px;
+
+					@media only screen and (max-width: $break-md) {
+						max-width: 500px;
+					}
+
+					@media only screen and (max-width: $break-zoom) {
+						justify-content: flex-start;
+						max-width: 100%;
+						padding: 6% 5% 7%;
+						text-align: left;
+					}
+
+					p {
+						max-width: 100%;
+					}
+				}
 			}
 
-			@media only screen and (max-width: $break-sm-max) {
+			.hero-text {
 				color: #fff;
-				max-width: 400px;
-				padding: 0 7%;
-				text-shadow: 1px 1px 4px #000;
-			}
-
-			@media only screen and (max-width: $break-zoom) {
-				background: #4c4c4c url('_/img/home-pattern-gray.jpg');
-				background-size: 100px 100px;
-				left: 0;
-				margin: 0;
-				max-width: 100%;
-				padding: 6% 5% 7%;
-				position: relative;
-			}
-
-			.hero-headline {
-				display: inline-block;
-				font-family: $font-serif;
-				@include font-size($size-6);
-				font-weight: 700;
-				margin: 0 0 5px;
-				line-height: 1.1;
-
-				@media only screen and (max-width: $break-lg) {
-					@include font-size($size-5);
-				}
-
-				@media only screen and (max-width: $break-lg) {
-					display: block;
-					@include font-size($size-4);
-					margin-bottom: 20px;
-				}
-
-				@media only screen and (max-width: $break-xs) {
-					@include font-size($size-3);
-				}
-			}
-
-			p {
-				@include font-size($size-2);
-				letter-spacing: 0.5px;
-				line-height: 1.2;
-				margin: 10px 0 30px;
-				max-width: 600px;
-				padding-bottom: 0;
+				font-size: 16px;
+				max-width: 640px;
+				padding: 0 5%;
+				@include text-shadow();
 
 				@media only screen and (max-width: $break-md) {
-					margin: 15px 0 25px;
+					max-width: 500px;
 				}
 
 				@media only screen and (max-width: $break-zoom) {
-					display: none;
+					background: #4c4c4c url('_/img/home-pattern-gray.jpg');
+					background-size: 100px 100px;
+					left: 0;
+					margin: 0;
+					max-width: 100%;
+					padding: 6% 5% 7%;
+					position: relative;
+				}
+
+				.hero-headline {
+					display: inline-block;
+					font-family: $font-serif;
+					@include font-size($size-6);
+					font-weight: 700;
+					margin: 0 0 5px;
+					line-height: 1.1;
+
+					@media only screen and (max-width: $break-lg) {
+						@include font-size($size-5);
+					}
+
+					@media only screen and (max-width: $break-lg) {
+						display: block;
+						@include font-size($size-4);
+						margin-bottom: 20px;
+					}
+
+					@media only screen and (max-width: $break-xs) {
+						@include font-size($size-3);
+					}
+				}
+
+				p {
+					@include font-size($size-2);
+					letter-spacing: 0.5px;
+					line-height: 1.2;
+					margin: 10px 0 30px;
+					max-width: 600px;
+					padding-bottom: 0;
+
+					@media only screen and (max-width: $break-md) {
+						margin: 15px 0 25px;
+					}
+
+					@media only screen and (max-width: $break-zoom) {
+						display: none;
+					}
 				}
 			}
 		}
@@ -369,6 +424,7 @@
 
 		@media only screen and (max-width: $break-sm-mid) {
 			align-items: baseline;
+			background-size: 90% auto;
 			display: inline-block;
 			flex-wrap: nowrap;
 		}
@@ -386,11 +442,11 @@
 		}
 		
 		h2 {
-			@include font-size($size-7);
+			// @include font-size($size-7);
 			margin: 0;
 			width: 100%;
 
-			@media only screen and (max-width: $break-xl) {
+			/* @media only screen and (max-width: $break-xl) {
 				@include font-size($size-6);
 			}
 
@@ -398,9 +454,9 @@
 				@include font-size($size-5);
 			}
 
-			@media only screen and (max-width: $break-sm-max) {
+			@media only screen and (max-width: $break-sm) {
 				@include font-size($size-4);
-			}
+			} */
 		}
 
 		.tagline {
@@ -413,84 +469,91 @@
 				@include font-size($size-4);
 			}
 
-			@media only screen and (max-width: $break-md) {
-				@include font-size($size-3);
-			}
-
 			@media only screen and (max-width: $break-sm-mid) {
 				display: block;
-			}
-		}
-
-		.icon {
-			@include border-box();
-			margin: 20px;
-			max-width: 250px;
-			@include transition(all, 0.2s, ease-in-out);
-			width: 100%;
-
-			@media only screen and (max-width: $break-sm-mid) {
-				display: inline-block;
-				margin: 0;
-				padding: 20px;
-				width: 50%;
-				vertical-align: top;
-			}
-
-			@media only screen and (max-width: $break-xl) {
-				max-width: 230px;
-			}
-
-			@media only screen and (max-width: $break-lg) {
-				max-width: 35%;
-				margin: 30px 20px 15px;
-			}
-
-			@media only screen and (max-width: $break-sm-mid) {
-				margin: 5px 0;
-				max-width: 35%;
 			}
 
 			@media only screen and (max-width: $break-sm) {
-				max-width: 50%;
-			}
-
-			&:hover {
-				transform: scale(1.02);
-
-				.desctext {
-					color: $red;
-					text-decoration: underline;
-				}
-			}
-
-			img {
-				display: block;
-				margin: 0 auto;
-				padding-bottom: 20px;
-				max-width: 250px;
-			}
-
-			.desctext {
-				font-family: $font-serif;
 				@include font-size($size-3);
-				font-weight: 700;
+			}
+		}
 
-				&:hover {
-					color: $red;
-					text-decoration: underline;
-				}
+		.icons {
+			display: flex;
+			flex-wrap: no-wrap;
+			justify-content: center;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				flex-wrap: wrap;
+				padding: 0 20px;
+			}
+
+			.icon {
+				@include border-box();
+				margin: 20px;
+				max-width: 250px;
+				@include transition(all, 0.2s, ease-in-out);
+				width: 100%;
+
+				/* @media only screen and (max-width: $break-sm-mid) {
+					display: inline-block;
+					margin: 0;
+					padding: 20px;
+					width: 50%;
+					vertical-align: top;
+				} */
 
 				@media only screen and (max-width: $break-xl) {
-					@include font-size($size-2);
+					max-width: 230px;
 				}
 
-				@media only screen and (max-width: $break-xs) {
-					@include font-size($size-1);
+				@media only screen and (max-width: $break-lg) {
+					margin: 30px 20px 15px;
+					max-width: 25%;
 				}
 
-				@media only screen and (max-width: $break-xxs) {
-					@include font-size($size-0);
+				@media only screen and (max-width: $break-sm-mid) {
+					margin: 30px 10px 15px;
+					max-width: 40%;
+				}
+
+				&:hover {
+					transform: scale(1.02);
+
+					.desctext {
+						color: $red;
+						text-decoration: underline;
+					}
+				}
+
+				img {
+					display: block;
+					margin: 0 auto;
+					padding-bottom: 20px;
+					max-width: 250px;
+				}
+
+				.desctext {
+					font-family: $font-serif;
+					@include font-size($size-3);
+					font-weight: 700;
+
+					&:hover {
+						color: $red;
+						text-decoration: underline;
+					}
+
+					@media only screen and (max-width: $break-xl) {
+						@include font-size($size-2);
+					}
+
+					@media only screen and (max-width: $break-xs) {
+						@include font-size($size-1);
+					}
+
+					@media only screen and (max-width: $break-xxs) {
+						@include font-size($size-0);
+					}
 				}
 			}
 		}
@@ -731,15 +794,15 @@
 			h2 {
 				@include text-shadow();
 				width: 100%;
-				@include font-size($size-6);
+				// @include font-size($size-6);
 
-				@media only screen and (max-width: $break-xs) {
+				/* @media only screen and (max-width: $break-xs) {
 					@include font-size($size-3);
 				}
 
 				@media only screen and (max-width: $break-lg) {
 					@include font-size($size-4);
-				}
+				} */
 				
 				@media only screen and (max-width: $break-zoom) {
 					text-align: center;
@@ -813,7 +876,7 @@
 		}
 
 		@media only screen and (max-width: $break-sm-max) {
-			padding: 85px 5% 0;
+			padding: 85px 5% 0 0;
 		}
 
 		@media only screen and (max-width: $break-sm) {
@@ -850,14 +913,13 @@
 				height: auto;
 
 				@media only screen and (max-width: $break-sm-mid) {
-					height: 100%;
 					object-fit: cover;
 				}
 			}
 		}
 
 		.voices-quote {
-			padding-left: 3%;
+			padding: 0 0 3% 3%;
 
 			@media only screen and (max-width: $break-sm-mid) {
 				@include border-box;
@@ -872,6 +934,7 @@
 
 			p {
 				max-width: 500px;
+				padding-right: 5%;
 			}
 
 			.quote-attribution {
@@ -896,7 +959,6 @@
 	}
 
 	.leaders-section {
-
 		@media only screen and (min-width: $break-xl) {
 			background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
 			background-size: 100%;
@@ -980,7 +1042,7 @@
 
 				.leaders-text-wrap {
 					@include border-box();
-					padding: 0 15%;
+					padding: 0 10%;
 					position: absolute;
 					text-align: left;
 					@include text-shadow();
@@ -998,11 +1060,12 @@
 
 				img {
 					height: auto;
+					width: 100%;
 				}
 
 				h2 {
 					text-align: left;
-					@include font-size($size-6);
+					/*@include font-size($size-6);
 
 					@media only screen and (max-width: $break-xl) {
 						@include font-size($size-5);
@@ -1010,7 +1073,7 @@
 
 					@media only screen and (max-width: $break-lg) {
 						@include font-size($size-4);
-					}
+					} */
 				}
 
 				p {
@@ -1021,6 +1084,10 @@
 					@media only screen and (min-width: $break-xl) {
 						@include font-size($size-4);
 					}
+				}
+
+				@media only screen and (min-width: $break-xxs) {
+					width: 100%;
 				}
 
 				@media only screen and (min-width: $break-zoom) {
@@ -1043,7 +1110,7 @@
 				@include transition(all, 0.2s, ease-in-out);
 				width: 100%;
 
-				@media only screen and (min-width: $break-xs) {
+				@media only screen and (min-width: $break-xxs) {
 					width: 100%;
 				}
 
@@ -1125,7 +1192,7 @@
 			margin-top: 0;
 			margin-bottom: 40px;
 
-			@media only screen and (max-width: $break-sm-mid) {
+			/*@media only screen and (max-width: $break-sm-mid) {
 				@include font-size($size-5);
 			}
 
@@ -1135,7 +1202,7 @@
 
 			@media only screen and (max-width: $break-xxs) {
 				@include font-size($size-3);
-			}
+			}*/
 		}
 
 		p {
@@ -1225,8 +1292,8 @@
 				position: absolute;
 				right: 5%;
 				@include text-shadow();
-				width: 350px;
-				@include font-size($size-6);
+				max-width: 450px;
+				/* @include font-size($size-6);
 
 				@media only screen and (max-width: $break-xs) {
 					@include font-size($size-3);
@@ -1234,7 +1301,7 @@
 
 				@media only screen and (max-width: $break-lg) {
 					@include font-size($size-4);
-				}
+				} */
 			}
 		}
 	}
@@ -1247,7 +1314,6 @@
 
 		h2 {
 			font-family: $font-serif;
-
 		}
 
 		a {

@@ -41,7 +41,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	<?php
 	if ( get_field( 'hero_image', 'option' ) ) {
 		// Adds featured image size for pages.
-		$heroalign = get_field( 'text_alignment', 'option' );
+		$heroalign = ' ' . get_field( 'text_alignment', 'option' );
 		$heroheadline = get_field( 'headline', 'option' );
 		$herodesc = get_field( 'descriptive_text', 'option' );
 		$herobuttontext = get_field( 'button_text', 'option' );
@@ -55,7 +55,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		$herobuttonlast = array_pop( $explodedbutton );
 
 		echo '<div class="hero-banner mobile"></div>';
-		echo '<div class="hero-container">';
+		echo '<div class="hero-container' . $heroalign . '">';
 			echo '<div class="hero-text">';
 				echo '<h2 class="hero-headline">' . esc_html( $heroheadline ) . '</h2>';
 				echo '<p>' . esc_html( $herodesc ) . '</p>';
@@ -75,21 +75,23 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	<section class="bythenumbers">
 		<h2>&#35;WashUMed</h2>
 		<span class="tagline">by the numbers</span>
-		<div class="icon">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
-			<span class="desctext">Top 10 Medical School</span>	
-		</div>
-		<div class="icon">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
-			<span class="desctext">13 Degree Programs</span>	
-		</div>
-		<div class="icon">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
-			<span class="desctext">76 Clinical Specialties and Subspecialties</span>	
-		</div>
-		<div class="icon">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
-			<span class="desctext">2nd-Lowest Student Debt</span>	
+		<div class="icons">
+			<div class="icon">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
+				<span class="desctext">Top 10 Medical School</span>	
+			</div>
+			<div class="icon">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
+				<span class="desctext">13 Degree Programs</span>	
+			</div>
+			<div class="icon">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
+				<span class="desctext">76 Clinical Specialties and Subspecialties</span>	
+			</div>
+			<div class="icon">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
+				<span class="desctext">2nd-Lowest Student Debt</span>	
+			</div>
 		</div>
 	</section>
 
@@ -115,7 +117,19 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				echo $halfstr . ' <span class="sanstext">' . $halflastword . '</span>';
 			?></h3>
 			<p><?php the_field( 'half_callout_description', 'option' ); ?></p>
-			<a class="cta-button red" href="<?php the_field( 'half_callout_link', 'option' ); ?>"><span class="cta-button-wrap"><?php the_field( 'half_callout_link_text', 'option' ); ?></span></a>
+
+			<?php
+			/*
+			* Making the string able to have the arrow wrap
+			* with the last word.
+			*/
+			$hc_link = get_field( 'half_callout_link', 'option' );
+			$hc_text = get_field( 'half_callout_link_text', 'option' );
+			$hc_exploded = explode( ' ', $hc_text );
+			$hc_last = array_pop( $hc_exploded );
+
+			echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="' . esc_html( $hc_link ) . '">' . implode( ' ', $hc_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $hc_last ) . '</span>' . '</a>';
+			?>
 		</div>
 	</section>
 
@@ -237,7 +251,18 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	<section class="connect-section">
 		<h2><?php the_field( 'full_callout_2_title', 'option' ); ?></h2>
 		<p class="connect-subhead"><?php the_field( 'full_callout_2_subhead', 'option' ); ?></p>
-		<a class="cta-button red" href="<?php the_field( 'full_callout_2_link', 'option' ); ?>"><span class="cta-button-wrap"><?php the_field( 'full_callout_2_link_text', 'option' ); ?></span></a>
+		<?php
+		/*
+		* Making the string able to have the arrow wrap
+		* with the last word.
+		*/
+		$fc2_link = get_field( 'full_callout_2_link', 'option' );
+		$fc2_text = get_field( 'full_callout_2_link_text', 'option' );
+		$fc2_exploded = explode( ' ', $fc2_text );
+		$fc2_last = array_pop( $fc2_exploded );
+
+		echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="' . esc_html( $fc2_link ) . '">' . implode( ' ', $fc2_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fc2_last ) . '</span>' . '</a>';
+		?>
 	</section>
 
 	<section class="full-section">
@@ -250,7 +275,18 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				echo $splitstr . ' <span class="sanstext">' . $splitlastword . '</span>';
 			?></h2>
 			<p><?php the_field( 'full_split_subhead_description', 'option' ); ?></p>
-			<a class="cta-button red" href="<?php the_field( 'full_split_link', 'option' ); ?>"><span class="cta-button-wrap"><?php the_field( 'full_split_link_text', 'option' ); ?></span></a>
+			<?php
+			/*
+			* Making the string able to have the arrow wrap
+			* with the last word.
+			*/
+			$fs_link = get_field( 'full_split_link', 'option' );
+			$fs_text = get_field( 'full_split_link_text', 'option' );
+			$fs_exploded = explode( ' ', $fs_text );
+			$fs_last = array_pop( $fs_exploded );
+
+			echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
+			?>
 		</div>
 		<div class="full-split-right">
 			<div class="triangle"></div>
@@ -264,7 +300,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 					}
 				?>
 			</div>
-			<h3 class="white"><?php the_field( 'full_split_callout_title', 'option' ); ?></h3>
+			<h3 class="white large-headline"><?php the_field( 'full_split_callout_title', 'option' ); ?></h3>
 		</div>
 	</section>
 
