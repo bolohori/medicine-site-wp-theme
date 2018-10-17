@@ -2965,12 +2965,20 @@ only screen and (                min-resolution: 2dppx) {
 .news-author-header {
 	font-size: 18px;
 }
+.author-headshot {
+	margin-right: 35px;
+}
+.news-author-header h1,
+.news-author-header h2 {
+	display: block;
+	width: 100%;
+}
 .news-author-header h1 {
 	margin-bottom: 5px;
-	font-size: 28px
+	float: none;
+	font-size: 28px;
 }
 .news-author-header h2 {
-	clear: both;
 	font-size: 18px;
 }
 .author-contact-list {
