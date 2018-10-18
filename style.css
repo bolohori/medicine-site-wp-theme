@@ -2961,12 +2961,17 @@ only screen and (                min-resolution: 2dppx) {
 	font-weight: 600;
 }
 
-
+.author-block {
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 45px;
+	margin-bottom: 21px;
+}
 .news-author-header {
 	font-size: 18px;
 }
 .author-headshot {
 	margin-right: 35px;
+	margin-bottom: 20px;
 }
 .news-author-header h1,
 .news-author-header h2 {
@@ -2977,6 +2982,7 @@ only screen and (                min-resolution: 2dppx) {
 	margin-bottom: 5px;
 	float: none;
 	font-size: 28px;
+	line-height: 28px;
 }
 .news-author-header h2 {
 	font-size: 18px;
@@ -2985,6 +2991,7 @@ only screen and (                min-resolution: 2dppx) {
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
 	padding-bottom: 20px;
+	font-weight: 600;
 }
 .author-contact-list {
 	display: inline-block;
@@ -2992,7 +2999,7 @@ only screen and (                min-resolution: 2dppx) {
 
 .author-contact-list li {
 	display: inline-block;
-	line-height: 2;
+	line-height: 2rem;
 	position: relative;
 	padding-left: 1.25rem;
 	font-size: 1rem;
@@ -5134,6 +5141,14 @@ a.sidebar-outlook-link {
 	.national-leaders-see-all {
 		margin-bottom: 40px;
 	}
+
+	.author-contact-list {
+		display: block;
+		width: auto;
+	}
+	.author-contact-list li {
+		left: 0;
+	}
 }
 @media screen and ( max-width: 750px ) {
 	.hero-text {
@@ -5498,6 +5513,20 @@ a.sidebar-outlook-link {
 
 	.article-header {
 		margin-bottom: 20px;
+	}
+	.article-header .author-info h1 {
+		font-size: 28px;
+		margin-bottom: 0;
+	}
+	.article-header .author-info h2 {
+		margin-bottom: 20px;
+	}
+	.author-contact-list li {
+		width: 100%;
+		line-height: 24px;
+	}
+	.author-contact-list li:before {
+		top: 0.3rem;
 	}
 	.article-header h1 {
 		font-size: 26px;
