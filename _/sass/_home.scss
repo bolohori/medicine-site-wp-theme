@@ -274,12 +274,16 @@
 		@media only screen and (max-width: $break-xl) {
 			min-height: 400px;
 			height: 100%;
-			padding: 10px 0;
+			padding: 0;
 		}
 
-		@media only screen and (max-width: $break-lg) {
+		@media only screen and (max-width: $break-md) {
 			min-height: 300px;
 			height: 100%;
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			min-height: 200px;
 		}
 
 		@media only screen and (max-width: $break-zoom) {
@@ -305,6 +309,7 @@
 			display: flex;
 			margin: 0 auto;
 			max-width: 1280px;
+			padding: 20px 0;
 			width: 100%;
 
 			@media only screen and (max-width: $break-sm-max) {
@@ -367,28 +372,27 @@
 				.hero-headline {
 					display: inline-block;
 					font-family: $font-serif;
-					@include font-size($size-6);
 					font-weight: 700;
 					margin: 0 0 5px;
 					line-height: 1.1;
 
 					@media only screen and (max-width: $break-lg) {
-						@include font-size($size-5);
-					}
-
-					@media only screen and (max-width: $break-lg) {
 						display: block;
-						@include font-size($size-4);
 						margin-bottom: 20px;
 					}
 
-					@media only screen and (max-width: $break-xs) {
+					@media only screen and (max-width: $break-md) {
+						@include font-size($size-4);
+					}
+
+					@media only screen and (max-width: $break-zoom) {
 						@include font-size($size-3);
 					}
 				}
 
 				p {
-					@include font-size($size-2);
+					@include font-size($size-3);
+					font-weight: 300;
 					letter-spacing: 0.5px;
 					line-height: 1.2;
 					margin: 10px 0 30px;
@@ -396,11 +400,24 @@
 					padding-bottom: 0;
 
 					@media only screen and (max-width: $break-md) {
+						@include font-size($size-2);
 						margin: 15px 0 25px;
+					}
+
+					@media only screen and (max-width: $break-sm) {
+						@include font-size($size-1);
 					}
 
 					@media only screen and (max-width: $break-zoom) {
 						display: none;
+					}
+				}
+
+				.cta-button {
+					@include font-size($size-2);
+
+					@media only screen and (max-width: $break-sm) {
+						@include font-size($size-1);
 					}
 				}
 			}
@@ -656,6 +673,10 @@
 
 		@media only screen and (max-width: $break-xl) {
 			padding: 50px 5% 80px;
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			background-color: tint($gray-extra-light, 75%);
 		}
 
 		@media only screen and (max-width: $break-xs) {
