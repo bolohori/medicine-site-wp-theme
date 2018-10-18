@@ -5,11 +5,12 @@ global $curauth;
 <header class="clearfix news-author-header article-header">
 	<a href="/news" class="visit-news-hub"><div class="arrow-left"></div>Visit the News Hub</a>
 	<div class="author-block">
-		<img src="
 		<?php
 		$image_array = get_field( 'author_headshot', 'user_' . $curauth->ID );
-		echo $image_array['sizes']['author-headshot'];
-		?>" class='alignleft author-headshot' alt="">
+		if ( null !== $image_array ) {
+		?>
+		<img src="<?php echo $image_array['sizes']['author-headshot']; ?>" class='alignleft author-headshot' alt="">
+		<?php } ?>
 		<div class="author-info">
 			<h1><?php echo $curauth->display_name; ?></h1>
 			<h2><?php echo $curauth->title; ?></h2>
