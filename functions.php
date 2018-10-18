@@ -150,6 +150,7 @@ add_image_size( 'headshot', 250, 345, true );
 add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
 add_image_size( 'author-headshot', 220, 162 );
+add_image_size( 'featured-news', 186, 124 );
 
 // Adds featured image size for pages.
 add_image_size( 'hero-img-sm', 720, 275, true );
@@ -1075,3 +1076,21 @@ add_filter( 'ssp_show_media_player', '__return_false' );
 
 remove_shortcode( 'wusm_archive' );
 add_shortcode( 'wusm_archive', function() { return false; } );
+
+/**
+ * Featured News story functionality
+ *
+ * @return string The HTML for the featured story
+ */
+function medicine_featured_story() {
+	$featured_story_object = get_field( 'featured_story' );
+	
+	ob_start(); ?>
+	<div class="featured-news-story">
+		<?php echo get_the_post_thumbnail( $featured_story_object, 'featured-news' ); ?>
+		<strong>Related: </strong><a href="<?php the_permalink( $featured_story_object->ID ); ?>"><?php echo $featured_story_object->post_title; ?></a>
+		<p class="featured-news-story-excerpt"><?php echo $featured_story_object->post_excerpt; ?>
+	</div>
+	<?php return ob_get_clean();
+}
+add_shortcode( 'featured_story', 'medicine_featured_story' );
