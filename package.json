@@ -3,11 +3,17 @@
   "version": "2018.08.28.0",
   "description": "The theme for the Washington University School of Medicine in St. Louis",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "scripts": {
 	"sass": "sass --watch _/sass/:. --style compressed"
   }, 
 =======
 >>>>>>> SASS functionality is here!
+=======
+  "scripts": {
+    "test": "sass --watch _/sass/:. --style compressed"
+  },
+>>>>>>> 📦 NEW: You can now use 'npm run sass' to compile the sass
   "repository": {
     "type": "git",
     "url": "https://istdevcode.wustl.edu/projects/PA/repos/medicine"
@@ -23,6 +29,7 @@
     "grunt-contrib-uglify": "~1.0.1",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-sass": "~1.2.0",
-    "load-grunt-tasks": "~3.5.0"
+    "load-grunt-tasks": "~3.5.0",
+    "sass": "^1.14.3"
   }
 }
