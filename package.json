@@ -11,7 +11,7 @@
 >>>>>>> SASS functionality is here!
 =======
   "scripts": {
-    "test": "sass --watch _/sass/:. --style compressed"
+    "sass": "sass --watch _/sass/:. --style compressed"
   },
 >>>>>>> 📦 NEW: You can now use 'npm run sass' to compile the sass
   "repository": {
