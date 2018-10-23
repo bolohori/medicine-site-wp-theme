@@ -2979,18 +2979,20 @@ only screen and (                min-resolution: 2dppx) {
 	width: 100%;
 }
 .news-author-header h1 {
-	margin-bottom: 5px;
+	margin-bottom: 0;
 	float: none;
 	font-size: 28px;
 	line-height: 28px;
 }
 .news-author-header h2 {
 	font-size: 18px;
+	font-weight: 500;
 }
 .author-contact-list {
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	padding-bottom: 20px;
+	padding-bottom: 7px;
+	margin-bottom: 7px;
 	font-weight: 600;
 }
 .author-contact-list {
