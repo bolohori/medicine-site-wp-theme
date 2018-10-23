@@ -3097,11 +3097,11 @@ only screen and (                min-resolution: 2dppx) {
 .news-author-header h2 {
 	font-size: 18px;
 	font-weight: 500;
+	margin-bottom: 7px;
 }
 .author-contact-list {
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 16px;
-	padding-bottom: 7px;
 	margin-bottom: 7px;
 	font-weight: 600;
 }
