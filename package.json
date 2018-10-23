@@ -2,6 +2,9 @@
   "name": "wustl_medicine",
   "version": "2018.08.28.0",
   "description": "The theme for the Washington University School of Medicine in St. Louis",
+  "scripts": {
+    "test": "sass --watch _/sass/:. --style compressed"
+  },
   "repository": {
     "type": "git",
     "url": "https://istdevcode.wustl.edu/projects/PA/repos/medicine"
@@ -17,6 +20,7 @@
     "grunt-contrib-uglify": "~1.0.1",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-sass": "~1.2.0",
-    "load-grunt-tasks": "~3.5.0"
+    "load-grunt-tasks": "~3.5.0",
+    "sass": "^1.14.3"
   }
 }
