@@ -1,0 +1,1376 @@
+.home #page {
+	background: #fff;
+	font-family: $font-sans;
+	font-size: 0;
+
+	.sanstext {
+		display: block;
+		font-family: $font-sans;
+		@include font-size($size-7);
+		font-style: normal;
+		font-weight: 700;
+		letter-spacing: 0.3px;
+		line-height: 1;
+		text-transform: uppercase;
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-6);
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-6);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-5);
+		}
+	}
+
+	h2,
+	h3.large-headline {
+		@include font-size($size-6);
+		font-weight: 700;
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-4);
+		}
+
+		&.sanstext {
+			@extend .sanstext
+		}
+	}
+
+	h2.fancy-heading,
+	h3 {
+		@include font-size($size-5);
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			@include font-size($size-3);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-3);
+		}
+	}
+
+	h2.white,
+	h3.white {
+		color: #fff;
+		font-family: $font-serif;
+		font-weight: 700;
+		letter-spacing: 0.29px;
+		margin-top: 0;
+		@include text-shadow();
+		width: 350px;
+		@include font-size($size-5);
+		
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			@include font-size($size-3);
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			@include font-size($size-3);
+		}
+	}
+
+	h2.fancy-heading,
+	h3.fancy-heading {
+		font-family: $font-serif;
+		// @include font-size($size-5);
+		font-style: italic;
+		font-weight: 400;
+		letter-spacing: 0.5px;
+		margin-bottom: 30px;
+		margin-top: 0;
+		text-transform: none;
+
+		@include redline();
+
+		/* @media only screen and (max-width: $break-lg) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-md) {
+			@include font-size($size-3);
+		}
+
+		@media only screen and (max-width: $break-sm) {
+			@include font-size($size-5);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-4);
+		}
+
+		@media only screen and (max-width: $break-xxs) {
+			@include font-size($size-2);
+		} */
+	}
+
+	p {
+		font-family: $font-sans;
+		@include font-size($size-2);
+		letter-spacing: 0.33px;
+		padding-bottom: 40px;
+
+		&.alert-text:last-child {
+			padding-bottom: 0;
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			@include font-size($size-1);
+		}
+	}
+
+	.tagline {
+		font-size: 24px;
+	}
+
+	.cta-button {
+		background: rgba(0, 0, 0, .3);
+		border: 3px solid #fff;
+		color: #fff;
+		display: inline-block;
+		font-size: 24px;
+		font-weight: 600;
+		padding: 8px 27px;
+		text-transform: uppercase;
+
+		@media only screen and (max-width: $break-lg) {
+			@include font-size($size-1);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			padding: 8px 15px;
+		}
+
+		&:hover {
+			background: rgba(0, 0, 0, .8);
+			transition: fade-in 1s;
+		}
+
+		.cta-button-wrap {
+			display: inline-block;
+
+			&::after {
+				background: url('_/img/arrow-white.svg');
+				background-repeat: no-repeat;
+				content: '';
+				display: inline-block;
+				height: 19px;
+				margin: 0 0 -3px 14px;
+				width: 14px;
+
+				@media only screen and (max-width: $break-xs) {
+					height: 17px;
+					width: 12px;
+				}
+			}
+		}
+
+		&.red {
+			background: none;
+			border-color: $red;
+			color: $red;
+
+			&:hover {
+				background: $red;
+				color: #fff;
+
+				.cta-button-wrap {
+					&::after {
+						background: url('_/img/arrow-white-noshadow.svg');
+					}
+				}
+			}
+
+			.cta-button-wrap {
+				display: inline-block;
+
+				&::after {
+					background: url('_/img/arrow-red.svg');
+					background-repeat: no-repeat;
+					content: '';
+					display: inline-block;
+					height: 19px;
+					margin: 0 0 -2px 13px;
+					width: 14px;
+
+					@media only screen and (max-width: $break-xs) {
+						height: 17px;
+						width: 12px;
+					}
+				}
+			}
+		}
+	}
+
+	.triangle {
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 30px 30px 0 30px;
+		border-color: #ffffff transparent transparent transparent;
+	}
+
+	.hero-banner {
+		align-content: center;
+		align-items: center;
+		background-color: $gray-dark;
+		background-size: cover;
+		background-repeat: no-repeat;
+		display: flex;
+		font-size: 0;
+		height: 550px;
+		position: relative;
+		margin: 0;
+		z-index: 0;
+
+		@media only screen and (max-width: $break-lg) {
+			min-height: 400px;
+			height: 100%;
+			padding: 0;
+		}
+
+		@media only screen and (max-width: $break-md) {
+			min-height: 300px;
+			height: 100%;
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			min-height: 200px;
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			align-content: stretch;
+			flex-wrap: wrap;
+			height: 100%;
+			padding: 0;
+
+			&.desktop {
+				background: none;
+			}
+
+			&.mobile {
+				display: block;
+				padding: 0;
+				width: 100%;
+				background-position: center;
+				height: 200px;
+			}
+		}
+
+		.hero-container {
+			display: flex;
+			margin: 0 auto;
+			max-width: 1280px;
+			padding: 20px 0;
+			width: 100%;
+
+			@media only screen and (max-width: $break-sm-max) {
+				max-width: 100%;
+			}
+
+			@media only screen and (max-width: $break-zoom) {
+				display: block;
+				padding: 0;
+				width: 100%;
+			}
+
+			&.right {
+				justify-content: flex-end;
+				text-align: right;
+
+				.hero-text {
+					@include border-box;
+					padding: 0 5% 0 0;
+					max-width: 660px;
+
+					@media only screen and (max-width: $break-md) {
+						max-width: 500px;
+					}
+
+					@media only screen and (max-width: $break-zoom) {
+						justify-content: flex-start;
+						max-width: 100%;
+						padding: 6% 5% 7%;
+						text-align: left;
+					}
+
+					p {
+						max-width: 100%;
+					}
+				}
+			}
+
+			.hero-text {
+				color: #fff;
+				font-size: 16px;
+				max-width: 640px;
+				padding: 0 5%;
+				@include text-shadow();
+
+				@media only screen and (max-width: $break-md) {
+					max-width: 500px;
+				}
+
+				@media only screen and (max-width: $break-zoom) {
+					background: #4c4c4c url('_/img/home-pattern-gray.jpg');
+					background-size: 100px 100px;
+					left: 0;
+					margin: 0;
+					max-width: 100%;
+					padding: 6% 5% 7%;
+					position: relative;
+				}
+
+				.hero-headline {
+					display: inline-block;
+					font-family: $font-serif;
+					font-weight: 700;
+					margin: 0 0 5px;
+					line-height: 1.1;
+
+					@media only screen and (max-width: $break-lg) {
+						display: block;
+						margin-bottom: 20px;
+					}
+
+					@media only screen and (max-width: $break-md) {
+						@include font-size($size-4);
+					}
+
+					@media only screen and (max-width: $break-zoom) {
+						@include font-size($size-3);
+					}
+				}
+
+				p {
+					@include font-size($size-3);
+					font-weight: 300;
+					letter-spacing: 0.5px;
+					line-height: 1.2;
+					margin: 10px 0 30px;
+					max-width: 600px;
+					padding-bottom: 0;
+
+					@media only screen and (max-width: $break-md) {
+						@include font-size($size-2);
+						margin: 15px 0 25px;
+					}
+
+					@media only screen and (max-width: $break-sm) {
+						@include font-size($size-1);
+					}
+
+					@media only screen and (max-width: $break-zoom) {
+						display: none;
+					}
+				}
+
+				.cta-button {
+					@include font-size($size-2);
+
+					@media only screen and (max-width: $break-sm) {
+						@include font-size($size-1);
+					}
+				}
+			}
+		}
+	}
+
+	.bythenumbers {
+		align-items: flex-start;
+		background: #fff url('_/img/home/outline-shield-transparent.svg') no-repeat center center;
+		background-size: auto 110%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 65px 0;
+		text-align: center;
+		width: 100%;
+
+		@media only screen and (min-width: $break-xs) {
+			padding: 85px 0;
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			align-items: baseline;
+			background-size: 90% auto;
+			display: inline-block;
+			flex-wrap: nowrap;
+		}
+
+		@media only screen and (min-width: $break-lg) {
+			padding: 120px 0;
+		}
+
+		@media only screen and (min-width: $break-xl) {
+			padding: 150px 0;
+		}
+
+		@media only screen and (min-width: $break-xxl) {
+			padding: 165px 0;
+		}
+		
+		h2 {
+			// @include font-size($size-7);
+			margin: 0;
+			width: 100%;
+
+			/* @media only screen and (max-width: $break-xl) {
+				@include font-size($size-6);
+			}
+
+			@media only screen and (max-width: $break-lg) {
+				@include font-size($size-5);
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				@include font-size($size-4);
+			} */
+		}
+
+		.tagline {
+			font-family: $font-serif;
+			@include font-size($size-4);
+			font-style: italic;
+			width: 100%;
+
+			@media only screen and (max-width: $break-xl) {
+				@include font-size($size-4);
+			}
+
+			@media only screen and (max-width: $break-sm-mid) {
+				display: block;
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				@include font-size($size-3);
+			}
+		}
+
+		.icons {
+			display: flex;
+			flex-wrap: no-wrap;
+			justify-content: center;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				flex-wrap: wrap;
+				padding: 0 20px;
+			}
+
+			.icon {
+				@include border-box();
+				margin: 20px;
+				max-width: 250px;
+				@include transition(all, 0.2s, ease-in-out);
+				width: 100%;
+
+				/* @media only screen and (max-width: $break-sm-mid) {
+					display: inline-block;
+					margin: 0;
+					padding: 20px;
+					width: 50%;
+					vertical-align: top;
+				} */
+
+				@media only screen and (max-width: $break-xl) {
+					max-width: 230px;
+				}
+
+				@media only screen and (max-width: $break-lg) {
+					margin: 30px 20px 15px;
+					max-width: 25%;
+				}
+
+				@media only screen and (max-width: $break-sm-mid) {
+					margin: 30px 10px 15px;
+					max-width: 40%;
+				}
+
+				&:hover {
+					transform: scale(1.02);
+
+					.desctext {
+						color: $red;
+						text-decoration: underline;
+					}
+				}
+
+				img {
+					display: block;
+					margin: 0 auto;
+					padding-bottom: 20px;
+					max-width: 250px;
+				}
+
+				.desctext {
+					font-family: $font-serif;
+					@include font-size($size-3);
+					font-weight: 700;
+
+					&:hover {
+						color: $red;
+						text-decoration: underline;
+					}
+
+					@media only screen and (max-width: $break-xl) {
+						@include font-size($size-2);
+					}
+
+					@media only screen and (max-width: $break-xs) {
+						@include font-size($size-1);
+					}
+
+					@media only screen and (max-width: $break-xxs) {
+						@include font-size($size-0);
+					}
+				}
+			}
+		}
+	}
+
+	.half-callout {
+		justify-content: center;
+		background: #fff;
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 0;
+		margin: 0 auto;
+		position: relative;
+		max-width: 1920px;
+		width: 100%;
+
+		@media only screen and (max-width: $break-sm-mid) {
+			width: 100%;
+		}
+
+		.half-intro {
+			@include border-box;
+			background: $gray-dark;
+			display: inline-block;
+			font-size: 0;
+			position: relative;
+			text-align: right;
+			width: 60%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			.triangle {
+				top: 25%;
+				right: -15px;
+				margin-left: 15%;
+				transform: rotate(90deg);
+				-webkit-transform: rotate(90deg);
+
+				@media only screen and (max-width: $break-sm-mid) {
+					bottom: 0;
+					right: auto;
+					left: 0;
+					top: auto;
+					transform: rotate(180deg);
+					-webkit-transform: rotate(180deg);
+				}
+			}
+
+			img {
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
+
+			h2 {
+				bottom: 5%;
+				color: #fff;
+				font-family: $font-serif;
+				letter-spacing: 0.29px;
+				margin-top: 0;
+				position: absolute;
+				right: 5%;
+				@include text-shadow();
+				width: 350px;
+			}
+		}
+
+		.half-info {
+			@include border-box;
+			align-self: center;
+			display: inline-block;
+			padding: 80px 9% 80px 3%;
+			width: 40%;
+
+			@media only screen and (max-width: $break-xl) {
+				padding: 50px 5% 50px;
+			}
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			@media only screen and (max-width: $break-xs) {
+				padding: 35px 5% 35px;
+			}
+		}
+	}
+
+	.news-section {
+		@include border-box;
+		padding: 140px 0;
+		margin: 0 auto;
+		max-width: 1920px;
+		width: 100%;
+
+		@media only screen and (max-width: $break-xxl) {
+			padding: 80px 5% 120px;
+		}
+
+		@media only screen and (max-width: $break-xl) {
+			padding: 50px 5% 80px;
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			background-color: tint($gray-extra-light, 75%);
+		}
+
+		@media only screen and (max-width: $break-xs) {
+			padding: 35px 5% 35px;
+		}
+
+		h2 {
+			display: block;
+			margin-top: 0;
+
+			@include redline();
+		}
+
+		.home-stories {
+			display: flex;
+			justify-content: space-between;
+			
+			@media only screen and (max-width: $break-sm-mid) {
+				flex-wrap: wrap;
+			}
+
+			a {
+				@include border-box();
+				display: block;
+				width: 24%;
+				padding: 0;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					padding: 0;
+					width: 49%;
+				}
+
+				@media only screen and (max-width: $break-xs) {
+					padding: 0;
+					width: 100%;
+				}
+
+				.home-story {
+					padding: 20px 0 50px;
+
+					img {
+						padding-bottom: 20px;
+					}
+
+					.home-news-info {
+
+						.home-news-date {
+							@include font-size($size-1);
+							color: $gray-dark;
+							display: block;
+							font-weight: 700;
+							line-height: 1;
+							padding-bottom: 10px;
+							text-transform: uppercase;
+							width: 100%;
+
+							&:hover {
+								color: $gray-dark;
+							}
+						}
+
+						.home-news-title {
+							@include font-size($size-2);
+							color: $red;
+							display: block;
+							font-weight: 600;
+							width: 90%;
+
+							&:hover {
+								color: $red;
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		@media only screen and (max-width: $break-sm-mid) {
+			width: 100%;
+		}
+	}
+
+	.showcase-section {
+		display: flex;
+		font-size: 0;
+		position: relative;
+		height: 100%;
+		width: 100%;
+
+		.background {
+			width: 100%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				min-height: 500px;
+			}
+
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.textoverlay {
+			@include border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			left: 50%;
+			margin: auto;
+			padding: 0 5%;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+				
+			@media only screen and (max-width: $break-zoom) {
+				flex-wrap: wrap-reverse;
+			}
+
+			h2 {
+				@include text-shadow();
+				width: 100%;
+				// @include font-size($size-6);
+
+				/* @media only screen and (max-width: $break-xs) {
+					@include font-size($size-3);
+				}
+
+				@media only screen and (max-width: $break-lg) {
+					@include font-size($size-4);
+				} */
+				
+				@media only screen and (max-width: $break-zoom) {
+					text-align: center;
+				}
+			}
+
+			p {
+				@include text-shadow();	
+				color: #fff;
+
+				&:last-of-type {
+					padding-bottom: 0;
+				}
+				
+				@media only screen and (max-width: $break-zoom) {
+					display: none;
+				}
+			}
+
+			.play {
+				box-sizing: border-box;
+				text-align: left;
+				padding: 7px 3% 0 0;
+				max-width: 240px;
+
+				@media only screen and (max-width: $break-lg) {
+					max-width: 175px;
+				}
+				
+				@media only screen and (max-width: $break-zoom) {
+					padding-right: 0;
+					text-align: center;
+				}
+
+				img {
+					@include transition(all, 0.2s, ease-in-out);
+
+					@media only screen and (max-width: $break-zoom) {
+						max-height: 175px;
+					}
+
+					&:hover {
+						transform: scale(1.02);
+					}
+				}
+			}
+
+			.textwrap {
+				max-width: 500px;
+				
+				@media only screen and (max-width: $break-zoom) {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.voices-section {
+		background: #fff;
+		display: flex;
+		font-size: 0;
+		justify-content: center;
+		padding: 165px 0 0;
+
+		@media only screen and (min-width: $break-xl) {
+			padding: 150px 0 0;
+		}
+
+		@media only screen and (max-width: $break-lg) {
+			padding: 125px 0 0;
+		}
+
+		@media only screen and (max-width: $break-sm-max) {
+			padding: 85px 5% 0 0;
+		}
+
+		@media only screen and (max-width: $break-sm) {
+			padding: 85px 5%;
+		}
+
+		@media only screen and (max-width: $break-zoom) {
+			padding: 65px 5%;
+		}
+
+		.voices-image,
+		.voices-quote {
+			width: 50%;
+
+			@media only screen and (max-width: $break-sm) {
+				width: 100%;
+			}
+		}
+
+		.voices-image {
+			align-self: flex-end;
+			text-align: right;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				margin-left: -40%;
+				width: 100%;
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				display: none;
+			}
+
+			img {
+				height: auto;
+
+				@media only screen and (max-width: $break-sm-mid) {
+					object-fit: cover;
+				}
+			}
+		}
+
+		.voices-quote {
+			padding: 0 0 3% 3%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				@include border-box;
+				margin-left: -12%;
+				padding: 0 5%;
+			}
+
+			@media only screen and (max-width: $break-sm) {
+				margin-left: 0;
+				padding: 0;
+			}
+
+			p {
+				max-width: 500px;
+				padding-right: 5%;
+			}
+
+			.quote-attribution {
+				display: block;
+				font-family: $font-sans;
+				@include font-size($size-3);
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+
+			.attributor-description {
+				display: block;
+				font-family: $font-serif;
+				@include font-size($size-2);
+				font-style: italic;
+			}
+
+			.cta-button {
+				margin-top: 20px;
+			}
+		}
+	}
+
+	.leaders-section {
+		@media only screen and (min-width: $break-xl) {
+			background: url('_/img/home/leaders-bg.jpg') no-repeat center top;
+			background-size: 100%;
+			padding: 80px 0 120px;
+
+			@media 
+			only screen and (-webkit-min-device-pixel-ratio: 2),
+			only screen and (   min--moz-device-pixel-ratio: 2),
+			only screen and (     -o-min-device-pixel-ratio: 2/1),
+			only screen and (        min-device-pixel-ratio: 2),
+			only screen and (                min-resolution: 192dpi),
+			only screen and (                min-resolution: 2dppx) { 
+				background-image: url('_/img/home/leaders-bg@2x.jpg');
+			}
+		}
+
+		.leaders-intro,
+		.leaders-outro {
+			display: none;
+			
+			@media only screen and (min-width: $break-xl) {
+				display: block;
+				margin: 0 auto;
+				max-width: 700px;
+			}
+
+			h2 {
+				text-align: center;
+				width: auto;
+			}
+
+			@media only screen and (min-width: $break-xl) {
+				h2 {
+					padding-top: 30px;
+				}
+			}
+
+			p {
+				display: block;
+				color: #fff;
+				font-family: $font-sans;
+				@include font-size($size-3);
+				padding: 0px 50px 40px;
+				text-align: center;
+				@include text-shadow();
+			}
+
+			@media only screen and (max-width: $break-xl) {
+				p {
+					text-align: left;
+					padding: 0;
+				}
+			}
+		}
+
+		.leaders-outro {
+			background-position: center bottom;
+
+			p {
+				display: block;
+				color: #fff;
+				font-family: $font-serif;
+				font-style: italic;
+				@include font-size($size-3);
+				padding: 30px 50px;
+				text-align: center;
+				@include text-shadow();
+			}
+		}
+
+		.leader-lineup {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+
+			@media only screen and (min-width: $break-xl) {
+				margin: 0 auto;
+				max-width: 1760px;
+				padding: 0 20px;
+			}
+
+			.leaders-intro {
+				background: none;
+				@include border-box();
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+				position: relative;
+				text-align: left;
+				width: 100%;
+
+				.leaders-text-wrap {
+					@include border-box();
+					padding: 0 10%;
+					position: absolute;
+					text-align: left;
+					@include text-shadow();
+					justify-content: center; /* align horizontal */
+					align-items: center; /* align vertical */
+
+					p {
+						@include font-size($size-3);
+
+						@media only screen and (max-width: $break-lg) {
+							@include font-size($size-2);
+						}
+					}
+				}
+
+				img {
+					height: auto;
+					width: 100%;
+				}
+
+				h2 {
+					text-align: left;
+					/*@include font-size($size-6);
+
+					@media only screen and (max-width: $break-xl) {
+						@include font-size($size-5);
+					}
+
+					@media only screen and (max-width: $break-lg) {
+						@include font-size($size-4);
+					} */
+				}
+
+				p {
+					color: #fff;
+					padding-bottom: 0;
+					@include text-shadow();
+					
+					@media only screen and (min-width: $break-xl) {
+						@include font-size($size-4);
+					}
+				}
+
+				@media only screen and (min-width: $break-xxs) {
+					width: 100%;
+				}
+
+				@media only screen and (min-width: $break-zoom) {
+					width: 50%;
+				}
+
+				@media only screen and (min-width: $break-sm-mid) {
+					width: 33.33%;
+				}
+
+				@media only screen and (min-width: $break-xl) {
+					display: none;
+				}
+			}
+
+			.leader {
+				display: block;
+				font-size: 0;
+				position: relative;
+				@include transition(all, 0.2s, ease-in-out);
+				width: 100%;
+
+				@media only screen and (min-width: $break-xxs) {
+					width: 100%;
+				}
+
+				@media only screen and (min-width: $break-zoom) {
+					width: 50%;
+				}
+
+				@media only screen and (min-width: $break-sm-mid) {
+					width: 33.33%;
+				}
+
+				@media only screen and (min-width: $break-xl) {
+					width: 20%;
+				}
+
+				&:hover {
+					transform: scale(1.02);
+				}
+
+				.leadertext {
+					background: rgba(0, 0, 0, .5);
+					bottom: 0;
+					color: #fff;
+					@include font-size($size-0);
+					left: 0;
+					margin: auto;
+					min-height: 100px;
+					padding: 10px 20px;
+					position: absolute;
+					text-align: left;
+					@include text-shadow();
+					right: 0;
+
+					.leadername {
+						display: block;
+						font-weight: 700;
+						@include font-size($size-1);
+						padding-bottom: 3px;
+						text-transform: uppercase;
+					}
+				}
+			}
+			
+			img {
+				height: auto;
+			}
+		}
+
+	}
+
+	.connect-section {
+		@include border-box();
+		background-image: url('_/img/home/connect-bg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 100%;
+		padding: 65px 5%;
+		text-align: center;
+
+		@media only screen and (min-width: $break-xs) {
+			padding: 85px 5%;
+		}
+
+		@media only screen and (min-width: $break-lg) {
+			padding: 125px 5%;
+		}
+
+		@media only screen and (min-width: $break-xl) {
+			padding: 150px 5%;
+		}
+
+		@media only screen and (min-width: $break-xxl) {
+			padding: 165px 5%;
+		}
+
+		h2 {
+			font-family: $font-serif;
+			font-style: italic;
+			margin-top: 0;
+			margin-bottom: 40px;
+
+			/*@media only screen and (max-width: $break-sm-mid) {
+				@include font-size($size-5);
+			}
+
+			@media only screen and (max-width: $break-xs) {
+				@include font-size($size-4);
+			}
+
+			@media only screen and (max-width: $break-xxs) {
+				@include font-size($size-3);
+			}*/
+		}
+
+		p {
+			margin: 0 auto;
+			max-width: 850px;
+		}
+	}
+
+	.full-section {
+		align-items: flex-start;
+		background: #fff;
+		display: flex;
+		align-items: stretch;
+		margin: 0 auto;
+		max-width: 1920px;
+		width: 100%;
+
+		@media only screen and (max-width: $break-sm-mid) {
+			flex-direction: column;
+		}
+
+		.full-split-left {
+			align-self: center;
+			box-sizing: border-box;
+			display: inline-block;
+			padding: 0 5% 0 10%;
+			width: 40%;
+
+			@media only screen and (max-width: $break-lg) {
+				padding: 0 5%;
+			}
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			@media only screen and (max-width: $break-xxs) {
+				padding: 35px 5%;
+			}
+		}
+
+		.full-split-right {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			position: relative;
+			text-align: right;
+			width: 60%;
+
+			@media only screen and (max-width: $break-sm-mid) {
+				width: 100%;
+			}
+
+			.triangle {
+				top: 20%;
+				left: -15px;
+				margin-left: 0%;
+
+				transform: rotate(270deg);
+				-webkit-transform: rotate(270deg);
+
+				@media only screen and (max-width: $break-sm-mid) {
+					margin-left: 15%;
+					left: 0;
+					top: 0;
+					transform: rotate(0deg);
+					-webkit-transform: rotate(0deg);
+				}
+			}
+
+			.split-image { 
+				img {
+					align-self: stretch;
+					height: 100%;
+					width: 100%;
+					object-fit: cover;
+				}
+			}
+
+			h3 {
+				bottom: 5%;
+				color: #fff;
+				font-family: $font-serif;
+				letter-spacing: 0.29px;
+				margin-top: 0;
+				position: absolute;
+				right: 5%;
+				@include text-shadow();
+				max-width: 450px;
+				/* @include font-size($size-6);
+
+				@media only screen and (max-width: $break-xs) {
+					@include font-size($size-3);
+				}
+
+				@media only screen and (max-width: $break-lg) {
+					@include font-size($size-4);
+				} */
+			}
+		}
+	}
+
+	.stlouis-home {
+		background: #fff;
+		font-size: 0;
+		padding: 0;
+		text-align: center;
+
+		h2 {
+			font-family: $font-serif;
+		}
+
+		a {
+			font-family: $font-sans;
+		}
+
+		p {
+			margin: 0 auto;
+			max-width: 850px;
+		}
+
+		.text-intro .wrap {
+			padding: 70px 5% 0;
+
+			@media only screen and (max-width: $break-sm) {
+				padding: 35px 5% 0;
+			}
+		}
+
+		.stlouis-outline {
+			background-image: url( '_/img/home/stlouis-skyline.png' );
+			background-size: auto 100%;
+			background-position: bottom center;
+			background-repeat: no-repeat;
+			display: inline-block;
+			height: 540px;
+			width: 100%;
+
+			@media only screen and (max-width: $break-xs) {
+				height: 340px;
+				background-position: -390px 0;
+			}
+		}
+		
+		@media only screen and (min-width: $break-sm) {
+			.text-intro p {
+				padding: 0 0 30px;
+			}
+		}
+
+		@media
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) { 
+			.stlouis-outline {
+				background-image: url( '_/img/home/stlouis-skyline@2x.png' );
+			}
+		}
+	}
+}
