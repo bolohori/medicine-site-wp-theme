@@ -22,6 +22,18 @@
   font-size: $decimal-size * 1rem;
 }
 
+@mixin redline() {
+	&:after {
+		content: "";
+		display: block;
+		margin: 0;
+		max-width: 112px;
+		width: 100%;
+		padding-top: 20px;
+		border-bottom: 8px solid $red;
+	}
+}
+
 @mixin text-shadow() {
 	text-shadow: rgba(0, 0, 0, 1) 1px 1px 4px;
 }

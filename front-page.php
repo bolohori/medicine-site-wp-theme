@@ -86,7 +86,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			</div>
 			<div class="icon">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
-				<span class="desctext">76 Clinical Specialties and Subspecialties</span>	
+				<span class="desctext">76 Clinical Specialties &amp; Subspecialties</span>	
 			</div>
 			<div class="icon">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
@@ -157,7 +157,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 					}
 				echo '</div>';
 			} ?>
-		<span class="more-link"><a href="/news">Read all news</a></span>
+		<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="/news"><span class="cta-button-wrap">Read all news</span></a>
 	</section>
 
 	<section class="showcase-section">
@@ -242,9 +242,6 @@ if ( get_field( 'hero_image', 'option' ) ) {
 					}
 				}
 			?>
-		</div>
-		<div class="leaders-outro">
-			<p><?php the_field( 'community_leaders_description', 'option' ); ?></p>
 		</div>
 	</section>
 

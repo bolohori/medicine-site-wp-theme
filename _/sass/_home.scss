@@ -116,9 +116,7 @@
 		margin-top: 0;
 		text-transform: none;
 
-		&:after {
-			@extend .redline;
-		}
+		@include redline();
 
 		/* @media only screen and (max-width: $break-lg) {
 			@include font-size($size-4);
@@ -139,16 +137,6 @@
 		@media only screen and (max-width: $break-xxs) {
 			@include font-size($size-2);
 		} */
-	}
-
-	.redline {
-		content: "";
-		display: block;
-		margin: 0;
-		max-width: 300px;
-		width: 100%;
-		padding-top: 20px;
-		border-bottom: 7px solid $red;
 	}
 
 	p {
@@ -605,7 +593,7 @@
 			}
 
 			.triangle {
-				top: 20%;
+				top: 25%;
 				right: -15px;
 				margin-left: 15%;
 				transform: rotate(90deg);
@@ -642,12 +630,13 @@
 
 		.half-info {
 			@include border-box;
+			align-self: center;
 			display: inline-block;
-			padding: 80px 9% 120px 3%;
+			padding: 80px 9% 80px 3%;
 			width: 40%;
 
 			@media only screen and (max-width: $break-xl) {
-				padding: 50px 5% 80px;
+				padding: 50px 5% 50px;
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -662,7 +651,7 @@
 
 	.news-section {
 		@include border-box;
-		padding: 80px 0 120px;
+		padding: 140px 0;
 		margin: 0 auto;
 		max-width: 1920px;
 		width: 100%;
@@ -687,9 +676,7 @@
 			display: block;
 			margin-top: 0;
 
-			&:after {
-				@extend .redline;
-			}
+			@include redline();
 		}
 
 		.home-stories {
@@ -755,18 +742,6 @@
 					}
 				}
 			}
-		}
-
-		.more-link {
-			@include font-size($size-2);
-			color: $gray-dark;
-			display: block;
-			font-weight: 600;
-			line-height: 1;
-			padding-bottom: 10px;
-			text-align: center;
-			text-transform: uppercase;
-			width: 100%;
 		}
 
 		@media only screen and (max-width: $break-sm-mid) {
@@ -1003,8 +978,7 @@
 			@media only screen and (min-width: $break-xl) {
 				display: block;
 				margin: 0 auto;
-				height: 130px;
-				width: 988px;
+				max-width: 700px;
 			}
 
 			h2 {
@@ -1016,9 +990,22 @@
 				h2 {
 					padding-top: 30px;
 				}
+			}
 
+			p {
+				display: block;
+				color: #fff;
+				font-family: $font-sans;
+				@include font-size($size-3);
+				padding: 0px 50px 40px;
+				text-align: center;
+				@include text-shadow();
+			}
+
+			@media only screen and (max-width: $break-xl) {
 				p {
-					display: none;
+					text-align: left;
+					padding: 0;
 				}
 			}
 		}
@@ -1246,13 +1233,14 @@
 		}
 
 		.full-split-left {
+			align-self: center;
 			box-sizing: border-box;
 			display: inline-block;
-			padding: 80px 5% 0 10%;
-			width: 37%;
+			padding: 0 5% 0 10%;
+			width: 40%;
 
 			@media only screen and (max-width: $break-lg) {
-				padding: 50px 5%;
+				padding: 0 5%;
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -1267,9 +1255,10 @@
 		.full-split-right {
 			display: flex;
 			flex-direction: column;
+			height: 100%;
 			position: relative;
 			text-align: right;
-			width: 63%;
+			width: 60%;
 
 			@media only screen and (max-width: $break-sm-mid) {
 				width: 100%;
@@ -1295,12 +1284,9 @@
 			.split-image { 
 				img {
 					align-self: stretch;
+					height: 100%;
 					width: 100%;
 					object-fit: cover;
-
-					@media only screen and (max-width: $break-sm-mid) {
-						height: 100%;
-					}
 				}
 			}
 
