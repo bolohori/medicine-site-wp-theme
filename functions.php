@@ -156,12 +156,6 @@ add_image_size( 'hero-img', 1440, 550, true );
 add_image_size( 'hero-img-1_5x', 2160, 825, true );
 add_image_size( 'hero-img-2x', 2880, 1100, true );
 
-// Image sizes for Home - Half Callout box
-add_image_size( 'half-callout-sm', 544, 321, true );
-add_image_size( 'half-callout', 1088, 642, true );
-add_image_size( 'half-callout-1_5', 1632, 963, true );
-add_image_size( 'half-callout-2x', 2176, 1284, true );
-
 // Image sizes for Home - Full Split box
 add_image_size( 'full-split-sm', 640, 360, true );
 add_image_size( 'full-split', 1280, 720, true );

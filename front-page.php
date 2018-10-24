@@ -78,11 +78,11 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		<div class="icons">
 			<div class="icon">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
-				<span class="desctext">Top 10 Medical School</span>	
+				<span class="desctext">Top 10 Medical School</span>
 			</div>
 			<div class="icon">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
-				<span class="desctext">13 Degree Programs</span>	
+				<span class="desctext">13 Degree Programs</span>
 			</div>
 			<div class="icon">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
@@ -90,7 +90,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			</div>
 			<div class="icon">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
-				<span class="desctext">2nd-Lowest Student Debt</span>	
+				<span class="desctext">2nd-Lowest Student Debt</span>
 			</div>
 		</div>
 	</section>
@@ -100,7 +100,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			<div class="triangle"></div>
 			<?php
 				$hc_image = get_field( 'half_callout_image', 'option' );
-				$size = 'half-callout';
+				$size = 'full-split';
 
 				if ( $hc_image ) {
 					echo wp_get_attachment_image ( $hc_image, $size );

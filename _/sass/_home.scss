@@ -471,7 +471,7 @@
 			width: 100%;
 
 			@media only screen and (max-width: $break-xl) {
-				@include font-size($size-4);
+				@include font-size($size-3);
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -479,13 +479,13 @@
 			}
 
 			@media only screen and (max-width: $break-sm) {
-				@include font-size($size-3);
+				@include font-size($size-2);
 			}
 		}
 
 		.icons {
 			display: flex;
-			flex-wrap: no-wrap;
+			flex-wrap: nowrap;
 			justify-content: center;
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -531,11 +531,16 @@
 					}
 				}
 
+				a {
+					color: $gray-dark;
+				}
+
 				img {
 					display: block;
 					margin: 0 auto;
-					padding-bottom: 20px;
 					max-width: 250px;
+					padding-bottom: 20px;
+					width: 100%;
 				}
 
 				.desctext {
@@ -624,7 +629,7 @@
 				position: absolute;
 				right: 5%;
 				@include text-shadow();
-				width: 350px;
+				width: 300px;
 			}
 		}
 
@@ -651,17 +656,18 @@
 
 	.news-section {
 		@include border-box;
-		padding: 140px 0;
 		margin: 0 auto;
 		max-width: 1920px;
+		padding: 140px 0;
+		text-align: center;
 		width: 100%;
 
 		@media only screen and (max-width: $break-xxl) {
-			padding: 80px 5% 120px;
+			padding: 120px 5% 140px;
 		}
 
 		@media only screen and (max-width: $break-xl) {
-			padding: 50px 5% 80px;
+			padding: 80px 5% 100px;
 		}
 
 		@media only screen and (max-width: $break-sm-mid) {
@@ -675,6 +681,7 @@
 		h2 {
 			display: block;
 			margin-top: 0;
+			text-align: left;
 
 			@include redline();
 		}
@@ -682,6 +689,7 @@
 		.home-stories {
 			display: flex;
 			justify-content: space-between;
+			text-align: left;
 			
 			@media only screen and (max-width: $break-sm-mid) {
 				flex-wrap: wrap;
@@ -946,10 +954,7 @@
 				font-family: $font-serif;
 				@include font-size($size-2);
 				font-style: italic;
-			}
-
-			.cta-button {
-				margin-top: 20px;
+				padding-bottom: 40px;
 			}
 		}
 	}
@@ -1240,7 +1245,7 @@
 			width: 40%;
 
 			@media only screen and (max-width: $break-lg) {
-				padding: 0 5%;
+				padding: 50px 5%;
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -1265,7 +1270,7 @@
 			}
 
 			.triangle {
-				top: 20%;
+				top: 25%;
 				left: -15px;
 				margin-left: 0%;
 
@@ -1285,7 +1290,7 @@
 				img {
 					align-self: stretch;
 					height: 100%;
-					width: 100%;
+					width: auto;
 					object-fit: cover;
 				}
 			}
@@ -1333,10 +1338,10 @@
 		}
 
 		.text-intro .wrap {
-			padding: 70px 5% 0;
+			padding: 140px 5% 0;
 
 			@media only screen and (max-width: $break-sm) {
-				padding: 35px 5% 0;
+				padding: 70px 5% 0;
 			}
 		}
 
