@@ -1096,8 +1096,8 @@ function medicine_featured_story() {
 add_shortcode( 'featured_story', 'medicine_featured_story' );
 
 function featured_story_excerpt( $id ) {
-	$excerpt = explode( ' ', get_the_excerpt( $id ), 30 );
-	if ( count( $excerpt ) >= 30 ) {
+	$excerpt = explode( ' ', get_the_excerpt( $id ), 27 );
+	if ( count( $excerpt ) >= 27 ) {
 		array_pop( $excerpt );
 		$excerpt = implode( " ", $excerpt ) . '...';
 	} else {

@@ -19,7 +19,7 @@ global $curauth;
 				<li class='email'><a href='mailto:<?php echo $curauth->user_email; ?>'><?php echo $curauth->user_email; ?></a></li>
 				<li class='web'><a href='//publicafairs.med.wustl.edu'>Medcial Public Affairs</a></li>
 			</ul>
-			<p><?php echo $curauth->description;?></p>
+			<p class='author-bio'><?php echo $curauth->description;?></p>
 		</div>
 	</div>
 </header>
