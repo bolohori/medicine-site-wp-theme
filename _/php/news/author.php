@@ -9,7 +9,7 @@ global $curauth;
 		$image_array = get_field( 'author_headshot', 'user_' . $curauth->ID );
 		if ( null !== $image_array ) {
 		?>
-		<img src="<?php echo $image_array['sizes']['author-headshot']; ?>" class='alignleft author-headshot' alt="">
+		<img src="<?php echo $image_array['sizes']['large']; ?>" class='alignleft author-headshot' alt="">
 		<?php } ?>
 		<div class="author-info">
 			<h1><?php echo $curauth->display_name; ?></h1>
