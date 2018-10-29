@@ -159,8 +159,8 @@
 	}
 
 	.cta-button {
-		background: rgba(0, 0, 0, .3);
-		border: 3px solid #fff;
+		background: $red;
+		border: 3px solid $red;
 		color: #fff;
 		display: inline-block;
 		font-size: 24px;
@@ -177,19 +177,26 @@
 		}
 
 		&:hover {
-			background: rgba(0, 0, 0, .8);
+			background: #fff;
+			color: $red;
 			transition: fade-in 1s;
+			
+			.cta-button-wrap {
+				&::after {
+					background: url('_/img/arrow-red.svg');
+				}
+			}
 		}
 
 		.cta-button-wrap {
 			display: inline-block;
 
 			&::after {
-				background: url('_/img/arrow-white.svg');
+				background: url('_/img/arrow-white-noshadow.svg');
 				background-repeat: no-repeat;
 				content: '';
 				display: inline-block;
-				height: 19px;
+				height: 20px;
 				margin: 0 0 -3px 14px;
 				width: 14px;
 
@@ -200,7 +207,29 @@
 			}
 		}
 
-		&.red {
+		&.gray {
+			background: rgba(0, 0, 0, .3);
+			border: 3px solid #fff;
+			color: #fff;
+
+			.cta-button-wrap {
+				&::after {
+					background: url('_/img/arrow-white.svg');
+				}
+			}
+
+			&:hover {
+				background: rgba(0, 0, 0, .8);
+
+				.cta-button-wrap {
+					&::after {
+						background: url('_/img/arrow-white.svg');
+					}
+				}
+			}
+		}
+
+		&.secondary {
 			background: none;
 			border-color: $red;
 			color: $red;
@@ -221,17 +250,6 @@
 
 				&::after {
 					background: url('_/img/arrow-red.svg');
-					background-repeat: no-repeat;
-					content: '';
-					display: inline-block;
-					height: 19px;
-					margin: 0 0 -2px 13px;
-					width: 14px;
-
-					@media only screen and (max-width: $break-xs) {
-						height: 17px;
-						width: 12px;
-					}
 				}
 			}
 		}
@@ -382,7 +400,7 @@
 
 				p {
 					@include font-size($size-3);
-					font-weight: 300;
+					font-weight: 400;
 					letter-spacing: 0.5px;
 					line-height: 1.2;
 					margin: 10px 0 30px;
@@ -647,6 +665,12 @@
 
 			@media only screen and (max-width: $break-xl) {
 				padding: 50px 5% 50px;
+			}
+
+			.cta-button {
+				@media only screen and (max-width: $break-lg) {
+					padding: 8px 18px;
+				}
 			}
 
 			@media only screen and (max-width: $break-sm-mid) {
@@ -1072,6 +1096,11 @@
 					@include text-shadow();
 					justify-content: center; /* align horizontal */
 					align-items: center; /* align vertical */
+
+					@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+						left: 0;
+						top: 15%;
+					}
 
 					p {
 						@include font-size($size-3);

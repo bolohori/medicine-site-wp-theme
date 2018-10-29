@@ -59,7 +59,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			echo '<div class="hero-text">';
 				echo '<h2 class="hero-headline">' . esc_html( $heroheadline ) . '</h2>';
 				echo '<p>' . esc_html( $herodesc ) . '</p>';
-				echo '<a data-category="Front page" data-action="Call to action" data-label=" ' . $herobuttontext . '" class="cta-button" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
+				echo '<a data-category="Front page" data-action="Call to action" data-label=" ' . $herobuttontext . '" class="cta-button gray" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
 			echo '</div>';
 		echo '</div>';
 	}
@@ -128,7 +128,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			$hc_exploded = explode( ' ', $hc_text );
 			$hc_last = array_pop( $hc_exploded );
 
-			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $hc_text . '" class="cta-button red" href="' . esc_html( $hc_link ) . '">' . implode( ' ', $hc_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $hc_last ) . '</span>' . '</a>';
+			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $hc_text . '" class="cta-button secondary" href="' . esc_html( $hc_link ) . '">' . implode( ' ', $hc_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $hc_last ) . '</span>' . '</a>';
 			?>
 		</div>
 	</section>
@@ -157,7 +157,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 					}
 				echo '</div>';
 			} ?>
-		<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="/news"><span class="cta-button-wrap">Read all news</span></a>
+		<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button secondary" href="/news"><span class="cta-button-wrap">Read all news</span></a>
 	</section>
 
 	<section class="showcase-section">
@@ -202,7 +202,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			<p><?php the_field( 'full_callout_quote', 'option' ); ?></p>
 			<span class="quote-attribution"><?php the_field( 'full_callout_quote_attribution', 'option' ); ?></span>
 			<span class="attributor-description"><?php the_field( 'full_callout_attributor_description', 'option' ); ?></span>
-			<a data-category="Front page" data-action="Call to action" data-label="<?php the_field( 'full_callout_quote_attribution', 'option' ); ?>" class="cta-button red" href="<?php the_field( 'full_callout_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
+			<a data-category="Front page" data-action="Call to action" data-label="<?php the_field( 'full_callout_quote_attribution', 'option' ); ?>" class="cta-button secondary" href="<?php the_field( 'full_callout_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
 		</div>
 	</section>
 
@@ -259,7 +259,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		$fc2_exploded = explode( ' ', $fc2_text );
 		$fc2_last = array_pop( $fc2_exploded );
 
-		echo '<a data-category="Front page" data-action="Call to action" data-label="' . $fc2_text . '" class="cta-button red" href="' . esc_html( $fc2_link ) . '">' . implode( ' ', $fc2_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fc2_last ) . '</span>' . '</a>';
+		echo '<a data-category="Front page" data-action="Call to action" data-label="' . $fc2_text . '" class="cta-button secondary" href="' . esc_html( $fc2_link ) . '">' . implode( ' ', $fc2_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fc2_last ) . '</span>' . '</a>';
 		?>
 	</section>
 
@@ -283,7 +283,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			$fs_exploded = explode( ' ', $fs_text );
 			$fs_last = array_pop( $fs_exploded );
 
-			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $splittitle . '" class="cta-button red" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
+			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $splittitle . '" class="cta-button secondary" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
 			?>
 		</div>
 		<div class="full-split-right">
@@ -306,7 +306,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				<div class="wrap">
 					<h2>Our city will surprise you.</h2>
 					<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes, and plenty of fun for nature-lovers and urbanites alike &ndash; all packed into an incredibly affordable city.</p>
-					<a data-category="Front page" data-action="Call to action" data-label="Why we love St. Louis" class="cta-button red" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
+					<a data-category="Front page" data-action="Call to action" data-label="Why we love St. Louis" class="cta-button secondary" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
 				</div>
 			</div>
 			<div class="stlouis-outline"></div>
