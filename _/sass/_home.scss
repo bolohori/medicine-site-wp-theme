@@ -252,6 +252,7 @@
 		background-color: $gray-dark;
 		background-size: cover;
 		background-repeat: no-repeat;
+		display: -ms-flexbox;
 		display: flex;
 		font-size: 0;
 		height: 550px;
@@ -294,6 +295,7 @@
 		}
 
 		.hero-container {
+			display: -ms-flexbox;
 			display: flex;
 			margin: 0 auto;
 			max-width: 1280px;
@@ -416,6 +418,7 @@
 		align-items: flex-start;
 		background: #fff url('_/img/home/outline-shield-transparent.svg') no-repeat center center;
 		background-size: auto 110%;
+		display: -ms-flexbox;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -484,6 +487,7 @@
 		}
 
 		.icons {
+			display: -ms-flexbox;
 			display: flex;
 			flex-wrap: nowrap;
 			justify-content: center;
@@ -572,6 +576,7 @@
 	.half-callout {
 		justify-content: center;
 		background: #fff;
+		display: -ms-flexbox;
 		display: flex;
 		flex-wrap: wrap;
 		font-size: 0;
@@ -687,6 +692,7 @@
 		}
 
 		.home-stories {
+			display: -ms-flexbox;
 			display: flex;
 			justify-content: space-between;
 			text-align: left;
@@ -758,6 +764,7 @@
 	}
 
 	.showcase-section {
+		display: -ms-flexbox;
 		display: flex;
 		font-size: 0;
 		position: relative;
@@ -780,6 +787,7 @@
 
 		.textoverlay {
 			@include border-box;
+			display: -ms-flexbox;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -866,6 +874,7 @@
 
 	.voices-section {
 		background: #fff;
+		display: -ms-flexbox;
 		display: flex;
 		font-size: 0;
 		justify-content: center;
@@ -1031,6 +1040,7 @@
 		}
 
 		.leader-lineup {
+			display: -ms-flexbox;
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
@@ -1045,6 +1055,7 @@
 			.leaders-intro {
 				background: none;
 				@include border-box();
+				display: -ms-flexbox;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -1227,6 +1238,7 @@
 	.full-section {
 		align-items: flex-start;
 		background: #fff;
+		display: -ms-flexbox;
 		display: flex;
 		align-items: stretch;
 		margin: 0 auto;
@@ -1241,10 +1253,10 @@
 			align-self: center;
 			box-sizing: border-box;
 			display: inline-block;
-			padding: 0 5% 0 10%;
+			padding: 80px 5% 80px 10%;
 			width: 40%;
 
-			@media only screen and (max-width: $break-lg) {
+			@media only screen and (max-width: $break-xl) {
 				padding: 50px 5%;
 			}
 
@@ -1258,9 +1270,10 @@
 		}
 
 		.full-split-right {
-			display: flex;
-			flex-direction: column;
-			height: 100%;
+			box-sizing: border-box;
+			background: #3d3d3d;
+			display: inline-block;
+			font-size: 0;
 			position: relative;
 			text-align: right;
 			width: 60%;
@@ -1286,13 +1299,11 @@
 				}
 			}
 
-			.split-image { 
-				img {
-					align-self: stretch;
-					height: 100%;
-					width: auto;
-					object-fit: cover;
-				}
+			img {
+				align-self: stretch;
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
 			}
 
 			h3 {

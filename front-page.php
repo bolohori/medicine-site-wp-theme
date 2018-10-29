@@ -59,7 +59,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			echo '<div class="hero-text">';
 				echo '<h2 class="hero-headline">' . esc_html( $heroheadline ) . '</h2>';
 				echo '<p>' . esc_html( $herodesc ) . '</p>';
-				echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
+				echo '<a data-category="Front page" data-action="Call to action" data-label=" ' . $herobuttontext . '" class="cta-button" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
 			echo '</div>';
 		echo '</div>';
 	}
@@ -77,20 +77,20 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		<span class="tagline">by the numbers</span>
 		<div class="icons">
 			<div class="icon">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
-				<span class="desctext">Top 10 Medical School</span>
+				<a data-category="Front page" data-action="Click" data-label="Top 10 Medical Schools" href=" https://www.usnews.com/best-graduate-schools/top-medical-schools/research-rankings"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
+				<span class="desctext">Top 10 Medical School</span></a>
 			</div>
 			<div class="icon">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
-				<span class="desctext">13 Degree Programs</span>
+				<a data-category="Front page" data-action="Click" data-label="13 Degree Programs" href="https://medicine.wustl.edu/education/admissions/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
+				<span class="desctext">13 Degree Programs</span></a>
 			</div>
 			<div class="icon">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
-				<span class="desctext">76 Clinical Specialties &amp; Subspecialties</span>	
+				<a data-category="Front page" data-action="Click" data-label="76 Clinical Specialties & Subspecialties" href="https://wuphysicians.wustl.edu/medical-services/specialties"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
+				<span class="desctext">76 Clinical Specialties &amp; Subspecialties</span></a>
 			</div>
 			<div class="icon">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
-				<span class="desctext">2nd-Lowest Student Debt</span>
+				<a data-category="Front page" data-action="Click" data-label="2nd-Lowest Student Debt" href="https://medicine.wustl.edu/education/financial-support/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
+				<span class="desctext">2nd-Lowest Student Debt</span></a>
 			</div>
 		</div>
 	</section>
@@ -128,7 +128,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			$hc_exploded = explode( ' ', $hc_text );
 			$hc_last = array_pop( $hc_exploded );
 
-			echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="' . esc_html( $hc_link ) . '">' . implode( ' ', $hc_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $hc_last ) . '</span>' . '</a>';
+			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $hc_text . '" class="cta-button red" href="' . esc_html( $hc_link ) . '">' . implode( ' ', $hc_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $hc_last ) . '</span>' . '</a>';
 			?>
 		</div>
 	</section>
@@ -144,7 +144,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 						$title = get_the_title( $post_id );
 						$link = get_permalink( $post_id );
 						?>
-						<a href="<?php echo $link; ?>">
+						<a data-category="Front page" data-action="Click" data-label="<?php echo $title; ?>" href="<?php echo $link; ?>">
 							<div class="home-story">
 								<?php echo get_the_post_thumbnail( $post_id, 'news' ); ?>
 								<div class="home-news-info">
@@ -172,7 +172,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			?>
 		</div>
 		<div class="textoverlay">
-			<div class="play"><a href="<?php the_field( 'showcase_video_link', 'option' ); ?>" data-lity><img src="<?php echo get_stylesheet_directory_uri() . '/_/img/play-button.svg'; ?>"></a></div>
+			<div class="play"><a data-category="Front page" data-action="Click" data-label="Showcase Video" href="<?php the_field( 'showcase_video_link', 'option' ); ?>" data-lity><img src="<?php echo get_stylesheet_directory_uri() . '/_/img/play-button.svg'; ?>"></a></div>
 			<div class="textwrap">
 				<h2 class="white"><?php the_field( 'showcase_headline', 'option' ); ?></h2>
 				<p><?php the_field( 'showcase_caption', 'option' ); ?></p>
@@ -202,7 +202,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			<p><?php the_field( 'full_callout_quote', 'option' ); ?></p>
 			<span class="quote-attribution"><?php the_field( 'full_callout_quote_attribution', 'option' ); ?></span>
 			<span class="attributor-description"><?php the_field( 'full_callout_attributor_description', 'option' ); ?></span>
-			<a class="cta-button red" href="<?php the_field( 'full_callout_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
+			<a data-category="Front page" data-action="Call to action" data-label="<?php the_field( 'full_callout_quote_attribution', 'option' ); ?>" class="cta-button red" href="<?php the_field( 'full_callout_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
 		</div>
 	</section>
 
@@ -225,7 +225,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 						the_row();
 						$leaderlink = get_sub_field( 'community_leader_link' );
 						echo '<div class="leader">';
-							echo '<a href="' . $leaderlink . '">';
+							echo '<a data-category="Front page" data-action="Click" data-label="' . the_sub_field( 'community_leader_name' ) . '" href="' . $leaderlink . '">';
 								$leaderimg = get_sub_field( 'community_leader_image' );
 								if ( $leaderimg ) {
 									echo wp_get_attachment_image( $leaderimg, 'leaders-2x' );
@@ -233,7 +233,8 @@ if ( get_field( 'hero_image', 'option' ) ) {
 									echo '<img src="' . get_template_directory_uri() . '/_/img/spotlight-default.png">';
 								}
 								echo '<div class="leadertext">';
-									echo '<span class="leadername">';the_sub_field( 'community_leader_name' );
+									echo '<span class="leadername">';
+										the_sub_field( 'community_leader_name' );
 									echo '</span>';
 									the_sub_field( 'community_leader_description' );
 								echo '</div>';
@@ -258,7 +259,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		$fc2_exploded = explode( ' ', $fc2_text );
 		$fc2_last = array_pop( $fc2_exploded );
 
-		echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="' . esc_html( $fc2_link ) . '">' . implode( ' ', $fc2_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fc2_last ) . '</span>' . '</a>';
+		echo '<a data-category="Front page" data-action="Call to action" data-label="' . $fc2_text . '" class="cta-button red" href="' . esc_html( $fc2_link ) . '">' . implode( ' ', $fc2_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fc2_last ) . '</span>' . '</a>';
 		?>
 	</section>
 
@@ -282,21 +283,19 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			$fs_exploded = explode( ' ', $fs_text );
 			$fs_last = array_pop( $fs_exploded );
 
-			echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button red" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
+			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $splittitle . '" class="cta-button red" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
 			?>
 		</div>
 		<div class="full-split-right">
 			<div class="triangle"></div>
-			<div class="split-image">
-				<?php
-					$fs_image = get_field( 'full_split_image', 'option' );
-					$size = 'full-split';
+			<?php
+				$fs_image = get_field( 'full_split_image', 'option' );
+				$size = 'full-split';
 
-					if ( $fs_image ) {
-						echo wp_get_attachment_image ( $fs_image, $size );
-					}
-				?>
-			</div>
+				if ( $fs_image ) {
+					echo wp_get_attachment_image ( $fs_image, $size );
+				}
+			?>
 			<h3 class="white large-headline"><?php the_field( 'full_split_callout_title', 'option' ); ?></h3>
 		</div>
 	</section>
@@ -307,8 +306,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				<div class="wrap">
 					<h2>Our city will surprise you.</h2>
 					<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes, and plenty of fun for nature-lovers and urbanites alike &ndash; all packed into an incredibly affordable city.</p>
-					<a data-category="Front page" data-action="CTA - St. Louis" class="cta-button red" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
-					<a href="#">Why we love St. Louis</a>
+					<a data-category="Front page" data-action="Call to action" data-label="Why we love St. Louis" class="cta-button red" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
 				</div>
 			</div>
 			<div class="stlouis-outline"></div>
