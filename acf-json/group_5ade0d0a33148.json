@@ -29,7 +29,7 @@
         {
             "key": "field_5ade0d75a4ee4",
             "label": "Text Alignment",
-            "name": "text_alignment",
+            "name": "hero_text_alignment",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -45,15 +45,15 @@
             },
             "allow_null": 0,
             "other_choice": 0,
-            "save_other_choice": 0,
             "default_value": "",
             "layout": "horizontal",
-            "return_format": "value"
+            "return_format": "value",
+            "save_other_choice": 0
         },
         {
             "key": "field_5ade0d45a4ee0",
             "label": "Headline",
-            "name": "headline",
+            "name": "hero_headline",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -72,7 +72,7 @@
         {
             "key": "field_5ade0d4fa4ee1",
             "label": "Descriptive Text",
-            "name": "descriptive_text",
+            "name": "hero_descriptive_text",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -91,7 +91,7 @@
         {
             "key": "field_5ade0d57a4ee2",
             "label": "Button Text",
-            "name": "button_text",
+            "name": "hero_button_text",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -110,8 +110,8 @@
         {
             "key": "field_5ade0d5ea4ee3",
             "label": "Button Link",
-            "name": "button_link",
-            "type": "url",
+            "name": "hero_button_link",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -120,8 +120,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "return_format": "url"
         }
     ],
     "location": [
@@ -133,7 +132,7 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 1,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -141,5 +140,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1534870040
+    "modified": 1541434976
 }

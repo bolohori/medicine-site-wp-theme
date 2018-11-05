@@ -1,28 +1,11 @@
 {
     "key": "group_5b7c57050c530",
-    "title": "Home - Full Callout #2",
+    "title": "Home - Connect",
     "fields": [
-        {
-            "key": "field_5b7c570511f28",
-            "label": "Description",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This section appears below the Showcase area and above the community leaders section.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
         {
             "key": "field_5b7c570511f75",
             "label": "Title",
-            "name": "full_callout_2_title",
+            "name": "connect_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,7 +24,7 @@
         {
             "key": "field_5b7c570511fc0",
             "label": "Subhead",
-            "name": "full_callout_2_subhead",
+            "name": "connect_subhead",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -60,7 +43,7 @@
         {
             "key": "field_5b7c570512069",
             "label": "Link Text",
-            "name": "full_callout_2_link_text",
+            "name": "connect_link_text",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -79,7 +62,7 @@
         {
             "key": "field_5b7c5705120b3",
             "label": "Link",
-            "name": "full_callout_2_link",
+            "name": "connect_link",
             "type": "link",
             "instructions": "",
             "required": 0,
@@ -109,5 +92,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537804266
+    "modified": 1541435724
 }

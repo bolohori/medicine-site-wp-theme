@@ -41,11 +41,11 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	<?php
 	if ( get_field( 'hero_image', 'option' ) ) {
 		// Adds featured image size for pages.
-		$heroalign = ' ' . get_field( 'text_alignment', 'option' );
-		$heroheadline = get_field( 'headline', 'option' );
-		$herodesc = get_field( 'descriptive_text', 'option' );
-		$herobuttontext = get_field( 'button_text', 'option' );
-		$herobuttonlink = get_field( 'button_link', 'option' );
+		$heroalign = ' ' . get_field( 'hero_text_alignment', 'option' );
+		$heroheadline = get_field( 'hero_headline', 'option' );
+		$herodesc = get_field( 'hero_descriptive_text', 'option' );
+		$herobuttontext = get_field( 'hero_button_text', 'option' );
+		$herobuttonlink = get_field( 'hero_button_link', 'option' );
 
 		/*
 		* Making the string able to have the arrow wrap
@@ -59,7 +59,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			echo '<div class="hero-text">';
 				echo '<h2 class="hero-headline">' . esc_html( $heroheadline ) . '</h2>';
 				echo '<p>' . esc_html( $herodesc ) . '</p>';
-				echo '<a data-category="Front page" data-action="Call to action" data-label=" ' . $herobuttontext . '" class="cta-button gray" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
+				echo '<a data-category="Front page" data-action="Click-Hero" data-label="' . $herobuttontext . '" class="cta-button gray" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
 			echo '</div>';
 		echo '</div>';
 	}
@@ -77,58 +77,58 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		<span class="tagline">by the numbers</span>
 		<div class="icons">
 			<div class="icon">
-				<a data-category="Front page" data-action="Click" data-label="Top 10 Medical Schools" href=" https://www.usnews.com/best-graduate-schools/top-medical-schools/research-rankings"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="Top 10 Medical Schools" href=" https://www.usnews.com/best-graduate-schools/top-medical-schools/research-rankings"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
 				<span class="desctext">Top 10 Medical School</span></a>
 			</div>
 			<div class="icon">
-				<a data-category="Front page" data-action="Click" data-label="13 Degree Programs" href="https://medicine.wustl.edu/education/admissions/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="13 Degree Programs" href="https://medicine.wustl.edu/education/admissions/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
 				<span class="desctext">13 Degree Programs</span></a>
 			</div>
 			<div class="icon">
-				<a data-category="Front page" data-action="Click" data-label="76 Clinical Specialties & Subspecialties" href="https://wuphysicians.wustl.edu/medical-services/specialties"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="76 Clinical Specialties & Subspecialties" href="https://wuphysicians.wustl.edu/medical-services/specialties"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
 				<span class="desctext">76 Clinical Specialties &amp; Subspecialties</span></a>
 			</div>
 			<div class="icon">
-				<a data-category="Front page" data-action="Click" data-label="2nd-Lowest Student Debt" href="https://medicine.wustl.edu/education/financial-support/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="2nd-Lowest Student Debt" href="https://medicine.wustl.edu/education/financial-support/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
 				<span class="desctext">2nd-Lowest Student Debt</span></a>
 			</div>
 		</div>
 	</section>
 
-	<section class="half-callout">
-		<div class="half-intro">
+	<section class="dei">
+		<div class="dei-intro">
 			<div class="triangle"></div>
 			<?php
-				$hc_image = get_field( 'half_callout_image', 'option' );
+				$deiimage = get_field( 'dei_image', 'option' );
 				$size = 'full-split';
 
-				if ( $hc_image ) {
-					echo wp_get_attachment_image ( $hc_image, $size );
+				if ( $deiimage ) {
+					echo wp_get_attachment_image ( $deiimage, $size );
 				}
 			?>
-			<h2 class="white"><?php the_field( 'half_callout_title', 'option' ); ?></h2>
+			<h2 class="white"><?php the_field( 'dei_title', 'option' ); ?></h2>
 		</div>
-		<div class="half-info">
+		<div class="dei-info">
 			<h3 class="fancy-heading"><?php 
-				$halfsubhead = get_field( 'half_callout_subhead', 'option' );
-				$halfpieces = explode(' ', $halfsubhead );
-				$halflastword = array_pop( $halfpieces );
-				$halfstr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $halfsubhead);
-				echo $halfstr . ' <span class="sanstext">' . $halflastword . '</span>';
+				$deisubhead = get_field( 'dei_subhead', 'option' );
+				$deipieces = explode(' ', $deisubhead );
+				$deilastword = array_pop( $deipieces );
+				$deistr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $deisubhead);
+				echo $deistr . ' <span class="sanstext">' . $deilastword . '</span>';
 			?></h3>
-			<p><?php the_field( 'half_callout_description', 'option' ); ?></p>
+			<p><?php the_field( 'dei_description', 'option' ); ?></p>
 
 			<?php
 			/*
 			* Making the string able to have the arrow wrap
 			* with the last word.
 			*/
-			$hc_link = get_field( 'half_callout_link', 'option' );
-			$hc_text = get_field( 'half_callout_link_text', 'option' );
-			$hc_exploded = explode( ' ', $hc_text );
-			$hc_last = array_pop( $hc_exploded );
+			$deilink = get_field( 'dei_link', 'option' );
+			$deitext = get_field( 'dei_link_text', 'option' );
+			$deiexploded = explode( ' ', $deitext );
+			$deilast = array_pop( $deiexploded );
 
-			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $hc_text . '" class="cta-button secondary" href="' . esc_html( $hc_link ) . '">' . implode( ' ', $hc_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $hc_last ) . '</span>' . '</a>';
+			echo '<a data-category="Front page" data-action="Click-Diversity" data-label="' . $deitext . '" class="cta-button secondary" href="' . esc_html( $deilink ) . '">' . implode( ' ', $deiexploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $deilast ) . '</span>' . '</a>';
 			?>
 		</div>
 	</section>
@@ -144,7 +144,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 						$title = get_the_title( $post_id );
 						$link = get_permalink( $post_id );
 						?>
-						<a data-category="Front page" data-action="Click" data-label="<?php echo $title; ?>" href="<?php echo $link; ?>">
+						<a data-category="Front page" data-action="Click-News" data-label="<?php echo $title; ?>" href="<?php echo $link; ?>">
 							<div class="home-story">
 								<?php echo get_the_post_thumbnail( $post_id, 'news' ); ?>
 								<div class="home-news-info">
@@ -157,7 +157,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 					}
 				echo '</div>';
 			} ?>
-		<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="cta-button secondary" href="/news"><span class="cta-button-wrap">Read all news</span></a>
+		<a data-category="Front page" data-action="Click-News" data-label="Read all news" class="cta-button secondary" href="/news"><span class="cta-button-wrap">Read all news</span></a>
 	</section>
 
 	<section class="showcase-section">
@@ -172,7 +172,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			?>
 		</div>
 		<div class="textoverlay">
-			<div class="play"><a data-category="Front page" data-action="Click" data-label="Showcase Video" href="<?php the_field( 'showcase_video_link', 'option' ); ?>" data-lity><img src="<?php echo get_stylesheet_directory_uri() . '/_/img/play-button.svg'; ?>"></a></div>
+			<div class="play"><a data-category="Front page" data-action="Click-Video" data-label="<?php the_field( 'showcase_video_link', 'option' ); ?>" href="<?php the_field( 'showcase_video_link', 'option' ); ?>" data-lity><img src="<?php echo get_stylesheet_directory_uri() . '/_/img/play-button.svg'; ?>"></a></div>
 			<div class="textwrap">
 				<h2 class="white"><?php the_field( 'showcase_headline', 'option' ); ?></h2>
 				<p><?php the_field( 'showcase_caption', 'option' ); ?></p>
@@ -183,7 +183,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	<section class="voices-section">
 		<div class="voices-image">
 			<?php
-			$voiceimg = get_field( 'full_callout_image', 'option' );
+			$voiceimg = get_field( 'voices_image', 'option' );
 			$size = 'full';
 			
 			if ( $voiceimg ) {
@@ -193,16 +193,16 @@ if ( get_field( 'hero_image', 'option' ) ) {
 		</div>
 		<div class="voices-quote">
 			<h2 class="fancy-heading"><?php 
-				$voicetitle = get_field( 'full_callout_title', 'option' );
+				$voicetitle = get_field( 'voices_title', 'option' );
 				$voicepieces = explode(' ', $voicetitle );
 				$voicelastword = array_pop( $voicepieces );
 				$voicestr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $voicetitle);
 				echo $voicestr . ' <span class="sanstext">' . $voicelastword . '</span>';
 			?></h2>
-			<p><?php the_field( 'full_callout_quote', 'option' ); ?></p>
-			<span class="quote-attribution"><?php the_field( 'full_callout_quote_attribution', 'option' ); ?></span>
-			<span class="attributor-description"><?php the_field( 'full_callout_attributor_description', 'option' ); ?></span>
-			<a data-category="Front page" data-action="Call to action" data-label="<?php the_field( 'full_callout_quote_attribution', 'option' ); ?>" class="cta-button secondary" href="<?php the_field( 'full_callout_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
+			<p><?php the_field( 'voices_quote', 'option' ); ?></p>
+			<span class="quote-attribution"><?php the_field( 'voices_quote_attribution', 'option' ); ?></span>
+			<span class="attributor-description"><?php the_field( 'voices_attributor_description', 'option' ); ?></span>
+			<a data-category="Front page" data-action="Click-Voices" data-label="<?php the_field( 'voices_quote_attribution', 'option' ); ?>" class="cta-button secondary" href="<?php the_field( 'voices_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
 		</div>
 	</section>
 
@@ -225,7 +225,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 						the_row();
 						$leaderlink = get_sub_field( 'community_leader_link' );
 						echo '<div class="leader">';
-							echo '<a data-category="Front page" data-action="Click" data-label="' . the_sub_field( 'community_leader_name' ) . '" href="' . $leaderlink . '">';
+							echo '<a data-category="Front page" data-action="Click-Leaders" data-label="' . the_sub_field( 'community_leader_name' ) . '" href="' . $leaderlink . '">';
 								$leaderimg = get_sub_field( 'community_leader_image' );
 								if ( $leaderimg ) {
 									echo wp_get_attachment_image( $leaderimg, 'leaders-2x' );
@@ -247,56 +247,56 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	</section>
 
 	<section class="connect-section">
-		<h2><?php the_field( 'full_callout_2_title', 'option' ); ?></h2>
-		<p class="connect-subhead"><?php the_field( 'full_callout_2_subhead', 'option' ); ?></p>
+		<h2><?php the_field( 'connect_title', 'option' ); ?></h2>
+		<p class="connect-subhead"><?php the_field( 'connect_subhead', 'option' ); ?></p>
 		<?php
 		/*
 		* Making the string able to have the arrow wrap
 		* with the last word.
 		*/
-		$fc2_link = get_field( 'full_callout_2_link', 'option' );
-		$fc2_text = get_field( 'full_callout_2_link_text', 'option' );
-		$fc2_exploded = explode( ' ', $fc2_text );
-		$fc2_last = array_pop( $fc2_exploded );
+		$outlook_link = get_field( 'connect_link', 'option' );
+		$outlook_text = get_field( 'connect_link_text', 'option' );
+		$outlook_exploded = explode( ' ', $outlook_text );
+		$outlook_last = array_pop( $outlook_exploded );
 
-		echo '<a data-category="Front page" data-action="Call to action" data-label="' . $fc2_text . '" class="cta-button secondary" href="' . esc_html( $fc2_link ) . '">' . implode( ' ', $fc2_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fc2_last ) . '</span>' . '</a>';
+		echo '<a data-category="Front page" data-action="Click-Full" data-label="' . $outlook_text . '" class="cta-button secondary" href="' . esc_html( $outlook_link ) . '">' . implode( ' ', $outlook_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $outlook_last ) . '</span>' . '</a>';
 		?>
 	</section>
 
-	<section class="full-section">
-		<div class="full-split-left">
+	<section class="outlook-mag">
+		<div class="outlook-mag-left">
 			<h2 class="fancy-heading"><?php 
-				$splittitle = get_field( 'full_split_subhead', 'option' );
+				$splittitle = get_field( 'home_outlook_subhead', 'option' );
 				$splitpieces = explode(' ', $splittitle );
 				$splitlastword = array_pop( $splitpieces );
 				$splitstr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $splittitle);
 				echo $splitstr . ' <span class="sanstext">' . $splitlastword . '</span>';
 			?></h2>
-			<p><?php the_field( 'full_split_subhead_description', 'option' ); ?></p>
+			<p><?php the_field( 'home_outlook_subhead_description', 'option' ); ?></p>
 			<?php
 			/*
 			* Making the string able to have the arrow wrap
 			* with the last word.
 			*/
-			$fs_link = get_field( 'full_split_link', 'option' );
-			$fs_text = get_field( 'full_split_link_text', 'option' );
+			$fs_link = get_field( 'home_outlook_link', 'option' );
+			$fs_text = get_field( 'home_outlook_link_text', 'option' );
 			$fs_exploded = explode( ' ', $fs_text );
 			$fs_last = array_pop( $fs_exploded );
 
-			echo '<a data-category="Front page" data-action="Call to action" data-label="' . $splittitle . '" class="cta-button secondary" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
+			echo '<a data-category="Front page" data-action="Click-Outlook" data-label="' . $splittitle . '" class="cta-button secondary" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
 			?>
 		</div>
-		<div class="full-split-right">
+		<div class="outlook-mag-right">
 			<div class="triangle"></div>
 			<?php
-				$fs_image = get_field( 'full_split_image', 'option' );
+				$fs_image = get_field( 'home_outlook_image', 'option' );
 				$size = 'full-split';
 
 				if ( $fs_image ) {
 					echo wp_get_attachment_image ( $fs_image, $size );
 				}
 			?>
-			<h3 class="white large-headline"><?php the_field( 'full_split_callout_title', 'option' ); ?></h3>
+			<h3 class="white large-headline"><?php the_field( 'home_outlook_callout_title', 'option' ); ?></h3>
 		</div>
 	</section>
 
@@ -306,7 +306,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				<div class="wrap">
 					<h2>Our city will surprise you.</h2>
 					<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes, and plenty of fun for nature-lovers and urbanites alike &ndash; all packed into an incredibly affordable city.</p>
-					<a data-category="Front page" data-action="Call to action" data-label="Why we love St. Louis" class="cta-button secondary" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
+					<a data-category="Front page" data-action="Click-STL" data-label="Why we love St. Louis" class="cta-button secondary" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
 				</div>
 			</div>
 			<div class="stlouis-outline"></div>

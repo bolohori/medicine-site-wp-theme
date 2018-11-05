@@ -591,7 +591,7 @@
 		}
 	}
 
-	.half-callout {
+	.dei {
 		justify-content: center;
 		background: #fff;
 		display: -ms-flexbox;
@@ -607,7 +607,7 @@
 			width: 100%;
 		}
 
-		.half-intro {
+		.dei-intro {
 			@include border-box;
 			background: $gray-dark;
 			display: inline-block;
@@ -656,7 +656,7 @@
 			}
 		}
 
-		.half-info {
+		.dei-info {
 			@include border-box;
 			align-self: center;
 			display: inline-block;
@@ -1264,7 +1264,7 @@
 		}
 	}
 
-	.full-section {
+	.outlook-mag {
 		align-items: flex-start;
 		background: #fff;
 		display: -ms-flexbox;
@@ -1278,7 +1278,7 @@
 			flex-direction: column;
 		}
 
-		.full-split-left {
+		.outlook-mag-left {
 			align-self: center;
 			box-sizing: border-box;
 			display: inline-block;
@@ -1298,7 +1298,7 @@
 			}
 		}
 
-		.full-split-right {
+		.outlook-mag-right {
 			box-sizing: border-box;
 			background: #3d3d3d;
 			display: inline-block;
@@ -1344,7 +1344,7 @@
 				position: absolute;
 				right: 5%;
 				@include text-shadow();
-				max-width: 450px;
+				max-width: 300px;
 				/* @include font-size($size-6);
 
 				@media only screen and (max-width: $break-xs) {

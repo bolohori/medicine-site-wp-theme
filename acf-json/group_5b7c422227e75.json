@@ -1,28 +1,11 @@
 {
     "key": "group_5b7c422227e75",
-    "title": "Home - Half Callout",
+    "title": "Home - DEI Section",
     "fields": [
-        {
-            "key": "field_5b7c449aafc8f",
-            "label": "Description",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This section is on the left side of the Latest News section.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
         {
             "key": "field_5b7c4529afc90",
             "label": "Title",
-            "name": "half_callout_title",
+            "name": "dei_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,7 +24,7 @@
         {
             "key": "field_5b7c453aafc91",
             "label": "Image",
-            "name": "half_callout_image",
+            "name": "dei_image",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -65,7 +48,7 @@
         {
             "key": "field_5b7c4552afc92",
             "label": "Subhead",
-            "name": "half_callout_subhead",
+            "name": "dei_subhead",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -84,7 +67,7 @@
         {
             "key": "field_5b7c4578afc93",
             "label": "Description",
-            "name": "half_callout_description",
+            "name": "dei_description",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -103,7 +86,7 @@
         {
             "key": "field_5b7c45c1afc95",
             "label": "Link Text",
-            "name": "half_callout_link_text",
+            "name": "dei_link_text",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -122,8 +105,8 @@
         {
             "key": "field_5b7c458cafc94",
             "label": "Link",
-            "name": "half_callout_link",
-            "type": "url",
+            "name": "dei_link",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -132,8 +115,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "return_format": "url"
         }
     ],
     "location": [
@@ -153,5 +135,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1536865062
+    "modified": 1541435064
 }

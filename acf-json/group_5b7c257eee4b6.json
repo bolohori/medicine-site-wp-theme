@@ -3,23 +3,6 @@
     "title": "Home - Showcase Area",
     "fields": [
         {
-            "key": "field_5b7c259864735",
-            "label": "Description",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This area is right below the split section that contains a call to action and the recent news posts.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
-        {
             "key": "field_5b7c288e64737",
             "label": "Headline",
             "name": "showcase_headline",
@@ -94,7 +77,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "url"
         }
     ],
     "location": [
@@ -114,5 +97,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537804251
+    "modified": 1541435708
 }

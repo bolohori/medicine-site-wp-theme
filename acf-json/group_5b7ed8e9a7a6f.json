@@ -1,6 +1,6 @@
 {
     "key": "group_5b7ed8e9a7a6f",
-    "title": "Home - Full-Split Callout",
+    "title": "Home - Outlook Magazine",
     "fields": [
         {
             "key": "field_5b7ed8e9ad3e0",
@@ -22,7 +22,7 @@
         {
             "key": "field_5b7ed8e9ad54a",
             "label": "Subhead",
-            "name": "full_split_subhead",
+            "name": "home_outlook_subhead",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,7 +41,7 @@
         {
             "key": "field_5b7edd25b633d",
             "label": "Image",
-            "name": "full_split_image",
+            "name": "home_outlook_image",
             "type": "image",
             "instructions": "Minimum size for upload: 1280x720. Recommended: 1920x1080 or 2560x1440.",
             "required": 0,
@@ -65,7 +65,7 @@
         {
             "key": "field_5b7ed8e9ad5dd",
             "label": "Subhead Description",
-            "name": "full_split_subhead_description",
+            "name": "home_outlook_subhead_description",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -84,7 +84,7 @@
         {
             "key": "field_5b7ed8e9ad47b",
             "label": "Title",
-            "name": "full_split_callout_title",
+            "name": "home_outlook_callout_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -103,7 +103,7 @@
         {
             "key": "field_5b7ed8e9ad696",
             "label": "Link Text",
-            "name": "full_split_link_text",
+            "name": "home_outlook_link_text",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -122,8 +122,8 @@
         {
             "key": "field_5b7ed8e9ad725",
             "label": "Link",
-            "name": "full_split_link",
-            "type": "url",
+            "name": "home_outlook_link",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -132,8 +132,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "return_format": "url"
         }
     ],
     "location": [
@@ -153,5 +152,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537804271
+    "modified": 1541435179
 }

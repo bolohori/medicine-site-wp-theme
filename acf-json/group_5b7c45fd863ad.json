@@ -1,28 +1,11 @@
 {
     "key": "group_5b7c45fd863ad",
-    "title": "Home - Full Callout",
+    "title": "Home - Voices Section",
     "fields": [
-        {
-            "key": "field_5b7c4701c8843",
-            "label": "Description",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This section appears below the Showcase area and above the community leaders section.",
-            "new_lines": "wpautop",
-            "esc_html": 0
-        },
         {
             "key": "field_5b7c4615c883e",
             "label": "Title",
-            "name": "full_callout_title",
+            "name": "voices_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -41,7 +24,7 @@
         {
             "key": "field_5b968ea88b977",
             "label": "Image",
-            "name": "full_callout_image",
+            "name": "voices_image",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -65,7 +48,7 @@
         {
             "key": "field_5b7c4635c883f",
             "label": "Quote",
-            "name": "full_callout_quote",
+            "name": "voices_quote",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -84,7 +67,7 @@
         {
             "key": "field_5b7c467fc8840",
             "label": "Quote Attribution",
-            "name": "full_callout_quote_attribution",
+            "name": "voices_attribution",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -103,7 +86,7 @@
         {
             "key": "field_5b7c46a8c8841",
             "label": "Attributor Description",
-            "name": "full_callout_attributor_description",
+            "name": "voices_attributor_description",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -122,8 +105,8 @@
         {
             "key": "field_5b7c46e7c8842",
             "label": "CTA Link",
-            "name": "full_callout_cta_link",
-            "type": "url",
+            "name": "voices_cta_link",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -132,8 +115,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "return_format": "url"
         }
     ],
     "location": [
@@ -153,5 +135,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1537804257
+    "modified": 1541435716
 }
