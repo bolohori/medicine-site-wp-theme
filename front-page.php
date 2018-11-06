@@ -97,16 +97,27 @@ if ( get_field( 'hero_image', 'option' ) ) {
 
 	<section class="dei">
 		<div class="dei-intro">
-			<div class="triangle"></div>
-			<?php
-				$deiimage = get_field( 'dei_image', 'option' );
-				$size = 'full-split';
-
-				if ( $deiimage ) {
-					echo wp_get_attachment_image ( $deiimage, $size );
-				}
+			<?php 
+			/*
+			* Making the string able to have the arrow wrap
+			* with the last word.
+			*/
+			$deilink = get_field( 'dei_link', 'option' );
+			$deitext = get_field( 'dei_link_text', 'option' );
+			
 			?>
-			<h2 class="white"><?php the_field( 'dei_title', 'option' ); ?></h2>
+			<a data-category="Front page" data-action="Click-Diversity" data-label="<?php echo $deitext; ?>" href="<?php echo esc_html( $deilink ); ?>">
+				<div class="triangle"></div>
+				<?php
+					$deiimage = get_field( 'dei_image', 'option' );
+					$size = 'full-split';
+
+					if ( $deiimage ) {
+						echo wp_get_attachment_image ( $deiimage, $size );
+					}
+				?>
+				<h2 class="white"><?php the_field( 'dei_title', 'option' ); ?></h2>
+			</a>
 		</div>
 		<div class="dei-info">
 			<h3 class="fancy-heading"><?php 
@@ -123,8 +134,6 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			* Making the string able to have the arrow wrap
 			* with the last word.
 			*/
-			$deilink = get_field( 'dei_link', 'option' );
-			$deitext = get_field( 'dei_link_text', 'option' );
 			$deiexploded = explode( ' ', $deitext );
 			$deilast = array_pop( $deiexploded );
 
@@ -188,7 +197,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			
 			if ( $voiceimg ) {
 				echo wp_get_attachment_image( $voiceimg, $size );
-			}
+			} 
 			?>
 		</div>
 		<div class="voices-quote">
@@ -200,7 +209,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				echo $voicestr . ' <span class="sanstext">' . $voicelastword . '</span>';
 			?></h2>
 			<p><?php the_field( 'voices_quote', 'option' ); ?></p>
-			<span class="quote-attribution"><?php the_field( 'voices_quote_attribution', 'option' ); ?></span>
+			<span class="quote-attribution"><?php the_field( 'voices_attribution', 'option' ); ?></span>
 			<span class="attributor-description"><?php the_field( 'voices_attributor_description', 'option' ); ?></span>
 			<a data-category="Front page" data-action="Click-Voices" data-label="<?php the_field( 'voices_quote_attribution', 'option' ); ?>" class="cta-button secondary" href="<?php the_field( 'voices_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
 		</div>
@@ -230,7 +239,7 @@ if ( get_field( 'hero_image', 'option' ) ) {
 								if ( $leaderimg ) {
 									echo wp_get_attachment_image( $leaderimg, 'leaders-2x' );
 								} else {
-									echo '<img src="' . get_template_directory_uri() . '/_/img/spotlight-default.png">';
+									echo '<img src="' . get_template_directory_uri() . '/_/img/home/leaders-default.jpg">';
 								}
 								echo '<div class="leadertext">';
 									echo '<span class="leadername">';
@@ -287,16 +296,18 @@ if ( get_field( 'hero_image', 'option' ) ) {
 			?>
 		</div>
 		<div class="outlook-mag-right">
-			<div class="triangle"></div>
-			<?php
-				$fs_image = get_field( 'home_outlook_image', 'option' );
-				$size = 'full-split';
+			<a data-category="Front page" data-action="Click-Outlook" data-label="<?php echo $splittitle; ?>" href="<?php echo esc_html( $fs_link ); ?>">
+				<div class="triangle"></div>
+				<?php
+					$fs_image = get_field( 'home_outlook_image', 'option' );
+					$size = 'full-split';
 
-				if ( $fs_image ) {
-					echo wp_get_attachment_image ( $fs_image, $size );
-				}
-			?>
-			<h3 class="white large-headline"><?php the_field( 'home_outlook_callout_title', 'option' ); ?></h3>
+					if ( $fs_image ) {
+						echo wp_get_attachment_image ( $fs_image, $size );
+					}
+				?>
+				<h3 class="white large-headline"><?php the_field( 'home_outlook_callout_title', 'option' ); ?></h3>
+			</a>
 		</div>
 	</section>
 

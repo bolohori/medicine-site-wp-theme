@@ -167,6 +167,7 @@
 		font-weight: 600;
 		padding: 8px 27px;
 		text-transform: uppercase;
+		transition: all .2s;
 
 		@media only screen and (max-width: $break-lg) {
 			@include font-size($size-1);
@@ -179,11 +180,12 @@
 		&:hover {
 			background: #fff;
 			color: $red;
-			transition: fade-in 1s;
+			transition: all .2s;
 			
 			.cta-button-wrap {
 				&::after {
 					background: url('_/img/arrow-red.svg');
+					transition: all .2s;
 				}
 			}
 		}
@@ -199,32 +201,11 @@
 				height: 20px;
 				margin: 0 0 -3px 14px;
 				width: 14px;
+				transition: all .2s;
 
 				@media only screen and (max-width: $break-xs) {
 					height: 17px;
 					width: 12px;
-				}
-			}
-		}
-
-		&.gray {
-			background: rgba(0, 0, 0, .3);
-			border: 3px solid #fff;
-			color: #fff;
-
-			.cta-button-wrap {
-				&::after {
-					background: url('_/img/arrow-white.svg');
-				}
-			}
-
-			&:hover {
-				background: rgba(0, 0, 0, .8);
-
-				.cta-button-wrap {
-					&::after {
-						background: url('_/img/arrow-white.svg');
-					}
 				}
 			}
 		}
@@ -250,6 +231,28 @@
 
 				&::after {
 					background: url('_/img/arrow-red.svg');
+				}
+			}
+		}
+
+		&.gray {
+			background: rgba(0, 0, 0, .3);
+			border: 3px solid #fff;
+			color: #fff;
+
+			.cta-button-wrap {
+				&::after {
+					background: url('_/img/arrow-white.svg');
+				}
+			}
+
+			&:hover {
+				background: rgba(0, 0, 0, .8);
+
+				.cta-button-wrap {
+					&::after {
+						background: url('_/img/arrow-white.svg');
+					}
 				}
 			}
 		}
@@ -769,7 +772,7 @@
 							@include font-size($size-2);
 							color: $red;
 							display: block;
-							font-weight: 600;
+							font-weight: 400;
 							width: 90%;
 
 							&:hover {
@@ -1243,7 +1246,7 @@
 			font-family: $font-serif;
 			font-style: italic;
 			margin-top: 0;
-			margin-bottom: 40px;
+			margin-bottom: 15px;
 
 			/*@media only screen and (max-width: $break-sm-mid) {
 				@include font-size($size-5);
