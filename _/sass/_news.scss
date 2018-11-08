@@ -136,6 +136,20 @@
 	background-image:url('_/img/icons/svg/global.svg');
 }
 
+@media only screen and (max-width: $break-sm-max) {
+	.author-contact-list {
+		display: block;
+		li {
+			width: 50%;
+		}
+	}
+	.author-bio {
+		display: block;
+		clear: both;
+		width: 100%;
+	}
+}
+
 @media only screen and (max-width: $break-sm-mid) {
 	.featured-news-story-excerpt {
 		margin-top: 5px;
@@ -149,17 +163,7 @@
 			margin-right: 0;
 		}
 	}
-	.author-contact-list {
-		display: block;
-		li {
-			width: 50%;
-		}
-	}
-	.author-bio {
-		display: block;
-		clear: both;
-		width: 100%;
-	}
+
 }
 
 @media only screen and (max-width: $break-sm) {
