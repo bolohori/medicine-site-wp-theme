@@ -17,7 +17,7 @@ global $curauth;
 			<ul class='author-contact-list'>
 				<li class='phone'><?php echo $curauth->phone; ?></li>
 				<li class='email'><a href='mailto:<?php echo $curauth->user_email; ?>'><?php echo $curauth->user_email; ?></a></li>
-				<li class='web'><a href='//publicafairs.med.wustl.edu'>Medcial Public Affairs</a></li>
+				<li class='web'><a href='//publicafairs.med.wustl.edu'>Medical Public Affairs</a></li>
 			</ul>
 			<p class='author-bio'><?php echo $curauth->description;?></p>
 		</div>
