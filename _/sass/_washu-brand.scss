@@ -1,0 +1,43 @@
+/*------------------------------------*|
+    WashU Brand colors, fonts
+|*------------------------------------*/
+
+//    color names are my own best guesses
+//    ... not 'official' color names
+
+
+/* *** Official WashU Brand Colors *** */
+// Primary
+$red:              rgb(165,  20,  23); // #a51417
+$red-light:        rgb(208,  28,  41); // #d01c29
+$gray-dark:        rgb( 61,  61,  61); // #3d3d3d -- web safe version
+$gray:             rgb(108, 115, 115); // #6c7373
+$gray-light:       rgb(200, 200, 200); // #c8c8c8 -- "Cool Gray 3"
+$gray-extra-light: rgb(238, 238, 238); // #eeeeee
+$green:            rgb(  0, 102,  51); // #006633
+ // Having fun: analyzing color scheme by the numbers:
+ // red   hue = 359° saturation =  78% lightness = 36%
+ // green hue = 150° saturation = 100% lightness = 20%
+
+// Secondary
+$green-dark: rgb( 21,  62,  53); // #153e35
+$moss:       rgb(121, 156,  75); // #799c4b
+$tan:        rgb(215, 186, 139); // #d7ba8b
+$pearl:      rgb(215, 210, 197); // #d7d2c5
+$prussian:   rgb( 23,  39,  82); // #172752
+$blue:       rgb( 16,  95, 134); // #105f86
+$turquoise:  rgb( 51, 153, 153); // #339999
+$orange:     rgb(210,  95,  40); // #d26028
+$yellow:     rgb(255, 204,   0); // #ffcc00
+$purple:     rgb( 97,  33, 102); // #612166
+
+// -------
+// approved tints are 75%, 50%, and 25% of the secondary colors
+// like so: tint($moss, 25%)
+// ----------------------------
+
+
+/* *** Official WashU Brand Fonts *** */
+$font-sans:  'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-serif: 'Libre Baskerville', 'Times New Roman', serif;
+$font-slab:  'Rockwell', serif;

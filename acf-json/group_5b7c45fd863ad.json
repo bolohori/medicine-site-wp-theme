@@ -1,11 +1,30 @@
 {
-    "key": "group_5ade0d0a33148",
-    "title": "Home - Hero Area",
+    "key": "group_5b7c45fd863ad",
+    "title": "Home - Voices Section",
     "fields": [
         {
-            "key": "field_5ade0d17a4edf",
-            "label": "Hero Image",
-            "name": "hero_image",
+            "key": "field_5b7c4615c883e",
+            "label": "Title",
+            "name": "voices_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b968ea88b977",
+            "label": "Image",
+            "name": "voices_image",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -15,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "return_format": "id",
             "preview_size": "thumbnail",
             "library": "all",
             "min_width": "",
@@ -27,77 +46,34 @@
             "mime_types": ""
         },
         {
-            "key": "field_5ade0d75a4ee4",
-            "label": "Text Alignment",
-            "name": "hero_text_alignment",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "left": "Left",
-                "right": "Right"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "",
-            "layout": "horizontal",
-            "return_format": "value",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_5ade0d45a4ee0",
-            "label": "Headline",
-            "name": "hero_headline",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5ade0d4fa4ee1",
-            "label": "Descriptive Text",
-            "name": "hero_descriptive_text",
+            "key": "field_5b7c4635c883f",
+            "label": "Quote",
+            "name": "voices_quote",
             "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "35",
                 "class": "",
                 "id": ""
             },
             "default_value": "",
             "placeholder": "",
             "maxlength": "",
-            "rows": 3,
+            "rows": 4,
             "new_lines": ""
         },
         {
-            "key": "field_5ade0d57a4ee2",
-            "label": "Button Text",
-            "name": "hero_button_text",
+            "key": "field_5b7c467fc8840",
+            "label": "Quote Attribution",
+            "name": "voices_attribution",
             "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "30",
                 "class": "",
                 "id": ""
             },
@@ -108,15 +84,34 @@
             "maxlength": ""
         },
         {
-            "key": "field_5ade0d5ea4ee3",
-            "label": "Button Link",
-            "name": "hero_button_link",
+            "key": "field_5b7c46a8c8841",
+            "label": "Attributor Description",
+            "name": "voices_attributor_description",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "35",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b7c46e7c8842",
+            "label": "CTA Link",
+            "name": "voices_cta_link",
             "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -132,7 +127,7 @@
             }
         ]
     ],
-    "menu_order": 1,
+    "menu_order": 6,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -140,5 +135,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1541434976
+    "modified": 1541435716
 }

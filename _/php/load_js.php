@@ -10,6 +10,10 @@ function queue_wusm_scripts() {
 	wp_localize_script( 'custom_functions', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
     wp_enqueue_script('match_height', get_stylesheet_directory_uri() . '/_/js/jquery.matchHeight-min.js', array( 'jquery' ) );
+
+	if ( is_front_page() ) {
+		wp_enqueue_script('lity', get_stylesheet_directory_uri() . '/_/js/lity.min.js', array( 'jquery' ) );
+	}
 }
 
 add_action('wp_enqueue_scripts', 'queue_wusm_scripts');

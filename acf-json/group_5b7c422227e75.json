@@ -1,59 +1,11 @@
 {
-    "key": "group_5ade0d0a33148",
-    "title": "Home - Hero Area",
+    "key": "group_5b7c422227e75",
+    "title": "Home - DEI Section",
     "fields": [
         {
-            "key": "field_5ade0d17a4edf",
-            "label": "Hero Image",
-            "name": "hero_image",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_5ade0d75a4ee4",
-            "label": "Text Alignment",
-            "name": "hero_text_alignment",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "left": "Left",
-                "right": "Right"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "",
-            "layout": "horizontal",
-            "return_format": "value",
-            "save_other_choice": 0
-        },
-        {
-            "key": "field_5ade0d45a4ee0",
-            "label": "Headline",
-            "name": "hero_headline",
+            "key": "field_5b7c4529afc90",
+            "label": "Title",
+            "name": "dei_title",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -70,9 +22,52 @@
             "maxlength": ""
         },
         {
-            "key": "field_5ade0d4fa4ee1",
-            "label": "Descriptive Text",
-            "name": "hero_descriptive_text",
+            "key": "field_5b7c453aafc91",
+            "label": "Image",
+            "name": "dei_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b7c4552afc92",
+            "label": "Subhead",
+            "name": "dei_subhead",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b7c4578afc93",
+            "label": "Description",
+            "name": "dei_description",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -89,9 +84,9 @@
             "new_lines": ""
         },
         {
-            "key": "field_5ade0d57a4ee2",
-            "label": "Button Text",
-            "name": "hero_button_text",
+            "key": "field_5b7c45c1afc95",
+            "label": "Link Text",
+            "name": "dei_link_text",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -108,9 +103,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_5ade0d5ea4ee3",
-            "label": "Button Link",
-            "name": "hero_button_link",
+            "key": "field_5b7c458cafc94",
+            "label": "Link",
+            "name": "dei_link",
             "type": "link",
             "instructions": "",
             "required": 0,
@@ -132,7 +127,7 @@
             }
         ]
     ],
-    "menu_order": 1,
+    "menu_order": 3,
     "position": "normal",
     "style": "default",
     "label_placement": "top",
@@ -140,5 +135,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1541434976
+    "modified": 1541435064
 }

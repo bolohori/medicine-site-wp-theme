@@ -2,9 +2,11 @@
 /**
  * Added expires header for front page
  */
-header( 'Expires: ' .gmdate( 'D, d M Y H:i:s \G\M\T', time() + ( 12 * 60 * 60 ) ) );
+header( 'Expires: ' .gmdate ( 'D, d M Y H:i:s \G\M\T', time() + ( 12 * 60 * 60 ) ) );
 
-get_header(); 
+get_header();
+
+// Get image for hero banner.
 if ( get_field( 'hero_image', 'option' ) ) {
 	$heroimg = get_field( 'hero_image', 'option' );
 	if ( $heroimg['sizes']['hero-img-2x-width'] < 2880 ) {
@@ -12,13 +14,14 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	} else {
 		$heroimg2x = $heroimg['sizes']['hero-img-2x'];
 	}
-} ?>
+}
+?>
 <style>
 	.hero-banner,
 	.hero-banner .mobile {
 		background-image: url(<?php echo $heroimg['sizes']['hero-img-sm']; ?>);
 	}
-	@media screen and (min-width: 639px), 
+	@media screen and (min-width: 639px),
 		screen and (-webkit-min-device-pixel-ratio: 1.5),
 		screen and (min-resolution: 144dpi) {
 		.hero-banner {
@@ -28,191 +31,298 @@ if ( get_field( 'hero_image', 'option' ) ) {
 	@media screen and (min-resolution: 144dpi) and (min-width: 639px), 
 		screen and (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 639px) {
 		.hero-banner {
-			background-image: url(<?php if ( $image2x[1] >= 2880 ) { echo $heroimg['sizes']['hero-img-2x']; } else { echo $heroimg['sizes']['hero-img-1_5x']; } ?>);
+			background-image: url(<?php if ( $heroimg2x[1] >= 2880 ) { echo $heroimg['sizes']['hero-img-2x']; } else { echo $heroimg['sizes']['hero-img-1_5x']; } ?>);
 		}
 	}
 </style>
 
-<section class="hero-banner desktop">
-<?php
-if ( get_field( 'hero_image', 'option' ) ) {
-	// Adds featured image size for pages.
-	$heroalign = get_field( 'text_alignment', 'option' );
-	$heroheadline = get_field( 'headline', 'option' );
-	$herodesc = get_field( 'descriptive_text', 'option' );
-	$herobuttontext = get_field( 'button_text', 'option' );
-	$herobuttonlink = get_field( 'button_link', 'option' );
+<div id="page">
+	<section class="hero-banner desktop">
+	<?php
+	if ( get_field( 'hero_image', 'option' ) ) {
+		// Adds featured image size for pages.
+		$heroalign = ' ' . get_field( 'hero_text_alignment', 'option' );
+		$heroheadline = get_field( 'hero_headline', 'option' );
+		$herodesc = get_field( 'hero_descriptive_text', 'option' );
+		$herobuttontext = get_field( 'hero_button_text', 'option' );
+		$herobuttonlink = get_field( 'hero_button_link', 'option' );
 
-	/*
-	 * Making the string able to have the arrow wrap
-	 * with the last word.
-	*/
-	$explodedbutton = explode( ' ', $herobuttontext );
-	$herobuttonlast = array_pop( $explodedbutton );
+		/*
+		* Making the string able to have the arrow wrap
+		* with the last word.
+		*/
+		$explodedbutton = explode( ' ', $herobuttontext );
+		$herobuttonlast = array_pop( $explodedbutton );
 
-	echo '<div class="hero-banner mobile"></div>';
-	echo '<div class="hero-container">';
-		echo '<div class="hero-text">';
-			echo '<span class="hero-headline">' . esc_html( $heroheadline ) . '</span>';
-			echo '<p>' . esc_html( $herodesc ) . '</p>';
-			echo '<a data-category="Front page" data-action="CTA - Hero banner - Admissions" class="hero-button" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="homebuttonwrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
+		echo '<div class="hero-banner mobile"></div>';
+		echo '<div class="hero-container' . $heroalign . '">';
+			echo '<div class="hero-text">';
+				echo '<h2 class="hero-headline">' . esc_html( $heroheadline ) . '</h2>';
+				echo '<p>' . esc_html( $herodesc ) . '</p>';
+				echo '<a data-category="Front page" data-action="Click-Hero" data-label="' . $herobuttontext . '" class="cta-button gray" href="' . esc_html( $herobuttonlink ) . '">' . implode( ' ', $explodedbutton ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $herobuttonlast ) . '</span>' . '</a>';
+			echo '</div>';
 		echo '</div>';
-	echo '</div>';
-}
-?>
-</section>
-
-<?php
-    if ( function_exists( 'wusm_alert_display' ) ) {
-		wusm_alert_display();
 	}
-?>
+	?>
+	</section>
 
-<section class="news-home">
-	<div class="text-intro">
-		<div class="wrap">
-			<h2>We connect the brightest minds in medicine.</h2>
-			<p>With passion and determination, our teachers, scholars, caregivers and innovators come together to tackle medicine's toughest challenges.</p>
+	<?php
+		if ( function_exists( 'wusm_alert_display' ) ) {
+			wusm_alert_display();
+		}
+	?>
+
+	<section class="bythenumbers">
+		<h2>&#35;WashUMed</h2>
+		<span class="tagline">by the numbers</span>
+		<div class="icons">
+			<div class="icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="Top 10 Medical Schools" href=" https://www.usnews.com/best-graduate-schools/top-medical-schools/research-rankings"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/microscope-icon.svg" alt="microscope-icon">
+				<span class="desctext">Top 10 Medical School</span></a>
+			</div>
+			<div class="icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="13 Degree Programs" href="https://medicine.wustl.edu/education/admissions/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/graduation-icon.svg" alt="graduation-icon">
+				<span class="desctext">13 Degree Programs</span></a>
+			</div>
+			<div class="icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="76 Clinical Specialties & Subspecialties" href="https://wuphysicians.wustl.edu/medical-services/specialties"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/hospital-icon.svg" alt="hospital-icon">
+				<span class="desctext">76 Clinical Specialties &amp; Subspecialties</span></a>
+			</div>
+			<div class="icon">
+				<a data-category="Front page" data-action="Click-Numbers" data-label="2nd-Lowest Student Debt" href="https://medicine.wustl.edu/education/financial-support/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
+				<span class="desctext">2nd-Lowest Student Debt</span></a>
+			</div>
 		</div>
-	</div>
-	<section class="news">
-		<div class="news-cards">
-			<ul class="clearfix">
-				<li class="news-block">
-					<div>
-						<a data-category="Front page" data-action="CTA - See our latest news" href="/news">
-							<div class="card latest-news-block">
-								<p>Explore the scientific discovery, medical innovation and commitment to care that inspire us.</p>
-								<span class="link">See our latest news</span>
-							</div>
-						</a>
-					</div>
-				</li>
+	</section>
+
+	<section class="dei">
+		<div class="dei-intro">
+			<?php 
+			/*
+			* Making the string able to have the arrow wrap
+			* with the last word.
+			*/
+			$deilink = get_field( 'dei_link', 'option' );
+			$deitext = get_field( 'dei_link_text', 'option' );
+			
+			?>
+			<a data-category="Front page" data-action="Click-Diversity" data-label="<?php echo $deitext; ?>" href="<?php echo esc_html( $deilink ); ?>">
+				<div class="triangle"></div>
 				<?php
-					if ( have_rows( 'home_stories', 'option' ) ) {
-						while ( have_rows( 'home_stories', 'option' ) ) : the_row();
-							$newscards = get_sub_field( 'selected_stories', 'option' );
-							if ( $newscards ) {
-								$post = $newscards;
-								setup_postdata( $post );
-								get_template_part( '_/php/news/card' );
-							}
-						endwhile;
+					$deiimage = get_field( 'dei_image', 'option' );
+					$size = 'full-split';
+
+					if ( $deiimage ) {
+						echo wp_get_attachment_image ( $deiimage, $size );
 					}
 				?>
-			</ul>
+				<h2 class="white"><?php the_field( 'dei_title', 'option' ); ?></h2>
+			</a>
+		</div>
+		<div class="dei-info">
+			<h3 class="fancy-heading"><?php 
+				$deisubhead = get_field( 'dei_subhead', 'option' );
+				$deipieces = explode(' ', $deisubhead );
+				$deilastword = array_pop( $deipieces );
+				$deistr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $deisubhead);
+				echo $deistr . ' <span class="sanstext">' . $deilastword . '</span>';
+			?></h3>
+			<p><?php the_field( 'dei_description', 'option' ); ?></p>
+
+			<?php
+			/*
+			* Making the string able to have the arrow wrap
+			* with the last word.
+			*/
+			$deiexploded = explode( ' ', $deitext );
+			$deilast = array_pop( $deiexploded );
+
+			echo '<a data-category="Front page" data-action="Click-Diversity" data-label="' . $deitext . '" class="cta-button secondary" href="' . esc_html( $deilink ) . '">' . implode( ' ', $deiexploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $deilast ) . '</span>' . '</a>';
+			?>
 		</div>
 	</section>
-</section>
 
-<section class="cta-home turquoise">
-	<div class="wrap">
-		<div class="cta-text">
-			<h2>We're turning ideals into action.</h2>
-			<p>The School of Medicine is taking meaningful action to increase diversity on campus and in medical professions.</p>
+	<section class="news-section">
+		<h2 class="sanstext">Latest News</h2>
+			<?php if ( have_rows( 'news_items', 'option' ) ) {
+				echo '<div class="home-stories">';
+					while ( have_rows( 'news_items', 'option' ) ) {
+						the_row();
+						$post_id = get_sub_field( 'news_item', false, false );
+						$date = get_the_date( '', $post_id );
+						$title = get_the_title( $post_id );
+						$link = get_permalink( $post_id );
+						?>
+						<a data-category="Front page" data-action="Click-News" data-label="<?php echo $title; ?>" href="<?php echo $link; ?>">
+							<div class="home-story">
+								<?php echo get_the_post_thumbnail( $post_id, 'news' ); ?>
+								<div class="home-news-info">
+									<span class="home-news-date"><?php echo $date; ?></span>
+									<span class="home-news-title"><?php echo $title; ?></span>
+								</div>
+							</div>
+						</a>
+						<?php
+					}
+				echo '</div>';
+			} ?>
+		<a data-category="Front page" data-action="Click-News" data-label="Read all news" class="cta-button secondary" href="/news"><span class="cta-button-wrap">Read all news</span></a>
+	</section>
+
+	<section class="showcase-section">
+		<div class="background">
+			<?php
+				$sc_image = get_field( 'showcase_image', 'option' );
+				$size = 'hero-img-2x';
+
+				if ( $sc_image ) {
+					echo wp_get_attachment_image ( $sc_image, $size );
+				}
+			?>
 		</div>
-		<a data-category="Front page" data-action="CTA - Diversity" href="/about/diversity-inclusion/" class="cta-button">SEE DIVERSITY INITIATIVES</a>
-	</div>
-</section>
+		<div class="textoverlay">
+			<div class="play"><a data-category="Front page" data-action="Click-Video" data-label="<?php the_field( 'showcase_video_link', 'option' ); ?>" href="<?php the_field( 'showcase_video_link', 'option' ); ?>" data-lity><img src="<?php echo get_stylesheet_directory_uri() . '/_/img/play-button.svg'; ?>"></a></div>
+			<div class="textwrap">
+				<h2 class="white"><?php the_field( 'showcase_headline', 'option' ); ?></h2>
+				<p><?php the_field( 'showcase_caption', 'option' ); ?></p>
+			</div>
+		</div>
+	</section>
 
-<?php do_action( 'wusm_front_page_additional_sections' );?>
+	<section class="voices-section">
+		<div class="voices-image">
+			<?php
+			$voiceimg = get_field( 'voices_image', 'option' );
+			$size = 'full';
+			
+			if ( $voiceimg ) {
+				echo wp_get_attachment_image( $voiceimg, $size );
+			} 
+			?>
+		</div>
+		<div class="voices-quote">
+			<h2 class="fancy-heading"><?php 
+				$voicetitle = get_field( 'voices_title', 'option' );
+				$voicepieces = explode(' ', $voicetitle );
+				$voicelastword = array_pop( $voicepieces );
+				$voicestr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $voicetitle);
+				echo $voicestr . ' <span class="sanstext">' . $voicelastword . '</span>';
+			?></h2>
+			<p><?php the_field( 'voices_quote', 'option' ); ?></p>
+			<span class="quote-attribution"><?php the_field( 'voices_attribution', 'option' ); ?></span>
+			<span class="attributor-description"><?php the_field( 'voices_attributor_description', 'option' ); ?></span>
+			<a data-category="Front page" data-action="Click-Voices" data-label="<?php the_field( 'voices_quote_attribution', 'option' ); ?>" class="cta-button secondary" href="<?php the_field( 'voices_cta_link', 'option' ); ?>"><span class="cta-button-wrap">Read more</span></a>
+		</div>
+	</section>
 
-<section class="leaders-home">
-	<div class="text-intro">
+	<section class="leaders-section">
+		<div class="leaders-intro">
+			<h2 class="white"><?php the_field( 'community_leaders_title', 'option' ); ?></h2>
+			<p><?php the_field( 'community_leaders_description', 'option' ); ?></p>
+		</div>
+		<div class="leader-lineup">
+			<div class="leaders-intro">
+				<img src="<?php echo get_stylesheet_directory_uri() . '/_/img/home/leaders-bg-mobile@2x.jpg'; ?>">
+				<div class="leaders-text-wrap">
+					<h2 class="white"><?php the_field( 'community_leaders_title', 'option' ); ?></h2>
+					<p><?php the_field( 'community_leaders_description', 'option' ); ?></p>
+				</div>
+			</div>
+			<?php
+				if ( have_rows( 'community_leader', 'option' ) ) {
+					while ( have_rows( 'community_leader', 'option' ) ) {
+						the_row();
+						$leaderlink = get_sub_field( 'community_leader_link' );
+						echo '<div class="leader">';
+							echo '<a data-category="Front page" data-action="Click-Leaders" data-label="' . the_sub_field( 'community_leader_name' ) . '" href="' . $leaderlink . '">';
+								$leaderimg = get_sub_field( 'community_leader_image' );
+								if ( $leaderimg ) {
+									echo wp_get_attachment_image( $leaderimg, 'leaders-2x' );
+								} else {
+									echo '<img src="' . get_template_directory_uri() . '/_/img/home/leaders-default.jpg">';
+								}
+								echo '<div class="leadertext">';
+									echo '<span class="leadername">';
+										the_sub_field( 'community_leader_name' );
+									echo '</span>';
+									the_sub_field( 'community_leader_description' );
+								echo '</div>';
+							echo '</a>';
+						echo '</div>';
+					}
+				}
+			?>
+		</div>
+	</section>
+
+	<section class="connect-section">
+		<h2><?php the_field( 'connect_title', 'option' ); ?></h2>
+		<p class="connect-subhead"><?php the_field( 'connect_subhead', 'option' ); ?></p>
+		<?php
+		/*
+		* Making the string able to have the arrow wrap
+		* with the last word.
+		*/
+		$outlook_link = get_field( 'connect_link', 'option' );
+		$outlook_text = get_field( 'connect_link_text', 'option' );
+		$outlook_exploded = explode( ' ', $outlook_text );
+		$outlook_last = array_pop( $outlook_exploded );
+
+		echo '<a data-category="Front page" data-action="Click-Full" data-label="' . $outlook_text . '" class="cta-button secondary" href="' . esc_html( $outlook_link ) . '">' . implode( ' ', $outlook_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $outlook_last ) . '</span>' . '</a>';
+		?>
+	</section>
+
+	<section class="outlook-mag">
+		<div class="outlook-mag-left">
+			<h2 class="fancy-heading"><?php 
+				$splittitle = get_field( 'home_outlook_subhead', 'option' );
+				$splitpieces = explode(' ', $splittitle );
+				$splitlastword = array_pop( $splitpieces );
+				$splitstr = preg_replace('/\W\w+\s*(\W*)$/', '$1', $splittitle);
+				echo $splitstr . ' <span class="sanstext">' . $splitlastword . '</span>';
+			?></h2>
+			<p><?php the_field( 'home_outlook_subhead_description', 'option' ); ?></p>
+			<?php
+			/*
+			* Making the string able to have the arrow wrap
+			* with the last word.
+			*/
+			$fs_link = get_field( 'home_outlook_link', 'option' );
+			$fs_text = get_field( 'home_outlook_link_text', 'option' );
+			$fs_exploded = explode( ' ', $fs_text );
+			$fs_last = array_pop( $fs_exploded );
+
+			echo '<a data-category="Front page" data-action="Click-Outlook" data-label="' . $splittitle . '" class="cta-button secondary" href="' . esc_html( $fs_link ) . '">' . implode( ' ', $fs_exploded ) . ' ' . '<span class="cta-button-wrap">' . esc_html( $fs_last ) . '</span>' . '</a>';
+			?>
+		</div>
+		<div class="outlook-mag-right">
+			<a data-category="Front page" data-action="Click-Outlook" data-label="<?php echo $splittitle; ?>" href="<?php echo esc_html( $fs_link ); ?>">
+				<div class="triangle"></div>
+				<?php
+					$fs_image = get_field( 'home_outlook_image', 'option' );
+					$size = 'full-split';
+
+					if ( $fs_image ) {
+						echo wp_get_attachment_image ( $fs_image, $size );
+					}
+				?>
+				<h3 class="white large-headline"><?php the_field( 'home_outlook_callout_title', 'option' ); ?></h3>
+			</a>
+		</div>
+	</section>
+
+	<section class="stlouis-home">
 		<div class="wrap">
-			<h2>We are a community of leaders.</h2>
-			<p>Engaged in our fields at home and around the world, we are defining the future of health and medicine.</p>
-		</div>
-	</div>
-	<section class="leaders">
-		<?php
-		$args = array(
-			'post_type'      => 'post',
-			'news'           => 'national-leaders',
-			'posts_per_page' => 3,
-			'orderby'        => 'date'
-		);
-		$the_query = new WP_Query( $args );
-
-		if ( $the_query->have_posts() ) { ?>
-			<div class="news-cards">
-				<ul class="clearfix">
-					<?php while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-						get_template_part( '_/php/news/card' );
-					} ?>
-				</ul>
+			<div class="text-intro">
+				<div class="wrap">
+					<h2>Our city will surprise you.</h2>
+					<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes, and plenty of fun for nature-lovers and urbanites alike &ndash; all packed into an incredibly affordable city.</p>
+					<a data-category="Front page" data-action="Click-STL" data-label="Why we love St. Louis" class="cta-button secondary" href="https://medicine.wustl.edu/about/st-louis/"><span class="cta-button-wrap">Why we love St. Louis</span></a>
+				</div>
 			</div>
-		<?php
-		}
-		wp_reset_postdata(); ?>
-		<a class="national-leaders-see-all" href="/news/type/national-leaders/">SEE ALL</a>
+			<div class="stlouis-outline"></div>
+		</div>
 	</section>
-</section>
-
-<section class="cta-home">
-	<div class="wrap">
-		<div class="cta-text">
-			<h2>The future of medicine starts here.</h2>
-			<p>Our top-ranked, student-centered programs will prepare you to join the next generation of leaders.</p>
-		</div>
-		<a data-category="Front page" data-action="CTA - Admissions button" href="/education/admissions/" class="cta-button">Explore our programs</a>
-	</div>
-</section>
-
-<section class="icons-home">
-	<div class="wrap">
-		<a data-category="Front page" data-action="Icon - Facts and figures" href="https://otm.wustl.edu/facts-figures/" class="iconlink">
-			<div class="icon">
-				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/lightbulb.svg">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/lightbulb-2x.png 2x" alt="lightbulb icon">
-					<span class="visuallyhidden">lightbulb icon</span>
-				</object>
-				<div class="context">209 patents filed by faculty and students in FY2016</div>
-			</div>
-		</a>
-		<a data-category="Front page" data-action="Icon - Specialties" href="https://wuphysicians.wustl.edu/medical-services/specialties" class="iconlink">
-			<div class="icon">
-				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/76.svg">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/76-2x.png 2x" alt="76">
-					<span class="visuallyhidden">76</span>
-				</object>
-				<div class="context">clinical specialties and subspecialties</div>
-			</div>
-		</a>
-		<a data-category="Front page" data-action="Icon - Nobel Laureates" href="/research/nobel-prize-winners/" class="iconlink">
-			<div class="icon nobel">
-				<object>
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-transparent.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/nobel-transparent-2x.png 2x" alt="nobel laureates">
-					<span class="visuallyhidden">nobel laureates</span>
-				</object>
-				<div class="context">18 nobel laureates associated with the school</div>
-			</div>
-		</a>
-		<a data-category="Front page" data-action="Icon - Patient care"  href="/patient-care/" class="iconlink">
-			<div class="icon">
-				<object type="image/svg+xml" data="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/svg/stethoscope.svg">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope.png" srcset="<?php echo get_stylesheet_directory_uri(); ?>/_/img/icons/png/stethoscope-2x.png 2x" alt="lightbulb icon">
-					<span class="visuallyhidden">stethoscope icon</span>
-				</object>
-				<div class="context">67% of faculty members also treat patients</div>
-			</div>
-		</a>
-	</div>
-</section>
-
-<section class="stlouis-home">
-	<div class="wrap">
-		<div class="text-intro">
-			<div class="wrap">
-				<h2>Our city will surprise you.</h2>
-				<p>Here you’ll find charming neighborhoods, vibrant cultural and culinary scenes, and plenty of fun for nature-lovers and urbanites alike &ndash; all packed into an incredibly affordable city.</p>
-				<a data-category="Front page" data-action="CTA - St. Louis" class="home-cta-button" href="https://medicine.wustl.edu/about/st-louis/"><span class="home-cta-button-wrap">Why we love St. Louis</span></a>;
-				<a href="#">Why we love St. Louis</a>
-			</div>
-		</div>
-		<div class="stlouis-outline"></div>
-	</div>
-</section>
+</div>
 
 <?php get_footer(); ?>

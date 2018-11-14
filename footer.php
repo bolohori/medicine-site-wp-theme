@@ -12,12 +12,12 @@
         <div id="site-footer-top" class="clearfix">
 	        <?php echo $footer_menu; ?>
 	        <div id="site-social">
-	        	<a title="Facebook" id="site-facebook" data-category="outbound-footer-social" data-action="facebook" href="https://www.facebook.com/WUSTLmedicine.health"><img src="<?php echo get_template_directory_uri(); ?>/_/img/facebook.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/facebook.png';this.onerror=null;"></a>
-				<a title="Twitter" id="site-twitter" data-category="outbound-footer-social" data-action="twitter"  href="http://twitter.com/WUSTLmed"><img src="<?php echo get_template_directory_uri(); ?>/_/img/twitter.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/twitter.png';this.onerror=null;"></a>
-				<a title="Instagram" id="site-ig" data-category="outbound-footer-social" data-action="instagram"  href="https://www.instagram.com/washumedicine/ "><img src="<?php echo get_template_directory_uri(); ?>/_/img/ig-white.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/ig-white.png';this.onerror=null;"></a>
-				<a title="YouTube" id="site-youtube" data-category="outbound-footer-social" data-action="youtube"  href="https://www.youtube.com/channel/UCo0fgiMWvVLEli-CF-1gKqw/feed"><img src="<?php echo get_template_directory_uri(); ?>/_/img/youtube.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/youtube.png';this.onerror=null;"></a>
-				<a title="Flickr" id="site-flickr" data-category="outbound-footer-social" data-action="flickr"  href="https://www.flickr.com/photos/wustlmedicine/"><img src="<?php echo get_template_directory_uri(); ?>/_/img/flickr.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/flickr.png';this.onerror=null;"></a>
-				<a title="RSS feed" id="site-rss" data-category="outbound-footer-social" data-action="rss"  href="<?php bloginfo('rss2_url'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/_/img/rss.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/rss.png';this.onerror=null;"></a>
+	        	<a title="Facebook" id="site-facebook" data-category="outbound-footer-social" data-action="facebook" href="https://www.facebook.com/WUSTLmedicine.health"></a>
+				<a title="Twitter" id="site-twitter" data-category="outbound-footer-social" data-action="twitter"  href="http://twitter.com/WUSTLmed"></a>
+				<a title="Instagram" id="site-ig" data-category="outbound-footer-social" data-action="instagram"  href="https://www.instagram.com/washumedicine/ "></a>
+				<a title="YouTube" id="site-youtube" data-category="outbound-footer-social" data-action="youtube"  href="https://www.youtube.com/channel/UCo0fgiMWvVLEli-CF-1gKqw/feed"></a>
+				<a title="Flickr" id="site-flickr" data-category="outbound-footer-social" data-action="flickr"  href="https://www.flickr.com/photos/wustlmedicine/"></a>
+				<a title="RSS feed" id="site-rss" data-category="outbound-footer-social" data-action="rss"  href="<?php bloginfo('rss2_url'); ?>"></a>
 	        </div>
         </div>
         <div id="site-footer-bottom" class="clearfix">
