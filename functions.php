@@ -261,7 +261,10 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );
-		wp_enqueue_style( 'lity-min', get_stylesheet_directory_uri() . '/_/css/lity.min.css' );
+		
+		if ( is_front_page() ) {
+			wp_enqueue_style( 'lity-min', get_stylesheet_directory_uri() . '/_/css/lity.min.css' );
+		}
 		
 		// Save same data about the theme into a variable
 		$medicine_theme_data = wp_get_theme();
