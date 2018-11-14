@@ -156,6 +156,16 @@ add_image_size( 'hero-img', 1440, 550, true );
 add_image_size( 'hero-img-1_5x', 2160, 825, true );
 add_image_size( 'hero-img-2x', 2880, 1100, true );
 
+// Image sizes for Home - Full Split box
+add_image_size( 'full-split-sm', 640, 360, true );
+add_image_size( 'full-split', 1280, 720, true );
+add_image_size( 'full-split-1_5x', 1920, 1080, true );
+add_image_size( 'full-split-2x', 2560, 1440, true );
+
+// Image sizes for Home - Leaders area
+add_image_size( 'leaders', 354, 367, true );
+add_image_size( 'leaders-2x', 708, 734, true );
+
 // Image sizes (Settings / Media)
 update_option( 'medium_size_w', 300 );
 update_option( 'medium_size_h', null );
@@ -251,6 +261,10 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		wp_dequeue_style( 'dashicons-css' );
 		wp_enqueue_style( 'dashicons', '/wp-includes/css/dashicons.min.css' );
 		wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/_/css/reset.css' );
+		
+		if ( is_front_page() ) {
+			wp_enqueue_style( 'lity-min', get_stylesheet_directory_uri() . '/_/css/lity.min.css' );
+		}
 		
 		// Save same data about the theme into a variable
 		$medicine_theme_data = wp_get_theme();
