@@ -17,3 +17,16 @@ function queue_wusm_scripts() {
 }
 
 add_action('wp_enqueue_scripts', 'queue_wusm_scripts');
+
+function wusm_embed_container( $html, $url = '', $attr = '' ) {
+	// Bail if this is the admin
+	if ( is_admin() ) {
+		return $html;
+	}
+	if ( isset( $attr['width'] ) ) {
+		wp_enqueue_script( 'wusm-fitvids' );
+	}
+	return $html;
+}
+add_filter( 'embed_handler_html', 'wusm_embed_container', 10, 3 );
+add_filter( 'embed_oembed_html' , 'wusm_embed_container', 10, 3 );
