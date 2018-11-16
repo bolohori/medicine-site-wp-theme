@@ -18,7 +18,7 @@ function queue_wusm_scripts() {
 
 add_action('wp_enqueue_scripts', 'queue_wusm_scripts');
 
-function wusm_embed_container( $html, $url, $attr ) {
+function wusm_embed_container( $html, $url = '', $attr = '' ) {
 	// Bail if this is the admin
 	if ( is_admin() ) {
 		return $html;
