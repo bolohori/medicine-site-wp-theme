@@ -2,24 +2,9 @@
   "name": "wustl_medicine",
   "version": "2018.08.28.0",
   "description": "The theme for the Washington University School of Medicine in St. Louis",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   "scripts": {
 	"sass": "sass --watch _/sass/:. --style compressed"
   }, 
-=======
->>>>>>> SASS functionality is here!
-=======
-  "scripts": {
-    "sass": "sass --watch _/sass/:. --style compressed"
-  },
->>>>>>> 📦 NEW: You can now use 'npm run sass' to compile the sass
-=======
-  "scripts": {
-    "sass": "sass --watch _/sass/:. --style compressed"
-  },
->>>>>>> c014bf8fd7289381a35cf2d0f1b4eb36dfd26442
   "repository": {
     "type": "git",
     "url": "https://istdevcode.wustl.edu/projects/PA/repos/medicine"
