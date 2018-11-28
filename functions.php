@@ -1098,11 +1098,14 @@ add_shortcode( 'wusm_archive', function() { return false; } );
  */
 function medicine_featured_story() {
 	$featured_story_object = get_field( 'featured_story' );
-
+	$link = get_field( 'url', $featured_story_object->ID );
+	if ( $link == null ) {
+		$link = get_permalink( $featured_story_object->ID );
+	}
 	ob_start(); ?>
 	<div class="featured-news-story">
 		<?php echo get_the_post_thumbnail( $featured_story_object, 'featured-news' ); ?>
-		<strong>Related: </strong><a href="<?php the_permalink( $featured_story_object->ID ); ?>"><?php echo $featured_story_object->post_title; ?></a>
+		<strong>Related: </strong><a href="<?php echo $link; ?>"><?php echo $featured_story_object->post_title; ?></a>
 		<p class="featured-news-story-excerpt"><?php echo featured_story_excerpt( $featured_story_object->ID ); ?>
 	</div>
 	<?php return ob_get_clean();
