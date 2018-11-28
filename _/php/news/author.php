@@ -8,9 +8,13 @@ global $curauth;
 		<?php
 		$image_array = get_field( 'author_headshot', 'user_' . $curauth->ID );
 		if ( null !== $image_array ) {
+			$image = $image_array['sizes']['large'];
+		} else {
+			$image = get_stylesheet_directory_uri() . '/_/img/author-default-image.jpg';
+		}
 		?>
-		<img src="<?php echo $image_array['sizes']['large']; ?>" class='alignleft author-headshot' alt="">
-		<?php } ?>
+		
+		<img src="<?php echo $image; ?>" class='alignleft author-headshot' alt="">
 		<div class="author-info">
 			<h1><?php echo $curauth->display_name; ?></h1>
 			<h2><?php echo $curauth->title; ?></h2>
