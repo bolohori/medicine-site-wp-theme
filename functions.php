@@ -1134,27 +1134,26 @@ function medicine_related_stories() {
 	ob_start(); ?>
 	<div class="related-stories">
 		<?php
-		if ( get_field( 'related_stories_header' ) ) {
-			?>
+		if ( get_field( 'related_stories_header' ) ) { ?>
 			<strong><?php the_field( 'related_stories_header' ); ?></strong>
-			<?php
-			$newstype     = get_field( 'related_stories_news_type_selection' );
-			$newscategory = get_field( 'related_stories_categories_selection' );
-			$args         = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 3,
-				'tax_query'      => array (
-					array (
-						'taxonomy' => 'news',
-						'field'    => 'term_id',
-						'terms'    => $newstype
-					),
+		<?php }
+		$newstype     = get_field( 'related_stories_news_type_selection' );
+		$newscategory = get_field( 'related_stories_categories_selection' );
+		$args         = array(
+			'post_type'      => 'post',
+			'posts_per_page' => 3,
+			'tax_query'      => array (
+				array (
+					'taxonomy' => 'news',
+					'field'    => 'term_id',
+					'terms'    => $newstype
 				),
-			);
-			if ( $newscategory !== '' ) {
-				$args['category__in'] = $newscategory;
-			}
+			),
+		);
+		if ( $newscategory !== '' ) {
+			$args['category__in'] = $newscategory;
 		}
+
 		$the_query = new WP_Query( $args );
 		$i = 1; ?>
 		<ul class="clearfix">
