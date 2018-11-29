@@ -1162,12 +1162,19 @@ function medicine_related_stories() {
 				?>
 				<li>
 					<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>" data-category="Page - Internal" data-action="Cards - <?php echo $pagetitle ?>">
-						<div>
+						<div class='related-stories-card'>
+							<?php if ( get_field( 'featured_video_url' ) ) { ?>
+								<div class="video-card-image">
+									<?php the_post_thumbnail( 'featured-news' ); ?>
+									<img src="<?php echo get_template_directory_uri() . '/_/img/play.png'; ?>" class="video-play-icon">
+								</div>
 							<?php
-							if ( has_post_thumbnail() ) {
-								the_post_thumbnail( 'featured-news' );
 							} else {
-								echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+								if ( has_post_thumbnail() ) {
+									the_post_thumbnail( 'featured-news' );
+								} else {
+									echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+								}
 							}
 							?>
 							<?php the_title(); ?>
