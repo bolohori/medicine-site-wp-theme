@@ -1178,8 +1178,8 @@ function medicine_related_stories() {
 						<div class='related-stories-card'>
 							<?php if ( get_field( 'featured_video_url' ) ) { ?>
 								<div class="video-card-image">
-									<?php the_post_thumbnail( 'featured-news' ); ?>
 									<img src="<?php echo get_template_directory_uri() . '/_/img/play.png'; ?>" class="video-play-icon">
+									<?php the_post_thumbnail( 'featured-news' ); ?>
 								</div>
 							<?php
 							} else {
