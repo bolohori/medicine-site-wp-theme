@@ -50,6 +50,19 @@
 
 .featured-news-story {
 	font-size: 18px;
+	
+	.video-card-image {
+		float: left;
+		position: relative;
+	}
+	img.video-play-icon {
+		width: 60px;
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -30px 0 0 -45px;
+	}
 	a {
 		font-family: "Libre Baskerville", "Times New Roman", serif;
 	}

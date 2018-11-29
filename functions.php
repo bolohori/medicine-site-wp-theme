@@ -1104,7 +1104,20 @@ function medicine_featured_story() {
 	}
 	ob_start(); ?>
 	<div class="featured-news-story">
-		<?php echo get_the_post_thumbnail( $featured_story_object, 'featured-news' ); ?>
+		<?php if ( get_field( 'featured_video_url' ) ) { ?>
+			<div class="video-card-image">
+				<img src="<?php echo get_template_directory_uri() . '/_/img/play.png'; ?>" class="video-play-icon">
+				<?php echo get_the_post_thumbnail( $featured_story_object, 'featured-news' ); ?>
+			</div>
+		<?php
+		} else {
+			if ( has_post_thumbnail() ) {
+				echo get_the_post_thumbnail( $featured_story_object, 'featured-news' );
+			} else {
+				echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+			}
+		}
+		?>
 		<strong>Related: </strong><a href="<?php echo $link; ?>"><?php echo $featured_story_object->post_title; ?></a>
 		<p class="featured-news-story-excerpt"><?php echo featured_story_excerpt( $featured_story_object->ID ); ?>
 	</div>
