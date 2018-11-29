@@ -1,12 +1,11 @@
 .related-stories,
 .featured-news-story {
 	width: 100%;
-	padding: 30px 0;
-	margin-bottom: 35px;
 	vertical-align: text-top;
 }
-
 .featured-news-story {
+	padding: 30px 0;
+	margin-bottom: 35px;
 	float: left;
 	border-top: 2px solid #ccc;
 	border-bottom: 2px solid #ccc;
@@ -23,6 +22,7 @@
 	}
 }
 .related-stories {
+	padding: 20px 0;
 	.video-card-image {
 		position: relative;
 	}
