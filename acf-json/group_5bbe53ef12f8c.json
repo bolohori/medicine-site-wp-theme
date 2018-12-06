@@ -1,0 +1,46 @@
+{
+    "key": "group_5bbe53ef12f8c",
+    "title": "Featured Story",
+    "fields": [
+        {
+            "key": "field_5bbe53fbc60b7",
+            "label": "Featured Story",
+            "name": "featured_story",
+            "type": "post_object",
+            "instructions": "Choose a story from the dropdown. Then add this shortcode to the article where the featured story should appear:\r\n[featured_story]",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1543418468
+}

@@ -1,17 +1,17 @@
-<?php get_header(); ?>
+<?php
+get_header();
+global $wp_query;
+$curauth = get_user_by( 'slug', $wp_query->query['author_name'] );
+?>
 
 	<div id="main" class="page-news clearfix">
 
-		<?php get_template_part( '_/php/news/header' ); ?>
+		<?php get_template_part( '_/php/news/author' ); ?>
 
 		<article>
 
 			<?php
-
-			global $wp_query;
-			$curauth = get_user_by( 'slug', $wp_query->query['author_name'] );
-
-			echo '<div class="news-type-title"><p>Author: ' . $curauth->display_name . '</p></div>';
+			echo '<div class="news-type-title"><p>Stories by: ' . $curauth->display_name . '</p></div>';
 
 			if ( have_posts() ) {
 			}
@@ -25,7 +25,7 @@
 					get_template_part( '_/php/news/card' );
 
 				}
-?>
+				?>
 				</ul>
 				<nav class="navigation pagination" role="navigation">
 					<h2 class="screen-reader-text">Posts navigation</h2>
@@ -43,7 +43,7 @@
 								'next_text' => __( 'Next ›' ),
 							)
 						);
-					?>
+						?>
 					</div>
 				</nav>
 
