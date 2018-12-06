@@ -28,7 +28,7 @@ add_action(
 add_filter('acf/settings/load_json', 'wusm_acf_json_load_point');
 function wusm_acf_json_load_point( $paths ) {
 	$paths[] = get_stylesheet_directory() . '/acf-json';
-    return $paths;
+	return $paths;
 }
 
 /*
@@ -149,6 +149,8 @@ add_image_size( 'landing-page', 1440, 9999, true );
 add_image_size( 'headshot', 250, 345, true );
 add_image_size( 'news', 600, 441, true ); // Used on cards
 add_image_size( 'news-email', 600, 9999 );
+add_image_size( 'featured-news', 186, 124 );
+add_image_size( 'author-headshot', 220, 162 );
 
 // Adds featured image size for pages.
 add_image_size( 'hero-img-sm', 720, 275, true );
@@ -1088,3 +1090,117 @@ add_filter( 'ssp_show_media_player', '__return_false' );
 
 remove_shortcode( 'wusm_archive' );
 add_shortcode( 'wusm_archive', function() { return false; } );
+
+/**
+ * Featured News story functionality
+ *
+ * @return string The HTML for the featured story
+ */
+function medicine_featured_story() {
+	$featured_story_object = get_field( 'featured_story' );
+	$link = get_field( 'url', $featured_story_object->ID );
+	if ( $link == null ) {
+		$link = get_permalink( $featured_story_object->ID );
+	}
+	ob_start(); ?>
+	<div class="featured-news-story">
+		<?php if ( get_field( 'featured_video_url' ) ) { ?>
+			<div class="video-card-image">
+				<img src="<?php echo get_template_directory_uri() . '/_/img/play.png'; ?>" class="video-play-icon">
+				<?php echo get_the_post_thumbnail( $featured_story_object, 'featured-news' ); ?>
+			</div>
+		<?php
+		} else {
+			if ( has_post_thumbnail() ) {
+				echo get_the_post_thumbnail( $featured_story_object, 'featured-news' );
+			} else {
+				echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+			}
+		}
+		?>
+		<strong>Related: </strong><a href="<?php echo $link; ?>"><?php echo $featured_story_object->post_title; ?></a>
+		<p class="featured-news-story-excerpt"><?php echo featured_story_excerpt( $featured_story_object->ID ); ?>
+	</div>
+	<?php return ob_get_clean();
+}
+add_shortcode( 'featured_story', 'medicine_featured_story' );
+
+function featured_story_excerpt( $id ) {
+	$excerpt = explode( ' ', get_the_excerpt( $id ), 27 );
+	if ( count( $excerpt ) >= 27 ) {
+		array_pop( $excerpt );
+		$excerpt = implode( " ", $excerpt ) . '...';
+	} else {
+		$excerpt = implode( " ", $excerpt );
+	}	
+	$excerpt = preg_replace( '`[[^]]*]`', '', $excerpt );
+	return $excerpt;
+}
+
+/**
+ * Related (News) Stories functionality
+ *
+ * @return string The HTML for the Related Stories block
+ */
+function medicine_related_stories() {
+	$pagetitle = get_the_title();
+	ob_start(); ?>
+	<div class="related-stories">
+		<?php
+		if ( get_field( 'related_stories_header' ) ) { ?>
+			<strong><?php the_field( 'related_stories_header' ); ?></strong>
+		<?php }
+		$newstype     = get_field( 'related_stories_news_type_selection' );
+		$newscategory = get_field( 'related_stories_categories_selection' );
+		$args         = array(
+			'post_type'      => 'post',
+			'posts_per_page' => 3,
+			'tax_query'      => array (
+				array (
+					'taxonomy' => 'news',
+					'field'    => 'term_id',
+					'terms'    => $newstype
+				),
+			),
+		);
+		if ( $newscategory !== '' ) {
+			$args['category__in'] = $newscategory;
+		}
+
+		$the_query = new WP_Query( $args );
+		$i = 1; ?>
+		<ul class="clearfix">
+			<?php while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				?>
+				<li>
+					<a href="<?php ( get_field('url') ? the_field('url') : the_permalink() ) ?>" data-category="Page - Internal" data-action="Cards - <?php echo $pagetitle ?>">
+						<div class='related-stories-card'>
+							<?php if ( get_field( 'featured_video_url' ) ) { ?>
+								<div class="video-card-image">
+									<img src="<?php echo get_template_directory_uri() . '/_/img/play.png'; ?>" class="video-play-icon">
+									<?php the_post_thumbnail( 'featured-news' ); ?>
+								</div>
+							<?php
+							} else {
+								if ( has_post_thumbnail() ) {
+									the_post_thumbnail( 'featured-news' );
+								} else {
+									echo '<img src="'. get_template_directory_uri() . '/_/img/default.jpg">';
+								}
+							}
+							?>
+							<?php the_title(); ?>
+						</div>
+					</a>
+				</li>
+				<?php
+				$i++;
+			} /* end while */
+			?>
+		</ul>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'related_stories', 'medicine_related_stories' );

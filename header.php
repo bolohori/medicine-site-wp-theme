@@ -33,10 +33,7 @@ if( defined( 'WP_DEBUG') ) { ?>
 ?>
 </head>
 
-<!--[if IE 7 ]>  <body <?php body_class('ie ie7 ie-lt10 ie-lt9 ie-lt8'); ?>> <![endif]-->
-<!--[if IE 8 ]>  <body <?php body_class('ie ie8 ie-lt10 ie-lt9'); ?>> <![endif]-->
-<!--[if IE 9 ]>  <body <?php body_class('ie ie9 ie-lt10'); ?>> <![endif]-->
-<!--[if gt IE 9]><!--><body <?php body_class(); ?>><!--<![endif]-->
+<body <?php body_class(); ?>>
 
 <img id="print-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/wusm-logo.svg" onerror="this.src='<?php echo get_template_directory_uri(); ?>/_/img/wusm-logo.png';this.onerror=null;" alt="Washington University School of Medicine in St. Louis"/>
 <header>
