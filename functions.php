@@ -1196,6 +1196,7 @@ function medicine_related_stories() {
 				</li>
 				<?php
 				$i++;
+				wp_reset_postdata();
 			} /* end while */
 			?>
 		</ul>
