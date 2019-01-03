@@ -10,6 +10,12 @@ It requires a few plugins (Advanced Custom Fields) to be installed and active.
 
 ## Changelog
 
+### 2.6.2 (January 2019)
+
+* Update to new version numbering scheme
+* Fix for rogue share buttons associated with Related Stories
+* Updated H2 styles
+
 ### 2016.12.29.1
 
 * z-index fix for "Information for..." dropdown
