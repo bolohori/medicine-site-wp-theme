@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2.6.2
+Version:	 2.6.3
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -919,7 +919,7 @@ a.wusm-button {
 	display: inline-block;
 	line-height: 14px;
 	margin: 0 20px 0 0;
-	font-size: 16px;
+	font-size: 12px;
 	text-transform: uppercase;
 	color: #fff;
 	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -927,7 +927,7 @@ a.wusm-button {
 	padding: 15px 25px;
 	border-radius: 3px;
 	letter-spacing: 1px;
-	font-weight: 600;
+	font-weight: 700;
 	transition: background 0.1s ease;
 }
 
@@ -1024,6 +1024,16 @@ article ul ul {
 	margin-top: 0;
 }
 
+.non-landing-page .callout h2 {
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 0;
+}
+
+.non-landing-page .callout h2::after {
+	display: none;
+}
+
 .callout div {
 	line-height: 28px;
 }
@@ -1055,6 +1065,40 @@ article ul ul {
 	max-width: 112px;
 	margin: 12px 0 0 0;
 	padding: 0 0 4px 0;
+}
+
+.landing-page h3,
+.non-landing-page h3 {
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.landing-page h4,
+.non-landing-page h4 {
+	font-size: 20px;
+	font-weight: 600;
+	margin-top: 36px;
+	margin-bottom: 15px;
+}
+
+.landing-page h5,
+.non-landing-page h5 {
+	font-weight: 600;
+	font-size: 18px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.landing-page h6,
+.non-landing-page h6 {
+	margin: 0;
+	color: #900;
+	font-weight: 400;
+	font-size: 18px;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
+	line-height: 26px;
 }
 
 .related-content {
@@ -1416,7 +1460,7 @@ footer {
 
 #site-footer-bottom #col2 {
 	float: left;
-	width: 154px;
+	width: 190px;
 	border-left: 1px solid #bcbcbc;
 	padding: 0 10px 0 15px;
 }
@@ -4222,7 +4266,7 @@ a.sidebar-outlook-link {
 	#site-footer a#site-rss {
 	    display: inline-block;
 	    width: 36px;
-	    height: 36px;
+	    height: 38px;
 	    margin: 0 6px 0 0;
 	}
 

@@ -123,7 +123,7 @@ get_header(); ?>
 			// These are WordPress' search results
 			if ( have_posts() ) {
 
-				echo '<h2>medicine.wustl.edu results</h2>';
+				echo '<h3>medicine.wustl.edu results</h3>';
 
 				while ( have_posts() ) {
 
@@ -155,7 +155,7 @@ get_header(); ?>
 
 					// Display page of search results
 					if ( $search_results->response->resultPacket->results ) {
-						echo '<h2>Results from more wustl.edu sites</h2>';
+						echo '<h3>Results from more wustl.edu sites</h3>';
 						foreach ( $search_results->response->resultPacket->results as $result ) {
 						?>
 							<p class='search-result'>
@@ -173,7 +173,7 @@ get_header(); ?>
 			}
 			?>
 			<nav class="navigation pagination" role="navigation">
-				<h2 class="screen-reader-text">Posts navigation</h2>
+				<h3 class="screen-reader-text">Posts navigation</h3>
 				<div class="nav-links">
 				<?php
 				$big = 999999999; // need an unlikely integer
