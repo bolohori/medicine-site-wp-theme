@@ -33,6 +33,7 @@
                         <li><a href="/directory/index/">A to Z Index</a></li>
                         <li><a href="/news/announcements/">Announcements</a></li>
                         <li><a href="http://outlook.wustl.edu/">Outlook Magazine</a></li>
+                        <li><a href="https://medicine.wustl.edu/contact/report-website-issue/">Report Website Issue</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +54,6 @@
                     <a class="first-child" data-category="wusm-footer" data-action="https://emergency.wustl.edu" data-label="Emergency" href="https://emergency.wustl.edu/">Emergency</a>
                     <a data-category="wusm-footer" data-action="https://medicine.wustl.edu/policies" data-label="Policies" href="/policies/">Policies</a>
                     <a data-category="wusm-footer" data-action="https://medicine.wustl.edu/news/" data-label="News" class="last-child" href="/news/">News</a>
-                    <a data-category="wusm-footer" data-action="https://medicine.wustl.edu/contact/report-website-issue/" data-label="Report Website Issue" class="last-child" href="/news/">Report Website Issue</a>
                 </nav>
             </div>
 
