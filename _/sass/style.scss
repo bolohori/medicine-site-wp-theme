@@ -4,7 +4,7 @@ Theme URI:   http://medicine.wustl.edu
 Description: Main School of Medicine site theme
 Author:      Medical Public Affairs
 Author URI:  http://medicine.wustl.edu
-Version:	 2.6.2
+Version:	 2.6.3-beta3
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -693,10 +693,8 @@ a.page-numbers:hover {
 -------------------------------------------------------------------------------*/
 
 #dirform label {
-	float: left;
-	display: inline;
-	text-align: right;
-	width: 170px;
+	display: inline-block;
+	font-size: 18px;
 	font-weight: 700;
 	padding: 0 20px 0 0;
 	margin: 18px 0 0;
@@ -711,6 +709,7 @@ input {
 }
 
 #dirform input {
+	display: block;
 	margin: 10px 0;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -718,7 +717,7 @@ input {
 
 #dirform .button {
 	max-width: 258px;
-	margin: 8px 0 0 190px;
+	margin: 8px 0 0;
 }
 
 #dirform .button input {
@@ -1012,7 +1011,7 @@ article ul ul {
 	box-sizing: border-box;
 	border: 1px solid #ddd;
 	background: #fff;
-	margin: 0 0 20px;
+	margin: 10px 0 40px;
 	width: 100%;
 	clear: both;
 	float: left;
@@ -1021,6 +1020,25 @@ article ul ul {
 }
 
 .callout h1, .callout h2, .callout h3 {
+	margin-top: 0;
+}
+
+.non-landing-page .callout h2,
+.non-landing-page .announcement-link-title,
+.landing-page .announcement-link-title {
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 0;
+}
+
+.non-landing-page .callout h2::after,
+.non-landing-page .announcement-link-title h2::after,
+.landing-page .announcement-link-title h2::after {
+	display: none;
+}
+
+.landing-page .callout h3,
+.non-landing-page .callout h3 {
 	margin-top: 0;
 }
 
@@ -1055,6 +1073,41 @@ article ul ul {
 	max-width: 112px;
 	margin: 12px 0 0 0;
 	padding: 0 0 4px 0;
+}
+
+
+.landing-page h3,
+.non-landing-page h3 {
+	font-size: 22px;
+	font-weight: 600;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.landing-page h4,
+.non-landing-page h4 {
+	font-size: 20px;
+	font-weight: 600;
+	margin-top: 36px;
+	margin-bottom: 15px;
+}
+
+.landing-page h5,
+.non-landing-page h5 {
+	font-weight: 600;
+	font-size: 18px;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.landing-page h6,
+.non-landing-page h6 {
+	margin: 0;
+	color: #900;
+	font-weight: 400;
+	font-size: 18px;
+	font-family: "Libre Baskerville", "Times New Roman", serif;
+	line-height: 26px;
 }
 
 .related-content {
@@ -1416,7 +1469,7 @@ footer {
 
 #site-footer-bottom #col2 {
 	float: left;
-	width: 154px;
+	width: 190px;
 	border-left: 1px solid #bcbcbc;
 	padding: 0 10px 0 15px;
 }
@@ -3593,12 +3646,18 @@ a.sidebar-outlook-link {
 	*behavior: url( /wp-content/themes/medicine/_/js/boxsizing.htc );
 }
 
-#right-col aside h2 {
+#right-col aside h2,
+#right-col aside h2.announcement-link-title {
 	margin-top: 0;
 	width: 100%;
-	font-size: 17px;
+	font-size: 22px;
 	border-bottom: 1px solid #d5d2d2;
 	padding-bottom: 12px;
+}
+
+#right-col aside h2::after,
+#right-col aside h2.announcement-link-title::after { 
+	display: none;
 }
 
 #right-col aside.links ul {
@@ -4221,8 +4280,8 @@ a.sidebar-outlook-link {
 	#site-footer a#site-youtube,
 	#site-footer a#site-rss {
 	    display: inline-block;
-	    width: 36px;
-	    height: 36px;
+	    width: 38px;
+	    height: 38px;
 	    margin: 0 6px 0 0;
 	}
 

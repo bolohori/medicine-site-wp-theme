@@ -274,7 +274,7 @@ if ( ! function_exists( 'medicine_enqueue_styles' ) ) {
 		wp_enqueue_style( 'medicine-style', get_stylesheet_directory_uri() . '/style.css', array(), $medicine_theme_data->Version );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'medicine_enqueue_styles', 10 );
 
 
 /*

@@ -33,6 +33,7 @@
                         <li><a href="/directory/index/">A to Z Index</a></li>
                         <li><a href="/news/announcements/">Announcements</a></li>
                         <li><a href="http://outlook.wustl.edu/">Outlook Magazine</a></li>
+                        <li><a href="https://medicine.wustl.edu/contact/report-website-issue/">Report Website Issue</a></li>
                     </ul>
                 </div>
             </div>
