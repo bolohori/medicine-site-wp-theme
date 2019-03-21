@@ -75,7 +75,7 @@ $start = ( ( $paged - $num_of_wp_result_pages - 1 ) * 10 ) + ( $num_of_funnelbac
 // I thought we could only run this if we're in the Funnelback results, but we need the count
 // to populate the pagination.
 
-$collection               = 'wustl-gsa-meta';
+$collection               = 'wustl-search';
 $profile                  = '_default';
 $search_url               = "https://search.wustl.edu/s/search.json?collection=$collection&profile=$profile&query=$terms&start_rank=$start&num_ranks=$num_of_funnelback_results";
 $json                     = file_get_contents( $search_url );
@@ -98,7 +98,7 @@ get_header(); ?>
 	<div class="wrapper">
 
 		<div id="page-background-inner"></div>
-		
+
 		<nav id="left-col">
 		</nav>
 
