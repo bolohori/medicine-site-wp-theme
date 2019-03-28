@@ -41,6 +41,14 @@ function wusm_remove_gallery( $html ) {
 }
 add_filter( 'post_gallery', 'wusm_remove_gallery', 10, 3);
 
+// Remove Featured Story from emails
+function wusm_remove_featured_story( $html, $tag ) {
+    if ( get_query_var( 'template' ) == 'email' && $tag == 'featured_story' ) {
+        return ' ';
+    }
+    return $html;
+}
+add_filter( 'do_shortcode_tag', 'wusm_remove_featured_story', 10, 2 );
 
 // Do not use responsive images
 add_filter( 'max_srcset_image_width', create_function( '', 'return 1;' ) );
