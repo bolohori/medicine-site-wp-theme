@@ -89,8 +89,8 @@ if ( get_field( 'hero_image', 'option' ) ) {
 				<span class="desctext">76 Clinical Specialties &amp; Subspecialties</span></a>
 			</div>
 			<div class="icon">
-				<a data-category="Front page" data-action="Click-Numbers" data-label="2nd-Lowest Student Debt" href="https://medicine.wustl.edu/education/financial-support/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/debt-icon.svg" alt="debt-icon">
-				<span class="desctext">2nd-Lowest Student Debt</span></a>
+				<a data-category="Front page" data-action="Click-Numbers" data-label="247 Patent Filings (FY 2018)" href="https://otm.wustl.edu/what-we-do/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/home/light-bulb.svg" alt="light-bulb">
+				<span class="desctext">247 Patent Filings<br />(FY 2018)</span></a>
 			</div>
 		</div>
 	</section>
