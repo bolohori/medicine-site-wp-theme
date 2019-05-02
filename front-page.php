@@ -152,16 +152,20 @@ if ( get_field( 'hero_image', 'option' ) ) {
 						$date = get_the_date( '', $post_id );
 						$title = get_the_title( $post_id );
 						$link = get_permalink( $post_id );
-						?>
-						<a data-category="Front page" data-action="Click-News" data-label="<?php echo $title; ?>" href="<?php echo $link; ?>">
-							<div class="home-story">
-								<?php echo get_the_post_thumbnail( $post_id, 'news' ); ?>
-								<div class="home-news-info">
-									<span class="home-news-date"><?php echo $date; ?></span>
-									<span class="home-news-title"><?php echo $title; ?></span>
+						$externalurl = get_field( 'url', $post_id );
+						if ( !empty( $externalurl ) ) { ?>
+							<a data-category="Front page" data-action="Click-News" data-label="<?php echo $title; ?>" href="<?php echo $externalurl; ?>">
+						<?php } else { ?>
+							<a data-category="Front page" data-action="Click-News" data-label="<?php echo $title; ?>" href="<?php echo $link; ?>">
+						<?php } ?>
+								<div class="home-story">
+									<?php echo get_the_post_thumbnail( $post_id, 'news' ); ?>
+									<div class="home-news-info">
+										<span class="home-news-date"><?php echo $date; ?></span>
+										<span class="home-news-title"><?php echo $title; ?></span>
+									</div>
 								</div>
-							</div>
-						</a>
+							</a>
 						<?php
 					}
 				echo '</div>';
