@@ -12,7 +12,7 @@ if (have_posts()) :
 					<li><a href="#medical-education">Medical Education</a></li>
 					<li><a href="#PACS">Audiology &amp; Communication Sciences</a></li>
 					<li><a href="#DBBS">Biology &amp; Biomedical Sciences</a></li>
-					<li><a href="#CPR">Clinical &amp; Population Research</a></li>
+					<li><a href="#MP">Master’s Programs</a></li>
 					<li><a href="#OT">Occupational Therapy</a></li>
 					<li class="last-child"><a href="#PT">Physical Therapy</a></li>
 					<li class="last-child"><a href="#admissions-resources">Admissions Resources</a></li>
@@ -63,7 +63,7 @@ if (have_posts()) :
 						<li><a href="http://pacs.wustl.edu/programs/doctor-of-philosophy/">Speech and Hearing Sciences (PhD)</a></li>
 						<li><a href="http://pacs.wustl.edu/programs/master-of-science-in-deaf-education/">Deaf Education (MS)</a></li>
 					</ul>
-					<ul id="CPR" class="hero-list right-row">
+					<ul id="MP" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/cpr.jpg" alt=""></li>
 						<li class="hero-list-title">Master’s in Clinical Research, Public Health, Informatics &amp; More</li>
 						<li><a href="https://crtc.wustl.edu/programs/degrees/ahbr/">Applied Health Behavior Research (MS)</a></li>
