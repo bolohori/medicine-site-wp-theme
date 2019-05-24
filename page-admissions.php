@@ -12,7 +12,7 @@ if (have_posts()) :
 					<li><a href="#medical-education">Medical Education</a></li>
 					<li><a href="#PACS">Audiology &amp; Communication Sciences</a></li>
 					<li><a href="#DBBS">Biology &amp; Biomedical Sciences</a></li>
-					<li><a href="#CPR">Clinical &amp; Population Research</a></li>
+					<li><a href="#MP">Master’s Programs</a></li>
 					<li><a href="#OT">Occupational Therapy</a></li>
 					<li class="last-child"><a href="#PT">Physical Therapy</a></li>
 					<li class="last-child"><a href="#admissions-resources">Admissions Resources</a></li>
@@ -63,14 +63,16 @@ if (have_posts()) :
 						<li><a href="http://pacs.wustl.edu/programs/doctor-of-philosophy/">Speech and Hearing Sciences (PhD)</a></li>
 						<li><a href="http://pacs.wustl.edu/programs/master-of-science-in-deaf-education/">Deaf Education (MS)</a></li>
 					</ul>
-					<ul id="CPR" class="hero-list right-row">
+					<ul id="MP" class="hero-list right-row">
 						<li class="li-photo"><img src="<?php echo get_stylesheet_directory_uri(); ?>/_/img/admissions/cpr.jpg" alt=""></li>
-						<li class="hero-list-title">Clinical Research, Public Health &amp; Consulting</li>
+						<li class="hero-list-title">Master’s in Clinical Research, Public Health, Informatics &amp; More</li>
 						<li><a href="https://crtc.wustl.edu/programs/degrees/ahbr/">Applied Health Behavior Research (MS)</a></li>
+						<li><a href="https://informatics.wustl.edu/ms-biomedical-informatics-degree/">Biomedical Informatics (MS)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/education/master-of-science-in-biostatistics-msibs/">Biostatistics (MS)</a></li>
 						<li><a href="https://crtc.wustl.edu/programs/degrees/msci/ ">Clinical Investigation (MSCI)</a></li>
 						<li><a href="https://olin.wustl.edu/EN-US/academic-programs/full-time-MBA/academics/platforms-and-concentrations/Pages/Consulting.aspx">Consulting — Business of Health Care (MBA Concentration)</a></li>
 						<li><a href="https://biostatistics.wustl.edu/education/master-of-science-in-genetic-epidemiology-gems/">Genetic Epidemiology (MS)</a></li>
+						<li><a href="https://radonc.wustl.edu/education/master-of-science-in-medical-physics/">Medical Physics (MS)</a></li>
 						<li><a href="https://mphs.wustl.edu/">Population Health (MPHS)</a></li>
 						<li><a href="http://mph.wustl.edu/">Public Health (MPH)</a></li>
 					</ul>
