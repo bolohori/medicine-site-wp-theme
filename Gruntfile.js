@@ -29,6 +29,9 @@ module.exports = function (grunt) {
 			]
 		}; */
 
+		// Define module implementation for sass
+		const sass = require('node-sass');
+
 		// Define the configuration for all the tasks
 		grunt.initConfig({
 			// Add vendor prefixed styles
@@ -45,6 +48,7 @@ module.exports = function (grunt) {
 
 			sass: {
 				options: {
+					implementation: sass,
 					sourceMap: true,
 					outputStyle: 'compressed',
 				},

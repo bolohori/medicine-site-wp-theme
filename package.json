@@ -1,26 +1,25 @@
 {
   "name": "wustl_medicine",
-  "version": "2018.08.28.0",
+  "version": "2.6.6",
   "description": "The theme for the Washington University School of Medicine in St. Louis",
-  "scripts": {
-	"sass": "sass --watch _/sass/:. --style compressed"
-  }, 
   "repository": {
     "type": "git",
-    "url": "https://istdevcode.wustl.edu/projects/PA/repos/medicine"
+    "url": "https://bitbucket.wustl.edu/projects/PA/repos/medicine"
   },
   "keywords": [
     "wordpress"
   ],
   "author": "Medical Public Affairs",
-  "license": "GNU General Public License v2 or later",
+  "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "grunt": "~1.0.1",
+    "grunt": "^1.0.4",
     "grunt-autoprefixer": "~3.0.4",
-    "grunt-contrib-uglify": "~1.0.1",
-    "grunt-contrib-watch": "~1.0.0",
-    "grunt-sass": "~1.2.0",
-    "load-grunt-tasks": "~3.5.0",
-    "sass": "^1.14.3"
+    "grunt-contrib-uglify": "~4.0.1",
+    "grunt-contrib-watch": "~1.1.0",
+    "grunt-sass": "~3.0.2",
+    "load-grunt-tasks": "~4.0.0"
+  },
+  "dependencies": {
+    "node-sass": "^4.12.0"
   }
 }
